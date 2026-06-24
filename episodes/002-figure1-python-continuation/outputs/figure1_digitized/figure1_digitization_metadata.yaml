@@ -1,0 +1,95 @@
+figure: Figure 1
+paper: Bergner & Spichtinger (2026), Ice clouds as nonlinear oscillators
+source_pdf: sources/original/bergner-spichtinger-2026.pdf
+source_pdf_sha256: fae7689eb7e46b3505fc1cb0f388d1d119e8db14b3642af64892b9cddab07bfd
+source_page: 12
+rendering:
+  tool: pdftoppm
+  dpi: 600
+  rendered_page: episodes/002-figure1-python-continuation/outputs/figure1_digitized/figure1_page12_600dpi.png
+  figure_source_image: episodes/002-figure1-python-continuation/outputs/figure1_digitized/figure1_source.png
+  note: pdfimages list shows no embedded Figure 1 raster; high-resolution source image
+    is a reproducible 600-dpi render/crop from the saved PDF page.
+calibration:
+  coordinate_system: page-render pixels, origin at upper-left
+  figure_crop_px:
+  - 340
+  - 4220
+  - 4640
+  - 5720
+  panels:
+    number_concentration:
+      bounds_px:
+      - 596
+      - 4300
+      - 1724
+      - 5288
+      x_axis:
+        name: vertical_velocity
+        unit: m s-1
+        scale: log10
+        min: 0.005
+        max: 2.0
+      y_axis:
+        name: ice_crystal_number_concentration
+        unit: 1 kg-1
+        scale: log10
+        min: 1000.0
+        max: 10000000.0
+    mass_concentration:
+      bounds_px:
+      - 2018
+      - 4300
+      - 3146
+      - 5288
+      x_axis:
+        name: vertical_velocity
+        unit: m s-1
+        scale: log10
+        min: 0.005
+        max: 2.0
+      y_axis:
+        name: ice_crystal_mass_concentration
+        unit: kg kg-1
+        scale: log10
+        min: 1.0e-08
+        max: 0.001
+    saturation_ratio:
+      bounds_px:
+      - 3392
+      - 4300
+      - 4568
+      - 5288
+      x_axis:
+        name: vertical_velocity
+        unit: m s-1
+        scale: log10
+        min: 0.005
+        max: 2.0
+      y_axis:
+        name: saturation_ratio
+        unit: '1'
+        scale: linear
+        min: 1.4
+        max: 1.6
+digitization:
+  curve_temperatures:
+    blue: 190
+    gray: 210
+    red: 230
+  method: color thresholding followed by per-column robust median extraction; grid
+    lines suppressed before neutral gray extraction
+  csv: episodes/002-figure1-python-continuation/outputs/figure1_digitized/figure1_digitized_curves.csv
+  overlay: episodes/002-figure1-python-continuation/outputs/figure1_digitized/figure1_digitized_overlay.png
+  point_counts:
+    number_concentration|T=190: 174
+    number_concentration|T=210: 165
+    number_concentration|T=230: 174
+    mass_concentration|T=190: 174
+    mass_concentration|T=210: 164
+    mass_concentration|T=230: 174
+    saturation_ratio|T=190: 174
+    saturation_ratio|T=210: 174
+    saturation_ratio|T=230: 174
+  quality_note: Overlay artifact is the primary QA check. Gray T=210 curves are lower
+    confidence because they are neutral and close to dotted grid/fit strokes.

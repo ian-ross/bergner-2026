@@ -7,6 +7,8 @@ Goal: reproduce and validate the Figure 1 equilibrium branch family from Bergner
 - `docs/planning-decisions.md` — episode-specific terminology and decisions from the Figure 1 planning/grill session.
 - `scripts/generate_figure1_continuation.py` — generates Figure 1 equilibrium branches, independent root-solve checks, and Eq. 92--94 comparison tables.
 - `outputs/figure1_continuation/` — curated branch CSVs, comparison detail tables, summary CSV/JSON, and run metadata for TASK-002.
+- `scripts/extract_digitize_figure1.py` — reproducibly renders/crops Figure 1 from the saved PDF and digitizes the rendered curves.
+- `outputs/figure1_digitized/` — Figure 1 source crop, digitized curve CSV, calibration/provenance metadata, and overlay QA artifacts for TASK-003.
 - `notebooks/` — exploratory notebooks for source inspection, continuation diagnostics, and figure comparison.
 
 ## Scope
