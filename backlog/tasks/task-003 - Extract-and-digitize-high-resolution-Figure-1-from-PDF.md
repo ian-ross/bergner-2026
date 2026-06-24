@@ -1,10 +1,11 @@
 ---
 id: TASK-003
 title: Extract and digitize high-resolution Figure 1 from PDF
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-24 16:38'
-updated_date: '2026-06-24 16:38'
+updated_date: '2026-06-24 16:54'
 labels: []
 dependencies: []
 ---
