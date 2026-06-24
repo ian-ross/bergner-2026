@@ -1,11 +1,11 @@
 ---
 id: TASK-003
 title: Extract and digitize high-resolution Figure 1 from PDF
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-24 16:38'
-updated_date: '2026-06-24 17:01'
+updated_date: '2026-06-24 17:02'
 labels: []
 dependencies: []
 ---
@@ -44,3 +44,22 @@ Verification run:
 - python -m py_compile episodes/002-figure1-python-continuation/scripts/extract_digitize_figure1.py
 - CSV has 1547 digitized points plus header; overlay visually confirms points track rendered curves.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented reproducible Figure 1 extraction and digitization for Episode 2.
+
+Changes:
+- Added `episodes/002-figure1-python-continuation/scripts/extract_digitize_figure1.py`, which records `pdfimages -list`, renders PDF page 12 at 600 dpi with `pdftoppm`, crops Figure 1, calibrates all three panels, digitizes T=190/210/230 K rendered curves, and writes overlay QA artifacts.
+- Generated curated outputs under `episodes/002-figure1-python-continuation/outputs/figure1_digitized/`: source crop, rendered page, digitized CSV, YAML/JSON metadata, pdfimages listing, and page/crop overlays.
+- Updated the Episode 2 README to document the new script and output directory.
+
+Notes:
+- The saved publisher PDF does not expose Figure 1 as a standalone embedded raster via `pdfimages`; metadata records this and treats the 600-dpi PDF page render/crop as the reproducible high-resolution source image.
+- Gray T=210 curves are flagged lower confidence in metadata because the neutral curve lies close to grid/fit strokes; overlay QA is included for review.
+
+Verification:
+- `uv run python episodes/002-figure1-python-continuation/scripts/extract_digitize_figure1.py`
+- `python -m py_compile episodes/002-figure1-python-continuation/scripts/extract_digitize_figure1.py`
+<!-- SECTION:FINAL_SUMMARY:END -->
