@@ -1,0 +1,41 @@
+{
+  "temperatures_K": [
+    190.0,
+    210.0,
+    230.0
+  ],
+  "p_Pa": 30000.0,
+  "F": 1.0,
+  "w_min_m_s": 0.005,
+  "w_max_m_s": 2.0,
+  "points_per_branch": 241,
+  "check_sample_indices": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240
+  ],
+  "tolerance": 1e-09,
+  "outputs": [
+    "branch_T190K.csv",
+    "branch_T210K.csv",
+    "branch_T230K.csv",
+    "branches_all.csv",
+    "comparison_details.csv",
+    "comparison_summary.csv",
+    "comparison_summary.json"
+  ]
+}
