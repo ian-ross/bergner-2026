@@ -1,0 +1,3938 @@
+ View
+Online
+ Export
+Citation
+RESEARCH ARTICLE | APRIL 09 2026
+Ice clouds as nonlinear oscillators
+Hannah Bergner ; Peter Spichtinger
+Chaos 36, 043115 (2026)
+https://doi.org/10.1063/5.0297531
+Connected Content
+A companion article has been published: Modeling ice clouds as nonlinear oscillators
+Articles You May Be Interested In
+A Finnish Meteorological Institute–Aerosol Cloud Interaction Tube (FMI–ACIT): Experimental setup and
+tests of proper operation
+J. Chem. Phys. (September 2018)
+Effects of jet/vortex interaction on contrail formation in supersaturated conditions
+Physics of Fluids (May 2013)
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+Ice clouds as nonlinear oscillators
+Cite as: Chaos 36, 043115 (2026); doi: 10.1063/5.0297531
+Submitted: 20 August 2025 · Accepted: 13 March 2026 ·
+Published Online: 9 April 2026 View Online Export Citation CrossMark
+Hannah Bergner and Peter Spichtingera)
+AFFILIATIONS
+Institute for Atmospheric Physics, Johannes Gutenberg University, Mainz, Germany
+a)
+Author to whom correspondence should be addressed: spichtin@uni-mainz.de
+ABSTRACT
+Clouds are important features of the atmosphere, determining the energy budget by interacting with incoming solar radiation and outgoing
+thermalradiation,respectively.Forpureiceclouds,thenetimpactoftheradiativeeffectisstillunknown.Inthisstudy,wedevelopasimplebut
+physically consistent ice cloud model and analyze it using methods from the theory of dynamical systems. We find that the model constitutes
+a nonlinear oscillator with two Hopf bifurcations in the relevant parameter regime. In addition to the characterization of the equilibrium
+states and the occurring limit cycle, we find scaling behaviors of the bifurcations and the limit cycle, reducing the parameter space crucially.
+Finally, the model shows very good agreement with real measurements, indicating that the main physics is captured and such simple models
+are helpful tools for investigating ice clouds.
+© 2026 Author(s). All article content, except where otherwise noted, is licensed under a Creative Commons Attribution (CC BY) license
+(https://creativecommons.org/licenses/by/4.0/). https://doi.org/10.1063/5.0297531
+Investigations of clouds need well-characterized models for sim-
+ulating relevant properties as well as helping to interpret mea-
+surements. Here, we propose a simple but robust model for ice
+clouds, which is characterized using the theory of dynamical sys-
+tems, and compare to real measurements. The proposed model is
+nottheendofthelinebutratherafirststepinsystematicderiving
+of consistent models of different complexities.
+I. INTRODUCTION
+Clouds are frequently found to be distributed over the whole
+globe. A portion of about 60%–70% of the Earth is permanently
+covered by clouds,1
+which are also distributed over several verti-
+cal levels in the troposphere (i.e., up to 12–15km altitude). Clouds
+are composed of myriads of water particles of different phases. For
+low vertical levels in the atmosphere, i.e., at temperatures above
+the triple point (Tt = 273.16K), clouds contain only liquid water
+droplets. For the temperature range between the triple point and
+about T ∼ 235K, liquid water can still exist, however, the solid
+phase, i.e., classical hexagonal ice, is the stable phase. At temper-
+atures around T ∼ 235K, liquid water freezes spontaneously and
+below this temperatures, pure liquid water cannot exist anymore,2
+thus clouds at these temperatures (i.e., at high altitudes close to the
+tropopause) are completely composed of ice crystals.
+Clouds play a major role for the Earth–Atmosphere system.
+They determine the hydrological cycle by producing precipitation
+and also drive atmospheric flows by the huge amount of energy,
+which is released at phase transitions.3
+Vigorous systems like thun-
+derstorms are only possible because of this anomaly of water.
+Finally, clouds also regulate the energy budget of the system itself,
+controlling the impact of radiation. Clouds interact with incoming
+solar radiation by scattering and partly reflecting solar radiation; in
+the presence of clouds, less solar energy is transported into the sys-
+tem as compared to the clear sky case, leading to a cooling effect
+(albedo effect). On the other hand, they partly absorb and re-emit
+thermal radiation as radiated by the Earth’s surface (as an almost
+perfect black body),thuskeepingmore energy in the system ascom-
+pared to the clear sky case (greenhouse effect). The difference of
+these two effects leads to the net climate effect of clouds. For low
+level liquid clouds, the albedo effect is dominant, hence leading to
+a net cooling of these clouds. For clouds at higher altitudes, i.e.,
+clouds containing ice particles, the net effect is still uncertain; for
+pure ice clouds, we do not even know the sign of the net effect. This
+results also from the fact that for ice clouds both effects (cooling vs
+warming) are of comparable values but with different signs. Thus,
+small variations in microphysical properties as, e.g., the size of par-
+ticles lead to significant changes in the net effect, as demonstrated
+by Zhang et al.4
+For high level ice clouds, often a net warming is
+assumed,5
+but recent estimations indicate different or even incon-
+clusive outcomes.6
+Since for clouds, thermodynamics decides about
+the mass concentration in first order, the number concentration
+of ice particles can be directly translated into the size of particles
+and thus into the radiation calculations; this is crucial since smaller
+particles scatter more efficiently than larger ones.7
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-1
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+In general, the number concentration of ice particles is deter-
+mined by the generation mechanisms, i.e., the nucleation pathway.
+In recent studies,8,9
+a distinction between generally different forma-
+tion pathways was formulated, termed as liquid origin cirrus and
+in situ cirrus, respectively. The former pathway is characterized by
+pre-existing liquid cloud droplets at states close to thermodynamic
+equilibrium (saturation over water), which freeze to ice particles,
+either triggered by solid aerosols or spontaneously. This pathway is
+only valid in the temperature range T > 235K, where liquid water
+can still exist. The latter pathway takes place at low temperature;
+water vapor is either directly deposited as ice on solid aerosol par-
+ticles (so-called heterogeneous nucleation) or supercooled aqueous
+solution droplets freeze spontaneously. The nucleation mechanisms
+might have a big impact on the resulting number concentration
+from such a freezing/nucleation event. The resulting number con-
+centration might be limited either by the amount of available ice
+nucleatingparticles(particlelimitedregime)orevenbytheavailable
+water vapor for producing cloud or solution droplets (supersatura-
+tion limited regime). The latter one is crucially depending on local
+dynamics, which leads to a source of supersaturation by adiabatic
+cooling in upward motions.
+In addition to the details of nucleation processes, which are
+barely understood on a molecular level, many other processes in
+clouds are quite uncertain. Very often, we find that the processes
+might be understood to some extend on a particle level, but the scal-
+ing up to the ensemble is not clear. This points to the fact that in
+contrast to fluid dynamics where a general and well accepted theory
+is available (i.e., Navier–Stokes equations or approximations of it),
+thisisnotthecaseforclouds.Actually,thereisnogenerallyaccepted
+theory of clouds in terms of a closed system of partial differen-
+tial equations or something similar. Processes are mostly known on
+particle basis and reaction rates are formulated often in an ad hoc
+manner in order to take into account the needs for the respective
+applications.
+There are only few attempts to formulate a general theory
+of clouds for some parts of the phase space of clouds, mostly in
+the field of liquid clouds. For ice clouds, we are aware of some
+attempts of deriving a Boltzmann-type evolution equation.10
+How-
+ever, none of them resulted into an overall and generally accepted
+cloud formulation. For a review of such formulations, see Khain
+et al.11
+In this study, we focus on pure ice clouds in a low temper-
+ature regime (T < 240K), where in situ formation takes place at
+levels in the upper troposphere. For the formation of ice particles
+in this regime, environmental conditions far away from thermody-
+namic equilibrium (i.e., saturation with respect to ice) are required;
+even after the formation process, ice clouds remain in a state out
+of equilibrium because relaxation toward equilibrium can be quite
+slow. Thus, ice clouds form a non-equilibrium multiphase system.
+Ice clouds are also multiscale phenomena, showing structure for-
+mation and emergence of pattern, thus not only relevant in terms
+of microscale processes but also in the propagation of information
+through all scales. For investigation of such phenomena simple but
+consistent models are necessary, which contain the main features of
+the physics, but are simple enough for coupling to fluid dynamics
+equations. For instance, if we want to investigate issues such as pre-
+dictability, we have to make sure that the cloud model as coupled to
+theequationsofmotionintermsofreactionratesiswell-posed.Oth-
+erwise, investigations about representing clouds on different scales
+in numerical models with changing grid resolutions remain a bit
+arbitrary.
+In this study, we derive a simple ice cloud model on the basis
+of a consistent formulation of cloud processes. Here, we include
+the most important processes, such as ice nucleation, growth, and
+evaporation by water vapor diffusion and sedimentation of ice crys-
+tals, respectively. After some simplifications, we end up with a
+three-dimensional (3D) system of nonlinear autonomous ordinary
+differential equations, which then can be analyzed by the theory of
+dynamical systems. There were several former studies, investigating
+cloud models as dynamical systems, e.g., for liquid and mixed-phase
+clouds,12–15
+but also for aerosol–cloud systems.16,17
+Our investigation
+is based on the former study by Spreitzer et al.,18
+which evaluated a
+small part of the phase space of ice clouds, i.e., so-called subvisible
+cirrus clouds at low vertical updrafts; they used a slightly different
+model, which could not be analyzed in detail. Our approach extends
+this former study and aims to derive a much more detailed analysis;
+sinceourcurrentmodelis“muchsimpler,”howeverstillrealistic,we
+can determine several properties in an analytical or semi-analytical
+way, including also the regime of subvisible cirrus.18
+We determine
+equilibrium states and their quality using linearization approaches.
+In addition, we determine bifurcations and, thus, periods of limit
+cycles with numerical evaluations. Finally, the model is compared to
+real measurements in order to determine its feasibility for the use in
+extended models.
+The study is structured as follows. In Sec. II, we present an
+overview of the ice cloud model including the approach, setting,
+main assumptions, and the equations constituting the 3D nonlinear
+system of ordinary differential equations for the ice cloud model.
+In Sec. III, we then discuss the physical variables and processes for
+modeling ice clouds in the low temperature regime in detail and
+derive the explicit model equations which were already presented
+in Sec. II. The system is then characterized and analyzed in terms
+of dynamical systems theory in Sec. IV, i.e., we determine equilib-
+rium states, their quality, and possible limit cycles and additionally
+investigate scaling properties of the system. While the equilibrium
+states and their quality are determined by explicit calculations and
+mathematical arguments, the study of the limit cycles and inves-
+tigation of the scaling properties are carried out using numerical
+analysis. In Sec. V, we compare the model results with real measure-
+ments.Finally,wesummarizethework,drawsomeconclusions,and
+present an outlook for future work.
+II. OVERVIEW OF THE MODEL
+In this section, we give an overview over the ice cloud model
+andpresenttheapproach,setting,mainassumptions,andequations.
+The details of the relevant physics, the model derivation, and in-
+depthpresentationoftheindividualtermsoftheequationsaregiven
+in Sec. III.
+A. Approach
+The ice cloud model is supposed to describe the time evolution
+of the key microphysical properties of the part of an ice cloud
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-2
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+contained inside a fixed parcel or box of air (which is followed in
+a Lagrangian manner).
+Moreover, we take a bulk model ansatz: A cloud usually con-
+sists of a vast number of water particles and it is impossible to model
+the evolution of the properties of all those particles individually.
+One common ansatz for modeling the cloud properties is to take
+a probability distribution for the masses of the cloud particles and
+formulate equations for the evolution of the distribution in space
+and time. From this, one can furthermore derive equations for the
+generalmomentsµk ofthedistribution.Forthispurpose,weassume
+thatourconsideredvolume(i.e.,thebox)iswell-mixed,sothecloud
+canbecharacterized by averagedquantities, formallyrepresented by
+the general moments of the distribution. This assumption is key for
+the derivation of a bulk model. To simplify further, we restrict our-
+selvestoa2-momentschemeasthebasisfortheicecloudmodeland
+thus only consider the k-moments for k = 0,1. The 0-moment gives
+the ice crystal number concentration µ0 = n, while the 1-moment
+is the ice crystal mass concentration µ1 = q; both quantities can be
+interpreted as mean values of the homogeneous mixture of cloud
+particles in the box. For more details, see Sec. IIID and Appendix A.
+B. Setting and general assumptions
+We focus on a low temperature regime T < 240K with pure
+ice clouds and where in situ formation of ice crystals takes place (see
+Secs.IIIAandIIIB)andwanttomodelthemicrophysicalproperties
+of the portion of an ice cloud inside an air parcel moving upward
+with a fixed vertical velocity w.
+For the ice cloud model, we only consider the in situ forma-
+tion of ice crystals in the low temperature regime, where ice crystals
+“directly” form from water vapor (without any transition through
+the liquid water phase) and among the different possible in situ for-
+mationpathwaysweonlyconsiderhomogeneousnucleation,i.e.,the
+freezing of aqueous solution droplets (see Sec. IIIB).
+Sinceicecrystalsdoappearinahugevarietyofshapesthatcan-
+not be realistically represented in a simple model, an approximation
+thereof has to be chosen. For our model, we thus assume the ice
+crystals to be spherical, which is further motivated and elaborated
+in Sec. IIIC.
+For the above (in Sec. IIA) mentioned probability distribution
+forthemassesoficecrystalsinthelowtemperatureregime,wemake
+the assumption that it is a fixed type of distribution and assume that
+it is lognormal (see Sec. IIID).
+Apart from the variables of ice crystal number concentration n
+and ice crystal mass concentration q given by the 2-moment scheme
+approach (as described in Sec. IIA), we consider another variable
+for the ice cloud model, namely, the saturation ration s = Si of
+water vapor over ice [see Sec. IIIB, especially Eq. (20)]. The ice
+cloud model will give equations for the time evolution of these three
+variables: n, q (from the 2-moment scheme approach) and s (as a
+variable for the humidity).
+C. Relevant processes and basic structure of the
+model system
+We now present the relevant processes for the ice cloud model
+and the resulting general structure of system. The variables we want
+to model are the ice crystal number concentration n, the ice crystal
+mass concentration q, and the saturation ratio s of water vapor over
+ice.
+We consider the following physical processes that contribute
+to the change rates of the variables n, q, s (for more details see
+Secs. IIIB and IIIE):
+• Nucleation:Thenucleationofnewiceparticlesimpactsthevalues
+of all three variables n, q, and s. As already mentioned above, we
+onlyconsiderhomogeneousfreezingforourmodel,i.e.,thefreez-
+ingofaqueoussolutiondroplets(seeSec.IIIB).Whilethenumber
+and mass concentrations n and q increase when new ice crystals
+arise from nucleation, the saturation ratio s decreases since the
+water content of the newly nucleated ice crystals is taken from the
+water vapor of the ambient air. The contribution to the change
+rates of n, q, and s due to nucleation are denoted by Nucn, Nucq,
+and Nucs respectively.
+• Sedimentation: We have to consider the effect of sedimenta-
+tion on n and q and introduce the sedimentation terms Sedn
+and Sedq for the contributions to the changes rates of n and q
+due to sedimentation. For the sedimentation terms, we will use
+an approximation over the vertical extend of the considered box
+in order to avoid a vertical transport equation, i.e., a system of
+partial differential equations [see Eq. (60)]. This approximation
+also includes the choice of a sedimentation parameter F with
+0 < F ≤ 1 representing the strength of the sedimentation from
+above into the considered box in relation to the sedimentation
+out of the box.
+• Deposition/evaporation: Growth and evaporation impact the ice
+crystal number and mass concentrations. They act in different
+waysonthevariablesnandq.Forasupersaturatedregime(s > 1),
+the ice particles can grow by diffusion while the number concen-
+tration is not affected by growth. For evaporation, both mass and
+number concentrations are depleted. We denote the contribution
+to the change rate of the mass concentration due to diffusional
+(de-)growth by Depq (molecules are deposited on the particle’s
+surface) and the contribution to the change rate of the number
+concentration due to evaporation by Evapn (where Evapn = 0 for
+s > 1). In this article we mainly focus on a supersaturated regime,
+i.e., the case where s > 1, and only mention an ansatz for the
+evaporation term Evapn for completeness.
+Since the change of the mass concentration due to diffusional
+(de-)growth is by transfer of water vapor from the ambient air, it
+alsoinducesacorrespondingchangeinthesaturationratio,which
+we denote by Deps.
+• Cooling: For our model setup, we assume a constant vertical
+velocity w. This leads to adiabatic changes in temperature and
+pressure, which consequently affect our thermodynamic control
+variable,thesaturationratiosofwatervaporoverice.InSec.IIIB,
+we explain that the resulting effect on the saturation ratio can be
+formulated in terms of a cooling term Cool which only depends
+on the vertical velocity w and not explicitly on the change rates
+of temperature and pressure. Moreover, we illustrate in Sec. IIIB
+that it is a reasonable assumption in our setting to assume that
+change rates of temperature and pressure only (implicitly) appear
+in the evolution equation for s, while the evolution equations for
+temperature and pressure themselves are skipped, i.e., we assume
+temperature and pressure to remain constant.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-3
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+Effects due to the collision of particles are neglected in our
+model since the sticking efficiency in very low in the cold temper-
+ature regime (see Sec. IIIE5).
+The basic structure of the ice cloud model is then as follows:
+dn
+dt
+= Nucn,+Evapn + Sedn, (1)
+dq
+dt
+= Nucq + Depq + Sedq, (2)
+ds
+dt
+= Cool + Nucs + Deps, (3)
+with total derivatives dψ
+dt
+for a variable ψ. Later, it is shown that this
+is an autonomous nonlinear ordinary differential equation (ODE)
+system.
+D. The equations for the ice cloud model
+Here, we briefly present the full equations for the ice cloud
+model for an overview and state where in the following sections the
+derivations of the individual terms can be found.
+The ice cloud model turns out to be 3D system of ODEs with
+ice crystal number concentration n, ice crystal mass concentration
+q, and saturation ratio over ice s as variables. Its full equations are
+dn
+dt
+= An exp(p1e(s − p2)) + Bqn
+5
+3 q−2
+3 (s − 1)H(1 − s) − FCnn
+1
+3 q
+2
+3 ,
+(4)
+dq
+dt
+= Aq exp(p1e(s − p2)) + Bqn
+2
+3 q
+1
+3 (s − 1) − FCqn−2
+3 q
+5
+3 , (5)
+ds
+dt
+= Dws − As exp(p1e(s − p2)) − Bsn
+2
+3 q
+1
+3 (s − 1). (6)
+This is a nonlinear autonomous ODE system, depending on the
+environmental parameters pressure p, temperature T, vertical veloc-
+ity w, and a sedimentation parameter F. The ranges for the param-
+eters are given in Table I, which are representative for the environ-
+mental conditions in the upper troposphere.
+The individual terms of the ODE system are as follows:
+• The nucleation terms are
+Nucn = An exp(p1e(s − p2)), (7)
+TABLE I. Ranges of relevant parameters for the 3D ice cloud model, Eqs. (4)–(6).
+Parameter Dimension Range
+Pressure p hPa 200≤p≤300
+Temperature T K 190≤T≤240
+Vertical velocity w m/s 0.0005≤w≤2
+Sedimentation parameter F 1 0.01≤F≤1
+Nuqq = Aq exp(p1e(s − p2)), (8)
+Nucs = −As exp(p1e(s − p2)), (9)
+as given in Eqs. (43)–(45), where An and Aq depend on tempera-
+tureTandpressurep,thetermsp1e andp2 dependontemperature
+T [see Eqs. (A18)–(A19)], and As = Aq
+p
+εpsi
+as in Eq. (45).
+• The deposition term representing the effect on the mass concen-
+tration q due to diffusional (de-)growth is
+Depq = Bqn
+2
+3 q
+1
+3 (s − 1), (10)
+as given in Eq. (51) and derived in Appendix A4. The factor Bq
+depends on temperature and pressure and is given in Eq. (52).
+The deposition term for the effect on the saturation ratio is
+given by
+Deps = −Bsn
+2
+3 q
+1
+3 (s − 1), (11)
+as in Eq. (53) and where Bs = Bq
+p
+εpsi
+depends on pressure and
+temperature [see also Eq. (53)].
+• As already mentioned above, we concentrate on the supersatu-
+ratedregimewiths > 1inthisarticle.Forcompleteness,however,
+we want to mention the possible choice for the evaporation term
+for the nucleation by the ad hoc ansatz Evapn = n
+q
+DepqH(1 − s)
+as given Eq. (54) which results in
+Evapn = Bqn
+5
+3 q−2
+3 (s − 1)H(1 − s), (12)
+where H denotes the Heaviside function, such that Evapn = 0 if
+s > 1 as supposed in the supersaturated regime, and where Bq is
+the same as in the deposition term Depq.
+• The sedimentation terms are
+Sedn = −FCnn
+1
+3 q
+2
+3 , (13)
+Sedq = −FCqn−2
+3 q
+5
+3 , (14)
+as given in Eqs. (69)–(70), where F is a sedimentation parameter
+asintroducedinSec.IIIE4andCn andCq dependontemperature
+and pressure as well as the vertical extension 1z of the considered
+box [see Eq. (66)]. The linear dependence of the sedimentation
+terms on F is directly formulated in this way.
+• The cooling term representing the effect of the vertical velocity w
+on the saturation ratio is given by
+Cool = Dws =
+
+L
+cpRvT2
+−
+1
+RdT
+
+g
+| {z }
+=:D
+ws, (15)
+as given in Eq. (30), where D depends on temperature; the linear
+dependence of the term Cool is indicated directly in this formu-
+lation. Furthermore, note that the cooling term is the only term
+on the right-hand side of the ODE system that explicitly depends
+on w.
+Using the notation x = (n,q,s)T
+we could write the system
+with a suitable 3D vector field V as an autonomous ODE system
+ẋ = V(x). Note, that this system is not well-defined for initial con-
+ditions without a cloud, i.e., for x0 = (0,0,s0); the terms on the
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-4
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+right-hand side include singularities of the form n−α
+or q−β
+(with
+α,β > 0). For the supersaturation regime (s > 1), a regularization
+of the sedimentation term
+− FCqn−2
+3 q
+5
+3 ≈ −FCq (n + nsmall)− 2
+3 q
+5
+3 (16)
+mightbeapplied.Nevertheless,evenifthesingularitiesareremoved,
+the right-hand side is not Lipschitz continuous for initial values
+n = 0 or q = 0 because of terms nα
+qβ
+with 0 ≤ α < 1,0 ≤ β < 1.
+Thus, for initial value problems starting at such states the stan-
+dard theory19
+(p. 68) cannot be applied. For other starting points,
+existence and uniqueness of solutions is guaranteed, since the right-
+hand side is smooth; this is also true for the system without a
+regularization. We want to note here, that even for the initial val-
+ues n = 0 or q = 0, uniqueness might be obtained, following the
+argumentsbyHankeandPorz20
+toproduceamathematicallyunique
+solution with additional physical conditions. This will be subject of
+future investigations. However, for our investigations in the present
+study these details might be not relevant, since we are mainly inter-
+ested in the long time behavior, i.e., the qualitative properties of the
+system; then we can assume that n,q are positive.
+III. PHYSICAL VARIABLES AND PROCESSES AND
+DERIVATION OF THE MODEL EQUATIONS
+In this section, we define the general setting for the model. We
+giveageneraldescriptionofcloudsasanensembleofmanyparticles,
+embedded into atmospheric flows. Nevertheless, later we simplify
+the whole system to a 3D dynamical system, describing Lagrangian
+air parcels transported by prescribed air motion.
+At the end of this section, the explicit equations for the individ-
+ual terms of the ice cloud model are derived in Sec. IIIE. In Sec. IV,
+the model system is analyzed, and in Sec. V, some comparison with
+measurements are carried out.
+A. Thermodynamic environment
+For modeling ice clouds, we have to set up the thermodynamic
+environment. We consider air and water vapor in a control volume
+V (box or parcel) as ideal gases as described by the ideal gas law,
+pkV = MkRkT ⇔ pk = ρkRkT, with ρk =
+Mk
+V
+, (17)
+using the partial pressure pk, the specific gas constant Rk = R∗
+Mmol,k
+as
+derived from the universal gas constant R∗
+= 8.314462Jmol−1
+K−1
+,
+and the temperature T. The partial masses of the gases are denoted
+by Mk. The index d indicates dry air, the index v denotes water
+vapor. The total pressure in the volume is determined by Dalton’s
+law, i.e., p = pd + pv; however, a good approximation is given by
+p ≈ pd (since pd  pv). The parcel can be seen as one vertical layer
+at a certain height within a full atmospheric column. The pressure
+is determined by the hydrostatic balance, i.e., the air mass in the
+vertical column
+∂p
+∂z
+= −gρ. (18)
+We consider the low temperature regime in the upper troposphere,
+i.e., temperatures in the range 190 ≤ T ≤ 240K. The correspond-
+ing air pressure values are considered to be within the range
+200 ≤ p ≤ 300hPa. In addition to water vapor, we also consider the
+mass of the condensed water phase, i.e., the total mass of ice parti-
+cles Mi. At these low temperatures, liquid water does not exist in the
+atmosphere,2
+thus we can restrict the system to gaseous and solid
+phases of water. For the further investigations, we use the mass con-
+centrationofwatervaporqv = Mv
+Md
+andthemassconcentrationofice
+qi = Mi
+Md
+. In fact, the total mass M = Md + Mv + Mi can be approx-
+imated by the mass of air since the relative contribution of water
+substances is less than 10−3
+, thus M ≈ Md.
+B. Phase changes and saturation ratio
+We are only interested in the formation of ice crystals within
+the respective low temperature region, i.e., the formation of ice
+“directly” from water vapor without any transition through the liq-
+uid phase. Recently, formation pathways of this type were grouped
+together and named “in situ formation.”8,9
+From these different
+pathways, we only consider the pathway of homogeneous freez-
+ing of aqueous solution droplets.21,22
+At these atmospheric condi-
+tions, hexagonal ice (Ih) is the stable solid phase of water.2
+For
+assuming water vapor as an ideal gas, the thermodynamic equi-
+librium of these water phases is approximately determined by the
+Clausius–Clapeyron equation23
+dpsi
+dT
+=
+Lpsi
+RvT2
+, (19)
+using the specific latent heat of sublimation L, which is slightly
+dependent on temperature;24
+psi denotes the saturation vapor pres-
+sure over hexagonal ice (see also Appendix A3). The thermody-
+namical control variable for determining ice cloud processes is the
+saturation ratio over ice,
+Si :=
+pv
+psi(T)
+=
+pqv
+εpsi(T)
+, (20)
+using the water vapor mixing ratio qv, and the ratio of molar masses
+of water and air ε =
+Mmol,v
+Mmol,d
+≈ 0.622.
+We often consider changes in the saturation ratio, which are
+governed by changes in temperature, pressure, and specific humid-
+ity, respectively. For this purpose, we investigate the total derivative
+of the saturation ratio, as given by
+dSi
+dt
+=
+∂Si
+∂T
+dT
+dt
++
+∂Si
+∂p
+dp
+dt
++
+∂Si
+∂qv
+dqv
+dt
+, (21)
+using the partial derivatives
+∂Si
+∂T
+= −Si
+L
+RvT2
+,
+∂Si
+∂p
+=
+Si
+p
+,
+∂Si
+∂qv
+=
+Si
+qv
+=
+p
+εpsi
+, (22)
+where we have used the Clausius–Clapeyron equation (19).
+We can split the changes in temperature into adiabatic and
+diabatic components, i.e., temperature changes driven by adia-
+batic expansion due to vertical upward motions and temperature
+changes induced by latent heat release during phase changes. These
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-5
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+temperature rates can be represented as follows:
+dT
+dt adiabatic
+=
+dT
+dz
+dz
+dt
+= −
+g
+cp
+w, (23)
+dT
+dt diabatic
+= −
+L
+cp
+dqv
+dt
+. (24)
+Note that we omit other diabatic processes, as, e.g., friction or
+radiation processes. Using these expressions, we can determine the
+change in Si due to temperature changes
+∂Si
+∂T
+dT
+dt
+= −Si
+L
+RvT2
+
+dT
+dt adiabatic
++
+dT
+dt diabatic
+
+=
+Lg
+cpRvT2
+Siw +
+L2
+cpRvT2
+Si
+dqv
+dt
+. (25)
+The adiabatic pressure change, assuming hydrostatic balance,
+dp
+dt
+=
+dp
+dz
+dz
+dt
+= −gρw (26)
+also influences the saturation ratio, thus
+∂Si
+∂p
+dp
+dt
+= −
+Si
+p
+gρw = −Si
+g
+RdT
+w (27)
+and changes in the water vapor concentration qv, finally, give the
+rate
+∂Si
+∂qv
+dqv
+dt
+=
+p
+εpsi
+dqv
+dt
+. (28)
+Putting all rates together and sorting leads to the final rate for the
+saturation over ice,
+dSi
+dt
+=
+
+L
+cpRvT2
+−
+1
+RdT
+
+gwSi +
+
+L2
+cpRvT2
+Si +
+p
+εpsi
+
+q̇v. (29)
+In the cold temperature regime, the total amount of water vapor
+is very small, thus the impact of latent heat release, as represented
+by the first term in the second bracket, can be neglected by a good
+approximation. Actually, for temperatures lower than T ∼ 230K,
+the contribution of this term is less than 10% (with a maximum
+of ∼20% at T ∼ 240K and constitute contributions of less than 1%
+below T ∼ 210K). Therefore, we use the following expression:
+dSi
+dt
+=
+
+L
+cpRvT2
+−
+1
+RdT
+
+gwSi +
+
+L2
+cpRvT2
+Si +
+p
+εpsi
+
+q̇v
+≈
+
+L
+cpRvT2
+−
+1
+RdT
+
+gwSi
+| {z }
+Cool
++
+
+p
+εpsi
+
+q̇v
+= DwSi
+| {z }
+Cool
++
+p
+εpsi
+q̇v, (30)
+introducing the term Cool governing the component of the time
+evolution of the saturation ratio due to the vertical velocity w. This
+termtogetherwiththesecondterm p
+εpsi
+q̇v,describingphasechanges,
+willalsoappearinthecompletemodel.Wewilllaterusethenotation
+s := Si. Note that the first term in Eq. (30) constitutes a source for
+supersaturation in the case of a positive vertical velocity w > 0, i.e.,
+if there is an upward motion. The coefficient D depends on temper-
+ature T, and the linear dependence of Cool on the vertical velocity w
+is directly indicated.
+For analytical investigations, i.e., for the derivation of equilib-
+rium states (equilibrium points or manifolds, as, e.g., limit cycles),
+we formally investigate the system for t → ∞, since the equilib-
+ria are only asymptotically reached from initial conditions different
+from these states. Physically, this is not possible and also not mean-
+ingful, since we cannot cool the system arbitrarily long. Thus, we
+follow the approach of former investigations, in terms of “freez-
+ing”theenvironmentalconditionstoconstantvaluesoftemperature
+and pressure, considering the impact of vertical upward motion in
+the rates of s only. This general approach of “constant environmen-
+tal states” was successfully applied in studies on processes in warm
+and mixed-phase clouds12–15,25
+and also in our former investigation
+of subvisible cirrus clouds.18
+Actually, this does not mean that our
+investigation is only valid for arbitrary long time evolution; the sys-
+tem is characterized for certain environmental conditions, which
+provides information about the general properties. This might be
+useful for practical applications, as we will see later in Sec. V, where
+we compare the system with real measurements.
+C. General assumptions for ice crystals
+Ice crystals usually have quite irregular shapes with inherent
+hexagonal structures due to the stable solid phase (hexagonal ice
+Ih). The exact and detailed shape and its evolution in time depend
+crucially on the environmental conditions.26
+Since there is a huge variety of shapes for ice crystals27,28
+and
+we cannot represent this variability within a simple model, we have
+to choose an approximation. There are two different reasons for
+choosing a spherical shape for ice crystals in our model. First, we are
+interested in the low temperature regime; thus, the availableamount
+of water vapor is limited, so ice crystals stay quite small and are
+almost spherical; from measurements, we know that the maximum
+radius should not exceed values of 100µm.6
+The complex shapes
+of ice crystal usually appear for the warm temperature regime (i.e.,
+T > 240K) together with much larger sizes. Second, from theoret-
+ical and computational investigations29
+we know that in a certain
+distance to a non-spherical crystal, the resulting water vapor field
+is almost the same as for a larger spherical ice crystal. Thus, we
+use a spherical shape for ice crystals, with the common relationship
+between mass and radius,
+m =
+4
+3
+πρbr3
+⇔ r = 3
+s
+3
+4πρb
+m
+1
+3 = cm
+1
+3 (31)
+with ρb = 810kgm−3
+as the bulk density of ice.30
+The radius will
+appear later in the growth equation, when we specify a spherical
+shape.
+D. General assumptions for cloud ensembles
+Clouds are usually composed by myriads of water particles,
+thus we have to consider a cloud as a statistical ensemble. As
+described by Spreitzer et al.,18
+a generic way for describing the cloud
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-6
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+ensemble would be to use a probability distribution f(m,x,t) for the
+masses of cloud particles and investigate the evolution of the dis-
+tribution in time and space. This would lead to a Boltzmann-type
+evolution equation for the distribution, i.e.,
+∂(ρf)
+∂t
++ ∇x · ρfu
+
++
+∂(ρfg)
+∂m
+= ρh, (32)
+with transport with velocity u, growth with a rate function g, and
+other sources and sinks, described by h. From this equation, we can
+derive (infinitely many) equations for the general moments
+µk[m] :=
+Z ∞
+0
+mk
+f(m,x,t)dm, k ∈ N0 (33)
+ofthedistributioniftheintegralconverges.Thegeneralformulation
+of moment equations as derived from the Boltzmann-type approach
+is presented in Appendix A.
+Since we can neither solve infinitely many equations nor do we
+have a general and consistent description of the sources and sink
+term h on the right-hand side, we make the following assumptions
+for simplification,
+• We only use two equations, i.e., for the moments k = 0,1 and
+use a closure condition. Usually, the distribution is normalized
+by the cloud particle number concentration n, thus we obtain
+equations for the number concentration µ0 = n and the mass
+concentration µ1 = q. For ice crystals in the low temperature
+regime (T < 240K), we assume a fixed type of distribution, i.e.,
+a lognormal distribution,
+f(m) =
+n
+√
+2π log(σm)m
+exp
+
+
+−
+1
+2
+
+
+log
+
+m
+mm
+
+log(σm)
+
+
+2
+
+
+, (34)
+with the modal mass mm and the geometric standard deviation
+σm. Thus, the general moments can be calculated analytically as
+µk[m] = nmk
+m exp
+
+1
+2
+klogσm
+2
+
+. (35)
+The closure is determined by a fixed ratio of moments r0, i.e.,
+r0 =
+µ2µ0
+µ2
+1
+= exp
+
+log(σm)
+2
+
+, (36)
+which can be used for calculating the moments
+µk[m] = nmk
+mr
+k2
+2
+0 = nm̄k
+r
+k(k−1)
+2
+0 , (37)
+with the mean mass m̄ := q
+n
+. We set r0 = const. and thus
+the geometric standard deviation σm is constant; as in former
+investigations,31
+we set r0 = 3. The choice of a lognormal distri-
+bution is motivated by the shape of measured size distributions,32
+although other (analytical) types of distributions might be used as
+well.
+• For the right-hand side, i.e., the formation and annihilation pro-
+cesses of ice particles, we will use meaningful parameterizations,
+which are partly derived from the moment approach (see also
+Appendix A).
+Thus, we will formulate our model using the mean variables
+number concentration of ice particles n = µ0 and mass concentra-
+tion of ice particles q = µ1.
+E. Relevant processes and derivation of the model
+equations
+In the following, we discuss the relevant processes for the ice
+cloud model in more detail and derive the explicit equations for the
+terms related to the considered processes.
+1. Effect of the vertical updraft
+As already discussed in Sec. IIIB, the constant vertical velocity
+w we assume leads to adiabatic changes in pressure and temperature
+whose influences on the change rate of the saturation ratio s can be
+collected in a “cooling term.” This term takes the form
+Cool = Dws, (38)
+as derived in Eq. (30), where D =
+h
+L
+cpRvT2 − 1
+RdT
+i
+g depends on the
+temperature T and the vertical velocity w is a linear contribution.
+2. Particle formation—Ice nucleation
+For ice formation at low temperatures, two nucleation pro-
+cesses might be relevant, i.e., (1) homogeneous freezing of aqueous
+solution droplets21
+and (2) heterogeneous nucleation at solid aerosol
+particles. In the first case, we assume that supercooled solution
+droplets (e.g., containing a small amount of sulfuric acid or other
+inorganic substances) freeze spontaneously (i.e., stochastically) to
+small ice crystals. The probability of a solution droplet of volume
+V freezing within a time interval 1t can be calculated as
+P = 1 − exp(−JV1t), (39)
+with the nucleation rate J. For such solution droplets this rate can
+be formulated in terms of water activity,21
+which translates into the
+form
+J(T,Si) = J0 exp(A(T)(s − Sc(T))), (40)
+with a steepness A(T) and a threshold Sc(T). These two functions
+can be approximated by a recent formulation22
+to
+A(T) ≈ p1(T) = aw0 + aw1T, (41)
+Sc(T) ≈ p2(T) = as0 + as1T + as2T2
+, (42)
+using polynomials pn(x) of degree n ∈ N.
+There is still a debate about the relevance or dominance of
+these different nucleation pathways. However, for our purposes,
+we can restrict the formulation to homogeneous freezing of solu-
+tion droplets since in the cold temperature regime of in situ formed
+ice clouds,8
+homogeneous nucleation produces most of the ice par-
+ticles. Thus, we include a supersaturation limited pathway of ice
+nucleation.
+For our model, we prescribe a size distribution of solution
+droplets. Instead of tracking aerosol properties with water uptake
+controlled by Köhler theory,33
+we use a lognormal distribution
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-7
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+with fixed modal radius and geometric standard deviation, normal-
+ized by the number concentration of aerosols. Details are given in
+Appendix A2. This leads to a nucleation term Nucn for the ice crys-
+tal number concentration as given below. In addition, we assume a
+constantnucleationmassmnuc = 10−16
+kg(i.e.,aradiusof∼0.3µm)
+for each newly nucleated ice crystal, which gives the nucleation term
+Nucq for the mass concentration. In summary, we obtain
+Nucn = naVsolJ0 exp(p1e(s − p2)) = An exp(p1e(s − p2)), (43)
+Nucq = mnucnaVsolJ0 exp(p1e(s − p2)) = Aq exp(p1e(s − p2)), (44)
+using two polynomials p1e,p2 depending on temperature solely
+(see Sec. IIIE and Appendix A2), with a constant An = naVsolJ0 for
+na, Vsol, J0 as given in Appendix A2 and Aq = mnucAn.
+Since the mass of the newly nucleated ice particles is obtained
+from the surrounding water vapor (because the solution droplets
+deplete some water vapor), we introduce a sink term for the satu-
+ration ratio as
+Nucs = −As exp(p1e(s − p2)) with As = Aq
+p
+εpsi
+, (45)
+where we use the approximation for saturation vapor pressure over
+hexagonal ice, psi, as given in Appendix A3; ε is again the ratio of
+molar masses of water and air ε =
+Mmol,v
+Mmol,d
+≈ 0.622 as in Sec. IIIB.
+3. Particle growth/evaporation by diffusion of water
+vapor
+Small water particles (liquid or solid) grow by diffusion of sur-
+rounding water vapor through air. The boundary condition at the
+surface of the particle (i.e., saturation with respect to the phase of
+the particle) determines the direction of the water vapor flux, lead-
+ingeithertoevaporationorgrowthoftheparticle.Themathematical
+details of the problem and a proof of uniqueness of the solution can
+be found in Baumgartner and Spichtinger.34
+The growth equation of
+a single water particle with mass m can be written as
+dm
+dt
+= 4πCDvfkGv(s − 1)fv. (46)
+Theshapeoftheparticleinfluencesthediffusionalgrowth;usingthe
+electrostatic analog,31,34,35
+a capacity coefficient C representing the
+shape of a single particle can be introduced to the growth equation.
+Dv denotes the diffusion coefficient of water vapor in air,
+Dv = Dv0
+
+T
+T0
+2 
+p0
+p
+
+, (47)
+Dv0 = 2.1422 × 10−5
+m2
+/s, (48)
+T0 = 273.15K, p0 = 101325Pa, (49)
+with a correction fk of the flux in the kinetic regime; this correction
+would reduce the uptake of water vapor, since fk ≤ 1. The fit of Dv
+is based on the description by Hall and Pruppacher.36
+The effect of
+latent heat release is captured by the Howell factor
+Gv =
+
+L
+RvT
+− 1
+
+L
+T
+Dv
+KT
++
+RvT
+psi
+−1
+, (50)
+with the latent heat of sublimation L, the ideal gas constant of water
+vaporRv,andtheheatconductionofairKT,37
+respectively.Note,that
+in this formulation we already omit possible corrections for small
+particles for Dv,KT, respectively.35
+For large particles, a correction
+fv for the ventilation effect (wakes behind falling particles enhance
+water vapor diffusion) is applied; this correction would enhance the
+uptake of water vapor, since fv ≥ 1.
+Apart from the assumption of ice crystals of spherical shape,
+which leads to the radius as capacity factor C = r [can be expressed
+as in Eq. (31) with the mean mass], we apply additional simplifica-
+tions for the representation of the growth term:
+• We neglect the ventilation correction for large particles, follow-
+ing the estimation by Ref. 35 that for spheres of radius smaller
+than ∼60µm the correction is less than 20%, thus, we set fv = 1.
+In Appendix A6 some arguments for this approximation are
+presented.
+• We neglect the kinetic correction, which would apply for very
+small ice particles, and especially affect nucleation events in clear
+air at very high velocities and/or low temperature regimes.31
+For
+our scenarios with pre-existing ice, the mean mass is usually large
+enough to omit this correction, i.e., we set fk = 1. Details of the
+estimation are given in Appendix A6.
+Then, we can express the growth term for the mass concentration
+(see Appendix A4 for the explicit calculation) as
+Depq = Bqn
+2
+3 q
+1
+3 (s − 1), (51)
+where
+Bq = 4πGvDvcr
+− 1
+9
+0 (52)
+with c = 3
+q
+3
+4πρb
+as in Eq. (31) and r0 = 3 as set in Sec. IIID.
+The growth term models the transfer of water vapor to ice par-
+ticles, thus we have to introduce a sink term for the saturation ratio,
+i.e.,
+Deps = −Bsn
+2
+3 q
+1
+3 (s − 1) with Bs = Bq
+p
+εpsi
+, (53)
+whereagainpsi isasgiveninAppendixA3andε istheratioofmolar
+masses of water and air as in Sec. IIIB.
+For the evaporation term of the number concentration, it is in
+factquitetrickytointroduceameaningfulansatzforthisterm,since
+the type of the underlying distribution is changing by evaporation.38
+In this article, we concentrate on the supersaturated regime, thus we
+do not need to investigate the evaporation term in details for this
+study. For completeness however, we mention the following ad hoc
+ansatz:
+Evapn =
+n
+q
+DepqH(1 − s) (54)
+with the assumption that the number concentration of ice crystals
+reduces proportionally to the loss of mass concentration. This only
+happens for subsaturation, thus a Heaviside function H is used for
+switching off the process at s > 1.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-8
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+4. Sedimentation—A particle falls out due to gravity
+Water particles in general, and also ice crystals are accelerated
+by gravity; since the friction of air leads to a drag and thus a bal-
+ance of forces, ice crystals very quickly reach a so-called terminal
+velocitywithoutanyfurtheracceleration.ForlowReynoldsnumbers
+using the Stokes law35
+and assuming a spherical shape, the terminal
+velocity is proportional to the squared radius. For irregularly shaped
+particles as ice crystals, the terminal velocity can be approximated
+by power laws vt(m) = αkmβk with piecewise constant coefficients
+αk,βk.31
+Wehavetoapplyacorrectionfactor,31,39
+takingintoaccount
+the friction of the air at different densities, expressed as a function
+of temperature and pressure,
+c(p,T) =
+
+p
+pc
+ac
+
+T
+Tc
+bc
+, (55)
+pc = 30000Pa, Tc = 233K, (56)
+ac = −0.178, bc = −0.394. (57)
+The terminal velocity of the ice particles as formulated in
+Spichtinger and Gierens31
+by piecewise power laws can be approx-
+imated by a simple approach
+vt(m) ≈ vfinalasmbs
+1
+vfinal + asmbs
+, (58)
+mimicking the major increase of the velocity. As discussed in
+Appendix A6, the particles’ radius is assumed to be smaller than
+∼75µm, thus we can make a further simplification
+vt(m) = asm
+2
+3 , as = 6 × 105
+ms−1
+kg− 2
+3 , (59)
+which is consistent with the expressions for falling spheres, i.e., the
+velocity is proportional to the squared radius.35
+The sedimentation
+is a vertical transport in a column. However, in our simple model,
+we concentrate on a single level and restrict ourselves to a box of a
+certain vertical extension 1z. Since we assume a homogeneous mix-
+ture of ice particles in the box, we can describe the change of the flux
+jψ = ρvψψ (for a quantity ψ = n,q) by the expression
+∂jψ
+∂z
+=
+j
+top
+ψ − jbottom
+ψ
+1z
+, (60)
+with the flux j
+top
+ψ through the top boundary into the box and the
+flux jbottom
+ψ through the bottom out of the box. Generally, we can
+only determine the outgoing flux, but we might add constraints for
+determining the incoming flux; otherwise, the incoming flux can be
+seen as a variable parameter. Thus, the sedimentation terms can be
+formulated as
+Sedn = Fn −
+1
+1z
+vnn, Sedq = Fq −
+1
+1z
+vqq, (61)
+with fluxes from above Fn,Fq. Using the approximation of the ter-
+minal velocity (59), and the formulation of general moments of the
+lognormal distribution (37), we can derive the averaged terminal
+velocities,
+vn =
+1
+n
+Z ∞
+0
+f(m)vt(m)dm =
+1
+n
+
+asr
+−1
+9
+0 n
+1
+3 q
+2
+3
+
+, (62)
+vq =
+1
+q
+Z ∞
+0
+f(m)mvt(m)dm =
+1
+q
+
+asr
+5
+9
+0 n−2
+3 q
+5
+3
+
+, (63)
+and thus the sedimentation terms
+Sedn = Fn −
+1
+1z
+vnn = Fn − Cnn
+1
+3 q
+2
+3 , (64)
+Sedq = Fq −
+1
+1z
+vqq = Fq − Cqn−2
+3 q
+5
+3 , (65)
+with the sedimentation constants
+Cn = c(p,T)
+asr
+−1
+9
+0
+1z
+and Cq = c(p,T)
+asr
+5
+9
+0
+1z
+, (66)
+where c(p,T) denotes the necessary correction factor for different
+pressures and temperatures as given in Eq. (55). The fluxes from
+above, Fn and Fq, appear as additional variables (or parameters).
+Since we would like to avoid too many parameters for our investi-
+gations, we adopt a strategy by Spichtinger and Cziczo40
+: we assume
+that the sedimentation flux into the box/layer from above through
+the top boundary is a fixed fraction fsed of the sedimentation flux
+through the bottom out of the box/layer, i.e., we set
+j
+top
+ψ = fsed · jbottom
+ψ , (67)
+with a constant 0 ≤ fsed ≤ 1. The extreme values indicate either no
+flux into the box from above (fsed = 0) or no net flux out of the box
+(fsed = 1), i.e., the flux into the box from above and the flux out of
+the box are identical in magnitude. Thus, we find
+Fn = fsedCnn
+1
+3 q
+2
+3 , Fq = fsedCqn− 2
+3 q
+5
+3 , (68)
+and set F := 1 − fsed for computational convenience later on with
+0 < F ≤ 1. We end with the final formulation of the sedimentation
+terms
+Sedn = −FCnn
+1
+3 q
+2
+3 , (69)
+Sedq = −FCqn− 2
+3 q
+5
+3 , (70)
+with F as explicit parameter in the terms. In our investigations, we
+set the vertical extension to 1z = 100m, which is a typical exten-
+sion of ice cloud layers40,41
+and is consistent with the assumption of
+a homogeneous cloud layer.
+5. Collision of particles
+Collision of particles is usually the major process for growing
+particles to large sizes. For liquid particles, collision is very efficient,
+butforpureiceparticlesinthecoldtemperatureregime,aggregation
+is not a relevant process,42,43
+and we thus neglect it for our model.
+6. Dependence of constants
+The constants Ak,Bk,Ck (k = n,q,s) in the model
+equations (4)–(6) depend all on p,T, whereas the constants D, p1e,
+and p2 just depend on T.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-9
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+IV. QUALITATIVE PROPERTIES OF THE MODEL
+In this section, we investigate the quality of the system in terms
+of theory of dynamical systems.
+First, we show in IVA that there is always exactly one equi-
+librium point of the system and derive approximation formulas for
+this equilibrium point, and then study the quality of the equilibrium
+points in IVB. The results in those two subsections are derived by
+explicit calculations and mathematical arguments (under the addi-
+tional assumption that the contribution to the change rates of q and
+s due to nucleation are neglectable as explained below).
+Then, we use numerical methods to study limit cycles of the
+system in IVC and investigate scaling properties of the system
+in IVD.
+A. Equilibrium states
+We start with the determination of the equilibrium states of
+the system. Equilibrium points (stationary points/fixed points) ofan
+ODEsystemarestatesforwhichtheright-handsideoftheODEsys-
+tem vanishes, i.e., ṅ = q̇ = ṡ = 0, so we have to determine the roots
+of the 3D vector field V(x).
+First, note that we can omit the evaporation term
+Evapn = Bqn
+5
+3 q− 2
+3 (s − 1)H(1 − s) (71)
+from Eq. (4) since we are interested in the supersaturated regime
+(i.e., s > 1). Since we assume w > 0, this is not an approximation;
+the supersaturation source Ass always drives the system into states
+with s > 1, and thus H(1 − s) = 0 and then also Evapn = 0.
+Now, in order to (approximately) determine the equilibrium
+points, we make one more simplifying assumption. We estimate the
+contribution of the nucleation terms Nucq and Nucs to the changes
+rates of the mass concentration q and the saturation ratio s near an
+arbitrary equilibrium point and find that these terms are very small
+compared to the other terms as proven in Appendix B1. Hence, we
+neglect the terms Nucq and Nucs in Eqs. (5) and (6) when deter-
+mining equilibrium points of the system. Thus, we now have to find
+roots for the reduced system
+dn
+dt
+= An exp(p1e(s − p2)) − FCnn
+1
+3 q
+2
+3 , (72)
+dq
+dt
+= Bqn
+2
+3 q
+1
+3 (s − 1) − FCqn−2
+3 q
+5
+3 , (73)
+ds
+dt
+= Dws − Bsn
+2
+3 q
+1
+3 (s − 1). (74)
+This slight simplification has the convenient property that finding
+its roots can be reduced to finding the roots of a scalar function of
+the saturation ratio s. From this root s0, the values of the equilib-
+rium state (i.e., n0,q0) can be calculated recursively. The respective
+function for the saturation ratio is as follows (see Appendix B2):
+f(x) = ax − b(x − 1)
+3
+4 exp(c(x − x0)), (75)
+where
+a = Dw, b =
+BsAn
+Cn
+
+Cq
+Bq
+1
+4
+
+1
+F
+3
+4
+, c = p1e, x0 = p2. (76)
+For a given value of the saturation ratio s, we can calculate the
+respective values for n and q (see Appendix B2) as
+n =
+An
+FCn
+exp(p1e(s − p2))
+
+Bq
+FCq
+(s − 1)
+−1
+2
+(77)
+and
+q =
+An
+FCn
+exp(p1e(s − p2))
+
+Bq
+FCq
+(s − 1)
+1
+4
+. (78)
+Next, we show that the 3D system has exactly one equilibrium
+point. For the existence of at least one root s > 1, we make the fol-
+lowing argument: We investigate the function f from Eq. (75) on the
+interval [1,∞). For s = 1, we obtain f(s) = a = Dw > 0. Since the
+coefficients a,b,c > 0, the exponential term is the fastest growing
+one, such that f(s) < 0 for sufficiently large values of s. Then, the
+intermediate value theorem provides the existence of a root s0 > 1.
+In order to see that f has exactly one root, we consider the function
+g(x) =
+f(x)
+x
+= a − bx−1
+(x − 1)
+3
+4 exp(c(x − x0)) (79)
+and note that any x = s > 1 is a root of f if and only if x is a root of
+g. We calculate the derivative of g as
+g0
+(x) = −bx−1
+(x − 1)
+3
+4 exp(c(x − x0)) ·
+
+c −
+1
+x
+
+−
+3
+4
+bx−1
+(x − 1)− 1
+4 exp(c(x − x0)). (80)
+Since c = p1e(T) > 1 in the considered temperature range, we can
+conclude that g0
+(x) < 0 for all x > 1, i.e., g is strictly decreasing for
+x > 1 and thus there is at most one root. Altogether, we conclude
+that there is exactly one root s0 of f and thus exactly one equilibrium
+point of system (72)–(74).
+We now want to derive a meaningful approximation of the
+equilibrium states. Let s0 denote the saturation ratio at the equilib-
+rium point for a given vertical velocity w (and fixed temperature,
+pressure, and sedimentation parameter). Then, we have
+as0 = b(s0 − 1)
+3
+4 exp(c(s0 − x0)) (81)
+and hence, using c = p1e, x0 = p2, we get
+s0 = p2 +
+1
+p1e
+log
+
+a · b−1
+· s0(s0 − 1)−3
+4
+
+. (82)
+Plugging in the definitions for a and b, we get for s0 at the equilib-
+rium point
+s0 = p2 +
+1
+p1e
+log D
+Cn
+BsAn
+
+Bq
+Cq
+1
+4
+!
++
+1
+p1e
+log
+
+w · F
+3
+4 · s0(s0 − 1)
+3
+4
+
+. (83)
+Motivated by this calculation, we define the functions
+σ(T,p) := p2 +
+1
+p1e
+log D
+Cn
+BsAn
+
+Bq
+Cq
+1
+4
+!
+(84)
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-10
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+and
+h(x) := h(x,F,w,T,p)
+= σ +
+1
+p1e
+log(w) +
+3
+4
+log(F) + log
+x
+(x − 1)
+3
+4
+!!
+(85)
+suchthattheaboves0 satisfiess0 = h(s0,F,w,T,p).Moregenerally,a
+direct calculation shows that x∗
+is a fixed point of h (i.e., x∗
+= h(x∗
+))
+if and only if x∗
+is a root of f (i.e., f(x∗
+) = 0). Therefore, fixed points
+x∗
+ofhcorrespondtothevaluesofthesaturationratioatequilibrium
+points of the ice cloud model.
+We now show that the function h is furthermore a contraction
+on a suitable compact interval (which in turn narrows the range
+for the equilibrium value s0) and use this property for a suitable
+approximation. Estimating the ranges of the functions σ and p1e
+(see Appendix C), we find
+h(x) = κ0 +
+1
+p1e
+log
+x
+(x − 1)
+3
+4
+!
+(86)
+for some (variable) κ0 ∈ [1.375170,1.585966]. Let us now specify
+the following interval:
+[smin,smax] with smin = 1.37, smax = 1.59. (87)
+We can show (see Appendix C) that
+h([smin,smax]) ⊂ [smin,smax]. (88)
+In addition, we calculate the derivative of h as
+h0
+(x) =
+1
+4p1e
+x − 4
+x(x − 1)
+(89)
+and thus,
+|h0
+(x)| ≤
+π2
+4
+4 − smin
+smin(smin − 1)
+≈ 0.004415  1, (90)
+with 1
+p1e
+≤ π2 = 0.003404 as in Appendix C. Therefore, h is a con-
+traction on the compact interval [smin,smax] ⊂ R. Consequently, the
+Banach fixed point theorem yields the existence of a unique fixed
+point, and the sequence xn defined by
+xn = h(xn−1) = σ +
+1
+p1e
+log(w) +
+3
+4p1e
+log(F)
++
+1
+p1e
+log
+xn−1
+(xn−1 − 1)
+3
+4
+!
+(91)
+converges to this fixed point s0. This implies in particular that the
+saturation ratio s0 at an equilibrium point [which has the value of
+the unique fixed point of h(x)] is always contained in the interval
+[smin,smax] for any given environmental conditions in the relevant
+ranges as previously specified and summarized in Table I.
+In practice, we can determine an approximation for the
+value of s0 while approximating the function l(x) = log
+
+x
+(x−1)
+3
+4
+
+on the interval [smin,smax] by the midpoint of possible values
+`m = 1
+2
+(l(smin) + l(smax)) ≈ 0.959979, such that
+s0 ≈ σ(T,p) +
+1
+p1e(T)
+
+`m + log(w) +
+3
+4
+log(F)
+
+, (92)
+with an absolute error of approximation smaller than 4 × 10−4
+.
+Hence, the proof of uniqueness using the fixed point theorem also
+leads to an approximate description of the equilibrium states as
+a by-product in our setting here. Note here, that the contraction
+property assures that the approximation converges toward the equi-
+librium point, i.e., iteration of the function leads to an improved
+approximation.
+Using Eqs. (77) and (78) for the calculation of the other values
+of the equilibrium state n0,q0 from the value s0, we finally get the
+equations
+n0 =
+D
+Bs
+
+Cq
+Bq
+1
+4
+· w · F
+1
+4 · s0(s0 − 1)− 5
+4 , (93)
+q0 =
+D
+Bs
+
+Bq
+Cq
+1
+2
+· w · F−1
+2 · s0(s0 − 1)− 1
+2 . (94)
+FIG. 1. Equilibrium states for the ice cloud model at p = 300hPa. Colors indicate different temperatures, i.e., red: 230K, gray: 210K, blue: 190K. Black lines indicate
+approximations as given in Eqs. (92)–(94). Left: Number concentration (in 1/kg), middle: mass concentration (in kg/kg), right: saturation ratio.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-11
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+Since the changes in the saturation ratio s0 at the equilibrium point
+for varying w and F within the specified ranges are only very minor
+compared to the changes in w and F
+1
+4 or F− 1
+2 in Eqs. (93) and (94)
+[due to the low values of 1
+p1e(T)
+as specified in Eqs. (C2) and (C4)],
+good approximations for the ice crystal number and mass concen-
+trations n0 and q0 at the equilibrium point for varying w and F are
+given by calculating s0 for one choice of vertical velocity w and sed-
+imentation parameter F (e.g., for w = 0.1ms−1
+and F = 1.0) and
+then approximating n0 and q0 by Eqs. (93) and (94) using the fixed
+s0.InFig.1,theequilibriumstatesfordifferenttemperaturesarerep-
+resented. The dependency of all quantities n,q,s on log(w) is clearly
+visible, since we use a logarithmic axis for the vertical updrafts. The
+quasi-linear fits are almost perfect.
+B. Quality of equilibrium states
+The quality of the equilibrium point of the model depends on
+the choice of the parameters and can be deduced from the eigenval-
+ues of the Jacobi matrix of the system at the equilibrium point; this
+istrueatleastincaseofnon-zeroeigenvalues,whichisthecasehere,
+as we show later. The Jacobi matrix of the reduced system (72)–(74)
+at an arbitrary point (n,q,s) is given by
+J =
+
+
+
+
+
+
+
+−
+1
+3
+FCnm̄
+2
+3 −
+2
+3
+FCnm̄− 1
+3 p1eAn exp(p1e(s − p2))
+2
+3
+
+Bqm̄
+1
+3 (s − 1) + FCqm̄
+5
+3
+ 1
+3
+Bqm̄− 2
+3 (s − 1) −
+5
+3
+FCqm̄
+2
+3 Bqn
+2
+3 q
+1
+3
+−
+2
+3
+Bsm̄
+1
+3 (s − 1) −
+1
+3
+Bsm̄− 2
+3 (s − 1) Dw − Bsn
+2
+3 q
+1
+3
+
+
+
+
+
+
+
+. (95)
+Here,m̄ = q
+n
+denotesthemeanmassoficecrystals.Sincetheexpres-
+sions become too complicated there is no chance to calculate the
+eigenvalues analytically at the equilibrium points. However, we can
+partly determine the general quality of the solution, e.g., properties
+such as the sign of the eigenvalues. For this purpose, we reformulate
+the Jacobi matrix.
+Using the conditions for an equilibrium point, i.e., (ṅ,q̇,ṡ)
+= (0,0,0), we obtain the following equations (see Appendix B2):
+An exp(p1e(s − p2)) = FCnn
+1
+3 q
+2
+3 , (96)
+m̄ =
+
+Bq
+FCq
+(s − 1)
+3
+4
+, (97)
+Bs(s − 1) = Dwsm̄−1
+3 n−1
+. (98)
+These identities can be used for rewriting the Jacobi matrix as
+J =
+
+
+
+
+
+
+
+
+−
+1
+3
+FCnm̄
+2
+3 −
+2
+3
+FCnm̄−1
+3 p1eFCnm̄
+2
+3 n
+4
+3
+FCqm̄
+5
+3 −
+4
+3
+FCqm̄
+2
+3
+1
+(s − 1)
+FCqm̄
+5
+3 n
+−
+2
+3
+Dwsn−1
+−
+1
+3
+Dwsq−1
+−Dw
+1
+(s − 1)
+
+
+
+
+
+
+
+
+. (99)
+It turns out that this matrix J is similar to a slightly simpler matrix
+J1, which has the same eigenvalues, i.e., J = D−1
+m J1Dm, and finally,
+J = a · D−1
+m J2Dm, with
+a =
+1
+3
+FCnm̄
+2
+3 , Dm =
+
+
+1 0 0
+0 m̄−1
+0
+0 0 n
+
+, (100)
+J2 =
+
+
+
+
+
+
+
+−1 −2 3p1e
+4r
+2
+3
+0 −4r
+2
+3
+0 3r
+2
+3
+0
+1
+(s − 1)
+−2γ
+s
+√
+s − 1
+−γ
+s
+√
+s − 1
+−3γ
+1
+(s − 1)
+3
+2
+
+
+
+
+
+
+
+, (101)
+using the relations
+Cq = r
+2
+3
+0 Cn, γ = DwF−1
+2 B
+−1
+2
+q r
+1
+3
+0 C
+−1
+2
+n . (102)
+For the calculation of the determinant we use the formulation
+J = a · D−1
+m J2Dm, thus we find
+detJ =
+1
+3
+F2
+C2
+nDwm̄
+4
+3 r
+2
+3
+0
+1
+s − 1
+· (−4 + s − 4s(s − 1)p1e). (103)
+Since F,Cn,D,w,m̄ are all positive and s > 1 and p1e > 1 in the
+considered range, we find
+−4 + s − 4s(s − 1)p1e = −3 + (s − 1)(−4sp1e + 1) < 0
+⇒ detJ < 0.
+Let λ1,λ2,λ3 denote the eigenvalues of J for a given equilibrium
+state. After rearranging/renumbering, we can assume that either all
+eigenvalues are real or one (λ3) is real and two are complex con-
+jugates (λ1 = λ∗
+2). Since detJ = λ1λ2λ3 < 0, we conclude that there
+has to be at least one negative real eigenvalue λi < 0. In addition, all
+eigenvalues are non-zero (λi 6= 0 for all i = 1,2,3).
+The eigenvalues are then calculated numerically using routines
+of the package “linalg” in “numpy.”44
+The real negative eigenvalue
+is denoted by λ3. For most parameters, we find two complex-
+conjugate eigenvalues λ1,λ2; in a small regime (higher temperature
+and very low vertical velocities), we obtain two real negative eigen-
+values λ1,λ2 < 0. We find two supercritical Hopf bifurcations of
+the system, i.e., the real part of the complex-conjugate eigenval-
+ues changes its sign, such that there is a transition from a stable
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-12
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+equilibrium point to the case of an unstable equilibrium point and
+an attracting limit cycle.45
+For the local existence of the periodic
+solutions (i.e., limit cycles), we can apply a theorem based on Lya-
+punov–Schmidt reduction,46
+since at the bifurcation point we have
+exactly two conjugate imaginary eigenvalues and no other eigenval-
+ues on the imaginary axis. However, we will investigate the limit
+cycles later in Sec. IVC, using numerical investigations.
+Using the description of the trace of the Jacobi matrix, we
+can derive additional properties of the eigenvalues of the linearized
+system. The trace can be calculated as
+tr(J) = tr aD−1
+m J2Dm
+
+= atr(J2)
+= −a 1 + 4r
+2
+3
+0 + 3γ
+1
+(s − 1)
+3
+2
+!
+, (104)
+using the description of the matrix J2 in Eq. (101). Since the con-
+stants a,r0,γ are all positive and in the considered range we have
+s > 1, we find a negative trace of the Jacobi matrix
+tr(J) = atr(J2) = λ1 + λ2 + λ3 < 0. (105)
+This condition can be reformulated as λ1 + λ2 < −λ3 with the dis-
+tinct real and negative eigenvalue λ3 ∈ R<0. We can distinguish
+different cases
+1. For a pair of complex-conjugate eigenvalues λ1 = λ∗
+2 = α + iβ
+∈ C (α,β ∈ R), we find
+λ1 + λ2 = 2α < −λ3 (106)
+⇔ α = Re(λ1,2) < −
+λ3
+2
+∈ R>0. (107)
+For negative real parts α this is not a restriction, since then we
+find α < 0 < −λ3
+2
+. However, for positive real parts (i.e., in case
+of an unstable fixed point), we determine the condition 0 < α
+< −λ3
+2
+. Thus, the absolute value of the growth rate Re(λ1,2) = α
+of the instability close to the equilibrium point is always smaller
+than the value of the contraction rate λ3, i.e., close to the equilib-
+rium state the flow contraction in λ3-direction is always faster
+than the blowup in λ1,2-directions. This points to a quasi 2D
+system for longer time scales.
+2. For real eigenvalues λ1,λ2 ∈ R, we still have the property
+λ1 + λ2 < −λ3. In the numerical determination we only find
+the case of two negative real eigenvalues λ1,λ2 < 0; thus, there
+is again no restriction for the eigenvalues, since the eigenvalues
+always fulfill λ1 + λ2 < 0 < −λ3.
+In Fig. 2, we show an example of real and imaginary parts of
+the numerically determined eigenvalues for a fixed parameter set of
+p = 300hPa, T = 230K, F = 1 and values of vertical updrafts in the
+interval 0.0005 ≤ w ≤ 2ms−1
+. Note, that we show a regime with all
+possible occurring variants of eigenvalues, i.e., conjugate-complex
+pair and three real eigenvalues. For the unstable regime (for positive
+real part, i.e., in the range between w ∼ 0.048 and w ∼ 0.77ms−1
+)
+we clearly see, that the relation (107) is fulfilled, i.e., the positive real
+part of λ1,2 is much smaller than the absolute value of λ3.
+FIG. 2. Example of real (top) and imaginary (bottom) parts of determined eigen-
+values at the equilibrium state of the system for a fixed set of parameters
+p = 300hPa, T = 230K, F = 1.
+Remark: If we could assure that the real part of the complex-
+conjugate eigenvalues changes with non-zero speed at the bifurca-
+tion points, a theorem by Hopf47
+would guarantee the existence of a
+two dimensional center manifold, on which the limit cycle lies.
+We calculate the bifurcation points numerically. For a fixed
+temperature T, we scan through the w-interval, calculate the eigen-
+values of the respective Jacobi matrix J, and determine the position
+where the sign of the real part of λ1,2 changes. The bifurcation dia-
+gram for values p = 300hPa and F = 1 is represented in Fig. 3. Blue
+and red dots mark the numerically determined Hopf bifurcations,
+gray dots mark the region of three real and negative eigenvalues.
+We find that the two bifurcations for F = 1 can be fitted using
+exponential functions with quadratic polynomials in the argument,
+i.e., functions of the form
+wa(T) = w̄exp a2T2
++ a1T + a0
+
+, (108)
+wb(T) = w̄exp b2T2
++ b1T + b0
+
+, (109)
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-13
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+FIG. 3. Bifurcation diagram in the parameter space T − w for p = 300hPa and
+F = 1. The red and blue dots indicate the numerically calculated transition in the
+real parts of the complex-conjugate eigenvalues λ1,2, i.e., the two Hopf bifurca-
+tions. The black lines indicate fits to the bifurcations using a quadratic polynomial
+in T. Above the red points and below the blue points, the unique equilibrium
+state is stable. Between the two lines, the equilibrium state is unstable and a limit
+cycleoccurs.Graydotsindicatetheregionwithpurelyrealeigenvalues(i.e.,three
+negative real eigenvalues).
+with coefficients ai,bi as represented in Table II, and the “constant”
+w̄ = 1ms−1
+determining the correct unit of the functions. The fits
+are shown in Fig. 3 as black lines; however, blue dots “belong” to fit
+wa(T), whereas red dots “belong” to fit wb(T). The bifurcation dia-
+gram for other values of F will be discussed later in the Sec. IVD,
+where we investigate the scaling properties of the system. For differ-
+entvaluesofpressure(i.e.,p = 200hPa)wefindqualitativelysimilar
+bifurcationdiagrams,i.e.,thesupercriticalHopfbifurcationsarestill
+there, however, slightly shifted in their position. In fact, the quality
+of the system stays the same.
+Remark: For the Jacobi matrix at the equilibrium state at the
+bifurcation, we can use basic relations from linear algebra
+λ1,2 = ±iβ ⇒ tr(J) = λ3 ⇒ det(J − λ3I) = 0 (110)
+TABLE II. Coefficients for the quadratic fit functions wa(T), wb(T) of the two Hopf
+bifurcations.
+k=0 k=1 k=2
+ak −38.30947 0.278555K−1
+−0.00049191K−2
+bk −36.15046 0.229111K−1
+−0.00036997K−2
+to derive a quasi-quadratic equation from the determinant for the
+bifurcation value w, i.e.,
+α2w2
++ α1w + α0 = 0 (111)
+with coefficients α2,α1,α0 only slightly depending on w. This gives
+also an analytical hint, that we should find two bifurcations for the
+system. When calculating the values of w from Eq. (111), we find
+values very close to the bifurcation points as numerically calculated
+from the complete system.
+In Fig. 4, some examples for the three different regimes are
+represented, i.e., the time evolution of the saturation ratio s is
+shown for values w = 0.01ms−1
+(stable equilibrium, lower regime),
+w = 0.1ms−1
+(unstable equilibrium, limit cycle), and w = 1ms−1
+(stable equilibrium, higher regime). In all simulations, we see the
+same general evolution of a first and undisturbed nucleation event
+followed by a (more or less) strong reduction of the supersaturation,
+and afterward subsequent nucleation events, which are less vigorous
+since pre-existing ice slows down the explosion term. This behavior
+was observed in former studies.40
+All variables of the simulations are
+shown in Appendix D, i.e., Figs. 11, 12, and 13.
+Qualitatively, we can describe the behavior with the three dif-
+ferent processes. Nucleation, as driven by the cooling/forcing term
+ofs,actsasasourceforicecrystals,whereassedimentationisthesink
+for ice crystals. The growth process acts as a mediator in between,
+shifting mass from the saturation ratio to the mass concentration,
+which (1) shuts down the nucleation event because of less supersat-
+uration as discussed in Spichtinger and Krämer48
+and (2) enhances
+the sedimentation sink. This feedback can also be seen calculating
+the divergence of the vector field, i.e., the trace of the general Jacobi
+matrix,
+∇ · V = tr(J) = Dw +
+1
+3
+Bqm̄− 2
+3 (s − 1) − Bsnm̄
+1
+3
+−
+1
+3
+FCn
+
+1 + 5r
+2
+3
+0
+
+m̄
+2
+3 . (112)
+FIG. 4. Examples of solutions for different regimes at T = 225K, p = 300hPa, and F = 1; the saturation ratio s is displayed. Left: damped oscillator (w = 0.01ms−1
+),
+middle: undamped oscillator (w = 0.1ms−1
+), right: damped oscillator (w = 1ms−1
+).
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-14
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+The first term, i.e., the cooling/forcing of the system is clearly pos-
+itive, the last term, i.e., sedimentation, is negative, and the growth
+terms in the middle could change signs. For small particles, the first
+term of growth dominates (positive), whereas for large (or many)
+particles,thesecondtermofgrowthdominates(negative).However,
+the divergence can change sign, thus a clear asymptotic behavior
+cannot be seen from this analysis.
+As described in Sec. IVC, in the unstable case, we observe an
+undamped oscillation, which indicates an attracting limit cycle.
+C. Limit cycles
+There is no method available for calculating the limit cycles,
+or even their periods analytically for this 3D nonlinear system, at
+least to our best knowledge. Therefore, we use a numerical method
+to determine the period of the limit cycles. For this purpose, we
+FIG. 5. Top: Periods of limit cycles in the bifurcation diagram. Bottom: Example
+of section through the parameter space at fixed temperature T = 210K, repre-
+sentingtheoscillationperiodascalculatedfromtheimaginarypartofthecomplex
+eigenvalues (red line), and the period of the respective limit cycle in the unstable
+regime (black line).
+integrate the system again for quite a long time but with initial con-
+ditions close to the unstable equilibrium state. To be precise, for
+a (numerically determined) equilibrium point x0 = (n0,q0,s0)T
+, we
+determine the initial condition as xinit = x0 · (1 − ε) with a small
+deviation ε = 0.01. We then run the simulation for a time Tfinal,
+which is approximately determined as Tfinal = 300 · τλ with the
+period at the equilibrium point τλ = 2π
+Im(λ1)
+, using the imaginary
+part of the two complex-conjugate eigenvalues. The simulations are
+carried out using a Gaussian grid with a timestep, adaptively but
+constant determined by the empirical relation31
+1t = 0.01m
+w
+, using
+the prescribed vertical velocity w.
+Since the variable s is the most “linear” one, we then determine
+minima and maxima of this variable over time. From the difference
+between consecutive minima or maxima, respectively, at the end
+of the simulation, we determine two periods τmin,τmax. The mean
+valueτ = 1
+2
+(τmin + τmax)isthenusedasthenumericallydetermined
+period of the limit cycle, for a given set of parameters (p,T,w,F),
+respectively. In Fig. 5 (top panel), the periods of the limit cycles are
+represented. For the domain between the two Hopf bifurcations, the
+color code indicates the periods of the limit cycles. Note that there
+is a huge range of periods, ranging from very short periods at high
+temperatures and high vertical velocities (in the order of few hun-
+dreds of seconds) up to large periods at low temperatures and low
+vertical updrafts (in the order of 104
+to 105
+s). The periods depend-
+ing on w show a similar shape for a distinct temperature, as will be
+investigated later in terms of scaling properties in Sec. IVD. In the
+bottom panel of Fig. 5, an example for periods at a fixed tempera-
+ture of T = 210K, but varying vertical updraft, is displayed. The red
+curve shows the “oscillation period” as derived from the imaginary
+part of the respective complex-conjugate eigenvalues
+
+τ = 2π
+Im(λk)
+
+at the equilibrium point, whereas the black curve shows the period
+of the limit cycle in the region of the unstable equilibrium point.
+Both curves touch each other at the bifurcation, as expected. The
+periods of the limit cycle always have a distinct maximum in the
+interval between the two bifurcation lines. Note that for the small
+regime of three real eigenvalues, as indicated in Fig. 3 by the gray
+shading, τ shows a singularity when approaching an imaginary part
+Im(λk) = 0.
+D. Scaling properties
+Now,weinvestigatesomescalingpropertiesofthesystemusing
+numerical methods.
+1. Scaling property of bifurcations
+Until now, we investigated the bifurcations for variations in
+p,T,w, but left the sedimentation parameter unchanged, i.e., F = 1
+(no flux from above). Now, we investigate possible changes in the
+bifurcations due to variation of F in the interval 0.01 < F < 1. This
+is a realistic range; smaller values do not make sense because then
+we would effectively shut down the sedimentation sink, which is the
+crucial process for producing an oscillating behavior. In addition to
+the numerical calculations of the equilibrium states, the lineariza-
+tionandeigenvaluesleadingtothebifurcationsasdeterminedbythe
+numerical procedure, we evaluate the variation in a semi-analytical
+approximate way.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-15
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+We investigate pairs of bifurcation coordinates (w,F) for fixed
+values of the environment p,T. First, suppose that we have already
+determined a bifurcation point (w0,F0), i.e., for the Jacobi matrix
+at the equilibrium state we find eigenvalues λ1 = λ∗
+2 = iβ, and for
+small perturbations their real parts change the sign. Let us now
+show that we can approximately determine another bifurcation
+point (w1,F1) just from the original pair (w0,F0) via the Jacobi
+matrix. Here, we observe that beside the actual values of the equi-
+librium state and the sedimentation parameter F only the constants
+D,Bq,Cn,p1e impact the value of the Jacobi matrix, which are all
+independent of w and F.
+We try to find another pair (w1,F1) close to the original one,
+i.e., we apply a small perturbation to w and F. From the approx-
+imation in Eq. (92), we see that the value of s does not change
+substantially for moderate/small variations in w and/or F. Thus,
+from the special form of the Jacobi matrix J2, we might assume that
+in a first approximation, J2 changes only in γ via changes in DwF−1
+2
+[see Eq. (102)], when varying updraft and sedimentation parame-
+ter. Hence, passing to a different sedimentation parameter F1 and
+a vertical velocity w1, we observe that γ and consequently J2 are
+approximately equal for (w0,F0) and (w1,F1) if and only if
+Dw0F
+−1
+2
+0 = Dw1F
+−1
+2
+1 ⇔
+w0
+w1
+=
+
+F0
+F1
+1
+2
+. (113)
+Now, we consider the “special case” of setting F0 = 1. Thus, we
+obtain
+w0
+w1
+=
+
+1
+F1
+1
+2
+⇔ w1 = F
+1
+2
+1 w0 =
+p
+F1w0 (114)
+and for a bifurcation point (w0,1) also the pair (
+√
+F1w0,F1) is
+(approximately) a bifurcation point, so we get a scaling of the
+updrafts by the square root of the sedimentation parameter. How-
+ever, this relation relies on small perturbations and approximations,
+so one would like to evaluate the “real” values of bifurcations as
+determined numerically with the procedure explained above. These
+bifurcation values are displayed as black dots in Fig. 6. In Sec. IVB,
+we found fits for the bifurcation points (F = 1) of the form
+w(T) = w̄exp c0 + c1T + c2T2
+
+. (115)
+On the other hand, from the (semi-)analytical description above, we
+know that approximately w1 =
+√
+Fw0. For evaluating this approxi-
+mation, we make the general ansatz of a power law for the scaling,
+i.e., w1 = Fα
+w0 with a positive real number α ∈ R>0. Then, we can
+derive
+w1(T) = Fα
+w0(T) = Fα
+w̄exp c0 + c1T + c2T2
+
+= w̄exp c̄0 + c1T + c2T2
+
+, (116)
+with c̄0 = α log(F) + c0.
+We determine fits for sedimentation factors F ∈ {0.01,0.02,
+0.05,0.1,0.2,0.3,0.4,0.5,0.6} for both bifurcations and determine
+theexponentα (alsointermsofameanvalue).Wefindfortheupper
+bifurcation α ≈ 1
+2
+as from theory, whereas for the lower bifurcation,
+thevalueschangesslightlytoα ≈ 0.512 ≈ 1
+2
+.Thus,thescalingprop-
+erty of the bifurcation due to Fα
+is a robust feature. In Fig. 6, the
+scaledfitsusingtherespectiveansatzw(T) = Fα
+w∗(T)areshownfor
+FIG.6. Scalingofbifurcationsfordifferentvaluesofthesedimentationparameter
+F. Black dots show the numerically derived values, whereas colored lines repre-
+sent the scaling of the fit curves as derived for the parameter F = 1. Reddish
+colors show the change in the upper bifurcation, whereas bluish colors show
+the change in the lower bifurcations; in both cases, sedimentation parameters
+of F = 1,0.1,0.01 are shown.
+F = 1,0.1,0.01;reddish colorsshow the upper bifurcations,whereas
+bluish colors display the lower bifurcation. The fits match the data
+points quite well, corroborating this type of scaling. Finally, we can
+state that the change of the sedimentation parameter F does not
+change the quality of the bifurcation diagram. Actually, the qual-
+ity of the phase diagram and thus the bifurcations remain the same,
+only the transition lines/bifurcation curves change their position,
+but even not their shape.
+2. Scaling property of limit cycle periods
+In Sec. IVC, we determined the periods of the limit cycles
+for the regime of unstable equilibrium states. We already noted
+that the shape of the curves at fixed but different temperatures T
+is very similar. In the left panel of Fig. 7, the curves for the peri-
+ods of the limit cycles at different temperatures are displayed. In
+the double-logarithmic representation the similarity of the curves
+is very evident. Thus, we make an empirical scaling ansatz, using
+the temperature value Tref = 210K as reference temperature. We
+hypothesize that the curves scale with a non-dimensional tempera-
+ture. Using the reduced temperature x := T
+Tref
+, we might find scaling
+functions f(x),g(x) such that the periods τ(w,T) can be expressed as
+τ (w,T) = f(x)τ g(x)w,Tref
+
+. (117)
+The scaling function g(x) shifts the w-position of the periods,
+whereas the function f(x) changes the amplitude of the periods,
+respectively. This kind of scalings are often found in phase tran-
+sitions and self-organized criticality,49
+and thus, we would expect
+a function of the form f(x) ∼ xa
+with a so-called critical exponent
+a ∈ R. A similar form is expected for the function g(x). Comparing
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-16
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+FIG. 7. Scalings of limit cycle’s periods. Left: periods of limit cycles for different temperatures; middle: numerical scaling of the data together with the reference curve for
+T = 210K; right: scaled data using the scaling functions from Eqs. (120) and (121).
+the numerically derived periods and calculating shifts for matching
+the curves, we can map the curves on each other; this is shown in
+the middle panel of Fig. 7, with the calculated and shifted data as
+black points and the “reference” period at Tref as a red curve. We can
+calculate numerically the apparent shifts in position and amplitude,
+respectively, for the different reduced temperatures x in the temper-
+ature interval 190 ≤ T ≤ 240K, i.e., in the interval 0.9 ≤ x ≤ 1.15.
+These values are plotted in Fig. 8 as gray dots. Using the expected
+form for functions f(x),g(x) ∼ xa
+, we find the exponents
+f(x) = x15.0617
+, g(x) = x−14.1228
+; (118)
+these fits are shown in Fig. 8 as curves in light red or blue. For values
+0.95 < x < 1.05, this approach fits quite well.
+However, the scaling functions show deviations to the numeri-
+cally optimized shift in the data for values x at the boundaries of the
+interval.Empirically,wefinda(much)betterfitusingthefunctional
+form
+f(x) = xa−b(x−1)
+, a,b ∈ R Const., (119)
+as indicated in Fig. 8 with curves in dark red or blue. There is small
+deviation from the fits with a constant scaling exponent, since the
+functions’ coefficients have the following values for f:
+f(x) = xa−b(x−1)
+, a = 15.2984, b = 12.013 (120)
+and for g,
+g(x) = xa−b(x−1)
+, a = −14.2715, b = −8.65253, (121)
+respectively. Finally, we apply the adjusted scaling functions
+f(x),g(x) for matching the periods of different temperatures on each
+other. As can be seen in the right panel of Fig. 7, this scaling works
+very well; only at the “boundaries,” i.e., for high or low values of
+x, there are some small deviations, which are probably due to the
+numerical derivation of the bifurcations. However, we have to state
+herethatthefitsarepurelyempirical,andthereisnoobviousreason
+why the periods should have such a scaling behavior. Nevertheless,
+this is a very interesting property, which in turn also reduces the
+parameter space for the investigations dramatically. The complete
+range of bifurcations in the system then boils down to the range of
+a period determined by just a vertical velocity as shown in the right
+panel of Fig. 7 for the reference temperature Tref or even the reduced
+temperature x = 1. All other periods in the unstable regime can be
+derived by the scaling law Eq. (117).
+V. COMPARISON TO MEASUREMENTS
+In Secs. IVA–IVD, we investigated the qualitative properties
+of this simplified model. However, the question arises how relevant
+such a model is in terms of representing ice clouds in the upper tro-
+posphere sufficiently well. Thus, we would like to know if the model
+produces realistic values of the relevant quantities of ice crystal
+number and mass concentrations. We now compare simulations
+FIG. 8. Fit of exponents of scaling functions. Gray dots: empirical scaling as
+derived from the numerical calculations. Dark red/blue curves: exponents of the
+empirical fits using scalings of the functional form f(x) ∼ xa
+, exact values are
+giveninEq.(118).Lightred/bluecurves:exponentsoftheempiricalfitsusingscal-
+ings of the functional form f(x) ∼ xa−b(x−1)
+, exact values are given in Eqs. (120)
+and (121).
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-17
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+FIG. 9. Comparison of the model results with measurements. Colors indicate the frequency of occurrence of ice crystal number concentrations in measurements.6,8
+Bluish
+colorsshowthevaluesofthemodel,i.e.,equilibriumstatesandrangeofthelimitcyclecalculations.DarkbluelinesindicateconditionsforF = 1,lightblueindicateconditions
+for F = 0.1, respectively. Black points show undisturbed nucleation events as calculated by Spichtinger et al.22
+of our model with real measurements as obtained from research
+aircraft, i.e., in situ measurements in the tropopause region; these
+measurements were described in former studies6,8
+and are freely
+available for scientific evaluations. We use data of ice crystal num-
+berconcentrations,asobtainedfromvariousinstruments,whichare
+compiled to a consistent data set.8
+This data set is complied from 24
+research campaigns and constitute one of the benchmark data sets
+for ice cloud research. Since the data are available in units of num-
+bers per volume, we have to recalculate our model values, which are
+in the conserved variable version of numbers per mass dry air; the
+conversion is as follows:
+N|per volume = ρ · n|per mass. (122)
+For this purpose, we have to decide about a given pressure, since
+the conversion relies on the ideal gas law, thus providing density for
+given temperature and pressure, respectively. Since most measure-
+ments are obtained in the pressure range 200 ≤ p ≤ 300hPa, and
+the model results only weakly depend on the given pressure param-
+eter, we show our results for the two limiting pressure values sepa-
+rately. We compile data for the parameter range of vertical updrafts
+0.01 ≤ w ≤ 2ms−1
+, the temperature range 190 ≤ T ≤ 230K, two
+pressure regimes p = 200,300hPa, and two sedimentation regimes
+F = 1,0.1, respectively. For comparison, we do not indicate full
+model simulations, but rather the values at the equilibrium points
+and the ranges of the limit cycles (depending on whether we have a
+stable equilibrium point or an unstable equilibrium point with limit
+cycle) as key features of the long term behavior. Moreover, we also
+include the values of an undisturbed nucleation event as calculated
+with the model by Spichtinger et al.22
+; the temperatures are chosen
+for comparison with former simulations.31,50
+In Fig. 9, the comparison of measurements (colors, indicating
+frequency of occurrence) and model results (blue lines and black
+linepoints) is displayed. The measurements are sorted in tempera-
+turebinsof1K,thefrequencyofoccurrenceisrepresentedbycolors.
+Our model results for the sedimentation factor F = 1 are shown in
+dark blue, whereas light blue indicates results for F = 0.1.
+We find a good agreement of our model results with the
+observations.Infact,thequalitativebehaviorofthemodel,i.e.,equi-
+librium points and limit cycles, fits very well with the observations.
+In particular, we want to emphasize that our model simulations are
+mostly located in the regimes of frequently observed measurements.
+We see higher values of n for the regime of strong sedimentation
+F = 1, and slightly reduced values for weak sedimentation F = 0.1,
+respectively. Both simulation regimes seem to be reasonable and
+realistic. The variation due to different pressure regimes is quite
+marginal, we just see small changes in the picture for different pres-
+sure values. In contrast, the values of undisturbed nucleation events
+in the model are not found in the real observations. The high val-
+ues at the temperature regime 210 ≤ T ≤ 220K can be attributed to
+contrails in the measurements.8
+For the higher values of n at higher
+temperatures, we can assume a different formation mechanism, i.e.,
+liquidoriginiceclouds,whichareformedbyfreezingofpre-existing
+water cloud droplets.8
+Generally, it might be that such high values
+occur in fresh and undisturbed nucleation events. Nevertheless, it is
+very hard to observe such events because they are kind of invisible
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-18
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+and now-casting of such events for the aircraft measurements is
+almost impossible. Overall, the model produces realistic results, as
+compared to the real measurements. Even the strong simplifications
+donotcruciallyaffecttheresults.Thismakesusconfidenttousethis
+kind of reduced model for further investigations. Since the model is
+relatively simple, the analysis is quite easy, but still the model sim-
+ulations are realistic enough for qualitative and even quantitative
+behavior of ice clouds in the cold temperature regime. While the
+parameter space as used in our simple model is quite well repre-
+sented in the data set, we are quite confident to carry out a robust
+comparison.
+VI. SUMMARY
+We develop a simple ice cloud model on the basis of general
+moments,usingnumberandmassconcentrationsascloudvariables;
+in addition, we use the saturation ratio over ice as thermodynamic
+control variable for driving relevant ice cloud processes such as
+nucleation and growth of ice particles. The final model consists of
+a three-dimensional system of nonlinear autonomous ordinary dif-
+ferential equations. The model is then evaluated using the theory of
+dynamical systems. We show that in the relevant parameter space,
+there is exactly one equilibrium state. The main feature is here that
+the problem of finding a root of the vector field can be reformu-
+lated to finding a root of a scalar function for the saturation ratio s.
+The existence and uniqueness of the root are then derived by sim-
+ple analysis. Furthermore, we can reformulate the scalar function
+into a sequence generating function and this sequence converges
+toward the unique fixed point by the Banach fixed point theorem,
+giving us approximate formulas for the equilibrium states. We also
+determine the quality of the equilibrium state, using linearization
+around the equilibrium states and then calculating the respective
+eigenvalues of the Jacobi matrix numerically. In addition, we prove
+the existence of a real negative eigenvalue, whereas the other two
+eigenvalues are either conjugate-complex or both real and negative
+in the relevant parameter range. The quality of the equilibrium for
+a variable but fixed temperature T changes with the parameter w
+(vertical velocity), i.e., switching from a damped oscillation (sta-
+ble equilibrium) to an undamped oscillation (unstable equilibrium
+with attracting limit cycle) and back to the damped regime. Thus,
+we find two supercritical Hopf bifurcations. The bifurcation points
+in the phase space can be approximated by functions w(T). Using
+a numerical approach, we derive the periods of the limit cycles in
+the relevant regime. The range of periods is quite large, producing
+values between some hundreds of seconds up to several ten thou-
+sands of seconds, depending on the environmental conditions. We
+find a scaling behavior of the bifurcations in terms of the sedimen-
+tation parameter F. Using some approximations and properties of
+the Jacobi matrix, there is a scaling with the square root of F, which
+canbecorroboratedbythenumericalinvestigations.Finally,wefind
+an unexpected scaling property for the periods of the limit cycles.
+Using empirical scaling functions, the periods of limit cycles can be
+mapped onto a single function, using a reduced temperature scaled
+by a reference temperature Tref = 210K. The origin of this scaling
+property is still open.
+We compare the qualitative results of the model (i.e., equilib-
+rium states and limit cycle values) with real measurements from
+aircraft. The model results agree very well with the measurements,
+placed in the correct region of the parameter space. Hence, we con-
+clude that our very simplified model seems to be able to represent
+the main features of ice clouds.
+VII. CONCLUSION AND OUTLOOK
+We have seen that even a quite simplified ice cloud model as
+a 3D dynamical system can produce realistic cloud states. However,
+the model is simple enough for theoretical analysis of the general
+behavior and even for determining important processes and their
+impact on the time evolution of the system. For instance, we clearly
+see the importance of the sedimentation as a sink process for the
+whole system, leading to oscillating behavior. The model might be
+used for several applications and estimations. For instance, we can
+estimate the expected values of cloud variables for a certain regime
+of environmental conditions; this might guide the interpretation
+of measurements or even help for planning measurements in the
+upper troposphere, in terms of what cloud regimes we would have
+to expect. The model can also help to constrain the radiative prop-
+erties of ice clouds. From values of equilibrium states and potential
+limit cycles, we could derive estimations of possible optical proper-
+ties or even robust estimates for the expected radiative impact. The
+simplest approach would be the calculation of optical depths from
+the occurring values, similar to former studies.51,52
+Also,furtherreductionseemstobeanoption.Sincetheanalysis
+showed that the main dynamics take place on a quasi 2D manifold
+(the contraction in one direction is strong), the resulting behavior
+might be emulated by a suitable nonlinear oscillator, e.g., a Stu-
+art–Landau oscillator as a normal form of Hopf bifurcations45
+with
+parameters as derived from the analysis, i.e., prescribing periods
+from the limit cycle calculations; here, the scaling properties would
+be very useful. This might result into a reduced order model of
+ice clouds for coarse resolution models, avoiding, e.g., the param-
+eterization of nucleation processes, which requires quite small time
+steps.
+Beyond the “simple” box model approach of this ice cloud
+model,wecouldthinkofsomeconceptualextensions.Theicemodel
+might be coupled with transport equations or even with mixing
+terms, similarly to former work,53
+to a spatial extension, leading to
+reaction–diffusionequations,whichcanbeanalyzedintermsofpos-
+sible structure formation such as, e.g., Turing instabilities.54
+Since
+the model is well characterized as an ODE system, linearization or
+even the use of weakly nonlinear theory might lead to conceptual
+understanding of potential emergence of structures.
+Our bulk approach turned out to be very robust. However,
+it is not really clear if the same kind of robust physical behavior
+can be observed in conceptually different models, as, e.g., based on
+the full Boltzmann-type evolution equation. Qualitative compari-
+son of these different model approaches would also lead to a better
+understanding of the representation of cloud structures on different
+scales.
+Finally, we can think of a robust application of the derived
+properties of the model for the real world. The values of equilib-
+rium states as well as the spread of the cloud variables in the limit
+cycles could be used as good estimates for measurements at differ-
+ent platforms. The periods of the limit cycles might translate into
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-19
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+spatial pattern in clouds as might be seen from satellites, e.g., from
+the new EarthCare products dedicated for cloud research. Thus, the
+theoretical investigations of a reduced order model might help to
+understand real measurements and properties of ice clouds.
+ACKNOWLEDGMENTS
+We thank the reviewers for important comments, which lead
+to a significant improvement of the manuscript. We acknowledge
+support by the Deutsche Forschungsgemeinschaft (DFG) within the
+Transregional Collaborative Research Centre TRR301 TPChange
+(Project-ID 428312742), project B7. We thank Martina Krämer for
+some discussions about ice crystal measurements. We thank Philipp
+Reutter for help with plotting. We thank Friederike Schmid for the
+helpfulcommentaboutderivingscalinglawsfromlogarithmicplots.
+P.S. thanks Eberhard Bodenschatz for his hospitality at MPI-DS,
+where parts of this article were written.
+AUTHOR DECLARATIONS
+Conflict of Interest
+The authors have no conflicts to disclose.
+Author Contributions
+P.S. developed the simple model, H.B. and P.S. carried out the
+mathematical analysis, H.B. carried out the comparison with mea-
+surements. Both authors wrote together the manuscript.
+Hannah Bergner: Conceptualization (equal); Investigation (equal);
+Writing – original draft (equal). Peter Spichtinger: Conceptualiza-
+tion (equal); Methodology (equal); Writing – original draft (equal).
+DATA AVAILABILITY
+The data produced by the respective model that support the
+findings of this study are partly available within the article and also
+available from the corresponding author upon reasonable request.
+In addition, the data for model comparison are openly available in
+B2SHARE at https://doi.org/10.34730/266ca2a41f4946ff97d874bfa
+458254c, Ref. 55.
+APPENDIX A: DERIVATION OF THE MODEL
+EQUATIONS
+1. Moment equations
+We start with the general Boltzmann equation for the mass dis-
+tribution f(m,t,x); in the following we will suppress the dependency
+on (t,x) in the notation. The equation
+∂ρf
+∂t
++ ∇ · (ρfu) +
+∂(ρfg)
+∂m
+= ρh (A1)
+is equipped with a 3D fluid velocity v and a terminal velocity of par-
+ticles vt relative to the center of gravity of the flow, i.e., u = v − ezvt,
+thus we find
+∂ρf
+∂t
++ ∇ · (ρfv) −
+∂
+∂z
+(ρfvt) +
+∂
+∂m
+(ρfg) = ρh. (A2)
+Using the continuity equation ρt + ∇ · (ρv) = 0, we can reformu-
+late the Boltzmann equation in a more convenient form
+∂f
+∂t
++ v · ∇f +
+∂
+∂m
+(fg) =
+1
+ρ
+∂(ρfvt)
+∂z
++ h, (A3)
+wherewesetṁ = ginamoresuggestivenotation.Now,wemultiply
+the whole equation by powers of the mass coordinate mk
+, thus,
+∂
+∂t
+(mk
+f) + v · ∇(mk
+f) + mk ∂
+∂m
+(ṁf)
+=
+1
+ρ
+∂
+∂z
+ρmk
+fvt
+
++ mk
+h. (A4)
+Now, all terms are integrated over the whole mass range (0,∞). For
+the first two terms, we directly obtain the general moments, i.e.,
+Z ∞
+0
+
+∂
+∂t
+mk
+f
+
++ v · ∇ mk
+f
+
+
+dm =
+∂µk
+∂t
++ v · ∇(µk), (A5)
+in case ofconvergenceofthe integrals. Forthe growth term, wehave
+to treat different cases. First, we investigate the case k ∈ N. Then, we
+can use partial integration in order to obtain
+Z ∞
+0
+mk ∂
+∂m
+(ṁf)dm = mk
+ṁf(m)
+∞
+0
+− k
+Z ∞
+0
+mk−1
+ṁfdm. (A6)
+For the convergence of the integrals, we have to assume boundary
+conditions
+lim
+m→∞
+mα
+f(m) = 0 ∀α ∈ R+ and lim
+m→0
+ṁf(m) < ∞, (A7)
+thus, we obtain
+Z ∞
+0
+mk ∂
+∂m
+(ṁf)dm = −k
+Z ∞
+0
+mk−1
+ṁfdm. (A8)
+This is the growth and evaporation rate for all moments k ≥ 1. For
+k = 0 (i.e., in case of the number concentration), we find
+Z ∞
+0
+∂
+∂m
+(ṁf)dm = ṁf(m)
+∞
+0
+= −ṁf(0), (A9)
+which is the evaporation rate of the system. Obviously, it strongly
+depends on the distribution f and not on its moments. This inves-
+tigation is subject of future research. For the remaining two terms
+on the right-hand side (sedimentation/sources), there is no general
+simplificationpossible,wewilltreatsedimentationinAppendixA5.
+2. Nucleation for ensemble of solution droplets
+Theamountofnewlynucleatediceparticlesfromadistribution
+of solution droplets f(r) can be derived as follows. Starting with the
+probability for freezing a particle of volume V within a time interval
+1t, i.e.,
+P = 1 − exp(−JV1t), (A10)
+we determine the difference of newly nucleated particles as
+1n =
+Z ∞
+0
+f(r)P(r)dr =
+Z ∞
+0
+f(r)(1 − exp(−JV1t))dr. (A11)
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-20
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+Using an expansion in the small time interval (assuming ∂J
+∂r
+= 0), we
+obtain
+1n =
+Z ∞
+0
+f(r)P(r)dr =
+Z ∞
+0
+f(r) 1 − 1 − JV1t + O 1t2
+
+dr
+=
+Z ∞
+0
+f(r)JVdr · 1t + O 1t2
+
+= J
+4
+3
+π
+Z ∞
+0
+f(r)r3
+dr · 1t + O 1t2
+
+= J
+4
+3
+πµ3[m] · 1t + O 1t2
+
+(A12)
+and after dividing by 1t and obtaining the limit 1t → 0, we find
+dn
+dt
+= J
+4
+3
+πµ3[m], (A13)
+with the general third moment of the underlying size distribution of
+the solution droplets. As in former investigations,31
+we use a lognor-
+mal distribution for the radius of aqueous solution droplets of the
+form
+fa(r) =
+na
+√
+2π log(σr)r
+exp
+
+
+−
+1
+2
+
+
+log
+
+r
+rm
+
+log(σr)
+
+
+2
+
+
+, (A14)
+with the modal radius rm = rsol of the distribution (i.e., the modal
+radius of solution droplets). Since we do not explicitly treat the
+aerosol properties, we make the assumptions that (a) the type and
+size of the aerosol does not change and (b) the amount of nucleated
+ice crystals is always several orders smaller than the aerosol concen-
+tration na, thus na remains constant. According to the investigations
+by Spichtinger and Gierens,31
+we specify rm = rsol = 75 × 10−9
+m
+and the geometric standard deviation σr = 1.5. Using the analyti-
+cal description of general moments, we can derive the mean volume
+of a solution droplet as
+Vsol =
+4
+3
+πr3
+sol · csol, csol = exp
+
+9
+2
+logσr
+2
+
+. (A15)
+The typical mass of a freshly nucleated ice particle can be set
+to mnuc = 10−16
+kg. Finally, we can assume a typical concentra-
+tion of solution droplets in the upper troposphere in order of
+Na ∼ 300cm−3
+= 3 × 108
+m−3
+. Using the density ρ as obtained by
+the ideal gas law from temperature and pressure, we can determine
+na = Na
+ρ
+.
+Remark: For comparison with the reference values as deter-
+mined by Kärcher and Lohmann,50
+we often use an unrealistically
+highaerosolnumberconcentrationNa = 10000cm−3
+.Notethatthe
+resulting scaling of the nucleation term only marginally affects the
+nucleation events.22
+Insummary,thenucleationtermforthenumberconcentration
+can be expressed as
+Nucn =
+∂n
+∂t nucleation
+= naVsolJ. (A16)
+For the mass concentration rate Nucq, we multiply Nucn by the
+constant mass mnuc. The nucleation rate is determined22
+by
+J(s,T) = J0 exp(p1e(T)(s − p2(T))), J0 = 1016
+m−3
+s−1
+(A17)
+and polynomials
+p1(T) = a0 + a1T, p1e(T) = log(10)p1(T), (A18)
+p2(T) = as2T2
++ as1T + as0, (A19)
+with coefficients
+a0 = −50.4085, a1 = 0.9368K−1
+(A20)
+and
+as2 = −1.36989 × 10−5
+K−2
+, (A21)
+as1 = 0.00228K−1
+, as0 = 1.67469. (A22)
+3. Parameters and functions
+The ideal gas constants are given by
+Rd ≈ 287.058Jkg−1
+K−1
+, Rv ≈ 461.553Jkg−1
+K−1
+, (A23)
+the acceleration by gravity is determined as g = 9.81m/s2
+. For the
+latent heat of sublimation, we use the formulation by Murphy and
+Koop24
+L(T) = Lmol(T)/Mmol,v, (A24)
+Lmol(T) = l0 + l1T + l2T2
++ l3 exp −(T/Tl)2
+
+, (A25)
+with coefficients
+l0 = 46782.5Jmol−1
+, l1 = 35.8925Jmol−1
+K−1
+, (A26)
+l2 = −0.07414Jmol−1
+K−2
+, l3 = 541.5Jmol−1
+, (A27)
+Tl = 123.75K, (A28)
+Mmol,v = 18.01528 × 10−3
+kgmol−1
+. (A29)
+The saturation vapor pressure over hexagonal ice24
+is expressed as
+psi(T) = punit exp(b0 + b1/T + b2 log(T/Tunit) + b3T), (A30)
+with
+punit = Pa, Tunit = K (A31)
+and
+b0 = 9.550426, b1 = −5723.265K, (A32)
+b2 = 3.53068, b3 = −0.00728332K−1
+. (A33)
+The heat conduction of air37
+is given by
+KT(T) =
+aKTbK
+T + TK · 10
+cK
+T
+, (A34)
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-21
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+with coefficients
+aK = 0.002646Wm−1
+K1−bK, bK =
+3
+2
+, (A35)
+TK = 245K, cK = −12K. (A36)
+4. Growth for an ensemble of spherical ice particles
+Using the description of the mass growth rate for a single
+particle of mass m, i.e.,
+ṁ = 4πCDvfkGv(s − 1)fv, (A37)
+the averaged growth rate for the first moment, i.e., the mass concen-
+tration q = µ1[m], is then given by
+Depq =
+Z ∞
+0
+ṁf(m)dm =
+Z ∞
+0
+4πCDvfkGv(s − 1)fvf(m)dm. (A38)
+We now apply several simplifications for deriving a simplified ver-
+sion of the growth rate. We neglect the corrections for the kinetic
+regime (fk = 1) and for ventilation (fv = 1). In addition, we assume
+spherical particles, which, in turn, leads to a capacity factor C(m)
+= r = cm
+1
+3 [see Eq. (31)]. Finally, we fix the type of the mass dis-
+tribution as a lognormal distribution [see Eq. (34)], thus we can use
+the analytical description of the general moments. This leads to the
+following representation of the growth term as:
+Depq =
+Z ∞
+0
+f(m)4πCDvfkGv(s − 1)fv dm
+≈ 4πGvDv
+Z ∞
+0
+f(m)C(m)dm · (s − 1)
+= 4πGvDv cr
+−1
+9
+0 n
+2
+3 q
+1
+3 (s − 1)
+= Bqn
+2
+3 q
+1
+3 (s − 1), (A39)
+where
+Bq = 4πGvDvcr
+−1
+9
+0 , (A40)
+withGv asinEq.(50),Dv asinEq.(47),andc = 3
+q
+3
+4πρb
+asinEq.(31).
+The use of fk = 1 is motivated in Appendix A6.
+5. Sedimentation for an ensemble of particles
+For the sedimentation of the averaged quantities, we rewrite
+the sedimentation part in terms of a transport equation. We inves-
+tigate the vertical sedimentation flux of a quantity ψ (i.e., a general
+momentµk),i.e.,jψ = ρψvψ withtherespectiveverticalvelocityvψ,
+thus the advection equation can be written as
+∂(ρψ)
+∂t
+=
+∂jψ
+∂z
+. (A41)
+For the averaged variables n = µ0,q = µ1, we define the fluxes as
+jn :=
+Z ∞
+0
+ρf(m)vt(m)dm
+!
+= ρnvn, (A42)
+jq :=
+Z ∞
+0
+ρf(m)mvt(m)dm
+!
+= ρqvq (A43)
+expressed by averaged velocities
+vn =
+1
+n
+Z ∞
+0
+f(m)vt(m)dm, (A44)
+vq =
+1
+q
+Z ∞
+0
+f(m)mvt(m)dm. (A45)
+Note that from the formulation of the sedimentation as a transport
+equation, it is obvious that for positive quantities n,q in the time
+evolution, they will never take a value = 0.
+6. Approximations
+In Eq. (30), we make the approximation
+L2
+cpRvT2
+Si +
+p
+εpsi
+≈
+p
+εpsi
+, (A46)
+a short calculation shows that the first term contributes less than
+20% at the warmest temperature T = 240K, whereas for tempera-
+tures lower than 230K (respectively, 210K), the contribution is less
+than 10% (respectively, 1%).
+For the growth equation of a single ice crystal, we omit the
+kinetic correction, i.e., we set fk = 1. As can be seen in the top panel
+of Fig. 10, the kinetic correction is most active for very small ice
+crystals, and this is most relevant for modeling ice nucleation in
+cloud free air at cold temperatures with high vertical updrafts22,31
+;
+freshly nucleated ice crystals are very small (radius about 1µm)
+and the growth is dominated by the kinetic regime. The correction
+guarantees that the nucleation is not turned off too early by the ice
+crystals’ growth, reducing the supersaturation. For scenarios as in
+our “long term” simulations, the ice crystals never disappear, and
+the mean mass of ice crystals stays at larger values. Thus, the kinetic
+correction is not relevant. We evaluated our simulations afterwards,
+and we observed the largest spread in mean mass or size for limit
+cycle scenarios. However, even for the lowest temperature 190K,
+the mass was always larger than m ∼ 10−13
+kg (except for the very
+firstnucleationevent).Forhighertemperaturesthemasswasusually
+larger than m ∼ 10−12
+kg; thus even from a backward perspective,
+neglecting the kinetic correction is justified.
+In the formulation of the terminal velocity of ice crystals, we
+made the approximation
+vfinalasmbs
+1
+vfinal + asmbs
+≈ asmbs
+. (A47)
+As can be seen in the bottom panel of Fig. 10, the deviation is only
+relevant for large particles. From real measurements6
+we obtain that
+the radius of ice crystals is smaller than r ∼ 100µm, and actually
+the radius stays below r ∼ 80µm. Thus, from a measurement view-
+point, the a priori approximation is meaningful since the deviation
+is less than 25%. From the evaluation of our simulations, with the
+largest spread in the limit cycle scenarios, we find that the mean
+radiusislessthanr ∼ 67µmforsimulationsatT = 240K,andeven
+smallerforlowertemperatures.Thus,theapproximationcanalsobe
+justified from the backward perspective.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-22
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+FIG.10. Impactofkineticcorrectionfactor(toppanel),anddeviationfromcorrect
+terminal velocity (bottom panel).
+APPENDIX B: EQUILIBRIUM STATES OF THE ICE
+CLOUD MODEL
+In this section, we first show that the terms Nucq and Nucs are
+very small compared to the other terms of the ODE system close to
+an equilibrium point and can, hence, be neglected to a good approx-
+imation when determining the equilibrium points of the system.
+Then, we present the calculations for the derivation of the scalar
+function f(x) as defined in Eq. (75) whose roots are in one-to-one
+correspondence with the equilibrium points of the system.
+1. Estimates for the nucleation terms Nucq and Nucs
+near the equilibrium point
+In the following, we prove that the terms Nucq and Nucs are
+very small in the vicinity of equilibrium points of the system and
+hence, a very good approximation of the equilibrium points can be
+found while neglecting these terms.
+First, observe that
+n
+2
+3 q
+1
+3 = nm̄
+1
+3 , n
+1
+3 q
+2
+3 = nm̄
+2
+3 , (B1)
+where m̄ = q
+n
+denotes the mean mass of ice crystals. We are inter-
+ested in the supersaturated regime where s > 1 and thus Evapn = 0.
+Since dn
+dt
+= 0 at an equilibrium point, we get
+An exp(p1e(s − p2)) = FCnnm̄
+2
+3 = r
+− 2
+3
+0 FCqnm̄
+2
+3 (B2)
+from Eq. (4), where we also used Cn = r
+− 2
+3
+0 Cq. Therefore, we further
+have
+Nucq = mnucAn exp(p1e(s − p2)) (B3)
+= mnucr
+−2
+3
+0 FCqnm̄
+2
+3 = −
+mnucr
+−2
+3
+0
+m̄
+Sedq, (B4)
+since Nucq = mnucNucn with mnuc = 10−16
+kg as the typical mass of
+a newly nucleated ice crystal. Using Eq. (2), the condition of dq
+dt
+= 0
+at an equilibrium point then translates into
+0 = Depq + Nucq + Sedq (B5)
+= Depq + (1 − δ)Sedq, (B6)
+for δ :=
+mnucr
+− 2
+3
+0
+m̄
+, and since r
+−2
+3
+0 < 1 (because r0 > 1 by definition),
+weseethatwecanneglectthetermNucq uptoagoodapproximation
+if the mean mass m̄ at the equilibrium point satisfies m̄  mnuc.
+Moreover, using the above and the definitions of Nucs, Deps as
+in Eqs. (45) and (53), we also get
+Nucs = −
+p
+εpsi
+Nucq =
+p
+εpsi
+δ · Sedq (B7)
+= −
+p
+εpsi
+δ
+1 − δ
+Depq =
+δ
+1 − δ
+Deps. (B8)
+The condition of ds
+dt
+= 0 at the equilibrium point then translates by
+Eq. (3) into
+0 = Cool + Nucs + Deps (B9)
+= Cool +
+
+δ
+1 − δ
++ 1
+
+Deps (B10)
+= Cool +
+1
+1 − δ
+Deps, (B11)
+anditturnsoutthatalsothetermNucs canbeneglecteduptoagood
+approximation if m̄  mnuc (and thus δ  1) at the equilibrium
+point.
+It remains to show that the mean mass m̄ satisfies m̄  mnuc
+near an arbitrary equilibrium state of the system. This can be done
+by distinguishing two cases for the value of s ≥ 1 at the equilibrium
+point, first, the case where s is close to 1, and second, the case where
+s is larger.
+First, assume s ≤ 1.35 at the equilibrium point. Since dn
+dt
+= 0
+and we are in the supersaturated regime with s ≥ 1, we have at the
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-23
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+equilibrium point
+Dw ≤ Dws = Cool = −(Nucs + Deps) (B12)
+=
+p
+εpsi
+(Nucq + Depq) = −
+p
+εpsi
+Sedq (B13)
+=
+p
+εpsi
+FCqnm̄
+5
+3 = −
+p
+εpsi
+m̄r
+2
+3
+0 Sedn (B14)
+=
+p
+εpsi
+m̄r
+2
+3
+0 Nucn (B15)
+=
+p
+εpsi
+m̄r
+2
+3
+0 An exp(p1e(s − p2)) (B16)
+≤
+p
+εpsi
+m̄r
+2
+3
+0 An exp(p1e(1.35 − p2)), (B17)
+wherewealsouseNucq + Depq = −Sedq andSedn = −Nucn dueto
+dq
+dt
+= 0 and dn
+dt
+= 0, and in s ≤ 1.35 in the last step. Therefore, weget
+thefollowingestimateforthemeanmassm̄attheequilibriumpoint:
+m̄ ≥
+Dw
+An
+εpsi
+p
+r
+−2
+3
+0 exp(−p1e(1.35 − p2)) (B18)
+≥
+Dwmin
+An
+εpsi
+p
+r
+−2
+3
+0 exp(−p1e(1.35 − p2)), (B19)
+where wmin = 0.0005ms−1
+is the minimal vertical velocity we con-
+sider (cf., Table I). Calculating the terms in Eq. (B19) for different
+temperatures/pressures yields that its minimal possible values for
+the ranges as in Table I is larger that 10−2
+kg, and thus, we get for
+the mean mass at the equilibrium point
+m̄ ≥ 10−2
+kg  mnuc = 10−16
+kg (B20)
+as desired. (Note here, that this first case with the assumption of
+s ≤ 1.35 at the equilibrium point yields physically unrealistically
+heavy/large ice crystals, and it becomes clear from further investiga-
+tion in Sec. IVA that the case with s ≤ 1.35 at an equilibrium point
+does not appear.)
+Second, we now consider the case of an equilibrium point with
+s ≥ 1.35. From dq
+dt
+= 0, Sedq < 0, and F ≤ 1, we get
+Bqnm̄
+1
+3 (s − 1) = Depq = −(1 − δ)Sedq (B21)
+≤ −Sedq = FCqnm̄
+5
+3 ≤ Cqnm̄
+5
+3 , (B22)
+and hence, using s ≥ 1.35,
+Bq(1.35 − 1) ≤ Bq(s − 1) ≤ Cqm̄
+4
+3 (B23)
+⇔ m̄ ≥
+
+Bq
+Cq
+(1.35 − 1)
+3
+4
+. (B24)
+A calculation of this with the explicit forms for Bq, Cq for different
+temperatures/pressures in the ranges as specified in Table I, then
+results in
+m̄ ≥
+
+Bq
+Cq
+(1.35 − 1)
+3
+4
+≥ 10−12
+kg  mnuc = 10−16
+kg. (B25)
+Consequently, we indeed have m̄  mnuc for the mean mass
+m̄ of ice crystals at an arbitrary equilibrium point and by the above
+argumentsthisimpliesthatwemayneglectthetermsNucq andNucs
+up to a very good approximation when determining the equilibrium
+points of the system.
+2. Derivation of the scalar function for the equilibrium
+states
+We now derive the scalar function f(x) as defined in Eq. (75)
+whose roots are in one-to-one correspondence with the equilibrium
+points of the system. In fact, the roots of f(x) are precisely the values
+s0 of the supersaturation at an equilibrium point and the values of
+the number and mass concentrations at the equilibrium point can
+be uniquely calculated from s0.
+Weusetheconditionfortheequilibriumstate(i.e., dψ
+dt
+= 0)for
+deriving expressions for n and m̄. We start with the equation for n,
+An exp(p1e(s − p2)) − FCnn
+1
+3 q
+2
+3 = 0 (B26)
+⇔ An exp(p1e(s − p2)) = FCnnm̄
+2
+3 (B27)
+⇔ n =
+An
+FCn
+exp(p1e(s − p2))m̄− 2
+3 . (B28)
+Then, we find an expression for m̄ by dividing Eq. (73) by q 6= 0,
+Bqn
+2
+3 q−2
+3 (s − 1) − FCqn−2
+3 q
+2
+3 = 0 (B29)
+⇔ Bqm̄−2
+3 (s − 1) = FCqm̄
+2
+3 (B30)
+⇔ Bq(s − 1) = FCqm̄
+4
+3 (B31)
+⇔ m̄
+4
+3 =
+Bq
+FCq
+(s − 1) (B32)
+⇔ m̄ =
+
+Bq
+FCq
+(s − 1)
+3
+4
+. (B33)
+This produces the equations for the values of n,q at the equilibrium
+state
+n =
+An
+FCn
+exp(p1e(s − p2))
+
+Bq
+FCq
+(s − 1)
+−1
+2
+(B34)
+and
+q = nm̄ =
+An
+FCn
+exp(p1e(s − p2))
+
+Bq
+FCq
+(s − 1)
+1
+4
+. (B35)
+The value of the saturation ratio at the equilibrium state can be
+obtained by
+Dws − Bsnm̄
+1
+3 (s − 1) = 0 ⇔ (B36)
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-24
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+Dws − Bs
+An
+FCn
+exp(p1e(s − p2))
+
+Bq
+FCq
+(s − 1)
+−1
+4
+(s − 1) = 0.
+(B37)
+Thislastequationisusedforthedefinitionofthescalarfunctionf(x)
+for x = s, i.e.,
+f(x) = ax −
+b(x − 1)exp(c(x − x0))
+4
+p
+d(x − 1)
+, (B38)
+with the coefficients
+a = Dw, b = Bs
+An
+FCn
+, c = p1e, d =
+Bq
+FCq
+, x0 = p2. (B39)
+Rearranging the equation and the coefficients leads to the definition
+of f(x) as in Eq. (75) and if s0 is the supersaturation at any equilib-
+riumpointoftheODEsystem,itsatisfiesf(s0) = 0.Viceversa,given
+an arbitrary root s0 of the function f(x), we set the number con-
+centration n0 and mass concentration q0 to be given by Eqs. (B34)
+and (B35) for s = s0; then, x = (n0,q0,s0)T
+is an equilibrium point
+of the ODE system, which can be verified by a short calculation.
+APPENDIX C: ESTIMATES FOR THE CONTRACTION
+In the following, we show that the function h(x) as defined in
+Eq. (85) satisfies
+h([smin,smax]) ⊂ [smin,smax] (C1)
+forsmin = 1.37andsmax = 1.59.First,weestimatetherangesoffunc-
+tions σ and p1e, respectively. For the relevant ranges of temperature
+(190 ≤ T ≤ 240K) and pressure (200 ≤ p ≤ 300hPa), we find
+σ1 ≤ σ ≤ σ2, π1 ≤
+1
+p1e(T)
+≤ π2 (C2)
+for parameters
+σ1 = 1.412801, σ2 = 1.583606, (C3)
+π1 = 0.002489, π2 = 0.003404. (C4)
+Next, we would like to estimate the term
+γ1 ≤
+1
+p1e
+
+log(w) +
+3
+4
+log(F)
+
+≤ γ2 (C5)
+by lower and upper bounds γ1, γ2 for the relevant ranges
+0.01 = Fmin ≤ F ≤ Fmax = 1, (C6)
+0.0005ms−1
+= wmin ≤ w ≤ wmax = 2ms−1
+. (C7)
+Therefore, we set
+γ2 = 0.002360 ≥ π2
+
+log(wmax) +
+3
+4
+log(Fmax)
+
+, (C8)
+γ1 = −0.037631 ≤ π2
+
+log(wmin) +
+3
+4
+log(Fmin)
+
+, (C9)
+which then satisfy Eq. (C5). Thus, we find the estimation
+1.375170 = σ1 + γ1 ≤ σ +
+1
+p1e
+
+log(w) +
+3
+4
+log(F)
+
+≤ σ2 + γ2 = 1.585966, (C10)
+and hence, get
+h(x) = κ0 +
+1
+p1e
+log
+x
+(x − 1)
+3
+4
+!
+(C11)
+for some (variable) κ0 ∈ [1.375170,1.585966]. Let us now specify
+the following interval:
+[smin,smax] with smin = 1.37, smax = 1.59. (C12)
+Calculating all possible values of log
+
+x
+(x−1)
+3
+4
+
+on the interval
+[smin,smax], we obtain
+0.002139 ≤
+1
+p1e
+log
+x
+(x − 1)
+3
+4
+!
+≤ 0.003670 (C13)
+such that
+h([smin,smax]) ⊂ [1.375170,1.585966] + [0.002139,0.003670]
+= [1.377309,1.589636] ⊂ [smin,smax]. (C14)
+APPENDIX D: FULL EXAMPLE SIMULATIONS
+We show all variables for the example simulations in Sec. IVA,
+i.e., for T = 225K, p = 300hPa, F = 1, in Figs. 11, 12, and 13.
+FIG. 11. Examples of solutions for w = 0.01ms−1
+at T = 225K, p = 300hPa, and F = 1. Left: number concentration, middle: mass concentration, right: saturation ratio,
+red line; black lines indicate the equilibrium values.
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-25
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+FIG. 12. Examples of solutions for w = 0.10ms−1
+at T = 225K, p = 300hPa, and F = 1. Left: number concentration, middle: mass concentration, right: saturation ratio,
+red line; black lines indicate the equilibrium values.
+FIG. 13. Examples of solutions for w = 1.00ms−1
+at T = 225K, p = 300hPa, and F = 1. Left: number concentration, middle: mass concentration, right: saturation ratio,
+red line; black lines indicate the equilibrium values.
+REFERENCES
+1
+C. J. Stubenrauch, A. G. Feofilov, S. E. Protopapadaki, and R. Armante, “Cloud
+climatologies from the infrared sounders AIRS and IASI: Strengths and applica-
+tions,” Atmos. Chem. Phys. 17, 13625–13644 (2017).
+2
+P. Gallo, K. Amann-Winkel, C. A. Angell, M. A. Anisimov, F. Caupin, C.
+Chakravarty, E. Lascaris, T. Loerting, A. Z. Panagiotopoulos, J. Russo, J. A. Sell-
+berg, H. E. Stanley, H. Tanaka, C. Vega, L. Xu, and L. G. M. Pettersson, “Water: A
+tale of two liquids,” Chem. Rev. 116, 7463–7500 (2016).
+3
+P.Gallo,T.Loerting,andF.Sciortino,“Supercooledwater:Apolymorphicliquid
+with a cornucopia of behaviors,” J. Chem. Phys. 151, 210401 (2019).
+4
+Y. Zhang, A. Macke, and F. Albers, “Effect of crystal size spectrum and crystal
+shape on stratiform cirrus radiative forcing,” Atmos. Res. 52, 59–75 (1999).
+5
+T. Chen, W. Rossow, and Y. Zhang, “Radiative effects of cloud-type variations,”
+J. Clim. 13, 264–286 (2000).
+6
+M. Krämer, C. Rolf, N. Spelten, A. Afchine, D. Fahey, E. Jensen, S. Khaykin, T.
+Kuhn, P. Lawson, A. Lykov, L. L. Pan, M. Riese, F. Stroh, T. Thornberry, V. Wolf,
+S. Woods, P. Spichtinger, J. Quaas, and O. Sourdeval, “A microphysics guide to
+cirrus—Part II: Climatologies of clouds and humidity from observations,” Atmos.
+Chem. Phys. Discuss. 20, 12569–12608 (2020).
+7
+Q.FuandK.Liou,“Parameterizationoftheradiativepropertiesofcirrusclouds,”
+J. Atmos. Sci. 50, 2008–2025 (1993).
+8
+M. Krämer, C. Rolf, A. Luebke, A. Afchine, N. Spelten, A. Costa, J. Meyer,
+M. Zoeger, J. Smith, R. L. Herman, B. Buchholz, V. Ebert, D. Baumgardner,
+S. Borrmann, M. Klingebiel, and L. Avallone, “A microphysics guide to cirrus
+clouds—Part 1: Cirrus types,” Atmos. Chem. Phys. 16, 3463–3483 (2016).
+9
+H. Wernli, M. Boettcher, H. Joos, A. K. Miltenberger, and P. Spichtinger,
+“A trajectory-based classification of era-interim ice clouds in the region
+of the north atlantic storm track,” Geophys. Res. Lett. 43, 6657–6664,
+https://doi.org/10.1002/2016GL068922 (2016).
+10
+V. I. Khvorostyanov, “Mesoscale processes of cloud formation, cloud-radiation
+interaction, and their modelling with explicit cloud microphysics,” Atmos. Res.
+39, 1–67 (1995).
+11
+A. P. Khain, K. D. Beheng, A. Heymsfield, A. Korolev, S. O. Krichak, Z. Levin,
+M. Pinsky, V. Phillips, T. Prabhakaran, A. Teller, S. C. van den Heever, and
+J. I. Yano, “Representation of microphysical processes in cloud-resolving mod-
+els: Spectral (bin) microphysics versus bulk parameterization,” Rev. Geophys. 53,
+247–322, https://doi.org/10.1002/2014RG000468 (2015).
+12
+T. Hauf, “Microphysical kinetics in phase space: The warm rain process,”
+Atmos. Res. 29, 55–84 (1993).
+13
+U. Wacker, “Structural stability in cloud physics using parameterized micro-
+physics,” Beitr. Phys. Atmosph. 65, 231–242 (1992).
+14
+U. Wacker, “Competition of precipitation particles in a model with parameter-
+ized cloud particles,” J. Atmos. Sci. 52, 2577–2589 (1995).
+15
+U. Wacker, “Nonlinear effects in a conceptual multilayer cloud model,”
+Nonlinear Process. Geophys. 13, 99–107 (2006).
+16
+I. Koren and G. Feingold, “Aerosol–cloud–precipitation system as a predator-
+prey problem,” Proc. Natl. Acad. Sci. U.S.A. 108, 12227–12232 (2011).
+17
+G. Feingold and I. Koren, “A model of coupled oscillators applied to the
+aerosol–cloud–precipitationsystem,”NonlinearProcess.Geophys.20,1011–1021
+(2013).
+18
+E. J. Spreitzer, M. P. Marschalik, and P. Spichtinger, “Subvisible cir-
+rus clouds—A dynamical system approach,” Nonlinear Process. Geophys. 24,
+307–328 (2017).
+19
+W. Walter, Ordinary Differential Equations, Graduate Texts in Mathematics
+Vol. 182 (Springer Science & Business Media, 1998), pp. XI,384.
+20
+M. Hanke and N. Porz, “Unique solvability of a system of ordinary differen-
+tial equations modeling a warm cloud parcel,” SIAM J. Appl. Math. 80, 706–724
+(2020).
+21
+T. Koop, B. Luo, A. Tsias, and T. Peter, “Water activity as the determinant for
+homogeneous ice nucleation in aqueous solutions,” Nature 406, 611–614 (2000).
+22
+P. Spichtinger, P. Marschalik, and M. Baumgartner, “Impact of formulations
+of the homogeneous nucleation rate on ice nucleation events in cirrus,” Atmos.
+Chem. Phys. 23, 2035–2060 (2023).
+23
+D. Kondepudi and I. Prigogine, Modern Thermodynamics: From Heat Engines
+to Dissipative Structures, 2nd ed. (John Wiley & Sons, 2014), p. 560.
+24
+D. M. Murphy and T. Koop, “Review of the vapour pressure of ice and
+supercooled water for atmospheric applications,” Q. J. R. Meterorol. Soc. 131,
+1539–1565 (2005).
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-26
+© Author(s) 2026
+08 June 2026 15:10:09Chaos ARTICLE pubs.aip.org/aip/cha
+25
+J. Rosemeier, M. Baumgartner, and P. Spichtinger, “Intercomparison of warm-
+rain bulk microphysics schemes using asymptotics,” Math. Clim. Weather Fore-
+cast. 4, 104–124 (2018).
+26
+K. G. Libbrecht, “The physics of snow crystals,” Rep. Prog. Phys. 68, 855
+(2005).
+27
+M. P. Bailey and J. Hallett, “A comprehensive habit diagram for atmospheric
+ice crystals: Confirmation from the laboratory, AIRS II, and other field studies,”
+J. Atmos. Sci. 66, 2888–2899 (2009).
+28
+L. Grulich, R. Weigel, A. Hildebrandt, M. Wand, and P. Spichtinger,
+“Automatic shape detection of ice crystals,” J. Comput. Sci. 54, 101429
+(2021).
+29
+M. Baumgartner and P. Spichtinger, “Local interactions by diffusion between
+mixed-phase hydrometeors: Insights from model simulations,” Math. Clim.
+Weather Forecast. 3, 64 (2017).
+30
+A. Heymsfield and J. Iaquinta, “Cirrus crystal terminal velocities,” J. Atmos. Sci.
+57, 916–938 (2000).
+31
+P. Spichtinger and K. M. Gierens, “Modelling of cirrus clouds—Part
+1A: Model description and validation,” Atmos. Chem. Phys. 9, 685–706
+(2009).
+32
+F.Schröder, B. Kärcher, C.Duroure, J.Ström, A. Petzold,J.-F.Gayet, B.Strauss,
+P. Wendling, and S. Borrmann, “On the transition of contrails into cirrus clouds,”
+J. Atmos. Sci. 57, 464–480 (2000).
+33
+H. Köhler, “The nucleus in and the growth of hygroscopic droplets,” Trans.
+Faraday Soc. 32, 1152–1161 (1936).
+34
+M. Baumgartner and P. Spichtinger, “Diffusional growth of cloud particles:
+Existence and uniqueness of solutions,” Theor. Comput. Fluid Dyn. 32, 47–62
+(2018).
+35
+D. Lamb and J. Verlinde, Physics and Chemistry of Clouds (Cambridge Univer-
+sity Press, 2011).
+36
+W. Hall and H. Pruppacher, “Survival of ice particles falling from cirrus clouds
+in subsaturated air,” J. Atmos. Sci. 33, 1995–2006 (1976).
+37
+J. Dixon, The Shock Absorber Handbook (Wiley, 2007), p. 432.
+38
+K. Gierens and S. Bretl, “Analytical treatment of ice sublimation and test of
+sublimation parameterisations in two-moment ice microphysics models,” Atmos.
+Chem. Phys. 9, 7481–7490 (2009).
+39
+H. R. Pruppacher and J. D. Klett, Microphysics of Clouds and Precipitation,
+Atmospheric and Oceanographic Sciences Library Vol. 18 (Kluwer Academic
+Publishers, Dordrecht, 2010).
+40
+P. Spichtinger and D. J. Cziczo, “Impact of heterogeneous ice nuclei on
+homogeneous freezing events in cirrus clouds,” J. Geophys. Res. 115, D14208,
+https://doi.org/10.1029/2009jd012168 (2010).
+41
+J. E. Kay, M. Baker, and D. Hegg, “Microphysical and dynamical controls
+on cirrus cloud optical depth distributions,” J. Geophys. Res. 111, D24205,
+https://doi.org/10.1029/2005JD006916 (2006).
+42
+M. Kajikawa and A. Heymsfield, “Aggregation of ice crystals in cirrus,”
+J. Atmos. Sci. 46, 3108–3121 (1989).
+43
+E. Kienast-Sjögren, P. Spichtinger, and K. Gierens, “Formulation and test of
+an ice aggregation scheme for two-moment bulk microphysics schemes,” Atmos.
+Chem. Phys. 13, 9021–9037 (2013).
+44
+C. R. Harris, K. J. Millman, S. J. van der Walt, R. Gommers, P. Virtanen, D.
+Cournapeau, E. Wieser, J. Taylor, S. Berg, N. J. Smith, R. Kern, M. Picus, S. Hoyer,
+M. H. van Kerkwijk, M. Brett, A. Haldane, J. F. del Río, M. Wiebe, P. Peterson, P.
+Gérard-Marchant, K. Sheppard, T. Reddy, W. Weckesser, H. Abbasi, C. Gohlke,
+and T. E. Oliphant, “Array programming with NumPy,” Nature 585, 357–362
+(2020).
+45
+Y. A. Kuznetsov, Elements of Applied Bifurcation Theory, 2nd ed., Applied
+Mathematical Sciences Vol. 112 (Springer-Verlag, New York, 1998), p. xx+591.
+46
+M. Golubitsky and D. G. Schaeffer, Singularities and Groups in Bifurcation
+Theory (Springer, New York, 1985).
+47
+J. Guckenheimer and P. Holmes, Nonlinear Oscillations, Dynamical Systems,
+and Bifurcations of Vector Fields, 7th ed., Applied Mathematical Sciences No. 42
+(Springer, New York, 2002), p. XVI, 462.
+48
+P. Spichtinger and M. Krämer, “Tropical tropopause ice clouds: A dynamic
+approach to the mystery of low crystal numbers,” Atmos. Chem. Phys. 13,
+9801–9818 (2013).
+49
+G. Pruessner, Self-Organised Criticality: Theory, Models and Characterisation
+(Cambridge University Press, 2012).
+50
+B. Kärcher and U. Lohmann, “A parameterization of cirrus cloud formation:
+Homogeneous freezing of supercooled aerosols,” J. Geophys. Res.: Atmos. 107,
+AAC 4-1–AAC 4-10, https://doi.org/10.1029/2001JD000470 (2002).
+51
+H. Joos, P. Spichtinger, and U. Lohmann, “Orographic cirrus in a future
+climate,” Atmos. Chem. Phys. 9, 7825–7845 (2009).
+52
+H. Joos, P. Spichtinger, P. Reutter, and F. Fusina, “Influence of heteroge-
+neous freezing on the microphysical and radiative properties of orographic cirrus
+clouds,” Atmos. Chem. Phys. 14, 6835–6852 (2014).
+53
+J. Rosemeier and P. Spichtinger, “Pattern formation in clouds via turing insta-
+bilities,” Math. Clim. Weather Forecast. 6, 75–96 (2020).
+54
+A.Turing,“Thechemicalbasisofmorphogenesis,”Philos.Trans.R.Soc.,B237,
+37–72 (1952).
+55
+M. Krämer, C. Rolf, and N. Spelten (2020). “The Cirrus Guide II In-situ Air-
+craft,” FZ-Juelich B2SHARE. https://doi.org/10.34730/266ca2a41f4946ff97d874b
+fa458254c
+Chaos 36, 043115 (2026); doi: 10.1063/5.0297531 36, 043115-27
+© Author(s) 2026
+08 June 2026 15:10:09

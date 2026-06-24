@@ -1,0 +1,10 @@
+[data-sitename="chaos:aninterdisciplinaryjournalofnonlinearscience"] .hero-row {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.50)), url('/ImageLibrary/Publications/cha/cha-hero.jpg');
+}
+.widget-instance-cha_home-self-serve-content-submit-button{
+	border:none !important;
+}
+.widget-instance-cha_home-self-serve-content-socials{
+	border:none !important;
+}
+

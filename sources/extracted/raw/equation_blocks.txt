@@ -1,0 +1,6559 @@
+[305] id=None class=inline-formula no-formula-id math_count=1
+⁠ T t = 273.16 K ⁠
+
+[306] id=None class=mathFormula math_count=0
+
+
+[307] id=None class=inline-formula no-formula-id math_count=1
+T ∼ 235 K ⁠
+
+[308] id=None class=mathFormula math_count=0
+
+
+[309] id=None class=inline-formula no-formula-id math_count=1
+T ∼ 235 K ⁠
+
+[310] id=None class=mathFormula math_count=0
+
+
+[315] id=None class=inline-formula no-formula-id math_count=1
+T > 235 K ⁠
+
+[316] id=None class=mathFormula math_count=0
+
+
+[323] id=None class=inline-formula no-formula-id math_count=1
+⁠ T < 240 K ⁠
+
+[324] id=None class=mathFormula math_count=0
+
+
+[337] id=None class=inline-formula no-formula-id math_count=1
+μ k
+
+[338] id=None class=mathFormula math_count=0
+
+
+[339] id=None class=inline-formula no-formula-id math_count=1
+k
+
+[340] id=None class=mathFormula math_count=0
+
+
+[341] id=None class=inline-formula no-formula-id math_count=1
+k = 0 , 1 ⁠
+
+[342] id=None class=mathFormula math_count=0
+
+
+[343] id=None class=inline-formula no-formula-id math_count=1
+0
+
+[344] id=None class=mathFormula math_count=0
+
+
+[345] id=None class=inline-formula no-formula-id math_count=1
+μ 0 = n ⁠
+
+[346] id=None class=mathFormula math_count=0
+
+
+[347] id=None class=inline-formula no-formula-id math_count=1
+1
+
+[348] id=None class=mathFormula math_count=0
+
+
+[349] id=None class=inline-formula no-formula-id math_count=1
+μ 1 = q ⁠
+
+[350] id=None class=mathFormula math_count=0
+
+
+[354] id=None class=inline-formula no-formula-id math_count=1
+T < 240 K
+
+[355] id=None class=mathFormula math_count=0
+
+
+[356] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[357] id=None class=mathFormula math_count=0
+
+
+[366] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[367] id=None class=mathFormula math_count=0
+
+
+[368] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[369] id=None class=mathFormula math_count=0
+
+
+[370] id=None class=inline-formula no-formula-id math_count=1
+2
+
+[371] id=None class=mathFormula math_count=0
+
+
+[372] id=None class=inline-formula no-formula-id math_count=1
+s = S i
+
+[373] id=None class=mathFormula math_count=0
+
+
+[374] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[375] id=None class=mathFormula math_count=0
+
+
+[376] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[377] id=None class=mathFormula math_count=0
+
+
+[378] id=None class=inline-formula no-formula-id math_count=1
+2
+
+[379] id=None class=mathFormula math_count=0
+
+
+[380] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[381] id=None class=mathFormula math_count=0
+
+
+[385] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[386] id=None class=mathFormula math_count=0
+
+
+[387] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[388] id=None class=mathFormula math_count=0
+
+
+[389] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[390] id=None class=mathFormula math_count=0
+
+
+[393] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[394] id=None class=mathFormula math_count=0
+
+
+[395] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[396] id=None class=mathFormula math_count=0
+
+
+[397] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[398] id=None class=mathFormula math_count=0
+
+
+[400] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[401] id=None class=mathFormula math_count=0
+
+
+[402] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[403] id=None class=mathFormula math_count=0
+
+
+[404] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[405] id=None class=mathFormula math_count=0
+
+
+[406] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[407] id=None class=mathFormula math_count=0
+
+
+[408] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[409] id=None class=mathFormula math_count=0
+
+
+[410] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[411] id=None class=mathFormula math_count=0
+
+
+[412] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[413] id=None class=mathFormula math_count=0
+
+
+[414] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[415] id=None class=mathFormula math_count=0
+
+
+[416] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[417] id=None class=mathFormula math_count=0
+
+
+[418] id=None class=inline-formula no-formula-id math_count=1
+Nuc n ⁠
+
+[419] id=None class=mathFormula math_count=0
+
+
+[420] id=None class=inline-formula no-formula-id math_count=1
+Nuc q ⁠
+
+[421] id=None class=mathFormula math_count=0
+
+
+[422] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[423] id=None class=mathFormula math_count=0
+
+
+[425] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[426] id=None class=mathFormula math_count=0
+
+
+[427] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[428] id=None class=mathFormula math_count=0
+
+
+[429] id=None class=inline-formula no-formula-id math_count=1
+Sed n
+
+[430] id=None class=mathFormula math_count=0
+
+
+[431] id=None class=inline-formula no-formula-id math_count=1
+Sed q
+
+[432] id=None class=mathFormula math_count=0
+
+
+[433] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[434] id=None class=mathFormula math_count=0
+
+
+[435] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[436] id=None class=mathFormula math_count=0
+
+
+[437] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[438] id=None class=mathFormula math_count=0
+
+
+[439] id=None class=inline-formula no-formula-id math_count=1
+0 < F ≤ 1
+
+[440] id=None class=mathFormula math_count=0
+
+
+[442] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[443] id=None class=mathFormula math_count=0
+
+
+[444] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[445] id=None class=mathFormula math_count=0
+
+
+[446] id=None class=inline-formula no-formula-id math_count=1
+⁠ s > 1 ⁠
+
+[447] id=None class=mathFormula math_count=0
+
+
+[448] id=None class=inline-formula no-formula-id math_count=1
+Dep q
+
+[449] id=None class=mathFormula math_count=0
+
+
+[450] id=None class=inline-formula no-formula-id math_count=1
+Evap n
+
+[451] id=None class=mathFormula math_count=0
+
+
+[452] id=None class=inline-formula no-formula-id math_count=1
+Evap n = 0
+
+[453] id=None class=mathFormula math_count=0
+
+
+[454] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[455] id=None class=mathFormula math_count=0
+
+
+[456] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[457] id=None class=mathFormula math_count=0
+
+
+[458] id=None class=inline-formula no-formula-id math_count=1
+Evap n
+
+[459] id=None class=mathFormula math_count=0
+
+
+[461] id=None class=inline-formula no-formula-id math_count=1
+Dep s ⁠
+
+[462] id=None class=mathFormula math_count=0
+
+
+[464] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[465] id=None class=mathFormula math_count=0
+
+
+[466] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[467] id=None class=mathFormula math_count=0
+
+
+[468] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[469] id=None class=mathFormula math_count=0
+
+
+[470] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[471] id=None class=mathFormula math_count=0
+
+
+[477] id=None class=formula-wrap math_count=1
+d n d t = Nuc n , + Evap n + Sed n , (1)
+
+[478] id=jumplink-d1 class=disp-formula math_count=1
+d n d t = Nuc n , + Evap n + Sed n ,
+
+[479] id=None class=mathFormula math_count=0
+
+
+[482] id=None class=formula-wrap math_count=1
+d q d t = Nuc q + Dep q + Sed q , (2)
+
+[483] id=jumplink-d2 class=disp-formula math_count=1
+d q d t = Nuc q + Dep q + Sed q ,
+
+[484] id=None class=mathFormula math_count=0
+
+
+[487] id=None class=formula-wrap math_count=1
+d s d t = Cool + Nuc s + Dep s , (3)
+
+[488] id=jumplink-d3 class=disp-formula math_count=1
+d s d t = Cool + Nuc s + Dep s ,
+
+[489] id=None class=mathFormula math_count=0
+
+
+[492] id=None class=inline-formula no-formula-id math_count=1
+d ψ d t
+
+[493] id=None class=mathFormula math_count=0
+
+
+[494] id=None class=inline-formula no-formula-id math_count=1
+ψ ⁠
+
+[495] id=None class=mathFormula math_count=0
+
+
+[501] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[502] id=None class=mathFormula math_count=0
+
+
+[503] id=None class=inline-formula no-formula-id math_count=1
+q ⁠
+
+[504] id=None class=mathFormula math_count=0
+
+
+[505] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[506] id=None class=mathFormula math_count=0
+
+
+[507] id=None class=formula-wrap math_count=1
+d n d t = A n exp ⁡ ( p 1 e ( s − p 2 ) ) + B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s ) − F C n n 1 3 q 2 3 , (4)
+
+[508] id=jumplink-d4 class=disp-formula math_count=1
+d n d t = A n exp ⁡ ( p 1 e ( s − p 2 ) ) + B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s ) − F C n n 1 3 q 2 3 ,
+
+[509] id=None class=mathFormula math_count=0
+
+
+[512] id=None class=formula-wrap math_count=1
+d q d t = A q exp ⁡ ( p 1 e ( s − p 2 ) ) + B q n 2 3 q 1 3 ( s − 1 ) − F C q n − 2 3 q 5 3 , (5)
+
+[513] id=jumplink-d5 class=disp-formula math_count=1
+d q d t = A q exp ⁡ ( p 1 e ( s − p 2 ) ) + B q n 2 3 q 1 3 ( s − 1 ) − F C q n − 2 3 q 5 3 ,
+
+[514] id=None class=mathFormula math_count=0
+
+
+[517] id=None class=formula-wrap math_count=1
+d s d t = D w s − A s exp ⁡ ( p 1 e ( s − p 2 ) ) − B s n 2 3 q 1 3 ( s − 1 ) . (6)
+
+[518] id=jumplink-d6 class=disp-formula math_count=1
+d s d t = D w s − A s exp ⁡ ( p 1 e ( s − p 2 ) ) − B s n 2 3 q 1 3 ( s − 1 ) .
+
+[519] id=None class=mathFormula math_count=0
+
+
+[522] id=None class=inline-formula no-formula-id math_count=1
+p ⁠
+
+[523] id=None class=mathFormula math_count=0
+
+
+[524] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[525] id=None class=mathFormula math_count=0
+
+
+[526] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[527] id=None class=mathFormula math_count=0
+
+
+[528] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[529] id=None class=mathFormula math_count=0
+
+
+[544] id=None class=formula-wrap math_count=1
+Nuc n = A n exp ⁡ ( p 1 e ( s − p 2 ) ) , (7)
+
+[545] id=jumplink-d7 class=disp-formula math_count=1
+Nuc n = A n exp ⁡ ( p 1 e ( s − p 2 ) ) ,
+
+[546] id=None class=mathFormula math_count=0
+
+
+[549] id=None class=formula-wrap math_count=1
+Nuq q = A q exp ⁡ ( p 1 e ( s − p 2 ) ) , (8)
+
+[550] id=jumplink-d8 class=disp-formula math_count=1
+Nuq q = A q exp ⁡ ( p 1 e ( s − p 2 ) ) ,
+
+[551] id=None class=mathFormula math_count=0
+
+
+[554] id=None class=formula-wrap math_count=1
+Nuc s = − A s exp ⁡ ( p 1 e ( s − p 2 ) ) , (9)
+
+[555] id=jumplink-d9 class=disp-formula math_count=1
+Nuc s = − A s exp ⁡ ( p 1 e ( s − p 2 ) ) ,
+
+[556] id=None class=mathFormula math_count=0
+
+
+[559] id=None class=inline-formula no-formula-id math_count=1
+A n
+
+[560] id=None class=mathFormula math_count=0
+
+
+[561] id=None class=inline-formula no-formula-id math_count=1
+A q
+
+[562] id=None class=mathFormula math_count=0
+
+
+[563] id=None class=inline-formula no-formula-id math_count=1
+T
+
+[564] id=None class=mathFormula math_count=0
+
+
+[565] id=None class=inline-formula no-formula-id math_count=1
+p ⁠
+
+[566] id=None class=mathFormula math_count=0
+
+
+[567] id=None class=inline-formula no-formula-id math_count=1
+p 1 e
+
+[568] id=None class=mathFormula math_count=0
+
+
+[569] id=None class=inline-formula no-formula-id math_count=1
+p 2
+
+[570] id=None class=mathFormula math_count=0
+
+
+[571] id=None class=inline-formula no-formula-id math_count=1
+T
+
+[572] id=None class=mathFormula math_count=0
+
+
+[573] id=None class=inline-formula no-formula-id math_count=1
+A s = A q p ε p si
+
+[574] id=None class=mathFormula math_count=0
+
+
+[576] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[577] id=None class=mathFormula math_count=0
+
+
+[578] id=None class=formula-wrap math_count=1
+Dep q = B q n 2 3 q 1 3 ( s − 1 ) , (10)
+
+[579] id=jumplink-d10 class=disp-formula math_count=1
+Dep q = B q n 2 3 q 1 3 ( s − 1 ) ,
+
+[580] id=None class=mathFormula math_count=0
+
+
+[583] id=None class=inline-formula no-formula-id math_count=1
+B q
+
+[584] id=None class=mathFormula math_count=0
+
+
+[586] id=None class=formula-wrap math_count=1
+Dep s = − B s n 2 3 q 1 3 ( s − 1 ) , (11)
+
+[587] id=jumplink-d11 class=disp-formula math_count=1
+Dep s = − B s n 2 3 q 1 3 ( s − 1 ) ,
+
+[588] id=None class=mathFormula math_count=0
+
+
+[591] id=None class=inline-formula no-formula-id math_count=1
+B s = B q p ε p si
+
+[592] id=None class=mathFormula math_count=0
+
+
+[594] id=None class=inline-formula no-formula-id math_count=1
+s > 1
+
+[595] id=None class=mathFormula math_count=0
+
+
+[596] id=None class=inline-formula no-formula-id math_count=1
+Evap n = n q Dep q H ( 1 − s )
+
+[597] id=None class=mathFormula math_count=0
+
+
+[598] id=None class=formula-wrap math_count=1
+Evap n = B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s ) , (12)
+
+[599] id=jumplink-d12 class=disp-formula math_count=1
+Evap n = B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s ) ,
+
+[600] id=None class=mathFormula math_count=0
+
+
+[603] id=None class=inline-formula no-formula-id math_count=1
+H
+
+[604] id=None class=mathFormula math_count=0
+
+
+[605] id=None class=inline-formula no-formula-id math_count=1
+Evap n = 0
+
+[606] id=None class=mathFormula math_count=0
+
+
+[607] id=None class=inline-formula no-formula-id math_count=1
+s > 1
+
+[608] id=None class=mathFormula math_count=0
+
+
+[609] id=None class=inline-formula no-formula-id math_count=1
+B q
+
+[610] id=None class=mathFormula math_count=0
+
+
+[611] id=None class=inline-formula no-formula-id math_count=1
+Dep q ⁠
+
+[612] id=None class=mathFormula math_count=0
+
+
+[614] id=None class=formula-wrap math_count=1
+Sed n = − F C n n 1 3 q 2 3 , (13)
+
+[615] id=jumplink-d13 class=disp-formula math_count=1
+Sed n = − F C n n 1 3 q 2 3 ,
+
+[616] id=None class=mathFormula math_count=0
+
+
+[619] id=None class=formula-wrap math_count=1
+Sed q = − F C q n − 2 3 q 5 3 , (14)
+
+[620] id=jumplink-d14 class=disp-formula math_count=1
+Sed q = − F C q n − 2 3 q 5 3 ,
+
+[621] id=None class=mathFormula math_count=0
+
+
+[624] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[625] id=None class=mathFormula math_count=0
+
+
+[626] id=None class=inline-formula no-formula-id math_count=1
+C n
+
+[627] id=None class=mathFormula math_count=0
+
+
+[628] id=None class=inline-formula no-formula-id math_count=1
+C q
+
+[629] id=None class=mathFormula math_count=0
+
+
+[630] id=None class=inline-formula no-formula-id math_count=1
+Δ z
+
+[631] id=None class=mathFormula math_count=0
+
+
+[632] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[633] id=None class=mathFormula math_count=0
+
+
+[635] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[636] id=None class=mathFormula math_count=0
+
+
+[637] id=None class=formula-wrap math_count=1
+Cool = D w s = [ L c p R v T 2 − 1 R d T ] g ⏟ =: D w s , (15)
+
+[638] id=jumplink-d15 class=disp-formula math_count=1
+Cool = D w s = [ L c p R v T 2 − 1 R d T ] g ⏟ =: D w s ,
+
+[639] id=None class=mathFormula math_count=0
+
+
+[642] id=None class=inline-formula no-formula-id math_count=1
+D
+
+[643] id=None class=mathFormula math_count=0
+
+
+[644] id=None class=inline-formula no-formula-id math_count=1
+Cool
+
+[645] id=None class=mathFormula math_count=0
+
+
+[646] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[647] id=None class=mathFormula math_count=0
+
+
+[651] id=None class=inline-formula no-formula-id math_count=1
+x = ( n , q , s ) T
+
+[652] id=None class=mathFormula math_count=0
+
+
+[653] id=None class=inline-formula no-formula-id math_count=1
+V
+
+[654] id=None class=mathFormula math_count=0
+
+
+[655] id=None class=inline-formula no-formula-id math_count=1
+x ˙ = V ( x ) ⁠
+
+[656] id=None class=mathFormula math_count=0
+
+
+[657] id=None class=inline-formula no-formula-id math_count=1
+x 0 = ( 0 , 0 , s 0 ) ⁠
+
+[658] id=None class=mathFormula math_count=0
+
+
+[659] id=None class=inline-formula no-formula-id math_count=1
+n − α
+
+[660] id=None class=mathFormula math_count=0
+
+
+[661] id=None class=inline-formula no-formula-id math_count=1
+q − β
+
+[662] id=None class=mathFormula math_count=0
+
+
+[663] id=None class=inline-formula no-formula-id math_count=1
+α , β > 0 ⁠
+
+[664] id=None class=mathFormula math_count=0
+
+
+[665] id=None class=inline-formula no-formula-id math_count=1
+⁠ s > 1 ⁠
+
+[666] id=None class=mathFormula math_count=0
+
+
+[667] id=None class=formula-wrap math_count=1
+− F C q n − 2 3 q 5 3 ≈ − F C q ( n + n small ) − 2 3 q 5 3 (16)
+
+[668] id=jumplink-d16 class=disp-formula math_count=1
+− F C q n − 2 3 q 5 3 ≈ − F C q ( n + n small ) − 2 3 q 5 3
+
+[669] id=None class=mathFormula math_count=0
+
+
+[672] id=None class=inline-formula no-formula-id math_count=1
+n = 0
+
+[673] id=None class=mathFormula math_count=0
+
+
+[674] id=None class=inline-formula no-formula-id math_count=1
+q = 0
+
+[675] id=None class=mathFormula math_count=0
+
+
+[676] id=None class=inline-formula no-formula-id math_count=1
+n α q β
+
+[677] id=None class=mathFormula math_count=0
+
+
+[678] id=None class=inline-formula no-formula-id math_count=1
+0 ≤ α < 1 , 0 ≤ β < 1 ⁠
+
+[679] id=None class=mathFormula math_count=0
+
+
+[680] id=None class=inline-formula no-formula-id math_count=1
+n = 0
+
+[681] id=None class=mathFormula math_count=0
+
+
+[682] id=None class=inline-formula no-formula-id math_count=1
+q = 0 ⁠
+
+[683] id=None class=mathFormula math_count=0
+
+
+[684] id=None class=inline-formula no-formula-id math_count=1
+n , q
+
+[685] id=None class=mathFormula math_count=0
+
+
+[694] id=None class=inline-formula no-formula-id math_count=1
+V
+
+[695] id=None class=mathFormula math_count=0
+
+
+[696] id=None class=formula-wrap math_count=1
+p k V = M k R k T ⇔ p k = ρ k R k T , with ρ k = M k V , (17)
+
+[697] id=jumplink-d17 class=disp-formula math_count=1
+p k V = M k R k T ⇔ p k = ρ k R k T , with ρ k = M k V ,
+
+[698] id=None class=mathFormula math_count=0
+
+
+[701] id=None class=inline-formula no-formula-id math_count=1
+p k ⁠
+
+[702] id=None class=mathFormula math_count=0
+
+
+[703] id=None class=inline-formula no-formula-id math_count=1
+R k = R ∗ M mol , k
+
+[704] id=None class=mathFormula math_count=0
+
+
+[705] id=None class=inline-formula no-formula-id math_count=1
+R ∗ = 8.314 462 J mol − 1 K − 1 ⁠
+
+[706] id=None class=mathFormula math_count=0
+
+
+[707] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[708] id=None class=mathFormula math_count=0
+
+
+[709] id=None class=inline-formula no-formula-id math_count=1
+M k ⁠
+
+[710] id=None class=mathFormula math_count=0
+
+
+[711] id=None class=inline-formula no-formula-id math_count=1
+d
+
+[712] id=None class=mathFormula math_count=0
+
+
+[713] id=None class=inline-formula no-formula-id math_count=1
+v
+
+[714] id=None class=mathFormula math_count=0
+
+
+[715] id=None class=inline-formula no-formula-id math_count=1
+p = p d + p v ⁠
+
+[716] id=None class=mathFormula math_count=0
+
+
+[717] id=None class=inline-formula no-formula-id math_count=1
+p ≈ p d
+
+[718] id=None class=mathFormula math_count=0
+
+
+[719] id=None class=inline-formula no-formula-id math_count=1
+p d ≫ p v ⁠
+
+[720] id=None class=mathFormula math_count=0
+
+
+[721] id=None class=formula-wrap math_count=1
+∂ p ∂ z = − g ρ . (18)
+
+[722] id=jumplink-d18 class=disp-formula math_count=1
+∂ p ∂ z = − g ρ .
+
+[723] id=None class=mathFormula math_count=0
+
+
+[726] id=None class=inline-formula no-formula-id math_count=1
+190 ≤ T ≤ 240 K ⁠
+
+[727] id=None class=mathFormula math_count=0
+
+
+[728] id=None class=inline-formula no-formula-id math_count=1
+200 ≤ p ≤ 300 hPa ⁠
+
+[729] id=None class=mathFormula math_count=0
+
+
+[730] id=None class=inline-formula no-formula-id math_count=1
+M i ⁠
+
+[731] id=None class=mathFormula math_count=0
+
+
+[732] id=None class=inline-formula no-formula-id math_count=1
+q v = M v M d
+
+[733] id=None class=mathFormula math_count=0
+
+
+[734] id=None class=inline-formula no-formula-id math_count=1
+q i = M i M d ⁠
+
+[735] id=None class=mathFormula math_count=0
+
+
+[736] id=None class=inline-formula no-formula-id math_count=1
+M = M d + M v + M i
+
+[737] id=None class=mathFormula math_count=0
+
+
+[738] id=None class=inline-formula no-formula-id math_count=1
+10 − 3 ⁠
+
+[739] id=None class=mathFormula math_count=0
+
+
+[740] id=None class=inline-formula no-formula-id math_count=1
+M ≈ M d ⁠
+
+[741] id=None class=mathFormula math_count=0
+
+
+[745] id=None class=inline-formula no-formula-id math_count=1
+⁠ I h ⁠
+
+[746] id=None class=mathFormula math_count=0
+
+
+[747] id=None class=formula-wrap math_count=1
+d p si d T = L p si R v T 2 , (19)
+
+[748] id=jumplink-d19 class=disp-formula math_count=1
+d p si d T = L p si R v T 2 ,
+
+[749] id=None class=mathFormula math_count=0
+
+
+[752] id=None class=inline-formula no-formula-id math_count=1
+L ⁠
+
+[753] id=None class=mathFormula math_count=0
+
+
+[754] id=None class=inline-formula no-formula-id math_count=1
+p si
+
+[755] id=None class=mathFormula math_count=0
+
+
+[756] id=None class=formula-wrap math_count=1
+S i := p v p si ( T ) = p q v ε p si ( T ) , (20)
+
+[757] id=jumplink-d20 class=disp-formula math_count=1
+S i := p v p si ( T ) = p q v ε p si ( T ) ,
+
+[758] id=None class=mathFormula math_count=0
+
+
+[761] id=None class=inline-formula no-formula-id math_count=1
+q v ⁠
+
+[762] id=None class=mathFormula math_count=0
+
+
+[763] id=None class=inline-formula no-formula-id math_count=1
+ε = M mol , v M mol , d ≈ 0.622 ⁠
+
+[764] id=None class=mathFormula math_count=0
+
+
+[767] id=None class=formula-wrap math_count=1
+d S i d t = ∂ S i ∂ T d T d t + ∂ S i ∂ p d p d t + ∂ S i ∂ q v d q v d t , (21)
+
+[768] id=jumplink-d21 class=disp-formula math_count=1
+d S i d t = ∂ S i ∂ T d T d t + ∂ S i ∂ p d p d t + ∂ S i ∂ q v d q v d t ,
+
+[769] id=None class=mathFormula math_count=0
+
+
+[772] id=None class=formula-wrap math_count=1
+∂ S i ∂ T = − S i L R v T 2 , ∂ S i ∂ p = S i p , ∂ S i ∂ q v = S i q v = p ε p si , (22)
+
+[773] id=jumplink-d22 class=disp-formula math_count=1
+∂ S i ∂ T = − S i L R v T 2 , ∂ S i ∂ p = S i p , ∂ S i ∂ q v = S i q v = p ε p si ,
+
+[774] id=None class=mathFormula math_count=0
+
+
+[779] id=None class=formula-wrap math_count=1
+d T d t | adiabatic = d T d z d z d t = − g c p w , (23)
+
+[780] id=jumplink-d23 class=disp-formula math_count=1
+d T d t | adiabatic = d T d z d z d t = − g c p w ,
+
+[781] id=None class=mathFormula math_count=0
+
+
+[784] id=None class=formula-wrap math_count=1
+d T d t | diabatic = − L c p d q v d t . (24)
+
+[785] id=jumplink-d24 class=disp-formula math_count=1
+d T d t | diabatic = − L c p d q v d t .
+
+[786] id=None class=mathFormula math_count=0
+
+
+[789] id=None class=inline-formula no-formula-id math_count=1
+S i
+
+[790] id=None class=mathFormula math_count=0
+
+
+[791] id=None class=formula-wrap math_count=1
+∂ S i ∂ T d T d t = − S i L R v T 2 ( d T d t | adiabatic + d T d t | diabatic ) = L g c p R v T 2 S i w + L 2 c p R v T 2 S i d q v d t . (25)
+
+[792] id=jumplink-d25 class=disp-formula math_count=1
+∂ S i ∂ T d T d t = − S i L R v T 2 ( d T d t | adiabatic + d T d t | diabatic ) = L g c p R v T 2 S i w + L 2 c p R v T 2 S i d q v d t .
+
+[793] id=None class=mathFormula math_count=0
+
+
+[796] id=None class=formula-wrap math_count=1
+d p d t = d p d z d z d t = − g ρ w (26)
+
+[797] id=jumplink-d26 class=disp-formula math_count=1
+d p d t = d p d z d z d t = − g ρ w
+
+[798] id=None class=mathFormula math_count=0
+
+
+[801] id=None class=formula-wrap math_count=1
+∂ S i ∂ p d p d t = − S i p g ρ w = − S i g R d T w (27)
+
+[802] id=jumplink-d27 class=disp-formula math_count=1
+∂ S i ∂ p d p d t = − S i p g ρ w = − S i g R d T w
+
+[803] id=None class=mathFormula math_count=0
+
+
+[806] id=None class=inline-formula no-formula-id math_count=1
+q v ⁠
+
+[807] id=None class=mathFormula math_count=0
+
+
+[808] id=None class=formula-wrap math_count=1
+∂ S i ∂ q v d q v d t = p ε p si d q v d t . (28)
+
+[809] id=jumplink-d28 class=disp-formula math_count=1
+∂ S i ∂ q v d q v d t = p ε p si d q v d t .
+
+[810] id=None class=mathFormula math_count=0
+
+
+[813] id=None class=formula-wrap math_count=1
+d S i d t = [ L c p R v T 2 − 1 R d T ] g w S i + [ L 2 c p R v T 2 S i + p ε p si ] q ˙ v . (29)
+
+[814] id=jumplink-d29 class=disp-formula math_count=1
+d S i d t = [ L c p R v T 2 − 1 R d T ] g w S i + [ L 2 c p R v T 2 S i + p ε p si ] q ˙ v .
+
+[815] id=None class=mathFormula math_count=0
+
+
+[818] id=None class=inline-formula no-formula-id math_count=1
+T ∼ 230 K ⁠
+
+[819] id=None class=mathFormula math_count=0
+
+
+[820] id=None class=inline-formula no-formula-id math_count=1
+∼ 20 %
+
+[821] id=None class=mathFormula math_count=0
+
+
+[822] id=None class=inline-formula no-formula-id math_count=1
+T ∼ 240 K
+
+[823] id=None class=mathFormula math_count=0
+
+
+[824] id=None class=inline-formula no-formula-id math_count=1
+1 %
+
+[825] id=None class=mathFormula math_count=0
+
+
+[826] id=None class=inline-formula no-formula-id math_count=1
+T ∼ 210 K ⁠
+
+[827] id=None class=mathFormula math_count=0
+
+
+[828] id=None class=formula-wrap math_count=1
+d S i d t = [ L c p R v T 2 − 1 R d T ] g w S i + [ L 2 c p R v T 2 S i + p ε p si ] q ˙ v ≈ [ L c p R v T 2 − 1 R d T ] g w S i ⏟ Cool + [ p ε p si ] q ˙ v = D w S i ⏟ Cool + p ε p si q ˙ v , (30)
+
+[829] id=jumplink-d30 class=disp-formula math_count=1
+d S i d t = [ L c p R v T 2 − 1 R d T ] g w S i + [ L 2 c p R v T 2 S i + p ε p si ] q ˙ v ≈ [ L c p R v T 2 − 1 R d T ] g w S i ⏟ Cool + [ p ε p si ] q ˙ v = D w S i ⏟ Cool + p ε p si q ˙ v ,
+
+[830] id=None class=mathFormula math_count=0
+
+
+[833] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[834] id=None class=mathFormula math_count=0
+
+
+[835] id=None class=inline-formula no-formula-id math_count=1
+p ε p si q ˙ v ⁠
+
+[836] id=None class=mathFormula math_count=0
+
+
+[837] id=None class=inline-formula no-formula-id math_count=1
+s := S i ⁠
+
+[838] id=None class=mathFormula math_count=0
+
+
+[839] id=None class=inline-formula no-formula-id math_count=1
+w > 0 ⁠
+
+[840] id=None class=mathFormula math_count=0
+
+
+[841] id=None class=inline-formula no-formula-id math_count=1
+D
+
+[842] id=None class=mathFormula math_count=0
+
+
+[843] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[844] id=None class=mathFormula math_count=0
+
+
+[845] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[846] id=None class=mathFormula math_count=0
+
+
+[849] id=None class=inline-formula no-formula-id math_count=1
+t → ∞ ⁠
+
+[850] id=None class=mathFormula math_count=0
+
+
+[851] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[852] id=None class=mathFormula math_count=0
+
+
+[856] id=None class=inline-formula no-formula-id math_count=1
+I h ⁠
+
+[857] id=None class=mathFormula math_count=0
+
+
+[860] id=None class=inline-formula no-formula-id math_count=1
+100 μ m ⁠
+
+[861] id=None class=mathFormula math_count=0
+
+
+[862] id=None class=inline-formula no-formula-id math_count=1
+T > 240 K ⁠
+
+[863] id=None class=mathFormula math_count=0
+
+
+[864] id=None class=formula-wrap math_count=1
+m = 4 3 π ρ b r 3 ⇔ r = 3 4 π ρ b 3 m 1 3 = c m 1 3 (31)
+
+[865] id=jumplink-d31 class=disp-formula math_count=1
+m = 4 3 π ρ b r 3 ⇔ r = 3 4 π ρ b 3 m 1 3 = c m 1 3
+
+[866] id=None class=mathFormula math_count=0
+
+
+[869] id=None class=inline-formula no-formula-id math_count=1
+ρ b = 810 kg m − 3
+
+[870] id=None class=mathFormula math_count=0
+
+
+[874] id=None class=inline-formula no-formula-id math_count=1
+f ( m , x , t )
+
+[875] id=None class=mathFormula math_count=0
+
+
+[876] id=None class=formula-wrap math_count=1
+∂ ( ρ f ) ∂ t + ∇ x ⋅ ( ρ f u ) + ∂ ( ρ f g ) ∂ m = ρ h , (32)
+
+[877] id=jumplink-d32 class=disp-formula math_count=1
+∂ ( ρ f ) ∂ t + ∇ x ⋅ ( ρ f u ) + ∂ ( ρ f g ) ∂ m = ρ h ,
+
+[878] id=None class=mathFormula math_count=0
+
+
+[881] id=None class=inline-formula no-formula-id math_count=1
+u ⁠
+
+[882] id=None class=mathFormula math_count=0
+
+
+[883] id=None class=inline-formula no-formula-id math_count=1
+g ⁠
+
+[884] id=None class=mathFormula math_count=0
+
+
+[885] id=None class=inline-formula no-formula-id math_count=1
+h ⁠
+
+[886] id=None class=mathFormula math_count=0
+
+
+[887] id=None class=formula-wrap math_count=1
+μ k [ m ] := ∫ 0 ∞ m k f ( m , x , t ) d m , k ∈ N 0 (33)
+
+[888] id=jumplink-d33 class=disp-formula math_count=1
+μ k [ m ] := ∫ 0 ∞ m k f ( m , x , t ) d m , k ∈ N 0
+
+[889] id=None class=mathFormula math_count=0
+
+
+[894] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[895] id=None class=mathFormula math_count=0
+
+
+[897] id=None class=inline-formula no-formula-id math_count=1
+k = 0 , 1
+
+[898] id=None class=mathFormula math_count=0
+
+
+[899] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[900] id=None class=mathFormula math_count=0
+
+
+[901] id=None class=inline-formula no-formula-id math_count=1
+μ 0 = n
+
+[902] id=None class=mathFormula math_count=0
+
+
+[903] id=None class=inline-formula no-formula-id math_count=1
+μ 1 = q ⁠
+
+[904] id=None class=mathFormula math_count=0
+
+
+[905] id=None class=inline-formula no-formula-id math_count=1
+⁠ T < 240 K ⁠
+
+[906] id=None class=mathFormula math_count=0
+
+
+[907] id=None class=formula-wrap math_count=1
+f ( m ) = n 2 π log ⁡ ( σ m ) m exp ⁡ ( − 1 2 ( log ⁡ ( m m m ) log ⁡ ( σ m ) ) 2 ) , (34)
+
+[908] id=jumplink-d34 class=disp-formula math_count=1
+f ( m ) = n 2 π log ⁡ ( σ m ) m exp ⁡ ( − 1 2 ( log ⁡ ( m m m ) log ⁡ ( σ m ) ) 2 ) ,
+
+[909] id=None class=mathFormula math_count=0
+
+
+[912] id=None class=inline-formula no-formula-id math_count=1
+m m
+
+[913] id=None class=mathFormula math_count=0
+
+
+[914] id=None class=inline-formula no-formula-id math_count=1
+σ m ⁠
+
+[915] id=None class=mathFormula math_count=0
+
+
+[916] id=None class=formula-wrap math_count=1
+μ k [ m ] = n m m k exp ⁡ ( 1 2 ( k log ⁡ σ m ) 2 ) . (35)
+
+[917] id=jumplink-d35 class=disp-formula math_count=1
+μ k [ m ] = n m m k exp ⁡ ( 1 2 ( k log ⁡ σ m ) 2 ) .
+
+[918] id=None class=mathFormula math_count=0
+
+
+[921] id=None class=inline-formula no-formula-id math_count=1
+r 0 ⁠
+
+[922] id=None class=mathFormula math_count=0
+
+
+[923] id=None class=formula-wrap math_count=1
+r 0 = μ 2 μ 0 μ 1 2 = exp ⁡ ( ( log ⁡ ( σ m ) ) 2 ) , (36)
+
+[924] id=jumplink-d36 class=disp-formula math_count=1
+r 0 = μ 2 μ 0 μ 1 2 = exp ⁡ ( ( log ⁡ ( σ m ) ) 2 ) ,
+
+[925] id=None class=mathFormula math_count=0
+
+
+[928] id=None class=formula-wrap math_count=1
+μ k [ m ] = n m m k r 0 k 2 2 = n m ¯ k r 0 k ( k − 1 ) 2 , (37)
+
+[929] id=jumplink-d37 class=disp-formula math_count=1
+μ k [ m ] = n m m k r 0 k 2 2 = n m ¯ k r 0 k ( k − 1 ) 2 ,
+
+[930] id=None class=mathFormula math_count=0
+
+
+[933] id=None class=inline-formula no-formula-id math_count=1
+m ¯ := q n ⁠
+
+[934] id=None class=mathFormula math_count=0
+
+
+[935] id=None class=inline-formula no-formula-id math_count=1
+r 0 = const .
+
+[936] id=None class=mathFormula math_count=0
+
+
+[937] id=None class=inline-formula no-formula-id math_count=1
+σ m
+
+[938] id=None class=mathFormula math_count=0
+
+
+[939] id=None class=inline-formula no-formula-id math_count=1
+r 0 = 3 ⁠
+
+[940] id=None class=mathFormula math_count=0
+
+
+[945] id=None class=inline-formula no-formula-id math_count=1
+n = μ 0
+
+[946] id=None class=mathFormula math_count=0
+
+
+[947] id=None class=inline-formula no-formula-id math_count=1
+q = μ 1 ⁠
+
+[948] id=None class=mathFormula math_count=0
+
+
+[955] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[956] id=None class=mathFormula math_count=0
+
+
+[957] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[958] id=None class=mathFormula math_count=0
+
+
+[959] id=None class=formula-wrap math_count=1
+Cool = D w s , (38)
+
+[960] id=jumplink-d38 class=disp-formula math_count=1
+Cool = D w s ,
+
+[961] id=None class=mathFormula math_count=0
+
+
+[964] id=None class=inline-formula no-formula-id math_count=1
+D = [ L c p R v T 2 − 1 R d T ] g
+
+[965] id=None class=mathFormula math_count=0
+
+
+[966] id=None class=inline-formula no-formula-id math_count=1
+T
+
+[967] id=None class=mathFormula math_count=0
+
+
+[968] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[969] id=None class=mathFormula math_count=0
+
+
+[973] id=None class=inline-formula no-formula-id math_count=1
+V
+
+[974] id=None class=mathFormula math_count=0
+
+
+[975] id=None class=inline-formula no-formula-id math_count=1
+Δ t
+
+[976] id=None class=mathFormula math_count=0
+
+
+[977] id=None class=formula-wrap math_count=1
+P = 1 − exp ⁡ ( − J V Δ t ) , (39)
+
+[978] id=jumplink-d39 class=disp-formula math_count=1
+P = 1 − exp ⁡ ( − J V Δ t ) ,
+
+[979] id=None class=mathFormula math_count=0
+
+
+[982] id=None class=inline-formula no-formula-id math_count=1
+J ⁠
+
+[983] id=None class=mathFormula math_count=0
+
+
+[984] id=None class=formula-wrap math_count=1
+J ( T , S i ) = J 0 exp ⁡ ( A ( T ) ( s − S c ( T ) ) ) , (40)
+
+[985] id=jumplink-d40 class=disp-formula math_count=1
+J ( T , S i ) = J 0 exp ⁡ ( A ( T ) ( s − S c ( T ) ) ) ,
+
+[986] id=None class=mathFormula math_count=0
+
+
+[989] id=None class=inline-formula no-formula-id math_count=1
+A ( T )
+
+[990] id=None class=mathFormula math_count=0
+
+
+[991] id=None class=inline-formula no-formula-id math_count=1
+S c ( T ) ⁠
+
+[992] id=None class=mathFormula math_count=0
+
+
+[993] id=None class=formula-wrap math_count=1
+A ( T ) ≈ p 1 ( T ) = a w 0 + a w 1 T , (41)
+
+[994] id=jumplink-d41 class=disp-formula math_count=1
+A ( T ) ≈ p 1 ( T ) = a w 0 + a w 1 T ,
+
+[995] id=None class=mathFormula math_count=0
+
+
+[998] id=None class=formula-wrap math_count=1
+S c ( T ) ≈ p 2 ( T ) = a s 0 + a s 1 T + a s 2 T 2 , (42)
+
+[999] id=jumplink-d42 class=disp-formula math_count=1
+S c ( T ) ≈ p 2 ( T ) = a s 0 + a s 1 T + a s 2 T 2 ,
+
+[1000] id=None class=mathFormula math_count=0
+
+
+[1003] id=None class=inline-formula no-formula-id math_count=1
+p n ( x )
+
+[1004] id=None class=mathFormula math_count=0
+
+
+[1005] id=None class=inline-formula no-formula-id math_count=1
+n ∈ N ⁠
+
+[1006] id=None class=mathFormula math_count=0
+
+
+[1011] id=None class=inline-formula no-formula-id math_count=1
+Nuc n
+
+[1012] id=None class=mathFormula math_count=0
+
+
+[1013] id=None class=inline-formula no-formula-id math_count=1
+m nuc = 10 − 16 kg
+
+[1014] id=None class=mathFormula math_count=0
+
+
+[1015] id=None class=inline-formula no-formula-id math_count=1
+∼ 0.3 μ m ⁠
+
+[1016] id=None class=mathFormula math_count=0
+
+
+[1017] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[1018] id=None class=mathFormula math_count=0
+
+
+[1019] id=None class=formula-wrap math_count=1
+Nuc n = n a V s o l J 0 exp ⁡ ( p 1 e ( s − p 2 ) ) = A n exp ⁡ ( p 1 e ( s − p 2 ) ) , (43)
+
+[1020] id=jumplink-d43 class=disp-formula math_count=1
+Nuc n = n a V s o l J 0 exp ⁡ ( p 1 e ( s − p 2 ) ) = A n exp ⁡ ( p 1 e ( s − p 2 ) ) ,
+
+[1021] id=None class=mathFormula math_count=0
+
+
+[1024] id=None class=formula-wrap math_count=1
+Nuc q = m nuc n a V s o l J 0 exp ⁡ ( p 1 e ( s − p 2 ) ) = A q exp ⁡ ( p 1 e ( s − p 2 ) ) , (44)
+
+[1025] id=jumplink-d44 class=disp-formula math_count=1
+Nuc q = m nuc n a V s o l J 0 exp ⁡ ( p 1 e ( s − p 2 ) ) = A q exp ⁡ ( p 1 e ( s − p 2 ) ) ,
+
+[1026] id=None class=mathFormula math_count=0
+
+
+[1029] id=None class=inline-formula no-formula-id math_count=1
+p 1 e , p 2
+
+[1030] id=None class=mathFormula math_count=0
+
+
+[1031] id=None class=inline-formula no-formula-id math_count=1
+A n = n a V s o l J 0
+
+[1032] id=None class=mathFormula math_count=0
+
+
+[1033] id=None class=inline-formula no-formula-id math_count=1
+n a ⁠
+
+[1034] id=None class=mathFormula math_count=0
+
+
+[1035] id=None class=inline-formula no-formula-id math_count=1
+V s o l ⁠
+
+[1036] id=None class=mathFormula math_count=0
+
+
+[1037] id=None class=inline-formula no-formula-id math_count=1
+J 0
+
+[1038] id=None class=mathFormula math_count=0
+
+
+[1039] id=None class=inline-formula no-formula-id math_count=1
+A q = m nuc A n ⁠
+
+[1040] id=None class=mathFormula math_count=0
+
+
+[1043] id=None class=formula-wrap math_count=1
+Nuc s = − A s exp ⁡ ( p 1 e ( s − p 2 ) ) with A s = A q p ε p si , (45)
+
+[1044] id=jumplink-d45 class=disp-formula math_count=1
+Nuc s = − A s exp ⁡ ( p 1 e ( s − p 2 ) ) with A s = A q p ε p si ,
+
+[1045] id=None class=mathFormula math_count=0
+
+
+[1048] id=None class=inline-formula no-formula-id math_count=1
+p si ⁠
+
+[1049] id=None class=mathFormula math_count=0
+
+
+[1050] id=None class=inline-formula no-formula-id math_count=1
+ε
+
+[1051] id=None class=mathFormula math_count=0
+
+
+[1052] id=None class=inline-formula no-formula-id math_count=1
+ε = M mol , v M mol , d ≈ 0.622
+
+[1053] id=None class=mathFormula math_count=0
+
+
+[1057] id=None class=inline-formula no-formula-id math_count=1
+m
+
+[1058] id=None class=mathFormula math_count=0
+
+
+[1059] id=None class=formula-wrap math_count=1
+d m d t = 4 π C D v f k G v ( s − 1 ) f v . (46)
+
+[1060] id=jumplink-d46 class=disp-formula math_count=1
+d m d t = 4 π C D v f k G v ( s − 1 ) f v .
+
+[1061] id=None class=mathFormula math_count=0
+
+
+[1064] id=None class=inline-formula no-formula-id math_count=1
+C
+
+[1065] id=None class=mathFormula math_count=0
+
+
+[1066] id=None class=inline-formula no-formula-id math_count=1
+D v
+
+[1067] id=None class=mathFormula math_count=0
+
+
+[1068] id=None class=formula-wrap math_count=1
+D v = D v 0 ( T T 0 ) 2 ( p 0 p ) , (47)
+
+[1069] id=jumplink-d47 class=disp-formula math_count=1
+D v = D v 0 ( T T 0 ) 2 ( p 0 p ) ,
+
+[1070] id=None class=mathFormula math_count=0
+
+
+[1073] id=None class=formula-wrap math_count=1
+D v 0 = 2.1422 × 10 − 5 m 2 / s , (48)
+
+[1074] id=jumplink-d48 class=disp-formula math_count=1
+D v 0 = 2.1422 × 10 − 5 m 2 / s ,
+
+[1075] id=None class=mathFormula math_count=0
+
+
+[1078] id=None class=formula-wrap math_count=1
+T 0 = 273.15 K , p 0 = 101 325 Pa , (49)
+
+[1079] id=jumplink-d49 class=disp-formula math_count=1
+T 0 = 273.15 K , p 0 = 101 325 Pa ,
+
+[1080] id=None class=mathFormula math_count=0
+
+
+[1083] id=None class=inline-formula no-formula-id math_count=1
+f k
+
+[1084] id=None class=mathFormula math_count=0
+
+
+[1085] id=None class=inline-formula no-formula-id math_count=1
+f k ≤ 1 ⁠
+
+[1086] id=None class=mathFormula math_count=0
+
+
+[1087] id=None class=inline-formula no-formula-id math_count=1
+D v
+
+[1088] id=None class=mathFormula math_count=0
+
+
+[1089] id=None class=formula-wrap math_count=1
+G v = [ ( L R v T − 1 ) L T D v K T + R v T p s i ] − 1 , (50)
+
+[1090] id=jumplink-d50 class=disp-formula math_count=1
+G v = [ ( L R v T − 1 ) L T D v K T + R v T p s i ] − 1 ,
+
+[1091] id=None class=mathFormula math_count=0
+
+
+[1094] id=None class=inline-formula no-formula-id math_count=1
+L ⁠
+
+[1095] id=None class=mathFormula math_count=0
+
+
+[1096] id=None class=inline-formula no-formula-id math_count=1
+R v ⁠
+
+[1097] id=None class=mathFormula math_count=0
+
+
+[1098] id=None class=inline-formula no-formula-id math_count=1
+K T ⁠
+
+[1099] id=None class=mathFormula math_count=0
+
+
+[1100] id=None class=inline-formula no-formula-id math_count=1
+D v , K T ⁠
+
+[1101] id=None class=mathFormula math_count=0
+
+
+[1102] id=None class=inline-formula no-formula-id math_count=1
+f v
+
+[1103] id=None class=mathFormula math_count=0
+
+
+[1104] id=None class=inline-formula no-formula-id math_count=1
+f v ≥ 1 ⁠
+
+[1105] id=None class=mathFormula math_count=0
+
+
+[1108] id=None class=inline-formula no-formula-id math_count=1
+C = r
+
+[1109] id=None class=mathFormula math_count=0
+
+
+[1111] id=None class=inline-formula no-formula-id math_count=1
+∼ 60 μ m
+
+[1112] id=None class=mathFormula math_count=0
+
+
+[1113] id=None class=inline-formula no-formula-id math_count=1
+f v = 1 ⁠
+
+[1114] id=None class=mathFormula math_count=0
+
+
+[1116] id=None class=inline-formula no-formula-id math_count=1
+f k = 1 ⁠
+
+[1117] id=None class=mathFormula math_count=0
+
+
+[1118] id=None class=formula-wrap math_count=1
+Dep q = B q n 2 3 q 1 3 ( s − 1 ) , (51)
+
+[1119] id=jumplink-d51 class=disp-formula math_count=1
+Dep q = B q n 2 3 q 1 3 ( s − 1 ) ,
+
+[1120] id=None class=mathFormula math_count=0
+
+
+[1123] id=None class=formula-wrap math_count=1
+B q = 4 π G v D v c r 0 − 1 9 (52)
+
+[1124] id=jumplink-d52 class=disp-formula math_count=1
+B q = 4 π G v D v c r 0 − 1 9
+
+[1125] id=None class=mathFormula math_count=0
+
+
+[1128] id=None class=inline-formula no-formula-id math_count=1
+c = 3 4 π ρ b 3
+
+[1129] id=None class=mathFormula math_count=0
+
+
+[1130] id=None class=inline-formula no-formula-id math_count=1
+r 0 = 3
+
+[1131] id=None class=mathFormula math_count=0
+
+
+[1134] id=None class=formula-wrap math_count=1
+Dep s = − B s n 2 3 q 1 3 ( s − 1 ) with B s = B q p ε p si , (53)
+
+[1135] id=jumplink-d53 class=disp-formula math_count=1
+Dep s = − B s n 2 3 q 1 3 ( s − 1 ) with B s = B q p ε p si ,
+
+[1136] id=None class=mathFormula math_count=0
+
+
+[1139] id=None class=inline-formula no-formula-id math_count=1
+p si
+
+[1140] id=None class=mathFormula math_count=0
+
+
+[1141] id=None class=inline-formula no-formula-id math_count=1
+ε
+
+[1142] id=None class=mathFormula math_count=0
+
+
+[1145] id=None class=formula-wrap math_count=1
+Evap n = n q Dep q H ( 1 − s ) (54)
+
+[1146] id=jumplink-d54 class=disp-formula math_count=1
+Evap n = n q Dep q H ( 1 − s )
+
+[1147] id=None class=mathFormula math_count=0
+
+
+[1150] id=None class=inline-formula no-formula-id math_count=1
+H
+
+[1151] id=None class=mathFormula math_count=0
+
+
+[1152] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[1153] id=None class=mathFormula math_count=0
+
+
+[1157] id=None class=inline-formula no-formula-id math_count=1
+v t ( m ) = α k m β k
+
+[1158] id=None class=mathFormula math_count=0
+
+
+[1159] id=None class=inline-formula no-formula-id math_count=1
+α k , β k ⁠
+
+[1160] id=None class=mathFormula math_count=0
+
+
+[1161] id=None class=formula-wrap math_count=1
+c ( p , T ) = ( p p c ) a c ( T T c ) b c , (55)
+
+[1162] id=jumplink-d55 class=disp-formula math_count=1
+c ( p , T ) = ( p p c ) a c ( T T c ) b c ,
+
+[1163] id=None class=mathFormula math_count=0
+
+
+[1166] id=None class=formula-wrap math_count=1
+p c = 30 000 Pa , T c = 233 K , (56)
+
+[1167] id=jumplink-d56 class=disp-formula math_count=1
+p c = 30 000 Pa , T c = 233 K ,
+
+[1168] id=None class=mathFormula math_count=0
+
+
+[1171] id=None class=formula-wrap math_count=1
+a c = − 0.178 , b c = − 0.394. (57)
+
+[1172] id=jumplink-d57 class=disp-formula math_count=1
+a c = − 0.178 , b c = − 0.394.
+
+[1173] id=None class=mathFormula math_count=0
+
+
+[1178] id=None class=formula-wrap math_count=1
+v t ( m ) ≈ v final a s m b s 1 v final + a s m b s , (58)
+
+[1179] id=jumplink-d58 class=disp-formula math_count=1
+v t ( m ) ≈ v final a s m b s 1 v final + a s m b s ,
+
+[1180] id=None class=mathFormula math_count=0
+
+
+[1183] id=None class=inline-formula no-formula-id math_count=1
+∼ 75 μ m ⁠
+
+[1184] id=None class=mathFormula math_count=0
+
+
+[1185] id=None class=formula-wrap math_count=1
+v t ( m ) = a s m 2 3 , a s = 6 × 10 5 m s − 1 kg − 2 3 , (59)
+
+[1186] id=jumplink-d59 class=disp-formula math_count=1
+v t ( m ) = a s m 2 3 , a s = 6 × 10 5 m s − 1 kg − 2 3 ,
+
+[1187] id=None class=mathFormula math_count=0
+
+
+[1190] id=None class=inline-formula no-formula-id math_count=1
+Δ z ⁠
+
+[1191] id=None class=mathFormula math_count=0
+
+
+[1192] id=None class=inline-formula no-formula-id math_count=1
+j ψ = ρ v ψ ψ
+
+[1193] id=None class=mathFormula math_count=0
+
+
+[1194] id=None class=inline-formula no-formula-id math_count=1
+ψ = n , q ⁠
+
+[1195] id=None class=mathFormula math_count=0
+
+
+[1196] id=None class=formula-wrap math_count=1
+∂ j ψ ∂ z = j ψ top − j ψ bottom Δ z , (60)
+
+[1197] id=jumplink-d60 class=disp-formula math_count=1
+∂ j ψ ∂ z = j ψ top − j ψ bottom Δ z ,
+
+[1198] id=None class=mathFormula math_count=0
+
+
+[1201] id=None class=inline-formula no-formula-id math_count=1
+j ψ top
+
+[1202] id=None class=mathFormula math_count=0
+
+
+[1203] id=None class=inline-formula no-formula-id math_count=1
+j ψ bottom
+
+[1204] id=None class=mathFormula math_count=0
+
+
+[1205] id=None class=formula-wrap math_count=1
+Sed n = F n − 1 Δ z v n n , Sed q = F q − 1 Δ z v q q , (61)
+
+[1206] id=jumplink-d61 class=disp-formula math_count=1
+Sed n = F n − 1 Δ z v n n , Sed q = F q − 1 Δ z v q q ,
+
+[1207] id=None class=mathFormula math_count=0
+
+
+[1210] id=None class=inline-formula no-formula-id math_count=1
+F n , F q ⁠
+
+[1211] id=None class=mathFormula math_count=0
+
+
+[1212] id=None class=formula-wrap math_count=1
+v n = 1 n ∫ 0 ∞ f ( m ) v t ( m ) d m = 1 n ( a s r 0 − 1 9 n 1 3 q 2 3 ) , (62)
+
+[1213] id=jumplink-d62 class=disp-formula math_count=1
+v n = 1 n ∫ 0 ∞ f ( m ) v t ( m ) d m = 1 n ( a s r 0 − 1 9 n 1 3 q 2 3 ) ,
+
+[1214] id=None class=mathFormula math_count=0
+
+
+[1217] id=None class=formula-wrap math_count=1
+v q = 1 q ∫ 0 ∞ f ( m ) m v t ( m ) d m = 1 q ( a s r 0 5 9 n − 2 3 q 5 3 ) , (63)
+
+[1218] id=jumplink-d63 class=disp-formula math_count=1
+v q = 1 q ∫ 0 ∞ f ( m ) m v t ( m ) d m = 1 q ( a s r 0 5 9 n − 2 3 q 5 3 ) ,
+
+[1219] id=None class=mathFormula math_count=0
+
+
+[1222] id=None class=formula-wrap math_count=1
+Sed n = F n − 1 Δ z v n n = F n − C n n 1 3 q 2 3 , (64)
+
+[1223] id=jumplink-d64 class=disp-formula math_count=1
+Sed n = F n − 1 Δ z v n n = F n − C n n 1 3 q 2 3 ,
+
+[1224] id=None class=mathFormula math_count=0
+
+
+[1227] id=None class=formula-wrap math_count=1
+Sed q = F q − 1 Δ z v q q = F q − C q n − 2 3 q 5 3 , (65)
+
+[1228] id=jumplink-d65 class=disp-formula math_count=1
+Sed q = F q − 1 Δ z v q q = F q − C q n − 2 3 q 5 3 ,
+
+[1229] id=None class=mathFormula math_count=0
+
+
+[1232] id=None class=formula-wrap math_count=1
+C n = c ( p , T ) a s r 0 − 1 9 Δ z and C q = c ( p , T ) a s r 0 5 9 Δ z , (66)
+
+[1233] id=jumplink-d66 class=disp-formula math_count=1
+C n = c ( p , T ) a s r 0 − 1 9 Δ z and C q = c ( p , T ) a s r 0 5 9 Δ z ,
+
+[1234] id=None class=mathFormula math_count=0
+
+
+[1237] id=None class=inline-formula no-formula-id math_count=1
+c ( p , T )
+
+[1238] id=None class=mathFormula math_count=0
+
+
+[1239] id=None class=inline-formula no-formula-id math_count=1
+F n
+
+[1240] id=None class=mathFormula math_count=0
+
+
+[1241] id=None class=inline-formula no-formula-id math_count=1
+F q ⁠
+
+[1242] id=None class=mathFormula math_count=0
+
+
+[1243] id=None class=inline-formula no-formula-id math_count=1
+f sed
+
+[1244] id=None class=mathFormula math_count=0
+
+
+[1245] id=None class=formula-wrap math_count=1
+j ψ top = f sed ⋅ j ψ bottom , (67)
+
+[1246] id=jumplink-d67 class=disp-formula math_count=1
+j ψ top = f sed ⋅ j ψ bottom ,
+
+[1247] id=None class=mathFormula math_count=0
+
+
+[1250] id=None class=inline-formula no-formula-id math_count=1
+0 ≤ f sed ≤ 1 ⁠
+
+[1251] id=None class=mathFormula math_count=0
+
+
+[1252] id=None class=inline-formula no-formula-id math_count=1
+⁠ f sed = 0 ⁠
+
+[1253] id=None class=mathFormula math_count=0
+
+
+[1254] id=None class=inline-formula no-formula-id math_count=1
+⁠ f sed = 1 ⁠
+
+[1255] id=None class=mathFormula math_count=0
+
+
+[1256] id=None class=formula-wrap math_count=1
+F n = f sed C n n 1 3 q 2 3 , F q = f sed C q n − 2 3 q 5 3 , (68)
+
+[1257] id=jumplink-d68 class=disp-formula math_count=1
+F n = f sed C n n 1 3 q 2 3 , F q = f sed C q n − 2 3 q 5 3 ,
+
+[1258] id=None class=mathFormula math_count=0
+
+
+[1261] id=None class=inline-formula no-formula-id math_count=1
+F := 1 − f sed
+
+[1262] id=None class=mathFormula math_count=0
+
+
+[1263] id=None class=inline-formula no-formula-id math_count=1
+0 < F ≤ 1 ⁠
+
+[1264] id=None class=mathFormula math_count=0
+
+
+[1265] id=None class=formula-wrap math_count=1
+Sed n = − F C n n 1 3 q 2 3 , (69)
+
+[1266] id=jumplink-d69 class=disp-formula math_count=1
+Sed n = − F C n n 1 3 q 2 3 ,
+
+[1267] id=None class=mathFormula math_count=0
+
+
+[1270] id=None class=formula-wrap math_count=1
+Sed q = − F C q n − 2 3 q 5 3 , (70)
+
+[1271] id=jumplink-d70 class=disp-formula math_count=1
+Sed q = − F C q n − 2 3 q 5 3 ,
+
+[1272] id=None class=mathFormula math_count=0
+
+
+[1275] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[1276] id=None class=mathFormula math_count=0
+
+
+[1277] id=None class=inline-formula no-formula-id math_count=1
+Δ z = 100 m ⁠
+
+[1278] id=None class=mathFormula math_count=0
+
+
+[1285] id=None class=inline-formula no-formula-id math_count=1
+A k , B k , C k
+
+[1286] id=None class=mathFormula math_count=0
+
+
+[1287] id=None class=inline-formula no-formula-id math_count=1
+⁠ k = n , q , s ⁠
+
+[1288] id=None class=mathFormula math_count=0
+
+
+[1289] id=None class=inline-formula no-formula-id math_count=1
+p , T ⁠
+
+[1290] id=None class=mathFormula math_count=0
+
+
+[1291] id=None class=inline-formula no-formula-id math_count=1
+D ⁠
+
+[1292] id=None class=mathFormula math_count=0
+
+
+[1293] id=None class=inline-formula no-formula-id math_count=1
+p 1 e ⁠
+
+[1294] id=None class=mathFormula math_count=0
+
+
+[1295] id=None class=inline-formula no-formula-id math_count=1
+p 2
+
+[1296] id=None class=mathFormula math_count=0
+
+
+[1297] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[1298] id=None class=mathFormula math_count=0
+
+
+[1304] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[1305] id=None class=mathFormula math_count=0
+
+
+[1306] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[1307] id=None class=mathFormula math_count=0
+
+
+[1313] id=None class=inline-formula no-formula-id math_count=1
+n ˙ = q ˙ = s ˙ = 0 ⁠
+
+[1314] id=None class=mathFormula math_count=0
+
+
+[1315] id=None class=inline-formula no-formula-id math_count=1
+V ( x ) ⁠
+
+[1316] id=None class=mathFormula math_count=0
+
+
+[1319] id=None class=formula-wrap math_count=1
+Evap n = B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s ) (71)
+
+[1320] id=jumplink-d71 class=disp-formula math_count=1
+Evap n = B q n 5 3 q − 2 3 ( s − 1 ) H ( 1 − s )
+
+[1321] id=None class=mathFormula math_count=0
+
+
+[1324] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[1325] id=None class=mathFormula math_count=0
+
+
+[1326] id=None class=inline-formula no-formula-id math_count=1
+w > 0 ⁠
+
+[1327] id=None class=mathFormula math_count=0
+
+
+[1328] id=None class=inline-formula no-formula-id math_count=1
+A s s
+
+[1329] id=None class=mathFormula math_count=0
+
+
+[1330] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[1331] id=None class=mathFormula math_count=0
+
+
+[1332] id=None class=inline-formula no-formula-id math_count=1
+H ( 1 − s ) = 0
+
+[1333] id=None class=mathFormula math_count=0
+
+
+[1334] id=None class=inline-formula no-formula-id math_count=1
+Evap n = 0 ⁠
+
+[1335] id=None class=mathFormula math_count=0
+
+
+[1338] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[1339] id=None class=mathFormula math_count=0
+
+
+[1340] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[1341] id=None class=mathFormula math_count=0
+
+
+[1342] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[1343] id=None class=mathFormula math_count=0
+
+
+[1344] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[1345] id=None class=mathFormula math_count=0
+
+
+[1346] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[1347] id=None class=mathFormula math_count=0
+
+
+[1348] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[1349] id=None class=mathFormula math_count=0
+
+
+[1350] id=None class=formula-wrap math_count=1
+d n d t = A n exp ⁡ ( p 1 e ( s − p 2 ) ) − F C n n 1 3 q 2 3 , (72)
+
+[1351] id=jumplink-d72 class=disp-formula math_count=1
+d n d t = A n exp ⁡ ( p 1 e ( s − p 2 ) ) − F C n n 1 3 q 2 3 ,
+
+[1352] id=None class=mathFormula math_count=0
+
+
+[1355] id=None class=formula-wrap math_count=1
+d q d t = B q n 2 3 q 1 3 ( s − 1 ) − F C q n − 2 3 q 5 3 , (73)
+
+[1356] id=jumplink-d73 class=disp-formula math_count=1
+d q d t = B q n 2 3 q 1 3 ( s − 1 ) − F C q n − 2 3 q 5 3 ,
+
+[1357] id=None class=mathFormula math_count=0
+
+
+[1360] id=None class=formula-wrap math_count=1
+d s d t = D w s − B s n 2 3 q 1 3 ( s − 1 ) . (74)
+
+[1361] id=jumplink-d74 class=disp-formula math_count=1
+d s d t = D w s − B s n 2 3 q 1 3 ( s − 1 ) .
+
+[1362] id=None class=mathFormula math_count=0
+
+
+[1365] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[1366] id=None class=mathFormula math_count=0
+
+
+[1367] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[1368] id=None class=mathFormula math_count=0
+
+
+[1369] id=None class=inline-formula no-formula-id math_count=1
+n 0 , q 0 ⁠
+
+[1370] id=None class=mathFormula math_count=0
+
+
+[1371] id=None class=formula-wrap math_count=1
+f ( x ) = a x − b ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) ) , (75)
+
+[1372] id=jumplink-d75 class=disp-formula math_count=1
+f ( x ) = a x − b ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) ) ,
+
+[1373] id=None class=mathFormula math_count=0
+
+
+[1376] id=None class=formula-wrap math_count=1
+a = D w , b = B s A n C n ( C q B q ) 1 4 ( 1 F ) 3 4 , c = p 1 e , x 0 = p 2 . (76)
+
+[1377] id=jumplink-d76 class=disp-formula math_count=1
+a = D w , b = B s A n C n ( C q B q ) 1 4 ( 1 F ) 3 4 , c = p 1 e , x 0 = p 2 .
+
+[1378] id=None class=mathFormula math_count=0
+
+
+[1381] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[1382] id=None class=mathFormula math_count=0
+
+
+[1383] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[1384] id=None class=mathFormula math_count=0
+
+
+[1385] id=None class=inline-formula no-formula-id math_count=1
+q
+
+[1386] id=None class=mathFormula math_count=0
+
+
+[1387] id=None class=formula-wrap math_count=1
+n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 2 (77)
+
+[1388] id=jumplink-d77 class=disp-formula math_count=1
+n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 2
+
+[1389] id=None class=mathFormula math_count=0
+
+
+[1392] id=None class=formula-wrap math_count=1
+q = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) 1 4 . (78)
+
+[1393] id=jumplink-d78 class=disp-formula math_count=1
+q = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) 1 4 .
+
+[1394] id=None class=mathFormula math_count=0
+
+
+[1399] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[1400] id=None class=mathFormula math_count=0
+
+
+[1401] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[1402] id=None class=mathFormula math_count=0
+
+
+[1403] id=None class=inline-formula no-formula-id math_count=1
+[ 1 , ∞ ) ⁠
+
+[1404] id=None class=mathFormula math_count=0
+
+
+[1405] id=None class=inline-formula no-formula-id math_count=1
+s = 1 ⁠
+
+[1406] id=None class=mathFormula math_count=0
+
+
+[1407] id=None class=inline-formula no-formula-id math_count=1
+f ( s ) = a = D w > 0 ⁠
+
+[1408] id=None class=mathFormula math_count=0
+
+
+[1409] id=None class=inline-formula no-formula-id math_count=1
+a , b , c > 0 ⁠
+
+[1410] id=None class=mathFormula math_count=0
+
+
+[1411] id=None class=inline-formula no-formula-id math_count=1
+f ( s ) < 0
+
+[1412] id=None class=mathFormula math_count=0
+
+
+[1413] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[1414] id=None class=mathFormula math_count=0
+
+
+[1415] id=None class=inline-formula no-formula-id math_count=1
+s 0 > 1 ⁠
+
+[1416] id=None class=mathFormula math_count=0
+
+
+[1417] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[1418] id=None class=mathFormula math_count=0
+
+
+[1419] id=None class=formula-wrap math_count=1
+g ( x ) = f ( x ) x = a − b x − 1 ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) ) (79)
+
+[1420] id=jumplink-d79 class=disp-formula math_count=1
+g ( x ) = f ( x ) x = a − b x − 1 ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) )
+
+[1421] id=None class=mathFormula math_count=0
+
+
+[1424] id=None class=inline-formula no-formula-id math_count=1
+x = s > 1
+
+[1425] id=None class=mathFormula math_count=0
+
+
+[1426] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[1427] id=None class=mathFormula math_count=0
+
+
+[1428] id=None class=inline-formula no-formula-id math_count=1
+x
+
+[1429] id=None class=mathFormula math_count=0
+
+
+[1430] id=None class=inline-formula no-formula-id math_count=1
+g ⁠
+
+[1431] id=None class=mathFormula math_count=0
+
+
+[1432] id=None class=inline-formula no-formula-id math_count=1
+g
+
+[1433] id=None class=mathFormula math_count=0
+
+
+[1434] id=None class=formula-wrap math_count=1
+g ′ ( x ) = − b x − 1 ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) ) ⋅ ( c − 1 x ) − 3 4 b x − 1 ( x − 1 ) − 1 4 exp ⁡ ( c ( x − x 0 ) ) . (80)
+
+[1435] id=jumplink-d80 class=disp-formula math_count=1
+g ′ ( x ) = − b x − 1 ( x − 1 ) 3 4 exp ⁡ ( c ( x − x 0 ) ) ⋅ ( c − 1 x ) − 3 4 b x − 1 ( x − 1 ) − 1 4 exp ⁡ ( c ( x − x 0 ) ) .
+
+[1436] id=None class=mathFormula math_count=0
+
+
+[1439] id=None class=inline-formula no-formula-id math_count=1
+c = p 1 e ( T ) > 1
+
+[1440] id=None class=mathFormula math_count=0
+
+
+[1441] id=None class=inline-formula no-formula-id math_count=1
+g ′ ( x ) < 0
+
+[1442] id=None class=mathFormula math_count=0
+
+
+[1443] id=None class=inline-formula no-formula-id math_count=1
+x > 1 ⁠
+
+[1444] id=None class=mathFormula math_count=0
+
+
+[1445] id=None class=inline-formula no-formula-id math_count=1
+g
+
+[1446] id=None class=mathFormula math_count=0
+
+
+[1447] id=None class=inline-formula no-formula-id math_count=1
+x > 1
+
+[1448] id=None class=mathFormula math_count=0
+
+
+[1449] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1450] id=None class=mathFormula math_count=0
+
+
+[1451] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[1452] id=None class=mathFormula math_count=0
+
+
+[1455] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1456] id=None class=mathFormula math_count=0
+
+
+[1457] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1458] id=None class=mathFormula math_count=0
+
+
+[1459] id=None class=formula-wrap math_count=1
+a s 0 = b ( s 0 − 1 ) 3 4 exp ⁡ ( c ( s 0 − x 0 ) ) (81)
+
+[1460] id=jumplink-d81 class=disp-formula math_count=1
+a s 0 = b ( s 0 − 1 ) 3 4 exp ⁡ ( c ( s 0 − x 0 ) )
+
+[1461] id=None class=mathFormula math_count=0
+
+
+[1464] id=None class=inline-formula no-formula-id math_count=1
+c = p 1 e ⁠
+
+[1465] id=None class=mathFormula math_count=0
+
+
+[1466] id=None class=inline-formula no-formula-id math_count=1
+x 0 = p 2 ⁠
+
+[1467] id=None class=mathFormula math_count=0
+
+
+[1468] id=None class=formula-wrap math_count=1
+s 0 = p 2 + 1 p 1 e log ⁡ ( a ⋅ b − 1 ⋅ s 0 ( s 0 − 1 ) − 3 4 ) . (82)
+
+[1469] id=jumplink-d82 class=disp-formula math_count=1
+s 0 = p 2 + 1 p 1 e log ⁡ ( a ⋅ b − 1 ⋅ s 0 ( s 0 − 1 ) − 3 4 ) .
+
+[1470] id=None class=mathFormula math_count=0
+
+
+[1473] id=None class=inline-formula no-formula-id math_count=1
+a
+
+[1474] id=None class=mathFormula math_count=0
+
+
+[1475] id=None class=inline-formula no-formula-id math_count=1
+b ⁠
+
+[1476] id=None class=mathFormula math_count=0
+
+
+[1477] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1478] id=None class=mathFormula math_count=0
+
+
+[1479] id=None class=formula-wrap math_count=1
+s 0 = p 2 + 1 p 1 e log ⁡ ( D C n B s A n ( B q C q ) 1 4 ) + 1 p 1 e log ⁡ ( w ⋅ F 3 4 ⋅ s 0 ( s 0 − 1 ) 3 4 ) . (83)
+
+[1480] id=jumplink-d83 class=disp-formula math_count=1
+s 0 = p 2 + 1 p 1 e log ⁡ ( D C n B s A n ( B q C q ) 1 4 ) + 1 p 1 e log ⁡ ( w ⋅ F 3 4 ⋅ s 0 ( s 0 − 1 ) 3 4 ) .
+
+[1481] id=None class=mathFormula math_count=0
+
+
+[1486] id=None class=formula-wrap math_count=1
+σ ( T , p ) := p 2 + 1 p 1 e log ⁡ ( D C n B s A n ( B q C q ) 1 4 ) (84)
+
+[1487] id=jumplink-d84 class=disp-formula math_count=1
+σ ( T , p ) := p 2 + 1 p 1 e log ⁡ ( D C n B s A n ( B q C q ) 1 4 )
+
+[1488] id=None class=mathFormula math_count=0
+
+
+[1491] id=None class=formula-wrap math_count=1
+h ( x ) := h ( x , F , w , T , p ) = σ + 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) + log ⁡ ( x ( x − 1 ) 3 4 ) ) (85)
+
+[1492] id=jumplink-d85 class=disp-formula math_count=1
+h ( x ) := h ( x , F , w , T , p ) = σ + 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) + log ⁡ ( x ( x − 1 ) 3 4 ) )
+
+[1493] id=None class=mathFormula math_count=0
+
+
+[1496] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1497] id=None class=mathFormula math_count=0
+
+
+[1498] id=None class=inline-formula no-formula-id math_count=1
+s 0 = h ( s 0 , F , w , T , p ) ⁠
+
+[1499] id=None class=mathFormula math_count=0
+
+
+[1500] id=None class=inline-formula no-formula-id math_count=1
+x ∗
+
+[1501] id=None class=mathFormula math_count=0
+
+
+[1502] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[1503] id=None class=mathFormula math_count=0
+
+
+[1504] id=None class=inline-formula no-formula-id math_count=1
+x ∗ = h ( x ∗ ) ⁠
+
+[1505] id=None class=mathFormula math_count=0
+
+
+[1506] id=None class=inline-formula no-formula-id math_count=1
+x ∗
+
+[1507] id=None class=mathFormula math_count=0
+
+
+[1508] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[1509] id=None class=mathFormula math_count=0
+
+
+[1510] id=None class=inline-formula no-formula-id math_count=1
+f ( x ∗ ) = 0 ⁠
+
+[1511] id=None class=mathFormula math_count=0
+
+
+[1512] id=None class=inline-formula no-formula-id math_count=1
+x ∗
+
+[1513] id=None class=mathFormula math_count=0
+
+
+[1514] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[1515] id=None class=mathFormula math_count=0
+
+
+[1518] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[1519] id=None class=mathFormula math_count=0
+
+
+[1520] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[1521] id=None class=mathFormula math_count=0
+
+
+[1522] id=None class=inline-formula no-formula-id math_count=1
+σ
+
+[1523] id=None class=mathFormula math_count=0
+
+
+[1524] id=None class=inline-formula no-formula-id math_count=1
+p 1 e
+
+[1525] id=None class=mathFormula math_count=0
+
+
+[1526] id=None class=formula-wrap math_count=1
+h ( x ) = κ 0 + 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 ) (86)
+
+[1527] id=jumplink-d86 class=disp-formula math_count=1
+h ( x ) = κ 0 + 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 )
+
+[1528] id=None class=mathFormula math_count=0
+
+
+[1531] id=None class=inline-formula no-formula-id math_count=1
+κ 0 ∈ [ 1.375 170 , 1.585 966 ] ⁠
+
+[1532] id=None class=mathFormula math_count=0
+
+
+[1533] id=None class=formula-wrap math_count=1
+[ s min , s max ] with s min = 1.37 , s max = 1.59. (87)
+
+[1534] id=jumplink-d87 class=disp-formula math_count=1
+[ s min , s max ] with s min = 1.37 , s max = 1.59.
+
+[1535] id=None class=mathFormula math_count=0
+
+
+[1538] id=None class=formula-wrap math_count=1
+h ( [ s min , s max ] ) ⊂ [ s min , s max ] . (88)
+
+[1539] id=jumplink-d88 class=disp-formula math_count=1
+h ( [ s min , s max ] ) ⊂ [ s min , s max ] .
+
+[1540] id=None class=mathFormula math_count=0
+
+
+[1543] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[1544] id=None class=mathFormula math_count=0
+
+
+[1545] id=None class=formula-wrap math_count=1
+h ′ ( x ) = 1 4 p 1 e x − 4 x ( x − 1 ) (89)
+
+[1546] id=jumplink-d89 class=disp-formula math_count=1
+h ′ ( x ) = 1 4 p 1 e x − 4 x ( x − 1 )
+
+[1547] id=None class=mathFormula math_count=0
+
+
+[1550] id=None class=formula-wrap math_count=1
+| h ′ ( x ) | ≤ π 2 4 4 − s min s min ( s min − 1 ) ≈ 0.004 415 ≪ 1 , (90)
+
+[1551] id=jumplink-d90 class=disp-formula math_count=1
+| h ′ ( x ) | ≤ π 2 4 4 − s min s min ( s min − 1 ) ≈ 0.004 415 ≪ 1 ,
+
+[1552] id=None class=mathFormula math_count=0
+
+
+[1555] id=None class=inline-formula no-formula-id math_count=1
+1 p 1 e ≤ π 2 = 0.003 404
+
+[1556] id=None class=mathFormula math_count=0
+
+
+[1557] id=None class=inline-formula no-formula-id math_count=1
+h
+
+[1558] id=None class=mathFormula math_count=0
+
+
+[1559] id=None class=inline-formula no-formula-id math_count=1
+[ s min , s max ] ⊂ R ⁠
+
+[1560] id=None class=mathFormula math_count=0
+
+
+[1561] id=None class=inline-formula no-formula-id math_count=1
+x n
+
+[1562] id=None class=mathFormula math_count=0
+
+
+[1563] id=None class=formula-wrap math_count=1
+x n = h ( x n − 1 ) = σ + 1 p 1 e log ⁡ ( w ) + 3 4 p 1 e log ⁡ ( F ) + 1 p 1 e log ⁡ ( x n − 1 ( x n − 1 − 1 ) 3 4 ) (91)
+
+[1564] id=jumplink-d91 class=disp-formula math_count=1
+x n = h ( x n − 1 ) = σ + 1 p 1 e log ⁡ ( w ) + 3 4 p 1 e log ⁡ ( F ) + 1 p 1 e log ⁡ ( x n − 1 ( x n − 1 − 1 ) 3 4 )
+
+[1565] id=None class=mathFormula math_count=0
+
+
+[1568] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[1569] id=None class=mathFormula math_count=0
+
+
+[1570] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1571] id=None class=mathFormula math_count=0
+
+
+[1572] id=None class=inline-formula no-formula-id math_count=1
+h ( x )
+
+[1573] id=None class=mathFormula math_count=0
+
+
+[1574] id=None class=inline-formula no-formula-id math_count=1
+[ s min , s max ]
+
+[1575] id=None class=mathFormula math_count=0
+
+
+[1578] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1579] id=None class=mathFormula math_count=0
+
+
+[1580] id=None class=inline-formula no-formula-id math_count=1
+l ( x ) = log ( x ( x − 1 ) 3 4 )
+
+[1581] id=None class=mathFormula math_count=0
+
+
+[1582] id=None class=inline-formula no-formula-id math_count=1
+[ s min , s max ]
+
+[1583] id=None class=mathFormula math_count=0
+
+
+[1584] id=None class=inline-formula no-formula-id math_count=1
+ℓ m = 1 2 ( l ( s min ) + l ( s max ) ) ≈ 0.959 979 ⁠
+
+[1585] id=None class=mathFormula math_count=0
+
+
+[1586] id=None class=formula-wrap math_count=1
+s 0 ≈ σ ( T , p ) + 1 p 1 e ( T ) ( ℓ m + log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) , (92)
+
+[1587] id=jumplink-d92 class=disp-formula math_count=1
+s 0 ≈ σ ( T , p ) + 1 p 1 e ( T ) ( ℓ m + log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) ,
+
+[1588] id=None class=mathFormula math_count=0
+
+
+[1591] id=None class=inline-formula no-formula-id math_count=1
+4 × 10 − 4 ⁠
+
+[1592] id=None class=mathFormula math_count=0
+
+
+[1595] id=None class=inline-formula no-formula-id math_count=1
+n 0 , q 0
+
+[1596] id=None class=mathFormula math_count=0
+
+
+[1597] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[1598] id=None class=mathFormula math_count=0
+
+
+[1599] id=None class=formula-wrap math_count=1
+n 0 = D B s ( C q B q ) 1 4 ⋅ w ⋅ F 1 4 ⋅ s 0 ( s 0 − 1 ) − 5 4 , (93)
+
+[1600] id=jumplink-d93 class=disp-formula math_count=1
+n 0 = D B s ( C q B q ) 1 4 ⋅ w ⋅ F 1 4 ⋅ s 0 ( s 0 − 1 ) − 5 4 ,
+
+[1601] id=None class=mathFormula math_count=0
+
+
+[1604] id=None class=formula-wrap math_count=1
+q 0 = D B s ( B q C q ) 1 2 ⋅ w ⋅ F − 1 2 ⋅ s 0 ( s 0 − 1 ) − 1 2 . (94)
+
+[1605] id=jumplink-d94 class=disp-formula math_count=1
+q 0 = D B s ( B q C q ) 1 2 ⋅ w ⋅ F − 1 2 ⋅ s 0 ( s 0 − 1 ) − 1 2 .
+
+[1606] id=None class=mathFormula math_count=0
+
+
+[1609] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1610] id=None class=mathFormula math_count=0
+
+
+[1611] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1612] id=None class=mathFormula math_count=0
+
+
+[1613] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[1614] id=None class=mathFormula math_count=0
+
+
+[1615] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1616] id=None class=mathFormula math_count=0
+
+
+[1617] id=None class=inline-formula no-formula-id math_count=1
+F 1 4
+
+[1618] id=None class=mathFormula math_count=0
+
+
+[1619] id=None class=inline-formula no-formula-id math_count=1
+F − 1 2
+
+[1620] id=None class=mathFormula math_count=0
+
+
+[1621] id=None class=inline-formula no-formula-id math_count=1
+1 p 1 e ( T )
+
+[1622] id=None class=mathFormula math_count=0
+
+
+[1623] id=None class=inline-formula no-formula-id math_count=1
+n 0
+
+[1624] id=None class=mathFormula math_count=0
+
+
+[1625] id=None class=inline-formula no-formula-id math_count=1
+q 0
+
+[1626] id=None class=mathFormula math_count=0
+
+
+[1627] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1628] id=None class=mathFormula math_count=0
+
+
+[1629] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[1630] id=None class=mathFormula math_count=0
+
+
+[1631] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[1632] id=None class=mathFormula math_count=0
+
+
+[1633] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1634] id=None class=mathFormula math_count=0
+
+
+[1635] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[1636] id=None class=mathFormula math_count=0
+
+
+[1637] id=None class=inline-formula no-formula-id math_count=1
+w = 0.1 m s − 1
+
+[1638] id=None class=mathFormula math_count=0
+
+
+[1639] id=None class=inline-formula no-formula-id math_count=1
+F = 1.0 ⁠
+
+[1640] id=None class=mathFormula math_count=0
+
+
+[1641] id=None class=inline-formula no-formula-id math_count=1
+n 0
+
+[1642] id=None class=mathFormula math_count=0
+
+
+[1643] id=None class=inline-formula no-formula-id math_count=1
+q 0
+
+[1644] id=None class=mathFormula math_count=0
+
+
+[1645] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[1646] id=None class=mathFormula math_count=0
+
+
+[1647] id=None class=inline-formula no-formula-id math_count=1
+n , q , s
+
+[1648] id=None class=mathFormula math_count=0
+
+
+[1649] id=None class=inline-formula no-formula-id math_count=1
+log ⁡ ( w )
+
+[1650] id=None class=mathFormula math_count=0
+
+
+[1659] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[1660] id=None class=mathFormula math_count=0
+
+
+[1667] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[1668] id=None class=mathFormula math_count=0
+
+
+[1673] id=None class=inline-formula no-formula-id math_count=1
+( n , q , s )
+
+[1674] id=None class=mathFormula math_count=0
+
+
+[1675] id=None class=formula-wrap math_count=1
+J = ( − 1 3 F C n m ¯ 2 3 − 2 3 F C n m ¯ − 1 3 p 1 e A n exp ⁡ ( p 1 e ( s − p 2 ) ) 2 3 ( B q m ¯ 1 3 ( s − 1 ) + F C q m ¯ 5 3 ) 1 3 B q m ¯ − 2 3 ( s − 1 ) − 5 3 F C q m ¯ 2 3 B q n 2 3 q 1 3 − 2 3 B s m ¯ 1 3 ( s − 1 ) − 1 3 B s m ¯ − 2 3 ( s − 1 ) D w − B s n 2 3 q 1 3 ) . (95)
+
+[1676] id=jumplink-d95 class=disp-formula math_count=1
+J = ( − 1 3 F C n m ¯ 2 3 − 2 3 F C n m ¯ − 1 3 p 1 e A n exp ⁡ ( p 1 e ( s − p 2 ) ) 2 3 ( B q m ¯ 1 3 ( s − 1 ) + F C q m ¯ 5 3 ) 1 3 B q m ¯ − 2 3 ( s − 1 ) − 5 3 F C q m ¯ 2 3 B q n 2 3 q 1 3 − 2 3 B s m ¯ 1 3 ( s − 1 ) − 1 3 B s m ¯ − 2 3 ( s − 1 ) D w − B s n 2 3 q 1 3 ) .
+
+[1677] id=None class=mathFormula math_count=0
+
+
+[1680] id=None class=inline-formula no-formula-id math_count=1
+m ¯ = q n
+
+[1681] id=None class=mathFormula math_count=0
+
+
+[1684] id=None class=inline-formula no-formula-id math_count=1
+( n ˙ , q ˙ , s ˙ ) = ( 0 , 0 , 0 ) ⁠
+
+[1685] id=None class=mathFormula math_count=0
+
+
+[1686] id=None class=formula-wrap math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n 1 3 q 2 3 , (96)
+
+[1687] id=jumplink-d96 class=disp-formula math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n 1 3 q 2 3 ,
+
+[1688] id=None class=mathFormula math_count=0
+
+
+[1691] id=None class=formula-wrap math_count=1
+m ¯ = ( B q F C q ( s − 1 ) ) 3 4 , (97)
+
+[1692] id=jumplink-d97 class=disp-formula math_count=1
+m ¯ = ( B q F C q ( s − 1 ) ) 3 4 ,
+
+[1693] id=None class=mathFormula math_count=0
+
+
+[1696] id=None class=formula-wrap math_count=1
+B s ( s − 1 ) = D w s m ¯ − 1 3 n − 1 . (98)
+
+[1697] id=jumplink-d98 class=disp-formula math_count=1
+B s ( s − 1 ) = D w s m ¯ − 1 3 n − 1 .
+
+[1698] id=None class=mathFormula math_count=0
+
+
+[1701] id=None class=formula-wrap math_count=1
+J = ( − 1 3 F C n m ¯ 2 3 − 2 3 F C n m ¯ − 1 3 p 1 e F C n m ¯ 2 3 n 4 3 F C q m ¯ 5 3 − 4 3 F C q m ¯ 2 3 1 ( s − 1 ) F C q m ¯ 5 3 n − 2 3 D w s n − 1 − 1 3 D w s q − 1 − D w 1 ( s − 1 ) ) . (99)
+
+[1702] id=jumplink-d99 class=disp-formula math_count=1
+J = ( − 1 3 F C n m ¯ 2 3 − 2 3 F C n m ¯ − 1 3 p 1 e F C n m ¯ 2 3 n 4 3 F C q m ¯ 5 3 − 4 3 F C q m ¯ 2 3 1 ( s − 1 ) F C q m ¯ 5 3 n − 2 3 D w s n − 1 − 1 3 D w s q − 1 − D w 1 ( s − 1 ) ) .
+
+[1703] id=None class=mathFormula math_count=0
+
+
+[1706] id=None class=inline-formula no-formula-id math_count=1
+J
+
+[1707] id=None class=mathFormula math_count=0
+
+
+[1708] id=None class=inline-formula no-formula-id math_count=1
+J 1 ⁠
+
+[1709] id=None class=mathFormula math_count=0
+
+
+[1710] id=None class=inline-formula no-formula-id math_count=1
+J = D m − 1 J 1 D m ⁠
+
+[1711] id=None class=mathFormula math_count=0
+
+
+[1712] id=None class=inline-formula no-formula-id math_count=1
+J = a ⋅ D m − 1 J 2 D m ⁠
+
+[1713] id=None class=mathFormula math_count=0
+
+
+[1714] id=None class=formula-wrap math_count=1
+a = 1 3 F C n m ¯ 2 3 , D m = ( 1 0 0 0 m ¯ − 1 0 0 0 n ) , (100)
+
+[1715] id=jumplink-d100 class=disp-formula math_count=1
+a = 1 3 F C n m ¯ 2 3 , D m = ( 1 0 0 0 m ¯ − 1 0 0 0 n ) ,
+
+[1716] id=None class=mathFormula math_count=0
+
+
+[1719] id=None class=formula-wrap math_count=1
+J 2 = ( − 1 − 2 3 p 1 e 4 r 0 2 3 − 4 r 0 2 3 3 r 0 2 3 1 ( s − 1 ) − 2 γ s s − 1 − γ s s − 1 − 3 γ 1 ( s − 1 ) 3 2 ) , (101)
+
+[1720] id=jumplink-d101 class=disp-formula math_count=1
+J 2 = ( − 1 − 2 3 p 1 e 4 r 0 2 3 − 4 r 0 2 3 3 r 0 2 3 1 ( s − 1 ) − 2 γ s s − 1 − γ s s − 1 − 3 γ 1 ( s − 1 ) 3 2 ) ,
+
+[1721] id=None class=mathFormula math_count=0
+
+
+[1724] id=None class=formula-wrap math_count=1
+C q = r 0 2 3 C n , γ = D w F − 1 2 B q − 1 2 r 0 1 3 C n − 1 2 . (102)
+
+[1725] id=jumplink-d102 class=disp-formula math_count=1
+C q = r 0 2 3 C n , γ = D w F − 1 2 B q − 1 2 r 0 1 3 C n − 1 2 .
+
+[1726] id=None class=mathFormula math_count=0
+
+
+[1729] id=None class=inline-formula no-formula-id math_count=1
+J = a ⋅ D m − 1 J 2 D m ⁠
+
+[1730] id=None class=mathFormula math_count=0
+
+
+[1731] id=None class=formula-wrap math_count=1
+det J = 1 3 F 2 C n 2 D w m ¯ 4 3 r 0 2 3 1 s − 1 ⋅ ( − 4 + s − 4 s ( s − 1 ) p 1 e ) . (103)
+
+[1732] id=jumplink-d103 class=disp-formula math_count=1
+det J = 1 3 F 2 C n 2 D w m ¯ 4 3 r 0 2 3 1 s − 1 ⋅ ( − 4 + s − 4 s ( s − 1 ) p 1 e ) .
+
+[1733] id=None class=mathFormula math_count=0
+
+
+[1736] id=None class=inline-formula no-formula-id math_count=1
+F , C n , D , w , m ¯
+
+[1737] id=None class=mathFormula math_count=0
+
+
+[1738] id=None class=inline-formula no-formula-id math_count=1
+s > 1
+
+[1739] id=None class=mathFormula math_count=0
+
+
+[1740] id=None class=inline-formula no-formula-id math_count=1
+p 1 e > 1
+
+[1741] id=None class=mathFormula math_count=0
+
+
+[1742] id=None class=formula-wrap math_count=1
+− 4 + s − 4 s ( s − 1 ) p 1 e = − 3 + ( s − 1 ) ( − 4 s p 1 e + 1 ) < 0 ⇒ det J < 0.
+
+[1743] id=jumplink- class=disp-formula math_count=1
+− 4 + s − 4 s ( s − 1 ) p 1 e = − 3 + ( s − 1 ) ( − 4 s p 1 e + 1 ) < 0 ⇒ det J < 0.
+
+[1744] id=None class=mathFormula math_count=0
+
+
+[1746] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , λ 2 , λ 3
+
+[1747] id=None class=mathFormula math_count=0
+
+
+[1748] id=None class=inline-formula no-formula-id math_count=1
+J
+
+[1749] id=None class=mathFormula math_count=0
+
+
+[1750] id=None class=inline-formula no-formula-id math_count=1
+⁠ λ 3 ⁠
+
+[1751] id=None class=mathFormula math_count=0
+
+
+[1752] id=None class=inline-formula no-formula-id math_count=1
+⁠ λ 1 = λ 2 ∗ ⁠
+
+[1753] id=None class=mathFormula math_count=0
+
+
+[1754] id=None class=inline-formula no-formula-id math_count=1
+det J = λ 1 λ 2 λ 3 < 0 ⁠
+
+[1755] id=None class=mathFormula math_count=0
+
+
+[1756] id=None class=inline-formula no-formula-id math_count=1
+λ i < 0 ⁠
+
+[1757] id=None class=mathFormula math_count=0
+
+
+[1758] id=None class=inline-formula no-formula-id math_count=1
+⁠ λ i ≠ 0
+
+[1759] id=None class=mathFormula math_count=0
+
+
+[1760] id=None class=inline-formula no-formula-id math_count=1
+i = 1 , 2 , 3 ⁠
+
+[1761] id=None class=mathFormula math_count=0
+
+
+[1764] id=None class=inline-formula no-formula-id math_count=1
+λ 3 ⁠
+
+[1765] id=None class=mathFormula math_count=0
+
+
+[1766] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , λ 2 ⁠
+
+[1767] id=None class=mathFormula math_count=0
+
+
+[1768] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , λ 2 < 0 ⁠
+
+[1769] id=None class=mathFormula math_count=0
+
+
+[1772] id=None class=formula-wrap math_count=1
+tr ( J ) = tr ( a D m − 1 J 2 D m ) = a tr ( J 2 ) = − a ( 1 + 4 r 0 2 3 + 3 γ 1 ( s − 1 ) 3 2 ) , (104)
+
+[1773] id=jumplink-d104 class=disp-formula math_count=1
+tr ( J ) = tr ( a D m − 1 J 2 D m ) = a tr ( J 2 ) = − a ( 1 + 4 r 0 2 3 + 3 γ 1 ( s − 1 ) 3 2 ) ,
+
+[1774] id=None class=mathFormula math_count=0
+
+
+[1777] id=None class=inline-formula no-formula-id math_count=1
+J 2
+
+[1778] id=None class=mathFormula math_count=0
+
+
+[1779] id=None class=inline-formula no-formula-id math_count=1
+a , r 0 , γ
+
+[1780] id=None class=mathFormula math_count=0
+
+
+[1781] id=None class=inline-formula no-formula-id math_count=1
+s > 1 ⁠
+
+[1782] id=None class=mathFormula math_count=0
+
+
+[1783] id=None class=formula-wrap math_count=1
+tr ( J ) = a tr ( J 2 ) = λ 1 + λ 2 + λ 3 < 0. (105)
+
+[1784] id=jumplink-d105 class=disp-formula math_count=1
+tr ( J ) = a tr ( J 2 ) = λ 1 + λ 2 + λ 3 < 0.
+
+[1785] id=None class=mathFormula math_count=0
+
+
+[1788] id=None class=inline-formula no-formula-id math_count=1
+λ 1 + λ 2 < − λ 3
+
+[1789] id=None class=mathFormula math_count=0
+
+
+[1790] id=None class=inline-formula no-formula-id math_count=1
+λ 3 ∈ R < 0 ⁠
+
+[1791] id=None class=mathFormula math_count=0
+
+
+[1793] id=None class=inline-formula no-formula-id math_count=1
+λ 1 = λ 2 ∗ = α + i β ∈ C
+
+[1794] id=None class=mathFormula math_count=0
+
+
+[1795] id=None class=inline-formula no-formula-id math_count=1
+⁠ α , β ∈ R ⁠
+
+[1796] id=None class=mathFormula math_count=0
+
+
+[1797] id=None class=formula-wrap math_count=1
+λ 1 + λ 2 = 2 α < − λ 3 (106)
+
+[1798] id=jumplink-d106 class=disp-formula math_count=1
+λ 1 + λ 2 = 2 α < − λ 3
+
+[1799] id=None class=mathFormula math_count=0
+
+
+[1802] id=None class=formula-wrap math_count=1
+⇔ α = Re ( λ 1 , 2 ) < − λ 3 2 ∈ R > 0 . (107)
+
+[1803] id=jumplink-d107 class=disp-formula math_count=1
+⇔ α = Re ( λ 1 , 2 ) < − λ 3 2 ∈ R > 0 .
+
+[1804] id=None class=mathFormula math_count=0
+
+
+[1807] id=None class=inline-formula no-formula-id math_count=1
+α
+
+[1808] id=None class=mathFormula math_count=0
+
+
+[1809] id=None class=inline-formula no-formula-id math_count=1
+α < 0 < − λ 3 2 ⁠
+
+[1810] id=None class=mathFormula math_count=0
+
+
+[1811] id=None class=inline-formula no-formula-id math_count=1
+0 < α < − λ 3 2 ⁠
+
+[1812] id=None class=mathFormula math_count=0
+
+
+[1813] id=None class=inline-formula no-formula-id math_count=1
+Re ( λ 1 , 2 ) = α
+
+[1814] id=None class=mathFormula math_count=0
+
+
+[1815] id=None class=inline-formula no-formula-id math_count=1
+λ 3 ⁠
+
+[1816] id=None class=mathFormula math_count=0
+
+
+[1817] id=None class=inline-formula no-formula-id math_count=1
+λ 3
+
+[1818] id=None class=mathFormula math_count=0
+
+
+[1819] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , 2
+
+[1820] id=None class=mathFormula math_count=0
+
+
+[1822] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , λ 2 ∈ R ⁠
+
+[1823] id=None class=mathFormula math_count=0
+
+
+[1824] id=None class=inline-formula no-formula-id math_count=1
+λ 1 + λ 2 < − λ 3 ⁠
+
+[1825] id=None class=mathFormula math_count=0
+
+
+[1826] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , λ 2 < 0 ⁠
+
+[1827] id=None class=mathFormula math_count=0
+
+
+[1828] id=None class=inline-formula no-formula-id math_count=1
+λ 1 + λ 2 < 0 < − λ 3 ⁠
+
+[1829] id=None class=mathFormula math_count=0
+
+
+[1832] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[1833] id=None class=mathFormula math_count=0
+
+
+[1834] id=None class=inline-formula no-formula-id math_count=1
+T = 230 K ⁠
+
+[1835] id=None class=mathFormula math_count=0
+
+
+[1836] id=None class=inline-formula no-formula-id math_count=1
+F = 1
+
+[1837] id=None class=mathFormula math_count=0
+
+
+[1838] id=None class=inline-formula no-formula-id math_count=1
+0.0005 ≤ w ≤ 2 m s − 1 ⁠
+
+[1839] id=None class=mathFormula math_count=0
+
+
+[1840] id=None class=inline-formula no-formula-id math_count=1
+w ∼ 0.048
+
+[1841] id=None class=mathFormula math_count=0
+
+
+[1842] id=None class=inline-formula no-formula-id math_count=1
+w ∼ 0.77 m s − 1 ⁠
+
+[1843] id=None class=mathFormula math_count=0
+
+
+[1844] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , 2
+
+[1845] id=None class=mathFormula math_count=0
+
+
+[1846] id=None class=inline-formula no-formula-id math_count=1
+λ 3 ⁠
+
+[1847] id=None class=mathFormula math_count=0
+
+
+[1856] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[1857] id=None class=mathFormula math_count=0
+
+
+[1858] id=None class=inline-formula no-formula-id math_count=1
+T = 230 K ⁠
+
+[1859] id=None class=mathFormula math_count=0
+
+
+[1860] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[1861] id=None class=mathFormula math_count=0
+
+
+[1868] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[1869] id=None class=mathFormula math_count=0
+
+
+[1870] id=None class=inline-formula no-formula-id math_count=1
+T = 230 K ⁠
+
+[1871] id=None class=mathFormula math_count=0
+
+
+[1872] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[1873] id=None class=mathFormula math_count=0
+
+
+[1879] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[1880] id=None class=mathFormula math_count=0
+
+
+[1881] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1882] id=None class=mathFormula math_count=0
+
+
+[1883] id=None class=inline-formula no-formula-id math_count=1
+J ⁠
+
+[1884] id=None class=mathFormula math_count=0
+
+
+[1885] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , 2
+
+[1886] id=None class=mathFormula math_count=0
+
+
+[1887] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa
+
+[1888] id=None class=mathFormula math_count=0
+
+
+[1889] id=None class=inline-formula no-formula-id math_count=1
+F = 1
+
+[1890] id=None class=mathFormula math_count=0
+
+
+[1899] id=None class=inline-formula no-formula-id math_count=1
+T − w
+
+[1900] id=None class=mathFormula math_count=0
+
+
+[1901] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa
+
+[1902] id=None class=mathFormula math_count=0
+
+
+[1903] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[1904] id=None class=mathFormula math_count=0
+
+
+[1905] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , 2 ⁠
+
+[1906] id=None class=mathFormula math_count=0
+
+
+[1907] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[1908] id=None class=mathFormula math_count=0
+
+
+[1915] id=None class=inline-formula no-formula-id math_count=1
+T − w
+
+[1916] id=None class=mathFormula math_count=0
+
+
+[1917] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa
+
+[1918] id=None class=mathFormula math_count=0
+
+
+[1919] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[1920] id=None class=mathFormula math_count=0
+
+
+[1921] id=None class=inline-formula no-formula-id math_count=1
+λ 1 , 2 ⁠
+
+[1922] id=None class=mathFormula math_count=0
+
+
+[1923] id=None class=inline-formula no-formula-id math_count=1
+T ⁠
+
+[1924] id=None class=mathFormula math_count=0
+
+
+[1928] id=None class=inline-formula no-formula-id math_count=1
+F = 1
+
+[1929] id=None class=mathFormula math_count=0
+
+
+[1930] id=None class=formula-wrap math_count=1
+w a ( T ) = w ¯ exp ⁡ ( a 2 T 2 + a 1 T + a 0 ) , (108)
+
+[1931] id=jumplink-d108 class=disp-formula math_count=1
+w a ( T ) = w ¯ exp ⁡ ( a 2 T 2 + a 1 T + a 0 ) ,
+
+[1932] id=None class=mathFormula math_count=0
+
+
+[1935] id=None class=formula-wrap math_count=1
+w b ( T ) = w ¯ exp ⁡ ( b 2 T 2 + b 1 T + b 0 ) , (109)
+
+[1936] id=jumplink-d109 class=disp-formula math_count=1
+w b ( T ) = w ¯ exp ⁡ ( b 2 T 2 + b 1 T + b 0 ) ,
+
+[1937] id=None class=mathFormula math_count=0
+
+
+[1940] id=None class=inline-formula no-formula-id math_count=1
+a i , b i
+
+[1941] id=None class=mathFormula math_count=0
+
+
+[1942] id=None class=inline-formula no-formula-id math_count=1
+w ¯ = 1 ms − 1
+
+[1943] id=None class=mathFormula math_count=0
+
+
+[1944] id=None class=inline-formula no-formula-id math_count=1
+w a ( T ) ⁠
+
+[1945] id=None class=mathFormula math_count=0
+
+
+[1946] id=None class=inline-formula no-formula-id math_count=1
+w b ( T ) ⁠
+
+[1947] id=None class=mathFormula math_count=0
+
+
+[1948] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[1949] id=None class=mathFormula math_count=0
+
+
+[1950] id=None class=inline-formula no-formula-id math_count=1
+p = 200 hPa ⁠
+
+[1951] id=None class=mathFormula math_count=0
+
+
+[1965] id=None class=formula-wrap math_count=1
+λ 1 , 2 = ± i β ⇒ tr ( J ) = λ 3 ⇒ det ( J − λ 3 I ) = 0 (110)
+
+[1966] id=jumplink-d110 class=disp-formula math_count=1
+λ 1 , 2 = ± i β ⇒ tr ( J ) = λ 3 ⇒ det ( J − λ 3 I ) = 0
+
+[1967] id=None class=mathFormula math_count=0
+
+
+[1970] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[1971] id=None class=mathFormula math_count=0
+
+
+[1972] id=None class=formula-wrap math_count=1
+α 2 w 2 + α 1 w + α 0 = 0 (111)
+
+[1973] id=jumplink-d111 class=disp-formula math_count=1
+α 2 w 2 + α 1 w + α 0 = 0
+
+[1974] id=None class=mathFormula math_count=0
+
+
+[1977] id=None class=inline-formula no-formula-id math_count=1
+α 2 , α 1 , α 0
+
+[1978] id=None class=mathFormula math_count=0
+
+
+[1979] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[1980] id=None class=mathFormula math_count=0
+
+
+[1981] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[1982] id=None class=mathFormula math_count=0
+
+
+[1985] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[1986] id=None class=mathFormula math_count=0
+
+
+[1987] id=None class=inline-formula no-formula-id math_count=1
+w = 0.01 m s − 1
+
+[1988] id=None class=mathFormula math_count=0
+
+
+[1989] id=None class=inline-formula no-formula-id math_count=1
+w = 0.1 m s − 1
+
+[1990] id=None class=mathFormula math_count=0
+
+
+[1991] id=None class=inline-formula no-formula-id math_count=1
+w = 1 m s − 1
+
+[1992] id=None class=mathFormula math_count=0
+
+
+[2001] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[2002] id=None class=mathFormula math_count=0
+
+
+[2003] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[2004] id=None class=mathFormula math_count=0
+
+
+[2005] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2006] id=None class=mathFormula math_count=0
+
+
+[2007] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[2008] id=None class=mathFormula math_count=0
+
+
+[2009] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 0.01 m s − 1 ) ⁠
+
+[2010] id=None class=mathFormula math_count=0
+
+
+[2011] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 0.1 m s − 1 ⁠
+
+[2012] id=None class=mathFormula math_count=0
+
+
+[2013] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 1 m s − 1 ⁠
+
+[2014] id=None class=mathFormula math_count=0
+
+
+[2021] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[2022] id=None class=mathFormula math_count=0
+
+
+[2023] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[2024] id=None class=mathFormula math_count=0
+
+
+[2025] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2026] id=None class=mathFormula math_count=0
+
+
+[2027] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[2028] id=None class=mathFormula math_count=0
+
+
+[2029] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 0.01 m s − 1 ) ⁠
+
+[2030] id=None class=mathFormula math_count=0
+
+
+[2031] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 0.1 m s − 1 ⁠
+
+[2032] id=None class=mathFormula math_count=0
+
+
+[2033] id=None class=inline-formula no-formula-id math_count=1
+⁠ w = 1 m s − 1 ⁠
+
+[2034] id=None class=mathFormula math_count=0
+
+
+[2038] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[2039] id=None class=mathFormula math_count=0
+
+
+[2040] id=None class=formula-wrap math_count=1
+∇ ⋅ V = tr ( J ) = D w + 1 3 B q m ¯ − 2 3 ( s − 1 ) − B s n m ¯ 1 3 − 1 3 F C n ( 1 + 5 r 0 2 3 ) m ¯ 2 3 . (112)
+
+[2041] id=jumplink-d112 class=disp-formula math_count=1
+∇ ⋅ V = tr ( J ) = D w + 1 3 B q m ¯ − 2 3 ( s − 1 ) − B s n m ¯ 1 3 − 1 3 F C n ( 1 + 5 r 0 2 3 ) m ¯ 2 3 .
+
+[2042] id=None class=mathFormula math_count=0
+
+
+[2050] id=None class=inline-formula no-formula-id math_count=1
+x 0 = ( n 0 , q 0 , s 0 ) T ⁠
+
+[2051] id=None class=mathFormula math_count=0
+
+
+[2052] id=None class=inline-formula no-formula-id math_count=1
+x init = x 0 ⋅ ( 1 − ε )
+
+[2053] id=None class=mathFormula math_count=0
+
+
+[2054] id=None class=inline-formula no-formula-id math_count=1
+ε = 0.01 ⁠
+
+[2055] id=None class=mathFormula math_count=0
+
+
+[2056] id=None class=inline-formula no-formula-id math_count=1
+T final ⁠
+
+[2057] id=None class=mathFormula math_count=0
+
+
+[2058] id=None class=inline-formula no-formula-id math_count=1
+T final = 300 ⋅ τ λ
+
+[2059] id=None class=mathFormula math_count=0
+
+
+[2060] id=None class=inline-formula no-formula-id math_count=1
+τ λ = 2 π Im ( λ 1 ) ⁠
+
+[2061] id=None class=mathFormula math_count=0
+
+
+[2062] id=None class=inline-formula no-formula-id math_count=1
+Δ t = 0.01 m w ⁠
+
+[2063] id=None class=mathFormula math_count=0
+
+
+[2064] id=None class=inline-formula no-formula-id math_count=1
+w ⁠
+
+[2065] id=None class=mathFormula math_count=0
+
+
+[2068] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[2069] id=None class=mathFormula math_count=0
+
+
+[2070] id=None class=inline-formula no-formula-id math_count=1
+τ min , τ max ⁠
+
+[2071] id=None class=mathFormula math_count=0
+
+
+[2072] id=None class=inline-formula no-formula-id math_count=1
+τ = 1 2 ( τ min + τ max )
+
+[2073] id=None class=mathFormula math_count=0
+
+
+[2074] id=None class=inline-formula no-formula-id math_count=1
+( p , T , w , F ) ⁠
+
+[2075] id=None class=mathFormula math_count=0
+
+
+[2076] id=None class=inline-formula no-formula-id math_count=1
+10 4
+
+[2077] id=None class=mathFormula math_count=0
+
+
+[2078] id=None class=inline-formula no-formula-id math_count=1
+10 5
+
+[2079] id=None class=mathFormula math_count=0
+
+
+[2080] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2081] id=None class=mathFormula math_count=0
+
+
+[2082] id=None class=inline-formula no-formula-id math_count=1
+T = 210 K ⁠
+
+[2083] id=None class=mathFormula math_count=0
+
+
+[2084] id=None class=inline-formula no-formula-id math_count=1
+( τ = 2 π Im ( λ k ) )
+
+[2085] id=None class=mathFormula math_count=0
+
+
+[2086] id=None class=inline-formula no-formula-id math_count=1
+τ
+
+[2087] id=None class=mathFormula math_count=0
+
+
+[2088] id=None class=inline-formula no-formula-id math_count=1
+Im ( λ k ) = 0 ⁠
+
+[2089] id=None class=mathFormula math_count=0
+
+
+[2098] id=None class=inline-formula no-formula-id math_count=1
+T = 210 K ⁠
+
+[2099] id=None class=mathFormula math_count=0
+
+
+[2106] id=None class=inline-formula no-formula-id math_count=1
+T = 210 K ⁠
+
+[2107] id=None class=mathFormula math_count=0
+
+
+[2115] id=None class=inline-formula no-formula-id math_count=1
+p , T , w ⁠
+
+[2116] id=None class=mathFormula math_count=0
+
+
+[2117] id=None class=inline-formula no-formula-id math_count=1
+F = 1
+
+[2118] id=None class=mathFormula math_count=0
+
+
+[2119] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[2120] id=None class=mathFormula math_count=0
+
+
+[2121] id=None class=inline-formula no-formula-id math_count=1
+0.01 < F < 1 ⁠
+
+[2122] id=None class=mathFormula math_count=0
+
+
+[2125] id=None class=inline-formula no-formula-id math_count=1
+( w , F )
+
+[2126] id=None class=mathFormula math_count=0
+
+
+[2127] id=None class=inline-formula no-formula-id math_count=1
+p , T ⁠
+
+[2128] id=None class=mathFormula math_count=0
+
+
+[2129] id=None class=inline-formula no-formula-id math_count=1
+( w 0 , F 0 ) ⁠
+
+[2130] id=None class=mathFormula math_count=0
+
+
+[2131] id=None class=inline-formula no-formula-id math_count=1
+λ 1 = λ 2 ∗ = i β ⁠
+
+[2132] id=None class=mathFormula math_count=0
+
+
+[2133] id=None class=inline-formula no-formula-id math_count=1
+( w 1 , F 1 )
+
+[2134] id=None class=mathFormula math_count=0
+
+
+[2135] id=None class=inline-formula no-formula-id math_count=1
+( w 0 , F 0 )
+
+[2136] id=None class=mathFormula math_count=0
+
+
+[2137] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[2138] id=None class=mathFormula math_count=0
+
+
+[2139] id=None class=inline-formula no-formula-id math_count=1
+D , B q , C n , p 1 e
+
+[2140] id=None class=mathFormula math_count=0
+
+
+[2141] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2142] id=None class=mathFormula math_count=0
+
+
+[2143] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2144] id=None class=mathFormula math_count=0
+
+
+[2147] id=None class=inline-formula no-formula-id math_count=1
+( w 1 , F 1 )
+
+[2148] id=None class=mathFormula math_count=0
+
+
+[2149] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2150] id=None class=mathFormula math_count=0
+
+
+[2151] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2152] id=None class=mathFormula math_count=0
+
+
+[2153] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[2154] id=None class=mathFormula math_count=0
+
+
+[2155] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2156] id=None class=mathFormula math_count=0
+
+
+[2157] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2158] id=None class=mathFormula math_count=0
+
+
+[2159] id=None class=inline-formula no-formula-id math_count=1
+J 2 ⁠
+
+[2160] id=None class=mathFormula math_count=0
+
+
+[2161] id=None class=inline-formula no-formula-id math_count=1
+J 2
+
+[2162] id=None class=mathFormula math_count=0
+
+
+[2163] id=None class=inline-formula no-formula-id math_count=1
+γ
+
+[2164] id=None class=mathFormula math_count=0
+
+
+[2165] id=None class=inline-formula no-formula-id math_count=1
+D w F − 1 2
+
+[2166] id=None class=mathFormula math_count=0
+
+
+[2167] id=None class=inline-formula no-formula-id math_count=1
+F 1
+
+[2168] id=None class=mathFormula math_count=0
+
+
+[2169] id=None class=inline-formula no-formula-id math_count=1
+w 1 ⁠
+
+[2170] id=None class=mathFormula math_count=0
+
+
+[2171] id=None class=inline-formula no-formula-id math_count=1
+γ
+
+[2172] id=None class=mathFormula math_count=0
+
+
+[2173] id=None class=inline-formula no-formula-id math_count=1
+J 2
+
+[2174] id=None class=mathFormula math_count=0
+
+
+[2175] id=None class=inline-formula no-formula-id math_count=1
+( w 0 , F 0 )
+
+[2176] id=None class=mathFormula math_count=0
+
+
+[2177] id=None class=inline-formula no-formula-id math_count=1
+( w 1 , F 1 )
+
+[2178] id=None class=mathFormula math_count=0
+
+
+[2179] id=None class=formula-wrap math_count=1
+D w 0 F 0 − 1 2 = D w 1 F 1 − 1 2 ⇔ w 0 w 1 = ( F 0 F 1 ) 1 2 . (113)
+
+[2180] id=jumplink-d113 class=disp-formula math_count=1
+D w 0 F 0 − 1 2 = D w 1 F 1 − 1 2 ⇔ w 0 w 1 = ( F 0 F 1 ) 1 2 .
+
+[2181] id=None class=mathFormula math_count=0
+
+
+[2184] id=None class=inline-formula no-formula-id math_count=1
+F 0 = 1 ⁠
+
+[2185] id=None class=mathFormula math_count=0
+
+
+[2186] id=None class=formula-wrap math_count=1
+w 0 w 1 = ( 1 F 1 ) 1 2 ⇔ w 1 = F 1 1 2 w 0 = F 1 w 0 (114)
+
+[2187] id=jumplink-d114 class=disp-formula math_count=1
+w 0 w 1 = ( 1 F 1 ) 1 2 ⇔ w 1 = F 1 1 2 w 0 = F 1 w 0
+
+[2188] id=None class=mathFormula math_count=0
+
+
+[2191] id=None class=inline-formula no-formula-id math_count=1
+( w 0 , 1 )
+
+[2192] id=None class=mathFormula math_count=0
+
+
+[2193] id=None class=inline-formula no-formula-id math_count=1
+( F 1 w 0 , F 1 )
+
+[2194] id=None class=mathFormula math_count=0
+
+
+[2195] id=None class=inline-formula no-formula-id math_count=1
+⁠ F = 1 ⁠
+
+[2196] id=None class=mathFormula math_count=0
+
+
+[2197] id=None class=formula-wrap math_count=1
+w ( T ) = w ¯ exp ⁡ ( c 0 + c 1 T + c 2 T 2 ) . (115)
+
+[2198] id=jumplink-d115 class=disp-formula math_count=1
+w ( T ) = w ¯ exp ⁡ ( c 0 + c 1 T + c 2 T 2 ) .
+
+[2199] id=None class=mathFormula math_count=0
+
+
+[2202] id=None class=inline-formula no-formula-id math_count=1
+w 1 = F w 0 ⁠
+
+[2203] id=None class=mathFormula math_count=0
+
+
+[2204] id=None class=inline-formula no-formula-id math_count=1
+w 1 = F α w 0
+
+[2205] id=None class=mathFormula math_count=0
+
+
+[2206] id=None class=inline-formula no-formula-id math_count=1
+α ∈ R > 0 ⁠
+
+[2207] id=None class=mathFormula math_count=0
+
+
+[2208] id=None class=formula-wrap math_count=1
+w 1 ( T ) = F α w 0 ( T ) = F α w ¯ exp ⁡ ( c 0 + c 1 T + c 2 T 2 ) = w ¯ exp ⁡ ( c ¯ 0 + c 1 T + c 2 T 2 ) , (116)
+
+[2209] id=jumplink-d116 class=disp-formula math_count=1
+w 1 ( T ) = F α w 0 ( T ) = F α w ¯ exp ⁡ ( c 0 + c 1 T + c 2 T 2 ) = w ¯ exp ⁡ ( c ¯ 0 + c 1 T + c 2 T 2 ) ,
+
+[2210] id=None class=mathFormula math_count=0
+
+
+[2213] id=None class=inline-formula no-formula-id math_count=1
+c ¯ 0 = α log ⁡ ( F ) + c 0 ⁠
+
+[2214] id=None class=mathFormula math_count=0
+
+
+[2223] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2224] id=None class=mathFormula math_count=0
+
+
+[2225] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2226] id=None class=mathFormula math_count=0
+
+
+[2227] id=None class=inline-formula no-formula-id math_count=1
+F = 1 , 0.1 , 0.01
+
+[2228] id=None class=mathFormula math_count=0
+
+
+[2235] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2236] id=None class=mathFormula math_count=0
+
+
+[2237] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2238] id=None class=mathFormula math_count=0
+
+
+[2239] id=None class=inline-formula no-formula-id math_count=1
+F = 1 , 0.1 , 0.01
+
+[2240] id=None class=mathFormula math_count=0
+
+
+[2244] id=None class=inline-formula no-formula-id math_count=1
+F ∈ { 0.01 , 0.02 , 0.05 , 0.1 , 0.2 , 0.3 , 0.4 , 0.5 , 0.6 }
+
+[2245] id=None class=mathFormula math_count=0
+
+
+[2246] id=None class=inline-formula no-formula-id math_count=1
+α
+
+[2247] id=None class=mathFormula math_count=0
+
+
+[2248] id=None class=inline-formula no-formula-id math_count=1
+α ≈ 1 2
+
+[2249] id=None class=mathFormula math_count=0
+
+
+[2250] id=None class=inline-formula no-formula-id math_count=1
+α ≈ 0.512 ≈ 1 2 ⁠
+
+[2251] id=None class=mathFormula math_count=0
+
+
+[2252] id=None class=inline-formula no-formula-id math_count=1
+F α
+
+[2253] id=None class=mathFormula math_count=0
+
+
+[2254] id=None class=inline-formula no-formula-id math_count=1
+w ( T ) = F α w ∗ ( T )
+
+[2255] id=None class=mathFormula math_count=0
+
+
+[2256] id=None class=inline-formula no-formula-id math_count=1
+F = 1 , 0.1 , 0.01 ⁠
+
+[2257] id=None class=mathFormula math_count=0
+
+
+[2258] id=None class=inline-formula no-formula-id math_count=1
+F
+
+[2259] id=None class=mathFormula math_count=0
+
+
+[2263] id=None class=inline-formula no-formula-id math_count=1
+T
+
+[2264] id=None class=mathFormula math_count=0
+
+
+[2265] id=None class=inline-formula no-formula-id math_count=1
+T ref = 210 K
+
+[2266] id=None class=mathFormula math_count=0
+
+
+[2267] id=None class=inline-formula no-formula-id math_count=1
+x := T T ref ⁠
+
+[2268] id=None class=mathFormula math_count=0
+
+
+[2269] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) , g ( x )
+
+[2270] id=None class=mathFormula math_count=0
+
+
+[2271] id=None class=inline-formula no-formula-id math_count=1
+τ ( w , T )
+
+[2272] id=None class=mathFormula math_count=0
+
+
+[2273] id=None class=formula-wrap math_count=1
+τ ( w , T ) = f ( x ) τ ( g ( x ) w , T ref ) . (117)
+
+[2274] id=jumplink-d117 class=disp-formula math_count=1
+τ ( w , T ) = f ( x ) τ ( g ( x ) w , T ref ) .
+
+[2275] id=None class=mathFormula math_count=0
+
+
+[2278] id=None class=inline-formula no-formula-id math_count=1
+g ( x )
+
+[2279] id=None class=mathFormula math_count=0
+
+
+[2280] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2281] id=None class=mathFormula math_count=0
+
+
+[2282] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[2283] id=None class=mathFormula math_count=0
+
+
+[2284] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ∼ x a
+
+[2285] id=None class=mathFormula math_count=0
+
+
+[2286] id=None class=inline-formula no-formula-id math_count=1
+a ∈ R ⁠
+
+[2287] id=None class=mathFormula math_count=0
+
+
+[2288] id=None class=inline-formula no-formula-id math_count=1
+g ( x ) ⁠
+
+[2289] id=None class=mathFormula math_count=0
+
+
+[2290] id=None class=inline-formula no-formula-id math_count=1
+T ref
+
+[2291] id=None class=mathFormula math_count=0
+
+
+[2292] id=None class=inline-formula no-formula-id math_count=1
+x
+
+[2293] id=None class=mathFormula math_count=0
+
+
+[2294] id=None class=inline-formula no-formula-id math_count=1
+190 ≤ T ≤ 240 K ⁠
+
+[2295] id=None class=mathFormula math_count=0
+
+
+[2296] id=None class=inline-formula no-formula-id math_count=1
+0.9 ≤ x ≤ 1.15 ⁠
+
+[2297] id=None class=mathFormula math_count=0
+
+
+[2298] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) , g ( x ) ∼ x a ⁠
+
+[2299] id=None class=mathFormula math_count=0
+
+
+[2300] id=None class=formula-wrap math_count=1
+f ( x ) = x 15.0617 , g ( x ) = x − 14.1228 ; (118)
+
+[2301] id=jumplink-d118 class=disp-formula math_count=1
+f ( x ) = x 15.0617 , g ( x ) = x − 14.1228 ;
+
+[2302] id=None class=mathFormula math_count=0
+
+
+[2305] id=None class=inline-formula no-formula-id math_count=1
+0.95 < x < 1.05 ⁠
+
+[2306] id=None class=mathFormula math_count=0
+
+
+[2315] id=None class=inline-formula no-formula-id math_count=1
+T = 210 K ⁠
+
+[2316] id=None class=mathFormula math_count=0
+
+
+[2323] id=None class=inline-formula no-formula-id math_count=1
+T = 210 K ⁠
+
+[2324] id=None class=mathFormula math_count=0
+
+
+[2334] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ∼ x a ⁠
+
+[2335] id=None class=mathFormula math_count=0
+
+
+[2336] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ∼ x a − b ( x − 1 ) ⁠
+
+[2337] id=None class=mathFormula math_count=0
+
+
+[2344] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ∼ x a ⁠
+
+[2345] id=None class=mathFormula math_count=0
+
+
+[2346] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ∼ x a − b ( x − 1 ) ⁠
+
+[2347] id=None class=mathFormula math_count=0
+
+
+[2351] id=None class=inline-formula no-formula-id math_count=1
+x
+
+[2352] id=None class=mathFormula math_count=0
+
+
+[2353] id=None class=formula-wrap math_count=1
+f ( x ) = x a − b ( x − 1 ) , a , b ∈ R Const. , (119)
+
+[2354] id=jumplink-d119 class=disp-formula math_count=1
+f ( x ) = x a − b ( x − 1 ) , a , b ∈ R Const. ,
+
+[2355] id=None class=mathFormula math_count=0
+
+
+[2358] id=None class=inline-formula no-formula-id math_count=1
+f ⁠
+
+[2359] id=None class=mathFormula math_count=0
+
+
+[2360] id=None class=formula-wrap math_count=1
+f ( x ) = x a − b ( x − 1 ) , a = 15.2984 , b = 12.013 (120)
+
+[2361] id=jumplink-d120 class=disp-formula math_count=1
+f ( x ) = x a − b ( x − 1 ) , a = 15.2984 , b = 12.013
+
+[2362] id=None class=mathFormula math_count=0
+
+
+[2365] id=None class=inline-formula no-formula-id math_count=1
+g ⁠
+
+[2366] id=None class=mathFormula math_count=0
+
+
+[2367] id=None class=formula-wrap math_count=1
+g ( x ) = x a − b ( x − 1 ) , a = − 14.2715 , b = − 8.652 53 , (121)
+
+[2368] id=jumplink-d121 class=disp-formula math_count=1
+g ( x ) = x a − b ( x − 1 ) , a = − 14.2715 , b = − 8.652 53 ,
+
+[2369] id=None class=mathFormula math_count=0
+
+
+[2372] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) , g ( x )
+
+[2373] id=None class=mathFormula math_count=0
+
+
+[2374] id=None class=inline-formula no-formula-id math_count=1
+x ⁠
+
+[2375] id=None class=mathFormula math_count=0
+
+
+[2376] id=None class=inline-formula no-formula-id math_count=1
+T ref
+
+[2377] id=None class=mathFormula math_count=0
+
+
+[2378] id=None class=inline-formula no-formula-id math_count=1
+x = 1 ⁠
+
+[2379] id=None class=mathFormula math_count=0
+
+
+[2383] id=None class=formula-wrap math_count=1
+N | per volume = ρ ⋅ n | per mass . (122)
+
+[2384] id=jumplink-d122 class=disp-formula math_count=1
+N | per volume = ρ ⋅ n | per mass .
+
+[2385] id=None class=mathFormula math_count=0
+
+
+[2388] id=None class=inline-formula no-formula-id math_count=1
+200 ≤ p ≤ 300 hPa ⁠
+
+[2389] id=None class=mathFormula math_count=0
+
+
+[2390] id=None class=inline-formula no-formula-id math_count=1
+0.01 ≤ w ≤ 2 m s − 1 ⁠
+
+[2391] id=None class=mathFormula math_count=0
+
+
+[2392] id=None class=inline-formula no-formula-id math_count=1
+190 ≤ T ≤ 230 K ⁠
+
+[2393] id=None class=mathFormula math_count=0
+
+
+[2394] id=None class=inline-formula no-formula-id math_count=1
+p = 200 , 300 hPa ⁠
+
+[2395] id=None class=mathFormula math_count=0
+
+
+[2396] id=None class=inline-formula no-formula-id math_count=1
+F = 1 , 0.1 ⁠
+
+[2397] id=None class=mathFormula math_count=0
+
+
+[2400] id=None class=inline-formula no-formula-id math_count=1
+1 K ⁠
+
+[2401] id=None class=mathFormula math_count=0
+
+
+[2402] id=None class=inline-formula no-formula-id math_count=1
+F = 1
+
+[2403] id=None class=mathFormula math_count=0
+
+
+[2404] id=None class=inline-formula no-formula-id math_count=1
+F = 0.1 ⁠
+
+[2405] id=None class=mathFormula math_count=0
+
+
+[2414] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2415] id=None class=mathFormula math_count=0
+
+
+[2416] id=None class=inline-formula no-formula-id math_count=1
+F = 0.1 ⁠
+
+[2417] id=None class=mathFormula math_count=0
+
+
+[2424] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2425] id=None class=mathFormula math_count=0
+
+
+[2426] id=None class=inline-formula no-formula-id math_count=1
+F = 0.1 ⁠
+
+[2427] id=None class=mathFormula math_count=0
+
+
+[2431] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[2432] id=None class=mathFormula math_count=0
+
+
+[2433] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[2434] id=None class=mathFormula math_count=0
+
+
+[2435] id=None class=inline-formula no-formula-id math_count=1
+F = 0.1 ⁠
+
+[2436] id=None class=mathFormula math_count=0
+
+
+[2437] id=None class=inline-formula no-formula-id math_count=1
+210 ≤ T ≤ 220 K
+
+[2438] id=None class=mathFormula math_count=0
+
+
+[2439] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[2440] id=None class=mathFormula math_count=0
+
+
+[2444] id=None class=inline-formula no-formula-id math_count=1
+s ⁠
+
+[2445] id=None class=mathFormula math_count=0
+
+
+[2446] id=None class=inline-formula no-formula-id math_count=1
+T
+
+[2447] id=None class=mathFormula math_count=0
+
+
+[2448] id=None class=inline-formula no-formula-id math_count=1
+w
+
+[2449] id=None class=mathFormula math_count=0
+
+
+[2450] id=None class=inline-formula no-formula-id math_count=1
+w ( T ) ⁠
+
+[2451] id=None class=mathFormula math_count=0
+
+
+[2452] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2453] id=None class=mathFormula math_count=0
+
+
+[2454] id=None class=inline-formula no-formula-id math_count=1
+F ⁠
+
+[2455] id=None class=mathFormula math_count=0
+
+
+[2456] id=None class=inline-formula no-formula-id math_count=1
+T ref = 210 K ⁠
+
+[2457] id=None class=mathFormula math_count=0
+
+
+[2490] id=None class=inline-formula no-formula-id math_count=1
+f ( m , t , x ) ⁠
+
+[2491] id=None class=mathFormula math_count=0
+
+
+[2492] id=None class=inline-formula no-formula-id math_count=1
+( t , x )
+
+[2493] id=None class=mathFormula math_count=0
+
+
+[2494] id=None class=formula-wrap math_count=1
+∂ ρ f ∂ t + ∇ ⋅ ( ρ f u ) + ∂ ( ρ f g ) ∂ m = ρ h (A1)
+
+[2495] id=jumplink-da1 class=disp-formula math_count=1
+∂ ρ f ∂ t + ∇ ⋅ ( ρ f u ) + ∂ ( ρ f g ) ∂ m = ρ h
+
+[2496] id=None class=mathFormula math_count=0
+
+
+[2499] id=None class=inline-formula no-formula-id math_count=1
+v
+
+[2500] id=None class=mathFormula math_count=0
+
+
+[2501] id=None class=inline-formula no-formula-id math_count=1
+v t
+
+[2502] id=None class=mathFormula math_count=0
+
+
+[2503] id=None class=inline-formula no-formula-id math_count=1
+u = v − e z v t ⁠
+
+[2504] id=None class=mathFormula math_count=0
+
+
+[2505] id=None class=formula-wrap math_count=1
+∂ ρ f ∂ t + ∇ ⋅ ( ρ f v ) − ∂ ∂ z ( ρ f v t ) + ∂ ∂ m ( ρ f g ) = ρ h . (A2)
+
+[2506] id=jumplink-da2 class=disp-formula math_count=1
+∂ ρ f ∂ t + ∇ ⋅ ( ρ f v ) − ∂ ∂ z ( ρ f v t ) + ∂ ∂ m ( ρ f g ) = ρ h .
+
+[2507] id=None class=mathFormula math_count=0
+
+
+[2510] id=None class=inline-formula no-formula-id math_count=1
+ρ t + ∇ ⋅ ( ρ v ) = 0 ⁠
+
+[2511] id=None class=mathFormula math_count=0
+
+
+[2512] id=None class=formula-wrap math_count=1
+∂ f ∂ t + v ⋅ ∇ f + ∂ ∂ m ( f g ) = 1 ρ ∂ ( ρ f v t ) ∂ z + h , (A3)
+
+[2513] id=jumplink-da3 class=disp-formula math_count=1
+∂ f ∂ t + v ⋅ ∇ f + ∂ ∂ m ( f g ) = 1 ρ ∂ ( ρ f v t ) ∂ z + h ,
+
+[2514] id=None class=mathFormula math_count=0
+
+
+[2517] id=None class=inline-formula no-formula-id math_count=1
+m ˙ = g
+
+[2518] id=None class=mathFormula math_count=0
+
+
+[2519] id=None class=inline-formula no-formula-id math_count=1
+m k ⁠
+
+[2520] id=None class=mathFormula math_count=0
+
+
+[2521] id=None class=formula-wrap math_count=1
+∂ ∂ t ( m k f ) + v ⋅ ∇ ( m k f ) + m k ∂ ∂ m ( m ˙ f ) = 1 ρ ∂ ∂ z ( ρ m k f v t ) + m k h . (A4)
+
+[2522] id=jumplink-da4 class=disp-formula math_count=1
+∂ ∂ t ( m k f ) + v ⋅ ∇ ( m k f ) + m k ∂ ∂ m ( m ˙ f ) = 1 ρ ∂ ∂ z ( ρ m k f v t ) + m k h .
+
+[2523] id=None class=mathFormula math_count=0
+
+
+[2526] id=None class=inline-formula no-formula-id math_count=1
+( 0 , ∞ ) ⁠
+
+[2527] id=None class=mathFormula math_count=0
+
+
+[2528] id=None class=formula-wrap math_count=1
+∫ 0 ∞ ( ∂ ∂ t ( m k f ) + v ⋅ ∇ ( m k f ) ) d m = ∂ μ k ∂ t + v ⋅ ∇ ( μ k ) , (A5)
+
+[2529] id=jumplink-da5 class=disp-formula math_count=1
+∫ 0 ∞ ( ∂ ∂ t ( m k f ) + v ⋅ ∇ ( m k f ) ) d m = ∂ μ k ∂ t + v ⋅ ∇ ( μ k ) ,
+
+[2530] id=None class=mathFormula math_count=0
+
+
+[2533] id=None class=inline-formula no-formula-id math_count=1
+k ∈ N ⁠
+
+[2534] id=None class=mathFormula math_count=0
+
+
+[2535] id=None class=formula-wrap math_count=1
+∫ 0 ∞ m k ∂ ∂ m ( m ˙ f ) d m = m k m ˙ f ( m ) | 0 ∞ − k ∫ 0 ∞ m k − 1 m ˙ f d m . (A6)
+
+[2536] id=jumplink-da6 class=disp-formula math_count=1
+∫ 0 ∞ m k ∂ ∂ m ( m ˙ f ) d m = m k m ˙ f ( m ) | 0 ∞ − k ∫ 0 ∞ m k − 1 m ˙ f d m .
+
+[2537] id=None class=mathFormula math_count=0
+
+
+[2540] id=None class=formula-wrap math_count=1
+lim m → ∞ m α f ( m ) = 0 ∀ α ∈ R + and lim m → 0 m ˙ f ( m ) < ∞ , (A7)
+
+[2541] id=jumplink-da7 class=disp-formula math_count=1
+lim m → ∞ m α f ( m ) = 0 ∀ α ∈ R + and lim m → 0 m ˙ f ( m ) < ∞ ,
+
+[2542] id=None class=mathFormula math_count=0
+
+
+[2545] id=None class=formula-wrap math_count=1
+∫ 0 ∞ m k ∂ ∂ m ( m ˙ f ) d m = − k ∫ 0 ∞ m k − 1 m ˙ f d m . (A8)
+
+[2546] id=jumplink-da8 class=disp-formula math_count=1
+∫ 0 ∞ m k ∂ ∂ m ( m ˙ f ) d m = − k ∫ 0 ∞ m k − 1 m ˙ f d m .
+
+[2547] id=None class=mathFormula math_count=0
+
+
+[2550] id=None class=inline-formula no-formula-id math_count=1
+k ≥ 1 ⁠
+
+[2551] id=None class=mathFormula math_count=0
+
+
+[2552] id=None class=inline-formula no-formula-id math_count=1
+k = 0
+
+[2553] id=None class=mathFormula math_count=0
+
+
+[2554] id=None class=formula-wrap math_count=1
+∫ 0 ∞ ∂ ∂ m ( m ˙ f ) d m = m ˙ f ( m ) | 0 ∞ = − m ˙ f ( 0 ) , (A9)
+
+[2555] id=jumplink-da9 class=disp-formula math_count=1
+∫ 0 ∞ ∂ ∂ m ( m ˙ f ) d m = m ˙ f ( m ) | 0 ∞ = − m ˙ f ( 0 ) ,
+
+[2556] id=None class=mathFormula math_count=0
+
+
+[2559] id=None class=inline-formula no-formula-id math_count=1
+f
+
+[2560] id=None class=mathFormula math_count=0
+
+
+[2564] id=None class=inline-formula no-formula-id math_count=1
+f ( r )
+
+[2565] id=None class=mathFormula math_count=0
+
+
+[2566] id=None class=inline-formula no-formula-id math_count=1
+V
+
+[2567] id=None class=mathFormula math_count=0
+
+
+[2568] id=None class=inline-formula no-formula-id math_count=1
+Δ t ⁠
+
+[2569] id=None class=mathFormula math_count=0
+
+
+[2570] id=None class=formula-wrap math_count=1
+P = 1 − exp ⁡ ( − J V Δ t ) , (A10)
+
+[2571] id=jumplink-da10 class=disp-formula math_count=1
+P = 1 − exp ⁡ ( − J V Δ t ) ,
+
+[2572] id=None class=mathFormula math_count=0
+
+
+[2575] id=None class=formula-wrap math_count=1
+Δ n = ∫ 0 ∞ f ( r ) P ( r ) d r = ∫ 0 ∞ f ( r ) ( 1 − exp ⁡ ( − J V Δ t ) ) d r . (A11)
+
+[2576] id=jumplink-da11 class=disp-formula math_count=1
+Δ n = ∫ 0 ∞ f ( r ) P ( r ) d r = ∫ 0 ∞ f ( r ) ( 1 − exp ⁡ ( − J V Δ t ) ) d r .
+
+[2577] id=None class=mathFormula math_count=0
+
+
+[2580] id=None class=inline-formula no-formula-id math_count=1
+∂ J ∂ r = 0 ⁠
+
+[2581] id=None class=mathFormula math_count=0
+
+
+[2582] id=None class=formula-wrap math_count=1
+Δ n = ∫ 0 ∞ f ( r ) P ( r ) d r = ∫ 0 ∞ f ( r ) ( 1 − ( 1 − J V Δ t + O ( Δ t 2 ) ) ) d r = ∫ 0 ∞ f ( r ) J V d r ⋅ Δ t + O ( Δ t 2 ) = J 4 3 π ∫ 0 ∞ f ( r ) r 3 d r ⋅ Δ t + O ( Δ t 2 ) = J 4 3 π μ 3 [ m ] ⋅ Δ t + O ( Δ t 2 ) (A12)
+
+[2583] id=jumplink-da12 class=disp-formula math_count=1
+Δ n = ∫ 0 ∞ f ( r ) P ( r ) d r = ∫ 0 ∞ f ( r ) ( 1 − ( 1 − J V Δ t + O ( Δ t 2 ) ) ) d r = ∫ 0 ∞ f ( r ) J V d r ⋅ Δ t + O ( Δ t 2 ) = J 4 3 π ∫ 0 ∞ f ( r ) r 3 d r ⋅ Δ t + O ( Δ t 2 ) = J 4 3 π μ 3 [ m ] ⋅ Δ t + O ( Δ t 2 )
+
+[2584] id=None class=mathFormula math_count=0
+
+
+[2587] id=None class=inline-formula no-formula-id math_count=1
+Δ t
+
+[2588] id=None class=mathFormula math_count=0
+
+
+[2589] id=None class=inline-formula no-formula-id math_count=1
+Δ t → 0 ⁠
+
+[2590] id=None class=mathFormula math_count=0
+
+
+[2591] id=None class=formula-wrap math_count=1
+d n d t = J 4 3 π μ 3 [ m ] , (A13)
+
+[2592] id=jumplink-da13 class=disp-formula math_count=1
+d n d t = J 4 3 π μ 3 [ m ] ,
+
+[2593] id=None class=mathFormula math_count=0
+
+
+[2596] id=None class=formula-wrap math_count=1
+f a ( r ) = n a 2 π log ⁡ ( σ r ) r exp ⁡ ( − 1 2 ( log ⁡ ( r r m ) log ⁡ ( σ r ) ) 2 ) , (A14)
+
+[2597] id=jumplink-da14 class=disp-formula math_count=1
+f a ( r ) = n a 2 π log ⁡ ( σ r ) r exp ⁡ ( − 1 2 ( log ⁡ ( r r m ) log ⁡ ( σ r ) ) 2 ) ,
+
+[2598] id=None class=mathFormula math_count=0
+
+
+[2601] id=None class=inline-formula no-formula-id math_count=1
+r m = r sol
+
+[2602] id=None class=mathFormula math_count=0
+
+
+[2603] id=None class=inline-formula no-formula-id math_count=1
+n a ⁠
+
+[2604] id=None class=mathFormula math_count=0
+
+
+[2605] id=None class=inline-formula no-formula-id math_count=1
+n a
+
+[2606] id=None class=mathFormula math_count=0
+
+
+[2607] id=None class=inline-formula no-formula-id math_count=1
+r m = r sol = 75 × 10 − 9 m
+
+[2608] id=None class=mathFormula math_count=0
+
+
+[2609] id=None class=inline-formula no-formula-id math_count=1
+σ r = 1.5 ⁠
+
+[2610] id=None class=mathFormula math_count=0
+
+
+[2611] id=None class=formula-wrap math_count=1
+V sol = 4 3 π r sol 3 ⋅ c sol , c sol = exp ⁡ ( 9 2 ( log ⁡ σ r ) 2 ) . (A15)
+
+[2612] id=jumplink-da15 class=disp-formula math_count=1
+V sol = 4 3 π r sol 3 ⋅ c sol , c sol = exp ⁡ ( 9 2 ( log ⁡ σ r ) 2 ) .
+
+[2613] id=None class=mathFormula math_count=0
+
+
+[2616] id=None class=inline-formula no-formula-id math_count=1
+m nuc = 10 − 16 kg ⁠
+
+[2617] id=None class=mathFormula math_count=0
+
+
+[2618] id=None class=inline-formula no-formula-id math_count=1
+N a ∼ 300 cm − 3 = 3 × 10 8 m − 3 ⁠
+
+[2619] id=None class=mathFormula math_count=0
+
+
+[2620] id=None class=inline-formula no-formula-id math_count=1
+ρ
+
+[2621] id=None class=mathFormula math_count=0
+
+
+[2622] id=None class=inline-formula no-formula-id math_count=1
+n a = N a ρ ⁠
+
+[2623] id=None class=mathFormula math_count=0
+
+
+[2626] id=None class=inline-formula no-formula-id math_count=1
+N a = 10 000 cm − 3 ⁠
+
+[2627] id=None class=mathFormula math_count=0
+
+
+[2630] id=None class=formula-wrap math_count=1
+Nuc n = ∂ n ∂ t | nucleation = n a V sol J . (A16)
+
+[2631] id=jumplink-da16 class=disp-formula math_count=1
+Nuc n = ∂ n ∂ t | nucleation = n a V sol J .
+
+[2632] id=None class=mathFormula math_count=0
+
+
+[2635] id=None class=inline-formula no-formula-id math_count=1
+Nuc q ⁠
+
+[2636] id=None class=mathFormula math_count=0
+
+
+[2637] id=None class=inline-formula no-formula-id math_count=1
+Nuc n
+
+[2638] id=None class=mathFormula math_count=0
+
+
+[2639] id=None class=inline-formula no-formula-id math_count=1
+m nuc ⁠
+
+[2640] id=None class=mathFormula math_count=0
+
+
+[2641] id=None class=formula-wrap math_count=1
+J ( s , T ) = J 0 exp ⁡ ( p 1 e ( T ) ( s − p 2 ( T ) ) ) , J 0 = 10 16 m − 3 s − 1 (A17)
+
+[2642] id=jumplink-da17 class=disp-formula math_count=1
+J ( s , T ) = J 0 exp ⁡ ( p 1 e ( T ) ( s − p 2 ( T ) ) ) , J 0 = 10 16 m − 3 s − 1
+
+[2643] id=None class=mathFormula math_count=0
+
+
+[2646] id=None class=formula-wrap math_count=1
+p 1 ( T ) = a 0 + a 1 T , p 1 e ( T ) = log ⁡ ( 10 ) p 1 ( T ) , (A18)
+
+[2647] id=jumplink-da18 class=disp-formula math_count=1
+p 1 ( T ) = a 0 + a 1 T , p 1 e ( T ) = log ⁡ ( 10 ) p 1 ( T ) ,
+
+[2648] id=None class=mathFormula math_count=0
+
+
+[2651] id=None class=formula-wrap math_count=1
+p 2 ( T ) = a s 2 T 2 + a s 1 T + a s 0 , (A19)
+
+[2652] id=jumplink-da19 class=disp-formula math_count=1
+p 2 ( T ) = a s 2 T 2 + a s 1 T + a s 0 ,
+
+[2653] id=None class=mathFormula math_count=0
+
+
+[2656] id=None class=formula-wrap math_count=1
+a 0 = − 50.4085 , a 1 = 0.9368 K − 1 (A20)
+
+[2657] id=jumplink-da20 class=disp-formula math_count=1
+a 0 = − 50.4085 , a 1 = 0.9368 K − 1
+
+[2658] id=None class=mathFormula math_count=0
+
+
+[2661] id=None class=formula-wrap math_count=1
+a s 2 = − 1.369 89 × 10 − 5 K − 2 , (A21)
+
+[2662] id=jumplink-da21 class=disp-formula math_count=1
+a s 2 = − 1.369 89 × 10 − 5 K − 2 ,
+
+[2663] id=None class=mathFormula math_count=0
+
+
+[2666] id=None class=formula-wrap math_count=1
+a s 1 = 0.002 28 K − 1 , a s 0 = 1.674 69. (A22)
+
+[2667] id=jumplink-da22 class=disp-formula math_count=1
+a s 1 = 0.002 28 K − 1 , a s 0 = 1.674 69.
+
+[2668] id=None class=mathFormula math_count=0
+
+
+[2674] id=None class=formula-wrap math_count=1
+R d ≈ 287.058 J kg − 1 K − 1 , R v ≈ 461.553 J kg − 1 K − 1 , (A23)
+
+[2675] id=jumplink-da23 class=disp-formula math_count=1
+R d ≈ 287.058 J kg − 1 K − 1 , R v ≈ 461.553 J kg − 1 K − 1 ,
+
+[2676] id=None class=mathFormula math_count=0
+
+
+[2679] id=None class=inline-formula no-formula-id math_count=1
+g = 9.81 m / s 2 ⁠
+
+[2680] id=None class=mathFormula math_count=0
+
+
+[2681] id=None class=formula-wrap math_count=1
+L ( T ) = L mol ( T ) / M mol , v , (A24)
+
+[2682] id=jumplink-da24 class=disp-formula math_count=1
+L ( T ) = L mol ( T ) / M mol , v ,
+
+[2683] id=None class=mathFormula math_count=0
+
+
+[2686] id=None class=formula-wrap math_count=1
+L mol ( T ) = l 0 + l 1 T + l 2 T 2 + l 3 exp ⁡ ( − ( T / T l ) 2 ) , (A25)
+
+[2687] id=jumplink-da25 class=disp-formula math_count=1
+L mol ( T ) = l 0 + l 1 T + l 2 T 2 + l 3 exp ⁡ ( − ( T / T l ) 2 ) ,
+
+[2688] id=None class=mathFormula math_count=0
+
+
+[2691] id=None class=formula-wrap math_count=1
+l 0 = 46 782.5 J mol − 1 , l 1 = 35.8925 J mol − 1 K − 1 , (A26)
+
+[2692] id=jumplink-da26 class=disp-formula math_count=1
+l 0 = 46 782.5 J mol − 1 , l 1 = 35.8925 J mol − 1 K − 1 ,
+
+[2693] id=None class=mathFormula math_count=0
+
+
+[2696] id=None class=formula-wrap math_count=1
+l 2 = − 0.074 14 J mol − 1 K − 2 , l 3 = 541.5 J mol − 1 , (A27)
+
+[2697] id=jumplink-da27 class=disp-formula math_count=1
+l 2 = − 0.074 14 J mol − 1 K − 2 , l 3 = 541.5 J mol − 1 ,
+
+[2698] id=None class=mathFormula math_count=0
+
+
+[2701] id=None class=formula-wrap math_count=1
+T l = 123.75 K , (A28)
+
+[2702] id=jumplink-da28 class=disp-formula math_count=1
+T l = 123.75 K ,
+
+[2703] id=None class=mathFormula math_count=0
+
+
+[2706] id=None class=formula-wrap math_count=1
+M mol , v = 18.015 28 × 10 − 3 kg mol − 1 . (A29)
+
+[2707] id=jumplink-da29 class=disp-formula math_count=1
+M mol , v = 18.015 28 × 10 − 3 kg mol − 1 .
+
+[2708] id=None class=mathFormula math_count=0
+
+
+[2711] id=None class=formula-wrap math_count=1
+p si ( T ) = p unit exp ⁡ ( b 0 + b 1 / T + b 2 log ⁡ ( T / T unit ) + b 3 T ) , (A30)
+
+[2712] id=jumplink-da30 class=disp-formula math_count=1
+p si ( T ) = p unit exp ⁡ ( b 0 + b 1 / T + b 2 log ⁡ ( T / T unit ) + b 3 T ) ,
+
+[2713] id=None class=mathFormula math_count=0
+
+
+[2716] id=None class=formula-wrap math_count=1
+p unit = Pa , T unit = K (A31)
+
+[2717] id=jumplink-da31 class=disp-formula math_count=1
+p unit = Pa , T unit = K
+
+[2718] id=None class=mathFormula math_count=0
+
+
+[2721] id=None class=formula-wrap math_count=1
+b 0 = 9.550 426 , b 1 = − 5723.265 K , (A32)
+
+[2722] id=jumplink-da32 class=disp-formula math_count=1
+b 0 = 9.550 426 , b 1 = − 5723.265 K ,
+
+[2723] id=None class=mathFormula math_count=0
+
+
+[2726] id=None class=formula-wrap math_count=1
+b 2 = 3.530 68 , b 3 = − 0.007 283 32 K − 1 . (A33)
+
+[2727] id=jumplink-da33 class=disp-formula math_count=1
+b 2 = 3.530 68 , b 3 = − 0.007 283 32 K − 1 .
+
+[2728] id=None class=mathFormula math_count=0
+
+
+[2731] id=None class=formula-wrap math_count=1
+K T ( T ) = a K T b K T + T K ⋅ 10 c K T , (A34)
+
+[2732] id=jumplink-da34 class=disp-formula math_count=1
+K T ( T ) = a K T b K T + T K ⋅ 10 c K T ,
+
+[2733] id=None class=mathFormula math_count=0
+
+
+[2736] id=None class=formula-wrap math_count=1
+a K = 0.002 646 W m − 1 K 1 − b K , b K = 3 2 , (A35)
+
+[2737] id=jumplink-da35 class=disp-formula math_count=1
+a K = 0.002 646 W m − 1 K 1 − b K , b K = 3 2 ,
+
+[2738] id=None class=mathFormula math_count=0
+
+
+[2741] id=None class=formula-wrap math_count=1
+T K = 245 K , c K = − 12 K . (A36)
+
+[2742] id=jumplink-da36 class=disp-formula math_count=1
+T K = 245 K , c K = − 12 K .
+
+[2743] id=None class=mathFormula math_count=0
+
+
+[2749] id=None class=inline-formula no-formula-id math_count=1
+m ⁠
+
+[2750] id=None class=mathFormula math_count=0
+
+
+[2751] id=None class=formula-wrap math_count=1
+m ˙ = 4 π C D v f k G v ( s − 1 ) f v , (A37)
+
+[2752] id=jumplink-da37 class=disp-formula math_count=1
+m ˙ = 4 π C D v f k G v ( s − 1 ) f v ,
+
+[2753] id=None class=mathFormula math_count=0
+
+
+[2756] id=None class=inline-formula no-formula-id math_count=1
+q = μ 1 [ m ] ⁠
+
+[2757] id=None class=mathFormula math_count=0
+
+
+[2758] id=None class=formula-wrap math_count=1
+Dep q = ∫ 0 ∞ m ˙ f ( m ) d m = ∫ 0 ∞ 4 π C D v f k G v ( s − 1 ) f v f ( m ) d m . (A38)
+
+[2759] id=jumplink-da38 class=disp-formula math_count=1
+Dep q = ∫ 0 ∞ m ˙ f ( m ) d m = ∫ 0 ∞ 4 π C D v f k G v ( s − 1 ) f v f ( m ) d m .
+
+[2760] id=None class=mathFormula math_count=0
+
+
+[2763] id=None class=inline-formula no-formula-id math_count=1
+⁠ f k = 1 ⁠
+
+[2764] id=None class=mathFormula math_count=0
+
+
+[2765] id=None class=inline-formula no-formula-id math_count=1
+⁠ f v = 1 ⁠
+
+[2766] id=None class=mathFormula math_count=0
+
+
+[2767] id=None class=inline-formula no-formula-id math_count=1
+C ( m ) = r = c m 1 3
+
+[2768] id=None class=mathFormula math_count=0
+
+
+[2769] id=None class=formula-wrap math_count=1
+Dep q = ∫ 0 ∞ f ( m ) 4 π C D v f k G v ( s − 1 ) f v d m ≈ 4 π G v D v ∫ 0 ∞ f ( m ) C ( m ) d m ⋅ ( s − 1 ) = 4 π G v D v c r 0 − 1 9 n 2 3 q 1 3 ( s − 1 ) = B q n 2 3 q 1 3 ( s − 1 ) , (A39)
+
+[2770] id=jumplink-da39 class=disp-formula math_count=1
+Dep q = ∫ 0 ∞ f ( m ) 4 π C D v f k G v ( s − 1 ) f v d m ≈ 4 π G v D v ∫ 0 ∞ f ( m ) C ( m ) d m ⋅ ( s − 1 ) = 4 π G v D v c r 0 − 1 9 n 2 3 q 1 3 ( s − 1 ) = B q n 2 3 q 1 3 ( s − 1 ) ,
+
+[2771] id=None class=mathFormula math_count=0
+
+
+[2774] id=None class=formula-wrap math_count=1
+B q = 4 π G v D v c r 0 − 1 9 , (A40)
+
+[2775] id=jumplink-da40 class=disp-formula math_count=1
+B q = 4 π G v D v c r 0 − 1 9 ,
+
+[2776] id=None class=mathFormula math_count=0
+
+
+[2779] id=None class=inline-formula no-formula-id math_count=1
+G v
+
+[2780] id=None class=mathFormula math_count=0
+
+
+[2781] id=None class=inline-formula no-formula-id math_count=1
+D v
+
+[2782] id=None class=mathFormula math_count=0
+
+
+[2783] id=None class=inline-formula no-formula-id math_count=1
+c = 3 4 π ρ b 3
+
+[2784] id=None class=mathFormula math_count=0
+
+
+[2785] id=None class=inline-formula no-formula-id math_count=1
+f k = 1
+
+[2786] id=None class=mathFormula math_count=0
+
+
+[2790] id=None class=inline-formula no-formula-id math_count=1
+ψ
+
+[2791] id=None class=mathFormula math_count=0
+
+
+[2792] id=None class=inline-formula no-formula-id math_count=1
+μ k ⁠
+
+[2793] id=None class=mathFormula math_count=0
+
+
+[2794] id=None class=inline-formula no-formula-id math_count=1
+j ψ = ρ ψ v ψ
+
+[2795] id=None class=mathFormula math_count=0
+
+
+[2796] id=None class=inline-formula no-formula-id math_count=1
+v ψ ⁠
+
+[2797] id=None class=mathFormula math_count=0
+
+
+[2798] id=None class=formula-wrap math_count=1
+∂ ( ρ ψ ) ∂ t = ∂ j ψ ∂ z . (A41)
+
+[2799] id=jumplink-da41 class=disp-formula math_count=1
+∂ ( ρ ψ ) ∂ t = ∂ j ψ ∂ z .
+
+[2800] id=None class=mathFormula math_count=0
+
+
+[2803] id=None class=inline-formula no-formula-id math_count=1
+n = μ 0 , q = μ 1 ⁠
+
+[2804] id=None class=mathFormula math_count=0
+
+
+[2805] id=None class=formula-wrap math_count=1
+j n := ∫ 0 ∞ ρ f ( m ) v t ( m ) d m = ! ρ n v n , (A42)
+
+[2806] id=jumplink-da42 class=disp-formula math_count=1
+j n := ∫ 0 ∞ ρ f ( m ) v t ( m ) d m = ! ρ n v n ,
+
+[2807] id=None class=mathFormula math_count=0
+
+
+[2810] id=None class=formula-wrap math_count=1
+j q := ∫ 0 ∞ ρ f ( m ) m v t ( m ) d m = ! ρ q v q (A43)
+
+[2811] id=jumplink-da43 class=disp-formula math_count=1
+j q := ∫ 0 ∞ ρ f ( m ) m v t ( m ) d m = ! ρ q v q
+
+[2812] id=None class=mathFormula math_count=0
+
+
+[2815] id=None class=formula-wrap math_count=1
+v n = 1 n ∫ 0 ∞ f ( m ) v t ( m ) d m , (A44)
+
+[2816] id=jumplink-da44 class=disp-formula math_count=1
+v n = 1 n ∫ 0 ∞ f ( m ) v t ( m ) d m ,
+
+[2817] id=None class=mathFormula math_count=0
+
+
+[2820] id=None class=formula-wrap math_count=1
+v q = 1 q ∫ 0 ∞ f ( m ) m v t ( m ) d m . (A45)
+
+[2821] id=jumplink-da45 class=disp-formula math_count=1
+v q = 1 q ∫ 0 ∞ f ( m ) m v t ( m ) d m .
+
+[2822] id=None class=mathFormula math_count=0
+
+
+[2825] id=None class=inline-formula no-formula-id math_count=1
+n , q
+
+[2826] id=None class=mathFormula math_count=0
+
+
+[2827] id=None class=inline-formula no-formula-id math_count=1
+= 0 ⁠
+
+[2828] id=None class=mathFormula math_count=0
+
+
+[2832] id=None class=formula-wrap math_count=1
+L 2 c p R v T 2 S i + p ε p si ≈ p ε p si , (A46)
+
+[2833] id=jumplink-da46 class=disp-formula math_count=1
+L 2 c p R v T 2 S i + p ε p si ≈ p ε p si ,
+
+[2834] id=None class=mathFormula math_count=0
+
+
+[2837] id=None class=inline-formula no-formula-id math_count=1
+T = 240 K ⁠
+
+[2838] id=None class=mathFormula math_count=0
+
+
+[2839] id=None class=inline-formula no-formula-id math_count=1
+230 K
+
+[2840] id=None class=mathFormula math_count=0
+
+
+[2841] id=None class=inline-formula no-formula-id math_count=1
+210 K ⁠
+
+[2842] id=None class=mathFormula math_count=0
+
+
+[2845] id=None class=inline-formula no-formula-id math_count=1
+f k = 1 ⁠
+
+[2846] id=None class=mathFormula math_count=0
+
+
+[2847] id=None class=inline-formula no-formula-id math_count=1
+1 μ m ⁠
+
+[2848] id=None class=mathFormula math_count=0
+
+
+[2849] id=None class=inline-formula no-formula-id math_count=1
+190 K ⁠
+
+[2850] id=None class=mathFormula math_count=0
+
+
+[2851] id=None class=inline-formula no-formula-id math_count=1
+m ∼ 10 − 13 kg
+
+[2852] id=None class=mathFormula math_count=0
+
+
+[2853] id=None class=inline-formula no-formula-id math_count=1
+m ∼ 10 − 12 kg ⁠
+
+[2854] id=None class=mathFormula math_count=0
+
+
+[2872] id=None class=formula-wrap math_count=1
+v final a s m b s 1 v final + a s m b s ≈ a s m b s . (A47)
+
+[2873] id=jumplink-da47 class=disp-formula math_count=1
+v final a s m b s 1 v final + a s m b s ≈ a s m b s .
+
+[2874] id=None class=mathFormula math_count=0
+
+
+[2877] id=None class=inline-formula no-formula-id math_count=1
+r ∼ 100 μ m ⁠
+
+[2878] id=None class=mathFormula math_count=0
+
+
+[2879] id=None class=inline-formula no-formula-id math_count=1
+r ∼ 80 μ m ⁠
+
+[2880] id=None class=mathFormula math_count=0
+
+
+[2881] id=None class=inline-formula no-formula-id math_count=1
+r ∼ 67 μ m
+
+[2882] id=None class=mathFormula math_count=0
+
+
+[2883] id=None class=inline-formula no-formula-id math_count=1
+T = 240 K ⁠
+
+[2884] id=None class=mathFormula math_count=0
+
+
+[2888] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[2889] id=None class=mathFormula math_count=0
+
+
+[2890] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[2891] id=None class=mathFormula math_count=0
+
+
+[2892] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[2893] id=None class=mathFormula math_count=0
+
+
+[2897] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[2898] id=None class=mathFormula math_count=0
+
+
+[2899] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[2900] id=None class=mathFormula math_count=0
+
+
+[2903] id=None class=formula-wrap math_count=1
+n 2 3 q 1 3 = n m ¯ 1 3 , n 1 3 q 2 3 = n m ¯ 2 3 , (B1)
+
+[2904] id=jumplink-db1 class=disp-formula math_count=1
+n 2 3 q 1 3 = n m ¯ 1 3 , n 1 3 q 2 3 = n m ¯ 2 3 ,
+
+[2905] id=None class=mathFormula math_count=0
+
+
+[2908] id=None class=inline-formula no-formula-id math_count=1
+m ¯ = q n
+
+[2909] id=None class=mathFormula math_count=0
+
+
+[2910] id=None class=inline-formula no-formula-id math_count=1
+s > 1
+
+[2911] id=None class=mathFormula math_count=0
+
+
+[2912] id=None class=inline-formula no-formula-id math_count=1
+Evap n = 0 ⁠
+
+[2913] id=None class=mathFormula math_count=0
+
+
+[2914] id=None class=inline-formula no-formula-id math_count=1
+d n d t = 0
+
+[2915] id=None class=mathFormula math_count=0
+
+
+[2916] id=None class=formula-wrap math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n m ¯ 2 3 = r 0 − 2 3 F C q n m ¯ 2 3 (B2)
+
+[2917] id=jumplink-db2 class=disp-formula math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n m ¯ 2 3 = r 0 − 2 3 F C q n m ¯ 2 3
+
+[2918] id=None class=mathFormula math_count=0
+
+
+[2921] id=None class=inline-formula no-formula-id math_count=1
+C n = r 0 − 2 3 C q ⁠
+
+[2922] id=None class=mathFormula math_count=0
+
+
+[2923] id=None class=formula-wrap math_count=1
+Nuc q = m nuc A n exp ⁡ ( p 1 e ( s − p 2 ) ) (B3)
+
+[2924] id=jumplink-db3 class=disp-formula math_count=1
+Nuc q = m nuc A n exp ⁡ ( p 1 e ( s − p 2 ) )
+
+[2925] id=None class=mathFormula math_count=0
+
+
+[2928] id=None class=formula-wrap math_count=1
+= m nuc r 0 − 2 3 F C q n m ¯ 2 3 = − m nuc r 0 − 2 3 m ¯ Sed q , (B4)
+
+[2929] id=jumplink-db4 class=disp-formula math_count=1
+= m nuc r 0 − 2 3 F C q n m ¯ 2 3 = − m nuc r 0 − 2 3 m ¯ Sed q ,
+
+[2930] id=None class=mathFormula math_count=0
+
+
+[2933] id=None class=inline-formula no-formula-id math_count=1
+Nuc q = m n u c Nuc n
+
+[2934] id=None class=mathFormula math_count=0
+
+
+[2935] id=None class=inline-formula no-formula-id math_count=1
+m nuc = 10 − 16 kg
+
+[2936] id=None class=mathFormula math_count=0
+
+
+[2937] id=None class=inline-formula no-formula-id math_count=1
+d q d t = 0
+
+[2938] id=None class=mathFormula math_count=0
+
+
+[2939] id=None class=formula-wrap math_count=1
+0 = Dep q + Nuc q + Sed q (B5)
+
+[2940] id=jumplink-db5 class=disp-formula math_count=1
+0 = Dep q + Nuc q + Sed q
+
+[2941] id=None class=mathFormula math_count=0
+
+
+[2944] id=None class=formula-wrap math_count=1
+= Dep q + ( 1 − δ ) Sed q , (B6)
+
+[2945] id=jumplink-db6 class=disp-formula math_count=1
+= Dep q + ( 1 − δ ) Sed q ,
+
+[2946] id=None class=mathFormula math_count=0
+
+
+[2949] id=None class=inline-formula no-formula-id math_count=1
+δ := m nuc r 0 − 2 3 m ¯ ⁠
+
+[2950] id=None class=mathFormula math_count=0
+
+
+[2951] id=None class=inline-formula no-formula-id math_count=1
+r 0 − 2 3 < 1
+
+[2952] id=None class=mathFormula math_count=0
+
+
+[2953] id=None class=inline-formula no-formula-id math_count=1
+r 0 > 1
+
+[2954] id=None class=mathFormula math_count=0
+
+
+[2955] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[2956] id=None class=mathFormula math_count=0
+
+
+[2957] id=None class=inline-formula no-formula-id math_count=1
+m ¯
+
+[2958] id=None class=mathFormula math_count=0
+
+
+[2959] id=None class=inline-formula no-formula-id math_count=1
+m ¯ ≫ m nuc ⁠
+
+[2960] id=None class=mathFormula math_count=0
+
+
+[2963] id=None class=inline-formula no-formula-id math_count=1
+Nuc s ⁠
+
+[2964] id=None class=mathFormula math_count=0
+
+
+[2965] id=None class=inline-formula no-formula-id math_count=1
+Dep s
+
+[2966] id=None class=mathFormula math_count=0
+
+
+[2967] id=None class=formula-wrap math_count=1
+Nuc s = − p ε p si Nuc q = p ε p si δ ⋅ Sed q (B7)
+
+[2968] id=jumplink-db7 class=disp-formula math_count=1
+Nuc s = − p ε p si Nuc q = p ε p si δ ⋅ Sed q
+
+[2969] id=None class=mathFormula math_count=0
+
+
+[2972] id=None class=formula-wrap math_count=1
+= − p ε p si δ 1 − δ Dep q = δ 1 − δ Dep s . (B8)
+
+[2973] id=jumplink-db8 class=disp-formula math_count=1
+= − p ε p si δ 1 − δ Dep q = δ 1 − δ Dep s .
+
+[2974] id=None class=mathFormula math_count=0
+
+
+[2977] id=None class=inline-formula no-formula-id math_count=1
+d s d t = 0
+
+[2978] id=None class=mathFormula math_count=0
+
+
+[2979] id=None class=formula-wrap math_count=1
+0 = Cool + Nuc s + Dep s (B9)
+
+[2980] id=jumplink-db9 class=disp-formula math_count=1
+0 = Cool + Nuc s + Dep s
+
+[2981] id=None class=mathFormula math_count=0
+
+
+[2984] id=None class=formula-wrap math_count=1
+= Cool + ( δ 1 − δ + 1 ) Dep s (B10)
+
+[2985] id=jumplink-db10 class=disp-formula math_count=1
+= Cool + ( δ 1 − δ + 1 ) Dep s
+
+[2986] id=None class=mathFormula math_count=0
+
+
+[2989] id=None class=formula-wrap math_count=1
+= Cool + 1 1 − δ Dep s , (B11)
+
+[2990] id=jumplink-db11 class=disp-formula math_count=1
+= Cool + 1 1 − δ Dep s ,
+
+[2991] id=None class=mathFormula math_count=0
+
+
+[2994] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[2995] id=None class=mathFormula math_count=0
+
+
+[2996] id=None class=inline-formula no-formula-id math_count=1
+m ¯ ≫ m nuc
+
+[2997] id=None class=mathFormula math_count=0
+
+
+[2998] id=None class=inline-formula no-formula-id math_count=1
+δ ≪ 1 ⁠
+
+[2999] id=None class=mathFormula math_count=0
+
+
+[3002] id=None class=inline-formula no-formula-id math_count=1
+m ¯
+
+[3003] id=None class=mathFormula math_count=0
+
+
+[3004] id=None class=inline-formula no-formula-id math_count=1
+m ¯ ≫ m nuc
+
+[3005] id=None class=mathFormula math_count=0
+
+
+[3006] id=None class=inline-formula no-formula-id math_count=1
+s ≥ 1
+
+[3007] id=None class=mathFormula math_count=0
+
+
+[3008] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[3009] id=None class=mathFormula math_count=0
+
+
+[3010] id=None class=inline-formula no-formula-id math_count=1
+1 ⁠
+
+[3011] id=None class=mathFormula math_count=0
+
+
+[3012] id=None class=inline-formula no-formula-id math_count=1
+s
+
+[3013] id=None class=mathFormula math_count=0
+
+
+[3016] id=None class=inline-formula no-formula-id math_count=1
+s ≤ 1.35
+
+[3017] id=None class=mathFormula math_count=0
+
+
+[3018] id=None class=inline-formula no-formula-id math_count=1
+d n d t = 0
+
+[3019] id=None class=mathFormula math_count=0
+
+
+[3020] id=None class=inline-formula no-formula-id math_count=1
+s ≥ 1 ⁠
+
+[3021] id=None class=mathFormula math_count=0
+
+
+[3022] id=None class=formula-wrap math_count=1
+D w ≤ D w s = Cool = − ( Nuc s + Dep s ) (B12)
+
+[3023] id=jumplink-db12 class=disp-formula math_count=1
+D w ≤ D w s = Cool = − ( Nuc s + Dep s )
+
+[3024] id=None class=mathFormula math_count=0
+
+
+[3027] id=None class=formula-wrap math_count=1
+= p ε p si ( Nuc q + Dep q ) = − p ε p si Sed q (B13)
+
+[3028] id=jumplink-db13 class=disp-formula math_count=1
+= p ε p si ( Nuc q + Dep q ) = − p ε p si Sed q
+
+[3029] id=None class=mathFormula math_count=0
+
+
+[3032] id=None class=formula-wrap math_count=1
+= p ε p si F C q n m ¯ 5 3 = − p ε p si m ¯ r 0 2 3 Sed n (B14)
+
+[3033] id=jumplink-db14 class=disp-formula math_count=1
+= p ε p si F C q n m ¯ 5 3 = − p ε p si m ¯ r 0 2 3 Sed n
+
+[3034] id=None class=mathFormula math_count=0
+
+
+[3037] id=None class=formula-wrap math_count=1
+= p ε p si m ¯ r 0 2 3 Nuc n (B15)
+
+[3038] id=jumplink-db15 class=disp-formula math_count=1
+= p ε p si m ¯ r 0 2 3 Nuc n
+
+[3039] id=None class=mathFormula math_count=0
+
+
+[3042] id=None class=formula-wrap math_count=1
+= p ε p si m ¯ r 0 2 3 A n exp ⁡ ( p 1 e ( s − p 2 ) ) (B16)
+
+[3043] id=jumplink-db16 class=disp-formula math_count=1
+= p ε p si m ¯ r 0 2 3 A n exp ⁡ ( p 1 e ( s − p 2 ) )
+
+[3044] id=None class=mathFormula math_count=0
+
+
+[3047] id=None class=formula-wrap math_count=1
+≤ p ε p si m ¯ r 0 2 3 A n exp ⁡ ( p 1 e ( 1.35 − p 2 ) ) , (B17)
+
+[3048] id=jumplink-db17 class=disp-formula math_count=1
+≤ p ε p si m ¯ r 0 2 3 A n exp ⁡ ( p 1 e ( 1.35 − p 2 ) ) ,
+
+[3049] id=None class=mathFormula math_count=0
+
+
+[3052] id=None class=inline-formula no-formula-id math_count=1
+Nuc q + Dep q = − Sed q
+
+[3053] id=None class=mathFormula math_count=0
+
+
+[3054] id=None class=inline-formula no-formula-id math_count=1
+Sed n = − Nuc n
+
+[3055] id=None class=mathFormula math_count=0
+
+
+[3056] id=None class=inline-formula no-formula-id math_count=1
+d q d t = 0
+
+[3057] id=None class=mathFormula math_count=0
+
+
+[3058] id=None class=inline-formula no-formula-id math_count=1
+d n d t = 0 ⁠
+
+[3059] id=None class=mathFormula math_count=0
+
+
+[3060] id=None class=inline-formula no-formula-id math_count=1
+s ≤ 1.35
+
+[3061] id=None class=mathFormula math_count=0
+
+
+[3062] id=None class=inline-formula no-formula-id math_count=1
+m ¯
+
+[3063] id=None class=mathFormula math_count=0
+
+
+[3064] id=None class=formula-wrap math_count=1
+m ¯ ≥ D w A n ε p si p r 0 − 2 3 exp ⁡ ( − p 1 e ( 1.35 − p 2 ) ) (B18)
+
+[3065] id=jumplink-db18 class=disp-formula math_count=1
+m ¯ ≥ D w A n ε p si p r 0 − 2 3 exp ⁡ ( − p 1 e ( 1.35 − p 2 ) )
+
+[3066] id=None class=mathFormula math_count=0
+
+
+[3069] id=None class=formula-wrap math_count=1
+≥ D w min A n ε p si p r 0 − 2 3 exp ⁡ ( − p 1 e ( 1.35 − p 2 ) ) , (B19)
+
+[3070] id=jumplink-db19 class=disp-formula math_count=1
+≥ D w min A n ε p si p r 0 − 2 3 exp ⁡ ( − p 1 e ( 1.35 − p 2 ) ) ,
+
+[3071] id=None class=mathFormula math_count=0
+
+
+[3074] id=None class=inline-formula no-formula-id math_count=1
+w min = 0.0005 m s − 1
+
+[3075] id=None class=mathFormula math_count=0
+
+
+[3076] id=None class=inline-formula no-formula-id math_count=1
+10 − 2 kg ⁠
+
+[3077] id=None class=mathFormula math_count=0
+
+
+[3078] id=None class=formula-wrap math_count=1
+m ¯ ≥ 10 − 2 kg ≫ m nuc = 10 − 16 kg (B20)
+
+[3079] id=jumplink-db20 class=disp-formula math_count=1
+m ¯ ≥ 10 − 2 kg ≫ m nuc = 10 − 16 kg
+
+[3080] id=None class=mathFormula math_count=0
+
+
+[3083] id=None class=inline-formula no-formula-id math_count=1
+s ≤ 1.35
+
+[3084] id=None class=mathFormula math_count=0
+
+
+[3085] id=None class=inline-formula no-formula-id math_count=1
+s ≤ 1.35
+
+[3086] id=None class=mathFormula math_count=0
+
+
+[3089] id=None class=inline-formula no-formula-id math_count=1
+s ≥ 1.35 ⁠
+
+[3090] id=None class=mathFormula math_count=0
+
+
+[3091] id=None class=inline-formula no-formula-id math_count=1
+d q d t = 0 ⁠
+
+[3092] id=None class=mathFormula math_count=0
+
+
+[3093] id=None class=inline-formula no-formula-id math_count=1
+Sed q < 0 ⁠
+
+[3094] id=None class=mathFormula math_count=0
+
+
+[3095] id=None class=inline-formula no-formula-id math_count=1
+F ≤ 1 ⁠
+
+[3096] id=None class=mathFormula math_count=0
+
+
+[3097] id=None class=formula-wrap math_count=1
+B q n m ¯ 1 3 ( s − 1 ) = Dep q = − ( 1 − δ ) Sed q (B21)
+
+[3098] id=jumplink-db21 class=disp-formula math_count=1
+B q n m ¯ 1 3 ( s − 1 ) = Dep q = − ( 1 − δ ) Sed q
+
+[3099] id=None class=mathFormula math_count=0
+
+
+[3102] id=None class=formula-wrap math_count=1
+≤ − Sed q = F C q n m ¯ 5 3 ≤ C q n m ¯ 5 3 , (B22)
+
+[3103] id=jumplink-db22 class=disp-formula math_count=1
+≤ − Sed q = F C q n m ¯ 5 3 ≤ C q n m ¯ 5 3 ,
+
+[3104] id=None class=mathFormula math_count=0
+
+
+[3107] id=None class=inline-formula no-formula-id math_count=1
+s ≥ 1.35 ⁠
+
+[3108] id=None class=mathFormula math_count=0
+
+
+[3109] id=None class=formula-wrap math_count=1
+B q ( 1.35 − 1 ) ≤ B q ( s − 1 ) ≤ C q m ¯ 4 3 (B23)
+
+[3110] id=jumplink-db23 class=disp-formula math_count=1
+B q ( 1.35 − 1 ) ≤ B q ( s − 1 ) ≤ C q m ¯ 4 3
+
+[3111] id=None class=mathFormula math_count=0
+
+
+[3114] id=None class=formula-wrap math_count=1
+⇔ m ¯ ≥ ( B q C q ( 1.35 − 1 ) ) 3 4 . (B24)
+
+[3115] id=jumplink-db24 class=disp-formula math_count=1
+⇔ m ¯ ≥ ( B q C q ( 1.35 − 1 ) ) 3 4 .
+
+[3116] id=None class=mathFormula math_count=0
+
+
+[3119] id=None class=inline-formula no-formula-id math_count=1
+B q ⁠
+
+[3120] id=None class=mathFormula math_count=0
+
+
+[3121] id=None class=inline-formula no-formula-id math_count=1
+C q
+
+[3122] id=None class=mathFormula math_count=0
+
+
+[3123] id=None class=formula-wrap math_count=1
+m ¯ ≥ ( B q C q ( 1.35 − 1 ) ) 3 4 ≥ 10 − 12 kg ≫ m nuc = 10 − 16 kg . (B25)
+
+[3124] id=jumplink-db25 class=disp-formula math_count=1
+m ¯ ≥ ( B q C q ( 1.35 − 1 ) ) 3 4 ≥ 10 − 12 kg ≫ m nuc = 10 − 16 kg .
+
+[3125] id=None class=mathFormula math_count=0
+
+
+[3130] id=None class=inline-formula no-formula-id math_count=1
+m ¯ ≫ m nuc
+
+[3131] id=None class=mathFormula math_count=0
+
+
+[3132] id=None class=inline-formula no-formula-id math_count=1
+m ¯
+
+[3133] id=None class=mathFormula math_count=0
+
+
+[3134] id=None class=inline-formula no-formula-id math_count=1
+Nuc q
+
+[3135] id=None class=mathFormula math_count=0
+
+
+[3136] id=None class=inline-formula no-formula-id math_count=1
+Nuc s
+
+[3137] id=None class=mathFormula math_count=0
+
+
+[3141] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[3142] id=None class=mathFormula math_count=0
+
+
+[3143] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[3144] id=None class=mathFormula math_count=0
+
+
+[3145] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[3146] id=None class=mathFormula math_count=0
+
+
+[3147] id=None class=inline-formula no-formula-id math_count=1
+s 0 ⁠
+
+[3148] id=None class=mathFormula math_count=0
+
+
+[3151] id=None class=inline-formula no-formula-id math_count=1
+d ψ d t = 0 ⁠
+
+[3152] id=None class=mathFormula math_count=0
+
+
+[3153] id=None class=inline-formula no-formula-id math_count=1
+n
+
+[3154] id=None class=mathFormula math_count=0
+
+
+[3155] id=None class=inline-formula no-formula-id math_count=1
+m ¯ ⁠
+
+[3156] id=None class=mathFormula math_count=0
+
+
+[3157] id=None class=inline-formula no-formula-id math_count=1
+n ⁠
+
+[3158] id=None class=mathFormula math_count=0
+
+
+[3159] id=None class=formula-wrap math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) − F C n n 1 3 q 2 3 = 0 (B26)
+
+[3160] id=jumplink-db26 class=disp-formula math_count=1
+A n exp ⁡ ( p 1 e ( s − p 2 ) ) − F C n n 1 3 q 2 3 = 0
+
+[3161] id=None class=mathFormula math_count=0
+
+
+[3164] id=None class=formula-wrap math_count=1
+⇔ A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n m ¯ 2 3 (B27)
+
+[3165] id=jumplink-db27 class=disp-formula math_count=1
+⇔ A n exp ⁡ ( p 1 e ( s − p 2 ) ) = F C n n m ¯ 2 3
+
+[3166] id=None class=mathFormula math_count=0
+
+
+[3169] id=None class=formula-wrap math_count=1
+⇔ n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) m ¯ − 2 3 . (B28)
+
+[3170] id=jumplink-db28 class=disp-formula math_count=1
+⇔ n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) m ¯ − 2 3 .
+
+[3171] id=None class=mathFormula math_count=0
+
+
+[3174] id=None class=inline-formula no-formula-id math_count=1
+m ¯
+
+[3175] id=None class=mathFormula math_count=0
+
+
+[3176] id=None class=inline-formula no-formula-id math_count=1
+q ≠ 0 ⁠
+
+[3177] id=None class=mathFormula math_count=0
+
+
+[3178] id=None class=formula-wrap math_count=1
+B q n 2 3 q − 2 3 ( s − 1 ) − F C q n − 2 3 q 2 3 = 0 (B29)
+
+[3179] id=jumplink-db29 class=disp-formula math_count=1
+B q n 2 3 q − 2 3 ( s − 1 ) − F C q n − 2 3 q 2 3 = 0
+
+[3180] id=None class=mathFormula math_count=0
+
+
+[3183] id=None class=formula-wrap math_count=1
+⇔ B q m ¯ − 2 3 ( s − 1 ) = F C q m ¯ 2 3 (B30)
+
+[3184] id=jumplink-db30 class=disp-formula math_count=1
+⇔ B q m ¯ − 2 3 ( s − 1 ) = F C q m ¯ 2 3
+
+[3185] id=None class=mathFormula math_count=0
+
+
+[3188] id=None class=formula-wrap math_count=1
+⇔ B q ( s − 1 ) = F C q m ¯ 4 3 (B31)
+
+[3189] id=jumplink-db31 class=disp-formula math_count=1
+⇔ B q ( s − 1 ) = F C q m ¯ 4 3
+
+[3190] id=None class=mathFormula math_count=0
+
+
+[3193] id=None class=formula-wrap math_count=1
+⇔ m ¯ 4 3 = B q F C q ( s − 1 ) (B32)
+
+[3194] id=jumplink-db32 class=disp-formula math_count=1
+⇔ m ¯ 4 3 = B q F C q ( s − 1 )
+
+[3195] id=None class=mathFormula math_count=0
+
+
+[3198] id=None class=formula-wrap math_count=1
+⇔ m ¯ = ( B q F C q ( s − 1 ) ) 3 4 . (B33)
+
+[3199] id=jumplink-db33 class=disp-formula math_count=1
+⇔ m ¯ = ( B q F C q ( s − 1 ) ) 3 4 .
+
+[3200] id=None class=mathFormula math_count=0
+
+
+[3203] id=None class=inline-formula no-formula-id math_count=1
+n , q
+
+[3204] id=None class=mathFormula math_count=0
+
+
+[3205] id=None class=formula-wrap math_count=1
+n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 2 (B34)
+
+[3206] id=jumplink-db34 class=disp-formula math_count=1
+n = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 2
+
+[3207] id=None class=mathFormula math_count=0
+
+
+[3210] id=None class=formula-wrap math_count=1
+q = n m ¯ = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) 1 4 . (B35)
+
+[3211] id=jumplink-db35 class=disp-formula math_count=1
+q = n m ¯ = A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) 1 4 .
+
+[3212] id=None class=mathFormula math_count=0
+
+
+[3215] id=None class=formula-wrap math_count=1
+D w s − B s n m ¯ 1 3 ( s − 1 ) = 0 ⇔ (B36)
+
+[3216] id=jumplink-db36 class=disp-formula math_count=1
+D w s − B s n m ¯ 1 3 ( s − 1 ) = 0 ⇔
+
+[3217] id=None class=mathFormula math_count=0
+
+
+[3220] id=None class=formula-wrap math_count=1
+D w s − B s A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 4 ( s − 1 ) = 0. (B37)
+
+[3221] id=jumplink-db37 class=disp-formula math_count=1
+D w s − B s A n F C n exp ⁡ ( p 1 e ( s − p 2 ) ) ( B q F C q ( s − 1 ) ) − 1 4 ( s − 1 ) = 0.
+
+[3222] id=None class=mathFormula math_count=0
+
+
+[3225] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[3226] id=None class=mathFormula math_count=0
+
+
+[3227] id=None class=inline-formula no-formula-id math_count=1
+x = s ⁠
+
+[3228] id=None class=mathFormula math_count=0
+
+
+[3229] id=None class=formula-wrap math_count=1
+f ( x ) = a x − b ( x − 1 ) exp ⁡ ( c ( x − x 0 ) ) d ( x − 1 ) 4 , (B38)
+
+[3230] id=jumplink-db38 class=disp-formula math_count=1
+f ( x ) = a x − b ( x − 1 ) exp ⁡ ( c ( x − x 0 ) ) d ( x − 1 ) 4 ,
+
+[3231] id=None class=mathFormula math_count=0
+
+
+[3234] id=None class=formula-wrap math_count=1
+a = D w , b = B s A n F C n , c = p 1 e , d = B q F C q , x 0 = p 2 . (B39)
+
+[3235] id=jumplink-db39 class=disp-formula math_count=1
+a = D w , b = B s A n F C n , c = p 1 e , d = B q F C q , x 0 = p 2 .
+
+[3236] id=None class=mathFormula math_count=0
+
+
+[3239] id=None class=inline-formula no-formula-id math_count=1
+f ( x )
+
+[3240] id=None class=mathFormula math_count=0
+
+
+[3241] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[3242] id=None class=mathFormula math_count=0
+
+
+[3243] id=None class=inline-formula no-formula-id math_count=1
+f ( s 0 ) = 0 ⁠
+
+[3244] id=None class=mathFormula math_count=0
+
+
+[3245] id=None class=inline-formula no-formula-id math_count=1
+s 0
+
+[3246] id=None class=mathFormula math_count=0
+
+
+[3247] id=None class=inline-formula no-formula-id math_count=1
+f ( x ) ⁠
+
+[3248] id=None class=mathFormula math_count=0
+
+
+[3249] id=None class=inline-formula no-formula-id math_count=1
+n 0
+
+[3250] id=None class=mathFormula math_count=0
+
+
+[3251] id=None class=inline-formula no-formula-id math_count=1
+q 0
+
+[3252] id=None class=mathFormula math_count=0
+
+
+[3253] id=None class=inline-formula no-formula-id math_count=1
+s = s 0 ⁠
+
+[3254] id=None class=mathFormula math_count=0
+
+
+[3255] id=None class=inline-formula no-formula-id math_count=1
+x = ( n 0 , q 0 , s 0 ) T
+
+[3256] id=None class=mathFormula math_count=0
+
+
+[3260] id=None class=inline-formula no-formula-id math_count=1
+h ( x )
+
+[3261] id=None class=mathFormula math_count=0
+
+
+[3262] id=None class=formula-wrap math_count=1
+h ( [ s min , s max ] ) ⊂ [ s min , s max ] (C1)
+
+[3263] id=jumplink-dc1 class=disp-formula math_count=1
+h ( [ s min , s max ] ) ⊂ [ s min , s max ]
+
+[3264] id=None class=mathFormula math_count=0
+
+
+[3267] id=None class=inline-formula no-formula-id math_count=1
+s min = 1.37
+
+[3268] id=None class=mathFormula math_count=0
+
+
+[3269] id=None class=inline-formula no-formula-id math_count=1
+s max = 1.59 ⁠
+
+[3270] id=None class=mathFormula math_count=0
+
+
+[3271] id=None class=inline-formula no-formula-id math_count=1
+σ
+
+[3272] id=None class=mathFormula math_count=0
+
+
+[3273] id=None class=inline-formula no-formula-id math_count=1
+p 1 e ⁠
+
+[3274] id=None class=mathFormula math_count=0
+
+
+[3275] id=None class=inline-formula no-formula-id math_count=1
+⁠ 190 ≤ T ≤ 240 K ⁠
+
+[3276] id=None class=mathFormula math_count=0
+
+
+[3277] id=None class=inline-formula no-formula-id math_count=1
+⁠ 200 ≤ p ≤ 300 hPa ⁠
+
+[3278] id=None class=mathFormula math_count=0
+
+
+[3279] id=None class=formula-wrap math_count=1
+σ 1 ≤ σ ≤ σ 2 , π 1 ≤ 1 p 1 e ( T ) ≤ π 2 (C2)
+
+[3280] id=jumplink-dc2 class=disp-formula math_count=1
+σ 1 ≤ σ ≤ σ 2 , π 1 ≤ 1 p 1 e ( T ) ≤ π 2
+
+[3281] id=None class=mathFormula math_count=0
+
+
+[3284] id=None class=formula-wrap math_count=1
+σ 1 = 1.412 801 , σ 2 = 1.583 606 , (C3)
+
+[3285] id=jumplink-dc3 class=disp-formula math_count=1
+σ 1 = 1.412 801 , σ 2 = 1.583 606 ,
+
+[3286] id=None class=mathFormula math_count=0
+
+
+[3289] id=None class=formula-wrap math_count=1
+π 1 = 0.002 489 , π 2 = 0.003 404. (C4)
+
+[3290] id=jumplink-dc4 class=disp-formula math_count=1
+π 1 = 0.002 489 , π 2 = 0.003 404.
+
+[3291] id=None class=mathFormula math_count=0
+
+
+[3294] id=None class=formula-wrap math_count=1
+γ 1 ≤ 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) ≤ γ 2 (C5)
+
+[3295] id=jumplink-dc5 class=disp-formula math_count=1
+γ 1 ≤ 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) ≤ γ 2
+
+[3296] id=None class=mathFormula math_count=0
+
+
+[3299] id=None class=inline-formula no-formula-id math_count=1
+γ 1 ⁠
+
+[3300] id=None class=mathFormula math_count=0
+
+
+[3301] id=None class=inline-formula no-formula-id math_count=1
+γ 2
+
+[3302] id=None class=mathFormula math_count=0
+
+
+[3303] id=None class=formula-wrap math_count=1
+0.01 = F min ≤ F ≤ F max = 1 , (C6)
+
+[3304] id=jumplink-dc6 class=disp-formula math_count=1
+0.01 = F min ≤ F ≤ F max = 1 ,
+
+[3305] id=None class=mathFormula math_count=0
+
+
+[3308] id=None class=formula-wrap math_count=1
+0.0005 m s − 1 = w min ≤ w ≤ w max = 2 m s − 1 . (C7)
+
+[3309] id=jumplink-dc7 class=disp-formula math_count=1
+0.0005 m s − 1 = w min ≤ w ≤ w max = 2 m s − 1 .
+
+[3310] id=None class=mathFormula math_count=0
+
+
+[3313] id=None class=formula-wrap math_count=1
+γ 2 = 0.002 360 ≥ π 2 ( log ⁡ ( w max ) + 3 4 log ⁡ ( F max ) ) , (C8)
+
+[3314] id=jumplink-dc8 class=disp-formula math_count=1
+γ 2 = 0.002 360 ≥ π 2 ( log ⁡ ( w max ) + 3 4 log ⁡ ( F max ) ) ,
+
+[3315] id=None class=mathFormula math_count=0
+
+
+[3318] id=None class=formula-wrap math_count=1
+γ 1 = − 0.037 631 ≤ π 2 ( log ⁡ ( w min ) + 3 4 log ⁡ ( F min ) ) , (C9)
+
+[3319] id=jumplink-dc9 class=disp-formula math_count=1
+γ 1 = − 0.037 631 ≤ π 2 ( log ⁡ ( w min ) + 3 4 log ⁡ ( F min ) ) ,
+
+[3320] id=None class=mathFormula math_count=0
+
+
+[3323] id=None class=formula-wrap math_count=1
+1.375 170 = σ 1 + γ 1 ≤ σ + 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) ≤ σ 2 + γ 2 = 1.585 966 , (C10)
+
+[3324] id=jumplink-dc10 class=disp-formula math_count=1
+1.375 170 = σ 1 + γ 1 ≤ σ + 1 p 1 e ( log ⁡ ( w ) + 3 4 log ⁡ ( F ) ) ≤ σ 2 + γ 2 = 1.585 966 ,
+
+[3325] id=None class=mathFormula math_count=0
+
+
+[3328] id=None class=formula-wrap math_count=1
+h ( x ) = κ 0 + 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 ) (C11)
+
+[3329] id=jumplink-dc11 class=disp-formula math_count=1
+h ( x ) = κ 0 + 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 )
+
+[3330] id=None class=mathFormula math_count=0
+
+
+[3333] id=None class=inline-formula no-formula-id math_count=1
+κ 0 ∈ [ 1.375 170 , 1.585 966 ] ⁠
+
+[3334] id=None class=mathFormula math_count=0
+
+
+[3335] id=None class=formula-wrap math_count=1
+[ s min , s max ] with s min = 1.37 , s max = 1.59. (C12)
+
+[3336] id=jumplink-dc12 class=disp-formula math_count=1
+[ s min , s max ] with s min = 1.37 , s max = 1.59.
+
+[3337] id=None class=mathFormula math_count=0
+
+
+[3340] id=None class=inline-formula no-formula-id math_count=1
+log ( x ( x − 1 ) 3 4 )
+
+[3341] id=None class=mathFormula math_count=0
+
+
+[3342] id=None class=inline-formula no-formula-id math_count=1
+[ s min , s max ] ,
+
+[3343] id=None class=mathFormula math_count=0
+
+
+[3344] id=None class=formula-wrap math_count=1
+0.002 139 ≤ 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 ) ≤ 0.003 670 (C13)
+
+[3345] id=jumplink-dc13 class=disp-formula math_count=1
+0.002 139 ≤ 1 p 1 e log ⁡ ( x ( x − 1 ) 3 4 ) ≤ 0.003 670
+
+[3346] id=None class=mathFormula math_count=0
+
+
+[3349] id=None class=formula-wrap math_count=1
+h ( [ s min , s max ] ) ⊂ [ 1.375 170 , 1.585 966 ] + [ 0.002 139 , 0.003 670 ] = [ 1.377 309 , 1.589 636 ] ⊂ [ s min , s max ] . (C14)
+
+[3350] id=jumplink-dc14 class=disp-formula math_count=1
+h ( [ s min , s max ] ) ⊂ [ 1.375 170 , 1.585 966 ] + [ 0.002 139 , 0.003 670 ] = [ 1.377 309 , 1.589 636 ] ⊂ [ s min , s max ] .
+
+[3351] id=None class=mathFormula math_count=0
+
+
+[3357] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3358] id=None class=mathFormula math_count=0
+
+
+[3359] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3360] id=None class=mathFormula math_count=0
+
+
+[3361] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3362] id=None class=mathFormula math_count=0
+
+
+[3371] id=None class=inline-formula no-formula-id math_count=1
+w = 0.01 m s − 1
+
+[3372] id=None class=mathFormula math_count=0
+
+
+[3373] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3374] id=None class=mathFormula math_count=0
+
+
+[3375] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3376] id=None class=mathFormula math_count=0
+
+
+[3377] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3378] id=None class=mathFormula math_count=0
+
+
+[3385] id=None class=inline-formula no-formula-id math_count=1
+w = 0.01 m s − 1
+
+[3386] id=None class=mathFormula math_count=0
+
+
+[3387] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3388] id=None class=mathFormula math_count=0
+
+
+[3389] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3390] id=None class=mathFormula math_count=0
+
+
+[3391] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3392] id=None class=mathFormula math_count=0
+
+
+[3402] id=None class=inline-formula no-formula-id math_count=1
+w = 0.10 m s − 1
+
+[3403] id=None class=mathFormula math_count=0
+
+
+[3404] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3405] id=None class=mathFormula math_count=0
+
+
+[3406] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3407] id=None class=mathFormula math_count=0
+
+
+[3408] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3409] id=None class=mathFormula math_count=0
+
+
+[3416] id=None class=inline-formula no-formula-id math_count=1
+w = 0.10 m s − 1
+
+[3417] id=None class=mathFormula math_count=0
+
+
+[3418] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3419] id=None class=mathFormula math_count=0
+
+
+[3420] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3421] id=None class=mathFormula math_count=0
+
+
+[3422] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3423] id=None class=mathFormula math_count=0
+
+
+[3433] id=None class=inline-formula no-formula-id math_count=1
+w = 1.00 m s − 1
+
+[3434] id=None class=mathFormula math_count=0
+
+
+[3435] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3436] id=None class=mathFormula math_count=0
+
+
+[3437] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3438] id=None class=mathFormula math_count=0
+
+
+[3439] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3440] id=None class=mathFormula math_count=0
+
+
+[3447] id=None class=inline-formula no-formula-id math_count=1
+w = 1.00 m s − 1
+
+[3448] id=None class=mathFormula math_count=0
+
+
+[3449] id=None class=inline-formula no-formula-id math_count=1
+T = 225 K ⁠
+
+[3450] id=None class=mathFormula math_count=0
+
+
+[3451] id=None class=inline-formula no-formula-id math_count=1
+p = 300 hPa ⁠
+
+[3452] id=None class=mathFormula math_count=0
+
+
+[3453] id=None class=inline-formula no-formula-id math_count=1
+F = 1 ⁠
+
+[3454] id=None class=mathFormula math_count=0

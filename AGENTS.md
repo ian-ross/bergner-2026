@@ -1,3 +1,34 @@
+## Repository organization
+
+Research artifacts are organized episodically under `episodes/`, not by top-level functional type. Each episode
+represents a coherent phase of the investigation and may contain its own `docs/`, `scripts/`, `notebooks/`, `auto/`,
+`examples/`, and `outputs/` subdirectories as needed. Start with the episode README, then disclose deeper details
+only as needed by reading files in that episode.
+
+Current episodes:
+
+- `episodes/001-figure4-time-series/` — replication/qualitative reproduction of the time-series plots from Figure 4
+  of Bergner & Spichtinger (2026). Contains the Figure 4 reproduction script, source-inspection helpers, notebooks,
+  and curated plot output for this phase.
+
+Keep reusable package code in `src/bergner_spichtinger_2026/` and repository-level tests in `tests/`.
+
+Source information lives under `sources/`:
+
+- `sources/original/` contains the saved publisher HTML, its ancillary files, and the source PDF.
+- `sources/extracted/` contains reproducible extracted text/inspection products and `provenance.yaml`.
+- Treat source files as cross-episode reference material. Do not modify originals; add reproducible extraction scripts
+  in the relevant episode and write generated extraction products under `sources/extracted/`.
+
+Project-level documentation lives under `docs/`. Use it for cross-episode model notes, source-quality assessments,
+and implementation summaries. Episode-specific documentation belongs in the relevant `episodes/<id>/docs/` directory.
+Do not add new research scripts, notebooks, AUTO files, or curated outputs to top-level functional directories such as
+`scripts/`, `notebooks/`, `auto/`, or `outputs/`; place them in the appropriate episode, or create a new episode with
+a README when the work is a new research phase.
+
+Episode scripts are standalone research scripts, not importable package modules. Tests that exercise them should add
+the relevant episode `scripts/` directory to `sys.path`. Curated outputs may be committed under an episode `outputs/`
+directory when they support documented findings; transient build/cache/checkpoint files should remain ignored.
 
 <!-- BACKLOG.MD GUIDELINES START -->
 # Instructions for the usage of Backlog.md CLI Tool
