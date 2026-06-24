@@ -4,7 +4,7 @@ title: Create Episode 2 scaffold and reusable continuation primitives
 status: To Do
 assignee: []
 created_date: '2026-06-24 16:38'
-updated_date: '2026-06-24 16:38'
+updated_date: '2026-06-24 16:41'
 labels: []
 dependencies: []
 ---
@@ -32,3 +32,9 @@ Set up Episode 2 for Figure 1 equilibrium reproduction and add reusable package-
 4. Add a small generic one-parameter predictor-corrector continuation utility with convergence diagnostics and no episode file-path assumptions.
 5. Add tests for residuals, positive-state handling, and a short continuation smoke case.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Grill-session correction: the current root CONTEXT.md entries are episode-specific planning decisions, not durable project-wide glossary terms. During TASK-001, move these decisions into an Episode 2 docs note (for example episodes/002-figure1-python-continuation/docs/planning-decisions.md or README section), then either remove the root CONTEXT.md file if no project-wide glossary terms remain or reduce it to genuinely project-wide domain language only.
+<!-- SECTION:NOTES:END -->
