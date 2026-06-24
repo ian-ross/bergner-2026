@@ -1,10 +1,11 @@
 ---
 id: TASK-001
 title: Create Episode 2 scaffold and reusable continuation primitives
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-24 16:38'
-updated_date: '2026-06-24 16:41'
+updated_date: '2026-06-24 16:42'
 labels: []
 dependencies: []
 ---
