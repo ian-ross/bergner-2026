@@ -4,12 +4,14 @@ title: 'Compare LOCA Figure 1 results against Python, AUTO, and paper benchmarks
 status: To Do
 assignee: []
 created_date: '2026-06-25 16:48'
+updated_date: '2026-06-25 16:49'
 labels:
   - episode-004
   - loca
   - comparison
   - outputs
-dependencies: []
+dependencies:
+  - TASK-016
 ---
 
 ## Description
