@@ -26,3 +26,13 @@ After both AUTO and LOCA Figure 1 comparison scripts exist, extract shared compa
 - [ ] #3 Episode 3 and Episode 4 comparison commands continue to regenerate their documented artifacts.
 - [ ] #4 Tests or checks cover schema compatibility and representative multi-backend comparison output.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Compare Episode 3 and Episode 4 comparison scripts after both are complete and identify duplicated interpolation, error-summary, metadata, and plotting logic.
+2. Design a small shared utility or generic script around the backend-neutral branch schema without changing curated artifacts.
+3. Refactor incrementally so Episode 3 and Episode 4 documented commands still regenerate their outputs.
+4. Add tests/checks for representative multi-backend comparisons and schema compatibility.
+5. Update documentation to explain the shared comparison workflow and migration path for future backends.
+<!-- SECTION:PLAN:END -->
