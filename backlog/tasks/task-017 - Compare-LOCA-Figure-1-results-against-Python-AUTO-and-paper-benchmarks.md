@@ -1,10 +1,11 @@
 ---
 id: TASK-017
 title: 'Compare LOCA Figure 1 results against Python, AUTO, and paper benchmarks'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:49'
+updated_date: '2026-06-25 17:05'
 labels:
   - episode-004
   - loca
@@ -38,3 +39,9 @@ Add Episode 4 comparison artifacts that evaluate normalized LOCA branches agains
 4. Generate summary CSV/JSON and plots overlaying Python, AUTO, LOCA, analytic approximations, and digitized paper curves.
 5. Document agreement/tolerances/limitations in Episode 4 README or planning docs and add deterministic checks where practical.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-017 implementation session; dependency TASK-016 is Done and provides normalized LOCA outputs.
+<!-- SECTION:NOTES:END -->
