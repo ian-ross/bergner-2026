@@ -4,13 +4,15 @@ title: Add reusable C++ LOCA model core with Sacado residual and Jacobian valida
 status: To Do
 assignee: []
 created_date: '2026-06-25 16:48'
+updated_date: '2026-06-25 16:49'
 labels:
   - episode-004
   - loca
   - cpp
   - sacado
   - tests
-dependencies: []
+dependencies:
+  - TASK-014
 ---
 
 ## Description
