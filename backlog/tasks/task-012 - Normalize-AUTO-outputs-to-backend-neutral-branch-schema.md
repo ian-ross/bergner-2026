@@ -1,10 +1,11 @@
 ---
 id: TASK-012
 title: Normalize AUTO outputs to backend-neutral branch schema
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 10:02'
 labels: []
 dependencies:
   - TASK-011
