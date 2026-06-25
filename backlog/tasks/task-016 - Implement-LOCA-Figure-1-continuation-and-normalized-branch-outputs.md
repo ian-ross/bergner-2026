@@ -1,0 +1,28 @@
+---
+id: TASK-016
+title: Implement LOCA Figure 1 continuation and normalized branch outputs
+status: To Do
+assignee: []
+created_date: '2026-06-25 16:48'
+labels:
+  - episode-004
+  - loca
+  - continuation
+  - outputs
+dependencies: []
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Run true LOCA continuation for the Figure 1 equilibrium branch family using the C++ residual/Jacobian implementation, then normalize raw LOCA results to the existing backend-neutral branch schema.
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 C++ executable supports a true LOCA continuation mode in log_w for each Figure 1 temperature branch, not merely an independent parameter sweep.
+- [ ] #2 Python orchestration script builds/configures the LOCA executable as needed, computes initial states from the Python package, runs continuation for T = 190, 210, and 230 K, and records command provenance.
+- [ ] #3 Normalized LOCA outputs include branch_T190K.csv, branch_T210K.csv, branch_T230K.csv, branches_all.csv, run_metadata.json, and run_diagnostics.json under Episode 4 outputs.
+- [ ] #4 Normalized CSVs reuse the Episode 3 backend-neutral schema with backend = loca and optional LOCA diagnostic columns only.
+- [ ] #5 Diagnostics verify requested log_w coverage, positive n and q, finite residual norms, convergence status, and documented toolchain/provenance metadata.
+<!-- AC:END -->
