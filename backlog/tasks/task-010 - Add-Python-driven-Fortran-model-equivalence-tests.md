@@ -4,8 +4,11 @@ title: Add Python-driven Fortran model equivalence tests
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-005
+  - TASK-009
 ---
 
 ## Description
