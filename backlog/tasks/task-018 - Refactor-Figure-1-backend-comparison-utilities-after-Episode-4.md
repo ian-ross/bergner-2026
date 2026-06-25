@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 17:17'
+updated_date: '2026-06-25 17:18'
 labels:
   - post-episode-004
   - refactor
@@ -48,3 +48,19 @@ After both AUTO and LOCA Figure 1 comparison scripts exist, extract shared compa
 - Verification: `uv run pytest -q` passed (46 tests).
 - Regenerated Episode 3 and Episode 4 documented comparison artifacts; detail and summary scientific tables remain unchanged.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Refactored Figure 1 backend comparison code into shared package utilities while preserving Episode 3 AUTO and Episode 4 LOCA command interfaces and curated artifact locations.
+
+Changes:
+- Added `bergner_spichtinger_2026.figure1_backend_comparison` for backend-neutral branch interpolation, relative error, detail/summary generation, and plotting.
+- Updated AUTO and LOCA comparison scripts to delegate common logic while keeping their documented outputs.
+- Documented the shared workflow in Episode 3 and Episode 4 READMEs.
+- Added shared utility tests covering schema-compatible multi-backend comparison output.
+
+Verification:
+- Regenerated Episode 3 and Episode 4 comparison artifacts.
+- `uv run pytest -q` passed (46 tests).
+<!-- SECTION:FINAL_SUMMARY:END -->
