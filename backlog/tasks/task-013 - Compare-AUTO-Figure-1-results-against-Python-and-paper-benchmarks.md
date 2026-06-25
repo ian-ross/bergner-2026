@@ -4,8 +4,13 @@ title: Compare AUTO Figure 1 results against Python and paper benchmarks
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-012
+  - TASK-002
+  - TASK-003
+  - TASK-004
 ---
 
 ## Description
