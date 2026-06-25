@@ -1,10 +1,11 @@
 ---
 id: TASK-006
 title: Update repository guidance for shared backend directories
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 09:42'
 labels: []
 dependencies: []
 ---
