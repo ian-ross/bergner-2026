@@ -4,8 +4,11 @@ title: Implement AUTO Figure 1 log-w continuation
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-009
+  - TASK-010
 ---
 
 ## Description
