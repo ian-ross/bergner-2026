@@ -1,10 +1,11 @@
 ---
 id: TASK-018
 title: Refactor Figure 1 backend comparison utilities after Episode 4
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:49'
+updated_date: '2026-06-25 17:12'
 labels:
   - post-episode-004
   - refactor
