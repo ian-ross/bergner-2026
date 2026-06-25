@@ -63,7 +63,7 @@ TASK-013 adds curated backend-comparison artifacts generated with:
 uv run python episodes/003-figure1-auto-continuation/scripts/compare_auto_figure1.py
 ```
 
-The script reads normalized AUTO branches from `outputs/figure1_auto_branches/`, Episode 2 Python continuation outputs from `episodes/002-figure1-python-continuation/outputs/figure1_continuation/`, and digitized paper curves from `episodes/002-figure1-python-continuation/outputs/figure1_digitized/`. It writes `outputs/figure1_backend_comparison/`:
+The script reads normalized AUTO branches from `outputs/figure1_auto_branches/`, Episode 2 Python continuation outputs from `episodes/002-figure1-python-continuation/outputs/figure1_continuation/`, and digitized paper curves from `episodes/002-figure1-python-continuation/outputs/figure1_digitized/`. Since TASK-018, common interpolation, relative-error, summary, and plotting logic is implemented in the shared package module `src/bergner_spichtinger_2026/figure1_backend_comparison.py`; this episode script now preserves the original command and curated artifact paths while delegating backend-neutral comparison mechanics to that reusable utility. It writes `outputs/figure1_backend_comparison/`:
 
 - `backend_comparison_details.csv` — pointwise rows for AUTO-vs-Python continuation, AUTO-vs-Eq. 92--94, AUTO-vs-independent Python root-solve checks, and AUTO-vs-digitized Figure 1 curves.
 - `backend_comparison_summary.csv` / `.json` — per-temperature and per-variable sample counts, median/max absolute differences, relative differences, residual-norm maxima where available, and convergence summaries.
@@ -83,5 +83,5 @@ Current comparison results show close AUTO/Python agreement across all three Fig
 Implications for later AUTO/LOCA work:
 
 - The normalized branch schema and log-`w` comparison contract are sufficient for backend-level Figure 1 checks.
-- Later LOCA outputs should write the same physical fields (`log_w`, `w_m_s`, `n`, `q`, `s`, residual/convergence metadata) so this comparison script can be extended by adding another backend source instead of inventing a new schema.
+- Later LOCA outputs should write the same physical fields (`log_w`, `w_m_s`, `n`, `q`, `s`, residual/convergence metadata) so the shared `figure1_backend_comparison` utilities can add another backend source instead of inventing a new schema.
 - Tolerances for future backend equivalence should distinguish solver-to-solver agreement (near machine/continuation tolerance for Python vs AUTO here) from paper/digitization agreement, which has substantially larger observational uncertainty.

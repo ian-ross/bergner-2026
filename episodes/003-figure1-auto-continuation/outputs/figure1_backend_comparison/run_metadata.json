@@ -1,13 +1,15 @@
 {
-  "generated_at_utc": "2026-06-25T10:10:16.471252+00:00",
+  "generated_at_utc": "2026-06-25T17:16:39.451866+00:00",
   "inputs": {
     "auto_dir": "episodes/003-figure1-auto-continuation/outputs/figure1_auto_branches",
     "python_dir": "episodes/002-figure1-python-continuation/outputs/figure1_continuation",
     "digitized_dir": "episodes/002-figure1-python-continuation/outputs/figure1_digitized"
   },
   "method": {
+    "shared_utility": "Common interpolation, relative-error, summary, and plotting logic is provided by bergner_spichtinger_2026.figure1_backend_comparison.",
     "auto_vs_python": "Python continuation n, q, and s are interpolated onto AUTO log_w points; n and q use log-value interpolation.",
     "auto_vs_eq92_94": "Eq. 92--94 approximations are evaluated at each AUTO branch point.",
+    "auto_vs_python_root_solve": "AUTO n, q, and s are interpolated onto independent Python root-solve check points.",
     "auto_vs_digitized": "AUTO n, q, and s are interpolated onto digitized paper Figure 1 w points; n and q use log-value interpolation.",
     "relative_error": "abs(a-b) / max(abs(a), abs(b), tiny)"
   },
@@ -16,6 +18,7 @@
     "backend_comparison_summary.csv",
     "backend_comparison_summary.json",
     "figure1_backend_comparison.png",
-    "figure1_backend_residuals.png"
+    "figure1_backend_residuals.png",
+    "run_metadata.json"
   ]
 }
