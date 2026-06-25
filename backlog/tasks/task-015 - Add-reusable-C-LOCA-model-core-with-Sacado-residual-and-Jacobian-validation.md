@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:53'
+updated_date: '2026-06-25 16:57'
 labels:
   - episode-004
   - loca
@@ -24,11 +24,11 @@ Implement a legible independent C++ Bergner-Spichtinger Figure 1 residual core f
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Top-level reusable LOCA/C++ source and CMake files build against /opt/Trilinos using g++ and Trilinos CMake config.
-- [ ] #2 C++ executable exposes stable residual and jacobian subcommands for x = [log_n, log_q, s] and continuation parameter log_w.
-- [ ] #3 Model formulas are translated from the Python package, independent of Python and AUTO at runtime, with clear comments explaining equations and units.
-- [ ] #4 Sacado AD supplies the state Jacobian used by the executable; finite differences are not the primary C++ Jacobian implementation.
-- [ ] #5 Tests compare C++ residuals and AD Jacobians against Python residuals and central-difference Jacobians, skipping cleanly when Trilinos build tools are unavailable.
+- [x] #1 Top-level reusable LOCA/C++ source and CMake files build against /opt/Trilinos using g++ and Trilinos CMake config.
+- [x] #2 C++ executable exposes stable residual and jacobian subcommands for x = [log_n, log_q, s] and continuation parameter log_w.
+- [x] #3 Model formulas are translated from the Python package, independent of Python and AUTO at runtime, with clear comments explaining equations and units.
+- [x] #4 Sacado AD supplies the state Jacobian used by the executable; finite differences are not the primary C++ Jacobian implementation.
+- [x] #5 Tests compare C++ residuals and AD Jacobians against Python residuals and central-difference Jacobians, skipping cleanly when Trilinos build tools are unavailable.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -45,4 +45,6 @@ Implement a legible independent C++ Bergner-Spichtinger Figure 1 residual core f
 
 <!-- SECTION:NOTES:BEGIN -->
 Started implementation session; preserving unrelated untracked .pi/ and afk-prompt.txt files.
+
+Implemented top-level loca/ CMake project and C++ residual/Jacobian CLI. Added scalar-templated model equations translated from the Python package with Sacado DFad state derivatives. Added pytest coverage for source/build contract, residual equivalence, and Sacado Jacobian equivalence against Python central differences. Verification: uv run pytest -q passed (37 tests).
 <!-- SECTION:NOTES:END -->
