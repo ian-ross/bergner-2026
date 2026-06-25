@@ -4,6 +4,7 @@ title: Explore property-based tests for model and continuation utilities
 status: To Do
 assignee: []
 created_date: '2026-06-24 16:53'
+updated_date: '2026-06-25 09:15'
 labels: []
 dependencies: []
 ---
@@ -11,7 +12,7 @@ dependencies: []
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Assess whether property-based testing would usefully supplement the current unit and regression tests for the Bergner & Spichtinger model extraction workspace. Focus on identifying high-value invariants, feasible input domains, and risks of brittle or physically meaningless generated cases.
+Assess and document property-based testing for the Bergner & Spichtinger model extraction workspace, with particular emphasis on Hypothesis-driven model/backend intercomparison for Python, shared AUTO Fortran, and later LOCA implementations.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
@@ -20,4 +21,9 @@ Assess whether property-based testing would usefully supplement the current unit
 - [ ] #2 Recommended input generation domains and constraints are documented with attention to physical validity and numerical stability.
 - [ ] #3 A recommendation is made on whether to adopt Hypothesis or another property-based testing approach, including likely dependencies and maintenance costs.
 - [ ] #4 If adoption is recommended, follow-up implementation tasks are proposed with clear scope; if not, rationale and alternative test improvements are documented.
+- [ ] #5 Candidate properties are documented in docs/testing.md for core thermodynamic/coefficient helpers, vector-field/process-term behavior, residual adapters, continuation utilities, and Eq. 92--94 approximations where appropriate.
+- [ ] #6 Recommended input generation domains and constraints are documented in docs/testing.md with attention to physical validity and numerical stability.
+- [ ] #7 A recommendation is made in docs/testing.md on whether to adopt Hypothesis or another property-based testing approach, including likely dependencies, example counts, tolerances, and maintenance costs.
+- [ ] #8 docs/testing.md gives explicit implementation advice for Python-vs-Fortran AUTO model equivalence tests and later Python-vs-LOCA comparisons.
+- [ ] #9 Follow-up implementation tasks are referenced explicitly from the notes or final summary so later backend tasks can apply the guidance.
 <!-- AC:END -->
