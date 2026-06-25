@@ -4,8 +4,10 @@ title: Create Episode 3 scaffold and AUTO planning docs
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-006
 ---
 
 ## Description
