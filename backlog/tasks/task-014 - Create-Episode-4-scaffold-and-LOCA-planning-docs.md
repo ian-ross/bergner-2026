@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:51'
+updated_date: '2026-06-25 16:52'
 labels:
   - episode-004
   - loca
@@ -35,3 +35,10 @@ Set up Episode 4 as the Figure 1 LOCA/Trilinos backend-equivalence episode. Docu
 3. Draft README with goals, upstream Episode 2/3 references, expected commands/artifacts, and scope boundaries for shared vs episode-local LOCA assets.
 4. Verify repository organization follows AGENTS.md and update no generated artifacts beyond placeholders.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Created Episode 4 scaffold under episodes/004-figure1-loca-continuation with README, planning docs, episode-local LOCA placeholder, and directory placeholders.
+- Added pytest coverage for the scaffold, planning-document content, README scope, and absence of promoted top-level LOCA infrastructure.
+<!-- SECTION:NOTES:END -->
