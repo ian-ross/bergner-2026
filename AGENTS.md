@@ -11,7 +11,16 @@ Current episodes:
   of Bergner & Spichtinger (2026). Contains the Figure 4 reproduction script, source-inspection helpers, notebooks,
   and curated plot output for this phase.
 
-Keep reusable package code in `src/bergner_spichtinger_2026/` and repository-level tests in `tests/`.
+Keep reusable Python package code in `src/bergner_spichtinger_2026/` and repository-level tests in `tests/`.
+Shared backend/model assets that are reused across multiple episodes may live in documented top-level backend
+directories. In particular, a top-level `auto/` directory is permitted for shared AUTO-07p model and continuation
+assets that support more than one episode.
+
+Episode-specific research artifacts still belong under `episodes/<id>/`. This includes one-off or episode-local
+`auto/` files, scripts, notebooks, examples, generated outputs, and curated outputs. Do not promote an artifact to a
+top-level backend directory unless it is intended as shared infrastructure rather than an episode-specific experiment.
+Future shared LOCA/Trilinos backend code may use an analogous top-level directory or another documented convention
+when it becomes reusable across episodes.
 
 Source information lives under `sources/`:
 
@@ -23,9 +32,10 @@ Source information lives under `sources/`:
 Project-level documentation lives under `docs/`. Use it for cross-episode model notes, source-quality assessments,
 implementation summaries, and reusable reproduction/debugging notes such as `docs/REPRODUCTION_NOTES.md`.
 Episode-specific documentation belongs in the relevant `episodes/<id>/docs/` directory.
-Do not add new research scripts, notebooks, AUTO files, or curated outputs to top-level functional directories such as
-`scripts/`, `notebooks/`, `auto/`, or `outputs/`; place them in the appropriate episode, or create a new episode with
-a README when the work is a new research phase.
+Do not add new episode-specific research scripts, notebooks, AUTO run files, or curated outputs to top-level
+functional directories such as `scripts/`, `notebooks/`, or `outputs/`; place them in the appropriate episode, or
+create a new episode with a README when the work is a new research phase. The top-level `auto/` exception above is
+reserved for shared AUTO-07p backend/model assets, not episode-local experiments or outputs.
 
 Episode scripts are standalone research scripts, not importable package modules. Tests that exercise them should add
 the relevant episode `scripts/` directory to `sys.path`. Curated outputs may be committed under an episode `outputs/`
