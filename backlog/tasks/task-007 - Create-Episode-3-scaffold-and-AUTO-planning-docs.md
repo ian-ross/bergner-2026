@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:43'
+updated_date: '2026-06-25 09:45'
 labels: []
 dependencies:
   - TASK-006
@@ -19,10 +19,10 @@ Set up Episode 3 for Figure 1 AUTO continuation as the first explicit backend-co
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode 3 directory exists with README and docs/, scripts/, auto/, outputs/, and notebooks/ structure following the revised repository organization guidance.
-- [ ] #2 Episode 3 planning documentation records the goal of comparing Python-native continuation, AUTO, and later LOCA backends on the same model.
-- [ ] #3 The planning docs define the initial backend-neutral branch schema and comparison outputs for Figure 1.
-- [ ] #4 Episode 3 README links to Episode 2 source outputs, digitized Figure 1 artifacts, and TASK-005 testing guidance when available.
+- [x] #1 Episode 3 directory exists with README and docs/, scripts/, auto/, outputs/, and notebooks/ structure following the revised repository organization guidance.
+- [x] #2 Episode 3 planning documentation records the goal of comparing Python-native continuation, AUTO, and later LOCA backends on the same model.
+- [x] #3 The planning docs define the initial backend-neutral branch schema and comparison outputs for Figure 1.
+- [x] #4 Episode 3 README links to Episode 2 source outputs, digitized Figure 1 artifacts, and TASK-005 testing guidance when available.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -39,4 +39,8 @@ Set up Episode 3 for Figure 1 AUTO continuation as the first explicit backend-co
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-007. Verifying existing Episode 2 artifacts and repository conventions before creating the Episode 3 scaffold.
+
+Created episodes/003-figure1-auto-continuation scaffold with README, docs/, scripts/, auto/, outputs/, and notebooks/. Added planning documentation with backend-comparison goals, branch schema, expected Figure 1 outputs, and TASK-005 testing links.
+
+Verification: uv run pytest (11 passed). No new executable code paths were introduced; this task is documentation/scaffold only.
 <!-- SECTION:NOTES:END -->
