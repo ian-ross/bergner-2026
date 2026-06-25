@@ -38,4 +38,6 @@ Refine repository organization guidance so shared backend code can live in top-l
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-006. Reviewing repository guidance and applying the documented plan.
+
+Updated AGENTS.md repository guidance and ran the full test suite with `uv run pytest` (11 passed). No new code paths were introduced; this is documentation-only.
 <!-- SECTION:NOTES:END -->
