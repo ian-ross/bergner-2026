@@ -1,11 +1,11 @@
 ---
 id: TASK-009
 title: Implement shared legible AUTO Fortran model core
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:50'
+updated_date: '2026-06-25 09:51'
 labels: []
 dependencies:
   - TASK-006
