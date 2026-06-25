@@ -7,6 +7,10 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
+# AUTO/Fortran build outputs
+auto/build/
+auto/bin/
+
 # OS/editor
 .DS_Store
 *.swp
