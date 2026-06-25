@@ -28,3 +28,13 @@ Run true LOCA continuation for the Figure 1 equilibrium branch family using the 
 - [ ] #4 Normalized CSVs reuse the Episode 3 backend-neutral schema with backend = loca and optional LOCA diagnostic columns only.
 - [ ] #5 Diagnostics verify requested log_w coverage, positive n and q, finite residual norms, convergence status, and documented toolchain/provenance metadata.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Implement a true LOCA continuation mode in the C++ executable using the validated residual and AD Jacobian.
+2. Add Episode 4 run_loca_figure1.py orchestration to configure/build C++, compute Python initial states at w_min, run T = 190/210/230 K continuations, and capture raw LOCA CSV/logs.
+3. Normalize raw LOCA rows to the Episode 3 backend-neutral schema with backend = loca and optional LOCA diagnostics.
+4. Write branch_T*.csv, branches_all.csv, run_metadata.json, and run_diagnostics.json under Episode 4 outputs.
+5. Add tests/checks for schema fields, log_w coverage, positive n/q, finite residuals, convergence flags, and provenance.
+<!-- SECTION:PLAN:END -->
