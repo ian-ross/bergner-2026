@@ -1,0 +1,239 @@
+{
+  "created_utc": "2026-06-25T10:00:55.462135+00:00",
+  "repo_root": "/home/iross/research/ongoing/ai-class/code/bergner-2026",
+  "auto_problem_template": "episodes/003-figure1-auto-continuation/auto/bs2026_figure1_template.f90",
+  "auto_constants_template": "episodes/003-figure1-auto-continuation/auto/c.bs2026_figure1",
+  "shared_fortran_sources": [
+    "auto/src/bs2026_constants.f90",
+    "auto/src/bs2026_model.f90"
+  ],
+  "coordinates": {
+    "state": [
+      "log_n",
+      "log_q",
+      "s"
+    ],
+    "continuation_parameter": "log_w"
+  },
+  "p_Pa": 30000.0,
+  "F": 1.0,
+  "N_a_m3": 10000000000.0,
+  "dz_m": 100.0,
+  "w_min_m_s": 0.005,
+  "w_max_m_s": 2.0,
+  "temperatures_K": [
+    190.0,
+    210.0,
+    230.0
+  ],
+  "tool_versions": {
+    "auto_path": "/usr/local/bin/auto",
+    "auto_exists": true,
+    "auto_dir": "/usr/local/lib64/auto-07p",
+    "auto_version_label": "auto-07p",
+    "auto_launcher_head": [
+      "#! /bin/sh",
+      "if [ -z \"$AUTO_DIR\" ]; then",
+      "    bindir=`dirname \"$0\"`",
+      "    AUTO_DIR=/usr/local/lib64/auto-07p",
+      "    # don't export AUTO_DIR: Python code will use more reliable absolute path",
+      "fi",
+      "",
+      "if test \"`uname`\" = \"Darwin\"; then"
+    ],
+    "gfortran": {
+      "command": [
+        "gfortran",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "GNU Fortran (SUSE Linux) 15.3.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+      "stderr": ""
+    }
+  },
+  "runs": [
+    {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Raw AUTO branch continued beyond requested log_w upper endpoint before stopping; normalized CSV is clipped to the requested range."
+      ],
+      "row_count": 209,
+      "raw_row_count": 900,
+      "log_w_min": -5.2983173665,
+      "log_w_max": 0.69314718112,
+      "w_min_m_s": 0.005000000000240183,
+      "w_max_m_s": 2.0000000011201093,
+      "type_codes": [
+        -4,
+        4,
+        9
+      ],
+      "raw_log_w_min": -5.2983173665,
+      "raw_log_w_max": 20.676289461,
+      "labels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "temperature_K": 190.0,
+      "run_name": "bs2026_T190K",
+      "run_dir": "episodes/003-figure1-auto-continuation/outputs/auto_figure1_continuation/raw/bs2026_T190K",
+      "command": [
+        "/usr/local/bin/auto"
+      ],
+      "returncode": 0,
+      "run_files": [
+        "raw/bs2026_T190K/bs2026_T190K.f90",
+        "raw/bs2026_T190K/bs2026_constants.f90",
+        "raw/bs2026_T190K/bs2026_model.f90",
+        "raw/bs2026_T190K/c.bs2026_T190K",
+        "raw/bs2026_T190K/bs2026_T190K.auto"
+      ],
+      "raw_outputs": [
+        "auto_stderr.txt",
+        "auto_stdout.txt",
+        "b.bs2026_T190K",
+        "bs2026_T190K.auto",
+        "bs2026_T190K.f90",
+        "bs2026_constants.f90",
+        "bs2026_model.f90",
+        "c.bs2026_T190K",
+        "d.bs2026_T190K",
+        "s.bs2026_T190K"
+      ],
+      "branch_csv": "branch_T190K.csv"
+    },
+    {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Raw AUTO branch continued beyond requested log_w upper endpoint before stopping; normalized CSV is clipped to the requested range."
+      ],
+      "row_count": 209,
+      "raw_row_count": 900,
+      "log_w_min": -5.2983173665,
+      "log_w_max": 0.69314718108,
+      "w_min_m_s": 0.005000000000240183,
+      "w_max_m_s": 2.0000000010401093,
+      "type_codes": [
+        -4,
+        4,
+        9
+      ],
+      "raw_log_w_min": -5.2983173665,
+      "raw_log_w_max": 20.677076102,
+      "labels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "temperature_K": 210.0,
+      "run_name": "bs2026_T210K",
+      "run_dir": "episodes/003-figure1-auto-continuation/outputs/auto_figure1_continuation/raw/bs2026_T210K",
+      "command": [
+        "/usr/local/bin/auto"
+      ],
+      "returncode": 0,
+      "run_files": [
+        "raw/bs2026_T210K/bs2026_T210K.f90",
+        "raw/bs2026_T210K/bs2026_constants.f90",
+        "raw/bs2026_T210K/bs2026_model.f90",
+        "raw/bs2026_T210K/c.bs2026_T210K",
+        "raw/bs2026_T210K/bs2026_T210K.auto"
+      ],
+      "raw_outputs": [
+        "auto_stderr.txt",
+        "auto_stdout.txt",
+        "b.bs2026_T210K",
+        "bs2026_T210K.auto",
+        "bs2026_T210K.f90",
+        "bs2026_constants.f90",
+        "bs2026_model.f90",
+        "c.bs2026_T210K",
+        "d.bs2026_T210K",
+        "s.bs2026_T210K"
+      ],
+      "branch_csv": "branch_T210K.csv"
+    },
+    {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Raw AUTO branch continued beyond requested log_w upper endpoint before stopping; normalized CSV is clipped to the requested range."
+      ],
+      "row_count": 209,
+      "raw_row_count": 900,
+      "log_w_min": -5.2983173665,
+      "log_w_max": 0.69314718088,
+      "w_min_m_s": 0.005000000000240183,
+      "w_max_m_s": 2.0000000006401093,
+      "type_codes": [
+        -4,
+        4,
+        9
+      ],
+      "raw_log_w_min": -5.2983173665,
+      "raw_log_w_max": 20.680306803,
+      "labels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "temperature_K": 230.0,
+      "run_name": "bs2026_T230K",
+      "run_dir": "episodes/003-figure1-auto-continuation/outputs/auto_figure1_continuation/raw/bs2026_T230K",
+      "command": [
+        "/usr/local/bin/auto"
+      ],
+      "returncode": 0,
+      "run_files": [
+        "raw/bs2026_T230K/bs2026_T230K.f90",
+        "raw/bs2026_T230K/bs2026_constants.f90",
+        "raw/bs2026_T230K/bs2026_model.f90",
+        "raw/bs2026_T230K/c.bs2026_T230K",
+        "raw/bs2026_T230K/bs2026_T230K.auto"
+      ],
+      "raw_outputs": [
+        "auto_stderr.txt",
+        "auto_stdout.txt",
+        "b.bs2026_T230K",
+        "bs2026_T230K.auto",
+        "bs2026_T230K.f90",
+        "bs2026_constants.f90",
+        "bs2026_model.f90",
+        "c.bs2026_T230K",
+        "d.bs2026_T230K",
+        "s.bs2026_T230K"
+      ],
+      "branch_csv": "branch_T230K.csv"
+    }
+  ]
+}

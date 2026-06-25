@@ -1,0 +1,5 @@
+Python 3.11.15 (main, Mar  3 2026, 14:59:53) [Clang 21.1.4 ] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(AUTOInteractiveConsole)
+
+now exiting AUTOInteractiveConsole...

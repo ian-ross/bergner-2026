@@ -40,6 +40,16 @@ Use the same Figure 1 equilibrium branch family as Episode 2:
 4. Compare normalized AUTO branches with Episode 2 Python continuation, Eq. 92--94 approximations, independent root-solve checks where available, and digitized Figure 1 curves.
 5. Record backend/tool versions, command provenance, convergence status, and tolerances with every curated output.
 
-## Scope
+## AUTO Figure 1 continuation
 
-This scaffold does not yet implement AUTO continuation. It establishes the episode layout and comparison contract so later tasks can add the shared Fortran model core, AUTO run scripts, branch normalization, and backend-comparison reports without changing the episode organization.
+TASK-011 adds the first Episode 3 AUTO run path:
+
+```bash
+uv run python episodes/003-figure1-auto-continuation/scripts/run_auto_figure1.py --clean
+```
+
+The script generates per-temperature AUTO problem files from `auto/bs2026_figure1_template.f90`, copies the shared top-level Fortran model core into each raw run directory, and continues equilibria in `(log n, log q, s)` with `PAR(1) = log(w)`. Outputs are written under `outputs/auto_figure1_continuation/`:
+
+- `branch_T190K.csv`, `branch_T210K.csv`, `branch_T230K.csv` — normalized branch rows clipped to the requested Figure 1 range `w ∈ [0.005, 2.0] m s^-1`.
+- `run_diagnostics.json` — AUTO path/version probes, gfortran version, command provenance, run files, raw outputs, endpoint coverage, labels, and visible warnings/errors.
+- `raw/bs2026_T*/` — generated AUTO problem/run files and raw `b.*`, `s.*`, and `d.*` AUTO outputs.
