@@ -2,7 +2,7 @@
 
 Goal: reproduce the Figure 1 equilibrium branch family with LOCA/Trilinos as a third continuation backend and compare its normalized branch outputs against the Episode 2 Python-native continuation and Episode 3 AUTO-07p backend results.
 
-This episode is a planning and scaffold step for the LOCA implementation. The intended numerical design is backend equivalence, not a new cloud-microphysics model: LOCA should evaluate the same Bergner & Spichtinger (2026) equilibrium residual semantics used by the Python reference and write the same backend-neutral branch schema used by the AUTO comparison.
+This episode implements the first LOCA/Trilinos-backed continuation path for the Figure 1 branch family. The intended numerical design is backend equivalence, not a new cloud-microphysics model: LOCA evaluates the same Bergner & Spichtinger (2026) equilibrium residual semantics used by the Python reference and writes the same backend-neutral branch schema used by the AUTO comparison.
 
 ## Contents
 
@@ -36,21 +36,18 @@ Use the same Figure 1 equilibrium branch family as Episodes 2 and 3:
 - continuation coordinate `log_w = log(w_m_s)`
 - normalized physical state fields `n`, `q`, and `s`, with positive `n` and `q`
 
-## Planned commands and artifacts
-
-The exact commands will be added by implementation tasks. The expected shape is:
+## Commands and artifacts
 
 ```bash
-# Build and run the episode-local LOCA executable or driver.
-# Example placeholder only; not yet implemented:
-# cmake -S episodes/004-figure1-loca-continuation/loca -B build/episode004-loca
-# cmake --build build/episode004-loca
-# uv run python episodes/004-figure1-loca-continuation/scripts/run_loca_figure1.py
-# uv run python episodes/004-figure1-loca-continuation/scripts/compare_loca_figure1.py
+# Build/configure the shared top-level C++ executable, run continuation for
+# T = 190, 210, and 230 K, and write normalized Episode 4 branch outputs.
+uv run python episodes/004-figure1-loca-continuation/scripts/run_loca_figure1.py --clean
+
+# Run repository tests, including LOCA residual/Jacobian and branch-output checks.
 uv run pytest
 ```
 
-Expected curated outputs should be written under `outputs/figure1_loca_branches/` and `outputs/figure1_loca_backend_comparison/` once implemented, including normalized per-temperature branch CSVs, combined branch tables, run metadata, pointwise comparison details, summary tables, and comparison plots.
+Curated branch outputs are written under `outputs/figure1_loca_branches/`, including normalized per-temperature branch CSVs, `branches_all.csv`, `run_metadata.json`, `run_diagnostics.json`, and raw C++ continuation CSV/log artifacts. Future comparison work should write pointwise comparison details, summary tables, and plots under `outputs/figure1_loca_backend_comparison/`.
 
 ## Scope boundaries
 
