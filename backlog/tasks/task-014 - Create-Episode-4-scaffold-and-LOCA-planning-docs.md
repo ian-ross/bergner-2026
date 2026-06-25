@@ -4,6 +4,7 @@ title: Create Episode 4 scaffold and LOCA planning docs
 status: To Do
 assignee: []
 created_date: '2026-06-25 16:48'
+updated_date: '2026-06-25 16:49'
 labels:
   - episode-004
   - loca
@@ -24,3 +25,12 @@ Set up Episode 4 as the Figure 1 LOCA/Trilinos backend-equivalence episode. Docu
 - [ ] #3 README describes the Episode 4 goal, expected commands/artifacts, and relationship to Episodes 2 and 3.
 - [ ] #4 No reusable C++/Trilinos infrastructure is promoted outside the episode unless documented as shared backend infrastructure.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create episodes/004-figure1-loca-continuation with README, docs, scripts, loca, notebooks, and outputs placeholders.
+2. Draft docs/planning-decisions.md from the grill decisions: serial dense LOCA/LAPACK, Sacado AD state Jacobian, Python semantic reference, schema reuse, output contract, and toolchain assumptions.
+3. Draft README with goals, upstream Episode 2/3 references, expected commands/artifacts, and scope boundaries for shared vs episode-local LOCA assets.
+4. Verify repository organization follows AGENTS.md and update no generated artifacts beyond placeholders.
+<!-- SECTION:PLAN:END -->
