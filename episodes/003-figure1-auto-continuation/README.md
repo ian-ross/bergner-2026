@@ -48,8 +48,9 @@ TASK-011 adds the first Episode 3 AUTO run path:
 uv run python episodes/003-figure1-auto-continuation/scripts/run_auto_figure1.py --clean
 ```
 
-The script generates per-temperature AUTO problem files from `auto/bs2026_figure1_template.f90`, copies the shared top-level Fortran model core into each raw run directory, and continues equilibria in `(log n, log q, s)` with `PAR(1) = log(w)`. Outputs are written under `outputs/auto_figure1_continuation/`:
+The script generates per-temperature AUTO problem files from `auto/bs2026_figure1_template.f90`, copies the shared top-level Fortran model core into each raw run directory, and continues equilibria in `(log n, log q, s)` with `PAR(1) = log(w)`. Outputs are written under `outputs/figure1_auto_branches/`:
 
-- `branch_T190K.csv`, `branch_T210K.csv`, `branch_T230K.csv` — normalized branch rows clipped to the requested Figure 1 range `w ∈ [0.005, 2.0] m s^-1`.
-- `run_diagnostics.json` — AUTO path/version probes, gfortran version, command provenance, run files, raw outputs, endpoint coverage, labels, and visible warnings/errors.
+- `branch_T190K.csv`, `branch_T210K.csv`, `branch_T230K.csv` — backend-neutral AUTO branch rows clipped to the requested Figure 1 range `w ∈ [0.005, 2.0] m s^-1`, including physical `w`, `n`, `q`, `s`, transformed coordinates, backend labels, and AUTO diagnostics.
+- `branches_all.csv` — combined backend-neutral branch table for all Figure 1 temperatures.
+- `run_metadata.json` / `run_diagnostics.json` — schema version, parser assumptions, AUTO path/version probes, gfortran version, command provenance, run files, raw AUTO output paths, endpoint coverage, labels, and visible warnings/errors.
 - `raw/bs2026_T*/` — generated AUTO problem/run files and raw `b.*`, `s.*`, and `d.*` AUTO outputs.

@@ -1,5 +1,5 @@
 AUTO> Runner configured
-<_=AUTOSolution instance at 0x7f199ff31990>
+<_=AUTOSolution instance at 0x7f2ed4d35bd0>
 AUTO> gfortran -g -fopenmp -O -c bs2026_T230K.f90 -o bs2026_T230K.o
 gfortran -g -fopenmp -O bs2026_T230K.o -o bs2026_T230K.exe /usr/local/lib64/auto-07p/lib/*.o
 Starting bs2026_T230K ...
@@ -53,9 +53,9 @@ Starting bs2026_T230K ...
    1   880       46   2.01019E+01   3.43802E+01   3.27050E+01   1.04931E+01   1.50828E+00
    1   900  EP   47   2.06803E+01   3.51063E+01   3.32807E+01   1.10710E+01   1.50980E+00
 
- Total Time    0.169E-01
+ Total Time    0.170E-01
 bs2026_T230K ... done
-<_=bifDiag instance at 0x7f19a02b2b90>
+<_=bifDiag instance at 0x7f2ed5217e90>
 AUTO> Saving fort.7 as b.bs2026_T230K ... done
 Saving fort.8 as s.bs2026_T230K ... done
 Saving fort.9 as d.bs2026_T230K ... done

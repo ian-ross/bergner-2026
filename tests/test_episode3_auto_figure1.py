@@ -1,5 +1,7 @@
+import csv
 import importlib.util
 import json
+import math
 import shutil
 import sys
 from math import log
@@ -32,6 +34,64 @@ def test_episode3_auto_templates_use_shared_model_core_and_log_w_parameter():
     assert "call equilibrium_residual(log_state, PAR(1), env, residual, status)" in rendered
     assert "ICP =  [1]" in constants
     assert f"{log(module.W_MAX):.17e}" in constants
+
+
+def test_episode3_auto_branch_records_follow_backend_neutral_schema():
+    module = _load_script_module()
+    rows = [module.AutoRow(1, -7, -4, 12, module.LOG_W_MIN, 2.5, 1.0, -10.0, 1.2)]
+
+    records = module._branch_records(190.0, rows, run_name="bs2026_T190K")
+    record = records[0]
+
+    required_columns = {
+        "backend",
+        "T_K",
+        "p_Pa",
+        "F",
+        "N_a_m3",
+        "log_w",
+        "w_m_s",
+        "log_n",
+        "log_q",
+        "n",
+        "q",
+        "s",
+        "auto_branch",
+        "auto_point",
+        "auto_type_code",
+        "auto_label",
+        "auto_l2_norm",
+    }
+    assert required_columns.issubset(module.BRANCH_FIELDNAMES)
+    assert record["backend"] == "auto"
+    assert record["branch_id"] == "figure1_T190K"
+    assert record["w_m_s"] == pytest.approx(module.W_MIN)
+    assert record["n"] == pytest.approx(math.exp(1.0))
+    assert record["q"] == pytest.approx(math.exp(-10.0))
+    assert record["auto_label"] == 12
+    assert record["auto_l2_norm"] == 2.5
+    assert math.isfinite(record["residual_norm"])
+
+
+def test_episode3_auto_combined_branch_csv_uses_shared_schema(tmp_path):
+    module = _load_script_module()
+    rows = [module.AutoRow(1, -1, 9, 1, module.LOG_W_MIN, 0.0, 1.0, -10.0, 1.2)]
+    branch_csvs = []
+    for T in (190.0, 210.0):
+        branch_csv = tmp_path / f"branch_T{int(T)}K.csv"
+        module._write_branch_csv(branch_csv, T, rows, run_name=f"bs2026_T{int(T)}K")
+        branch_csvs.append(branch_csv)
+
+    combined_csv = tmp_path / "branches_all.csv"
+    module._write_combined_branch_csv(combined_csv, branch_csvs)
+
+    with combined_csv.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        records = list(reader)
+
+    assert reader.fieldnames == module.BRANCH_FIELDNAMES
+    assert [record["branch_id"] for record in records] == ["figure1_T190K", "figure1_T210K"]
+    assert {record["backend"] for record in records} == {"auto"}
 
 
 def test_episode3_auto_parser_clips_requested_range_and_exposes_overrun_warning():

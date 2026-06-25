@@ -4,8 +4,8 @@
 The generated AUTO problem files use the shared top-level Fortran model core and
 continue equilibria of the transformed system in (log n, log q, s) with PAR(1)
 = log(w).  Raw AUTO outputs, generated run files, command provenance, tool
-versions, normalized branch CSVs, and diagnostics are written under the Episode
-3 outputs directory by default.
+versions, backend-neutral normalized branch CSVs, and diagnostics are written
+under the Episode 3 outputs directory by default.
 """
 
 from __future__ import annotations
@@ -23,13 +23,13 @@ from pathlib import Path
 import numpy as np
 
 from bergner_spichtinger_2026.constants import Environment, N_a_figure1_high
-from bergner_spichtinger_2026.core import equilibrium
-from bergner_spichtinger_2026.residuals import log_coordinates_from_physical_state
+from bergner_spichtinger_2026.core import coefficients, equilibrium
+from bergner_spichtinger_2026.residuals import equilibrium_residual, log_coordinates_from_physical_state
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 EPISODE_DIR = REPO_ROOT / "episodes" / "003-figure1-auto-continuation"
 AUTO_DIR = EPISODE_DIR / "auto"
-DEFAULT_OUTPUT_DIR = EPISODE_DIR / "outputs" / "auto_figure1_continuation"
+DEFAULT_OUTPUT_DIR = EPISODE_DIR / "outputs" / "figure1_auto_branches"
 TEMPLATE_F90 = AUTO_DIR / "bs2026_figure1_template.f90"
 TEMPLATE_C = AUTO_DIR / "c.bs2026_figure1"
 TEMPERATURES_K = (190.0, 210.0, 230.0)
@@ -42,6 +42,38 @@ W_MAX = 2.0
 LOG_W_MIN = log(W_MIN)
 LOG_W_MAX = log(W_MAX)
 AUTO_BIN = Path("/usr/local/bin/auto")
+SCHEMA_VERSION = "figure1-branch-schema-v1"
+BACKEND = "auto"
+BRANCH_FIELDNAMES = [
+    "backend",
+    "schema_version",
+    "branch_id",
+    "T_K",
+    "temperature_K",
+    "p_Pa",
+    "pressure_Pa",
+    "F",
+    "N_a_m3",
+    "log_w",
+    "w_m_s",
+    "log_n",
+    "log_q",
+    "n",
+    "n_kg_dry_air_inv",
+    "q",
+    "q_kg_kg",
+    "s",
+    "residual_norm",
+    "converged",
+    "stability",
+    "backend_step_index",
+    "source_file",
+    "auto_branch",
+    "auto_point",
+    "auto_type_code",
+    "auto_label",
+    "auto_l2_norm",
+]
 
 
 @dataclass(frozen=True)
@@ -204,29 +236,74 @@ def _display_path(path: Path) -> Path:
         return path
 
 
-def _write_branch_csv(path: Path, T: float, rows: list[AutoRow]) -> None:
-    fieldnames = ["T_K", "p_Pa", "F", "N_a_m3", "log_w", "w_m_s", "log_n", "log_q", "s", "n", "q", "branch", "point", "type_code", "label"]
+def _branch_id(T: float) -> str:
+    return f"figure1_T{int(T)}K"
+
+
+def _source_file_for_run(run_name: str) -> str:
+    return f"raw/{run_name}/b.{run_name}"
+
+
+def _residual_norm(row: AutoRow, T: float) -> float:
+    env = Environment(p=PRESSURE_PA, T=T, w=row.w_m_s, F=SEDIMENTATION_F, N_a=AEROSOL_N_A, Δz=DZ_M)
+    residual = equilibrium_residual([row.log_n, row.log_q, row.s], row.log_w, env, coeff=coefficients(env))
+    return float(np.linalg.norm(residual, ord=2))
+
+
+def _branch_records(T: float, rows: list[AutoRow], *, run_name: str) -> list[dict[str, object]]:
+    records: list[dict[str, object]] = []
+    source_file = _source_file_for_run(run_name)
+    for backend_step_index, row in enumerate(rows):
+        records.append({
+            "backend": BACKEND,
+            "schema_version": SCHEMA_VERSION,
+            "branch_id": _branch_id(T),
+            "T_K": T,
+            "temperature_K": T,
+            "p_Pa": PRESSURE_PA,
+            "pressure_Pa": PRESSURE_PA,
+            "F": SEDIMENTATION_F,
+            "N_a_m3": AEROSOL_N_A,
+            "log_w": row.log_w,
+            "w_m_s": row.w_m_s,
+            "log_n": row.log_n,
+            "log_q": row.log_q,
+            "n": row.n,
+            "n_kg_dry_air_inv": row.n,
+            "q": row.q,
+            "q_kg_kg": row.q,
+            "s": row.s,
+            "residual_norm": _residual_norm(row, T),
+            "converged": True,
+            "stability": "",
+            "backend_step_index": backend_step_index,
+            "source_file": source_file,
+            "auto_branch": row.branch,
+            "auto_point": row.point,
+            "auto_type_code": row.type_code,
+            "auto_label": row.label,
+            "auto_l2_norm": row.l2_norm,
+        })
+    return records
+
+
+def _write_branch_csv(path: Path, T: float, rows: list[AutoRow], *, run_name: str) -> None:
+    records = _branch_records(T, rows, run_name=run_name)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=BRANCH_FIELDNAMES)
         writer.writeheader()
-        for row in rows:
-            writer.writerow({
-                "T_K": T,
-                "p_Pa": PRESSURE_PA,
-                "F": SEDIMENTATION_F,
-                "N_a_m3": AEROSOL_N_A,
-                "log_w": row.log_w,
-                "w_m_s": row.w_m_s,
-                "log_n": row.log_n,
-                "log_q": row.log_q,
-                "s": row.s,
-                "n": row.n,
-                "q": row.q,
-                "branch": row.branch,
-                "point": row.point,
-                "type_code": row.type_code,
-                "label": row.label,
-            })
+        writer.writerows(records)
+
+
+def _write_combined_branch_csv(path: Path, branch_csvs: list[Path]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=BRANCH_FIELDNAMES)
+        writer.writeheader()
+        for branch_csv in branch_csvs:
+            with branch_csv.open("r", encoding="utf-8", newline="") as source:
+                reader = csv.DictReader(source)
+                for record in reader:
+                    writer.writerow(record)
 
 
 def _run_temperature(T: float, output_dir: Path) -> dict[str, object]:
@@ -252,7 +329,7 @@ def _run_temperature(T: float, output_dir: Path) -> dict[str, object]:
     requested_rows = _requested_range_rows(rows) if rows else []
     branch_csv = output_dir / f"branch_T{int(T)}K.csv"
     if requested_rows:
-        _write_branch_csv(branch_csv, T, requested_rows)
+        _write_branch_csv(branch_csv, T, requested_rows, run_name=run_name)
     diagnostics = _diagnose(rows, result.stdout, result.stderr)
     diagnostics.update({
         "temperature_K": T,
@@ -268,7 +345,16 @@ def _run_temperature(T: float, output_dir: Path) -> dict[str, object]:
             f"raw/{run_name}/{stem}.auto",
         ],
         "raw_outputs": sorted(path.name for path in run_dir.iterdir()),
-        "branch_csv": branch_csv.name if rows else None,
+        "branch_csv": branch_csv.name if requested_rows else None,
+        "branch_id": _branch_id(T),
+        "schema_version": SCHEMA_VERSION,
+        "normalized_schema_columns": BRANCH_FIELDNAMES,
+        "input_files": [
+            f"raw/{run_name}/{stem}.f90",
+            f"raw/{run_name}/c.{stem}",
+            f"raw/{run_name}/{stem}.auto",
+        ],
+        "raw_auto_output_paths": [f"raw/{run_name}/{name}" for name in sorted(path.name for path in run_dir.iterdir())],
     })
     if result.returncode != 0:
         diagnostics["ok"] = False
@@ -295,6 +381,15 @@ def main() -> None:
         "auto_problem_template": str(TEMPLATE_F90.relative_to(REPO_ROOT)),
         "auto_constants_template": str(TEMPLATE_C.relative_to(REPO_ROOT)),
         "shared_fortran_sources": ["auto/src/bs2026_constants.f90", "auto/src/bs2026_model.f90"],
+        "schema_version": SCHEMA_VERSION,
+        "normalized_schema_columns": BRANCH_FIELDNAMES,
+        "parser_assumptions": [
+            "AUTO b.* files are parsed as whitespace-delimited rows with BR, PT, TY, LAB followed by log_w, L2-NORM, log_n, log_q, and s.",
+            "Rows are clipped to the requested Figure 1 log_w interval with a small endpoint tolerance.",
+            "Physical w, n, and q are recovered by exponentiating log_w, log_n, and log_q.",
+            "AUTO branch/type/label/point fields and L2-NORM are preserved as auto_* diagnostic columns.",
+            "Residual norms are recomputed with the Python residual adapter using the shared model semantics for comparison.",
+        ],
         "coordinates": {"state": ["log_n", "log_q", "s"], "continuation_parameter": "log_w"},
         "p_Pa": PRESSURE_PA,
         "F": SEDIMENTATION_F,
@@ -308,15 +403,26 @@ def main() -> None:
     }
 
     all_ok = True
+    branch_csvs: list[Path] = []
     for T in args.temperatures:
         diagnostics = _run_temperature(T, args.output_dir)
         metadata["runs"].append(diagnostics)
         all_ok = all_ok and bool(diagnostics.get("ok"))
+        if diagnostics.get("branch_csv"):
+            branch_csvs.append(args.output_dir / str(diagnostics["branch_csv"]))
 
+    combined_csv = args.output_dir / "branches_all.csv"
+    _write_combined_branch_csv(combined_csv, branch_csvs)
+    metadata["combined_branch_csv"] = combined_csv.name
+    metadata["normalized_branch_csvs"] = [path.name for path in branch_csvs]
+    metadata["raw_auto_output_paths"] = [path for run in metadata["runs"] for path in run.get("raw_auto_output_paths", [])]
+
+    metadata_path = args.output_dir / "run_metadata.json"
+    metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
     diagnostics_path = args.output_dir / "run_diagnostics.json"
     diagnostics_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
     if not all_ok:
-        raise RuntimeError(f"One or more AUTO runs failed diagnostics; see {diagnostics_path}")
+        raise RuntimeError(f"One or more AUTO runs failed diagnostics; see {metadata_path}")
     print(f"Wrote AUTO Figure 1 continuation outputs to {args.output_dir}")
 
 
