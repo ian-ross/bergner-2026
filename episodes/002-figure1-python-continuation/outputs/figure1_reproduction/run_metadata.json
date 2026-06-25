@@ -1,0 +1,23 @@
+{
+  "inputs": {
+    "continuation_dir": "episodes/002-figure1-python-continuation/outputs/figure1_continuation",
+    "digitized_dir": "episodes/002-figure1-python-continuation/outputs/figure1_digitized"
+  },
+  "outputs": [
+    "figure1_reproduction.png",
+    "figure1_digitized_residuals.png",
+    "digitized_comparison_details.csv",
+    "digitized_comparison_summary.csv"
+  ],
+  "plot_encoding": {
+    "temperatures_K": {
+      "190": "#1f77ff",
+      "210": "#7f7f7f",
+      "230": "#d62728"
+    },
+    "solid_lines": "Python continuation",
+    "dashed_lines": "Eq. 92--94 analytic approximation",
+    "open_circles": "independent root-solve checks sampled from comparison_details.csv",
+    "x_markers": "digitized paper curves from rendered Figure 1"
+  }
+}

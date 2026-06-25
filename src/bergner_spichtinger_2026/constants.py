@@ -55,7 +55,9 @@ r0 = 3.0
 # Appendix A, Eq. (A15)--(A17): solution-droplet nucleation parameters.
 r_sol = 75e-9  # m
 σ_r = 1.5
-N_a_default = 3.0e8  # m^-3, 300 cm^-3
+N_a_typical = 3.0e8  # m^-3, 300 cm^-3; Appendix A2 typical upper-troposphere value.
+N_a_figure1_high = 1.0e10  # m^-3, 10000 cm^-3; inferred Figure 1 reproduction value.
+N_a_default = N_a_typical
 J0 = 1.0e16  # m^-3 s^-1
 m_nuc = 1.0e-16  # kg
 

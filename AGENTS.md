@@ -21,7 +21,8 @@ Source information lives under `sources/`:
   in the relevant episode and write generated extraction products under `sources/extracted/`.
 
 Project-level documentation lives under `docs/`. Use it for cross-episode model notes, source-quality assessments,
-and implementation summaries. Episode-specific documentation belongs in the relevant `episodes/<id>/docs/` directory.
+implementation summaries, and reusable reproduction/debugging notes such as `docs/REPRODUCTION_NOTES.md`.
+Episode-specific documentation belongs in the relevant `episodes/<id>/docs/` directory.
 Do not add new research scripts, notebooks, AUTO files, or curated outputs to top-level functional directories such as
 `scripts/`, `notebooks/`, `auto/`, or `outputs/`; place them in the appropriate episode, or create a new episode with
 a README when the work is a new research phase.

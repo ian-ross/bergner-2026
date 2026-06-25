@@ -19,7 +19,7 @@ import pandas as pd
 from scipy.optimize import root
 
 from bergner_spichtinger_2026.approximations import approximate_equilibrium
-from bergner_spichtinger_2026.constants import Environment
+from bergner_spichtinger_2026.constants import Environment, N_a_figure1_high
 from bergner_spichtinger_2026.continuation import continue_branch
 from bergner_spichtinger_2026.core import coefficients, equilibrium
 from bergner_spichtinger_2026.residuals import (
@@ -34,6 +34,7 @@ DEFAULT_OUTPUT_DIR = REPO_ROOT / "episodes" / "002-figure1-python-continuation" 
 TEMPERATURES_K = (190.0, 210.0, 230.0)
 PRESSURE_PA = 30_000.0
 SEDIMENTATION_F = 1.0
+AEROSOL_N_A = N_a_figure1_high
 W_MIN = 0.005
 W_MAX = 2.0
 
@@ -69,7 +70,7 @@ def _solve_independent_root(env: Environment, initial_guess_physical: np.ndarray
 
 
 def _branch_frame(T: float, controls: np.ndarray, tolerance: float) -> pd.DataFrame:
-    env0 = Environment(p=PRESSURE_PA, T=T, w=float(exp(controls[0])), F=SEDIMENTATION_F)
+    env0 = Environment(p=PRESSURE_PA, T=T, w=float(exp(controls[0])), F=SEDIMENTATION_F, N_a=AEROSOL_N_A)
     initial = log_coordinates_from_physical_state(equilibrium(env0))
     result = continue_branch(
         make_equilibrium_residual(env0),
@@ -88,6 +89,7 @@ def _branch_frame(T: float, controls: np.ndarray, tolerance: float) -> pd.DataFr
                 "T_K": T,
                 "p_Pa": PRESSURE_PA,
                 "F": SEDIMENTATION_F,
+                "N_a_m3": AEROSOL_N_A,
                 "log_w": point.control,
                 "w_m_s": exp(point.control),
                 "log_n": point.state[0],
@@ -110,7 +112,7 @@ def _comparison_frames(branch: pd.DataFrame, sample_indices: np.ndarray) -> tupl
     variables = ("n", "q", "s")
 
     for _, row in branch.iloc[sample_indices].iterrows():
-        env = Environment(p=float(row.p_Pa), T=float(row.T_K), w=float(row.w_m_s), F=float(row.F))
+        env = Environment(p=float(row.p_Pa), T=float(row.T_K), w=float(row.w_m_s), F=float(row.F), N_a=float(row.N_a_m3))
         continuation_state = np.array([row.n, row.q, row.s], dtype=float)
         analytic_state = approximate_equilibrium(env)
         root_result = _solve_independent_root(env, analytic_state)
@@ -206,6 +208,9 @@ def main() -> None:
         "temperatures_K": list(TEMPERATURES_K),
         "p_Pa": PRESSURE_PA,
         "F": SEDIMENTATION_F,
+        "N_a_m3": AEROSOL_N_A,
+        "N_a_cm3": AEROSOL_N_A / 1.0e6,
+        "N_a_note": "Inferred Figure 1 value: paper Appendix A2 says high-aerosol reference cases often use 10000 cm^-3; this removes the saturation-ratio offset against digitized Figure 1.",
         "w_min_m_s": W_MIN,
         "w_max_m_s": W_MAX,
         "points_per_branch": args.points,
