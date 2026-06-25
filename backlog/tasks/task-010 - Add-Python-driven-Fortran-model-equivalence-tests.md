@@ -1,11 +1,11 @@
 ---
 id: TASK-010
 title: Add Python-driven Fortran model equivalence tests
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:51'
+updated_date: '2026-06-25 09:54'
 labels: []
 dependencies:
   - TASK-005
@@ -20,11 +20,11 @@ Use Python-side tests, preferably Hypothesis-guided per docs/testing.md, to comp
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Tests generate physically valid environments and states using the documented property-based input domains.
-- [ ] #2 Tests compare Python and Fortran coefficients, process terms, vector field values, and log-coordinate residuals within documented tolerances.
-- [ ] #3 The test harness can build or invoke the Fortran evaluation driver reproducibly from the repository root.
-- [ ] #4 Fixed smoke cases are included alongside property-based examples to simplify diagnosis of failures.
-- [ ] #5 uv run pytest includes the cross-language tests or documents any opt-in marker required for local compiler/AUTO availability.
+- [x] #1 Tests generate physically valid environments and states using the documented property-based input domains.
+- [x] #2 Tests compare Python and Fortran coefficients, process terms, vector field values, and log-coordinate residuals within documented tolerances.
+- [x] #3 The test harness can build or invoke the Fortran evaluation driver reproducibly from the repository root.
+- [x] #4 Fixed smoke cases are included alongside property-based examples to simplify diagnosis of failures.
+- [x] #5 uv run pytest includes the cross-language tests or documents any opt-in marker required for local compiler/AUTO availability.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -37,3 +37,25 @@ Use Python-side tests, preferably Hypothesis-guided per docs/testing.md, to comp
 5. Compare Python and Fortran coefficients, process terms, vector-field outputs, and log-coordinate residuals with documented absolute/relative tolerances.
 6. Ensure uv run pytest either runs these tests directly or clearly marks/skips them when gfortran/AUTO prerequisites are unavailable.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added Hypothesis as a project test dependency.
+- Expanded tests/test_fortran_model_core.py with shared smoke/property equivalence cases for coefficients, terms, RHS, and log residuals.
+- Verified full suite with uv run pytest (21 passed).
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added Python-driven equivalence coverage for the shared AUTO Fortran evaluator.
+
+Changes:
+- Added Hypothesis to the project dependencies for documented property-based tests.
+- Reworked Fortran model-core tests around reusable fixed and generated equivalence cases.
+- Covered coefficients, process terms, vector-field outputs, log-coordinate residuals, optional environment fields, evaporation switch behavior, evaluator build-from-root, and invalid unregularized cloud-state rejection.
+
+Tests:
+- uv run pytest
+<!-- SECTION:FINAL_SUMMARY:END -->
