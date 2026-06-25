@@ -4,7 +4,7 @@ title: Implement AUTO Figure 1 log-w continuation
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:16'
 labels: []
 dependencies:
   - TASK-009
@@ -24,3 +24,14 @@ Use the shared Fortran model core to run AUTO-07p equilibrium continuation for t
 - [ ] #3 Python orchestration records AUTO path/version, gfortran version, command lines, run files, and raw AUTO outputs under Episode 3 outputs.
 - [ ] #4 Run diagnostics make branch truncation, convergence failures, or unexpected AUTO labels visible rather than silently ignored.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review AUTO-07p expectations for equilibrium continuation problem files and identify the minimal run-file structure needed for IPS=1 steady-state continuation.
+2. Add Episode 3 AUTO problem/run files under episodes/003-figure1-auto-continuation/auto/ that call the shared Fortran model core rather than duplicating physics.
+3. Represent the AUTO state as (log_n, log_q, s) and use PAR(log_w) as the continuation parameter, computing w=exp(log_w) internally.
+4. Write Python orchestration to run /usr/local/bin/auto for T=190, 210, and 230 K with p=300 hPa, F=1, N_a=1e10 m^-3, and log_w spanning the Figure 1 range.
+5. Capture raw AUTO outputs, command lines, AUTO/gfortran version information, and run metadata in Episode 3 outputs.
+6. Add diagnostic checks for branch coverage, convergence labels, and silent truncation before downstream parsing.
+<!-- SECTION:PLAN:END -->
