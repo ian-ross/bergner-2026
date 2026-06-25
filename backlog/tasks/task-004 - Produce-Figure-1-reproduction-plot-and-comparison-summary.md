@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-24 16:38'
-updated_date: '2026-06-24 20:45'
+updated_date: '2026-06-25 07:40'
 labels: []
 dependencies:
   - TASK-001
@@ -44,6 +44,8 @@ Assemble the Episode 2 final reproduction artifact: generated Figure 1-style plo
 - Generated outputs/figure1_reproduction/ with reproduction PNG, digitized residual PNG, comparison CSVs, and run metadata.
 - Updated Episode 2 README with provenance, methods, outputs, limitations, and uv reproduction commands.
 - Verified documented commands: continuation generation, digitization, reproduction plotting, and uv run pytest (11 passed).
+
+- Follow-up: diagnosed saturation-ratio offset as an undeclared Figure 1 aerosol assumption. Updated Episode 2 Figure 1 generation to use `N_a = 1.0e10 m^-3` (`10000 cm^-3`) explicitly, regenerated continuation/reproduction outputs, and added `docs/REPRODUCTION_NOTES.md` linked from `AGENTS.md`.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
