@@ -4,8 +4,11 @@ title: Implement shared legible AUTO Fortran model core
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-006
+  - TASK-007
 ---
 
 ## Description
