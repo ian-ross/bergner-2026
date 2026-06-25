@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:54'
+updated_date: '2026-06-25 10:01'
 labels: []
 dependencies:
   - TASK-009
@@ -20,10 +20,10 @@ Use the shared Fortran model core to run AUTO-07p equilibrium continuation for t
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode 3 AUTO problem/run files use the shared Fortran model core and represent equilibria of the transformed ODE system in (log n, log q, s).
-- [ ] #2 AUTO continues log_w over the full w range [0.005, 2.0] m/s for T=190, 210, and 230 K.
-- [ ] #3 Python orchestration records AUTO path/version, gfortran version, command lines, run files, and raw AUTO outputs under Episode 3 outputs.
-- [ ] #4 Run diagnostics make branch truncation, convergence failures, or unexpected AUTO labels visible rather than silently ignored.
+- [x] #1 Episode 3 AUTO problem/run files use the shared Fortran model core and represent equilibria of the transformed ODE system in (log n, log q, s).
+- [x] #2 AUTO continues log_w over the full w range [0.005, 2.0] m/s for T=190, 210, and 230 K.
+- [x] #3 Python orchestration records AUTO path/version, gfortran version, command lines, run files, and raw AUTO outputs under Episode 3 outputs.
+- [x] #4 Run diagnostics make branch truncation, convergence failures, or unexpected AUTO labels visible rather than silently ignored.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -36,3 +36,11 @@ Use the shared Fortran model core to run AUTO-07p equilibrium continuation for t
 5. Capture raw AUTO outputs, command lines, AUTO/gfortran version information, and run metadata in Episode 3 outputs.
 6. Add diagnostic checks for branch coverage, convergence labels, and silent truncation before downstream parsing.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added Episode 3 AUTO templates and Python orchestration for log_w continuation using the shared Fortran model core.
+- Generated curated Episode 3 AUTO outputs for T=190, 210, and 230 K over w=[0.005, 2.0] m/s with raw AUTO b/s/d files and run diagnostics.
+- Added tests covering template semantics, diagnostics/range clipping, and an AUTO smoke run; full uv run pytest passes (24 passed).
+<!-- SECTION:NOTES:END -->
