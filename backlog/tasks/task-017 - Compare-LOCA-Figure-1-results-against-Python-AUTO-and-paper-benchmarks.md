@@ -28,3 +28,13 @@ Add Episode 4 comparison artifacts that evaluate normalized LOCA branches agains
 - [ ] #4 Plots clearly distinguish Python, AUTO, LOCA, analytic approximation, and digitized paper curves while preserving Figure 1 variable/temperature semantics.
 - [ ] #5 README and/or planning docs summarize backend agreement, tolerances, limitations, and implications for later LOCA continuation experiments.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Adapt Episode 3 comparison logic into an Episode 4 compare_loca_figure1.py without refactoring earlier episode scripts.
+2. Read LOCA normalized branches plus Episode 2 Python continuation/root-solve/digitized artifacts and Episode 3 AUTO branches.
+3. Compute LOCA-vs-Python, LOCA-vs-AUTO, LOCA-vs-Eq. 92--94, LOCA-vs-root-solve, and LOCA-vs-digitized detail rows using the existing interpolation conventions.
+4. Generate summary CSV/JSON and plots overlaying Python, AUTO, LOCA, analytic approximations, and digitized paper curves.
+5. Document agreement/tolerances/limitations in Episode 4 README or planning docs and add deterministic checks where practical.
+<!-- SECTION:PLAN:END -->
