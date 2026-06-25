@@ -1,10 +1,11 @@
 ---
 id: TASK-016
 title: Implement LOCA Figure 1 continuation and normalized branch outputs
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:49'
+updated_date: '2026-06-25 16:58'
 labels:
   - episode-004
   - loca
@@ -38,3 +39,9 @@ Run true LOCA continuation for the Figure 1 equilibrium branch family using the 
 4. Write branch_T*.csv, branches_all.csv, run_metadata.json, and run_diagnostics.json under Episode 4 outputs.
 5. Add tests/checks for schema fields, log_w coverage, positive n/q, finite residuals, convergence flags, and provenance.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started implementation session for TASK-016. Confirmed task scope and will implement only LOCA Figure 1 continuation/normalization.
+<!-- SECTION:NOTES:END -->
