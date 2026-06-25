@@ -1,7 +1,7 @@
 ---
 id: TASK-011
 title: Implement AUTO Figure 1 log-w continuation
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
@@ -44,3 +44,19 @@ Use the shared Fortran model core to run AUTO-07p equilibrium continuation for t
 - Generated curated Episode 3 AUTO outputs for T=190, 210, and 230 K over w=[0.005, 2.0] m/s with raw AUTO b/s/d files and run diagnostics.
 - Added tests covering template semantics, diagnostics/range clipping, and an AUTO smoke run; full uv run pytest passes (24 passed).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented Episode 3 AUTO-07p Figure 1 log-w continuation for TASK-011.
+
+Changes:
+- Added episode-local AUTO templates/run constants that call the shared top-level Fortran model core and continue equilibria in (log_n, log_q, s) with PAR(1)=log_w.
+- Added Python orchestration that runs /usr/local/bin/auto for T=190, 210, and 230 K, captures generated run files, AUTO/gfortran provenance, raw b/s/d outputs, normalized branch CSVs, and diagnostics under Episode 3 outputs.
+- Added diagnostics for endpoint coverage, raw branch overrun visibility, labels, and AUTO failure tokens.
+- Documented the Episode 3 AUTO workflow and added pytest coverage for templates, diagnostics/range clipping, and an AUTO smoke run.
+
+Validation:
+- uv run python episodes/003-figure1-auto-continuation/scripts/run_auto_figure1.py --output-dir episodes/003-figure1-auto-continuation/outputs/auto_figure1_continuation --clean
+- uv run pytest (24 passed)
+<!-- SECTION:FINAL_SUMMARY:END -->
