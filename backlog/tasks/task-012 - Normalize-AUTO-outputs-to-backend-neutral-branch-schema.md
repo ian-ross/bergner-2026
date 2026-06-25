@@ -4,8 +4,10 @@ title: Normalize AUTO outputs to backend-neutral branch schema
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:15'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-011
 ---
 
 ## Description
