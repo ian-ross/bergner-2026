@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:52'
+updated_date: '2026-06-25 16:53'
 labels:
   - episode-004
   - loca
@@ -21,10 +21,10 @@ Set up Episode 4 as the Figure 1 LOCA/Trilinos backend-equivalence episode. Docu
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode 4 directory structure exists under episodes/004-figure1-loca-continuation with README, docs, scripts, loca, notebooks, and outputs placeholders as appropriate.
-- [ ] #2 Planning documentation records the agreed LOCA design choices, build/toolchain assumptions, output contract, and comparison scope.
-- [ ] #3 README describes the Episode 4 goal, expected commands/artifacts, and relationship to Episodes 2 and 3.
-- [ ] #4 No reusable C++/Trilinos infrastructure is promoted outside the episode unless documented as shared backend infrastructure.
+- [x] #1 Episode 4 directory structure exists under episodes/004-figure1-loca-continuation with README, docs, scripts, loca, notebooks, and outputs placeholders as appropriate.
+- [x] #2 Planning documentation records the agreed LOCA design choices, build/toolchain assumptions, output contract, and comparison scope.
+- [x] #3 README describes the Episode 4 goal, expected commands/artifacts, and relationship to Episodes 2 and 3.
+- [x] #4 No reusable C++/Trilinos infrastructure is promoted outside the episode unless documented as shared backend infrastructure.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -41,4 +41,7 @@ Set up Episode 4 as the Figure 1 LOCA/Trilinos backend-equivalence episode. Docu
 <!-- SECTION:NOTES:BEGIN -->
 - Created Episode 4 scaffold under episodes/004-figure1-loca-continuation with README, planning docs, episode-local LOCA placeholder, and directory placeholders.
 - Added pytest coverage for the scaffold, planning-document content, README scope, and absence of promoted top-level LOCA infrastructure.
+
+- Verification: uv run pytest passed (32 tests), including new Episode 4 scaffold coverage.
+- No new executable LOCA code paths were introduced; added tests cover the new scaffold/documentation contract.
 <!-- SECTION:NOTES:END -->
