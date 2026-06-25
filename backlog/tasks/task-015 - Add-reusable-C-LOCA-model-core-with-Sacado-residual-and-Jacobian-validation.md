@@ -1,10 +1,11 @@
 ---
 id: TASK-015
 title: Add reusable C++ LOCA model core with Sacado residual and Jacobian validation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:49'
+updated_date: '2026-06-25 16:53'
 labels:
   - episode-004
   - loca
@@ -39,3 +40,9 @@ Implement a legible independent C++ Bergner-Spichtinger Figure 1 residual core f
 4. Implement residual and jacobian executable subcommands; use Sacado forward-mode AD for the 3x3 state Jacobian.
 5. Add pytest coverage that builds when Trilinos is available, compares residuals to Python, and compares AD Jacobians to Python central differences with clean skips otherwise.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started implementation session; preserving unrelated untracked .pi/ and afk-prompt.txt files.
+<!-- SECTION:NOTES:END -->
