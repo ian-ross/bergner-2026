@@ -1,11 +1,11 @@
 ---
 id: TASK-017
 title: 'Compare LOCA Figure 1 results against Python, AUTO, and paper benchmarks'
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 17:05'
+updated_date: '2026-06-25 17:11'
 labels:
   - episode-004
   - loca
@@ -23,11 +23,11 @@ Add Episode 4 comparison artifacts that evaluate normalized LOCA branches agains
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode-local comparison script reads normalized LOCA branches plus existing Episode 2 and Episode 3 artifacts without refactoring the earlier episode scripts.
-- [ ] #2 Comparison details include LOCA vs Python continuation, LOCA vs AUTO continuation, LOCA vs Eq. 92--94, LOCA vs Python root-solve checks, and LOCA vs digitized Figure 1.
-- [ ] #3 Comparison outputs include backend_comparison_details.csv, backend_comparison_summary.csv, backend_comparison_summary.json, figure1_backend_comparison.png, figure1_backend_residuals.png, and run_metadata.json.
-- [ ] #4 Plots clearly distinguish Python, AUTO, LOCA, analytic approximation, and digitized paper curves while preserving Figure 1 variable/temperature semantics.
-- [ ] #5 README and/or planning docs summarize backend agreement, tolerances, limitations, and implications for later LOCA continuation experiments.
+- [x] #1 Episode-local comparison script reads normalized LOCA branches plus existing Episode 2 and Episode 3 artifacts without refactoring the earlier episode scripts.
+- [x] #2 Comparison details include LOCA vs Python continuation, LOCA vs AUTO continuation, LOCA vs Eq. 92--94, LOCA vs Python root-solve checks, and LOCA vs digitized Figure 1.
+- [x] #3 Comparison outputs include backend_comparison_details.csv, backend_comparison_summary.csv, backend_comparison_summary.json, figure1_backend_comparison.png, figure1_backend_residuals.png, and run_metadata.json.
+- [x] #4 Plots clearly distinguish Python, AUTO, LOCA, analytic approximation, and digitized paper curves while preserving Figure 1 variable/temperature semantics.
+- [x] #5 README and/or planning docs summarize backend agreement, tolerances, limitations, and implications for later LOCA continuation experiments.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -44,4 +44,22 @@ Add Episode 4 comparison artifacts that evaluate normalized LOCA branches agains
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-017 implementation session; dependency TASK-016 is Done and provides normalized LOCA outputs.
+
+Implemented Episode 4 LOCA backend comparison script, tests, curated outputs, and documentation updates.
+Verification: uv run pytest -q passed (44 tests).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented TASK-017 LOCA Figure 1 backend comparison artifacts.
+
+Changes:
+- Added episode-local `compare_loca_figure1.py` to read normalized LOCA branches plus existing Episode 2 Python/root-solve/digitized artifacts and Episode 3 AUTO branches without refactoring earlier scripts.
+- Generated LOCA-vs-Python, LOCA-vs-AUTO, LOCA-vs-Eq. 92--94, LOCA-vs-root-solve, and LOCA-vs-digitized detail/summary tables plus overlay and residual plots.
+- Documented backend agreement, interpolation conventions, tolerances, limitations, and implications for later LOCA experiments.
+- Added deterministic tests for interpolation, comparison frame coverage, and CLI artifact output.
+
+Tests:
+- `uv run pytest -q` passed (44 tests).
+<!-- SECTION:FINAL_SUMMARY:END -->
