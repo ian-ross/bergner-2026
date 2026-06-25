@@ -1,10 +1,11 @@
 ---
 id: TASK-013
 title: Compare AUTO Figure 1 results against Python and paper benchmarks
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 10:07'
 labels: []
 dependencies:
   - TASK-012
