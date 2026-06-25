@@ -1,7 +1,7 @@
 ---
 id: TASK-013
 title: Compare AUTO Figure 1 results against Python and paper benchmarks
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
