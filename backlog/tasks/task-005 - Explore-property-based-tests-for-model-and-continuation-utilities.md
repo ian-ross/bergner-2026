@@ -1,10 +1,11 @@
 ---
 id: TASK-005
 title: Explore property-based tests for model and continuation utilities
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-24 16:53'
-updated_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:18'
 labels: []
 dependencies: []
 ---
