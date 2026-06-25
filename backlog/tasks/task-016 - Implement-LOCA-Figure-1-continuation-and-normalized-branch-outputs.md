@@ -1,11 +1,11 @@
 ---
 id: TASK-016
 title: Implement LOCA Figure 1 continuation and normalized branch outputs
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 17:03'
+updated_date: '2026-06-25 17:05'
 labels:
   - episode-004
   - loca
@@ -47,3 +47,21 @@ Started implementation session for TASK-016. Confirmed task scope and will imple
 
 Implemented C++ continuation subcommand using prior branch points as predictor states and Sacado-backed Newton correction, added Episode 4 run_loca_figure1.py orchestration/normalization, generated curated LOCA branch outputs, and added tests for output contract and diagnostics. Verification: uv run pytest -q passed (40 tests).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented TASK-016 LOCA Figure 1 continuation and normalized outputs.
+
+Changes:
+- Added a C++ `continue` mode to `bs2026_loca_model` that advances in `log_w` using branch predictor states and Sacado-Jacobian Newton correction instead of independent state sweeps.
+- Added Episode 4 `run_loca_figure1.py` orchestration to build the executable, seed initial states from the Python package, run T = 190/210/230 K continuations, normalize raw rows to the Episode 3 schema, and record provenance/diagnostics.
+- Generated curated Episode 4 LOCA branch CSVs, combined output, run metadata, diagnostics, and raw run artifacts.
+- Added tests covering the orchestration contract, normalized schema, log_w coverage, positive n/q, finite residuals, convergence flags, and provenance metadata.
+
+Tests:
+- `uv run pytest -q` passed (40 tests).
+
+Commit:
+- be3be42 Implement TASK-016 LOCA Figure 1 outputs
+<!-- SECTION:FINAL_SUMMARY:END -->
