@@ -41,3 +41,17 @@ Started TASK-006. Reviewing repository guidance and applying the documented plan
 
 Updated AGENTS.md repository guidance and ran the full test suite with `uv run pytest` (11 passed). No new code paths were introduced; this is documentation-only.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Updated repository guidance in AGENTS.md to allow a top-level `auto/` directory for shared AUTO-07p backend/model assets while preserving episodic organization for episode-specific artifacts.
+
+Changes:
+- Clarified that shared backend/model assets reused across episodes may live in documented top-level backend directories.
+- Reserved top-level `auto/` for shared AUTO-07p assets, not episode-local AUTO files or outputs.
+- Added forward-looking guidance for shared LOCA/Trilinos backend conventions.
+
+Tests:
+- `uv run pytest` (11 passed)
+<!-- SECTION:FINAL_SUMMARY:END -->
