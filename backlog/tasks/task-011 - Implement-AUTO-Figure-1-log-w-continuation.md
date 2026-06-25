@@ -1,10 +1,11 @@
 ---
 id: TASK-011
 title: Implement AUTO Figure 1 log-w continuation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 09:54'
 labels: []
 dependencies:
   - TASK-009
