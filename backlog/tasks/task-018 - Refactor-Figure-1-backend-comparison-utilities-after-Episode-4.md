@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 17:12'
+updated_date: '2026-06-25 17:17'
 labels:
   - post-episode-004
   - refactor
@@ -37,3 +37,14 @@ After both AUTO and LOCA Figure 1 comparison scripts exist, extract shared compa
 4. Add or update tests covering schema compatibility and representative multi-backend comparison outputs.
 5. Run the full test suite, update task metadata, commit the resolved work with TASK-018 in the message, and close the task.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added shared `bergner_spichtinger_2026.figure1_backend_comparison` utilities for branch interpolation, relative error, detail/summary frames, and plotting.
+- Refactored Episode 3 AUTO and Episode 4 LOCA comparison scripts to preserve their CLI/artifact contracts while delegating shared backend-neutral comparison logic.
+- Documented the shared comparison workflow in Episode 3 and Episode 4 READMEs.
+- Added shared utility tests plus retained episode-specific comparison tests.
+- Verification: `uv run pytest -q` passed (46 tests).
+- Regenerated Episode 3 and Episode 4 documented comparison artifacts; detail and summary scientific tables remain unchanged.
+<!-- SECTION:NOTES:END -->
