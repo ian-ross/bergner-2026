@@ -1,11 +1,11 @@
 ---
 id: TASK-015
 title: Add reusable C++ LOCA model core with Sacado residual and Jacobian validation
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:57'
+updated_date: '2026-06-25 16:58'
 labels:
   - episode-004
   - loca
@@ -48,3 +48,22 @@ Started implementation session; preserving unrelated untracked .pi/ and afk-prom
 
 Implemented top-level loca/ CMake project and C++ residual/Jacobian CLI. Added scalar-templated model equations translated from the Python package with Sacado DFad state derivatives. Added pytest coverage for source/build contract, residual equivalence, and Sacado Jacobian equivalence against Python central differences. Verification: uv run pytest -q passed (37 tests).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the reusable TASK-015 C++/Trilinos LOCA residual core and validation coverage.
+
+Changes:
+- Added top-level `loca/` CMake project building `bs2026_loca_model` against `/opt/Trilinos` and Sacado.
+- Translated the Python Bergner-Spichtinger residual equations into a scalar-templated C++ core with SI-unit comments and runtime independence from Python/AUTO.
+- Added stable `residual` and `jacobian` CLI subcommands for `[log_n, log_q, s]` and `log_w`; the state Jacobian uses Sacado forward-mode AD.
+- Documented the top-level shared LOCA promotion boundary while keeping episode-local run artifacts scoped to Episode 4.
+- Added pytest coverage that builds the executable when the Trilinos toolchain is available, compares residuals to Python, and compares Sacado Jacobians to Python central differences.
+
+Tests:
+- `uv run pytest -q` passed (37 tests).
+
+Commit:
+- c12afbf Implement TASK-015 LOCA residual core
+<!-- SECTION:FINAL_SUMMARY:END -->
