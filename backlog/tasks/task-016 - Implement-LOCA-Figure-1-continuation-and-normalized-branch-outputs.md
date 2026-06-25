@@ -4,12 +4,14 @@ title: Implement LOCA Figure 1 continuation and normalized branch outputs
 status: To Do
 assignee: []
 created_date: '2026-06-25 16:48'
+updated_date: '2026-06-25 16:49'
 labels:
   - episode-004
   - loca
   - continuation
   - outputs
-dependencies: []
+dependencies:
+  - TASK-015
 ---
 
 ## Description
