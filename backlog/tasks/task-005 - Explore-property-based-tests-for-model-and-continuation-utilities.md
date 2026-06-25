@@ -27,3 +27,13 @@ Assess and document property-based testing for the Bergner & Spichtinger model e
 - [ ] #8 docs/testing.md gives explicit implementation advice for Python-vs-Fortran AUTO model equivalence tests and later Python-vs-LOCA comparisons.
 - [ ] #9 Follow-up implementation tasks are referenced explicitly from the notes or final summary so later backend tasks can apply the guidance.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Review existing unit tests, Episode 2 continuation/residual code, and planned AUTO/LOCA comparison needs.
+2. Identify high-value properties and invariants for constants/coefficient helpers, process terms, vector field, residual adapters, continuation utilities, and analytic approximations.
+3. Define conservative Hypothesis strategies for physical environments and states, including ranges, exclusions, and numerical-stability constraints.
+4. Recommend whether to adopt Hypothesis and document dependencies, tolerances, example counts, markers, and maintenance risks in docs/testing.md.
+5. Add explicit implementation guidance for TASK-010 and later LOCA equivalence tests, then update TASK-005 notes/final summary with follow-up references.
+<!-- SECTION:PLAN:END -->
