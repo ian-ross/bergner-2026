@@ -22,10 +22,10 @@ After both AUTO and LOCA Figure 1 comparison scripts exist, extract shared compa
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Common interpolation, relative-error, summary, and plotting logic from Episodes 3 and 4 is identified and documented.
-- [ ] #2 Shared utility code or a generic script supports Python/AUTO/LOCA branch inputs using the backend-neutral schema without changing curated scientific results.
-- [ ] #3 Episode 3 and Episode 4 comparison commands continue to regenerate their documented artifacts.
-- [ ] #4 Tests or checks cover schema compatibility and representative multi-backend comparison output.
+- [x] #1 Common interpolation, relative-error, summary, and plotting logic from Episodes 3 and 4 is identified and documented.
+- [x] #2 Shared utility code or a generic script supports Python/AUTO/LOCA branch inputs using the backend-neutral schema without changing curated scientific results.
+- [x] #3 Episode 3 and Episode 4 comparison commands continue to regenerate their documented artifacts.
+- [x] #4 Tests or checks cover schema compatibility and representative multi-backend comparison output.
 <!-- AC:END -->
 
 ## Implementation Plan
