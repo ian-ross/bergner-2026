@@ -4,7 +4,7 @@ title: Implement shared legible AUTO Fortran model core
 status: To Do
 assignee: []
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:15'
+updated_date: '2026-06-25 09:16'
 labels: []
 dependencies:
   - TASK-006
@@ -24,3 +24,14 @@ Add a top-level shared AUTO Fortran implementation of the Bergner & Spichtinger 
 - [ ] #3 The shared Fortran model exposes a small driver or callable path that can evaluate selected model quantities without running AUTO continuation.
 - [ ] #4 Build/run instructions for the shared Fortran model work with /usr/local/bin/auto and gfortran available on the system.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inspect the Python constants, coefficient helpers, process_terms, vector_field, and residual adapter modules to define the Fortran module boundaries and naming.
+2. Create top-level auto/ shared source files after TASK-006 establishes the repository convention.
+3. Translate constants and Environment-style parameters into legible double-precision Fortran definitions with comments cross-referencing paper equations and Python names.
+4. Translate coefficient, process-term, vector-field, and log-coordinate residual routines in small testable units rather than embedding everything in AUTO callbacks.
+5. Add a simple Fortran evaluation driver or command mode that prints machine-readable values for selected quantities, enabling TASK-010 tests before AUTO continuation is used.
+6. Document build/run expectations with gfortran and AUTO-07p installed at /usr/local/bin/auto.
+<!-- SECTION:PLAN:END -->
