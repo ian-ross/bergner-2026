@@ -1,11 +1,11 @@
 ---
 id: TASK-007
 title: Create Episode 3 scaffold and AUTO planning docs
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:45'
+updated_date: '2026-06-25 09:46'
 labels: []
 dependencies:
   - TASK-006
@@ -44,3 +44,19 @@ Created episodes/003-figure1-auto-continuation scaffold with README, docs/, scri
 
 Verification: uv run pytest (11 passed). No new executable code paths were introduced; this task is documentation/scaffold only.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created the Episode 3 scaffold for Figure 1 AUTO continuation and backend comparison.
+
+Changes:
+- Added episodes/003-figure1-auto-continuation/ with README plus docs/, scripts/, auto/, outputs/, and notebooks/ structure.
+- Documented the Python-native/AUTO/later-LOCA comparison goal, log_w continuation convention, shared-vs-episode-local AUTO guidance, and provisional backend-neutral branch schema.
+- Defined expected Figure 1 AUTO branch and backend-comparison outputs, with README links to Episode 2 continuation, digitized Figure 1, reproduction artifacts, and TASK-005 testing guidance in docs/testing.md.
+
+Tests:
+- uv run pytest (11 passed)
+
+No new executable code paths were introduced; this was a scaffold/documentation task.
+<!-- SECTION:FINAL_SUMMARY:END -->
