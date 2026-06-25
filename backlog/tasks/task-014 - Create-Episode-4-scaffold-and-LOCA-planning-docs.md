@@ -1,10 +1,11 @@
 ---
 id: TASK-014
 title: Create Episode 4 scaffold and LOCA planning docs
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 16:48'
-updated_date: '2026-06-25 16:49'
+updated_date: '2026-06-25 16:51'
 labels:
   - episode-004
   - loca
