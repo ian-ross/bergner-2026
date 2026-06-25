@@ -1,10 +1,11 @@
 ---
 id: TASK-010
 title: Add Python-driven Fortran model equivalence tests
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 09:51'
 labels: []
 dependencies:
   - TASK-005
