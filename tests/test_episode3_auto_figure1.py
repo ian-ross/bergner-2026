@@ -7,15 +7,17 @@ import sys
 from math import log
 from pathlib import Path
 
+import pandas as pd
 import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = REPO_ROOT / "episodes/003-figure1-auto-continuation/scripts/run_auto_figure1.py"
+COMPARE_SCRIPT_PATH = REPO_ROOT / "episodes/003-figure1-auto-continuation/scripts/compare_auto_figure1.py"
 
 
-def _load_script_module():
-    spec = importlib.util.spec_from_file_location("run_auto_figure1", SCRIPT_PATH)
+def _load_script_module(path: Path = SCRIPT_PATH, name: str = "run_auto_figure1"):
+    spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
     sys.modules[spec.name] = module
@@ -113,6 +115,74 @@ def test_episode3_auto_parser_clips_requested_range_and_exposes_overrun_warning(
     assert diagnostics["w_max_m_s"] == pytest.approx(module.W_MAX)
     assert diagnostics["raw_log_w_max"] > module.LOG_W_MAX
     assert any("continued beyond requested" in warning for warning in diagnostics["warnings"])
+
+
+def test_episode3_comparison_interpolates_positive_variables_in_log_space():
+    module = _load_script_module(COMPARE_SCRIPT_PATH, "compare_auto_figure1")
+    branch = pd.DataFrame(
+        {
+            "log_w": [math.log(0.01), math.log(1.0)],
+            "n": [1.0e2, 1.0e6],
+            "q": [1.0e-8, 1.0e-4],
+            "s": [1.4, 1.6],
+        }
+    )
+
+    midpoint = [(math.log(0.01) + math.log(1.0)) / 2.0]
+
+    assert module._interp_branch_at_log_w(branch, "n", midpoint)[0] == pytest.approx(1.0e4)
+    assert module._interp_branch_at_log_w(branch, "q", midpoint)[0] == pytest.approx(1.0e-6)
+    assert module._interp_branch_at_log_w(branch, "s", midpoint)[0] == pytest.approx(1.5)
+
+
+def test_episode3_comparison_frames_cover_python_eq_root_and_digitized_sources():
+    module = _load_script_module(COMPARE_SCRIPT_PATH, "compare_auto_figure1")
+    log_ws = [math.log(0.01), math.log(0.1), math.log(1.0)]
+    base = {
+        "T_K": [190.0, 190.0, 190.0],
+        "log_w": log_ws,
+        "w_m_s": [math.exp(x) for x in log_ws],
+        "n": [100.0, 1000.0, 10000.0],
+        "q": [1.0e-8, 1.0e-7, 1.0e-6],
+        "s": [1.45, 1.50, 1.55],
+        "residual_norm": [1.0e-10, 2.0e-10, 3.0e-10],
+        "N_a_m3": [1.0e10, 1.0e10, 1.0e10],
+    }
+    auto = pd.DataFrame(base)
+    python = pd.DataFrame({**base, "n": [101.0, 1001.0, 10001.0]})
+    checks = pd.DataFrame(
+        {
+            "T_K": [190.0],
+            "source": ["root_solve"],
+            "log_w": [log_ws[1]],
+            "w_m_s": [math.exp(log_ws[1])],
+            "n_check": [999.0],
+            "q_check": [1.1e-7],
+            "s_check": [1.49],
+            "check_converged": [True],
+            "check_residual_norm": [1.0e-12],
+        }
+    )
+    digitized = pd.DataFrame(
+        {
+            "panel": ["number_concentration", "mass_concentration", "saturation_ratio"],
+            "T_K": [190, 190, 190],
+            "w_m_s": [0.1, 0.1, 0.1],
+            "value": [1000.0, 1.0e-7, 1.5],
+        }
+    )
+
+    details, summary, analytic = module._comparison_frames(auto, python, checks, digitized)
+
+    assert not analytic.empty
+    assert set(details["comparison"]) == {
+        "auto_vs_python_continuation",
+        "auto_vs_eq92_94",
+        "auto_vs_python_root_solve",
+        "auto_vs_digitized_figure1",
+    }
+    assert {"n", "q", "s"}.issubset(set(details["variable"]))
+    assert set(summary["comparison"]) == set(details["comparison"])
 
 
 def test_episode3_auto_single_temperature_smoke_run(tmp_path):

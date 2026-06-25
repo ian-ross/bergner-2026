@@ -54,3 +54,34 @@ The script generates per-temperature AUTO problem files from `auto/bs2026_figure
 - `branches_all.csv` — combined backend-neutral branch table for all Figure 1 temperatures.
 - `run_metadata.json` / `run_diagnostics.json` — schema version, parser assumptions, AUTO path/version probes, gfortran version, command provenance, run files, raw AUTO output paths, endpoint coverage, labels, and visible warnings/errors.
 - `raw/bs2026_T*/` — generated AUTO problem/run files and raw `b.*`, `s.*`, and `d.*` AUTO outputs.
+
+## AUTO/Python/Figure 1 backend comparison
+
+TASK-013 adds curated backend-comparison artifacts generated with:
+
+```bash
+uv run python episodes/003-figure1-auto-continuation/scripts/compare_auto_figure1.py
+```
+
+The script reads normalized AUTO branches from `outputs/figure1_auto_branches/`, Episode 2 Python continuation outputs from `episodes/002-figure1-python-continuation/outputs/figure1_continuation/`, and digitized paper curves from `episodes/002-figure1-python-continuation/outputs/figure1_digitized/`. It writes `outputs/figure1_backend_comparison/`:
+
+- `backend_comparison_details.csv` — pointwise rows for AUTO-vs-Python continuation, AUTO-vs-Eq. 92--94, AUTO-vs-independent Python root-solve checks, and AUTO-vs-digitized Figure 1 curves.
+- `backend_comparison_summary.csv` / `.json` — per-temperature and per-variable sample counts, median/max absolute differences, relative differences, residual-norm maxima where available, and convergence summaries.
+- `figure1_backend_comparison.png` — Figure 1 three-panel overlay: solid AUTO branches, dotted Python continuation, dashed Eq. 92--94 approximations, and x markers for digitized paper curves.
+- `figure1_backend_residuals.png` — AUTO-vs-Python relative-difference residuals for `n`, `q`, and `s`.
+- `run_metadata.json` — input paths, interpolation method, relative-error convention, and output inventory.
+
+Comparison method and provenance:
+
+- AUTO-vs-Python uses the AUTO branch points as the common `log_w` grid and interpolates Python continuation values onto those points. Positive `n` and `q` are interpolated in log-value space; `s` is interpolated linearly.
+- AUTO-vs-Eq. 92--94 evaluates the reusable `approximate_equilibrium` implementation at each AUTO branch point.
+- AUTO-vs-digitized Figure 1 interpolates AUTO values onto the digitized paper `w` locations with the same log-space treatment for positive concentrations.
+- AUTO-vs-root-solve compares AUTO values interpolated onto Episode 2 independent root-solve check locations.
+
+Current comparison results show close AUTO/Python agreement across all three Figure 1 branches. In `backend_comparison_summary.csv`, AUTO-vs-Python max relative differences are at approximately `3.9e-6` for `n`, `7.6e-6` for `q`, and `4.9e-9` for `s`, with AUTO residual norms below `4e-9`. Eq. 92--94 remains a close analytic approximation rather than an exact backend target, with maximum relative differences below about `4.9e-4` for `n`, `6.8e-5` for `q`, and `2.2e-4` for `s`. Digitized-paper comparisons are limited by rendered-pixel calibration, color extraction, and antialiasing uncertainty inherited from Episode 2; median relative differences are typically percent-level or better for `n` and `q`, and about `2e-4--3e-4` for `s`.
+
+Implications for later AUTO/LOCA work:
+
+- The normalized branch schema and log-`w` comparison contract are sufficient for backend-level Figure 1 checks.
+- Later LOCA outputs should write the same physical fields (`log_w`, `w_m_s`, `n`, `q`, `s`, residual/convergence metadata) so this comparison script can be extended by adding another backend source instead of inventing a new schema.
+- Tolerances for future backend equivalence should distinguish solver-to-solver agreement (near machine/continuation tolerance for Python vs AUTO here) from paper/digitization agreement, which has substantially larger observational uncertainty.
