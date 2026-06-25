@@ -1,7 +1,7 @@
 ---
 id: TASK-014
 title: Create Episode 4 scaffold and LOCA planning docs
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-06-25 16:48'
@@ -45,3 +45,20 @@ Set up Episode 4 as the Figure 1 LOCA/Trilinos backend-equivalence episode. Docu
 - Verification: uv run pytest passed (32 tests), including new Episode 4 scaffold coverage.
 - No new executable LOCA code paths were introduced; added tests cover the new scaffold/documentation contract.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created the Episode 4 Figure 1 LOCA/Trilinos scaffold and planning documentation.
+
+Changes:
+- Added episodes/004-figure1-loca-continuation with README, docs, scripts, loca, notebooks, and outputs structure.
+- Documented the agreed serial dense LOCA/LAPACK design, Sacado state-Jacobian approach, Python semantic reference, backend-neutral output contract, toolchain assumptions, and comparison scope.
+- Added pytest coverage for scaffold presence, README expectations, planning-document content, and the episode-local LOCA boundary.
+
+Tests:
+- uv run pytest (32 passed)
+
+Commit:
+- 57a04a0 TASK-014 scaffold Episode 4 LOCA planning
+<!-- SECTION:FINAL_SUMMARY:END -->
