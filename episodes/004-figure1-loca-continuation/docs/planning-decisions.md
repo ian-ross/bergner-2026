@@ -80,7 +80,7 @@ When implemented, Episode 4 should produce artifacts analogous to Episode 3:
 - `outputs/figure1_loca_branches/run_metadata.json` — build, toolchain, solver, command, schema, and provenance metadata.
 - `outputs/figure1_loca_backend_comparison/backend_comparison_details.csv` — pointwise LOCA-vs-Python, LOCA-vs-AUTO, LOCA-vs-Eq. 92--94, root-solve, and digitized-figure comparisons where inputs are available.
 - `outputs/figure1_loca_backend_comparison/backend_comparison_summary.csv` and `.json` — per-variable and per-temperature error summaries.
-- `outputs/figure1_loca_backend_comparison/figure1_loca_backend_comparison.png` and residual plots — visual overlays and residual diagnostics.
+- `outputs/figure1_loca_backend_comparison/figure1_backend_comparison.png` and `figure1_backend_residuals.png` — visual overlays and residual diagnostics that clearly distinguish LOCA, AUTO, Python, Eq. 92--94, and digitized paper curves.
 
 ## Comparison scope
 
@@ -92,6 +92,8 @@ Backend-equivalence claims should distinguish:
 2. schema and normalization invariants for LOCA outputs;
 3. branch-level agreement between LOCA, Python, and AUTO on common or interpolated `log_w` grids;
 4. agreement with analytic approximations and digitized paper curves as external reproduction checks.
+
+The curated TASK-017 comparison implements these distinctions in `scripts/compare_loca_figure1.py`. LOCA is compared pointwise with Python and AUTO by interpolating those backend-neutral branches onto the LOCA `log_w` grid; Eq. 92--94 values are evaluated directly at LOCA branch points; independent Python root-solve and digitized paper checks are evaluated by interpolating LOCA onto their `w`/`log_w` samples. Solver-to-solver tolerances are expected to be near numerical-continuation precision, while analytic and digitized-paper tolerances should remain looser because they include approximation and digitization error.
 
 ## Shared versus episode-local infrastructure
 

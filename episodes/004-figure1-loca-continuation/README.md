@@ -43,11 +43,24 @@ Use the same Figure 1 equilibrium branch family as Episodes 2 and 3:
 # T = 190, 210, and 230 K, and write normalized Episode 4 branch outputs.
 uv run python episodes/004-figure1-loca-continuation/scripts/run_loca_figure1.py --clean
 
-# Run repository tests, including LOCA residual/Jacobian and branch-output checks.
+# Compare LOCA branches against Python, AUTO, Eq. 92--94, root-solve checks,
+# and digitized paper Figure 1 curves.
+uv run python episodes/004-figure1-loca-continuation/scripts/compare_loca_figure1.py
+
+# Run repository tests, including LOCA residual/Jacobian, branch-output, and
+# backend-comparison checks.
 uv run pytest
 ```
 
-Curated branch outputs are written under `outputs/figure1_loca_branches/`, including normalized per-temperature branch CSVs, `branches_all.csv`, `run_metadata.json`, `run_diagnostics.json`, and raw C++ continuation CSV/log artifacts. Future comparison work should write pointwise comparison details, summary tables, and plots under `outputs/figure1_loca_backend_comparison/`.
+Curated branch outputs are written under `outputs/figure1_loca_branches/`, including normalized per-temperature branch CSVs, `branches_all.csv`, `run_metadata.json`, `run_diagnostics.json`, and raw C++ continuation CSV/log artifacts. Backend comparison artifacts are written under `outputs/figure1_loca_backend_comparison/`, including pointwise details, summary CSV/JSON, overlay plots, residual plots, and run metadata.
+
+## Backend comparison results
+
+`compare_loca_figure1.py` reuses existing Episode 2 Python continuation/root-solve/digitized artifacts and Episode 3 AUTO outputs without refactoring those scripts. The comparison uses LOCA as the target branch: Python and AUTO branches are interpolated onto LOCA `log_w` points, Eq. 92--94 is evaluated at LOCA branch points, and LOCA is interpolated onto independent root-solve and digitized paper points. Positive concentration variables `n` and `q` use log-value interpolation; `s` uses linear interpolation.
+
+Current curated outputs show tight solver-to-solver agreement between LOCA, Python, and AUTO. The largest observed LOCA-vs-AUTO relative differences are below `8e-6` across `n`, `q`, and `s`; LOCA-vs-Python differences are at the same numerical-continuation scale. Eq. 92--94 and digitized Figure 1 comparisons remain looser scientific reproduction checks because the former is an analytic approximation and the latter includes paper-rendering/digitization uncertainty.
+
+These tolerances support using the LOCA continuation as a backend-equivalent branch source for later LOCA experiments, while keeping Python as the semantic reference and preserving AUTO as an independent continuation cross-check.
 
 ## Scope boundaries
 
