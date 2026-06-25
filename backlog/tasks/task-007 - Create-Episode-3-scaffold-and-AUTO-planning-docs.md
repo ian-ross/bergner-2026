@@ -1,10 +1,11 @@
 ---
 id: TASK-007
 title: Create Episode 3 scaffold and AUTO planning docs
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 09:16'
+updated_date: '2026-06-25 09:43'
 labels: []
 dependencies:
   - TASK-006
@@ -33,3 +34,9 @@ Set up Episode 3 for Figure 1 AUTO continuation as the first explicit backend-co
 4. Define the provisional branch schema and expected comparison artifacts in the docs.
 5. Link Episode 2 continuation/digitization/reproduction outputs and note that TASK-005/docs/testing.md will provide testing-domain guidance when complete.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-007. Verifying existing Episode 2 artifacts and repository conventions before creating the Episode 3 scaffold.
+<!-- SECTION:NOTES:END -->
