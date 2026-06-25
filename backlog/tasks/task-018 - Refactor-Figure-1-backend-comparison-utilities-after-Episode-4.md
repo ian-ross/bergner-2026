@@ -4,11 +4,13 @@ title: Refactor Figure 1 backend comparison utilities after Episode 4
 status: To Do
 assignee: []
 created_date: '2026-06-25 16:48'
+updated_date: '2026-06-25 16:49'
 labels:
   - post-episode-004
   - refactor
   - comparison
-dependencies: []
+dependencies:
+  - TASK-017
 ---
 
 ## Description
