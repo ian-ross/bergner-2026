@@ -33,3 +33,9 @@ Refine repository organization guidance so shared backend code can live in top-l
 4. Add a forward-looking note that shared LOCA/Trilinos backend code may use an analogous documented convention.
 5. Self-review the updated guidance for consistency with the existing episodic organization rule.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-006. Reviewing repository guidance and applying the documented plan.
+<!-- SECTION:NOTES:END -->
