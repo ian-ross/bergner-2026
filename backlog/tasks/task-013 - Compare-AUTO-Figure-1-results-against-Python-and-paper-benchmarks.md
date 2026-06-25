@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-06-25 09:15'
-updated_date: '2026-06-25 10:07'
+updated_date: '2026-06-25 10:11'
 labels: []
 dependencies:
   - TASK-012
@@ -22,10 +22,10 @@ Produce Episode 3 comparison artifacts showing how AUTO Figure 1 continuation ag
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Comparison tables report AUTO-vs-Python differences for n, q, and s after interpolation onto a common log_w grid or sampled points.
-- [ ] #2 Comparison outputs include AUTO-vs-Eq. 92--94 and AUTO-vs-digitized Figure 1 summaries where the Episode 2 artifacts are available.
-- [ ] #3 Curated Episode 3 plots show AUTO branches in the Figure 1 three-panel layout and make backend comparisons visually inspectable.
-- [ ] #4 Episode 3 README documents commands, source provenance, AUTO method, comparison results, tolerances, limitations, and implications for later AUTO/LOCA work.
+- [x] #1 Comparison tables report AUTO-vs-Python differences for n, q, and s after interpolation onto a common log_w grid or sampled points.
+- [x] #2 Comparison outputs include AUTO-vs-Eq. 92--94 and AUTO-vs-digitized Figure 1 summaries where the Episode 2 artifacts are available.
+- [x] #3 Curated Episode 3 plots show AUTO branches in the Figure 1 three-panel layout and make backend comparisons visually inspectable.
+- [x] #4 Episode 3 README documents commands, source provenance, AUTO method, comparison results, tolerances, limitations, and implications for later AUTO/LOCA work.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -44,4 +44,23 @@ Produce Episode 3 comparison artifacts showing how AUTO Figure 1 continuation ag
 
 <!-- SECTION:NOTES:BEGIN -->
 - Started TASK-013; existing plan already covers comparison script, curated outputs, README, tests, and full-suite verification.
+
+- Implemented compare_auto_figure1.py, generated curated backend-comparison CSV/JSON/PNG outputs, updated README documentation, and added comparison-unit coverage.
+- Verification: uv run python episodes/003-figure1-auto-continuation/scripts/compare_auto_figure1.py; uv run pytest (28 passed).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented Episode 3 Figure 1 AUTO backend comparison artifacts for TASK-013.
+
+Changes:
+- Added compare_auto_figure1.py to compare normalized AUTO branches against Episode 2 Python continuation, Eq. 92--94 approximations, independent root-solve checks, and digitized paper Figure 1 curves.
+- Generated curated backend comparison detail/summary CSV and JSON files plus Figure 1-style overlay and residual plots under outputs/figure1_backend_comparison/.
+- Updated the Episode 3 README with commands, provenance, comparison methods, results, tolerances, limitations, and implications for future LOCA backend work.
+- Added tests covering log-space interpolation and comparison-frame coverage across Python, Eq. 92--94, root-solve, and digitized sources.
+
+Tests:
+- uv run python episodes/003-figure1-auto-continuation/scripts/compare_auto_figure1.py
+- uv run pytest (28 passed)
+<!-- SECTION:FINAL_SUMMARY:END -->
