@@ -39,3 +39,9 @@ Produce Episode 3 comparison artifacts showing how AUTO Figure 1 continuation ag
 6. Update the Episode 3 README with commands, provenance, AUTO method notes, comparison findings, tolerance interpretation, limitations, and implications for later AUTO/LOCA work.
 7. Run documented commands and uv run pytest, then record results in the task final summary when implementation is complete.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-013; existing plan already covers comparison script, curated outputs, README, tests, and full-suite verification.
+<!-- SECTION:NOTES:END -->
