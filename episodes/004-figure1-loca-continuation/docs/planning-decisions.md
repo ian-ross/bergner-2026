@@ -95,4 +95,4 @@ Backend-equivalence claims should distinguish:
 
 ## Shared versus episode-local infrastructure
 
-For now, all LOCA-specific source, CMake files, run configurations, generated outputs, logs, and notebooks belong under `episodes/004-figure1-loca-continuation/`. A top-level C++/Trilinos backend directory should be created only if the code becomes reusable infrastructure for multiple episodes, and that promotion must be documented in project-level docs or a future task.
+The initial scaffold kept LOCA-specific source, CMake files, run configurations, generated outputs, logs, and notebooks under `episodes/004-figure1-loca-continuation/`. TASK-015 promotes only the reusable residual/Jacobian model core and its CMake build to top-level `loca/` because subsequent Episode 4 continuation and comparison tasks need the same C++/Trilinos executable. Episode-local run scripts, notebooks, generated outputs, logs, and curated artifacts still belong under `episodes/004-figure1-loca-continuation/` unless a later documented task promotes them as shared infrastructure.

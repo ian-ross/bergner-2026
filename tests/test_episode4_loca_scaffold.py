@@ -49,9 +49,10 @@ def test_episode4_planning_doc_records_loca_design_and_output_contract():
         assert required_phrase in planning
 
 
-def test_episode4_loca_assets_remain_episode_local():
+def test_episode4_loca_scaffold_documents_promotion_boundary():
     loca_readme = (EPISODE_ROOT / "loca/README.md").read_text(encoding="utf-8")
+    planning = (EPISODE_ROOT / "docs/planning-decisions.md").read_text(encoding="utf-8")
 
     assert "episode" in loca_readme.lower()
     assert "do not promote" in loca_readme.lower()
-    assert not (REPO_ROOT / "loca").exists()
+    assert "top-level `loca/`" in planning
