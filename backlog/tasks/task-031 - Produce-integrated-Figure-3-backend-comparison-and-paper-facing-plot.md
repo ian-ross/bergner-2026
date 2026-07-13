@@ -4,8 +4,12 @@ title: Produce integrated Figure 3 backend comparison and paper-facing plot
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:05'
+updated_date: '2026-07-13 16:05'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-028
+  - TASK-029
+  - TASK-030
 ---
 
 ## Description
