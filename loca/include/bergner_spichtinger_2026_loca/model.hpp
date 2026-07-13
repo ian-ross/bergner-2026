@@ -170,17 +170,15 @@ inline Coefficients coefficients(const Environment& env) {
 }
 
 template <typename Scalar>
-std::array<Scalar, 3> residual(const std::array<Scalar, 3>& log_state, double log_w,
-                               const Environment& base_env) {
+std::array<Scalar, 3> physical_vector_field(const std::array<Scalar, 3>& physical_state,
+                                            const Environment& env) {
   using std::exp;
   using std::pow;
-  Environment env = base_env;
-  env.w = exp(log_w);
   const Coefficients c = coefficients(env);
 
-  const Scalar n = exp(log_state[0]);       // ice number [kg_dry_air^-1]
-  const Scalar q = exp(log_state[1]);       // ice mass mixing ratio [kg kg_dry_air^-1]
-  const Scalar s = log_state[2];            // saturation ratio over ice [1]
+  const Scalar n = physical_state[0];       // ice number [kg_dry_air^-1]
+  const Scalar q = physical_state[1];       // ice mass mixing ratio [kg kg_dry_air^-1]
+  const Scalar s = physical_state[2];       // saturation ratio over ice [1]
   const Scalar expo = exp(c.p1e * (s - c.p2));
 
   // Eqs. (7)--(9)/(43)--(45): homogeneous nucleation source terms.
@@ -202,8 +200,20 @@ std::array<Scalar, 3> residual(const std::array<Scalar, 3>& log_state, double lo
   const Scalar dn = Nuc_n + Evap_n + Sed_n;
   const Scalar dq = Nuc_q + Dep_q + Sed_q;
   const Scalar ds = Cool + Nuc_s + Dep_s;
+  return {dn, dq, ds};
+}
+
+template <typename Scalar>
+std::array<Scalar, 3> residual(const std::array<Scalar, 3>& log_state, double log_w,
+                               const Environment& base_env) {
+  using std::exp;
+  Environment env = base_env;
+  env.w = exp(log_w);
+  const std::array<Scalar, 3> physical_state = {exp(log_state[0]), exp(log_state[1]),
+                                                log_state[2]};
+  const auto rhs = physical_vector_field(physical_state, env);
   // Continuation residual uses log coordinates: [dn/dt / n, dq/dt / q, ds/dt].
-  return {dn / n, dq / q, ds};
+  return {rhs[0] / physical_state[0], rhs[1] / physical_state[1], rhs[2]};
 }
 
 using Fad = Sacado::Fad::DFad<double>;
@@ -211,6 +221,25 @@ using Fad = Sacado::Fad::DFad<double>;
 inline std::array<double, 3> residual_values(const std::array<double, 3>& log_state,
                                              double log_w, const Environment& env) {
   return residual<double>(log_state, log_w, env);
+}
+
+inline std::array<double, 3> physical_vector_field_values(const std::array<double, 3>& physical_state,
+                                                          const Environment& env) {
+  return physical_vector_field<double>(physical_state, env);
+}
+
+inline std::array<std::array<double, 3>, 3> physical_jacobian(const std::array<double, 3>& physical_state,
+                                                             const Environment& env) {
+  std::array<Fad, 3> ad_y = {Fad(3, 0, physical_state[0]), Fad(3, 1, physical_state[1]),
+                             Fad(3, 2, physical_state[2])};
+  const auto ad_rhs = physical_vector_field<Fad>(ad_y, env);
+  std::array<std::array<double, 3>, 3> J{};
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      J[i][j] = ad_rhs[i].dx(j);
+    }
+  }
+  return J;
 }
 
 inline std::array<std::array<double, 3>, 3> state_jacobian(const std::array<double, 3>& x,

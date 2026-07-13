@@ -1,6 +1,10 @@
 #include "bergner_spichtinger_2026_loca/model.hpp"
 
+#include <Teuchos_LAPACK.hpp>
+
+#include <algorithm>
 #include <cmath>
+#include <complex>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
@@ -25,6 +29,9 @@ struct Options {
             << "  bs2026_loca_model residual log_n log_q s log_w [--p Pa] [--T K] [--F value] "
                "[--N-a m^-3] [--dz m] [--include-evaporation]\n"
             << "  bs2026_loca_model jacobian log_n log_q s log_w [same options]\n"
+            << "  bs2026_loca_model physical-rhs n q s w [same environment options]\n"
+            << "  bs2026_loca_model physical-jacobian n q s w [same environment options]\n"
+            << "  bs2026_loca_model eigenvalues n q s w [same environment options]\n"
             << "  bs2026_loca_model continue log_n log_q s log_w_start --log-w-end value "
                "[--steps N] [--tol value] [--max-newton-iterations N] [same environment options]\n";
   std::exit(2);
@@ -116,6 +123,83 @@ std::array<double, 3> solve_3x3(std::array<std::array<double, 3>, 3> A, std::arr
   return x;
 }
 
+struct Eigenvalue {
+  double real;
+  double imag;
+};
+
+struct EigenClassification {
+  std::string regime;
+  std::string stability;
+};
+
+std::array<Eigenvalue, 3> compute_physical_eigenvalues(const std::array<double, 3>& physical_state,
+                                                       const Environment& env) {
+  const auto J = bs2026_loca::physical_jacobian(physical_state, env);
+  // Teuchos::LAPACK wraps the same GEEV routine as direct LAPACK dgeev; the wrapper
+  // is preferred here so the executable stays within the Trilinos CMake contract.
+  Teuchos::LAPACK<int, double> lapack;
+  constexpr int n = 3;
+  constexpr int lda = 3;
+  double A[n * n]{};
+  for (int row = 0; row < n; ++row) {
+    for (int col = 0; col < n; ++col) {
+      A[row + col * lda] = J[row][col];
+    }
+  }
+  double wr[n]{};
+  double wi[n]{};
+  double vl[1]{};
+  double vr[1]{};
+  double work[128]{};
+  int info = 0;
+  lapack.GEEV('N', 'N', n, A, lda, wr, wi, vl, 1, vr, 1, work, 128, &info);
+  if (info != 0) {
+    throw std::runtime_error("Teuchos::LAPACK GEEV failed with info=" + std::to_string(info));
+  }
+  return {{{wr[0], wi[0]}, {wr[1], wi[1]}, {wr[2], wi[2]}}};
+}
+
+std::array<Eigenvalue, 3> canonical_eigenvalues(std::array<Eigenvalue, 3> values,
+                                                double imag_tol = 1.0e-10) {
+  for (auto& value : values) {
+    if (std::abs(value.imag) <= imag_tol) value.imag = 0.0;
+  }
+  std::vector<int> complex_indices;
+  for (int i = 0; i < 3; ++i) {
+    if (std::abs(values[i].imag) > imag_tol) complex_indices.push_back(i);
+  }
+  if (complex_indices.size() >= 2) {
+    std::sort(complex_indices.begin(), complex_indices.end(), [&](int a, int b) {
+      return values[a].imag > values[b].imag;
+    });
+    int remaining = 0;
+    for (; remaining < 3; ++remaining) {
+      if (remaining != complex_indices[0] && remaining != complex_indices[1]) break;
+    }
+    return {{{values[complex_indices[0]].real, values[complex_indices[0]].imag},
+             {values[complex_indices[1]].real, values[complex_indices[1]].imag},
+             {values[remaining].real, values[remaining].imag}}};
+  }
+  std::sort(values.begin(), values.end(), [](const Eigenvalue& a, const Eigenvalue& b) {
+    return a.real > b.real;
+  });
+  return values;
+}
+
+EigenClassification classify_eigenvalues(const std::array<Eigenvalue, 3>& canonical,
+                                         double real_tol = 1.0e-10,
+                                         double imag_tol = 1.0e-10) {
+  const bool complex_pair = std::abs(canonical[0].imag) > imag_tol && std::abs(canonical[1].imag) > imag_tol;
+  bool all_stable = true;
+  bool any_unstable = false;
+  for (const auto& value : canonical) {
+    all_stable = all_stable && value.real < -real_tol;
+    any_unstable = any_unstable || value.real > real_tol;
+  }
+  return {complex_pair ? "complex_pair" : "three_real", all_stable ? "stable" : (any_unstable ? "unstable" : "mixed")};
+}
+
 struct NewtonResult {
   std::array<double, 3> x;
   double residual_norm;
@@ -169,7 +253,7 @@ void write_continuation_csv(const std::array<double, 3>& x0, double log_w_start,
     throw std::invalid_argument("continue requires --steps >= 1");
   }
 
-  std::cout << "backend_step_index,log_w,log_n,log_q,s,residual_norm,converged,newton_iterations,continuation_status,step_size,loca_continuation_mode\n";
+  std::cout << "backend_step_index,log_w,log_n,log_q,s,residual_norm,converged,newton_iterations,continuation_status,step_size,loca_continuation_mode,lambda1_real,lambda1_imag,lambda2_real,lambda2_imag,lambda3_real,lambda3_imag,eigenvalue_regime,stability_classification,eigenvalue_source,jacobian_coordinate_system,physical_jacobian_11,physical_jacobian_12,physical_jacobian_13,physical_jacobian_21,physical_jacobian_22,physical_jacobian_23,physical_jacobian_31,physical_jacobian_32,physical_jacobian_33\n";
   std::array<double, 3> previous = x0;
   std::array<double, 3> current = x0;
   const double step_size = (options.log_w_end - log_w_start) / static_cast<double>(options.steps);
@@ -185,11 +269,24 @@ void write_continuation_csv(const std::array<double, 3>& x0, double log_w_start,
                                           options.max_newton_iterations, options.tolerance);
     previous = current;
     current = corrected.x;
+    Environment point_env = options.env;
+    point_env.w = std::exp(log_w);
+    const std::array<double, 3> physical_state = {std::exp(current[0]), std::exp(current[1]), current[2]};
+    const auto physical_J = bs2026_loca::physical_jacobian(physical_state, point_env);
+    const auto eig = canonical_eigenvalues(compute_physical_eigenvalues(physical_state, point_env));
+    const auto classification = classify_eigenvalues(eig);
     std::cout << i << "," << log_w << "," << current[0] << "," << current[1] << ","
               << current[2] << "," << corrected.residual_norm << ","
               << (corrected.converged ? "true" : "false") << "," << corrected.iterations
               << "," << (corrected.converged ? "converged" : "failed") << "," << step_size
-              << ",natural_parameter_predictor_corrector\n";
+              << ",natural_parameter_predictor_corrector," << eig[0].real << "," << eig[0].imag
+              << "," << eig[1].real << "," << eig[1].imag << "," << eig[2].real << ","
+              << eig[2].imag << "," << classification.regime << "," << classification.stability
+              << ",teuchos_lapack_geev,physical_ode_state";
+    for (const auto& row : physical_J) {
+      for (double value : row) std::cout << "," << value;
+    }
+    std::cout << "\n";
   }
 }
 
@@ -200,23 +297,46 @@ int main(int argc, char** argv) {
     if (argc < 6) usage();
     const std::vector<std::string> args(argv + 1, argv + argc);
     const std::string command = args[0];
-    if (command != "residual" && command != "jacobian" && command != "continue") usage();
+    if (command != "residual" && command != "jacobian" && command != "physical-rhs" &&
+        command != "physical-jacobian" && command != "eigenvalues" && command != "continue") {
+      usage();
+    }
 
     const std::array<double, 3> x = {parse_double(args[1]), parse_double(args[2]), parse_double(args[3])};
-    const double log_w = parse_double(args[4]);
-    const Options options = parse_options(args, 5);
+    const double control = parse_double(args[4]);
+    Options options = parse_options(args, 5);
 
     std::cout << std::setprecision(17) << std::scientific;
     if (command == "residual") {
-      const auto r = bs2026_loca::residual_values(x, log_w, options.env);
+      const auto r = bs2026_loca::residual_values(x, control, options.env);
       std::cout << r[0] << " " << r[1] << " " << r[2] << "\n";
     } else if (command == "jacobian") {
-      const auto J = bs2026_loca::state_jacobian(x, log_w, options.env);
+      const auto J = bs2026_loca::state_jacobian(x, control, options.env);
       for (const auto& row : J) {
         std::cout << row[0] << " " << row[1] << " " << row[2] << "\n";
       }
+    } else if (command == "physical-rhs") {
+      options.env.w = control;
+      const auto rhs = bs2026_loca::physical_vector_field_values(x, options.env);
+      std::cout << rhs[0] << " " << rhs[1] << " " << rhs[2] << "\n";
+    } else if (command == "physical-jacobian") {
+      options.env.w = control;
+      const auto J = bs2026_loca::physical_jacobian(x, options.env);
+      for (const auto& row : J) {
+        std::cout << row[0] << " " << row[1] << " " << row[2] << "\n";
+      }
+    } else if (command == "eigenvalues") {
+      options.env.w = control;
+      const auto eig = canonical_eigenvalues(compute_physical_eigenvalues(x, options.env));
+      const auto classification = classify_eigenvalues(eig);
+      std::cout << "eigen_index,eigenvalue_real,eigenvalue_imag,eigenvalue_regime,stability_classification,eigenvalue_source,jacobian_coordinate_system\n";
+      for (int i = 0; i < 3; ++i) {
+        std::cout << (i + 1) << "," << eig[i].real << "," << eig[i].imag << ","
+                  << classification.regime << "," << classification.stability
+                  << ",teuchos_lapack_geev,physical_ode_state\n";
+      }
     } else {
-      write_continuation_csv(x, log_w, options);
+      write_continuation_csv(x, control, options);
     }
     return 0;
   } catch (const std::exception& e) {

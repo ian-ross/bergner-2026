@@ -8,7 +8,9 @@ import numpy as np
 import pytest
 
 from bergner_spichtinger_2026.constants import Environment
+from bergner_spichtinger_2026.core import vector_field
 from bergner_spichtinger_2026.residuals import equilibrium_residual, log_coordinates_from_physical_state
+from bergner_spichtinger_2026.stability import physical_eigenvalues, physical_jacobian
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -100,6 +102,9 @@ def test_loca_cmake_project_and_cli_sources_are_top_level_reusable_assets():
     assert "find_package(Trilinos REQUIRED CONFIG)" in cmake
     assert "Sacado" in header
     assert "residual" in cli and "jacobian" in cli
+    assert "physical_vector_field" in header
+    assert "physical_jacobian" in header
+    assert "Teuchos::LAPACK" in cli and "GEEV" in cli
     assert "dn/dt / n" in header
 
 
@@ -129,3 +134,44 @@ def test_loca_sacado_state_jacobian_matches_python_central_difference():
     py_jacobian = _central_difference_jacobian(lambda z: equilibrium_residual(z, log_w, env), x)
 
     np.testing.assert_allclose(cxx_jacobian, py_jacobian, rtol=3e-6, atol=1e-11)
+
+
+def test_loca_physical_rhs_and_sacado_physical_jacobian_match_python_reference():
+    env = Environment(p=30000.0, T=225.0, w=0.12, F=1.0, N_a=1.0e10)
+    state = np.array([2.5e5, 4.0e-7, 1.35], dtype=float)
+
+    cxx_rhs = _run_model("physical-rhs", state, env.w, env)
+    cxx_jacobian = _run_model("physical-jacobian", state, env.w, env)
+
+    np.testing.assert_allclose(cxx_rhs, vector_field(*state, env), rtol=2e-12, atol=1e-16)
+    np.testing.assert_allclose(cxx_jacobian, physical_jacobian(state, env=env), rtol=2e-12, atol=1e-15)
+
+
+def test_loca_teuchos_lapack_physical_eigenvalues_match_python_reference():
+    env = Environment(p=30000.0, T=230.0, w=0.05, F=1.0, N_a=1.0e10)
+    state = np.array([1.0e5, 2.0e-7, 1.55], dtype=float)
+    exe = _build_loca_executable()
+    args = [
+        str(exe),
+        "eigenvalues",
+        *(f"{value:.17g}" for value in state),
+        f"{env.w:.17g}",
+        "--p",
+        f"{env.p:.17g}",
+        "--T",
+        f"{env.T:.17g}",
+        "--F",
+        f"{env.F:.17g}",
+        "--N-a",
+        f"{env.N_a:.17g}",
+        "--dz",
+        f"{env.Δz:.17g}",
+    ]
+    completed = subprocess.run(args, check=True, text=True, capture_output=True, cwd=REPO_ROOT)
+    cxx_rows = np.genfromtxt(completed.stdout.splitlines(), delimiter=",", names=True, dtype=None, encoding=None)
+    cxx_eigenvalues = cxx_rows["eigenvalue_real"] + 1j * cxx_rows["eigenvalue_imag"]
+    py_eigenvalues = physical_eigenvalues(state, env=env)
+
+    np.testing.assert_allclose(cxx_eigenvalues, py_eigenvalues, rtol=2e-10, atol=1e-12)
+    assert set(cxx_rows["eigenvalue_source"]) == {"teuchos_lapack_geev"}
+    assert set(cxx_rows["jacobian_coordinate_system"]) == {"physical_ode_state"}

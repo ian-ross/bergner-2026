@@ -1,0 +1,19 @@
+{
+  "backend": "loca",
+  "branch_id": "figure2_T230K",
+  "point_count": 801,
+  "finite_converged_point_count": 801,
+  "w_min_m_s": 0.0005000000000000001,
+  "w_max_m_s": 2.0,
+  "max_continuation_residual_norm": 9.99072109456118e-11,
+  "max_scaled_physical_residual_norm": 6.572882329968923e-11,
+  "all_converged": true,
+  "regime_counts": {
+    "complex_pair": 788,
+    "three_real": 13
+  },
+  "stability_counts": {
+    "stable": 535,
+    "unstable": 266
+  }
+}
