@@ -1,7 +1,7 @@
 ---
 id: TASK-025
 title: Implement full NOX/LOCA backend for validated C++ model
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 14:48'
@@ -58,3 +58,20 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 - Updated documentation to state the precise boundary: LOCA group + NOX nonlinear solves on a repository-chosen validation `log_w` grid; native LOCA Hopf/Stepper orchestration remains TASK-030.
 - Verification after correction: `uv run pytest tests/test_nox_loca_backend.py tests/test_loca_model_core.py tests/test_episode4_loca_continuation.py -q` (18 passed) and `uv run pytest -q` (85 passed, 3 existing overflow warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented and corrected the TASK-025 NOX/LOCA backend prerequisite for the validated C++ model.
+
+Changes:
+- Added `NoxLocaProblem`, a dense `LOCA::LAPACK::Interface` adapter over the existing residual and Sacado Jacobian with parameter plumbing for `log_w`, `T`, `p`, `F`, `N_a`, and `dz`.
+- Extended `bs2026_loca_model` with `nox-loca-smoke` and a corrected `nox-loca-continue` path. The continuation path now solves each correction through `LOCA::LAPACK::Group` and `NOX::Solver::Generic` rather than reusing the lightweight `newton_correct` helper.
+- Added `episodes/004-figure1-loca-continuation/scripts/run_nox_loca_figure1.py` plus reusable backend-command/backend-label options in the existing Figure 1 runner so NOX/LOCA rows keep the backend-neutral schema.
+- Documented the backend boundary precisely in `docs/NOX_LOCA_BACKEND.md`: LOCA supplies the dense problem group and parameter plumbing, NOX supplies nonlinear solves, and the repository still chooses the validation log-w grid; native LOCA Hopf/Stepper orchestration remains TASK-030.
+- Added pytest coverage for source/API presence, callback smoke checks, NOX/LOCA-backed short continuation equivalence against the lightweight C++ branch, and normalized output compatibility.
+
+Tests:
+- `uv run pytest tests/test_nox_loca_backend.py tests/test_loca_model_core.py tests/test_episode4_loca_continuation.py -q` → 18 passed.
+- `uv run pytest -q` → 85 passed, with 3 pre-existing RuntimeWarning overflow warnings in Figure 2/Hopf paths.
+<!-- SECTION:FINAL_SUMMARY:END -->
