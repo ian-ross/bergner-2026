@@ -1,10 +1,11 @@
 ---
 id: TASK-021
 title: Implement Python Figure 2 eigenvalue reproduction
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:15'
+updated_date: '2026-07-13 11:49'
 labels:
   - episode-005
   - figure2
