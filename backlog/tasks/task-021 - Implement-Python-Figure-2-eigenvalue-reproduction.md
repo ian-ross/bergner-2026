@@ -4,6 +4,7 @@ title: Implement Python Figure 2 eigenvalue reproduction
 status: To Do
 assignee: []
 created_date: '2026-07-13 11:14'
+updated_date: '2026-07-13 11:15'
 labels:
   - episode-005
   - figure2
@@ -27,3 +28,13 @@ Generate the Python-native Figure 2 equilibrium branch and physical eigenvalues 
 - [ ] #4 A draft Figure 2-style plot shows real eigenvalue parts and imaginary eigenvalue parts versus log-scaled w.
 - [ ] #5 Run metadata records parameter values, N_a assumption, grid density, Jacobian method, eigenvalue sorting tolerance, and commands.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Build an Episode 5 Python script that uses the shared continuation/residual primitives to generate a dense log-spaced branch for p=300 hPa, T=230 K, F=1, N_a=1e10 over w=0.0005--2.0.
+2. For each branch point, compute physical residual diagnostics, the SymPy-derived physical Jacobian, canonical eigenvalues, eigenvalue regime, and stability classification.
+3. Compute simple Hopf zero-crossing estimates from Re(lambda_pair) and record comparison to the paper landmarks near w≈0.048 and w≈0.77.
+4. Write normalized CSV, summary CSV/JSON, and metadata under episodes/005-figure2-eigenvalues/outputs/.
+5. Produce a draft Figure 2-style real/imaginary eigenvalue plot and add tests or smoke checks for schema, point count, finite values, and metadata.
+<!-- SECTION:PLAN:END -->
