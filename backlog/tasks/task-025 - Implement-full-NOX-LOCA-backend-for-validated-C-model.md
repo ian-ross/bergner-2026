@@ -1,10 +1,11 @@
 ---
 id: TASK-025
 title: Implement full NOX/LOCA backend for validated C++ model
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 14:48'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 19:45'
 labels:
   - backend
   - loca
