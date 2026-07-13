@@ -36,3 +36,11 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 5. Normalize LOCA Hopf output to the Episode 006 schema with continuation diagnostics, raw provenance, and explicit method metadata.
 6. Add opt-in smoke tests that skip cleanly without LOCA support and verify both branches, T=230 K anchors, and compatibility with integrated comparison inputs.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-030: set status to In Progress and assigned to @pi.
+- Reviewed dependencies: TASK-025 is Done with corrected NOX/LOCA group + NOX solver backend; TASK-026 is Done with Episode 006 scaffold/schema planning.
+- No coding started yet pending approval of the implementation plan.
+<!-- SECTION:NOTES:END -->
