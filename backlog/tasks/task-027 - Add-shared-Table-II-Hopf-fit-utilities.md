@@ -1,10 +1,11 @@
 ---
 id: TASK-027
 title: Add shared Table II Hopf fit utilities
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:04'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 16:15'
 labels: []
 dependencies: []
 ---
