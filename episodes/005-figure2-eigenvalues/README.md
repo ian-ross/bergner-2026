@@ -36,9 +36,9 @@ Episode 5 should reuse model semantics and backend infrastructure deliberately, 
 - Cross-episode reproduction/debugging notes: `docs/REPRODUCTION_NOTES.md`
 - Cross-backend testing guidance: `docs/testing.md`
 
-## Planned workflow placeholders
+## Final workflow commands
 
-Later implementation tasks should replace these placeholders with concrete commands and output paths:
+The curated Figure 2 artifacts can be regenerated with:
 
 ```bash
 # Generate Python equilibrium/eigenvalue outputs for Figure 2.
@@ -48,18 +48,32 @@ uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_e
 uv run python episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py
 
 # Generate/normalize LOCA Figure 2 outputs with backend-side physical eigenvalues.
-# uv run python episodes/005-figure2-eigenvalues/scripts/run_loca_figure2_eigenvalues.py
+uv run python episodes/005-figure2-eigenvalues/scripts/run_loca_figure2_eigenvalues.py
 
-# Compare backends and produce Figure 2-style plots.
-# uv run python episodes/005-figure2-eigenvalues/scripts/compare_figure2_eigenvalues.py
+# Compare backends and produce the paper-facing Figure 2 reproduction.
+uv run python episodes/005-figure2-eigenvalues/scripts/compare_figure2_eigenvalues.py
 ```
 
-Expected curated output groups are provisionally:
+Curated output groups:
 
-- `outputs/figure2_python_eigenvalues/` — implemented Python-native branch/eigenvalue CSVs, Hopf crossing tables, run metadata, and draft Figure 2-style plot.
-- `outputs/figure2_auto_eigenvalues/` — implemented AUTO-generated equilibrium branch, Python-postprocessed physical eigenvalue CSVs, Hopf crossing tables, raw AUTO run files, diagnostics, and metadata.
-- `outputs/figure2_loca_eigenvalues/`
-- `outputs/figure2_backend_comparison/`
+- `outputs/figure2_python_eigenvalues/` — Python-native branch/eigenvalue CSVs, Hopf crossing tables, run metadata, and draft Figure 2-style plot.
+- `outputs/figure2_auto_eigenvalues/` — AUTO-generated equilibrium branch, Python-postprocessed physical eigenvalue CSVs, Hopf crossing tables, raw AUTO run files, diagnostics, and metadata. AUTO eigenvalues are the physical ODE Jacobian evaluated at AUTO equilibria, not solver-internal continuation eigenvalues.
+- `outputs/figure2_loca_eigenvalues/` — LOCA/Trilinos branch/eigenvalue CSVs, backend-side Sacado physical-Jacobian diagnostics, raw LOCA CSV/stderr, summary, metadata, and draft Figure 2-style plot.
+- `outputs/figure2_backend_comparison/` — integrated backend-comparison artifacts:
+  - `figure2_backend_aligned_eigenvalues.csv` — derived aligned table on the canonical log-`w` comparison grid; raw backend grids remain in their backend output directories.
+  - `figure2_backend_pairwise_differences.csv` — pairwise Python/AUTO/LOCA tracked-eigenvalue differences at each canonical grid point.
+  - `figure2_backend_hopf_estimates.csv` — simple zero-crossing Hopf estimates from linear interpolation in `log_w`.
+  - `figure2_backend_three_real_intervals.csv` — per-backend intervals where all eigenvalues are real.
+  - `figure2_backend_comparison_summary.json` and `run_metadata.json` — grid contract, backend method summaries, regime/stability counts, difference summaries, digitization status, commands, and software metadata.
+  - `figure2_reproduction_backend_comparison.png` — headline two-panel real/imaginary Figure 2 reproduction with Python, AUTO, and LOCA overlays and Hopf markers.
+
+## Integrated comparison notes
+
+The integrated comparison uses `log_w = ln(w_m_s)` as the canonical coordinate and writes `w_m_s` alongside it. Because the backend runs have different raw grid densities (`python`/`loca`: 801 points; `auto`: 411 points in the curated run), `compare_figure2_eigenvalues.py` creates a derived canonical grid over the common backend overlap and linearly interpolates tracked eigenvalue branch real/imaginary parts onto that grid. This alignment is only for comparison products; no raw backend branch/eigenvalue CSV is modified or discarded.
+
+Current curated Hopf estimates cluster near the paper landmarks at about `w = 0.04853 m s^-1` and `w = 0.7687 m s^-1` for all three backends. The integrated summary JSON contains the exact backend-specific estimates and pairwise difference maxima/medians.
+
+Figure 2 digitization was explicitly deferred for this integrated pass. The source PDF/HTML are available under `sources/original/`, but a robust digitization of the overplotted/rasterized real and especially imaginary panels would require manual axis calibration and curve-identification choices. Any future digitized paper markers should be treated as secondary visual evidence and labeled with calibration/curve uncertainty rather than used as primary numerical validation.
 
 ## Scope boundaries
 
