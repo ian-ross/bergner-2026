@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:59'
+updated_date: '2026-07-13 12:01'
 labels:
   - episode-005
   - figure2
@@ -51,6 +51,10 @@ Started TASK-021: moved to In Progress and assigned to @pi. Reviewing existing i
 - Verification: uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py; uv run pytest tests/test_episode5_python_figure2.py; uv run pytest (60 passed, one existing/runtime overflow warning during root exploration).
 
 - User review identified a likely plotting artifact: connecting per-point canonical eigenvalue labels can create a spurious vertical/branch-jump segment when the spectrum changes identity near a real/complex transition. Reopening task to diagnose and patch plot semantics while preserving canonical CSV output.
+
+- Diagnosed user-reported vertical eigenvalue segment as a plot-labeling artifact: the canonical CSV ordering switches identity across the low-w real/complex transition, so connected canonical λ labels can draw a jump.
+- Patched the plot path to preserve canonical lambda columns for tabular comparison while adding tracked_lambda*_real/imag plot-only branches via adjacent minimum-distance matching in the complex plane. The regenerated PNG now uses tracked branches.
+- Added a regression test with a synthetic canonical label swap and reran outputs/tests. Validation: uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py; uv run pytest tests/test_episode5_python_figure2.py; uv run pytest (61 passed, one root-exploration overflow warning).
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
