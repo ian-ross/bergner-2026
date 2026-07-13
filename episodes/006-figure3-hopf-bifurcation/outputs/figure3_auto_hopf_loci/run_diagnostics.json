@@ -1,0 +1,69 @@
+{
+  "branch_summaries": [
+    {
+      "T230_abs_error_m_s": 5.273123429502813e-07,
+      "T230_anchor_w_m_s": 0.048531,
+      "T230_within_tolerance": true,
+      "T_max_K": 240.0,
+      "T_min_K": 190.0,
+      "branch_id": "lower_hopf",
+      "nearest_T230_w_m_s": 0.04853047268765705,
+      "point_count": 335,
+      "source_hopf_label": 13,
+      "source_hopf_w_m_s": 0.04853047268765705
+    },
+    {
+      "T230_abs_error_m_s": 1.0099943436703285e-05,
+      "T230_anchor_w_m_s": 0.76868,
+      "T230_within_tolerance": true,
+      "T_max_K": 240.0,
+      "T_min_K": 190.0,
+      "branch_id": "upper_hopf",
+      "nearest_T230_w_m_s": 0.7686900999434367,
+      "point_count": 334,
+      "source_hopf_label": 21,
+      "source_hopf_w_m_s": 0.7686900999434367
+    }
+  ],
+  "command": [
+    "/usr/local/bin/auto"
+  ],
+  "equilibrium_hopf_labels": [
+    13,
+    21
+  ],
+  "equilibrium_hopf_w_m_s": [
+    0.04853047268765705,
+    0.7686900999434367
+  ],
+  "errors": [],
+  "ok": true,
+  "raw_auto_output_paths": [
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/auto_stderr.txt",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/auto_stdout.txt",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.eq",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb1.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb1.fw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb2.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb2.fw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_constants.f90",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_figure3_hopf.auto",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_figure3_hopf.f90",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_model.f90",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/c.bs2026_figure3_hopf",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.eq",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb1.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb1.fw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb2.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb2.fw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.eq",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb1.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb1.fw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb2.bw",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb2.fw"
+  ],
+  "returncode": 0,
+  "run_dir": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf",
+  "run_name": "bs2026_figure3_hopf",
+  "warnings": []
+}

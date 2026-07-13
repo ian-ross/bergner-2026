@@ -8,9 +8,11 @@ This episode moves from one-dimensional branch/eigenvalue sweeps to true two-par
 
 - `docs/planning-decisions.md` — Episode 6 scope, Figure 3 target, backend responsibilities, output contract, and dependencies.
 - `scripts/generate_python_hopf_loci.py` — Python augmented-Hopf continuation workflow for lower/upper loci and the Python method plot.
+- `scripts/run_auto_hopf_loci.py` — AUTO-07p native Hopf detection at `T = 230 K` followed by `ISW=2`, `ICP=[log_w, T]` Hopf-locus continuation.
 - `scripts/plot_figure3_hopf_loci.py` — shared Figure 3-style plotting utility for per-backend and integrated comparison plots.
 - `notebooks/` — placeholder for exploratory diagnostics and source/plot inspection notebooks.
 - `outputs/figure3_python_hopf_loci/` — curated Python Hopf loci, seed rows, diagnostics, run metadata, and method plot.
+- `outputs/figure3_auto_hopf_loci/` — curated AUTO-native Hopf loci, detected Hopf labels, raw AUTO `b./s./d.` artifacts, diagnostics, run metadata, and method plot.
 - `outputs/figure3_backend_comparison/` — integrated comparison plot overlaying available backend loci and Table II reference fits.
 
 Empty directories that do not yet have concrete artifacts are retained with `.gitkeep` placeholders.
@@ -45,7 +47,7 @@ Episode 6 should reuse existing model semantics and backend infrastructure while
 Planned backend roles are documented in `docs/planning-decisions.md`:
 
 1. Python provides a transparent augmented Hopf system/reference path via `uv run python episodes/006-figure3-hopf-bifurcation/scripts/generate_python_hopf_loci.py`.
-2. AUTO should use native Hopf detection/continuation where possible, rather than only scanning Figure 2-style eigenvalue sign changes.
+2. AUTO uses native Hopf detection/continuation via `uv run python episodes/006-figure3-hopf-bifurcation/scripts/run_auto_hopf_loci.py` rather than only scanning Figure 2-style eigenvalue sign changes.
 3. NOX/LOCA should provide the native LOCA Hopf-continuation comparison path after TASK-025 establishes the full NOX/LOCA equilibrium-continuation backend.
 
 The current top-level `loca/` executable remains useful shared infrastructure, but Episode 6's LOCA claims are intentionally dependent on TASK-025 and later Figure 3-specific LOCA orchestration.

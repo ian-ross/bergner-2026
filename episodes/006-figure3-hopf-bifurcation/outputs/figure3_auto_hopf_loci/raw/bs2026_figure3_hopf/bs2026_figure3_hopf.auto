@@ -1,0 +1,9 @@
+
+ld('bs2026_figure3_hopf')
+r0 = run(c='bs2026_figure3_hopf', sv='bs2026_figure3_hopf.eq')
+print('AUTO_HOPF_LABELS', [s['LAB'] for s in r0('HB')])
+run(r0('HB1'), ICP=[1,3], ILP=0, ISW=2, NMX=900, NPR=2, DS=0.01, DSMIN=1e-6, DSMAX=0.5, UZR={3:[190,240]}, UZSTOP={3:[190,240]}, sv='bs2026_figure3_hopf.hb1.fw')
+run(r0('HB1'), ICP=[1,3], ILP=0, ISW=2, NMX=900, NPR=2, DS='-', DSMIN=1e-6, DSMAX=0.5, UZR={3:[190,240]}, UZSTOP={3:[190,240]}, sv='bs2026_figure3_hopf.hb1.bw')
+run(r0('HB2'), ICP=[1,3], ILP=0, ISW=2, NMX=900, NPR=2, DS=0.01, DSMIN=1e-6, DSMAX=0.5, UZR={3:[190,240]}, UZSTOP={3:[190,240]}, sv='bs2026_figure3_hopf.hb2.fw')
+run(r0('HB2'), ICP=[1,3], ILP=0, ISW=2, NMX=900, NPR=2, DS='-', DSMIN=1e-6, DSMAX=0.5, UZR={3:[190,240]}, UZSTOP={3:[190,240]}, sv='bs2026_figure3_hopf.hb2.bw')
+cl()

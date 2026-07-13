@@ -1,0 +1,177 @@
+{
+  "auto": {
+    "constants_template": "episodes/006-figure3-hopf-bifurcation/auto/c.bs2026_figure3_hopf",
+    "problem_template": "episodes/006-figure3-hopf-bifurcation/auto/bs2026_figure3_hopf_template.f90",
+    "shared_fortran_sources": [
+      "auto/src/bs2026_constants.f90",
+      "auto/src/bs2026_model.f90"
+    ],
+    "tool_versions": {
+      "auto_dir": "/usr/local/lib64/auto-07p",
+      "auto_exists": true,
+      "auto_launcher_head": [
+        "#! /bin/sh",
+        "if [ -z \"$AUTO_DIR\" ]; then",
+        "    bindir=`dirname \"$0\"`",
+        "    AUTO_DIR=/usr/local/lib64/auto-07p",
+        "    # don't export AUTO_DIR: Python code will use more reliable absolute path",
+        "fi",
+        "",
+        "if test \"`uname`\" = \"Darwin\"; then"
+      ],
+      "auto_path": "/usr/local/bin/auto",
+      "auto_version_label": "auto-07p",
+      "gfortran": {
+        "command": [
+          "gfortran",
+          "--version"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "GNU Fortran (SUSE Linux) 15.3.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+      }
+    }
+  },
+  "backend": "auto",
+  "command": "/home/iross/research/ongoing/ai-class/code/bergner-2026/.venv/bin/python3 episodes/006-figure3-hopf-bifurcation/scripts/run_auto_hopf_loci.py --clean",
+  "created_utc": "2026-07-13T17:04:37.851471+00:00",
+  "diagnostics": {
+    "branch_summaries": [
+      {
+        "T230_abs_error_m_s": 5.273123429502813e-07,
+        "T230_anchor_w_m_s": 0.048531,
+        "T230_within_tolerance": true,
+        "T_max_K": 240.0,
+        "T_min_K": 190.0,
+        "branch_id": "lower_hopf",
+        "nearest_T230_w_m_s": 0.04853047268765705,
+        "point_count": 335,
+        "source_hopf_label": 13,
+        "source_hopf_w_m_s": 0.04853047268765705
+      },
+      {
+        "T230_abs_error_m_s": 1.0099943436703285e-05,
+        "T230_anchor_w_m_s": 0.76868,
+        "T230_within_tolerance": true,
+        "T_max_K": 240.0,
+        "T_min_K": 190.0,
+        "branch_id": "upper_hopf",
+        "nearest_T230_w_m_s": 0.7686900999434367,
+        "point_count": 334,
+        "source_hopf_label": 21,
+        "source_hopf_w_m_s": 0.7686900999434367
+      }
+    ],
+    "command": [
+      "/usr/local/bin/auto"
+    ],
+    "equilibrium_hopf_labels": [
+      13,
+      21
+    ],
+    "equilibrium_hopf_w_m_s": [
+      0.04853047268765705,
+      0.7686900999434367
+    ],
+    "errors": [],
+    "ok": true,
+    "raw_auto_output_paths": [
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/auto_stderr.txt",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/auto_stdout.txt",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.eq",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb1.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb1.fw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb2.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/b.bs2026_figure3_hopf.hb2.fw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_constants.f90",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_figure3_hopf.auto",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_figure3_hopf.f90",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/bs2026_model.f90",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/c.bs2026_figure3_hopf",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.eq",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb1.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb1.fw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb2.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/d.bs2026_figure3_hopf.hb2.fw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.eq",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb1.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb1.fw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb2.bw",
+      "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf/s.bs2026_figure3_hopf.hb2.fw"
+    ],
+    "returncode": 0,
+    "run_dir": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/raw/bs2026_figure3_hopf",
+    "run_name": "bs2026_figure3_hopf",
+    "warnings": []
+  },
+  "method": {
+    "coordinate_note": "FUNC is the paper ODE transformed to (log n, log q, s), preserving Hopf eigenvalues under a smooth coordinate transform.",
+    "equilibrium_detection": "IPS=1, ISP=2, active ICP=[1] at T=230 K labels HB points on the transformed ODE equilibrium branch.",
+    "hopf_continuation": "Restart from AUTO HB1/HB2 with ISW=2 and active ICP=[1,3] for log_w and T.",
+    "name": "AUTO-07p native Hopf detection and Hopf curve continuation"
+  },
+  "normalized_schema_columns": [
+    "backend",
+    "schema_version",
+    "branch_id",
+    "paper_fit_branch",
+    "point_index",
+    "T_K",
+    "p_Pa",
+    "F",
+    "N_a_m3",
+    "N_a_cm3",
+    "log_w",
+    "w_m_s",
+    "table_ii_reference_w_m_s",
+    "log_n",
+    "log_q",
+    "n",
+    "q",
+    "s",
+    "hopf_frequency",
+    "eigenvalue_real",
+    "eigenvalue_imag",
+    "residual_norm",
+    "equilibrium_residual_norm",
+    "physical_residual_norm",
+    "converged",
+    "iterations",
+    "message",
+    "jacobian_coordinate_system",
+    "state_coordinate_system",
+    "continuation_parameterization",
+    "method",
+    "method_metadata",
+    "source_file",
+    "raw_auto_run",
+    "auto_branch",
+    "auto_point",
+    "auto_type_code",
+    "auto_label",
+    "auto_l2_norm",
+    "auto_hopf_source_label"
+  ],
+  "outputs": {
+    "backend_plot_png": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_hopf_loci.png",
+    "comparison_plot_png": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_hopf_backend_comparison.png",
+    "diagnostics_json": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/run_diagnostics.json",
+    "labels_csv": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_hopf_labels.csv",
+    "loci_csv": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_hopf_loci.csv",
+    "metadata_json": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/run_metadata.json",
+    "summary_json": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_summary.json"
+  },
+  "package_version": "0.1.0",
+  "parameters": {
+    "F": 1.0,
+    "N_a_m3": 10000000000.0,
+    "T_max_K": 240.0,
+    "T_min_K": 190.0,
+    "T_seed_K": 230.0,
+    "p_Pa": 30000.0,
+    "w_max_m_s": 2.0,
+    "w_min_m_s": 0.0005
+  },
+  "platform": "Linux-7.1.3-1-default-x86_64-with-glibc2.43",
+  "python_version": "3.11.15 (main, Mar  3 2026, 14:59:53) [Clang 21.1.4 ]"
+}

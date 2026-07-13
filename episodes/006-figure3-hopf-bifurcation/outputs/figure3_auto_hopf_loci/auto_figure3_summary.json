@@ -1,0 +1,40 @@
+{
+  "T_max_K": 240.0,
+  "T_min_K": 190.0,
+  "all_converged": true,
+  "backend": "auto",
+  "branch_summaries": [
+    {
+      "T230_abs_error_m_s": 5.273123429502813e-07,
+      "T230_anchor_w_m_s": 0.048531,
+      "T230_within_tolerance": true,
+      "T_max_K": 240.0,
+      "T_min_K": 190.0,
+      "branch_id": "lower_hopf",
+      "nearest_T230_w_m_s": 0.04853047268765705,
+      "point_count": 335,
+      "source_hopf_label": 13,
+      "source_hopf_w_m_s": 0.04853047268765705
+    },
+    {
+      "T230_abs_error_m_s": 1.0099943436703285e-05,
+      "T230_anchor_w_m_s": 0.76868,
+      "T230_within_tolerance": true,
+      "T_max_K": 240.0,
+      "T_min_K": 190.0,
+      "branch_id": "upper_hopf",
+      "nearest_T230_w_m_s": 0.7686900999434367,
+      "point_count": 334,
+      "source_hopf_label": 21,
+      "source_hopf_w_m_s": 0.7686900999434367
+    }
+  ],
+  "branches": [
+    "lower_hopf",
+    "upper_hopf"
+  ],
+  "diagnostics_ok": true,
+  "max_residual_norm": 7.306793289606692e-11,
+  "row_count": 669,
+  "schema_version": "episode6-hopf-locus-schema-v1"
+}
