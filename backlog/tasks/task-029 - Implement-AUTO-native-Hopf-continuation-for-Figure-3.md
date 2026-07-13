@@ -1,10 +1,11 @@
 ---
 id: TASK-029
 title: Implement AUTO native Hopf continuation for Figure 3
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 16:57'
 labels: []
 dependencies:
   - TASK-026
