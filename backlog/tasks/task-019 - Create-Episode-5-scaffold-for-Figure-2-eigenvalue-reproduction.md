@@ -1,7 +1,7 @@
 ---
 id: TASK-019
 title: Create Episode 5 scaffold for Figure 2 eigenvalue reproduction
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
@@ -44,3 +44,17 @@ Create the episode scaffold and planning notes for reproducing Bergner & Spichti
 - Created Episode 5 scaffold at episodes/005-figure2-eigenvalues/ with README, docs/planning-decisions.md, and .gitkeep placeholders for scripts/outputs/notebooks.
 - Documented agreed Figure 2 target parameters, physical-ODE eigenvalue semantics, backend independence requirements, LOCA Sacado/Teuchos/LAPACK responsibility, and AUTO fallback policy.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Created the Episode 5 scaffold for Figure 2 eigenvalue reproduction.
+
+Changes:
+- Added episodes/005-figure2-eigenvalues/ with README plus docs/, scripts/, outputs/, and notebooks/ placeholders.
+- Added planning notes covering the agreed p/T/F/N_a/w target, physical-ODE Jacobian eigenvalue scope, Python/AUTO/LOCA independent output expectations, LOCA backend-side Sacado plus Teuchos/LAPACK requirement, and documented AUTO fallback policy.
+- Cross-referenced existing Figure 1 Python, AUTO, LOCA, shared backend, and testing/reproduction notes for later implementation tasks.
+
+Tests:
+- Not run; scaffold/documentation-only change.
+<!-- SECTION:FINAL_SUMMARY:END -->
