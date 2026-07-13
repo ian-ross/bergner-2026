@@ -1,10 +1,11 @@
 ---
 id: TASK-026
 title: Create Episode 006 scaffold and Figure 3 planning docs
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:04'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 16:07'
 labels: []
 dependencies: []
 ---
