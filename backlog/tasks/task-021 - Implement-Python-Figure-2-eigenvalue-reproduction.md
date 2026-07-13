@@ -39,3 +39,9 @@ Generate the Python-native Figure 2 equilibrium branch and physical eigenvalues 
 4. Write normalized CSV, summary CSV/JSON, and metadata under episodes/005-figure2-eigenvalues/outputs/.
 5. Produce a draft Figure 2-style real/imaginary eigenvalue plot and add tests or smoke checks for schema, point count, finite values, and metadata.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-021: moved to In Progress and assigned to @pi. Reviewing existing implementation plan before coding.
+<!-- SECTION:NOTES:END -->
