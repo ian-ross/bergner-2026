@@ -4,8 +4,10 @@ title: Implement AUTO native Hopf continuation for Figure 3
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:05'
+updated_date: '2026-07-13 16:05'
 labels: []
-dependencies: []
+dependencies:
+  - TASK-026
 ---
 
 ## Description
