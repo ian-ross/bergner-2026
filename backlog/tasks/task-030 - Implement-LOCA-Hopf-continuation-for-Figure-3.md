@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 20:49'
+updated_date: '2026-07-13 21:00'
 labels: []
 dependencies:
   - TASK-025
@@ -22,8 +22,8 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 <!-- AC:BEGIN -->
 - [x] #1 The task explicitly depends on TASK-025 or documents any remaining NOX/LOCA backend limitations before attempting Hopf tracking.
 - [ ] #2 LOCA workflows detect or seed the two T=230 K Hopf points and continue the Hopf loci in (log_w, T) over the Figure 3 temperature domain.
-- [x] #3 Normalized LOCA outputs conform to the Episode 006 Hopf-locus schema and include backend diagnostics, continuation settings, convergence status, and raw/derived artifact provenance.
-- [x] #4 Tests or opt-in smoke checks verify both LOCA Hopf branches are present, match T=230 K landmarks within documented tolerance, and are compatible with integrated backend comparison scripts.
+- [ ] #3 Normalized LOCA outputs conform to the Episode 006 Hopf-locus schema and include backend diagnostics, continuation settings, convergence status, and raw/derived artifact provenance.
+- [ ] #4 Tests or opt-in smoke checks verify both LOCA Hopf branches are present, match T=230 K landmarks within documented tolerance, and are compatible with integrated backend comparison scripts.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -51,24 +51,9 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 - Verification: `uv run pytest -q` passed (88 passed; 4 existing overflow RuntimeWarnings in Hopf/Figure 2 paths).
 
 - User correctly rejected the limitation-labeled fallback: TASK-030 requires native LOCA bifurcation/Hopf continuation, not Python/shared characteristic-corrector continuation. Reopening to implement a pure C++ NOX/LOCA Hopf continuation path and remove/replace fallback claims.
+
+- Replaced the rejected fallback with a pure C++ native LOCA path: added `bs2026_loca_model nox-loca-hopf-continue`, which constructs `LOCA::Hopf::MooreSpence::ExtendedGroup` around the TASK-025 `LOCA::LAPACK` backend. The Episode 006 runner now invokes this C++ command and no longer imports or calls the Python characteristic Hopf corrector.
+- Build/compile verification passes, but runtime native Hopf execution is blocked by the installed `/opt/Trilinos` build: `LOCA::LAPACK::computeComplex()` throws `TEUCHOS_COMPLEX must be enabled for complex support`. This is a real environment/toolchain prerequisite for LOCA Moore-Spence Hopf with the LAPACK group, not a Python-code issue.
+- Removed the previously generated fallback LOCA outputs so the repository does not contain misleading non-native LOCA artifacts.
+- Verification: `uv run pytest -q` passes (86 passed, 1 skipped for missing Teuchos complex support, 4 existing overflow RuntimeWarnings). TASK-030 remains In Progress because AC #2/#3/#4 require a complex-enabled Trilinos run to produce and verify actual native LOCA loci.
 <!-- SECTION:NOTES:END -->
-
-## Final Summary
-
-<!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Implemented the Episode 006 LOCA Figure 3 Hopf-locus application layer with explicit native-Stepper boundary metadata.
-
-Changes:
-- Added `run_loca_hopf_loci.py`, which builds the TASK-025 NOX/LOCA executable, smoke-checks the dense `LOCA::LAPACK::Interface` at the lower/upper T=230 K Hopf seeds, and writes normalized lower/upper Hopf-locus artifacts over T=190--240 K.
-- Added LOCA output artifacts (`loca_figure3_hopf_loci.csv`, seeds, diagnostics, summary, metadata, and plot) under the Episode 006 outputs directory.
-- Added schema fields/provenance for backend diagnostics, continuation settings, convergence status, raw/derived artifact provenance, and LOCA-specific limitation flags.
-- Documented the current limitation in Episode 006 docs and `docs/NOX_LOCA_BACKEND.md`: native LOCA Hopf Stepper continuation is still not wired, so current rows intentionally record `loca_native_hopf_stepper=false` and should be treated as NOX/LOCA-seeded characteristic-corrector diagnostics rather than native LOCA bifurcation-Stepper results.
-- Added `tests/test_episode6_loca_hopf.py` with skip-build schema checks and opt-in LOCA seed smoke diagnostics.
-
-Tests:
-- `uv run pytest tests/test_episode6_loca_hopf.py tests/test_episode6_python_hopf.py tests/test_episode6_auto_hopf.py tests/test_nox_loca_backend.py -q` → 9 passed.
-- `uv run pytest -q` → 88 passed, with 4 pre-existing overflow RuntimeWarnings in Hopf/Figure 2 paths.
-
-Risk/follow-up:
-- A future task should replace the characteristic-corrector fallback with true native LOCA Hopf Stepper continuation before claiming native LOCA Hopf bifurcation results.
-<!-- SECTION:FINAL_SUMMARY:END -->
