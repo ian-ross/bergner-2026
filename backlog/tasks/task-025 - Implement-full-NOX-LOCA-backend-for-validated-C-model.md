@@ -4,12 +4,14 @@ title: Implement full NOX/LOCA backend for validated C++ model
 status: To Do
 assignee: []
 created_date: '2026-07-13 14:48'
+updated_date: '2026-07-13 16:05'
 labels:
   - backend
   - loca
   - nox
   - trilinos
-  - follow-up
+  - episode-006
+  - prerequisite
 dependencies: []
 priority: medium
 ---
@@ -17,7 +19,7 @@ priority: medium
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create a follow-up backend that wraps the already-validated small Bergner-Spichtinger C++ residual/Jacobian problem in NOX/LOCA continuation APIs. This should happen after more Python/AUTO/Trilinos-side C++ reproduction tasks have stabilized the equations, schemas, and comparison targets, so the full NOX/LOCA implementation can be evaluated on a simple understandable problem before scaling up.
+Create a backend that wraps the already-validated small Bergner-Spichtinger C++ residual/Jacobian problem in NOX/LOCA continuation APIs. This is now an explicit Episode 006 prerequisite for the Figure 3 LOCA path: first validate NOX/LOCA equilibrium continuation against an existing artifact, then provide the foundation needed for native LOCA Hopf continuation. Keep this task focused on generic NOX/LOCA backend infrastructure; Figure 3-specific Hopf-locus orchestration belongs in TASK-030.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
