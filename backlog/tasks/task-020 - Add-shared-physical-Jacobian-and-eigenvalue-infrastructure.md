@@ -1,10 +1,11 @@
 ---
 id: TASK-020
 title: Add shared physical Jacobian and eigenvalue infrastructure
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:15'
+updated_date: '2026-07-13 11:27'
 labels:
   - shared-infra
   - figure2
@@ -39,3 +40,9 @@ Add reusable package-level support for Figure 2 physical stability analysis. The
 4. Add tests comparing the analytic Jacobian to finite differences of vector_field at representative Figure 2 and nearby states, plus tests for eigenvalue ordering/classification and crossing detection.
 5. If refactoring shared Figure 1 comparison helpers, update Episode 3/4 scripts minimally and run the existing Figure 1 tests to confirm no regression.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started work: reviewed task scope and existing implementation plan; awaiting confirmation before coding.
+<!-- SECTION:NOTES:END -->
