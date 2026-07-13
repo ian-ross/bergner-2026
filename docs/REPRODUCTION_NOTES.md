@@ -30,9 +30,11 @@ Multiplying those offsets by `p1e(T)` gives approximately `ln(30)` for all three
 
 **Rule of thumb:** If a generated equilibrium saturation branch is vertically offset from a digitized paper curve while `n` and `q` slopes look right, check undeclared multiplicative constants inside the nucleation prefactor before suspecting the continuation method.
 
-## Shared LOCA residual/Jacobian core
+## Shared Trilinos-side C++ residual/Jacobian core
 
-TASK-015 promotes the reusable C++/Trilinos residual and Sacado state-Jacobian core to top-level `loca/`. Episode-local LOCA scripts, notebooks, generated outputs, and curated artifacts remain under `episodes/004-figure1-loca-continuation/`; only the model core and its CMake build are shared so later LOCA continuation tasks can reuse the same executable contract.
+TASK-015 promotes the reusable C++/Trilinos residual and Sacado state-Jacobian core to top-level `loca/`. Despite the directory name and early task wording, the current executable is a lightweight Trilinos-side C++ backend, not a full NOX/LOCA continuation implementation. It deliberately uses a small hand-rolled continuation/Newton driver plus Sacado derivatives and Teuchos/LAPACK dense eigenvalue routines so the C++ equations, state conventions, and physical-Jacobian eigenvalues can be validated before adding the full NOX/LOCA abstraction layer.
+
+Episode-local scripts, notebooks, generated outputs, and curated artifacts remain under their episode directories; only the model core and its CMake build are shared so later C++/Trilinos and eventual NOX/LOCA continuation tasks can reuse the same executable contract.
 
 Build the executable with CMake against `/opt/Trilinos/lib64/cmake/Trilinos`. The stable CLI subcommands are:
 

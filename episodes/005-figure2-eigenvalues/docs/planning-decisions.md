@@ -1,6 +1,6 @@
 # Episode 5 planning decisions
 
-Episode 5 targets the Figure 2 eigenvalue reproduction from Bergner & Spichtinger (2026). It builds on the Figure 1 Python, AUTO, and LOCA branch work but changes the primary observable from equilibrium state variables to linearized physical-ODE eigenvalues along a one-temperature vertical-velocity sweep.
+Episode 5 targets the Figure 2 eigenvalue reproduction from Bergner & Spichtinger (2026). It builds on the Figure 1 Python, AUTO, and Trilinos-side C++ branch work but changes the primary observable from equilibrium state variables to linearized physical-ODE eigenvalues along a one-temperature vertical-velocity sweep. The current C++ backend lives under `loca/` for historical reasons, but it does not yet use full NOX/LOCA continuation APIs.
 
 ## Reproduction target
 
@@ -25,23 +25,23 @@ Do not compare against, or label as Figure 2 reproduction data, eigenvalues of:
 - transformed residuals in coordinates such as `log_n` or `log_q`;
 - continuation-corrector systems that include the continuation parameter;
 - row-scaled or solver-preconditioned residual systems;
-- AUTO/LOCA internal matrices unless their relationship to the physical ODE Jacobian is explicitly derived and normalized back to physical units.
+- AUTO, NOX/LOCA, or other solver-internal matrices unless their relationship to the physical ODE Jacobian is explicitly derived and normalized back to physical units.
 
 Backend outputs may include solver-internal eigenvalue diagnostics for debugging, but cross-backend Figure 2 comparison artifacts should use physical-Jacobian eigenvalues only.
 
 ## Backend independence requirements
 
-Python, AUTO, and LOCA should produce independent equilibrium/eigenvalue outputs for comparison.
+Python, AUTO, and the Trilinos-side C++ backend should produce independent equilibrium/eigenvalue outputs for comparison.
 
 - Python is the semantic reference implementation and should compute equilibria and physical analytic or finite-difference Jacobian eigenvalues directly from package-level model utilities.
 - AUTO should independently generate or verify the equilibrium branch over the Figure 2 `w` range. If native AUTO stability/eigenvalue output is practical and can be normalized to physical ODE Jacobian eigenvalues, prefer that path. If not, AUTO may fall back to computing physical analytic eigenvalues in Python at AUTO-generated equilibria, after documenting investigated native options and the fallback rationale in run metadata.
-- LOCA should independently generate the equilibrium branch and compute the physical Jacobian/eigenvalues backend-side, not by post-processing LOCA equilibria with Python eigenvalue code.
+- The current Trilinos-side C++ backend should independently generate the equilibrium branch and compute the physical Jacobian/eigenvalues backend-side, not by post-processing C++ equilibria with Python eigenvalue code. It may use a simple hand-rolled continuation/Newton path while the problem remains small and the goal is to validate C++ equations and backend-side eigenvalue semantics.
 
 The comparison should distinguish branch-generation agreement from eigenvalue-calculation agreement. For example, an AUTO fallback that uses Python analytic eigenvalues at AUTO equilibria is still useful for testing AUTO branch generation, but it is not an independent AUTO-native eigenvalue calculation.
 
-## LOCA physical eigenvalue requirement
+## Trilinos-side C++ physical eigenvalue requirement
 
-LOCA must compute the physical Jacobian/eigenvalues in the C++/Trilinos backend when Episode 5 LOCA outputs are produced.
+The current C++/Trilinos backend must compute the physical Jacobian/eigenvalues in C++ when Episode 5 C++ outputs are produced. This is intentionally a lightweight Trilinos-side backend using Sacado and Teuchos/LAPACK rather than full NOX/LOCA. A later task will wrap the same simple, validated problem in NOX/LOCA to learn the framework interface before scaling to larger problems.
 
 Required design constraints:
 
@@ -70,7 +70,7 @@ Curated per-backend eigenvalue rows should include, at minimum:
 
 | Field | Meaning |
 | --- | --- |
-| `backend` | `python`, `auto`, or `loca`. |
+| `backend` | `python`, `auto`, or `loca` for historical output compatibility; `loca` currently means the Trilinos-side C++ backend, not full NOX/LOCA. |
 | `branch_id` | Stable branch name, e.g. `figure2_T230K`. |
 | `T_K` | Temperature in kelvin. |
 | `p_Pa` | Pressure in pascals. |
@@ -85,7 +85,7 @@ Curated per-backend eigenvalue rows should include, at minimum:
 | `eigenvalue_real` | Real part of the physical-Jacobian eigenvalue. |
 | `eigenvalue_imag` | Imaginary part of the physical-Jacobian eigenvalue. |
 | `jacobian_coordinate_system` | Expected value: `physical_ode_state`. |
-| `eigenvalue_source` | e.g. `python_analytic`, `auto_native`, `python_at_auto_equilibrium`, or `loca_sacado_lapack`. |
+| `eigenvalue_source` | e.g. `python_analytic`, `auto_native`, `python_at_auto_equilibrium`, or `loca_sacado_lapack` where `loca_sacado_lapack` denotes the current Trilinos-side C++ path. |
 | `residual_norm` | Backend-normalized equilibrium residual norm where available. |
 | `converged` | Whether the equilibrium solve/continuation point converged. |
 | `source_file` | Relative path to the raw or normalized source artifact. |
@@ -108,8 +108,8 @@ Current curated outputs live under `episodes/005-figure2-eigenvalues/outputs/fig
 - Decide whether to digitize Figure 2 for paper-level comparison or first focus on backend-to-backend reproduction.
 - Define eigenvalue ordering and branch matching conventions across real/complex pairs.
 - Decide whether package-level physical-Jacobian utilities should live in `src/bergner_spichtinger_2026/` before Episode 5 scripts are implemented.
-- Determine how much of the LOCA physical-eigenvalue code belongs in shared top-level `loca/` versus episode-local drivers.
+- Add a full NOX/LOCA backend after more tasks have validated the simple Python/AUTO/Trilinos-side C++ comparison workflow, then compare the framework implementation against the already-understood small problem.
 
 ## Scope boundaries
 
-Keep Episode 5 scripts, notebooks, generated files, and curated outputs under `episodes/005-figure2-eigenvalues/` unless a later task explicitly promotes a component as shared infrastructure. Shared backend directories such as `auto/` and `loca/` should contain reusable model/backend assets only, not one-off Figure 2 run artifacts.
+Keep Episode 5 scripts, notebooks, generated files, and curated outputs under `episodes/005-figure2-eigenvalues/` unless a later task explicitly promotes a component as shared infrastructure. Shared backend directories such as `auto/` and `loca/` should contain reusable model/backend assets only, not one-off Figure 2 run artifacts. The `loca/` name is retained for continuity, but documentation should distinguish the present Trilinos-side C++ backend from the deferred full NOX/LOCA backend.
