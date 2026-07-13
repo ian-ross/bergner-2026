@@ -1,10 +1,11 @@
 ---
 id: TASK-023
 title: Implement LOCA Sacado physical Jacobian and eigenvalue workflow for Figure 2
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:15'
+updated_date: '2026-07-13 12:15'
 labels:
   - episode-005
   - figure2
