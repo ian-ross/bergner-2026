@@ -46,3 +46,23 @@ Build reusable Python augmented Hopf continuation infrastructure and use it to c
 - Added regression/smoke tests for packing/phase normalization, T=230 K landmark agreement, output schema, and 190--240 K domain coverage.
 - Verification: `uv run pytest` (80 passed; 3 existing/expected overflow warnings from solver probes).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented Python augmented Hopf continuation for Episode 006 Figure 3 loci.
+
+Changes:
+- Added reusable `bergner_spichtinger_2026.hopf` infrastructure for packed augmented Hopf unknowns, residual equations, eigenvector normalization, previous-eigenvector phase locking, fixed-temperature Hopf solves, and branch continuation.
+- Kept nonlinear equilibrium variables in `log(n)`, `log(q)`, and `log(w)` while evaluating Hopf eigenpair equations with the physical ODE Jacobian in physical `(n, q, s)` coordinates.
+- Added `episodes/006-figure3-hopf-bifurcation/scripts/generate_python_hopf_loci.py` to seed both branches at `T=230 K` from Episode 005 Hopf landmarks and continue them over `T=190--240 K`.
+- Wrote curated Python outputs under `outputs/figure3_python_hopf_loci/`: loci CSV, seed CSV, diagnostics CSV, and run metadata JSON.
+- Updated the Episode 006 README to describe the Python workflow and output location.
+- Added tests covering Hopf packing/phase behavior, T=230 K landmark correction, output schema, branch labels, convergence, and requested temperature-domain coverage.
+
+Tests:
+- `uv run pytest` (80 passed; 3 overflow warnings from solver trial points during existing/smoke workflows).
+
+Notes/Risks:
+- The Python branch labels are seed-based (`lower_hopf` from the lower Episode 005 crossing and `upper_hopf` from the upper crossing); Table II values are included as references, not used as continuation constraints.
+<!-- SECTION:FINAL_SUMMARY:END -->
