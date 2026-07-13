@@ -43,7 +43,7 @@ Later implementation tasks should replace these placeholders with concrete comma
 
 ```bash
 # Generate Python equilibrium/eigenvalue outputs for Figure 2.
-# uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py
+uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py
 
 # Generate/normalize AUTO Figure 2 outputs and eigenvalue metadata.
 # uv run python episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py
@@ -57,7 +57,7 @@ Later implementation tasks should replace these placeholders with concrete comma
 
 Expected curated output groups are provisionally:
 
-- `outputs/figure2_python_eigenvalues/`
+- `outputs/figure2_python_eigenvalues/` — implemented Python-native branch/eigenvalue CSVs, Hopf crossing tables, run metadata, and draft Figure 2-style plot.
 - `outputs/figure2_auto_eigenvalues/`
 - `outputs/figure2_loca_eigenvalues/`
 - `outputs/figure2_backend_comparison/`

@@ -1,0 +1,55 @@
+{
+  "backend": "python",
+  "branch_id": "figure2_T230K",
+  "point_count": 801,
+  "finite_converged_point_count": 801,
+  "w_min_m_s": 0.0005000000000000001,
+  "w_max_m_s": 2.0,
+  "max_continuation_residual_norm": 4.978607945672176e-16,
+  "max_scaled_physical_residual_norm": 4.978557244981928e-16,
+  "all_converged": true,
+  "regime_counts": {
+    "complex_pair": 788,
+    "three_real": 13
+  },
+  "stability_counts": {
+    "stable": 535,
+    "unstable": 266
+  },
+  "hopf_crossings": [
+    {
+      "log_w": -3.025560693602074,
+      "w": 0.048530602841605625,
+      "left_index": 441,
+      "right_index": 442,
+      "real_part_left": -1.0795366737002387e-06,
+      "real_part_right": 2.3674919163186323e-06
+    },
+    {
+      "log_w": -0.2630802015171406,
+      "w": 0.7686802455170232,
+      "left_index": 707,
+      "right_index": 708,
+      "real_part_left": 5.464262993510704e-06,
+      "real_part_right": -1.6563854469224797e-06
+    }
+  ],
+  "hopf_landmark_comparison": [
+    {
+      "expected_w_m_s": 0.048,
+      "observed_w_m_s": 0.048530602841605625,
+      "abs_error_m_s": 0.0005306028416056235,
+      "within_documented_tolerance": true,
+      "documented_tolerance_m_s": 0.01,
+      "crossing_index": 0
+    },
+    {
+      "expected_w_m_s": 0.77,
+      "observed_w_m_s": 0.7686802455170232,
+      "abs_error_m_s": 0.0013197544829768315,
+      "within_documented_tolerance": true,
+      "documented_tolerance_m_s": 0.01,
+      "crossing_index": 1
+    }
+  ]
+}
