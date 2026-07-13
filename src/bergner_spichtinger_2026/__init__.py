@@ -1,6 +1,17 @@
 """Reusable model and continuation utilities for Bergner & Spichtinger (2026)."""
 
-from .approximations import approximate_equilibrium, approximate_equilibrium_s, sigma_equilibrium
+from .approximations import (
+    TABLE_II_HOPF_WA_COEFFICIENTS,
+    TABLE_II_HOPF_WB_COEFFICIENTS,
+    HopfFitCoefficients,
+    approximate_equilibrium,
+    approximate_equilibrium_s,
+    sigma_equilibrium,
+    table_ii_hopf_w_a,
+    table_ii_hopf_w_b,
+    table_ii_lower_hopf_w,
+    table_ii_upper_hopf_w,
+)
 from .continuation import ContinuationPoint, ContinuationResult, continue_branch
 from .residuals import (
     equilibrium_residual,
@@ -20,9 +31,16 @@ from .stability import (
 )
 
 __all__ = [
+    "TABLE_II_HOPF_WA_COEFFICIENTS",
+    "TABLE_II_HOPF_WB_COEFFICIENTS",
+    "HopfFitCoefficients",
     "approximate_equilibrium",
     "approximate_equilibrium_s",
     "sigma_equilibrium",
+    "table_ii_hopf_w_a",
+    "table_ii_hopf_w_b",
+    "table_ii_lower_hopf_w",
+    "table_ii_upper_hopf_w",
     "ContinuationPoint",
     "ContinuationResult",
     "continue_branch",

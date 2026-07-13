@@ -7,7 +7,7 @@ plain SI numeric values, matching :mod:`bergner_spichtinger_2026.core`.
 
 from __future__ import annotations
 
-from dataclasses import replace
+from dataclasses import dataclass, replace
 from math import log
 
 import numpy as np
@@ -18,6 +18,74 @@ from .constants import Environment
 S_MIN = 1.37
 S_MAX = 1.59
 L_MIDPOINT = 0.5 * (log(S_MIN / (S_MIN - 1.0) ** (3.0 / 4.0)) + log(S_MAX / (S_MAX - 1.0) ** (3.0 / 4.0)))
+
+
+@dataclass(frozen=True)
+class HopfFitCoefficients:
+    """Table II coefficients for ``w(T) = w_bar * exp(c2*T**2 + c1*T + c0)``.
+
+    Temperatures are in kelvin, ``c1`` has units ``K^-1``, ``c2`` has
+    units ``K^-2``, and ``w_bar_m_s`` is the dimensional velocity scale.
+    """
+
+    c0: float
+    c1_per_K: float
+    c2_per_K2: float
+    w_bar_m_s: float = 1.0
+
+
+TABLE_II_HOPF_WA_COEFFICIENTS = HopfFitCoefficients(c0=-38.30947, c1_per_K=0.278555, c2_per_K2=-0.00049191)
+TABLE_II_HOPF_WB_COEFFICIENTS = HopfFitCoefficients(c0=-36.15046, c1_per_K=0.229111, c2_per_K2=-0.00036997)
+"""Bergner & Spichtinger (2026) Table II Hopf fit coefficients.
+
+These empirical fits are paper reference curves for Figure 3. They are
+not backend-computed Hopf loci from Python, AUTO, or LOCA continuation.
+Over the Figure 3 interval ``T = 190--240 K``, the coefficient values put
+``w_b(T)`` on the lower-velocity branch and ``w_a(T)`` on the
+upper-velocity branch.
+"""
+
+
+def _table_ii_hopf_fit(T_K: float | np.ndarray, coeff: HopfFitCoefficients) -> float | np.ndarray:
+    T = np.asarray(T_K, dtype=float)
+    w = coeff.w_bar_m_s * np.exp(coeff.c2_per_K2 * T**2 + coeff.c1_per_K * T + coeff.c0)
+    if w.ndim == 0:
+        return float(w)
+    return w
+
+
+def table_ii_hopf_w_a(T_K: float | np.ndarray) -> float | np.ndarray:
+    """Return the Table II ``w_a(T)`` paper-reference Hopf fit in ``m s^-1``.
+
+    Input temperatures are SI values in kelvin. The returned velocity is
+    a paper fit reference, not a backend-computed Hopf continuation point.
+    Scalars return ``float``; array-like inputs return a NumPy array.
+    """
+
+    return _table_ii_hopf_fit(T_K, TABLE_II_HOPF_WA_COEFFICIENTS)
+
+
+def table_ii_hopf_w_b(T_K: float | np.ndarray) -> float | np.ndarray:
+    """Return the Table II ``w_b(T)`` paper-reference Hopf fit in ``m s^-1``.
+
+    Input temperatures are SI values in kelvin. The returned velocity is
+    a paper fit reference, not a backend-computed Hopf continuation point.
+    Scalars return ``float``; array-like inputs return a NumPy array.
+    """
+
+    return _table_ii_hopf_fit(T_K, TABLE_II_HOPF_WB_COEFFICIENTS)
+
+
+def table_ii_lower_hopf_w(T_K: float | np.ndarray) -> float | np.ndarray:
+    """Return the lower-velocity Table II Hopf fit, ``w_b(T)``, in ``m s^-1``."""
+
+    return table_ii_hopf_w_b(T_K)
+
+
+def table_ii_upper_hopf_w(T_K: float | np.ndarray) -> float | np.ndarray:
+    """Return the upper-velocity Table II Hopf fit, ``w_a(T)``, in ``m s^-1``."""
+
+    return table_ii_hopf_w_a(T_K)
 
 
 def sigma_equilibrium(env: Environment, *, coeff: Coefficients | None = None) -> float:

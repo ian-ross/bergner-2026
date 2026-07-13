@@ -11,8 +11,8 @@ The agreed Figure 3 scope is:
 - temperature interval `T = 190--240 K`
 - vertical velocity coordinate `w_m_s` in `m s^-1`; backends may use `log_w = log(w_m_s)` internally
 - two Hopf loci in vertical velocity:
-  - lower-`w` branch: paper blue points, Table II fit `w_a(T)`
-  - upper-`w` branch: paper red points, Table II fit `w_b(T)`
+  - lower-`w` branch: Table II coefficient values place `w_b(T)` below `w_a(T)` over `190--240 K`
+  - upper-`w` branch: Table II coefficient values place `w_a(T)` above `w_b(T)` over `190--240 K`
 
 Table II gives empirical reference fits
 
@@ -29,7 +29,7 @@ with coefficients from the extracted source text:
 | `a_k` | `-38.30947` | `0.278555 K^-1` | `-0.00049191 K^-2` |
 | `b_k` | `-36.15046` | `0.229111 K^-1` | `-0.00036997 K^-2` |
 
-These fits should be plotted and tabulated as paper-reference curves. They should not replace backend-computed Hopf continuation results.
+These fits should be plotted and tabulated as paper-reference curves. They should not replace backend-computed Hopf continuation results. Shared package utilities in `bergner_spichtinger_2026.approximations` expose both the paper names (`table_ii_hopf_w_a`, `table_ii_hopf_w_b`) and branch aliases (`table_ii_lower_hopf_w`, `table_ii_upper_hopf_w`) so episode scripts do not duplicate Table II coefficient literals.
 
 ## Method decision: continue Hopf loci, do not only scan
 
