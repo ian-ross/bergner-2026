@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:16'
+updated_date: '2026-07-13 11:18'
 labels:
   - episode-005
   - figure2
@@ -22,10 +22,10 @@ Create the episode scaffold and planning notes for reproducing Bergner & Spichti
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode directory episodes/005-figure2-eigenvalues/ exists with README and appropriate docs/scripts/outputs/notebooks placeholders.
-- [ ] #2 README or planning notes record the agreed Figure 2 parameter set, paper w range, and N_a assumption.
-- [ ] #3 Planning notes state that Python, AUTO, and LOCA generate independent equilibrium/eigenvalue outputs for comparison.
-- [ ] #4 Planning notes state that LOCA must compute physical Jacobian/eigenvalues backend-side using Sacado plus Teuchos/LAPACK where available, while AUTO may fall back to Python analytic eigenvalues after documenting native options.
+- [x] #1 Episode directory episodes/005-figure2-eigenvalues/ exists with README and appropriate docs/scripts/outputs/notebooks placeholders.
+- [x] #2 README or planning notes record the agreed Figure 2 parameter set, paper w range, and N_a assumption.
+- [x] #3 Planning notes state that Python, AUTO, and LOCA generate independent equilibrium/eigenvalue outputs for comparison.
+- [x] #4 Planning notes state that LOCA must compute physical Jacobian/eigenvalues backend-side using Sacado plus Teuchos/LAPACK where available, while AUTO may fall back to Python analytic eigenvalues after documenting native options.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -37,3 +37,10 @@ Create the episode scaffold and planning notes for reproducing Bergner & Spichti
 4. Document backend responsibilities: independent branch generation for Python/AUTO/LOCA, strict LOCA backend-side physical eigenvalues, and documented AUTO fallback policy.
 5. Add minimal reproduction-command placeholders and known-open-items section so later tasks can fill in concrete commands and outputs.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Created Episode 5 scaffold at episodes/005-figure2-eigenvalues/ with README, docs/planning-decisions.md, and .gitkeep placeholders for scripts/outputs/notebooks.
+- Documented agreed Figure 2 target parameters, physical-ODE eigenvalue semantics, backend independence requirements, LOCA Sacado/Teuchos/LAPACK responsibility, and AUTO fallback policy.
+<!-- SECTION:NOTES:END -->
