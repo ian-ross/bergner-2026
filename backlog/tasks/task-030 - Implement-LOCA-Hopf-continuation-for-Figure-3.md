@@ -4,7 +4,7 @@ title: Implement LOCA Hopf continuation for Figure 3
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:05'
+updated_date: '2026-07-13 16:06'
 labels: []
 dependencies:
   - TASK-025
@@ -24,3 +24,14 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 - [ ] #3 Normalized LOCA outputs conform to the Episode 006 Hopf-locus schema and include backend diagnostics, continuation settings, convergence status, and raw/derived artifact provenance.
 - [ ] #4 Tests or opt-in smoke checks verify both LOCA Hopf branches are present, match T=230 K landmarks within documented tolerance, and are compatible with integrated backend comparison scripts.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Confirm TASK-025 has produced a usable NOX/LOCA equilibrium-continuation executable/library and document any remaining limitations before adding Hopf-specific code.
+2. Investigate LOCA Hopf continuation APIs and required model interfaces for continuing a Hopf point in log_w and T.
+3. Add LOCA configuration and parameter plumbing for the two Figure 3 active parameters while preserving the validated physical residual/Jacobian semantics.
+4. Seed or detect the two T=230 K Hopf points using the validated LOCA equilibrium path and continue each branch over T=190--240 K.
+5. Normalize LOCA Hopf output to the Episode 006 schema with continuation diagnostics, raw provenance, and explicit method metadata.
+6. Add opt-in smoke tests that skip cleanly without LOCA support and verify both branches, T=230 K anchors, and compatibility with integrated comparison inputs.
+<!-- SECTION:PLAN:END -->
