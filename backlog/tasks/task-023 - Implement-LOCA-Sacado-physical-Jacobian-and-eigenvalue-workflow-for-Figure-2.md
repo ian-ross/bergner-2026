@@ -4,6 +4,7 @@ title: Implement LOCA Sacado physical Jacobian and eigenvalue workflow for Figur
 status: To Do
 assignee: []
 created_date: '2026-07-13 11:14'
+updated_date: '2026-07-13 11:15'
 labels:
   - episode-005
   - figure2
@@ -29,3 +30,14 @@ Extend the LOCA-side C++ executable so transformed-coordinate continuation can s
 - [ ] #5 Diagnostic artifacts expose physical Jacobian entries for verification without cluttering the primary normalized branch CSV.
 - [ ] #6 Tests compare LOCA Sacado physical Jacobian and eigenvalues against the Python reference at representative states.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inspect the current LOCA C++ model, Sacado residual Jacobian path, CMake/Trilinos configuration, and Teuchos availability.
+2. Add a physical vector-field function in C++ that mirrors the Python physical ODE RHS separately from the log-coordinate continuation residual.
+3. Add a Sacado physical Jacobian path differentiating the physical vector field with respect to physical (n,q,s), and expose CLI diagnostics for residual/Jacobian/eigenvalue checks.
+4. Implement backend-side dense eigenvalue computation, preferring Teuchos::LAPACK GEEV and documenting/directly testing any fallback to LAPACK dgeev.
+5. Extend the LOCA continuation output path for Figure 2 so each branch point includes backend-computed canonical eigenvalues, regime, stability classification, and separate raw physical-Jacobian diagnostics.
+6. Add Python-side tests comparing LOCA physical Jacobian/eigenvalues to the shared Python reference at representative states and smoke-test the Figure 2 LOCA output schema/range.
+<!-- SECTION:PLAN:END -->
