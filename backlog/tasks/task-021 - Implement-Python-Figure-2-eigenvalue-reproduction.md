@@ -1,7 +1,7 @@
 ---
 id: TASK-021
 title: Implement Python Figure 2 eigenvalue reproduction
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
@@ -60,16 +60,17 @@ Started TASK-021: moved to In Progress and assigned to @pi. Reviewing existing i
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Implemented the Python-native Figure 2 equilibrium/eigenvalue reproduction for Episode 5.
+Implemented the Python-native Figure 2 equilibrium/eigenvalue reproduction for Episode 5 and patched the plot to avoid canonical-label branch-jump artifacts.
 
 Changes:
 - Added a generator script that traces 801 log-spaced w points over 0.0005--2.0 m s^-1 for p=300 hPa, T=230 K, F=1, N_a=1.0e10 m^-3.
 - Wrote episode-local CSV/JSON/PNG artifacts with equilibrium state, residual diagnostics, canonical physical-Jacobian eigenvalues, regime/stability classification, Hopf crossing estimates, and run metadata.
+- Preserved canonical eigenvalue columns for tabular/backend comparison, and added tracked_lambda* plot-only columns using adjacent minimum-distance matching in the complex plane so the Figure 2-style plot does not connect eigenvalue identity swaps through real/complex transitions.
 - Documented the concrete Python command/output group in the Episode 5 README.
-- Added smoke tests covering the output contract, dense-grid guard, Hopf landmark tolerance checks, metadata fields, and plot generation.
+- Added smoke/regression tests covering the output contract, dense-grid guard, Hopf landmark tolerance checks, metadata fields, plot generation, and the eigenvalue-label swap that caused the visual artifact.
 
 Validation:
 - uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py
 - uv run pytest tests/test_episode5_python_figure2.py
-- uv run pytest (60 passed; one runtime overflow warning appears during exploratory root evaluation but all generated branch points converge finitely).
+- uv run pytest (61 passed; one runtime overflow warning appears during exploratory root evaluation but all generated branch points converge finitely).
 <!-- SECTION:FINAL_SUMMARY:END -->
