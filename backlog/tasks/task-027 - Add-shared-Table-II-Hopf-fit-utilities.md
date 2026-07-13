@@ -1,7 +1,7 @@
 ---
 id: TASK-027
 title: Add shared Table II Hopf fit utilities
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:04'
@@ -43,3 +43,20 @@ Implement reusable package utilities for the Bergner & Spichtinger (2026) Table 
 - Updated Episode 006 planning docs to reference shared utilities and clarify that Table II fits are paper reference curves, not backend continuation outputs.
 - Verification: uv run pytest tests/test_approximations.py; uv run pytest (76 passed, 1 existing overflow warning in Episode 5 smoke test).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added reusable Bergner & Spichtinger (2026) Table II Hopf fit utilities for Figure 3 reference curves.
+
+Changes:
+- Added HopfFitCoefficients plus Table II w_a(T) and w_b(T) coefficient constants in src/bergner_spichtinger_2026/approximations.py.
+- Added scalar/NumPy-friendly functions returning SI velocities in m/s, plus lower/upper branch aliases for episode plotting and comparison code.
+- Exported the utilities from the package root so episode scripts can reuse them without duplicating coefficient literals.
+- Updated Episode 006 planning docs to point at the shared utilities and emphasize that these fits are paper-reference curves, not backend-computed Hopf loci.
+- Added regression tests covering coefficient values, representative fit values, scalar/vector behavior, lower/upper aliases, and positive outputs over T=190--240 K.
+
+Tests:
+- uv run pytest tests/test_approximations.py
+- uv run pytest (76 passed, 1 existing overflow warning in Episode 5 smoke test)
+<!-- SECTION:FINAL_SUMMARY:END -->
