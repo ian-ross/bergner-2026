@@ -1,10 +1,11 @@
 ---
 id: TASK-028
 title: Implement Python augmented Hopf continuation for Figure 3
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 16:35'
 labels: []
 dependencies:
   - TASK-026
