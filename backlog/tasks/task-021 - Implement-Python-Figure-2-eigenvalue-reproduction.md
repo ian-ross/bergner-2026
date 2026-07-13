@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:49'
+updated_date: '2026-07-13 11:53'
 labels:
   - episode-005
   - figure2
@@ -23,11 +23,11 @@ Generate the Python-native Figure 2 equilibrium branch and physical eigenvalues 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script generates a dense log-w branch with at least 400 finite converged points across w = 0.0005--2.0 m s^-1.
-- [ ] #2 Output CSV includes equilibrium state, residual/convergence diagnostics, canonical physical eigenvalues, eigenvalue regime, and stability classification.
-- [ ] #3 Python outputs include simple Hopf crossing estimates near the paper-described crossings around w ≈ 0.048 and w ≈ 0.77 m s^-1, within documented numerical tolerance.
-- [ ] #4 A draft Figure 2-style plot shows real eigenvalue parts and imaginary eigenvalue parts versus log-scaled w.
-- [ ] #5 Run metadata records parameter values, N_a assumption, grid density, Jacobian method, eigenvalue sorting tolerance, and commands.
+- [x] #1 Script generates a dense log-w branch with at least 400 finite converged points across w = 0.0005--2.0 m s^-1.
+- [x] #2 Output CSV includes equilibrium state, residual/convergence diagnostics, canonical physical eigenvalues, eigenvalue regime, and stability classification.
+- [x] #3 Python outputs include simple Hopf crossing estimates near the paper-described crossings around w ≈ 0.048 and w ≈ 0.77 m s^-1, within documented numerical tolerance.
+- [x] #4 A draft Figure 2-style plot shows real eigenvalue parts and imaginary eigenvalue parts versus log-scaled w.
+- [x] #5 Run metadata records parameter values, N_a assumption, grid density, Jacobian method, eigenvalue sorting tolerance, and commands.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -44,4 +44,9 @@ Generate the Python-native Figure 2 equilibrium branch and physical eigenvalues 
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-021: moved to In Progress and assigned to @pi. Reviewing existing implementation plan before coding.
+
+- Implemented episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py for the p=300 hPa, T=230 K, F=1, N_a=1e10 m^-3 Figure 2 sweep.
+- Generated curated outputs in episodes/005-figure2-eigenvalues/outputs/figure2_python_eigenvalues/: long eigenvalue CSV, wide branch-point CSV, Hopf crossing tables, summary JSON, metadata JSON, and draft plot.
+- Added tests/test_episode5_python_figure2.py smoke coverage for schema, dense finite converged point count, Hopf landmark tolerances, metadata, and plot existence.
+- Verification: uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py; uv run pytest tests/test_episode5_python_figure2.py; uv run pytest (60 passed, one existing/runtime overflow warning during root exploration).
 <!-- SECTION:NOTES:END -->
