@@ -1,11 +1,11 @@
 ---
 id: TASK-022
 title: Implement AUTO Figure 2 continuation and eigenvalue workflow
-status: In Progress
+status: Done
 assignee:
   - '@agent'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 12:03'
+updated_date: '2026-07-13 12:13'
 labels:
   - episode-005
   - figure2
@@ -23,11 +23,11 @@ Run an independent AUTO-based equilibrium continuation for the Figure 2 paramete
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 AUTO workflow generates an independent equilibrium branch over w = 0.0005--2.0 m s^-1 with adequate coverage for Figure 2 comparison.
-- [ ] #2 Normalized AUTO output includes equilibrium state, residual/convergence diagnostics, canonical physical eigenvalues, eigenvalue regime, and stability classification.
-- [ ] #3 The task documents what AUTO-native eigenvalue or stability output was investigated and why the chosen production path was used.
-- [ ] #4 If Python analytic eigenvalues are used as fallback, metadata clearly labels them as post-processed from AUTO equilibria rather than AUTO-native eigenvalues.
-- [ ] #5 AUTO Hopf zero-crossing estimates are computed from the produced eigenvalue data and included in summary artifacts.
+- [x] #1 AUTO workflow generates an independent equilibrium branch over w = 0.0005--2.0 m s^-1 with adequate coverage for Figure 2 comparison.
+- [x] #2 Normalized AUTO output includes equilibrium state, residual/convergence diagnostics, canonical physical eigenvalues, eigenvalue regime, and stability classification.
+- [x] #3 The task documents what AUTO-native eigenvalue or stability output was investigated and why the chosen production path was used.
+- [x] #4 If Python analytic eigenvalues are used as fallback, metadata clearly labels them as post-processed from AUTO equilibria rather than AUTO-native eigenvalues.
+- [x] #5 AUTO Hopf zero-crossing estimates are computed from the produced eigenvalue data and included in summary artifacts.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -39,3 +39,29 @@ Run an independent AUTO-based equilibrium continuation for the Figure 2 paramete
 4. If AUTO-native eigenvalues are not practical, post-process AUTO equilibria with the shared Python physical_jacobian/physical_eigenvalues APIs and clearly label the method as fallback.
 5. Compute AUTO zero-crossing estimates, write normalized CSV/summary/metadata, and add tests or smoke checks for schema, fallback labeling, and range coverage.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added Episode 5 AUTO Figure 2 templates and run script.
+- Generated AUTO branch over w=0.0005--2.0 m s^-1 with 411 normalized points.
+- Labeled eigenvalues as python_analytic_postprocessed_from_auto_equilibria and documented AUTO-native investigation/fallback in metadata and planning notes.
+- Added Hopf crossing summaries: ~0.04853 and ~0.76864 m s^-1.
+- Added Episode 5 AUTO tests and ran targeted test suite.
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the Episode 5 AUTO Figure 2 workflow.
+
+Changes:
+- Added episode-local AUTO templates and `run_auto_figure2_eigenvalues.py` to run AUTO-07p equilibrium continuation for the Figure 2 slice.
+- Normalized AUTO equilibria into long eigenvalue rows and wide branch-point rows with residual diagnostics, physical state, canonical physical-Jacobian eigenvalues, regimes, stability classes, and AUTO provenance.
+- Documented AUTO-native eigenvalue investigation and explicitly labeled the production eigenvalues as Python analytic post-processing of AUTO equilibria.
+- Generated curated AUTO outputs under `episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/`, including Hopf estimates near 0.04853 and 0.76864 m s^-1.
+- Added tests for template rendering, schema/fallback labels, diagnostics, and optional AUTO smoke output contract.
+
+Tests:
+- `uv run pytest tests/test_episode5_auto_figure2.py tests/test_episode5_python_figure2.py tests/test_stability.py -q` (15 passed, one pre-existing overflow warning in the Python smoke path).
+<!-- SECTION:FINAL_SUMMARY:END -->
