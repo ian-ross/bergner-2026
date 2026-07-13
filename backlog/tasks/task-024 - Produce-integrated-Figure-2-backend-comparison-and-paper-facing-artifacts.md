@@ -4,6 +4,7 @@ title: Produce integrated Figure 2 backend comparison and paper-facing artifacts
 status: To Do
 assignee: []
 created_date: '2026-07-13 11:14'
+updated_date: '2026-07-13 11:15'
 labels:
   - episode-005
   - figure2
@@ -28,3 +29,14 @@ Combine Python, AUTO, and LOCA Figure 2 eigenvalue outputs into curated backend-
 - [ ] #5 Episode README documents final commands, curated artifact paths, backend methods, fallback decisions, and known limitations.
 - [ ] #6 Repository tests pass after the integrated comparison work.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Load the curated Python, AUTO, and LOCA Figure 2 outputs and validate their schemas, parameter consistency, raw grid coverage, eigenvalue sorting metadata, and backend provenance.
+2. Define a canonical log-w comparison grid and interpolate/aligned backend eigenvalue quantities while preserving raw backend outputs.
+3. Compute backend-to-backend difference tables, Hopf crossing comparisons, three-real interval summaries, stability/regime counts, and backend method/fallback summaries.
+4. Attempt Figure 2 digitization from the source PDF if feasible; otherwise document the deferral and any visual obstacles, especially imaginary-part extraction uncertainty.
+5. Generate the headline Figure 2 reproduction plot with real and imaginary panels, backend overlays, Hopf markers, and optional digitized paper markers.
+6. Update the Episode 5 README with final commands, artifacts, backend decisions, limitations, and run repository tests.
+<!-- SECTION:PLAN:END -->
