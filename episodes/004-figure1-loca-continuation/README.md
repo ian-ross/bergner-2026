@@ -51,12 +51,21 @@ uv run python episodes/004-figure1-loca-continuation/scripts/run_loca_figure1.py
 # and digitized paper Figure 1 curves.
 uv run python episodes/004-figure1-loca-continuation/scripts/compare_loca_figure1.py
 
+# Run the full NOX/LOCA LAPACK-interface validation path for the same Figure 1
+# normalized branch schema. This is the TASK-025 prerequisite layer for later
+# Episode 006 native LOCA Hopf continuation.
+uv run python episodes/004-figure1-loca-continuation/scripts/run_nox_loca_figure1.py --clean
+
 # Run repository tests, including LOCA residual/Jacobian, branch-output, and
 # backend-comparison checks.
 uv run pytest
 ```
 
 Curated branch outputs are written under `outputs/figure1_loca_branches/`, including normalized per-temperature branch CSVs, `branches_all.csv`, `run_metadata.json`, `run_diagnostics.json`, and raw C++ continuation CSV/log artifacts. Backend comparison artifacts are written under `outputs/figure1_loca_backend_comparison/`, including pointwise details, summary CSV/JSON, overlay plots, residual plots, and run metadata.
+
+## Full NOX/LOCA backend prerequisite
+
+The shared top-level `loca/` executable now exposes `nox-loca-smoke` and `nox-loca-continue` commands backed by a dense `LOCA::LAPACK::Interface` adapter around the validated residual and Sacado Jacobian. The adapter preserves the existing equations and normalized branch schema while adding LOCA parameter plumbing for `log_w`, `T`, `p`, `F`, `N_a`, and `dz`. See `docs/NOX_LOCA_BACKEND.md` for the lightweight-vs-full-backend comparison, diagnostics, availability checks, and validation expectations.
 
 ## Backend comparison results
 

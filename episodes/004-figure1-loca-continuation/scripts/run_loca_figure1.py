@@ -140,7 +140,7 @@ def _residual_norm(log_n: float, log_q: float, s: float, log_w: float, T: float)
     return float(np.linalg.norm(residual, ord=2))
 
 
-def _normalize_rows(T: float, rows: list[dict[str, str]]) -> list[dict[str, object]]:
+def _normalize_rows(T: float, rows: list[dict[str, str]], *, backend_label: str = BACKEND) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     source_file = _raw_source_file(T)
     for row in rows:
@@ -151,7 +151,7 @@ def _normalize_rows(T: float, rows: list[dict[str, str]]) -> list[dict[str, obje
         n = exp(log_n)
         q = exp(log_q)
         records.append({
-            "backend": BACKEND,
+            "backend": backend_label,
             "schema_version": SCHEMA_VERSION,
             "branch_id": _branch_id(T),
             "T_K": T,
@@ -240,14 +240,14 @@ def _diagnose_records(T: float, records: list[dict[str, object]], returncode: in
     }
 
 
-def _run_temperature(T: float, executable: Path, output_dir: Path, *, steps: int, tolerance: float) -> tuple[list[dict[str, object]], dict[str, object]]:
+def _run_temperature(T: float, executable: Path, output_dir: Path, *, steps: int, tolerance: float, backend_command: str = "continue", backend_label: str = BACKEND) -> tuple[list[dict[str, object]], dict[str, object]]:
     raw_dir = output_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
     raw_path = output_dir / _raw_source_file(T)
     x0 = _initial_log_state(T)
     command = [
         str(executable),
-        "continue",
+        backend_command,
         *(f"{value:.17g}" for value in x0),
         f"{LOG_W_MIN:.17g}",
         "--log-w-end",
@@ -271,7 +271,7 @@ def _run_temperature(T: float, executable: Path, output_dir: Path, *, steps: int
     raw_path.write_text(result.stdout, encoding="utf-8")
     (raw_dir / f"bs2026_loca_T{int(T)}K.stderr.txt").write_text(result.stderr, encoding="utf-8")
     raw_rows = _read_raw_rows(raw_path) if result.stdout.strip() else []
-    records = _normalize_rows(T, raw_rows) if raw_rows else []
+    records = _normalize_rows(T, raw_rows, backend_label=backend_label) if raw_rows else []
     branch_csv = output_dir / f"branch_T{int(T)}K.csv"
     _write_csv(branch_csv, records)
     diagnostics = _diagnose_records(T, records, result.returncode, result.stderr)
@@ -293,6 +293,8 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=100)
     parser.add_argument("--tol", type=float, default=1.0e-10)
     parser.add_argument("--clean", action="store_true", help="Remove the output directory before running.")
+    parser.add_argument("--backend-command", choices=["continue", "nox-loca-continue"], default="continue")
+    parser.add_argument("--backend-label", default=BACKEND)
     args = parser.parse_args()
 
     if args.clean and args.output_dir.exists():
@@ -308,6 +310,8 @@ def main() -> None:
         "schema_version": SCHEMA_VERSION,
         "normalized_schema_columns": BRANCH_FIELDNAMES,
         "coordinates": {"state": ["log_n", "log_q", "s"], "continuation_parameter": "log_w"},
+        "backend_command": args.backend_command,
+        "backend_label": args.backend_label,
         "continuation_mode": "C++ natural-parameter predictor/corrector using residual and Sacado state Jacobian",
         "p_Pa": PRESSURE_PA,
         "F": SEDIMENTATION_F,
@@ -327,7 +331,7 @@ def main() -> None:
     branch_csvs: list[str] = []
     all_ok = True
     for T in args.temperatures:
-        records, diagnostics = _run_temperature(T, executable, args.output_dir, steps=args.steps, tolerance=args.tol)
+        records, diagnostics = _run_temperature(T, executable, args.output_dir, steps=args.steps, tolerance=args.tol, backend_command=args.backend_command, backend_label=args.backend_label)
         all_records.extend(records)
         metadata["runs"].append(diagnostics)
         all_ok = all_ok and bool(diagnostics.get("ok"))
