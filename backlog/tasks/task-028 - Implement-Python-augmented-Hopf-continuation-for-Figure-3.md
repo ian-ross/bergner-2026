@@ -1,11 +1,11 @@
 ---
 id: TASK-028
 title: Implement Python augmented Hopf continuation for Figure 3
-status: Done
+status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:48'
+updated_date: '2026-07-13 16:55'
 labels: []
 dependencies:
   - TASK-026
@@ -50,6 +50,12 @@ Build reusable Python augmented Hopf continuation infrastructure and use it to c
 - Updated the Python generator to emit `python_figure3_hopf_loci.png` next to Python loci CSVs and `outputs/figure3_backend_comparison/figure3_hopf_backend_comparison.png` overlaying available backend loci with Table II reference fits.
 - Extended Episode 006 smoke test to assert plot artifacts are produced.
 - Verification after plot addition: `uv run pytest` (80 passed; 3 expected solver-probe overflow warnings).
+
+- Diagnosed bad Figure 3 plot: the explicit physical-coordinate eigenvector augmented solve admitted spurious solutions because the physical eigenvectors are extremely ill-conditioned and nearly collinear/degenerate in Euclidean component scaling; residuals could be tiny while `Re(lambda)` was not zero.
+- Replaced the Python workflow solve path with a characteristic-polynomial Hopf condition (`a1*a2-a3=0` for the physical ODE Jacobian) plus log-coordinate equilibrium rows. This preserves physical-Jacobian Hopf semantics without ill-conditioned eigenvector unknowns.
+- Regenerated Python loci and figures; maximum relative deviation from Table II reference samples over the curated grid is now below 1%.
+- Added a regression assertion that Episode 006 smoke output remains within 2% of Table II reference fits at the smoke-grid temperatures.
+- Verification: `uv run pytest` (80 passed; 3 expected solver-probe overflow warnings).
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
@@ -75,4 +81,10 @@ Follow-up plotting addition:
 - Added reusable Figure 3 plotting utility for method-specific and integrated comparison figures.
 - Python generation now writes `python_figure3_hopf_loci.png` and the current integrated comparison figure `figure3_hopf_backend_comparison.png`; the comparison utility is ready to include AUTO/LOCA CSVs when those tasks land.
 - Re-ran `uv run pytest` successfully.
+
+Correction after plot review:
+- Diagnosed the poor plotted loci as spurious roots of the explicit eigenvector augmented system caused by ill-conditioned physical-coordinate eigenvectors.
+- Switched the Python production workflow to a characteristic-polynomial Hopf condition evaluated from the physical ODE Jacobian, while retaining log-state/log-w equilibrium conditioning.
+- Regenerated CSV/PNG artifacts; the Python loci now track the Table II reference curves closely over `T=190--240 K` (max relative fit deviation under 1% on the curated grid).
+- Added a smoke-test regression guard against this mismatch.
 <!-- SECTION:FINAL_SUMMARY:END -->
