@@ -8,6 +8,16 @@ from .residuals import (
     make_equilibrium_residual,
     physical_state_from_log_coordinates,
 )
+from .stability import (
+    EigenvalueClassification,
+    HopfCrossing,
+    canonical_eigenvalues,
+    classify_eigenvalues,
+    detect_hopf_crossings,
+    derive_physical_jacobian_expressions,
+    physical_eigenvalues,
+    physical_jacobian,
+)
 
 __all__ = [
     "approximate_equilibrium",
@@ -20,6 +30,14 @@ __all__ = [
     "log_coordinates_from_physical_state",
     "make_equilibrium_residual",
     "physical_state_from_log_coordinates",
+    "EigenvalueClassification",
+    "HopfCrossing",
+    "canonical_eigenvalues",
+    "classify_eigenvalues",
+    "detect_hopf_crossings",
+    "derive_physical_jacobian_expressions",
+    "physical_eigenvalues",
+    "physical_jacobian",
     "main",
 ]
 
