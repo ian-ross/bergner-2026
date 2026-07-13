@@ -1,10 +1,11 @@
 ---
 id: TASK-019
 title: Create Episode 5 scaffold for Figure 2 eigenvalue reproduction
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:15'
+updated_date: '2026-07-13 11:16'
 labels:
   - episode-005
   - figure2
