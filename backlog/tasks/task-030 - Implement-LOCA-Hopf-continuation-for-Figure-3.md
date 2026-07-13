@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 21:00'
+updated_date: '2026-07-13 21:30'
 labels: []
 dependencies:
   - TASK-025
@@ -56,4 +56,9 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 - Build/compile verification passes, but runtime native Hopf execution is blocked by the installed `/opt/Trilinos` build: `LOCA::LAPACK::computeComplex()` throws `TEUCHOS_COMPLEX must be enabled for complex support`. This is a real environment/toolchain prerequisite for LOCA Moore-Spence Hopf with the LAPACK group, not a Python-code issue.
 - Removed the previously generated fallback LOCA outputs so the repository does not contain misleading non-native LOCA artifacts.
 - Verification: `uv run pytest -q` passes (86 passed, 1 skipped for missing Teuchos complex support, 4 existing overflow RuntimeWarnings). TASK-030 remains In Progress because AC #2/#3/#4 require a complex-enabled Trilinos run to produce and verify actual native LOCA loci.
+
+- Retried after the user noted `/opt/Trilinos` may have complex support. The installed headers still show `/* #undef HAVE_TEUCHOS_COMPLEX */`, and the stock `LOCA::LAPACK::Group::computeComplex()` still throws the Teuchos complex-support error.
+- Added a C++ `RealHopfLAPACKGroup` override that implements the Moore-Spence complex matrix-vector and inverse operations with real 2n x 2n dense LAPACK-style algebra, avoiding the stock Teuchos-complex-dependent `LOCA::LAPACK::computeComplex()` path. Also added a physical-state Hopf problem interface so the native Hopf equations use the physical ODE residual/Jacobian.
+- The program now compiles and reaches native `LOCA::Hopf::MooreSpence::ExtendedGroup` without the Teuchos complex error, but the Moore-Spence nonlinear solve still does not converge at the T=230/T=229 Figure 3 seeds. I did not restore any Python-corrector fallback or generate misleading LOCA outputs.
+- Verification: `uv run pytest -q` passes (87 passed; 3 existing overflow RuntimeWarnings). TASK-030 remains In Progress; actual native LOCA locus convergence is still unresolved.
 <!-- SECTION:NOTES:END -->
