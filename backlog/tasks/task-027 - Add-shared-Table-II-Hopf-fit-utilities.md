@@ -4,6 +4,7 @@ title: Add shared Table II Hopf fit utilities
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:04'
+updated_date: '2026-07-13 16:06'
 labels: []
 dependencies: []
 ---
@@ -21,3 +22,13 @@ Implement reusable package utilities for the Bergner & Spichtinger (2026) Table 
 - [ ] #3 Figure 3 planning docs or package docstrings clearly state that these are paper fit references, not backend-computed Hopf loci.
 - [ ] #4 The utilities are available to episode plotting/comparison scripts without duplicating coefficient literals there.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inspect existing approximation utilities and package exports to choose the least disruptive location for Table II Hopf fit code.
+2. Add documented Table II coefficients for w_a(T) and w_b(T), preserving units and naming the paper branches clearly; expose scalar and NumPy-array friendly functions returning m/s.
+3. Add tests for coefficient values, representative temperatures including T=230 K, positivity over 190--240 K, and array/scalar behavior.
+4. Update package exports or imports only if consistent with existing package API style.
+5. Add a short documentation note or docstring warning that these functions are paper fit references, not numerical continuation outputs.
+<!-- SECTION:PLAN:END -->
