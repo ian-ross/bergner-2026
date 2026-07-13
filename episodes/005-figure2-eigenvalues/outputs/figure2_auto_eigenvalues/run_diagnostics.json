@@ -1,0 +1,214 @@
+{
+  "created_utc": "2026-07-13T12:13:07.269233+00:00",
+  "parameters": {
+    "p_Pa": 30000.0,
+    "p_hPa": 300.0,
+    "T_K": 230.0,
+    "F": 1.0,
+    "N_a_m3": 10000000000.0,
+    "N_a_cm3": 10000.0,
+    "w_min_m_s": 0.0005,
+    "w_max_m_s": 2.0
+  },
+  "auto": {
+    "problem_template": "episodes/005-figure2-eigenvalues/auto/bs2026_figure2_template.f90",
+    "constants_template": "episodes/005-figure2-eigenvalues/auto/c.bs2026_figure2",
+    "shared_fortran_sources": [
+      "auto/src/bs2026_constants.f90",
+      "auto/src/bs2026_model.f90"
+    ],
+    "state_coordinates": "log(n), log(q), s",
+    "continuation_parameter": "log_w = natural log(w_m_s)",
+    "b_file_parser": "whitespace-delimited AUTO rows with BR, PT, TY, LAB followed by log_w, L2-NORM, log_n, log_q, and s",
+    "native_eigenvalue_investigation": [
+      "AUTO-07p IPS=1 equilibrium continuation exposes branch labels and bifurcation/stability diagnostics in b./s./d. outputs, but this setup does not directly emit the desired physical ODE Jacobian spectrum d(dn/dt,dq/dt,ds/dt)/d(n,q,s) as normalized numeric columns.",
+      "AUTO bifurcation detection would operate on the continuation problem in log-state coordinates and solver scaling; Figure 2 needs physical-coordinate ODE eigenvalues comparable to the Python reproduction.",
+      "Adding a Fortran/LAPACK physical eigensolver to the AUTO problem would duplicate the already verified shared Python analytic Jacobian and add toolchain complexity, so production uses labeled Python post-processing of independently generated AUTO equilibria."
+    ]
+  },
+  "jacobian": {
+    "matrix": "d(dn/dt,dq/dt,ds/dt)/d(n,q,s) in physical ODE state coordinates",
+    "method": "analytic SymPy-derived formula implemented by bergner_spichtinger_2026.stability.physical_jacobian",
+    "evaporation": "disabled; discontinuous evaporation term is not included in the physical Jacobian"
+  },
+  "eigenvalues": {
+    "source": "python_analytic_postprocessed_from_auto_equilibria",
+    "source_clarification": "Eigenvalues are not AUTO-native; they are Python analytic physical-Jacobian eigenvalues post-processed from AUTO equilibrium states parsed from b.*.",
+    "sorting_tolerance_imag": 1e-10,
+    "stability_real_tolerance": 1e-10,
+    "sorting_convention": "complex pair as positive-imaginary, negative-imaginary, remaining real eigenvalue; otherwise descending real part",
+    "plot_branch_tracking": "tracked_lambda*_real/imag columns use adjacent minimum-distance matching in the complex plane",
+    "hopf_estimator": "linear interpolation of Re(complex-pair eigenvalues) in log_w",
+    "paper_landmark_w_m_s": [
+      0.048,
+      0.77
+    ],
+    "paper_landmark_documented_tolerance_m_s": 0.01
+  },
+  "runs": [
+    {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Raw AUTO branch continued beyond requested log_w upper endpoint before stopping; normalized CSV is clipped to the requested range."
+      ],
+      "row_count": 411,
+      "raw_row_count": 1200,
+      "log_w_min": -7.6009024595,
+      "log_w_max": 0.69314718071,
+      "w_min_m_s": 0.000500000000021041,
+      "w_max_m_s": 2.0000000003001093,
+      "raw_log_w_min": -7.6009024595,
+      "raw_log_w_max": 16.668884852,
+      "labels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "type_codes": [
+        -4,
+        4,
+        9
+      ],
+      "run_name": "bs2026_figure2_T230K",
+      "run_dir": "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/raw/bs2026_figure2_T230K",
+      "command": [
+        "/usr/local/bin/auto"
+      ],
+      "returncode": 0,
+      "raw_outputs": [
+        "auto_stderr.txt",
+        "auto_stdout.txt",
+        "b.bs2026_figure2_T230K",
+        "bs2026_constants.f90",
+        "bs2026_figure2_T230K.auto",
+        "bs2026_figure2_T230K.f90",
+        "bs2026_model.f90",
+        "c.bs2026_figure2_T230K",
+        "d.bs2026_figure2_T230K",
+        "s.bs2026_figure2_T230K"
+      ],
+      "input_files": [
+        "raw/bs2026_figure2_T230K/bs2026_figure2_T230K.f90",
+        "raw/bs2026_figure2_T230K/c.bs2026_figure2_T230K",
+        "raw/bs2026_figure2_T230K/bs2026_figure2_T230K.auto"
+      ],
+      "raw_auto_output_paths": [
+        "raw/bs2026_figure2_T230K/auto_stderr.txt",
+        "raw/bs2026_figure2_T230K/auto_stdout.txt",
+        "raw/bs2026_figure2_T230K/b.bs2026_figure2_T230K",
+        "raw/bs2026_figure2_T230K/bs2026_constants.f90",
+        "raw/bs2026_figure2_T230K/bs2026_figure2_T230K.auto",
+        "raw/bs2026_figure2_T230K/bs2026_figure2_T230K.f90",
+        "raw/bs2026_figure2_T230K/bs2026_model.f90",
+        "raw/bs2026_figure2_T230K/c.bs2026_figure2_T230K",
+        "raw/bs2026_figure2_T230K/d.bs2026_figure2_T230K",
+        "raw/bs2026_figure2_T230K/s.bs2026_figure2_T230K"
+      ],
+      "branch_id": "figure2_T230K",
+      "schema_version": "figure2-auto-eigenvalue-schema-v1"
+    }
+  ],
+  "normalized_schema_columns": [
+    "backend",
+    "schema_version",
+    "branch_id",
+    "point_index",
+    "T_K",
+    "p_Pa",
+    "F",
+    "N_a_m3",
+    "N_a_cm3",
+    "log_w",
+    "w_m_s",
+    "log_n",
+    "log_q",
+    "n",
+    "q",
+    "s",
+    "continuation_residual_norm",
+    "physical_residual_norm",
+    "scaled_physical_residual_norm",
+    "converged",
+    "iterations",
+    "message",
+    "eigen_index",
+    "eigenvalue_real",
+    "eigenvalue_imag",
+    "eigenvalue_regime",
+    "stability_classification",
+    "jacobian_coordinate_system",
+    "jacobian_method",
+    "eigenvalue_source",
+    "eigenvalue_sorting",
+    "source_file",
+    "auto_branch",
+    "auto_point",
+    "auto_type_code",
+    "auto_label",
+    "auto_l2_norm"
+  ],
+  "outputs": [
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/auto_figure2_eigenvalues.csv",
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/auto_figure2_branch_points.csv",
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/auto_figure2_hopf_crossings.csv",
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/auto_figure2_hopf_landmark_comparison.csv",
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/auto_figure2_summary.json",
+    "episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/run_metadata.json"
+  ],
+  "commands": {
+    "invocation": "/home/iross/research/ongoing/ai-class/code/bergner-2026/.venv/bin/python3 episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py --clean",
+    "recommended": "uv run python episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py"
+  },
+  "software": {
+    "python": "3.11.15",
+    "platform": "Linux-7.1.3-1-default-x86_64-with-glibc2.43",
+    "package_version": "0.1.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "tool_versions": {
+      "auto_path": "/usr/local/bin/auto",
+      "auto_exists": true,
+      "auto_dir": "/usr/local/lib64/auto-07p",
+      "auto_version_label": "auto-07p",
+      "auto_launcher_head": [
+        "#! /bin/sh",
+        "if [ -z \"$AUTO_DIR\" ]; then",
+        "    bindir=`dirname \"$0\"`",
+        "    AUTO_DIR=/usr/local/lib64/auto-07p",
+        "    # don't export AUTO_DIR: Python code will use more reliable absolute path",
+        "fi",
+        "",
+        "if test \"`uname`\" = \"Darwin\"; then"
+      ],
+      "gfortran": {
+        "command": [
+          "gfortran",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "GNU Fortran (SUSE Linux) 15.3.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+        "stderr": ""
+      }
+    }
+  }
+}

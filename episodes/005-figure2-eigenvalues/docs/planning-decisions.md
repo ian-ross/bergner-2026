@@ -92,6 +92,16 @@ Curated per-backend eigenvalue rows should include, at minimum:
 
 Metadata should record command provenance, package/backend versions, solver tolerances, eigenvalue sorting conventions, matrix definitions, and known caveats.
 
+## AUTO Figure 2 implementation decision
+
+TASK-022 implemented the AUTO path as an independent AUTO-07p equilibrium continuation followed by labeled Python analytic eigenvalue post-processing of the AUTO equilibria.
+
+Native AUTO stability/eigenvalue output was investigated at the run-file and artifact level. The Episode 5 AUTO problem uses `IPS=1` equilibrium continuation in log-state coordinates with `PAR(1)=log_w`; AUTO produces the expected `b.*`, `s.*`, and `d.*` branch/stability artifacts and labels, but this setup does not directly emit normalized columns for the physical ODE Jacobian spectrum `d(dn/dt,dq/dt,ds/dt)/d(n,q,s)`. AUTO bifurcation/stability diagnostics are tied to the continuation problem formulation and solver coordinates/scaling, whereas Figure 2 comparison requires eigenvalues in physical `(n, q, s)` units.
+
+The production path therefore uses AUTO only to generate the equilibrium branch, then evaluates the already verified shared Python physical-Jacobian eigenvalue routine at each parsed AUTO point. The curated AUTO eigenvalue metadata labels this as `python_analytic_postprocessed_from_auto_equilibria`, not AUTO-native eigenvalues. This preserves backend independence for branch generation while avoiding an unverified duplicate Fortran/LAPACK physical eigensolver inside the AUTO template.
+
+Current curated outputs live under `episodes/005-figure2-eigenvalues/outputs/figure2_auto_eigenvalues/`. The generated branch covers `w = 0.0005--2.0 m s^-1` with 411 normalized points; AUTO raw continuation overran the upper endpoint before stopping, so normalized CSVs are clipped to the requested Figure 2 interval. Post-processed Hopf estimates from the AUTO equilibria are approximately `w = 0.04853` and `w = 0.76864 m s^-1`, within the documented Figure 2 landmark tolerance.
+
 ## Known open items
 
 - Confirm the exact Figure 2 panel encoding and whether the paper plots all eigenvalue real parts, selected branches, or derived timescales.

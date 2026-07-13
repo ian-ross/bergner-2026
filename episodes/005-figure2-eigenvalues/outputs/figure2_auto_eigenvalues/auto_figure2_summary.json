@@ -1,0 +1,55 @@
+{
+  "backend": "auto",
+  "branch_id": "figure2_T230K",
+  "point_count": 411,
+  "finite_converged_point_count": 411,
+  "w_min_m_s": 0.000500000000021041,
+  "w_max_m_s": 2.0000000003001093,
+  "max_continuation_residual_norm": 9.134925998657001e-10,
+  "max_scaled_physical_residual_norm": 3.562475702329737e-11,
+  "all_converged": true,
+  "regime_counts": {
+    "complex_pair": 404,
+    "three_real": 7
+  },
+  "stability_counts": {
+    "stable": 275,
+    "unstable": 136
+  },
+  "hopf_crossings": [
+    {
+      "log_w": -3.025555911318135,
+      "w": 0.0485308349292831,
+      "left_index": 226,
+      "right_index": 227,
+      "real_part_left": -1.3274579373871438e-06,
+      "real_part_right": 5.39947041393199e-06
+    },
+    {
+      "log_w": -0.2631329561825709,
+      "w": 0.7686396951174689,
+      "left_index": 362,
+      "right_index": 363,
+      "real_part_left": 8.398347713758675e-06,
+      "real_part_right": -5.522330651105229e-06
+    }
+  ],
+  "hopf_landmark_comparison": [
+    {
+      "expected_w_m_s": 0.048,
+      "observed_w_m_s": 0.0485308349292831,
+      "abs_error_m_s": 0.0005308349292830958,
+      "within_documented_tolerance": true,
+      "documented_tolerance_m_s": 0.01,
+      "crossing_index": 0
+    },
+    {
+      "expected_w_m_s": 0.77,
+      "observed_w_m_s": 0.7686396951174689,
+      "abs_error_m_s": 0.0013603048825311381,
+      "within_documented_tolerance": true,
+      "documented_tolerance_m_s": 0.01,
+      "crossing_index": 1
+    }
+  ]
+}

@@ -7,11 +7,10 @@ This episode shifts from Figure 1 branch reproduction to the linear stability in
 ## Contents
 
 - `docs/planning-decisions.md` — Episode 5 scope, agreed Figure 2 parameter set, backend responsibilities, eigenvalue semantics, and open implementation questions.
-- `scripts/` — future Python orchestration, normalization, comparison, and plotting scripts for Figure 2 eigenvalue runs.
-- `outputs/` — curated Python, AUTO, LOCA, and cross-backend comparison artifacts produced by later tasks.
+- `scripts/` — Python and AUTO orchestration, normalization, comparison, and plotting scripts for Figure 2 eigenvalue runs.
+- `auto/` — Episode-local AUTO Figure 2 problem and constants templates.
+- `outputs/` — curated Python, AUTO, LOCA, and cross-backend comparison artifacts.
 - `notebooks/` — exploratory notebooks for eigenvalue diagnostics, source inspection, and backend comparison.
-
-Empty directories are retained with `.gitkeep` placeholders until implementation tasks add concrete files.
 
 ## Initial Figure 2 reproduction target
 
@@ -46,7 +45,7 @@ Later implementation tasks should replace these placeholders with concrete comma
 uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py
 
 # Generate/normalize AUTO Figure 2 outputs and eigenvalue metadata.
-# uv run python episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py
+uv run python episodes/005-figure2-eigenvalues/scripts/run_auto_figure2_eigenvalues.py
 
 # Generate/normalize LOCA Figure 2 outputs with backend-side physical eigenvalues.
 # uv run python episodes/005-figure2-eigenvalues/scripts/run_loca_figure2_eigenvalues.py
@@ -58,7 +57,7 @@ uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_e
 Expected curated output groups are provisionally:
 
 - `outputs/figure2_python_eigenvalues/` — implemented Python-native branch/eigenvalue CSVs, Hopf crossing tables, run metadata, and draft Figure 2-style plot.
-- `outputs/figure2_auto_eigenvalues/`
+- `outputs/figure2_auto_eigenvalues/` — implemented AUTO-generated equilibrium branch, Python-postprocessed physical eigenvalue CSVs, Hopf crossing tables, raw AUTO run files, diagnostics, and metadata.
 - `outputs/figure2_loca_eigenvalues/`
 - `outputs/figure2_backend_comparison/`
 
