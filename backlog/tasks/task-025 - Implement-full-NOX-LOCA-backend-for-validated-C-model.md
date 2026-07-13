@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 14:48'
-updated_date: '2026-07-13 19:45'
+updated_date: '2026-07-13 19:51'
 labels:
   - backend
   - loca
@@ -25,10 +25,10 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 NOX/LOCA residual, parameter-continuation, and solver interfaces are implemented for the validated small model without changing the physical equations or curated output schema semantics.
-- [ ] #2 The full NOX/LOCA backend reproduces at least one existing Python/AUTO/Trilinos-side C++ curated continuation/eigenvalue artifact within documented tolerances.
-- [ ] #3 Documentation clearly compares the lightweight Trilinos-side C++ backend with the full NOX/LOCA backend, including API complexity, diagnostics, and what LOCA adds for this problem.
-- [ ] #4 Tests or opt-in smoke checks cover build availability, residual/Jacobian consistency, and normalized output compatibility while skipping cleanly when NOX/LOCA dependencies are unavailable.
+- [x] #1 NOX/LOCA residual, parameter-continuation, and solver interfaces are implemented for the validated small model without changing the physical equations or curated output schema semantics.
+- [x] #2 The full NOX/LOCA backend reproduces at least one existing Python/AUTO/Trilinos-side C++ curated continuation/eigenvalue artifact within documented tolerances.
+- [x] #3 Documentation clearly compares the lightweight Trilinos-side C++ backend with the full NOX/LOCA backend, including API complexity, diagnostics, and what LOCA adds for this problem.
+- [x] #4 Tests or opt-in smoke checks cover build availability, residual/Jacobian consistency, and normalized output compatibility while skipping cleanly when NOX/LOCA dependencies are unavailable.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -41,3 +41,13 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 5. Add residual/Jacobian consistency checks and opt-in smoke tests that skip cleanly when NOX/LOCA dependencies are unavailable.
 6. Document what the full NOX/LOCA backend adds relative to the lightweight C++ backend, including API complexity, diagnostics, and remaining limitations for Hopf continuation.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added `NoxLocaProblem`, a dense `LOCA::LAPACK::Interface` adapter for the validated C++ residual/Jacobian with `LOCA::ParameterVector` plumbing for `log_w`, `T`, `p`, `F`, `N_a`, and `dz`.
+- Added CLI commands `nox-loca-smoke` and `nox-loca-continue`; the latter preserves normalized Figure 1 branch schema via `run_nox_loca_figure1.py` and labels rows with `nox_loca_lapack_parameter_continuation`.
+- Documented lightweight-vs-NOX/LOCA backend tradeoffs in `docs/NOX_LOCA_BACKEND.md` and linked it from Episode 004.
+- Added opt-in pytest coverage for build availability, callback smoke checks, short continuation equivalence against the existing lightweight C++ artifact, and normalized schema compatibility.
+- Verification: `uv run pytest -q` (85 passed, 3 existing overflow warnings in Hopf/Figure 2 paths).
+<!-- SECTION:NOTES:END -->
