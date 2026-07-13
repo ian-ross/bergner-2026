@@ -4,6 +4,7 @@ title: Create Episode 006 scaffold and Figure 3 planning docs
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:04'
+updated_date: '2026-07-13 16:06'
 labels: []
 dependencies: []
 ---
@@ -21,3 +22,13 @@ Create the Episode 006 workspace for reproducing Bergner & Spichtinger (2026) Fi
 - [ ] #3 The episode README links to relevant prior episodes and shared infrastructure without duplicating backend-specific implementation details.
 - [ ] #4 No episode-specific artifacts are placed in top-level scripts/notebooks/outputs directories.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create episodes/006-figure3-hopf-bifurcation/ with README, docs/, scripts/, notebooks/, outputs/, and any placeholder files needed for empty directories.
+2. Draft the episode README with the Figure 3 goal, target parameters p=300 hPa and F=1, temperature range 190--240 K, backend strategy, and expected workflow commands at a high level.
+3. Draft docs/planning-decisions.md recording agreed decisions: true bifurcation continuation rather than scan/interpolation, Python augmented Hopf system, AUTO native Hopf continuation, LOCA dependency on TASK-025, Table II fit references, and output contracts.
+4. Link prior episodes and reusable infrastructure: Figure 2 eigenvalue utilities, AUTO templates, current C++ backend, docs/REPRODUCTION_NOTES.md, and Table II source notes.
+5. Verify the scaffold respects repository organization rules and does not create top-level episode-specific artifacts.
+<!-- SECTION:PLAN:END -->
