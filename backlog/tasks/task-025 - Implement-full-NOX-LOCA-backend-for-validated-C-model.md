@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 14:48'
-updated_date: '2026-07-13 20:24'
+updated_date: '2026-07-13 20:25'
 labels:
   - backend
   - loca
@@ -25,10 +25,10 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 NOX/LOCA residual, parameter-continuation, and solver interfaces are implemented for the validated small model without changing the physical equations or curated output schema semantics.
-- [x] #2 The full NOX/LOCA backend reproduces at least one existing Python/AUTO/Trilinos-side C++ curated continuation/eigenvalue artifact within documented tolerances.
-- [x] #3 Documentation clearly compares the lightweight Trilinos-side C++ backend with the full NOX/LOCA backend, including API complexity, diagnostics, and what LOCA adds for this problem.
-- [x] #4 Tests or opt-in smoke checks cover build availability, residual/Jacobian consistency, and normalized output compatibility while skipping cleanly when NOX/LOCA dependencies are unavailable.
+- [ ] #1 NOX/LOCA residual, parameter-continuation, and solver interfaces are implemented for the validated small model without changing the physical equations or curated output schema semantics.
+- [ ] #2 The full NOX/LOCA backend reproduces at least one existing Python/AUTO/Trilinos-side C++ curated continuation/eigenvalue artifact within documented tolerances.
+- [ ] #3 Documentation clearly compares the lightweight Trilinos-side C++ backend with the full NOX/LOCA backend, including API complexity, diagnostics, and what LOCA adds for this problem.
+- [ ] #4 Tests or opt-in smoke checks cover build availability, residual/Jacobian consistency, and normalized output compatibility while skipping cleanly when NOX/LOCA dependencies are unavailable.
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -53,19 +53,3 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 
 - Correction: user correctly identified that `nox-loca-continue` only exercised the LOCA LAPACK callback once and then reused the lightweight small-system `newton_correct` continuation. This does not satisfy the full NOX/LOCA continuation requirement. Reopening TASK-025 to replace or clearly demote that path and implement an actual NOX/LOCA solver/stepper-backed path.
 <!-- SECTION:NOTES:END -->
-
-## Final Summary
-
-<!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Implemented the TASK-025 NOX/LOCA backend prerequisite for the validated C++ model.
-
-Changes:
-- Added `loca/include/bergner_spichtinger_2026_loca/nox_loca_backend.hpp` with a dense `LOCA::LAPACK::Interface` adapter over the existing residual and Sacado Jacobian, including parameter plumbing for `log_w`, `T`, `p`, `F`, `N_a`, and `dz`.
-- Extended `bs2026_loca_model` with `nox-loca-smoke` and `nox-loca-continue` commands while preserving the existing lightweight `continue` behavior.
-- Added `episodes/004-figure1-loca-continuation/scripts/run_nox_loca_figure1.py` plus reusable backend-command/backend-label options in the existing Figure 1 runner so NOX/LOCA rows keep the backend-neutral schema.
-- Documented backend differences, diagnostics, skip conditions, validation expectations, and TASK-030 boundaries in `docs/NOX_LOCA_BACKEND.md`; linked the workflow from the Episode 004 README.
-- Added pytest coverage for source/API presence, callback smoke checks, short continuation equivalence against the existing lightweight C++ continuation artifact, and normalized output compatibility.
-
-Tests:
-- `uv run pytest -q` → 85 passed, with 3 pre-existing RuntimeWarning overflow warnings in Figure 2/Hopf paths.
-<!-- SECTION:FINAL_SUMMARY:END -->
