@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 14:30'
+updated_date: '2026-07-13 14:35'
 labels:
   - episode-005
   - figure2
@@ -41,3 +41,13 @@ Combine Python, AUTO, and LOCA Figure 2 eigenvalue outputs into curated backend-
 5. Generate the headline Figure 2 reproduction plot with real and imaginary panels, backend overlays, Hopf markers, and optional digitized paper markers.
 6. Update the Episode 5 README with final commands, artifacts, backend decisions, limitations, and run repository tests.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added `episodes/005-figure2-eigenvalues/scripts/compare_figure2_eigenvalues.py` to align Python/AUTO/LOCA Figure 2 eigenvalue outputs on a documented canonical log-w grid while preserving raw backend grids.
+- Generated curated integrated outputs under `episodes/005-figure2-eigenvalues/outputs/figure2_backend_comparison/`, including aligned eigenvalues, pairwise differences, Hopf estimates, three-real intervals, summary/metadata JSON, and headline reproduction PNG.
+- Explicitly deferred paper digitization in metadata/README with uncertainty rationale.
+- Added backend-comparison tests and updated Episode 5 README final commands/artifact notes.
+- Verification: `uv run pytest -q` passed (72 passed, 1 existing overflow warning in Python Figure 2 smoke test).
+<!-- SECTION:NOTES:END -->
