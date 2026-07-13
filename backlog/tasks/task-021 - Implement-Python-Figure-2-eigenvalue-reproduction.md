@@ -1,11 +1,11 @@
 ---
 id: TASK-021
 title: Implement Python Figure 2 eigenvalue reproduction
-status: Done
+status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:53'
+updated_date: '2026-07-13 11:59'
 labels:
   - episode-005
   - figure2
@@ -49,6 +49,8 @@ Started TASK-021: moved to In Progress and assigned to @pi. Reviewing existing i
 - Generated curated outputs in episodes/005-figure2-eigenvalues/outputs/figure2_python_eigenvalues/: long eigenvalue CSV, wide branch-point CSV, Hopf crossing tables, summary JSON, metadata JSON, and draft plot.
 - Added tests/test_episode5_python_figure2.py smoke coverage for schema, dense finite converged point count, Hopf landmark tolerances, metadata, and plot existence.
 - Verification: uv run python episodes/005-figure2-eigenvalues/scripts/generate_python_figure2_eigenvalues.py; uv run pytest tests/test_episode5_python_figure2.py; uv run pytest (60 passed, one existing/runtime overflow warning during root exploration).
+
+- User review identified a likely plotting artifact: connecting per-point canonical eigenvalue labels can create a spurious vertical/branch-jump segment when the spectrum changes identity near a real/complex transition. Reopening task to diagnose and patch plot semantics while preserving canonical CSV output.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
