@@ -1,10 +1,11 @@
 ---
 id: TASK-030
 title: Implement LOCA Hopf continuation for Figure 3
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-13 20:33'
 labels: []
 dependencies:
   - TASK-025
