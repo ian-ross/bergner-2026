@@ -1,11 +1,11 @@
 ---
 id: TASK-030
 title: Implement LOCA Hopf continuation for Figure 3
-status: Done
+status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 20:43'
+updated_date: '2026-07-13 20:49'
 labels: []
 dependencies:
   - TASK-025
@@ -21,7 +21,7 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 The task explicitly depends on TASK-025 or documents any remaining NOX/LOCA backend limitations before attempting Hopf tracking.
-- [x] #2 LOCA workflows detect or seed the two T=230 K Hopf points and continue the Hopf loci in (log_w, T) over the Figure 3 temperature domain.
+- [ ] #2 LOCA workflows detect or seed the two T=230 K Hopf points and continue the Hopf loci in (log_w, T) over the Figure 3 temperature domain.
 - [x] #3 Normalized LOCA outputs conform to the Episode 006 Hopf-locus schema and include backend diagnostics, continuation settings, convergence status, and raw/derived artifact provenance.
 - [x] #4 Tests or opt-in smoke checks verify both LOCA Hopf branches are present, match T=230 K landmarks within documented tolerance, and are compatible with integrated backend comparison scripts.
 <!-- AC:END -->
@@ -49,6 +49,8 @@ After the full NOX/LOCA backend prerequisite is validated, use native LOCA bifur
 - Added `tests/test_episode6_loca_hopf.py` covering the schema contract, T=230 K landmarks, plot generation, skip-build behavior, and opt-in LOCA seed smoke diagnostics.
 - Generated curated outputs under `episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/`.
 - Verification: `uv run pytest -q` passed (88 passed; 4 existing overflow RuntimeWarnings in Hopf/Figure 2 paths).
+
+- User correctly rejected the limitation-labeled fallback: TASK-030 requires native LOCA bifurcation/Hopf continuation, not Python/shared characteristic-corrector continuation. Reopening to implement a pure C++ NOX/LOCA Hopf continuation path and remove/replace fallback claims.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
