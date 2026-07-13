@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:44'
+updated_date: '2026-07-13 16:48'
 labels: []
 dependencies:
   - TASK-026
@@ -45,6 +45,11 @@ Build reusable Python augmented Hopf continuation infrastructure and use it to c
 - Generated curated outputs under `episodes/006-figure3-hopf-bifurcation/outputs/figure3_python_hopf_loci/` with loci, seed rows, diagnostics, and metadata.
 - Added regression/smoke tests for packing/phase normalization, T=230 K landmark agreement, output schema, and 190--240 K domain coverage.
 - Verification: `uv run pytest` (80 passed; 3 existing/expected overflow warnings from solver probes).
+
+- Added `scripts/plot_figure3_hopf_loci.py` for Episode 5-style per-backend Figure 3 plots and integrated backend-comparison plots.
+- Updated the Python generator to emit `python_figure3_hopf_loci.png` next to Python loci CSVs and `outputs/figure3_backend_comparison/figure3_hopf_backend_comparison.png` overlaying available backend loci with Table II reference fits.
+- Extended Episode 006 smoke test to assert plot artifacts are produced.
+- Verification after plot addition: `uv run pytest` (80 passed; 3 expected solver-probe overflow warnings).
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
@@ -65,4 +70,9 @@ Tests:
 
 Notes/Risks:
 - The Python branch labels are seed-based (`lower_hopf` from the lower Episode 005 crossing and `upper_hopf` from the upper crossing); Table II values are included as references, not used as continuation constraints.
+
+Follow-up plotting addition:
+- Added reusable Figure 3 plotting utility for method-specific and integrated comparison figures.
+- Python generation now writes `python_figure3_hopf_loci.png` and the current integrated comparison figure `figure3_hopf_backend_comparison.png`; the comparison utility is ready to include AUTO/LOCA CSVs when those tasks land.
+- Re-ran `uv run pytest` successfully.
 <!-- SECTION:FINAL_SUMMARY:END -->
