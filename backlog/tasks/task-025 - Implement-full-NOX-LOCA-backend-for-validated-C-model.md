@@ -1,11 +1,11 @@
 ---
 id: TASK-025
 title: Implement full NOX/LOCA backend for validated C++ model
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 14:48'
-updated_date: '2026-07-13 19:51'
+updated_date: '2026-07-13 19:52'
 labels:
   - backend
   - loca
@@ -51,3 +51,19 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 - Added opt-in pytest coverage for build availability, callback smoke checks, short continuation equivalence against the existing lightweight C++ artifact, and normalized schema compatibility.
 - Verification: `uv run pytest -q` (85 passed, 3 existing overflow warnings in Hopf/Figure 2 paths).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-025 NOX/LOCA backend prerequisite for the validated C++ model.
+
+Changes:
+- Added `loca/include/bergner_spichtinger_2026_loca/nox_loca_backend.hpp` with a dense `LOCA::LAPACK::Interface` adapter over the existing residual and Sacado Jacobian, including parameter plumbing for `log_w`, `T`, `p`, `F`, `N_a`, and `dz`.
+- Extended `bs2026_loca_model` with `nox-loca-smoke` and `nox-loca-continue` commands while preserving the existing lightweight `continue` behavior.
+- Added `episodes/004-figure1-loca-continuation/scripts/run_nox_loca_figure1.py` plus reusable backend-command/backend-label options in the existing Figure 1 runner so NOX/LOCA rows keep the backend-neutral schema.
+- Documented backend differences, diagnostics, skip conditions, validation expectations, and TASK-030 boundaries in `docs/NOX_LOCA_BACKEND.md`; linked the workflow from the Episode 004 README.
+- Added pytest coverage for source/API presence, callback smoke checks, short continuation equivalence against the existing lightweight C++ continuation artifact, and normalized output compatibility.
+
+Tests:
+- `uv run pytest -q` → 85 passed, with 3 pre-existing RuntimeWarning overflow warnings in Figure 2/Hopf paths.
+<!-- SECTION:FINAL_SUMMARY:END -->
