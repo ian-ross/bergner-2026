@@ -4,6 +4,7 @@ title: Create Episode 5 scaffold for Figure 2 eigenvalue reproduction
 status: To Do
 assignee: []
 created_date: '2026-07-13 11:14'
+updated_date: '2026-07-13 11:15'
 labels:
   - episode-005
   - figure2
@@ -25,3 +26,13 @@ Create the episode scaffold and planning notes for reproducing Bergner & Spichti
 - [ ] #3 Planning notes state that Python, AUTO, and LOCA generate independent equilibrium/eigenvalue outputs for comparison.
 - [ ] #4 Planning notes state that LOCA must compute physical Jacobian/eigenvalues backend-side using Sacado plus Teuchos/LAPACK where available, while AUTO may fall back to Python analytic eigenvalues after documenting native options.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Create episodes/005-figure2-eigenvalues/ with README plus docs/, scripts/, outputs/, and notebooks/ placeholders following existing episode conventions.
+2. Draft planning notes summarizing the Figure 2 target parameters, paper range, N_a assumption, and physical-Jacobian scope decisions from the grill session.
+3. Cross-reference upstream Figure 1 Python/AUTO/LOCA artifacts and reusable backend directories that Episode 5 will depend on.
+4. Document backend responsibilities: independent branch generation for Python/AUTO/LOCA, strict LOCA backend-side physical eigenvalues, and documented AUTO fallback policy.
+5. Add minimal reproduction-command placeholders and known-open-items section so later tasks can fill in concrete commands and outputs.
+<!-- SECTION:PLAN:END -->
