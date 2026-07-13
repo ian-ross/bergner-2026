@@ -1,10 +1,11 @@
 ---
 id: TASK-022
 title: Implement AUTO Figure 2 continuation and eigenvalue workflow
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@agent'
 created_date: '2026-07-13 11:14'
-updated_date: '2026-07-13 11:15'
+updated_date: '2026-07-13 12:03'
 labels:
   - episode-005
   - figure2
