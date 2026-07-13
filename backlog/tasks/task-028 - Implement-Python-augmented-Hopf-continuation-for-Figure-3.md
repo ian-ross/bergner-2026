@@ -1,7 +1,7 @@
 ---
 id: TASK-028
 title: Implement Python augmented Hopf continuation for Figure 3
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
