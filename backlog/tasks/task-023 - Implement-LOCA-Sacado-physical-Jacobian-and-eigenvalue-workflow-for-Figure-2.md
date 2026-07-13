@@ -1,7 +1,7 @@
 ---
 id: TASK-023
 title: Implement LOCA Sacado physical Jacobian and eigenvalue workflow for Figure 2
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 11:14'
@@ -52,3 +52,21 @@ Extend the LOCA-side C++ executable so transformed-coordinate continuation can s
 - Added Episode 5 LOCA Figure 2 orchestration script that writes dense branch/eigenvalue outputs plus a separate physical-Jacobian diagnostics CSV.
 - Added tests comparing C++ RHS/Jacobian/eigenvalues to Python references and smoke-testing 400-point LOCA Figure 2 output.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the LOCA-side physical stability workflow for Figure 2.
+
+Changes:
+- Split the C++ model into a reusable physical vector field and the existing log-coordinate continuation residual.
+- Added Sacado differentiation of the physical ODE Jacobian with respect to (n, q, s), exposed through CLI diagnostics and continuation raw output.
+- Added Teuchos::LAPACK GEEV eigenvalue computation with canonical ordering, eigenvalue regime, and stability classification. No direct dgeev fallback was required for the configured Trilinos build.
+- Added an Episode 5 LOCA orchestration script that generates at least 400 finite converged Figure 2 points over w=0.0005--2.0 m s^-1, primary branch/eigenvalue CSVs, metadata, summary JSON, and a separate physical-Jacobian diagnostics CSV.
+- Added C++/Python comparison tests for physical RHS, Jacobian, and eigenvalues, plus smoke tests for the dense LOCA Figure 2 output contract.
+
+Tests:
+- uv run pytest -q
+
+Result: 70 passed, 1 pre-existing RuntimeWarning from Python Figure 2 continuation overflow probing.
+<!-- SECTION:FINAL_SUMMARY:END -->
