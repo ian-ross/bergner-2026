@@ -11,6 +11,9 @@ __pycache__/
 auto/build/
 auto/bin/
 
+# CMake/LSP generated files
+compile_commands.json
+
 # OS/editor
 .DS_Store
 *.swp

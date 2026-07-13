@@ -39,6 +39,10 @@ Use the same Figure 1 equilibrium branch family as Episodes 2 and 3:
 ## Commands and artifacts
 
 ```bash
+# Configure the top-level LOCA CMake project and link compile_commands.json at
+# the repository root and loca/ for C++ LSP servers such as clangd.
+uv run python episodes/004-figure1-loca-continuation/scripts/create_loca_compile_commands.py
+
 # Build/configure the shared top-level C++ executable, run continuation for
 # T = 190, 210, and 230 K, and write normalized Episode 4 branch outputs.
 uv run python episodes/004-figure1-loca-continuation/scripts/run_loca_figure1.py --clean
