@@ -1,11 +1,11 @@
 ---
 id: TASK-025
 title: Implement full NOX/LOCA backend for validated C++ model
-status: Done
+status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 14:48'
-updated_date: '2026-07-13 19:52'
+updated_date: '2026-07-13 20:24'
 labels:
   - backend
   - loca
@@ -50,6 +50,8 @@ Create a backend that wraps the already-validated small Bergner-Spichtinger C++ 
 - Documented lightweight-vs-NOX/LOCA backend tradeoffs in `docs/NOX_LOCA_BACKEND.md` and linked it from Episode 004.
 - Added opt-in pytest coverage for build availability, callback smoke checks, short continuation equivalence against the existing lightweight C++ artifact, and normalized schema compatibility.
 - Verification: `uv run pytest -q` (85 passed, 3 existing overflow warnings in Hopf/Figure 2 paths).
+
+- Correction: user correctly identified that `nox-loca-continue` only exercised the LOCA LAPACK callback once and then reused the lightweight small-system `newton_correct` continuation. This does not satisfy the full NOX/LOCA continuation requirement. Reopening TASK-025 to replace or clearly demote that path and implement an actual NOX/LOCA solver/stepper-backed path.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
