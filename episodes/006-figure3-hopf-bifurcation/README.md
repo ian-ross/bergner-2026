@@ -7,11 +7,13 @@ This episode moves from one-dimensional branch/eigenvalue sweeps to true two-par
 ## Contents
 
 - `docs/planning-decisions.md` — Episode 6 scope, Figure 3 target, backend responsibilities, output contract, and dependencies.
-- `scripts/` — placeholder for Python orchestration, backend runners, normalization, and comparison scripts.
+- `scripts/generate_python_hopf_loci.py` — Python augmented-Hopf continuation workflow for lower/upper loci and the Python method plot.
+- `scripts/plot_figure3_hopf_loci.py` — shared Figure 3-style plotting utility for per-backend and integrated comparison plots.
 - `notebooks/` — placeholder for exploratory diagnostics and source/plot inspection notebooks.
-- `outputs/` — placeholder for curated per-backend Hopf-locus data, comparison tables, metadata, and plots.
+- `outputs/figure3_python_hopf_loci/` — curated Python Hopf loci, seed rows, diagnostics, run metadata, and method plot.
+- `outputs/figure3_backend_comparison/` — integrated comparison plot overlaying available backend loci and Table II reference fits.
 
-Empty directories are retained with `.gitkeep` placeholders until implementation tasks add concrete artifacts.
+Empty directories that do not yet have concrete artifacts are retained with `.gitkeep` placeholders.
 
 ## Initial Figure 3 reproduction target
 
@@ -21,7 +23,7 @@ Use the paper's Figure 3 setting:
 - `F = 1`
 - temperature range `T = 190--240 K`
 - vertical velocity coordinate `w_m_s` in physical `m s^-1`, with `log_w = log(w_m_s)` allowed internally for conditioning
-- two Hopf branches: the lower-`w`/blue branch associated with `w_a(T)` and the upper-`w`/red branch associated with `w_b(T)` in Table II
+- two Hopf branches seeded from the Episode 005 `T = 230 K` crossings near `w = 0.048531 m s^-1` and `w = 0.768680 m s^-1`; Table II fit samples are recorded as reference values, not substituted for backend continuation results
 
 The headline product should overlay backend-computed Hopf loci and Table II fit curves, plus any explicitly labeled gray/three-real-eigenvalue diagnostic region if implemented later.
 
@@ -42,7 +44,7 @@ Episode 6 should reuse existing model semantics and backend infrastructure while
 
 Planned backend roles are documented in `docs/planning-decisions.md`:
 
-1. Python should provide a transparent augmented Hopf system/reference path.
+1. Python provides a transparent augmented Hopf system/reference path via `uv run python episodes/006-figure3-hopf-bifurcation/scripts/generate_python_hopf_loci.py`.
 2. AUTO should use native Hopf detection/continuation where possible, rather than only scanning Figure 2-style eigenvalue sign changes.
 3. NOX/LOCA should provide the native LOCA Hopf-continuation comparison path after TASK-025 establishes the full NOX/LOCA equilibrium-continuation backend.
 
