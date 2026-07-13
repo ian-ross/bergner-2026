@@ -4,7 +4,7 @@ title: Produce integrated Figure 3 backend comparison and paper-facing plot
 status: To Do
 assignee: []
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:05'
+updated_date: '2026-07-13 16:06'
 labels: []
 dependencies:
   - TASK-028
@@ -25,3 +25,14 @@ Combine Python augmented Hopf, AUTO native Hopf, and LOCA Hopf outputs into inte
 - [ ] #3 Summary artifacts report backend-to-backend differences, backend-to-Table-II-fit differences, T=230 K anchor comparisons, missing/failed points, and known caveats.
 - [ ] #4 Tests or smoke checks verify comparison artifacts and plot are generated from representative backend outputs and that schema assumptions are enforced.
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Define the integrated comparison input contract and locate the normalized Python, AUTO, and LOCA Hopf-locus artifacts produced by earlier Episode 006 tasks.
+2. Load backend outputs, validate required schema fields, preserve provenance, and merge lower/upper branch data into backend-comparison CSV/JSON artifacts.
+3. Evaluate shared Table II Hopf fit utilities on the canonical 190--240 K grid and join fit-reference values to backend-computed loci for diagnostics.
+4. Compute backend-to-backend and backend-to-fit differences in log_w and w_m_s, T=230 K anchor comparisons, missing/failure summaries, and branch coverage statistics.
+5. Generate the paper-facing Figure 3 reproduction plot with log vertical velocity, lower/upper Hopf branches, backend overlays, Table II fit curves, and clear legend labels distinguishing fits from computed loci.
+6. Write run metadata and tests/smoke checks using representative normalized inputs to verify schema validation, artifact generation, and plot existence.
+<!-- SECTION:PLAN:END -->
