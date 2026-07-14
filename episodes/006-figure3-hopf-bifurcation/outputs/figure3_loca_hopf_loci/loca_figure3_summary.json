@@ -1,0 +1,23 @@
+{
+  "all_converged": true,
+  "backend": "loca",
+  "branch_summaries": [
+    {
+      "T230_abs_error_m_s": 1.2011225347663412e-14,
+      "T230_within_tolerance": true,
+      "branch_id": "lower_hopf"
+    },
+    {
+      "T230_abs_error_m_s": 3.785860513971784e-14,
+      "T230_within_tolerance": true,
+      "branch_id": "upper_hopf"
+    }
+  ],
+  "branches": [
+    "lower_hopf",
+    "upper_hopf"
+  ],
+  "native_loca_hopf": true,
+  "row_count": 202,
+  "schema_version": "episode6-hopf-locus-schema-v1"
+}

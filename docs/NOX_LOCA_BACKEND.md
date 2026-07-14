@@ -24,7 +24,13 @@ The adapter calls the same `residual_values()` and Sacado-derived `state_jacobia
 | Complexity added | minimal | NOX/LOCA vector/matrix callback plumbing and parameter-vector indirection |
 | What LOCA adds here | none numerically for 1D Figure 1 validation; the value is an API-compatible foundation for later native LOCA bifurcation/Hopf continuation | exposes the problem in LOCA's expected dense-LAPACK form, including parameters needed by Episode 006 two-parameter Hopf work |
 
-The current `nox-loca-continue` path is deliberately an equilibrium-continuation validation layer: LOCA supplies the dense problem group and parameter plumbing, NOX supplies the nonlinear solves, and the repository still chooses the validation `log_w` grid. It is not native LOCA Hopf-locus orchestration; that remains out of scope for TASK-025 and belongs to TASK-030.
+The current `nox-loca-continue` path is deliberately an equilibrium-continuation validation layer: LOCA supplies the dense problem group and parameter plumbing, NOX supplies the nonlinear solves, and the repository still chooses the validation `log_w` grid. It is not native LOCA Hopf-locus orchestration; that remains out of scope for TASK-025.
+
+## TASK-030 Figure 3 Hopf boundary
+
+TASK-030 adds `bs2026_loca_model nox-loca-hopf-continue` and `episodes/006-figure3-hopf-bifurcation/scripts/run_loca_hopf_loci.py`. The C++ command constructs LOCA's native `LOCA::Hopf::MooreSpence::ExtendedGroup` around the TASK-025 dense `LOCA::LAPACK` backend and continues Hopf points in `T` with `log_w` as the Hopf bifurcation parameter. The Python script is now only build/orchestration/normalization code and does not call the Python characteristic Hopf corrector.
+
+Environment note: native Moore--Spence Hopf continuation requires a Trilinos build configured with Teuchos complex support (`Teuchos_ENABLE_COMPLEX`). The current `/opt/Trilinos` build satisfies this requirement (`HAVE_TEUCHOS_COMPLEX` is defined) and the Episode 006 native LOCA runner now completes both Figure 3 branches.
 
 ## Commands
 
@@ -38,6 +44,9 @@ cmake --build .pytest_cache/loca-build --parallel 2
 
 # Write normalized Figure 1-style NOX/LOCA branch outputs.
 uv run python episodes/004-figure1-loca-continuation/scripts/run_nox_loca_figure1.py --clean
+
+# Write Episode 006 Figure 3 native LOCA Moore--Spence Hopf-locus artifacts.
+uv run python episodes/006-figure3-hopf-bifurcation/scripts/run_loca_hopf_loci.py --clean
 ```
 
 ## Availability and skip conditions

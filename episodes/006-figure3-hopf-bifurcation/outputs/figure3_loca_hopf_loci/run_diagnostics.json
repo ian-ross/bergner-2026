@@ -1,0 +1,32 @@
+{
+  "build_commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        "/home/iross/research/ongoing/ai-class/code/bergner-2026/loca",
+        "-B",
+        "/home/iross/research/ongoing/ai-class/code/bergner-2026/.pytest_cache/loca-figure3-hopf-build",
+        "-DTrilinos_DIR=/opt/Trilinos/lib64/cmake/Trilinos"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "-- The CXX compiler identification is GNU 15.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Enabled Kokkos devices: SERIAL\n-- Found GTest: /usr/lib64/libgtest.so\n-- Enabled Kokkos devices: SERIAL\n-- Configuring done (0.3s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/iross/research/ongoing/ai-class/code/bergner-2026/.pytest_cache/loca-figure3-hopf-build\n"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "/home/iross/research/ongoing/ai-class/code/bergner-2026/.pytest_cache/loca-figure3-hopf-build",
+        "--parallel",
+        "2"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "[ 50%] Building CXX object CMakeFiles/bs2026_loca_model.dir/src/model_cli.cpp.o\n[100%] Linking CXX executable bs2026_loca_model\n[100%] Built target bs2026_loca_model\n"
+    }
+  ],
+  "executable": ".pytest_cache/loca-figure3-hopf-build/bs2026_loca_model",
+  "native_loca_hopf": true,
+  "ok": true
+}
