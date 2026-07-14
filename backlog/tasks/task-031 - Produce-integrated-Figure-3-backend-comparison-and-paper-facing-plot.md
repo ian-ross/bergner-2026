@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-14 14:47'
+updated_date: '2026-07-14 14:53'
 labels: []
 dependencies:
   - TASK-028
@@ -37,3 +37,13 @@ Combine Python augmented Hopf, AUTO native Hopf, and LOCA Hopf outputs into inte
 5. Generate the paper-facing Figure 3 reproduction plot with log vertical velocity, lower/upper Hopf branches, backend overlays, Table II fit curves, and clear legend labels distinguishing fits from computed loci.
 6. Write run metadata and tests/smoke checks using representative normalized inputs to verify schema validation, artifact generation, and plot existence.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added scripts/compare_figure3_hopf_loci.py to merge available Python/AUTO/LOCA Figure 3 Hopf loci, preserve provenance columns, compute Table II fit deltas, pairwise backend differences, T=230 K anchors, caveats, metadata, and paper-facing plot.
+- Added tests/test_episode6_backend_comparison.py for representative backend outputs and schema validation.
+- Generated curated comparison artifacts under episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/.
+- Updated Episode 006 README to document the integrated comparison workflow and outputs.
+- Verification: uv run pytest tests/test_episode6_backend_comparison.py tests/test_episode6_python_hopf.py tests/test_episode6_auto_hopf.py tests/test_episode6_loca_hopf.py -q; uv run python episodes/006-figure3-hopf-bifurcation/scripts/compare_figure3_hopf_loci.py --require-all.
+<!-- SECTION:NOTES:END -->
