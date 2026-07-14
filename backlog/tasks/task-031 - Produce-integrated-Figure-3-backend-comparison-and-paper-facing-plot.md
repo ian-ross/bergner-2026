@@ -47,3 +47,19 @@ Combine Python augmented Hopf, AUTO native Hopf, and LOCA Hopf outputs into inte
 - Updated Episode 006 README to document the integrated comparison workflow and outputs.
 - Verification: uv run pytest tests/test_episode6_backend_comparison.py tests/test_episode6_python_hopf.py tests/test_episode6_auto_hopf.py tests/test_episode6_loca_hopf.py -q; uv run python episodes/006-figure3-hopf-bifurcation/scripts/compare_figure3_hopf_loci.py --require-all.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the integrated Figure 3 backend-comparison workflow.
+
+Changes:
+- Added `episodes/006-figure3-hopf-bifurcation/scripts/compare_figure3_hopf_loci.py` to read available Python/AUTO/LOCA normalized Hopf-locus outputs, validate schema assumptions, preserve backend/method provenance, and write merged CSV/JSON artifacts.
+- Added Table II reference sampling, backend-to-fit diagnostics, backend-to-backend log_w/w differences on a canonical T grid, T=230 K anchor comparisons, missing/failed-point summaries, caveats, run metadata, and a paper-facing log-w Figure 3 overlay plot.
+- Generated curated artifacts in `episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/`.
+- Added focused tests covering representative backend outputs and schema validation, and documented the workflow in the Episode 006 README.
+
+Verification:
+- `uv run python episodes/006-figure3-hopf-bifurcation/scripts/compare_figure3_hopf_loci.py --require-all`
+- `uv run pytest tests/test_episode6_backend_comparison.py tests/test_episode6_python_hopf.py tests/test_episode6_auto_hopf.py tests/test_episode6_loca_hopf.py -q`
+<!-- SECTION:FINAL_SUMMARY:END -->
