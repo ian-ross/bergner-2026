@@ -1,10 +1,11 @@
 ---
 id: TASK-031
 title: Produce integrated Figure 3 backend comparison and paper-facing plot
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-13 16:05'
-updated_date: '2026-07-13 16:06'
+updated_date: '2026-07-14 14:47'
 labels: []
 dependencies:
   - TASK-028
