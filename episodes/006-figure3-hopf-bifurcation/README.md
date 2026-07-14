@@ -10,12 +10,13 @@ This episode moves from one-dimensional branch/eigenvalue sweeps to true two-par
 - `scripts/generate_python_hopf_loci.py` — Python augmented-Hopf continuation workflow for lower/upper loci and the Python method plot.
 - `scripts/run_auto_hopf_loci.py` — AUTO-07p native Hopf detection at `T = 230 K` followed by `ISW=2`, `ICP=[log_w, T]` Hopf-locus continuation.
 - `scripts/run_loca_hopf_loci.py` — NOX/LOCA Figure 3 workflow: builds the TASK-025 dense `LOCA::LAPACK`/NOX backend and invokes the pure C++ `nox-loca-hopf-continue` command, which uses LOCA's native Moore--Spence Hopf extended group with `log_w` as the Hopf bifurcation parameter and `T` as the locus direction. It does not use the Python Hopf corrector.
-- `scripts/plot_figure3_hopf_loci.py` — shared Figure 3-style plotting utility for per-backend and integrated comparison plots.
+- `scripts/plot_figure3_hopf_loci.py` — shared Figure 3-style plotting utility for per-backend and lightweight integrated comparison plots.
+- `scripts/compare_figure3_hopf_loci.py` — integrated backend-comparison workflow that merges Python/AUTO/LOCA Hopf loci with provenance, evaluates Table II reference fits, computes backend-to-backend and backend-to-fit diagnostics, and writes the paper-facing Figure 3 overlay.
 - `notebooks/` — placeholder for exploratory diagnostics and source/plot inspection notebooks.
 - `outputs/figure3_python_hopf_loci/` — curated Python Hopf loci, seed rows, diagnostics, run metadata, and method plot.
 - `outputs/figure3_auto_hopf_loci/` — curated AUTO-native Hopf loci, detected Hopf labels, raw AUTO `b./s./d.` artifacts, diagnostics, run metadata, and method plot.
 - `outputs/figure3_loca_hopf_loci/` — curated native NOX/LOCA Moore--Spence Hopf loci, seed diagnostics, run metadata, method plot, and raw C++ run files when available. Requires a Trilinos build with Teuchos complex support.
-- `outputs/figure3_backend_comparison/` — integrated comparison plot overlaying available backend loci and Table II reference fits.
+- `outputs/figure3_backend_comparison/` — integrated comparison plot overlaying available backend loci and Table II reference fits, plus merged CSV/JSON provenance artifacts, interpolated backend comparison tables, Table II fit-reference samples, pairwise/fit/anchor diagnostics, run metadata, and summary JSON.
 
 Empty directories that do not yet have concrete artifacts are retained with `.gitkeep` placeholders.
 

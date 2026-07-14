@@ -1,0 +1,469 @@
+{
+  "backends": {
+    "python": {
+      "available": true,
+      "input_path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_python_hopf_loci/python_figure3_hopf_loci.csv",
+      "raw_point_count": 102,
+      "branches": {
+        "lower_hopf": {
+          "point_count": 51,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 51,
+          "w_min_m_s": 0.0025367906150969,
+          "w_max_m_s": 0.0837015091401153,
+          "max_abs_log_delta_to_table_ii": 0.0064062713013925965,
+          "max_abs_relative_w_delta_to_table_ii": 0.006385794894538826
+        },
+        "upper_hopf": {
+          "point_count": 51,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 51,
+          "w_min_m_s": 0.0429407957088071,
+          "w_max_m_s": 1.2218071947751592,
+          "max_abs_log_delta_to_table_ii": 0.009382930115318405,
+          "max_abs_relative_w_delta_to_table_ii": 0.009339047782081316
+        }
+      },
+      "provenance_columns_present": [
+        "backend",
+        "schema_version",
+        "method",
+        "method_metadata",
+        "source_file",
+        "continuation_parameterization",
+        "jacobian_coordinate_system",
+        "state_coordinate_system",
+        "raw_auto_run",
+        "auto_branch",
+        "auto_label",
+        "auto_hopf_source_label",
+        "raw_loca_run",
+        "loca_continuation_mode",
+        "loca_native_hopf_stepper"
+      ],
+      "converged_point_count": 102
+    },
+    "auto": {
+      "available": true,
+      "input_path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_hopf_loci.csv",
+      "raw_point_count": 669,
+      "branches": {
+        "lower_hopf": {
+          "point_count": 335,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 331,
+          "w_min_m_s": 0.0025367904127916,
+          "w_max_m_s": 0.0837015049718973,
+          "max_abs_log_delta_to_table_ii": 0.0064063215999938805,
+          "max_abs_relative_w_delta_to_table_ii": 0.006385844871941913
+        },
+        "upper_hopf": {
+          "point_count": 334,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 331,
+          "w_min_m_s": 0.0429407958973346,
+          "w_max_m_s": 1.2218072073907098,
+          "max_abs_log_delta_to_table_ii": 0.009382919929998207,
+          "max_abs_relative_w_delta_to_table_ii": 0.009339037691882364
+        }
+      },
+      "provenance_columns_present": [
+        "backend",
+        "schema_version",
+        "method",
+        "method_metadata",
+        "source_file",
+        "continuation_parameterization",
+        "jacobian_coordinate_system",
+        "state_coordinate_system",
+        "raw_auto_run",
+        "auto_branch",
+        "auto_label",
+        "auto_hopf_source_label",
+        "raw_loca_run",
+        "loca_continuation_mode",
+        "loca_native_hopf_stepper"
+      ],
+      "converged_point_count": 669
+    },
+    "loca": {
+      "available": true,
+      "input_path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv",
+      "raw_point_count": 202,
+      "branches": {
+        "lower_hopf": {
+          "point_count": 101,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 101,
+          "w_min_m_s": 0.0025368782440702,
+          "w_max_m_s": 0.0837015091801155,
+          "max_abs_log_delta_to_table_ii": 0.006406270823501536,
+          "max_abs_relative_w_delta_to_table_ii": 0.0063857944196995435
+        },
+        "upper_hopf": {
+          "point_count": 101,
+          "T_min_K": 190.0,
+          "T_max_K": 240.0,
+          "unique_T_count": 101,
+          "w_min_m_s": 0.0429408134348663,
+          "w_max_m_s": 1.2219283696098238,
+          "max_abs_log_delta_to_table_ii": 0.009283758309227896,
+          "max_abs_relative_w_delta_to_table_ii": 0.009240797274466868
+        }
+      },
+      "provenance_columns_present": [
+        "backend",
+        "schema_version",
+        "method",
+        "method_metadata",
+        "source_file",
+        "continuation_parameterization",
+        "jacobian_coordinate_system",
+        "state_coordinate_system",
+        "raw_auto_run",
+        "auto_branch",
+        "auto_label",
+        "auto_hopf_source_label",
+        "raw_loca_run",
+        "loca_continuation_mode",
+        "loca_native_hopf_stepper"
+      ],
+      "converged_point_count": 202
+    }
+  },
+  "pairwise_backend_differences": {
+    "auto_vs_loca:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 3.4622027683006706e-05,
+        "median_abs": 1.3301004301968788e-05,
+        "mean_abs": 1.3006973028757287e-05
+      },
+      "delta_w_m_s": {
+        "max_abs": 1.0646758314969418e-06,
+        "median_abs": 1.2227812919846093e-07,
+        "mean_abs": 2.3691647055725118e-07
+      },
+      "relative_delta_w": {
+        "max_abs": 3.4621428347583795e-05,
+        "median_abs": 1.3301092760721383e-05,
+        "mean_abs": 1.3006885272098638e-05
+      }
+    },
+    "auto_vs_loca:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 9.916155077030475e-05,
+        "median_abs": 8.369812151465261e-06,
+        "mean_abs": 9.299405187965891e-06
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.00012116230464043198,
+        "median_abs": 1.6576088234243613e-06,
+        "mean_abs": 5.115779416562045e-06
+      },
+      "relative_delta_w": {
+        "max_abs": 9.915663442622299e-05,
+        "median_abs": 8.369777124780257e-06,
+        "mean_abs": 9.299267647595214e-06
+      }
+    },
+    "python_vs_auto:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 8.739893001319388e-06,
+        "median_abs": 1.3145188164642718e-06,
+        "mean_abs": 3.5524941643982028e-06
+      },
+      "delta_w_m_s": {
+        "max_abs": 2.0584240045112834e-07,
+        "median_abs": 3.573281374957826e-08,
+        "mean_abs": 7.269797953318247e-08
+      },
+      "relative_delta_w": {
+        "max_abs": 8.739931194156405e-06,
+        "median_abs": 1.3145196805196879e-06,
+        "mean_abs": 3.552506237579371e-06
+      }
+    },
+    "python_vs_auto:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 1.2540476930000821e-05,
+        "median_abs": 3.1174533922651015e-06,
+        "mean_abs": 5.353928126084242e-06
+      },
+      "delta_w_m_s": {
+        "max_abs": 4.933913945515123e-06,
+        "median_abs": 9.395857793192963e-07,
+        "mean_abs": 1.7450797337540773e-06
+      },
+      "relative_delta_w": {
+        "max_abs": 1.2540555562145159e-05,
+        "median_abs": 3.1174582515155895e-06,
+        "mean_abs": 5.353954769409317e-06
+      }
+    },
+    "python_vs_loca:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 3.454264585389666e-05,
+        "median_abs": 1.2008634657334483e-05,
+        "mean_abs": 1.2347490005385638e-05
+      },
+      "delta_w_m_s": {
+        "max_abs": 1.1021042615189103e-06,
+        "median_abs": 1.0328551384563428e-07,
+        "mean_abs": 2.507041756489799e-07
+      },
+      "relative_delta_w": {
+        "max_abs": 3.454204926362387e-05,
+        "median_abs": 1.2008562553969558e-05,
+        "mean_abs": 1.2347429256829135e-05
+      }
+    },
+    "python_vs_loca:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 9.917180609050891e-05,
+        "median_abs": 1.022023655705695e-06,
+        "mean_abs": 3.946889986423584e-06
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.00012117483466456136,
+        "median_abs": 1.679906745655213e-07,
+        "mean_abs": 3.3720845479101918e-06
+      },
+      "relative_delta_w": {
+        "max_abs": 9.916688872953652e-05,
+        "median_abs": 1.0220231333543032e-06,
+        "mean_abs": 3.94679158550803e-06
+      }
+    }
+  },
+  "backend_to_table_ii_fit_differences": {
+    "auto:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.006406321399993864,
+        "median_abs": 0.0007796244999971336,
+        "mean_abs": 0.0011452416125724847
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.0005379400108576904,
+        "median_abs": 1.9442617320683878e-05,
+        "mean_abs": 4.332724657180996e-05
+      },
+      "relative_delta_w": {
+        "max_abs": 0.006385844673218886,
+        "median_abs": 0.0007799284861709011,
+        "mean_abs": 0.0011439749487332713
+      }
+    },
+    "auto:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.009382919859998201,
+        "median_abs": 0.0030737903750202022,
+        "mean_abs": 0.002922933609338465
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.01151807117656567,
+        "median_abs": 0.0005585516352107911,
+        "mean_abs": 0.0011494278393040416
+      },
+      "relative_delta_w": {
+        "max_abs": 0.009339037622535941,
+        "median_abs": 0.0030690711179594404,
+        "mean_abs": 0.0029170391146401946
+      }
+    },
+    "loca:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.006406270823501536,
+        "median_abs": 0.0007904900332791343,
+        "mean_abs": 0.0011421080946284272
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.0005379357775290583,
+        "median_abs": 1.9290597084406155e-05,
+        "mean_abs": 4.3308985946630084e-05
+      },
+      "relative_delta_w": {
+        "max_abs": 0.006385794419698884,
+        "median_abs": 0.0007908025528679947,
+        "mean_abs": 0.0011408472814203028
+      }
+    },
+    "loca:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.009283758309227896,
+        "median_abs": 0.003071170768831788,
+        "mean_abs": 0.002915309458584685
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.011396908871925238,
+        "median_abs": 0.0005571915183580078,
+        "mean_abs": 0.0011454375264833858
+      },
+      "relative_delta_w": {
+        "max_abs": 0.009240797274466868,
+        "median_abs": 0.0030664595481079216,
+        "mean_abs": 0.0029094518680673324
+      }
+    },
+    "python:lower_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.0064062713013925965,
+        "median_abs": 0.0007796772316632783,
+        "mean_abs": 0.0011423169690111584
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.0005379358175292698,
+        "median_abs": 1.9353491549465793e-05,
+        "mean_abs": 4.3271391567962163e-05
+      },
+      "relative_delta_w": {
+        "max_abs": 0.006385794894538332,
+        "median_abs": 0.0007799812589653477,
+        "mean_abs": 0.0011410550194901562
+      }
+    },
+    "python:upper_hopf": {
+      "point_count": 51,
+      "delta_log_w": {
+        "max_abs": 0.009382930115318405,
+        "median_abs": 0.0030717557010517815,
+        "mean_abs": 0.0029181349211009136
+      },
+      "delta_w_m_s": {
+        "max_abs": 0.011518083706589799,
+        "median_abs": 0.00055733888047238,
+        "mean_abs": 0.0011480543703787042
+      },
+      "relative_delta_w": {
+        "max_abs": 0.009339047782081316,
+        "median_abs": 0.003067042686486464,
+        "mean_abs": 0.002912256281535124
+      }
+    }
+  },
+  "anchor_T230_K": [
+    {
+      "backend": "auto",
+      "branch_id": "lower_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -3.0255633755,
+      "w_m_s": 0.04853047268765705,
+      "table_ii_reference_log_w": -3.026342999999997,
+      "table_ii_reference_w_m_s": 0.048492651887080344,
+      "delta_to_table_ii_log_w": 0.0007796244999971336,
+      "delta_to_table_ii_w_m_s": 3.782080057670306e-05,
+      "relative_delta_to_table_ii_w": 0.0007799284861709011
+    },
+    {
+      "backend": "loca",
+      "branch_id": "lower_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -3.025552509966718,
+      "w_m_s": 0.048530999999987987,
+      "table_ii_reference_log_w": -3.026342999999997,
+      "table_ii_reference_w_m_s": 0.048492651887080344,
+      "delta_to_table_ii_log_w": 0.0007904900332791343,
+      "delta_to_table_ii_w_m_s": 3.834811290764212e-05,
+      "relative_delta_to_table_ii_w": 0.0007908025528679947
+    },
+    {
+      "backend": "python",
+      "branch_id": "lower_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -3.025563322768334,
+      "w_m_s": 0.0485304752467498,
+      "table_ii_reference_log_w": -3.026342999999997,
+      "table_ii_reference_w_m_s": 0.048492651887080344,
+      "delta_to_table_ii_log_w": 0.0007796772316632783,
+      "delta_to_table_ii_w_m_s": 3.782335966945327e-05,
+      "relative_delta_to_table_ii_w": 0.0007799812589653477
+    },
+    {
+      "backend": "auto",
+      "branch_id": "upper_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -0.26306738167,
+      "w_m_s": 0.7686900999434367,
+      "table_ii_reference_log_w": -0.26385900000000356,
+      "table_ii_reference_w_m_s": 0.7680818315601948,
+      "delta_to_table_ii_log_w": 0.000791618330003574,
+      "delta_to_table_ii_w_m_s": 0.0006082683832419056,
+      "relative_delta_to_table_ii_w": 0.0007919317424893878
+    },
+    {
+      "backend": "loca",
+      "branch_id": "upper_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -0.2630805209178614,
+      "w_m_s": 0.7686800000000379,
+      "table_ii_reference_log_w": -0.26385900000000356,
+      "table_ii_reference_w_m_s": 0.7680818315601948,
+      "delta_to_table_ii_log_w": 0.0007784790821421805,
+      "delta_to_table_ii_w_m_s": 0.0005981684398430609,
+      "relative_delta_to_table_ii_w": 0.0007787821756283558
+    },
+    {
+      "backend": "python",
+      "branch_id": "upper_hopf",
+      "T_K": 230.0,
+      "source_point_count": 1,
+      "log_w": -0.2630673891714041,
+      "w_m_s": 0.7686900941771816,
+      "table_ii_reference_log_w": -0.26385900000000356,
+      "table_ii_reference_w_m_s": 0.7680818315601948,
+      "delta_to_table_ii_log_w": 0.000791610828599465,
+      "delta_to_table_ii_w_m_s": 0.0006082626169867655,
+      "relative_delta_to_table_ii_w": 0.0007919242351445932
+    }
+  ],
+  "missing_or_failed_points": [],
+  "known_caveats": [
+    "Table II curves are paper fit references and are not substituted for backend-computed Hopf loci.",
+    "Pairwise backend diagnostics interpolate log_w as a function of T_K on the common Figure 3 interval; raw backend grids and duplicate AUTO restart rows are preserved separately in the merged artifact.",
+    "AUTO native Hopf outputs may include duplicate temperatures from forward/backward restarts; comparison interpolation averages duplicate T rows per backend and branch."
+  ],
+  "canonical_grid": {
+    "coordinate": "T_K with log_w interpolation",
+    "selection": "51 uniformly spaced samples on the available overlap of the Figure 3 interval 190--240 K.",
+    "point_count": 51,
+    "T_min_K": 190.0,
+    "T_max_K": 240.0,
+    "raw_backend_grids_preserved": {
+      "python": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_python_hopf_loci/python_figure3_hopf_loci.csv",
+      "auto": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_auto_hopf_loci/auto_figure3_hopf_loci.csv",
+      "loca": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv"
+    }
+  },
+  "outputs": [
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_merged_hopf_loci.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_merged_hopf_loci.json",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_table_ii_hopf_fit_references.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_interpolated_hopf_loci.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_pairwise_differences.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_to_table_ii_differences.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_T230_anchor_comparisons.csv",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_backend_comparison_summary.json",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/run_metadata.json",
+    "episodes/006-figure3-hopf-bifurcation/outputs/figure3_backend_comparison/figure3_hopf_backend_comparison.png"
+  ]
+}
