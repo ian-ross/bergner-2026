@@ -1,7 +1,7 @@
 ---
 id: TASK-031
 title: Produce integrated Figure 3 backend comparison and paper-facing plot
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-13 16:05'
