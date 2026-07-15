@@ -67,7 +67,7 @@ Expected role:
 
 The NOX/LOCA path depends on TASK-025. TASK-025 has established a dense `LOCA::LAPACK::Interface`/`LOCA::LAPACK::Group` adapter and NOX nonlinear solver path for the validated small C++ model. TASK-030 now adds a pure C++ `nox-loca-hopf-continue` command that constructs LOCA's native `LOCA::Hopf::MooreSpence::ExtendedGroup`; `log_w` is the Hopf bifurcation parameter and `T` is the Figure 3 locus direction. The Episode 6 Python runner is only an orchestration/normalization wrapper and must not call the Python characteristic Hopf corrector for LOCA rows.
 
-Native execution has an environment prerequisite: the installed Trilinos must have Teuchos complex support enabled. The current `/opt/Trilinos` build defines `HAVE_TEUCHOS_COMPLEX`, and the native Moore--Spence workflow completes both Figure 3 branches.
+Native execution has an environment prerequisite: the installed Trilinos must have Teuchos complex support enabled. The current `/opt/Trilinos` build defines `HAVE_TEUCHOS_COMPLEX`, and the native Moore--Spence workflow completes both Figure 3 branches. The native LOCA predictor intentionally does not use Table II slopes: the first continuation step uses a constant Hopf-state predictor with step halving on Moore--Spence Newton failure; later points use a secant predictor from corrected LOCA points.
 
 Expected role after TASK-025:
 

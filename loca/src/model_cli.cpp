@@ -571,15 +571,6 @@ HopfGuess solve_hopf_point_with_loca(const HopfGuess& guess,
   return out;
 }
 
-double figure3_initial_log_w_slope(double T, double log_w) {
-  // Table-II slopes are used only as first-step tangent guesses for LOCA's
-  // native Moore-Spence corrector; the corrected rows are LOCA solutions.
-  if (log_w > -1.0) {
-    return 2.0 * (-0.00049191) * T + 0.278555;
-  }
-  return 2.0 * (-0.00036997) * T + 0.229111;
-}
-
 void write_nox_loca_hopf_continuation_csv(const std::array<double, 3>& x0, double log_w_seed,
                                           const Options& options) {
   if (!std::isfinite(options.T_end)) {
@@ -605,46 +596,85 @@ void write_nox_loca_hopf_continuation_csv(const std::array<double, 3>& x0, doubl
 
   std::cout << "backend_step_index,T,log_w,log_n,log_q,s,residual_norm,converged,newton_iterations,continuation_status,step_size,loca_continuation_mode,hopf_frequency,lambda1_real,lambda1_imag,lambda2_real,lambda2_imag,lambda3_real,lambda3_imag,eigenvalue_regime,stability_classification,eigenvalue_source,jacobian_coordinate_system\n";
 
-  HopfGuess seed = compute_initial_hopf_guess(x0, log_w_seed, options.env);
-  HopfGuess previous = seed;
-  HopfGuess current = seed;
-  const double step_size = (options.T_end - options.env.T) / static_cast<double>(options.steps);
-  for (int i = 0; i <= options.steps; ++i) {
+  auto write_row = [&](int step_index, double T, double actual_step_size, const HopfGuess& point) {
     Environment point_env = options.env;
-    point_env.T = options.env.T + step_size * static_cast<double>(i);
-    HopfGuess predictor = current;
-    if (i == 1) {
-      predictor.log_w = current.log_w + figure3_initial_log_w_slope(options.env.T, current.log_w) * step_size;
-    } else if (i > 1) {
-      for (int j = 0; j < 3; ++j) {
-        predictor.x[j] = current.x[j] + (current.x[j] - previous.x[j]);
-        predictor.real_eigenvector[j] = current.real_eigenvector[j] + (current.real_eigenvector[j] - previous.real_eigenvector[j]);
-        predictor.imag_eigenvector[j] = current.imag_eigenvector[j] + (current.imag_eigenvector[j] - previous.imag_eigenvector[j]);
-      }
-      predictor.log_w = current.log_w + (current.log_w - previous.log_w);
-      predictor.omega = current.omega + (current.omega - previous.omega);
-    }
-
-    if (i > 0) {
-      predictor = compute_initial_hopf_guess(predictor.x, predictor.log_w, point_env);
-    }
-    const auto solved = solve_hopf_point_with_loca(predictor, point_env, options.max_newton_iterations,
-                                                   options.tolerance, global_data, parser, top_params);
-    previous = current;
-    current = solved;
-
-    point_env.w = std::exp(current.log_w);
-    const std::array<double, 3> physical_state = {std::exp(current.x[0]), std::exp(current.x[1]), current.x[2]};
+    point_env.T = T;
+    point_env.w = std::exp(point.log_w);
+    const std::array<double, 3> physical_state = {std::exp(point.x[0]), std::exp(point.x[1]), point.x[2]};
     const auto eig = canonical_eigenvalues(compute_physical_eigenvalues(physical_state, point_env));
     const auto classification = classify_eigenvalues(eig);
-    const double residual_norm = norm2(bs2026_loca::residual_values(current.x, current.log_w, point_env));
-    std::cout << i << "," << point_env.T << "," << current.log_w << "," << current.x[0] << ","
-              << current.x[1] << "," << current.x[2] << "," << residual_norm << ",true,"
-              << "0,converged," << step_size << ",nox_loca_native_moore_spence_hopf_continuation,"
-              << current.omega << "," << eig[0].real << "," << eig[0].imag << ","
+    const double residual_norm = norm2(bs2026_loca::residual_values(point.x, point.log_w, point_env));
+    std::cout << step_index << "," << T << "," << point.log_w << "," << point.x[0] << ","
+              << point.x[1] << "," << point.x[2] << "," << residual_norm << ",true,"
+              << "0,converged," << actual_step_size << ",nox_loca_native_moore_spence_hopf_continuation,"
+              << point.omega << "," << eig[0].real << "," << eig[0].imag << ","
               << eig[1].real << "," << eig[1].imag << "," << eig[2].real << "," << eig[2].imag
               << "," << classification.regime << "," << classification.stability
               << ",teuchos_lapack_geev,physical_ode_state\n";
+  };
+
+  const double nominal_step = (options.T_end - options.env.T) / static_cast<double>(options.steps);
+  const double direction = nominal_step >= 0.0 ? 1.0 : -1.0;
+  const double min_step = std::abs(nominal_step) * std::pow(0.5, 12);
+  const double end_tolerance = std::max(1.0e-12, std::abs(nominal_step) * 1.0e-10);
+
+  HopfGuess seed_guess = compute_initial_hopf_guess(x0, log_w_seed, options.env);
+  HopfGuess current = solve_hopf_point_with_loca(seed_guess, options.env, options.max_newton_iterations,
+                                                 options.tolerance, global_data, parser, top_params);
+  HopfGuess previous = current;
+  double current_T = options.env.T;
+  double previous_T = current_T;
+  bool have_previous_step = false;
+  int step_index = 0;
+  write_row(step_index, current_T, 0.0, current);
+
+  while (direction * (options.T_end - current_T) > end_tolerance) {
+    const double remaining = options.T_end - current_T;
+    double attempted_step = direction * std::min(std::abs(nominal_step), std::abs(remaining));
+
+    while (true) {
+      const double target_T = current_T + attempted_step;
+      Environment point_env = options.env;
+      point_env.T = target_T;
+
+      HopfGuess predictor = current;
+      if (have_previous_step) {
+        const double ratio = attempted_step / (current_T - previous_T);
+        for (int j = 0; j < 3; ++j) {
+          predictor.x[j] = current.x[j] + ratio * (current.x[j] - previous.x[j]);
+          predictor.real_eigenvector[j] = current.real_eigenvector[j] + ratio * (current.real_eigenvector[j] - previous.real_eigenvector[j]);
+          predictor.imag_eigenvector[j] = current.imag_eigenvector[j] + ratio * (current.imag_eigenvector[j] - previous.imag_eigenvector[j]);
+        }
+        predictor.log_w = current.log_w + ratio * (current.log_w - previous.log_w);
+        predictor.omega = current.omega + ratio * (current.omega - previous.omega);
+      }
+      // First continuation step intentionally uses a constant predictor: the
+      // same corrected Hopf state/eigenpair/frequency/log_w at the new T.  If
+      // that Newton correction is too ambitious, halve the first step rather
+      // than using the paper's Table-II fit as an external tangent hint.
+
+      try {
+        predictor = compute_initial_hopf_guess(predictor.x, predictor.log_w, point_env);
+        const auto solved = solve_hopf_point_with_loca(predictor, point_env, options.max_newton_iterations,
+                                                       options.tolerance, global_data, parser, top_params);
+        previous = current;
+        previous_T = current_T;
+        current = solved;
+        current_T = target_T;
+        have_previous_step = true;
+        ++step_index;
+        write_row(step_index, current_T, attempted_step, current);
+        break;
+      } catch (const std::exception& e) {
+        if (std::abs(attempted_step) <= min_step) {
+          throw std::runtime_error("adaptive Moore-Spence Hopf continuation failed near T=" +
+                                   std::to_string(target_T) + ": " + e.what());
+        }
+        attempted_step *= 0.5;
+        std::cerr << "Retrying Moore-Spence Hopf step with half step toward T="
+                  << (current_T + attempted_step) << " after failure: " << e.what() << "\n";
+      }
+    }
   }
   LOCA::destroyGlobalData(global_data);
 }

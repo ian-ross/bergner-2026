@@ -1,7 +1,7 @@
 {
   "backend": "loca",
   "command": "/home/iross/research/ongoing/ai-class/code/bergner-2026/.venv/bin/python3 episodes/006-figure3-hopf-bifurcation/scripts/run_loca_hopf_loci.py --clean --steps-each-side 80",
-  "created_utc": "2026-07-14T14:29:03.797864+00:00",
+  "created_utc": "2026-07-15T10:58:55.155882+00:00",
   "diagnostics": {
     "build_commands": [
       {

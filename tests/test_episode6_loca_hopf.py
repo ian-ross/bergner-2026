@@ -25,6 +25,10 @@ def test_loca_figure3_script_uses_native_cpp_loca_hopf_not_python_corrector() ->
     assert "nox_loca_native_moore_spence_hopf_continuation" in cli
     assert "compute_initial_hopf_guess" in cli
     assert 'command == "nox-loca-hopf-continue"' in cli
+    assert "figure3_initial_log_w_slope" not in cli
+    assert "Table-II slopes are used" not in cli
+    assert "First continuation step intentionally uses a constant predictor" in cli
+    assert "attempted_step *= 0.5" in cli
 
 
 @pytest.mark.skipif(

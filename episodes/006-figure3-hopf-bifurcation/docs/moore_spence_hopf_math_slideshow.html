@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Moore–Spence Hopf Continuation — Episode 006</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: { fontCache: 'global' },
+    startup: {
+      pageReady: () => MathJax.startup.defaultPageReady()
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f7fafc; --panel:#ffffff; --ink:#172033; --muted:#5f6f89; --line:#d9e2ef;
+    --blue:#2563eb; --cyan:#0891b2; --green:#059669; --orange:#d97706; --violet:#7c3aed; --red:#dc2626;
+    --shadow:0 20px 60px rgba(30,41,59,.14);
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+    --serif:Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+  body{overflow:hidden}.deck{height:100vh;display:grid;grid-template-rows:1fr 68px}.slide{display:none;height:calc(100vh - 68px);padding:42px 60px 28px;overflow:auto}.slide.active{display:block}
+  .canvas{max-width:1180px;margin:0 auto;min-height:calc(100vh - 140px);background:var(--panel);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:40px 48px}
+  h1{font-size:clamp(2.25rem,5vw,4.4rem);line-height:1.02;letter-spacing:-.06em;margin:0 0 18px} h2{font-size:clamp(1.8rem,3.4vw,3.25rem);line-height:1.06;letter-spacing:-.045em;margin:0 0 22px} h3{font-size:1.22rem;margin:18px 0 8px}
+  p,li{font-size:1.07rem;line-height:1.55}.lead{font-size:1.33rem;color:var(--muted);max-width:930px}.kicker{text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;font-weight:850;color:var(--blue);margin-bottom:12px}
+  .grid{display:grid;gap:18px}.cols2{grid-template-columns:repeat(2,minmax(0,1fr))}.cols3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:#f8fbff;border:1px solid var(--line);border-radius:20px;padding:18px 20px}.callout{border-radius:20px;padding:18px 20px;background:#eff6ff;border:1px solid #bfdbfe}.ok{background:#ecfdf5;border-color:#a7f3d0}.warn{background:#fff7ed;border-color:#fed7aa}
+  .pill{display:inline-flex;border-radius:999px;padding:7px 11px;font-size:.86rem;font-weight:850;background:#eaf2ff;color:#1d4ed8;margin:3px 5px 3px 0}.green{background:#e8fff4;color:#047857}.orange{background:#fff5e5;color:#b45309}.violet{background:#f1eaff;color:#6d28d9}.red{background:#fff0f0;color:#b91c1c}
+  code,pre{font-family:var(--mono)} pre{margin:12px 0 0;padding:16px;border-radius:16px;background:#0f172a;color:#e5eefc;overflow:auto;font-size:.86rem;line-height:1.48}.light-code{background:#f2f6fc;color:#132036;border:1px solid var(--line)}
+  .math{font-family:var(--serif);font-size:1.18rem;line-height:1.6;background:#fbfdff;border-left:4px solid var(--blue);padding:14px 18px;border-radius:10px;margin:12px 0}.math.big{font-size:1.38rem}.math .mono{font-family:var(--mono);font-size:.94em}
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.95rem} th,td{border-bottom:1px solid var(--line);text-align:left;padding:10px 9px;vertical-align:top} th{background:#f4f8fd;color:#334155}
+  .flow{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.step{flex:1 1 150px;min-width:150px;padding:15px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f6faff);position:relative}.step:not(:last-child)::after{content:"→";position:absolute;right:-15px;top:38%;color:var(--blue);font-size:1.4rem;font-weight:900}.step b{display:block;color:var(--blue);margin-bottom:5px}
+  img.plot{max-width:100%;border:1px solid var(--line);border-radius:18px;background:white;padding:8px}.small{font-size:.9rem;color:var(--muted)}.foot{margin-top:22px;color:var(--muted);font-size:.86rem}
+  .nav{height:68px;display:flex;align-items:center;gap:18px;padding:0 28px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line)}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:10px 16px;font-weight:850;cursor:pointer;box-shadow:0 5px 14px rgba(15,23,42,.08)}button:hover{border-color:var(--blue);color:var(--blue)}.progress{flex:1;height:10px;background:#e5edf7;border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .2s}.counter{font-weight:850;color:var(--muted);min-width:86px;text-align:right}
+  @media(max-width:860px){body{overflow:auto}.slide{height:auto;padding:18px}.canvas{min-height:auto;padding:24px;border-radius:20px}.cols2,.cols3{grid-template-columns:1fr}.step:not(:last-child)::after{display:none}.nav{position:sticky;bottom:0}}
+</style>
+</head>
+<body>
+<div class="deck">
+<main>
+<section class="slide active"><div class="canvas">
+  <div class="kicker">Episode 006 · Mathematical walkthrough</div>
+  <h1>Moore–Spence Hopf continuation in NOX/LOCA</h1>
+  <p class="lead">This slideshow explains the mathematics behind the native LOCA Hopf continuation used for Figure 3: what equations are solved, why the system is augmented, how one Hopf point becomes a Hopf curve, and how the Episode 6 variables map onto that formulation.</p>
+  <div class="grid cols3" style="margin-top:28px">
+    <div class="card"><span class="pill">Object</span><p>A curve of equilibria where a complex-conjugate eigenvalue pair crosses the imaginary axis.</p></div>
+    <div class="card"><span class="pill green">Unknowns</span><p>state, Hopf parameter, eigenvector real/imaginary parts, and frequency.</p></div>
+    <div class="card"><span class="pill violet">Continuation</span><p>Temperature <code>T</code> is the curve coordinate; <code>log_w</code> is solved as the Hopf bifurcation parameter.</p></div>
+  </div>
+  <p class="foot">No software-build details are included; references are only to clarify the mathematical implementation.</p>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">The underlying dynamical system</div>
+  <h2>Hopf continuation starts from an ODE equilibrium problem</h2>
+  <div class="grid cols2">
+    <div>
+      <p>The physical model is a three-dimensional autonomous ODE for ice number, ice mass, and saturation ratio:</p>
+      <div class="math big">\( \dot u = f(u; \mu, \eta) \)</div>
+      <p>For Episode 6:</p>
+      <ul>
+        <li>physical state: \(u=(n,q,s)\),</li>
+        <li>Hopf solve parameter: \(\mu = \log w\),</li>
+        <li>locus/continuation coordinate: \(\eta = T\),</li>
+        <li>fixed controls: pressure \(p=300\,\mathrm{hPa}\), sedimentation factor \(F=1\), aerosol concentration \(N_a\), and box depth \(\Delta z\).</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <h3>Equilibrium condition</h3>
+      <p>A point on any equilibrium branch satisfies:</p>
+      <div class="math">\( f(u;\mu,\eta)=0 \)</div>
+      <p>A Hopf point is a special equilibrium where the Jacobian \(f_u\) has a purely imaginary eigenvalue pair.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Coordinate choice</div>
+  <h2>LOCA solves in log-state coordinates, but audits in physical coordinates</h2>
+  <div class="grid cols2">
+    <div>
+      <p>The C++ LOCA residual uses the internal state</p>
+      <div class="math">\(x=(\log n,\log q,s)\)</div>
+      <p>and the residual</p>
+      <div class="math">\(F(x,\mu;\eta)=\left(\frac{\dot n}{n},\frac{\dot q}{q},\dot s\right).\)</div>
+      <p>This preserves positivity for \(n\) and \(q\), and improves numerical scaling.</p>
+    </div>
+    <div>
+      <p>For scientific interpretation, each corrected point is converted back to</p>
+      <div class="math">\(u=(e^{x_1},e^{x_2},x_3),\quad w=e^\mu\)</div>
+      <p>and the physical ODE Jacobian \(f_u(u;w,T)\) is used for reported eigenvalues.</p>
+      <div class="callout ok"><strong>Key distinction:</strong> LOCA’s algebraic solve uses \(F_x\) in log coordinates; the output schema reports the Hopf eigenpair against the physical ODE Jacobian.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">What is a Hopf point?</div>
+  <h2>A Hopf point is an equilibrium plus a critical oscillatory mode</h2>
+  <div class="math big">
+    \(F(x,\mu;\eta)=0,\qquad F_x(x,\mu;\eta)\,v = i\omega v,\qquad \omega>0.\)
+  </div>
+  <p>Write the complex eigenvector as \(v=y+i z\), with real vectors \(y,z\). Splitting real and imaginary parts gives:</p>
+  <div class="math big">
+    \(F_x y + \omega z = 0,\qquad F_x z - \omega y = 0.\)
+  </div>
+  <div class="grid cols3">
+    <div class="card"><span class="pill">Equilibrium</span><p>3 equations: \(F=0\).</p></div>
+    <div class="card"><span class="pill green">Eigenpair</span><p>6 equations: real and imaginary eigenvector equations.</p></div>
+    <div class="card"><span class="pill violet">Frequency</span><p>\(\omega\) is an unknown, not a post-processing value.</p></div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Why augment?</div>
+  <h2>The ordinary equilibrium equation does not isolate the bifurcation</h2>
+  <p>If we only solve \(F(x,\mu;\eta)=0\), we get an equilibrium surface. Most points are not Hopf points. Moore–Spence augments the unknown vector so the nonlinear solve lands directly on the Hopf condition.</p>
+  <div class="math big">
+    \(Y=(x, y, z, \omega, \mu)\)</div>
+  <p>For a 3-variable state, this has:</p>
+  <table>
+    <tr><th>Unknown block</th><th>Dimension</th><th>Meaning</th></tr>
+    <tr><td>\(x\)</td><td>3</td><td>equilibrium state in log coordinates</td></tr>
+    <tr><td>\(y\)</td><td>3</td><td>real part of critical eigenvector</td></tr>
+    <tr><td>\(z\)</td><td>3</td><td>imaginary part of critical eigenvector</td></tr>
+    <tr><td>\(\omega\)</td><td>1</td><td>Hopf angular frequency</td></tr>
+    <tr><td>\(\mu=\log w\)</td><td>1</td><td>bifurcation parameter solved by LOCA</td></tr>
+  </table>
+  <p>Total: 11 unknowns at each fixed temperature \(T\).</p>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">The Moore–Spence system</div>
+  <h2>The square nonlinear system solved at each temperature</h2>
+  <p>At a fixed \(\eta=T\), LOCA solves a square augmented system:</p>
+  <div class="math big">
+    \(G(Y;\eta)=\begin{bmatrix}
+      F(x,\mu;\eta)\\
+      F_x(x,\mu;\eta)y + \omega z\\
+      F_x(x,\mu;\eta)z - \omega y\\
+      \ell^T y - 1\\
+      \ell^T z
+    \end{bmatrix}=0.\)
+  </div>
+  <div class="grid cols2">
+    <div class="card"><h3>Why two extra equations?</h3><p>Eigenvectors have arbitrary scale and phase. Without normalization, the eigenvector equations are underdetermined.</p></div>
+    <div class="card"><h3>What is \(\ell\)?</h3><p>A fixed length/phase normalization vector. Episode 6 chooses it from the initial real eigenvector so the first constraint is well-conditioned.</p></div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Counting equations</div>
+  <h2>The augmented system is exactly determined</h2>
+  <table>
+    <tr><th>Equation block</th><th>Count</th><th>Role</th></tr>
+    <tr><td>\(F=0\)</td><td>3</td><td>must remain an equilibrium</td></tr>
+    <tr><td>\(F_x y+\omega z=0\)</td><td>3</td><td>real part of \(F_x(y+iz)=i\omega(y+iz)\)</td></tr>
+    <tr><td>\(F_x z-\omega y=0\)</td><td>3</td><td>imaginary part of the same eigenproblem</td></tr>
+    <tr><td>\(\ell^T y-1=0\)</td><td>1</td><td>fixes eigenvector length / scale</td></tr>
+    <tr><td>\(\ell^T z=0\)</td><td>1</td><td>fixes eigenvector phase</td></tr>
+    <tr><th>Total</th><th>11</th><th>matches 11 unknowns</th></tr>
+  </table>
+  <div class="callout"><strong>Intuition:</strong> Moore–Spence replaces “detect when eigenvalues cross” with “solve the crossing equations directly.”</div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">The Jacobian of the augmented solve</div>
+  <h2>Newton needs derivatives of the whole Moore–Spence system</h2>
+  <p>NOX applies Newton’s method to \(G(Y;T)=0\). The linearization contains familiar blocks:</p>
+  <div class="math">
+    \(dF = F_x\,dx + F_\mu\,d\mu\)<br>
+    \(d(F_x y + \omega z) = (dF_x)y + F_x dy + d\omega\,z + \omega dz\)<br>
+    \(d(F_x z - \omega y) = (dF_x)z + F_x dz - d\omega\,y - \omega dy\)
+  </div>
+  <p>The terms \((dF_x)y\) and \((dF_x)z\) encode second-derivative information of the residual. LOCA’s Moore–Spence implementation manages this extended linear algebra around the base group supplied by Episode 6.</p>
+  <div class="callout warn"><strong>Practical meaning:</strong> the continuation is not just eigenvalue post-processing. The critical eigenvector equations are part of the Newton correction.</div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Which parameter is the Hopf parameter?</div>
+  <h2>For Episode 6, \(\mu=\log w\) is solved at each \(T\)</h2>
+  <div class="grid cols2">
+    <div>
+      <p>At each temperature, the Moore–Spence system treats \(\mu=\log w\) as an unknown. LOCA adjusts \(\mu\) until the equilibrium at that temperature is exactly Hopf.</p>
+      <div class="math big">Given \(T\), solve for \(\log w(T)\).</div>
+    </div>
+    <div class="callout">
+      <h3>Why not use \(w\) directly?</h3>
+      <p>The physical vertical velocity spans orders of magnitude. Solving for \(\log w\) makes continuation steps more uniform and avoids positivity constraints on \(w\).</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">From one point to a curve</div>
+  <h2>Continuation repeats prediction and correction along temperature</h2>
+  <div class="flow">
+    <div class="step"><b>Seed</b>Known Hopf crossing near \(T=230K\).</div>
+    <div class="step"><b>Predict</b>Estimate the next augmented unknown vector.</div>
+    <div class="step"><b>Correct</b>Newton solve of \(G(Y;T_{new})=0\).</div>
+    <div class="step"><b>Audit</b>Compute physical eigenvalues.</div>
+    <div class="step"><b>Repeat</b>March to 190K or 240K.</div>
+  </div>
+  <p>The continuation coordinate is temperature, not arclength. The C++ driver chooses a sequence of temperatures and asks Moore–Spence to solve the Hopf equations at each one.</p>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Prediction details</div>
+  <h2>The predictor supplies a good initial guess for Newton</h2>
+  <p>The corrected augmented vector at one temperature is:</p>
+  <div class="math">\(Y_i=(x_i,y_i,z_i,\omega_i,\mu_i)\)</div>
+  <p>For subsequent steps, Episode 6 uses extrapolation from the previous corrected points:</p>
+  <div class="math big">\(Y_{i+1}^{pred} \approx Y_i + (Y_i-Y_{i-1}).\)</div>
+  <p>For the first continuation step, there is not yet a secant direction. Episode 6 therefore uses a constant predictor:</p>
+  <div class="math">\(Y_{1}^{pred}=Y_0\quad\text{at}\quad T_1=T_0+\Delta T.\)</div>
+  <p>If that first Moore–Spence Newton correction fails, the attempted temperature step is halved and retried. Once two corrected points exist, the ordinary secant predictor above is used.</p>
+  <div class="callout ok"><strong>Important:</strong> Table II is not used as a tangent hint in the LOCA predictor; it remains only a reference overlay/diagnostic fit.</div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Initial eigenvector guess</div>
+  <h2>The complex eigenpair is converted into real unknown blocks</h2>
+  <p>Before a Moore–Spence correction, Episode 6 computes an eigenpair of the current residual Jacobian:</p>
+  <div class="math">\(F_x v = \lambda v, \quad \lambda\approx i\omega, \quad v=y+iz.\)</div>
+  <p>The code selects the eigenvalue with positive imaginary part, splits the eigenvector into \(y\) and \(z\), rotates it to improve orthogonality, chooses a stable sign convention, and normalizes it.</p>
+  <table>
+    <tr><th>Operation</th><th>Mathematical reason</th></tr>
+    <tr><td>Pick positive-imaginary eigenvalue</td><td>use one representative of the conjugate pair</td></tr>
+    <tr><td>Split \(v=y+iz\)</td><td>Moore–Spence is real-valued</td></tr>
+    <tr><td>Rotate \((y,z)\)</td><td>eigenvectors are phase-arbitrary; rotation improves conditioning</td></tr>
+    <tr><td>Normalize</td><td>matches the scale/phase constraints</td></tr>
+  </table>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Two Hopf branches</div>
+  <h2>The same equations generate lower and upper Hopf loci</h2>
+  <div class="grid cols2">
+    <div class="card">
+      <span class="pill green">Lower branch</span>
+      <p>Seeded near \(T=230K\), \(w\approx0.048531\,m\,s^{-1}\). The algorithm solves \(G=0\) while marching toward both lower and higher temperatures.</p>
+    </div>
+    <div class="card">
+      <span class="pill violet">Upper branch</span>
+      <p>Seeded near \(T=230K\), \(w\approx0.768680\,m\,s^{-1}\), with a high-temperature endpoint seed for the upward segment.</p>
+    </div>
+  </div>
+  <p>Mathematically, these are distinct connected components of the Hopf set in the \((T,w)\) plane. Both satisfy the same Moore–Spence equations; only the seed and branch-following path differ.</p>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Why the method is robust</div>
+  <h2>Solving the bifurcation equations avoids ambiguous eigenvalue sign scans</h2>
+  <div class="grid cols2">
+    <div>
+      <h3>Scan/interpolation approach</h3>
+      <ul>
+        <li>solve equilibria over a grid;</li>
+        <li>compute eigenvalues afterwards;</li>
+        <li>infer where real part crosses zero;</li>
+        <li>accuracy depends on grid density and branch tracking.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Moore–Spence approach</h3>
+      <ul>
+        <li>equilibrium and eigenpair conditions solved simultaneously;</li>
+        <li>\(\mu=\log w\) adjusted as part of Newton;</li>
+        <li>frequency and eigenvectors are unknowns;</li>
+        <li>outputs are directly Hopf-constrained points.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><strong>Core idea:</strong> continuation tracks the codimension-one Hopf manifold directly in a two-parameter slice.</div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">What is reported per point?</div>
+  <h2>Each row is a corrected Hopf point plus diagnostic evidence</h2>
+  <table>
+    <tr><th>Output field</th><th>Mathematical meaning</th></tr>
+    <tr><td><code>T_K</code></td><td>fixed continuation coordinate \(\eta\)</td></tr>
+    <tr><td><code>log_w</code>, <code>w_m_s</code></td><td>solved bifurcation parameter \(\mu\) and physical velocity \(e^\mu\)</td></tr>
+    <tr><td><code>log_n</code>, <code>log_q</code>, <code>s</code></td><td>corrected equilibrium state \(x\)</td></tr>
+    <tr><td><code>hopf_frequency</code></td><td>\(\omega\) from the Moore–Spence extended vector</td></tr>
+    <tr><td><code>eigenvalue_real</code></td><td>audit value; should be close to zero for the crossing pair</td></tr>
+    <tr><td><code>residual_norm</code></td><td>norm of equilibrium residual after correction</td></tr>
+  </table>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Resulting Figure 3 geometry</div>
+  <h2>The mathematical output is a pair of curves in the \(T\)–\(w\) plane</h2>
+  <div class="grid cols2">
+    <div><img class="plot" alt="LOCA Hopf loci" src="../outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.png" /></div>
+    <div>
+      <p>Each plotted LOCA point is a solution of the Moore–Spence augmented system at its displayed temperature.</p>
+      <ul>
+        <li>Lower branch: smaller vertical velocities.</li>
+        <li>Upper branch: larger vertical velocities.</li>
+        <li>Both are Hopf boundaries of the equilibrium stability structure.</li>
+      </ul>
+      <div class="callout ok">Current curated LOCA output has 202 converged points: 101 lower and 101 upper.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="canvas">
+  <div class="kicker">Mental model</div>
+  <h2>Moore–Spence turns “find where eigenvalues cross” into “solve this larger real system”</h2>
+  <div class="math big">
+    \(\text{Hopf locus} = \{(T,w): \exists x,y,z,\omega\;\text{with}\;G(x,y,z,\omega,\log w;T)=0\}.\)
+  </div>
+  <div class="grid cols3">
+    <div class="card"><span class="pill">Equilibrium</span><p>The state remains on the model’s steady-state manifold.</p></div>
+    <div class="card"><span class="pill green">Oscillatory mode</span><p>The critical eigenpair is represented by real vectors \(y,z\) and frequency \(\omega\).</p></div>
+    <div class="card"><span class="pill violet">Continuation</span><p>Temperature is stepped, and \(\log w\) is corrected to keep the point exactly Hopf.</p></div>
+  </div>
+  <p class="lead" style="margin-top:26px">That is the mathematical heart of Episode 6’s NOX/LOCA backend.</p>
+</div></section>
+
+</main>
+<nav class="nav" aria-label="Slideshow controls">
+  <button id="prev" type="button">← Prev</button><button id="next" type="button">Next →</button>
+  <div class="progress"><div class="bar" id="bar"></div></div><div class="counter" id="counter"></div>
+</nav>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;const bar=document.getElementById('bar'),counter=document.getElementById('counter');
+function show(i){index=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===index));bar.style.width=((index+1)/slides.length*100).toFixed(2)+'%';counter.textContent=`${index+1} / ${slides.length}`;history.replaceState(null,'',`#slide-${index+1}`);if(window.MathJax?.typesetPromise){MathJax.typesetPromise([slides[index]]).catch(()=>{})}}
+document.getElementById('prev').onclick=()=>show(index-1);document.getElementById('next').onclick=()=>show(index+1);
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)} if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1)});
+const m=location.hash.match(/slide-(\d+)/);show(m?Number(m[1])-1:0);
+</script>
+</body>
+</html>
