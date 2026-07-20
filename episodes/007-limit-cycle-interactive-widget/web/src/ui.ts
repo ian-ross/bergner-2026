@@ -31,6 +31,8 @@ export const figure4Preset: Controls = {
 
 export function validateControls(controls: Controls): void {
   environmentFromUi(controls.parameters);
+  if (!START_OPTIONS.includes(controls.start)) throw new RangeError("Choose a supported initial condition.");
+  if (!BUDGET_OPTIONS.includes(controls.budget)) throw new RangeError("Choose a supported process-budget component.");
   if (!Number.isFinite(controls.duration) || controls.duration <= 0) {
     throw new RangeError("Integration duration must be a finite number greater than zero seconds.");
   }

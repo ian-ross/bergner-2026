@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "build": "tsc --noEmit && vite build"
+    "build": "tsc --noEmit && vite build && npm run verify:offline",
+    "verify:offline": "node scripts/verify-offline-build.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

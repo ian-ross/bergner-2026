@@ -16,15 +16,18 @@ def test_episode7_scaffold_contains_expected_episode_local_directories():
         assert (EPISODE_ROOT / placeholder_dir / ".gitkeep").is_file()
 
 
-def test_episode7_readme_documents_planned_workflow_and_dependencies():
+def test_episode7_readme_documents_widget_workflow_and_dependencies():
     readme = (EPISODE_ROOT / "README.md").read_text(encoding="utf-8")
 
     for required_phrase in (
-        "not implemented by this scaffold",
+        "offline, static browser explorer",
         "uv run jupyter execute",
         "npm test",
         "npm run build",
         "npm run preview",
+        "verify:offline",
+        "Browser smoke test",
+        "static deployment",
         "episodes/001-figure4-time-series/",
         "episodes/005-figure2-eigenvalues/",
         "src/bergner_spichtinger_2026/",

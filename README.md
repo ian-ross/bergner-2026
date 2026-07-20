@@ -8,6 +8,11 @@ Key artifacts:
 
 - `episodes/001-figure4-time-series/` — first episode: Figure 4 time-series reproduction.
 - `episodes/001-figure4-time-series/outputs/figure4_reproduction.png` — curated generated plot.
+- `episodes/007-limit-cycle-interactive-widget/` — offline, browser-based Figure 4 center-case limit-cycle explorer.
+- `episodes/007-limit-cycle-interactive-widget/outputs/limit_cycle_stability.png` — curated long-run stability diagnostics.
+- `episodes/007-limit-cycle-interactive-widget/outputs/attractor_convergence_log10n_s.png` — curated all-start convergence figure.
+- `episodes/007-limit-cycle-interactive-widget/outputs/one_cycle_state_process_budgets.png` — curated representative-cycle state and process budgets.
+- `episodes/007-limit-cycle-interactive-widget/web/index.html` — widget entry point; build to `web/dist/` and serve as static files.
 - `docs/SOURCE_QUALITY.md` — source quality and extraction notes.
 - `sources/extracted/provenance.yaml` — provenance manifest.
 - `docs/MODEL_EXTRACTION.md` — implementation specification and ambiguity list.

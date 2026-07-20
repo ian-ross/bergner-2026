@@ -11,6 +11,8 @@ describe("widget controls", () => {
 
   it("uses parameter validation at the UI boundary", () => {
     expect(() => validateControls({ ...controls, parameters: { ...controls.parameters, T: 240 } })).toThrow("T must be between");
+    expect(() => validateControls({ ...controls, start: "unknown" as never })).toThrow("initial condition");
+    expect(() => validateControls({ ...controls, budget: "unknown" as never })).toThrow("process-budget");
     expect(() => validateControls({ ...controls, duration: 0 })).toThrow("duration");
     expect(() => validateControls(controls)).not.toThrow();
   });
