@@ -1,11 +1,11 @@
 ---
 id: TASK-037
 title: Build the interactive limit-cycle visualization and controls
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-20 20:54'
-updated_date: '2026-07-20 21:02'
+updated_date: '2026-07-20 21:56'
 labels:
   - episode-007
   - typescript
@@ -26,12 +26,12 @@ Build the vanilla TypeScript and locally bundled Plotly interface around the val
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Controls expose T, w, F, and N_a prominently; p and Delta z as advanced controls; logarithmic controls for w and N_a; physical integration duration; run, cancel, reset, play/pause, scrub, and playback speed
-- [ ] #2 A Figure 4 limit-cycle preset restores T=225 K, p=300 hPa, w=0.1 m/s, F=1, N_a=10000 cm^-3, Delta z=100 m, the paper-style 0.99-equilibrium start, and the notebook-derived long duration
-- [ ] #3 Users can select the paper-style start or the approved n-, q-, and s-perturbed equilibrium starts, while the computed equilibrium is displayed with units
-- [ ] #4 Synchronized Plotly views show n, q, s time series with a moving cursor; selectable n/q/s process budgets; and a log10(n)-s orbit with a moving marker and recent trail
-- [ ] #5 Integration completes before replay, worker progress and errors are visible, cancellation remains responsive, and step-limit warnings explain how to recover
-- [ ] #6 UI tests cover parameter validation, preset restoration, worker-state transitions, budget selection, and animation controls
+- [x] #1 Controls expose T, w, F, and N_a prominently; p and Delta z as advanced controls; logarithmic controls for w and N_a; physical integration duration; run, cancel, reset, play/pause, scrub, and playback speed
+- [x] #2 A Figure 4 limit-cycle preset restores T=225 K, p=300 hPa, w=0.1 m/s, F=1, N_a=10000 cm^-3, Delta z=100 m, the paper-style 0.99-equilibrium start, and the notebook-derived long duration
+- [x] #3 Users can select the paper-style start or the approved n-, q-, and s-perturbed equilibrium starts, while the computed equilibrium is displayed with units
+- [x] #4 Synchronized Plotly views show n, q, s time series with a moving cursor; selectable n/q/s process budgets; and a log10(n)-s orbit with a moving marker and recent trail
+- [x] #5 Integration completes before replay, worker progress and errors are visible, cancellation remains responsive, and step-limit warnings explain how to recover
+- [x] #6 UI tests cover parameter validation, preset restoration, worker-state transitions, budget selection, and animation controls
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -44,3 +44,26 @@ Build the vanilla TypeScript and locally bundled Plotly interface around the val
 5. Implement replay after integration with play/pause, scrubbing, speed control, moving cursors/markers, and a bounded recent orbit trail independent of solver speed.
 6. Add UI tests for validation, presets, worker-state transitions, stale-result protection, budget selection, and animation state; manually inspect responsive layout and labels.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Implemented the locally bundled Plotly widget, cancellable worker orchestration, and synchronized replay views.
+- Added focused widget-control tests; browser tests and repository pytest suite pass.
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-037 client-side limit-cycle widget.
+
+Changes:
+- Added Figure 4 controls/preset, equilibrium-relative starts, worker status/cancellation, and replay controls.
+- Added locally bundled Plotly state, process-budget, and orbit visualizations with synchronized selection.
+- Added UI control/replay/worker-transition tests.
+
+Tests:
+- npm test (24 passed)
+- npm run build
+- uv run pytest (107 passed; 3 existing numerical overflow warnings)
+<!-- SECTION:FINAL_SUMMARY:END -->
