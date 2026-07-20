@@ -13,6 +13,16 @@ from .approximations import (
     table_ii_upper_hopf_w,
 )
 from .continuation import ContinuationPoint, ContinuationResult, continue_branch
+from .limit_cycles import (
+    Cycle,
+    CycleExtraction,
+    DriftAnalysis,
+    Extremum,
+    OrbitDistance,
+    analyze_late_cycle_drift,
+    extract_cycles,
+    phase_independent_orbit_distance,
+)
 from .hopf import (
     HopfBranchResult,
     HopfPoint,
@@ -58,6 +68,14 @@ __all__ = [
     "ContinuationPoint",
     "ContinuationResult",
     "continue_branch",
+    "Cycle",
+    "CycleExtraction",
+    "DriftAnalysis",
+    "Extremum",
+    "OrbitDistance",
+    "analyze_late_cycle_drift",
+    "extract_cycles",
+    "phase_independent_orbit_distance",
     "HopfBranchResult",
     "HopfPoint",
     "HopfUnknowns",
