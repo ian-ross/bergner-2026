@@ -1,9 +1,11 @@
 ---
 id: TASK-035
 title: Implement the browser model core and equilibrium solver
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-20 20:54'
+updated_date: '2026-07-20 21:02'
 labels:
   - episode-007
   - typescript
@@ -32,3 +34,14 @@ Implement a readable TypeScript translation of the paper model and a dependency-
 - [ ] #4 Automated tests compare coefficients, process terms, vector fields, and equilibria with Python-generated fixtures at approximately 1e-10 where direct arithmetic permits and with documented solver tolerances otherwise
 - [ ] #5 The Vite/TypeScript test and build commands run without network access after dependencies are installed
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Scaffold the episode-local vanilla TypeScript/Vite test workspace and establish module boundaries for units, parameters, constants, coefficients, process terms, vector field, and equilibrium solving.
+2. Port the Python constants and no-Evap_n model equations into readable TypeScript with explicit SI internals and boundary conversion of N_a from cm^-3.
+3. Add parameter-domain validation for the approved T, p, w, F, N_a, and Delta z ranges and precise errors for invalid numerical inputs.
+4. Implement the positive equilibrium solve in log(n), log(q), s coordinates using a bracketed scalar seed followed by safeguarded residual refinement and convergence diagnostics.
+5. Derive deterministic fixtures from the Episode 007 reference artifacts and compare constants, terms, vector fields, residuals, and equilibria with Python at arithmetic-appropriate tolerances.
+6. Run TypeScript tests and a production build offline after dependency installation; document any deliberate numerical differences.
+<!-- SECTION:PLAN:END -->
