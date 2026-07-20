@@ -1,7 +1,7 @@
 ---
 id: TASK-038
 title: Validate and document the offline Episode 007 widget
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-20 20:54'
