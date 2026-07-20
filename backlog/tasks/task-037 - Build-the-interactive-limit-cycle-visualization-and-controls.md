@@ -1,9 +1,11 @@
 ---
 id: TASK-037
 title: Build the interactive limit-cycle visualization and controls
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-20 20:54'
+updated_date: '2026-07-20 21:02'
 labels:
   - episode-007
   - typescript
@@ -31,3 +33,14 @@ Build the vanilla TypeScript and locally bundled Plotly interface around the val
 - [ ] #5 Integration completes before replay, worker progress and errors are visible, cancellation remains responsive, and step-limit warnings explain how to recover
 - [ ] #6 UI tests cover parameter validation, preset restoration, worker-state transitions, budget selection, and animation controls
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Build semantic HTML and responsive CSS for primary/advanced parameter controls, duration and initial-condition selection, run status, transport controls, and three visualization regions.
+2. Connect validated controls to the worker, including logarithmic w/N_a behavior, unit conversion, the canonical Figure 4 preset, equilibrium display, progress, cancellation, reset, and actionable failures.
+3. Implement the four equilibrium-relative initial-condition choices and ensure each parameter change invalidates stale trajectories before a new solve.
+4. Create locally bundled Plotly state-series, selectable process-budget, and log10(n)-s orbit views with shared time selection.
+5. Implement replay after integration with play/pause, scrubbing, speed control, moving cursors/markers, and a bounded recent orbit trail independent of solver speed.
+6. Add UI tests for validation, presets, worker-state transitions, stale-result protection, budget selection, and animation state; manually inspect responsive layout and labels.
+<!-- SECTION:PLAN:END -->
