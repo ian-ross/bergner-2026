@@ -1,0 +1,35 @@
+---
+id: TASK-036
+title: Implement adaptive browser integration and worker execution
+status: To Do
+assignee: []
+created_date: '2026-07-20 20:54'
+labels:
+  - episode-007
+  - typescript
+  - numerics
+  - web-worker
+dependencies:
+  - TASK-034
+  - TASK-035
+references:
+  - episodes/007-limit-cycle-interactive-widget/outputs/reference_trajectory.csv
+  - episodes/007-limit-cycle-interactive-widget/outputs/reference_metadata.json
+priority: high
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Add an adaptive Dormand-Prince RK45 trajectory integrator in log(n), log(q), s coordinates and run equilibrium plus trajectory computations in a cancellable Web Worker. Validate short-horizon trajectories and long-run cycle statistics against the notebook contract.
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 The adaptive RK45 implementation uses component-wise error scaling, preserves positive n and q through log coordinates, supports configurable tolerances and duration, and enforces accepted-step and output-size limits
+- [ ] #2 Worker messages are typed and support start, progress, successful result, numerical failure, and cancellation without blocking the main UI thread
+- [ ] #3 Returned samples include n, q, s, all individual process rates, and total tendencies on a documented output grid suitable for plotting and animation
+- [ ] #4 Short-horizon browser results agree with the Python reference states and process rates to about 1e-4 relative error before material phase drift
+- [ ] #5 Canonical long-run period, extrema, amplitudes, and orbit geometry agree with Python reference statistics to about 1e-3 relative error
+- [ ] #6 Tests cover cancellation, invalid states/parameters, step-limit exhaustion, positivity, canonical integration, and at least one damped-regime trajectory
+<!-- AC:END -->
