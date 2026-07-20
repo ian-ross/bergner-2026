@@ -7,8 +7,10 @@ export interface StartMessage {
   type: "start";
   jobId: string;
   environment: Environment;
-  /** Omit to begin at the worker-computed positive equilibrium. */
+  /** Omit to begin at equilibrium; otherwise the worker derives this from its computed equilibrium. */
   initialState?: State;
+  /** Equilibrium-relative perturbation selected by the UI. */
+  start?: "paper" | "n" | "q" | "s";
   integration: IntegrationOptions;
 }
 export interface CancelMessage { type: "cancel"; jobId: string; }

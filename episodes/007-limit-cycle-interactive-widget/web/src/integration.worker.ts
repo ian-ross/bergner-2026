@@ -2,6 +2,7 @@
 import { solveEquilibrium } from "./equilibrium";
 import { IntegrationCancelled, integrateTrajectoryAsync } from "./integrator";
 import type { MainToWorkerMessage, WorkerToMainMessage } from "./worker-protocol";
+import { initialStateFor } from "./ui";
 
 const worker = self as unknown as DedicatedWorkerGlobalScope;
 const cancelled = new Set<string>();
@@ -19,7 +20,8 @@ worker.onmessage = (event: MessageEvent<MainToWorkerMessage>) => {
     if (cancelled.delete(message.jobId)) { post({ type: "cancelled", jobId: message.jobId }); return; }
     try {
       const equilibrium = solveEquilibrium(message.environment);
-      const trajectory = await integrateTrajectoryAsync(message.initialState ?? equilibrium.state, message.environment, message.integration, {
+      const initialState = message.initialState ?? (message.start ? initialStateFor(equilibrium.state, message.start) : equilibrium.state);
+      const trajectory = await integrateTrajectoryAsync(initialState, message.environment, message.integration, {
         isCancelled: () => cancelled.has(message.jobId),
         onProgress: ({ time, acceptedSteps }) => post({ type: "progress", jobId: message.jobId, time, acceptedSteps }),
       });

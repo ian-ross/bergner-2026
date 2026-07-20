@@ -12,5 +12,9 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.5",
     "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@types/plotly.js": "^3.0.10",
+    "plotly.js-dist-min": "^3.7.0"
   }
 }
