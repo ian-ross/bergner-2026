@@ -1,11 +1,11 @@
 ---
 id: TASK-034
 title: Build the Episode 007 long-integration diagnostics notebook
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-20 20:54'
-updated_date: '2026-07-20 21:02'
+updated_date: '2026-07-20 21:28'
 labels:
   - episode-007
   - science
@@ -28,13 +28,13 @@ Create the authoritative Episode 007 notebook for the high-aerosol Figure 4 cent
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The notebook uses T=225 K, p=300 hPa, w=0.1 m/s, F=1, N_a=1e10 m^-3, Delta z=100 m, and Evap_n disabled, with all units and solver settings recorded
-- [ ] #2 The paper-style 0.99-equilibrium start and the approved independent n, q, and s perturbations are integrated long enough to assess approximately 300 linearized periods or an explicitly justified equivalent horizon
-- [ ] #3 Over the final 20 complete cycles, period and saturation-amplitude drift are each below 0.1%, and all four trajectories converge to the same orbit within a documented tolerance
-- [ ] #4 Curated outputs include the approved limit-cycle stability, attractor-convergence log10(n)-s orbit, and one-cycle state/process-budget figures
-- [ ] #5 The process figure shows Nuc_n, Sed_n, and total dn/dt; Nuc_q, Dep_q, Sed_q, and total dq/dt; and Cool, Nuc_s, Dep_s, and total ds/dt
-- [ ] #6 Reference outputs include a 17-significant-digit CSV with an early transient and final three cycles, a full-run per-cycle summary CSV, and versioned JSON metadata containing parameters, units, initial conditions, solver settings, cycle boundaries, and convergence metrics
-- [ ] #7 The notebook runs from a clean checkout through a documented command and regenerates all curated outputs without manual cell state
+- [x] #1 The notebook uses T=225 K, p=300 hPa, w=0.1 m/s, F=1, N_a=1e10 m^-3, Delta z=100 m, and Evap_n disabled, with all units and solver settings recorded
+- [x] #2 The paper-style 0.99-equilibrium start and the approved independent n, q, and s perturbations are integrated long enough to assess approximately 300 linearized periods or an explicitly justified equivalent horizon
+- [x] #3 Over the final 20 complete cycles, period and saturation-amplitude drift are each below 0.1%, and all four trajectories converge to the same orbit within a documented tolerance
+- [x] #4 Curated outputs include the approved limit-cycle stability, attractor-convergence log10(n)-s orbit, and one-cycle state/process-budget figures
+- [x] #5 The process figure shows Nuc_n, Sed_n, and total dn/dt; Nuc_q, Dep_q, Sed_q, and total dq/dt; and Cool, Nuc_s, Dep_s, and total ds/dt
+- [x] #6 Reference outputs include a 17-significant-digit CSV with an early transient and final three cycles, a full-run per-cycle summary CSV, and versioned JSON metadata containing parameters, units, initial conditions, solver settings, cycle boundaries, and convergence metrics
+- [x] #7 The notebook runs from a clean checkout through a documented command and regenerates all curated outputs without manual cell state
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -48,3 +48,26 @@ Create the authoritative Episode 007 notebook for the high-aerosol Figure 4 cent
 6. Export the early transient and final three cycles at 17-significant-digit precision, the full per-cycle summary, and schema-versioned JSON metadata with units and provenance.
 7. Execute the notebook from a clean state using the documented command, verify regenerated artifacts and metrics, and record numerical limitations.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Implemented and clean-executed the authoritative RK45 log-state notebook for the 300-linear-period center-case integration.
+- Generated the three curated figures plus 17-significant-digit trajectory, per-cycle, and schema-versioned metadata artifacts.
+- Added notebook/output contract tests; full suite passed (107 tests; 3 pre-existing overflow warnings).
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the authoritative Episode 007 long-integration diagnostics notebook and committed it as 72a90b7.
+
+Changes:
+- Added clean-run log-state RK45 integration for the high-aerosol Figure 4 center case, four approved starts, 300 linearized periods, late-cycle drift analysis, and phase-independent all-start orbit convergence checks.
+- Generated curated stability, attractor, and one-cycle full process-budget figures plus high-precision browser-validation CSV/JSON fixtures.
+- Added tests for notebook solver/process contracts and generated artifact metadata/schema requirements; updated the episode rerun documentation.
+
+Tests:
+- uv run jupyter execute episodes/007-limit-cycle-interactive-widget/notebooks/01_limit_cycle_diagnostics.ipynb --inplace
+- uv run pytest -q (107 passed; 3 existing numerical overflow warnings)
+<!-- SECTION:FINAL_SUMMARY:END -->
