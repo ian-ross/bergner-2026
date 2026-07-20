@@ -1,9 +1,11 @@
 ---
 id: TASK-038
 title: Validate and document the offline Episode 007 widget
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-20 20:54'
+updated_date: '2026-07-20 21:02'
 labels:
   - episode-007
   - validation
@@ -31,3 +33,14 @@ Complete the episode by validating the assembled scientific-to-browser workflow,
 - [ ] #5 Episode documentation explains architecture, numerical methods, supported ranges, known limitations, reference-data provenance, offline serving, and static deployment
 - [ ] #6 Repository-level README links Episode 007 and its curated scientific figures and widget entry point
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Audit the production bundle and runtime requests to ensure all code and Plotly assets are local and the widget requires no CDN, backend, Python process, or notebook kernel.
+2. Run the complete Python and TypeScript suites, production build, and an end-to-end canonical browser integration; compare short-horizon and cycle-level results with reference tolerances.
+3. Exercise the documented smoke-test matrix across representative Chromium and Firefox-family browsers, including run, cancellation, replay, parameter changes, damped behavior, and the canonical preset.
+4. Harden responsive behavior, keyboard access, labels, units, status/error announcements, and reduced-motion handling without expanding the visualization scope.
+5. Document architecture, equations and numerical methods, supported ranges, reference provenance, known limitations, development commands, offline serving, and static deployment.
+6. Update the repository README with Episode 007 links, perform a final self-review of generated versus curated artifacts, and verify all acceptance criteria and documentation claims.
+<!-- SECTION:PLAN:END -->
