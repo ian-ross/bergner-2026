@@ -1,11 +1,11 @@
 ---
 id: TASK-033
 title: Add reusable limit-cycle detection and convergence analysis
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-20 20:54'
-updated_date: '2026-07-20 21:02'
+updated_date: '2026-07-20 21:18'
 labels:
   - episode-007
   - python
@@ -26,11 +26,11 @@ Add reusable Python primitives for extracting complete cycles from irregularly s
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A reusable package module detects complete cycles from saturation-ratio extrema and reports cycle boundaries, periods, extrema, and peak-to-peak amplitudes
-- [ ] #2 The module computes relative period and amplitude drift over a configurable final-cycle window and evaluates the approved 0.1% thresholds over the final 20 cycles
-- [ ] #3 The module compares converged orbits from multiple trajectories using a documented phase-independent distance or equivalent orbit-geometry metric
-- [ ] #4 Utilities handle irregular solver output, incomplete edge cycles, insufficient cycles, and invalid/non-finite input with explicit behavior
-- [ ] #5 Repository-level tests cover synthetic periodic, damped, drifting, phase-shifted, and failure cases
+- [x] #1 A reusable package module detects complete cycles from saturation-ratio extrema and reports cycle boundaries, periods, extrema, and peak-to-peak amplitudes
+- [x] #2 The module computes relative period and amplitude drift over a configurable final-cycle window and evaluates the approved 0.1% thresholds over the final 20 cycles
+- [x] #3 The module compares converged orbits from multiple trajectories using a documented phase-independent distance or equivalent orbit-geometry metric
+- [x] #4 Utilities handle irregular solver output, incomplete edge cycles, insufficient cycles, and invalid/non-finite input with explicit behavior
+- [x] #5 Repository-level tests cover synthetic periodic, damped, drifting, phase-shifted, and failure cases
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -43,3 +43,25 @@ Add reusable Python primitives for extracting complete cycles from irregularly s
 5. Add validation and failure handling for non-finite, non-monotone, incomplete, and insufficient inputs.
 6. Add synthetic repository-level tests for periodic, damped, drifting, phase-shifted, irregularly sampled, and invalid trajectories; expose the stable public API from the package as appropriate.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added reusable irregular-sampling cycle extraction, late-cycle drift analysis, and phase-independent normalized orbit distance.
+- Added synthetic periodic, damped, drifting, phase-shifted, incomplete, and invalid-input tests.
+- Full suite: uv run pytest (105 passed; 3 pre-existing overflow warnings).
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented reusable limit-cycle analysis for Episode 007 and future trajectory workflows.
+
+Changes:
+- Added typed extrema, cycle extraction, late-window drift, and phase-independent normalized orbit-distance APIs.
+- Exported the new package API and documented metric and validation behavior.
+- Added synthetic coverage for irregular periodic/damped/drifting trajectories, phase shifts, incomplete cycles, and invalid inputs.
+
+Tests:
+- uv run pytest (105 passed; 3 existing overflow warnings)
+<!-- SECTION:FINAL_SUMMARY:END -->
