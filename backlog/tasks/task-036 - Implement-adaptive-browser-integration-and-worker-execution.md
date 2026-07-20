@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-20 20:54'
-updated_date: '2026-07-20 21:02'
+updated_date: '2026-07-20 21:38'
 labels:
   - episode-007
   - typescript
@@ -46,3 +46,10 @@ Add an adaptive Dormand-Prince RK45 trajectory integrator in log(n), log(q), s c
 5. Validate short-horizon states and rates against the Python reference before phase drift, then validate long-horizon period, extrema, amplitudes, and orbit geometry against the approved tolerances.
 6. Add tests for cancellation, invalid inputs, step exhaustion, canonical positivity, deterministic output, and a damped Figure 4 regime; measure canonical runtime to choose safe defaults.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Confirmed the existing task plan and binding Episode 007 numerical/worker contract.
+- Implementing the pure RK45 core first, followed by worker protocol/wiring and reference-backed validation tests.
+<!-- SECTION:NOTES:END -->
