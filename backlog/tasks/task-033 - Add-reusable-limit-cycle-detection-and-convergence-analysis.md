@@ -1,9 +1,11 @@
 ---
 id: TASK-033
 title: Add reusable limit-cycle detection and convergence analysis
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-20 20:54'
+updated_date: '2026-07-20 21:02'
 labels:
   - episode-007
   - python
@@ -30,3 +32,14 @@ Add reusable Python primitives for extracting complete cycles from irregularly s
 - [ ] #4 Utilities handle irregular solver output, incomplete edge cycles, insufficient cycles, and invalid/non-finite input with explicit behavior
 - [ ] #5 Repository-level tests cover synthetic periodic, damped, drifting, phase-shifted, and failure cases
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Define typed result structures and explicit semantics for extrema, complete cycles, periods, amplitudes, drift windows, convergence outcomes, and orbit-distance results.
+2. Implement robust extrema and complete-cycle extraction for irregular time samples, including edge-cycle removal and interpolation/refinement where justified.
+3. Implement final-window period and amplitude drift metrics with configurable thresholds and the Episode 007 final-20-cycle convergence check.
+4. Implement a documented phase-independent orbit comparison by resampling complete cycles and minimizing cyclic phase mismatch or using an equivalent symmetric geometry metric.
+5. Add validation and failure handling for non-finite, non-monotone, incomplete, and insufficient inputs.
+6. Add synthetic repository-level tests for periodic, damped, drifting, phase-shifted, irregularly sampled, and invalid trajectories; expose the stable public API from the package as appropriate.
+<!-- SECTION:PLAN:END -->
