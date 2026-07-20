@@ -11,17 +11,15 @@ Goal: establish the scientific and browser contracts for a reproducible long-int
 
 Empty directories are retained with `.gitkeep` placeholders until their follow-on work produces concrete artifacts.
 
-## Intended workflow (not implemented by this scaffold)
+## Workflow
 
-The following are the intended commands after the corresponding notebook and web tasks add their source files and dependencies. They are documentation of the planned interface, not claims that an output currently exists or that these commands can yet succeed.
-
-From the repository root, the notebook rerun is intended to be:
+The authoritative long-integration diagnostics notebook is implemented. From the repository root, rerun it cleanly to regenerate every curated scientific figure and browser-validation reference artifact:
 
 ```bash
 uv run jupyter execute episodes/007-limit-cycle-interactive-widget/notebooks/01_limit_cycle_diagnostics.ipynb --inplace
 ```
 
-The browser application is intended to install, test, and build from its episode-local directory:
+The follow-on browser application remains not implemented by this scaffold; it is intended to install, test, and build from its episode-local directory:
 
 ```bash
 cd episodes/007-limit-cycle-interactive-widget/web
