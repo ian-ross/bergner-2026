@@ -1,9 +1,11 @@
 ---
 id: TASK-034
 title: Build the Episode 007 long-integration diagnostics notebook
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-20 20:54'
+updated_date: '2026-07-20 21:02'
 labels:
   - episode-007
   - science
@@ -34,3 +36,15 @@ Create the authoritative Episode 007 notebook for the high-aerosol Figure 4 cent
 - [ ] #6 Reference outputs include a 17-significant-digit CSV with an early transient and final three cycles, a full-run per-cycle summary CSV, and versioned JSON metadata containing parameters, units, initial conditions, solver settings, cycle boundaries, and convergence metrics
 - [ ] #7 The notebook runs from a clean checkout through a documented command and regenerates all curated outputs without manual cell state
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Build the notebook around package APIs and the canonical environment T=225 K, p=300 hPa, w=0.1 m/s, F=1, N_a=1e10 m^-3, Delta z=100 m, with Evap_n disabled.
+2. Compute the positive equilibrium and linearized oscillation period, construct the paper-style and three directional perturbations, and integrate all four trajectories for approximately 300 linearized periods with documented tolerances and output sampling.
+3. Detect complete cycles, evaluate final-20-cycle period/amplitude drift, and compare converged orbit geometry across all initial conditions against the approved thresholds.
+4. Evaluate every process term and total tendency along the trajectories, then select a representative final cycle for mechanistic analysis.
+5. Generate the three curated figures: long-run stability diagnostics, multi-start attraction in log10(n)-s space, and synchronized state/process budgets over one cycle.
+6. Export the early transient and final three cycles at 17-significant-digit precision, the full per-cycle summary, and schema-versioned JSON metadata with units and provenance.
+7. Execute the notebook from a clean state using the documented command, verify regenerated artifacts and metrics, and record numerical limitations.
+<!-- SECTION:PLAN:END -->
