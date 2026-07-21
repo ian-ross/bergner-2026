@@ -23,3 +23,12 @@ Remove the aerosol concentration slider, keep its Figure 4 default fixed interna
 - [ ] #3 Relevant documentation and accessibility tests reflect the simplified interface
 - [ ] #4 Web tests and production build pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Remove the N_a markup and bind model input to the fixed Figure 4 default.
+2. Remove equilibrium display handling and clear/hide completion status.
+3. Update tests and Episode 007 control documentation.
+4. Run tests and the offline production build.
+<!-- SECTION:PLAN:END -->
