@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-21 16:38'
-updated_date: '2026-07-21 16:38'
+updated_date: '2026-07-21 16:43'
 labels: []
 dependencies: []
 ---
@@ -34,3 +34,13 @@ Improve the Episode 007 browser widget so its numerical trajectory is reliable a
 4. Compact control markup and responsive CSS.
 5. Add regression tests, run the web suite/build, update Episode 007 documentation, and record completion.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Replaced the coarse duration/100 production step cap with a shared 15 s adaptive profile and cubic Hermite dense output.
+- Added equilibrium/sample-batch worker messages and live plot rendering while integration runs.
+- Split full plot rendering from lightweight replay cursor updates; fixed orbit ranges on completed data and made the orbit panel square.
+- Compacted form labels and control widths; updated Episode 007 numerical/architecture documentation.
+- Web tests pass (27 tests) and the offline Vite build verifies local assets.
+<!-- SECTION:NOTES:END -->
