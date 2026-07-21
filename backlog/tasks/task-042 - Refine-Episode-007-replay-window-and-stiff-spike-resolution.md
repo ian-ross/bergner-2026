@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-07-21 19:51'
-updated_date: '2026-07-21 19:51'
+updated_date: '2026-07-21 19:58'
 labels: []
 dependencies: []
 ---
@@ -34,3 +34,14 @@ Refine the improved Episode 007 widget by slowing replay, adding a moving five-p
 4. Add fixed startup orbit bounds derived from the Figure 4 reference orbit.
 5. Run numerical, build, and headless-browser validation; update documentation and task records.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Reproduced 2.68% late-cycle Nuc_n peak-height modulation on the former 15 s uniform output grid.
+- Confirmed output aliasing, not RK state integration, as the primary cause: accepted-step samples reduced modulation to 0.27%, and adding cubic-Hermite saturation stationary points reduced it to 1.9e-6 relative.
+- Verified the mean browser peak (about 1635.895) against independently evaluated SciPy dense-output maxima for the final three cycles at 1e-5 relative.
+- Added a five-period (12308.0 s) moving time window, a 10x replay slowdown, fixed Figure 4 startup orbit bounds, and disabled Plotly line simplification for budget spikes.
+- Headless Chromium confirmed a square 484 px orbit with unchanged startup/completed bounds, fixed-width scrolling time axes, and rendered Nuc_n peak variation of 1.73e-6.
+- `npm test` passes 27 tests; TypeScript, Vite build, and offline asset verification pass.
+<!-- SECTION:NOTES:END -->
