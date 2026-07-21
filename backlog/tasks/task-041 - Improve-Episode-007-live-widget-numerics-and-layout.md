@@ -24,3 +24,13 @@ Improve the Episode 007 browser widget so its numerical trajectory is reliable a
 - [ ] #4 The orbit plot has a stable near-square panel and does not change ranges or size during replay
 - [ ] #5 Web tests and offline production build pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add a shared, production-tested adaptive integration profile and higher-order output interpolation.
+2. Extend the worker protocol to stream equilibrium and sample batches, and render those batches live.
+3. Separate full plot updates from lightweight replay cursor updates; fix orbit ranges and panel geometry.
+4. Compact control markup and responsive CSS.
+5. Add regression tests, run the web suite/build, update Episode 007 documentation, and record completion.
+<!-- SECTION:PLAN:END -->
