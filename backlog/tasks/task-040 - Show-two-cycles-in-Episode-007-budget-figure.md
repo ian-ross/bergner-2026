@@ -1,9 +1,11 @@
 ---
 id: TASK-040
 title: Show two cycles in Episode 007 budget figure
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 10:44'
+updated_date: '2026-07-21 10:44'
 labels:
   - episode-007
   - science
@@ -31,3 +33,13 @@ Extend the Episode 007 representative state and process-budget figure from one c
 - [ ] #3 The separate color-coded n, q, and s axes and shared per-equation budget scales are preserved
 - [ ] #4 A clean notebook execution regenerates the figure without changing numerical CSV or JSON reference artifacts
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Extend the representative-window extraction from the final complete cycle to the final two consecutive complete cycles, including interpolated boundary samples.
+2. Keep the existing four synchronized panels and axis semantics, update the title/x-axis wording to two cycles, and mark the internal cycle boundary with a subtle vertical guide.
+3. Update the notebook regression contract to require a two-cycle window and preserve the three state axes plus shared budget scales.
+4. Clean-execute the notebook, visually inspect the regenerated figure, verify numerical CSV/JSON hashes are unchanged, and run focused and full tests.
+5. Record results and close TASK-040.
+<!-- SECTION:PLAN:END -->
