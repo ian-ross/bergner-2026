@@ -24,3 +24,12 @@ Remove the non-working s +1% initial condition and the Advanced controls section
 - [ ] #4 Documentation and tests reflect the reduced control surface
 - [ ] #5 Web tests and production build pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Remove the s-start and advanced-control markup.
+2. Narrow start-option types and bind p/Delta z to canonical defaults.
+3. Update tests and Episode 007 documentation.
+4. Run tests and the offline production build.
+<!-- SECTION:PLAN:END -->
