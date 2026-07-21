@@ -23,3 +23,12 @@ Move the Arrow keys scrub help text below the playback timeline and speed select
 - [ ] #3 The replay layout remains single-column on narrow screens
 - [ ] #4 Web tests and production build pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Reorder replay help markup after the speed selector.
+2. Define a two-row replay grid with the existing timeline width capped.
+3. Preserve the narrow-screen single-column layout.
+4. Run tests and the offline production build.
+<!-- SECTION:PLAN:END -->
