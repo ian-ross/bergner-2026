@@ -1,0 +1,21 @@
+---
+id: TASK-043
+title: Reduce Episode 007 default integration duration
+status: To Do
+assignee: []
+created_date: '2026-07-21 20:03'
+labels: []
+dependencies: []
+---
+
+## Description
+
+<!-- SECTION:DESCRIPTION:BEGIN -->
+Set the Episode 007 widget's default and Figure 4 preset integration duration to 60000 seconds.
+<!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 The widget initializes and resets the Figure 4 preset duration to 60000 seconds
+- [ ] #2 Web tests and production build pass
+<!-- AC:END -->
