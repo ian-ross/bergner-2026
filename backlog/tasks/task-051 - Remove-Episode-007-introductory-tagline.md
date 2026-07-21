@@ -21,3 +21,10 @@ Remove the introductory sentence below the Episode 007 widget title.
 - [ ] #1 The Watch a fresh adaptive integration introductory text is absent
 - [ ] #2 Web tests and production build pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Remove the header tagline.
+2. Run tests and the offline production build.
+<!-- SECTION:PLAN:END -->
