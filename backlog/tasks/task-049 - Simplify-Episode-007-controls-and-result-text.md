@@ -1,9 +1,11 @@
 ---
 id: TASK-049
 title: Simplify Episode 007 controls and result text
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:38'
+updated_date: '2026-07-21 20:38'
 labels: []
 dependencies: []
 ---
