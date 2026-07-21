@@ -1,11 +1,11 @@
 ---
 id: TASK-041
 title: Improve Episode 007 live widget numerics and layout
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-21 16:38'
-updated_date: '2026-07-21 16:43'
+updated_date: '2026-07-21 16:48'
 labels: []
 dependencies: []
 ---
@@ -18,11 +18,11 @@ Improve the Episode 007 browser widget so its numerical trajectory is reliable a
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The production widget uses a validated adaptive integration profile and accurate interpolation rather than coarse duration-scaled stepping
-- [ ] #2 Trajectory samples stream to the plots during integration and remain available for replay after completion
-- [ ] #3 Form controls use compact single-line variable/unit labels without expanding across excessive width
-- [ ] #4 The orbit plot has a stable near-square panel and does not change ranges or size during replay
-- [ ] #5 Web tests and offline production build pass
+- [x] #1 The production widget uses a validated adaptive integration profile and accurate interpolation rather than coarse duration-scaled stepping
+- [x] #2 Trajectory samples stream to the plots during integration and remain available for replay after completion
+- [x] #3 Form controls use compact single-line variable/unit labels without expanding across excessive width
+- [x] #4 The orbit plot has a stable near-square panel and does not change ranges or size during replay
+- [x] #5 Web tests and offline production build pass
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -43,4 +43,24 @@ Improve the Episode 007 browser widget so its numerical trajectory is reliable a
 - Split full plot rendering from lightweight replay cursor updates; fixed orbit ranges on completed data and made the orbit panel square.
 - Compacted form labels and control widths; updated Episode 007 numerical/architecture documentation.
 - Web tests pass (27 tests) and the offline Vite build verifies local assets.
+
+- Headless Chromium smoke test observed 37 distinct live-progress states, completed the 15,943-sample preset, and confirmed orbit dimensions and axis ranges were identical before and during replay.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Improved the Episode 007 browser explorer so the trajectory is both numerically tighter and visible during computation.
+
+Changes:
+- Added a shared production RK45 profile with a 15 s maximum step and cubic Hermite dense output; the production profile now passes the Python late-cycle period, amplitude, and orbit-distance checks.
+- Streamed equilibrium and completed sample batches from the worker so all three plots grow during integration, while retaining full replay after completion.
+- Replaced replay-time full Plotly rebuilds with lightweight cursor/marker updates and fixed completed-orbit ranges in a square panel.
+- Compacted control widths and combined variable names, units, and live values into single-line labels.
+- Updated Episode 007 architecture and validation documentation.
+
+Tests:
+- `npm test` (27 passed)
+- `npm run build` (TypeScript, Vite, offline asset verification)
+- Headless Chromium live-integration and replay geometry smoke test
+<!-- SECTION:FINAL_SUMMARY:END -->
