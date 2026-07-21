@@ -1,9 +1,11 @@
 ---
 id: TASK-052
 title: Reposition Episode 007 replay help text
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:49'
+updated_date: '2026-07-21 20:49'
 labels: []
 dependencies: []
 ---
