@@ -1,9 +1,11 @@
 ---
 id: TASK-041
 title: Improve Episode 007 live widget numerics and layout
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 16:38'
+updated_date: '2026-07-21 16:38'
 labels: []
 dependencies: []
 ---
