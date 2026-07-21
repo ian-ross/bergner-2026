@@ -1,11 +1,11 @@
 ---
 id: TASK-039
 title: Separate Episode 007 one-cycle plot scales
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-21 10:33'
-updated_date: '2026-07-21 10:38'
+updated_date: '2026-07-21 10:40'
 labels:
   - episode-007
   - science
@@ -28,10 +28,10 @@ Revise the Episode 007 representative-cycle state and process-budget figure so v
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The one-cycle figure gives n, q, and s independently scaled vertical axes with explicit units
-- [ ] #2 All state and budget views retain a synchronized one-cycle time axis and clear grouping by governing equation
-- [ ] #3 A clean notebook execution regenerates the curated figure and existing Episode 007 reference artifacts without changing numerical results
-- [ ] #4 The dn/dt, dq/dt, and ds/dt budget panels retain one shared vertical scale per governing equation so component sums remain physically interpretable
+- [x] #1 The one-cycle figure gives n, q, and s independently scaled vertical axes with explicit units
+- [x] #2 All state and budget views retain a synchronized one-cycle time axis and clear grouping by governing equation
+- [x] #3 A clean notebook execution regenerates the curated figure and existing Episode 007 reference artifacts without changing numerical results
+- [x] #4 The dn/dt, dq/dt, and ds/dt budget panels retain one shared vertical scale per governing equation so component sums remain physically interpretable
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,4 +52,22 @@ Revise the Episode 007 representative-cycle state and process-budget figure so v
 
 - User clarified the intended design: only the state panel needs separate scales. Budget components must remain on a common scale within each equation because their relative magnitudes and sums are physically meaningful.
 - Revised the implementation from small multiples to three color-coded y-axes in the existing state panel.
+
+- Added two right-side twin axes to the existing state panel: q uses the first right axis and s uses an outward-offset second right axis; n remains on the left. Labels, ticks, offset text, and spines match each curve color.
+- Left all three process-budget panels on their original shared per-equation scales.
+- Clean-executed the notebook and visually inspected the regenerated 2000x2000 PNG. SHA-256 hashes for reference_trajectory.csv, per_cycle_summary.csv, and reference_metadata.json are unchanged.
+- Added a notebook plotting contract regression check. Focused tests pass (2); full repository suite passes (107, with 3 pre-existing overflow warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Reworked the Episode 007 one-cycle state panel so n, q, and s remain overlaid on the synchronized timeline while each uses an independently scaled, explicitly labeled y-axis. Axis labels, ticks, scientific-notation offset text, and spines are color-coded to their curves; the s axis is offset outward from the q axis for readability.
+
+The dn/dt, dq/dt, and ds/dt panels deliberately retain one common scale per budget so component magnitudes and their sum remain physically interpretable. Regenerated the curated figure without changing any numerical CSV or JSON reference artifact.
+
+Tests:
+- uv run pytest -q tests/test_episode7_diagnostics_notebook.py (2 passed)
+- uv run pytest -q (107 passed; 3 pre-existing numerical overflow warnings)
+- git diff --check
+<!-- SECTION:FINAL_SUMMARY:END -->
