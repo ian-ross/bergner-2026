@@ -1,7 +1,7 @@
 ---
 id: TASK-042
 title: Refine Episode 007 replay window and stiff spike resolution
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-07-21 19:51'
@@ -18,11 +18,11 @@ Refine the improved Episode 007 widget by slowing replay, adding a moving five-p
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Default replay advances approximately ten times more slowly than the current implementation at each displayed speed
-- [ ] #2 Time-series plots default to a fixed window of approximately five Figure 4 oscillation periods and scroll to follow replay time
-- [ ] #3 The production browser integration resolves recurring narrow Nuc_n spikes without sampling-beat height modulation
-- [ ] #4 The orbit plot starts with fixed bounds that contain the Figure 4 preset orbit without rescaling
-- [ ] #5 Web regression tests, production build, and browser smoke checks pass
+- [x] #1 Default replay advances approximately ten times more slowly than the current implementation at each displayed speed
+- [x] #2 Time-series plots default to a fixed window of approximately five Figure 4 oscillation periods and scroll to follow replay time
+- [x] #3 The production browser integration resolves recurring narrow Nuc_n spikes without sampling-beat height modulation
+- [x] #4 The orbit plot starts with fixed bounds that contain the Figure 4 preset orbit without rescaling
+- [x] #5 Web regression tests, production build, and browser smoke checks pass
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -45,3 +45,24 @@ Refine the improved Episode 007 widget by slowing replay, adding a moving five-p
 - Headless Chromium confirmed a square 484 px orbit with unchanged startup/completed bounds, fixed-width scrolling time axes, and rendered Nuc_n peak variation of 1.73e-6.
 - `npm test` passes 27 tests; TypeScript, Vite build, and offline asset verification pass.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Refined the Episode 007 replay and numerical presentation around the canonical limit cycle.
+
+Changes:
+- Slowed all replay speed settings by approximately 10x.
+- Added a fixed 12,308 s time-series viewport (five canonical late-cycle periods) that follows the current replay time.
+- Diagnosed fixed-grid aliasing as the source of nucleation peak beating; production output now retains adaptive accepted endpoints and samples cubic-Hermite saturation stationary points.
+- Disabled Plotly line simplification for process budgets so narrow Nuc_n peaks remain visible.
+- Added fixed startup orbit bounds that contain the Figure 4 trajectory without rescaling.
+- Updated numerical and architecture documentation.
+
+Validation:
+- Browser Nuc_n final-20-cycle peak variation: 1.9e-6 relative (previously 2.68e-2).
+- Mean peak agrees with an independent SciPy dense-output reference at 1e-5 relative.
+- `npm test`: 27 passed.
+- `npm run build`: TypeScript, Vite, and offline verification passed.
+- Headless Chromium verified scrolling time ranges, fixed orbit geometry/bounds, and rendered spike stability.
+<!-- SECTION:FINAL_SUMMARY:END -->
