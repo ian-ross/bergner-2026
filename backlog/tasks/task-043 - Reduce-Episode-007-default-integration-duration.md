@@ -1,9 +1,11 @@
 ---
 id: TASK-043
 title: Reduce Episode 007 default integration duration
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:03'
+updated_date: '2026-07-21 20:03'
 labels: []
 dependencies: []
 ---
