@@ -1,9 +1,11 @@
 ---
 id: TASK-047
 title: Speed Episode 007 physical-time animation by 100x
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:21'
+updated_date: '2026-07-21 20:21'
 labels: []
 dependencies: []
 ---
