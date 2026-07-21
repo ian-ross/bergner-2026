@@ -22,3 +22,11 @@ Increase the corrected Episode 007 physical-time animation clock by a factor of 
 - [ ] #2 Interface help and Episode 007 documentation state the corrected rate
 - [ ] #3 Web tests, production build, and browser timing check pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Increase the physical-time playback constant by 100x.
+2. Update rate tests and user-facing documentation.
+3. Run tests, build, and a browser timing check.
+<!-- SECTION:PLAN:END -->
