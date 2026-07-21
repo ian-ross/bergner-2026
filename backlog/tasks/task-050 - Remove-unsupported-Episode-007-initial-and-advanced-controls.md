@@ -1,9 +1,11 @@
 ---
 id: TASK-050
 title: Remove unsupported Episode 007 initial and advanced controls
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:43'
+updated_date: '2026-07-21 20:43'
 labels: []
 dependencies: []
 ---
