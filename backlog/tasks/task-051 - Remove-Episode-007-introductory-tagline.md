@@ -1,9 +1,11 @@
 ---
 id: TASK-051
 title: Remove Episode 007 introductory tagline
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:47'
+updated_date: '2026-07-21 20:47'
 labels: []
 dependencies: []
 ---
