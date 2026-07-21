@@ -24,3 +24,13 @@ Refine the improved Episode 007 widget by slowing replay, adding a moving five-p
 - [ ] #4 The orbit plot starts with fixed bounds that contain the Figure 4 preset orbit without rescaling
 - [ ] #5 Web regression tests, production build, and browser smoke checks pass
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Reproduce and quantify late-cycle Nuc_n peak-height modulation under the production browser profile.
+2. Add a spike-aware numerical/output strategy with a regression bound against a high-resolution reference.
+3. Slow replay and add a fixed five-period moving time window.
+4. Add fixed startup orbit bounds derived from the Figure 4 reference orbit.
+5. Run numerical, build, and headless-browser validation; update documentation and task records.
+<!-- SECTION:PLAN:END -->
