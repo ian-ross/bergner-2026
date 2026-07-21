@@ -1,9 +1,11 @@
 ---
 id: TASK-042
 title: Refine Episode 007 replay window and stiff spike resolution
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 19:51'
+updated_date: '2026-07-21 19:51'
 labels: []
 dependencies: []
 ---
