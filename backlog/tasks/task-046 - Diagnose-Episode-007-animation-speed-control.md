@@ -1,9 +1,11 @@
 ---
 id: TASK-046
 title: Diagnose Episode 007 animation speed control
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:12'
+updated_date: '2026-07-21 20:12'
 labels: []
 dependencies: []
 ---
