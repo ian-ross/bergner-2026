@@ -1,9 +1,11 @@
 ---
 id: TASK-048
 title: Speed Episode 007 animation by another factor of five
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:23'
+updated_date: '2026-07-21 20:23'
 labels: []
 dependencies: []
 ---
