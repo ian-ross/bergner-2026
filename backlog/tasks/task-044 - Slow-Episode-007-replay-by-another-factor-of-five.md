@@ -1,9 +1,11 @@
 ---
 id: TASK-044
 title: Slow Episode 007 replay by another factor of five
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-07-21 20:05'
+updated_date: '2026-07-21 20:05'
 labels: []
 dependencies: []
 ---
