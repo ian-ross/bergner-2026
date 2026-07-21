@@ -28,9 +28,22 @@ def test_episode7_diagnostics_notebook_records_the_required_solver_and_process_c
         "'Nuc_n', 'Sed_n'",
         "'Nuc_q', 'Dep_q', 'Sed_q'",
         "'Cool', 'Nuc_s', 'Dep_s'",
+        "representative_cycles = cycle_extractions[reference_name].cycles[-2:]",
+        "cycle_boundary_time = representative_cycles[0].end.time - cycle_time[0]",
+        "'Two-cycle state and process budgets'",
+        "axis.axvline(cycle_boundary_time",
+        "state_axes = [axes[0], axes[0].twinx(), axes[0].twinx()]",
+        "state_axes[2].spines['right'].set_position(('outward', 70))",
+        "'n [kg dry-air$^{-1}$]'",
+        "'q [kg kg dry-air$^{-1}$]'",
+        "'s [1]'",
         "float_format='%.17g'",
     ):
         assert required_source in source
+
+    assert source.count(".twinx()") == 2
+    assert "axis.set_ylabel(label, color=color)" in source
+    assert "axis.tick_params(axis='y', colors=color)" in source
 
 
 def test_episode7_reference_outputs_satisfy_the_browser_validation_contract():
