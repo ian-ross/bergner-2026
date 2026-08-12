@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 21:00'
+updated_date: '2026-08-12 21:02'
 labels:
   - episode-008
   - python
@@ -44,3 +44,10 @@ Add the transparent Python reference continuation path on an unchanged midpoint 
 5. Add focused tests for metric mesh independence and use in every continuation operation, sparse augmented Jacobian/parameter-column directional checks, deterministic step-halving bootstrap and orientation, exact spine landing, bidirectional spine/slice convergence, fixed reference IDs within segments, controlled refresh semantics, rejection diagnostics, artifact schema/checksums, and byte-for-byte regeneration.
 6. Update the Episode 008 README and collocation decision record with the fixed-mesh continuation method, calibrated short-branch evidence, commands, and the explicit warning that this remains a midpoint machinery/parity milestone rather than a production-accuracy result. Run focused and full tests, generator checks, py_compile, whitespace checks, and self-review before completing the acceptance criteria.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Plan approved; implementation started from a clean worktree. Confirmed Python 3.11.15, NumPy 2.4.6, SciPy 1.17.1, uv, git, and backlog CLI are available.
+- Reviewed the completed TASK-056 midpoint solver/artifacts, Episode 008 contracts, and Episode 006 native LOCA Hopf-locus CSV. Exact locus rows give the T=225 K spine w=0.1445622536840862 m/s (bootstrap rho=-0.2639524255 at w=0.1) and the T=210 K spine w=0.0532671872264416 m/s.
+<!-- SECTION:NOTES:END -->
