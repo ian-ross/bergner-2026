@@ -1,11 +1,11 @@
 ---
 id: TASK-057
 title: Implement Python fixed-mesh pseudo-arclength orbit continuation
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 21:29'
+updated_date: '2026-08-12 21:42'
 labels:
   - episode-008
   - python
@@ -26,12 +26,12 @@ Add the transparent Python reference continuation path on an unchanged midpoint 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The augmented Python corrector uses the discretization-independent weighted metric for secants, tangents, predictors, and arclength
-- [ ] #2 Every direction starts from a deterministic fixed-parameter corrected neighbor with step-halving recovery and branch-bootstrap provenance
-- [ ] #3 A fixed-temperature branch continues from the Episode 007 point to the exact T=225 K spine coordinate
-- [ ] #4 Short T-hat spine and T=210 K rho slice segments converge in both requested directions on a fixed midpoint mesh
-- [ ] #5 Phase references remain frozen within segments and refresh only through recorded controlled restarts
-- [ ] #6 Continuation outputs include accepted/rejected steps, block residuals, physical and normalized coordinates, period, phase diagnostics, and branch orientation
+- [x] #1 The augmented Python corrector uses the discretization-independent weighted metric for secants, tangents, predictors, and arclength
+- [x] #2 Every direction starts from a deterministic fixed-parameter corrected neighbor with step-halving recovery and branch-bootstrap provenance
+- [x] #3 A fixed-temperature branch continues from the Episode 007 point to the exact T=225 K spine coordinate
+- [x] #4 Short T-hat spine and T=210 K rho slice segments converge in both requested directions on a fixed midpoint mesh
+- [x] #5 Phase references remain frozen within segments and refresh only through recorded controlled restarts
+- [x] #6 Continuation outputs include accepted/rejected steps, block residuals, physical and normalized coordinates, period, phase diagnostics, and branch orientation
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -58,4 +58,38 @@ Add the transparent Python reference continuation path on an unchanged midpoint 
 
 - Independent three-angle review found unsafe generic contracts around target overshoot and path-changing restarts, plus artifact/test gaps. Fixed them by rejecting crossing pseudo-arclength points in favor of exact landing, requiring physical T/log(w) preservation and all residual gates at restarts, enforcing point/family/metric compatibility, safely rejecting malformed optimizer shapes, retaining cost/optimality, hashing the analytic-derivative source, separating accepted/rejected/informational event counts, and independently testing every endpoint/restart/dtype.
 - Final validation after fixes: 32 focused Episode 008 midpoint/continuation tests passed; full suite passed with 152 passed / 1 explicit pre-existing skip and three known exploratory-solver overflow warnings. Both midpoint and continuation generators pass byte-for-byte --check, py_compile and git diff whitespace checks pass.
+
+- Follow-up review caught epsilon-scale near-target ambiguity and incomplete artifact acceptance tests. Exact success now requires coordinate equality; near-target and crossing cases route through exact landing or rejection. Tests now prove the event-count partition, both refresh semantics/lineage/residual gates, all five exact endpoints, source provenance, solver diagnostic schema, and stored little-endian dtypes. A final fresh targeted review found no blockers or fixes worth doing now.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the transparent Python fixed-mesh pseudo-arclength periodic-orbit continuation reference for Episode 008.
+
+Changes:
+- Added normalized fixed-temperature rho and spine T-hat path adapters backed by shape-preserving interpolation of the validated Episode 006 native-LOCA Hopf loci.
+- Added analytic transformed-field derivatives with respect to T and log(w), including all temperature-dependent model coefficients, and assembled normalized rho/T-hat parameter columns with the documented chain rules.
+- Added a discretization-independent continuation metric with half endpoint/half explicit-stage quadrature weighting, exact frozen Episode 007 state scales, and unit log-period/active-coordinate weights. The same metric drives secants, tangent normalization, predictors, arclength constraints, and reported steps.
+- Added the sparse augmented SciPy TRF corrector with independent stage/update/phase/arclength acceptance gates, physical finiteness checks, structured rejection diagnostics, and full solver termination/cost/evaluation data.
+- Added deterministic signed two-point branch bootstrap with fixed-parameter correction, excessive-change/failure rejection, step halving, oriented secants, and provenance events. Exact target landing is separately corrected and cannot be replaced by overshoot or near-target tolerance.
+- Added controlled phase-reference restart support that preserves physical T/log(w), verifies every fixed-parameter residual block, records lineage, and enforces point/family/metric compatibility.
+- Added deterministic curated JSON/NPZ generation and checksums for five N=64 validation branches, all accepted vectors, metric diagonals, three phase references, accepted/rejected/informational events, physical/normalized coordinates, periods, phase diagnostics, orientation, and restart provenance.
+- Updated the Episode 008 README and design record with method details, observed branches, reproduction commands, and the explicit non-production-accuracy warning.
+
+Results:
+- T=225 K fixed-temperature branch: Episode 007 rho=-0.2639524255 to exact spine rho=0, w=0.1445622537 m/s.
+- Spine: positive direction to exact T=226 K and negative direction through Delta T-hat=-0.6 to exact T=210 K.
+- T=210 K slice: exact spine rho=0 to rho=-0.15 and rho=+0.15.
+- Two controlled phase-reference refreshes; references remain immutable within all five segments.
+- One excessive bootstrap attempt is deliberately retained as a rejected event before deterministic halving recovery.
+
+Validation:
+- 33 focused Episode 008 midpoint/continuation tests passed.
+- Full suite: 153 passed, 1 explicit pre-existing skip; three known warnings remain in exploratory solver paths.
+- Midpoint and continuation generators pass byte-for-byte --check.
+- py_compile, git diff whitespace checks, analytic-column directional checks, and multi-round independent review passed; final review found no blockers or fixes worth doing now.
+
+Scope:
+- This is an N=64 midpoint continuation machinery and Python-to-LOCA parity milestone. It does not claim production period or continuous-orbit accuracy.
+<!-- SECTION:FINAL_SUMMARY:END -->
