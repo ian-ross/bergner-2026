@@ -1,11 +1,11 @@
 ---
 id: TASK-053
 title: Freeze Episode 008 bootstrap seed and initial collocation fixtures
-status: Done
+status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 13:10'
+updated_date: '2026-08-12 15:07'
 labels:
   - episode-008
   - python
@@ -34,16 +34,17 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - [x] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
 - [x] #6 The stale Episode 007 planning-contract test is explicitly disabled so it no longer blocks the repository suite
 - [x] #7 All current tracked Episode 006 and Episode 007 edits are reviewed, validated where practical, and committed together with the disabled Episode 007 test
+- [ ] #8 The periodic seed loader, validator, checksum verification, and Hermite evaluator live in reusable package code rather than the standalone Episode 008 generator script
+- [ ] #9 The Episode 008 generator and tests consume the packaged API while deterministic seed regeneration remains unchanged
 <!-- AC:END -->
 
 ## Implementation Plan
 
 <!-- SECTION:PLAN:BEGIN -->
-1. Define the Episode 008 seed schema and strict source-validation rules around the committed Episode 007 trajectory/metadata, including canonical parameters, SHA-256 checksums, the final paper_0.99 saturation-maximum interval, monotone samples, and periodic boundary tolerances.
-2. Add a standalone Episode 008 bootstrap-seed script that extracts that interval, converts samples to (log(n), log(q), s), computes log(P) and transformed model-field phase slopes P*g(x), and writes a deterministic frozen JSON seed with extraction provenance.
-3. Implement a periodic cubic-Hermite seed loader/evaluator that supports arbitrary normalized phases (including endpoint and collocation-stage locations) without invoking solve_ivp, while enforcing identical value and slope data at theta=0 and theta=1.
-4. Generate and curate the frozen seed artifact under the Episode 008 outputs directory, then document its regeneration and downstream evaluation contract in the episode README.
-5. Add repository-level tests for deterministic regeneration/evaluation, arbitrary endpoint/stage sampling, transformed-field slope semantics, boundary continuity, upstream checksum drift, malformed boundaries, and rejection of nonperiodic seed data; run focused and relevant regression tests.
+1. Extract the generic periodic-seed exception, checksum verification, JSON loader/validator, and cubic-Hermite evaluator into src/bergner_spichtinger_2026/periodic_seed.py without episode-specific default paths.
+2. Keep Episode 007 source extraction, provenance construction, deterministic rendering, and CLI behavior in the Episode 008 standalone generator; validate generated mappings through the package API explicitly.
+3. Update Episode 008 tests and documentation to import the reusable package API, add package-level loader coverage, and verify that the frozen JSON regeneration is byte-identical.
+4. Run focused and full Python validation, review the diff, update task records, and commit the refactor.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
@@ -63,6 +64,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 
 - Disabled the superseded Episode 007 planning-contract test with an explicit pytest skip. The repository suite is now green: 111 passed, 1 skipped. Episode 007 Vitest passed 27 tests and its production build/offline verification passed.
 - Reviewed and committed all tracked Episode 006/007 edits plus the disabled Episode 007 test as commit d7b8bd9 (`feat(episode-007): stream integration samples`). TASK-053 Episode 008 changes remain uncommitted because the user specifically requested committing Episode 006/007 edits.
+
+- Reopened after identifying that PeriodicHermiteSeed and checksum validation were incorrectly isolated inside a standalone episode script. User approved moving the reusable JSON loading/evaluation contract into package code while retaining Episode 007 extraction and CLI concerns in the generator.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
