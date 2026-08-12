@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 20:10'
+updated_date: '2026-08-12 20:46'
 labels:
   - episode-008
   - python
@@ -43,3 +43,14 @@ Demonstrate fixed-parameter periodic-orbit correction from the frozen seed and q
 5. Add focused tests for N=64 acceptance, all four convergence rows and required diagnostics, weighted metrics/reference comparisons, rejection of failed and nominally successful solves that miss any block tolerance, deterministic artifact regeneration, and exact frozen-vector/residual loading.
 6. Update the Episode 008 README/docs to state the observed convergence evidence and explicitly warn that discrete nonlinear convergence does not establish period or continuous-orbit accuracy. Run artifact regeneration checks, focused tests, the full Python suite, compile/whitespace checks, and self-review before checking acceptance criteria and completing the task.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Plan approved; implementation started with Python 3.11.15, NumPy 2.4.6, SciPy 1.17.1, and a clean worktree.
+- Added reusable strict SciPy TRF correction with the analytic CSR Jacobian, versioned independent stage/update/phase block gates, finite/positivity validation, structured rejection diagnostics, and quadrature-weighted seed/reference orbit comparisons.
+- Added the Episode 008 fixed-mesh generator and curated JSON/NPZ artifacts for N=32, 64, 128, and 256. The N=64 migration fixture includes both the accepted solution and a deterministic nonsolution with nontrivial stage, update, and phase residual blocks, documented order/shapes/checksums/provenance, and deterministic byte-for-byte regeneration checks.
+- Observed results: N=32 rejected after 1000 evaluations; N=64 accepted at P=2768.508882 s with weighted Episode 007 orbit error 0.172603 and 9 evaluations; N=128 accepted at P=2531.464910 s with error 0.0389869 and 8 evaluations; N=256 accepted at P=2478.674760 s with error 0.00950588 and 8 evaluations. The Episode 007 period is 2461.611268 s, so N=64 remains 12.47% high despite near-machine discrete residuals.
+- Independent numerical/artifact/API review found solver-output and generator-check blockers plus parity-fixture weaknesses. These were fixed by safe nonfinite/overflow rejection, unified exact artifact checks, runtime/source provenance, a nontrivial N=64 parity vector, and stronger gate/check tests. A fresh final review found no blockers or fixes worth doing now.
+- Final validation: 21 focused midpoint tests passed; full suite passed with 141 passed / 1 pre-existing explicit skip and three known exploratory-solver overflow warnings. Fixed-mesh --check and direct generate(check=True), bootstrap/coefficient regeneration checks, py_compile, and git diff whitespace checks passed.
+<!-- SECTION:NOTES:END -->
