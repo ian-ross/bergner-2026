@@ -1,11 +1,11 @@
 ---
 id: TASK-054
 title: Generate shared Gauss collocation coefficient tables
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 15:46'
+updated_date: '2026-08-12 16:01'
 labels:
   - episode-008
   - python
@@ -27,11 +27,11 @@ Create one reproducible SymPy-derived coefficient source for the one-, two-, and
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A committed generator derives collocation nodes, stage coefficients, quadrature weights, integrated Lagrange transfer polynomials, and independent defect-check evaluation data
-- [ ] #2 A canonical machine-readable artifact records symbolic forms where practical, 17-digit values, family, stage count, formal order, and checksum
-- [ ] #3 Generated Python and C++ tables are byte-for-byte reproducible without requiring SymPy at runtime
-- [ ] #4 Tests verify coefficient identities and expected polynomial exactness for one-, two-, and three-stage Gauss-Legendre rules
-- [ ] #5 Regeneration checks fail when committed generated artifacts drift
+- [x] #1 A committed generator derives collocation nodes, stage coefficients, quadrature weights, integrated Lagrange transfer polynomials, and independent defect-check evaluation data
+- [x] #2 A canonical machine-readable artifact records symbolic forms where practical, 17-digit values, family, stage count, formal order, and checksum
+- [x] #3 Generated Python and C++ tables are byte-for-byte reproducible without requiring SymPy at runtime
+- [x] #4 Tests verify coefficient identities and expected polynomial exactness for one-, two-, and three-stage Gauss-Legendre rules
+- [x] #5 Regeneration checks fail when committed generated artifacts drift
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -54,4 +54,28 @@ Create one reproducible SymPy-derived coefficient source for the one-, two-, and
 - Implemented a deterministic SymPy generator for shifted Gauss–Legendre rules with 1–3 stages. It derives exact nodes, Lagrange bases, stage/update integrals, ascending-power transfer coefficients, and off-collocation defect matrices at independently derived (r+1)-point Gauss nodes.
 - Generated the canonical checksummed JSON artifact plus standard-library-only Python and C++ tables, exposed the Python rule lookup through the package, and documented regeneration/checksum/runtime behavior.
 - Added focused coverage for symbolic derivation parity, 17-significant-digit literals, canonical checksum integrity, row-sum identities, Gauss degree 2r-1 exactness, collocation monomial integration, transfer/defect matrices, byte-for-byte regeneration, deliberate drift failure, and C++17 compilation/metadata parity. Focused result: 7 passed; generator --check, C++ smoke compilation, py_compile, and git diff whitespace checks passed.
+
+- Independent review found no mathematical defects and identified hardening opportunities. Applied byte-level UTF-8 comparison/writes with CRLF drift coverage, exact all-table C++/Python parity, independent next-order Legendre-root checks, an immutable public registry, and explicit indexing/orientation documentation.
+- A proposed move of SymPy to development-only dependencies was tested and then reverted because the existing public derive_physical_jacobian_expressions API legitimately requires SymPy. The narrower acceptance contract is verified instead: generated table loading/lookup does not import SymPy, while the package preserves its existing symbolic API.
+- Final validation: full suite 120 passed / 1 pre-existing explicit skip; 8 focused coefficient tests passed; generator --check, py_compile, C++17 -Wall/-Wextra/-pedantic compilation and all-table parity, blocked-SymPy runtime lookup, and git diff whitespace checks passed. The existing numerical suite emits three known overflow warnings in exploratory solver paths.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added a single reproducible coefficient pipeline for the one-, two-, and three-stage Gauss–Legendre collocation rules.
+
+Changes:
+- Added an Episode 008 SymPy generator deriving exact collocation nodes, stage coefficients, quadrature weights, integrated Lagrange transfer polynomials, and independent next-order Gauss defect-check matrices.
+- Added a canonical checksummed JSON artifact with symbolic forms and 17-significant-digit binary64 literals.
+- Generated immutable standard-library-only Python tables and C++17 template specializations from the same artifact, and exposed Python rule lookup through the package API.
+- Added byte-level regeneration/check mode that detects newline-only and content drift.
+- Documented regeneration, checksum semantics, runtime usage, matrix orientation, and transfer coefficient indexing.
+- Added tests for exact symbolic construction, coefficient identities, Gauss degree-2r−1 exactness, collocation/transfer identities, independent check nodes, runtime SymPy isolation, complete Python/C++ table parity, deterministic regeneration, and deliberate drift failure.
+
+Validation:
+- Full Python suite: 120 passed, 1 explicitly skipped.
+- Focused coefficient suite: 8 passed.
+- Generator --check, Python compilation, strict C++17 compilation, runtime no-SymPy-import check, and diff whitespace checks passed.
+- Two independent review rounds found no remaining mathematical or implementation blocker after the package-wide SymPy dependency regression was avoided.
+<!-- SECTION:FINAL_SUMMARY:END -->
