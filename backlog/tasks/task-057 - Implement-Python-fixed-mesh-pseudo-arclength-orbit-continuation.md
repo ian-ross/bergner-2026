@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 21:14'
+updated_date: '2026-08-12 21:29'
 labels:
   - episode-008
   - python
@@ -55,4 +55,7 @@ Add the transparent Python reference continuation path on an unchanged midpoint 
 - Implemented the fixed-mesh family/path adapters, half-endpoint/half-stage weighted metric, sparse augmented pseudo-arclength corrector, strict independent block gates, deterministic fixed-parameter bootstrap with halving, exact-target landing, and explicit controlled phase-reference restarts.
 - Generated curated N=64 continuation JSON/NPZ artifacts. The fixed-T 225 K branch reaches the exact spine; signed spine branches reach 226 K and the exact 210 K spine through a genuine Delta T-hat=-0.6 multi-step segment; signed 210 K rho branches reach -0.15 and +0.15. One excessive bootstrap attempt is frozen as a rejection before deterministic halving recovery.
 - Recorded two controlled phase-reference refreshes. Segment points/events retain one immutable reference ID; artifacts include residual blocks, normalized/physical coordinates, periods, phase diagnostics, orientations, vectors, metric diagonals, restart lineage, checksums, and explicit non-production-accuracy scope.
+
+- Independent three-angle review found unsafe generic contracts around target overshoot and path-changing restarts, plus artifact/test gaps. Fixed them by rejecting crossing pseudo-arclength points in favor of exact landing, requiring physical T/log(w) preservation and all residual gates at restarts, enforcing point/family/metric compatibility, safely rejecting malformed optimizer shapes, retaining cost/optimality, hashing the analytic-derivative source, separating accepted/rejected/informational event counts, and independently testing every endpoint/restart/dtype.
+- Final validation after fixes: 32 focused Episode 008 midpoint/continuation tests passed; full suite passed with 152 passed / 1 explicit pre-existing skip and three known exploratory-solver overflow warnings. Both midpoint and continuation generators pass byte-for-byte --check, py_compile and git diff whitespace checks pass.
 <!-- SECTION:NOTES:END -->
