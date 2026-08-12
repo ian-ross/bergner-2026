@@ -15,6 +15,7 @@ from operator import index
 from typing import Callable, Iterable
 
 import numpy as np
+from scipy.optimize import least_squares, minimize_scalar
 from scipy.sparse import csr_matrix
 
 from .collocation_coefficients import CollocationRule, gauss_legendre_rule
@@ -28,6 +29,7 @@ ArrayLike = Iterable[float] | np.ndarray
 STATE_DIMENSION = 3
 MIDPOINT_FORMULATION_VERSION = "explicit-stage-midpoint-v1"
 JACOBIAN_DIRECTIONAL_RELATIVE_TOLERANCE = 1.0e-6
+MIDPOINT_SOLVER_VERSION = "scipy-trf-block-acceptance-v1"
 
 
 def _positive_integer(value: int, name: str) -> int:
@@ -66,6 +68,66 @@ class CollocationResidualBlocks:
     stages: np.ndarray
     updates: np.ndarray
     phase: float
+
+
+@dataclass(frozen=True)
+class MidpointResidualTolerances:
+    """Independent acceptance thresholds for a corrected midpoint orbit."""
+
+    stage_max: float = 1.0e-9
+    stage_rms: float = 1.0e-9
+    update_max: float = 1.0e-9
+    update_rms: float = 1.0e-9
+    phase_abs: float = 1.0e-10
+
+    def __post_init__(self) -> None:
+        values = (
+            self.stage_max,
+            self.stage_rms,
+            self.update_max,
+            self.update_rms,
+            self.phase_abs,
+        )
+        if not all(np.isfinite(value) and value > 0.0 for value in values):
+            raise ValueError("midpoint residual tolerances must be positive and finite.")
+
+
+@dataclass(frozen=True)
+class MidpointResidualDiagnostics:
+    """Norms used to accept or reject a discrete nonlinear solution."""
+
+    stage_max: float
+    stage_rms: float
+    update_max: float
+    update_rms: float
+    phase_abs: float
+
+
+@dataclass(frozen=True)
+class MidpointCorrectionResult:
+    """A SciPy correction plus acceptance diagnostics independent of SciPy."""
+
+    unknowns: np.ndarray
+    residual: np.ndarray
+    diagnostics: MidpointResidualDiagnostics
+    accepted: bool
+    rejection_reasons: tuple[str, ...]
+    scipy_success: bool
+    scipy_status: int
+    scipy_message: str
+    scipy_cost: float
+    scipy_optimality: float
+    function_evaluations: int
+    jacobian_evaluations: int | None
+    packed_step_norm: float
+
+
+@dataclass(frozen=True)
+class WeightedOrbitComparison:
+    """Quadrature-weighted orbit distance and the applied reference phase shift."""
+
+    distance: float
+    phase_shift: float
 
 
 @dataclass(frozen=True)
@@ -550,6 +612,87 @@ class MidpointCollocationAssembler:
             columns.append(column_start + component)
             data.append(float(value))
 
+    def weighted_orbit_distance(self, first: ArrayLike, second: ArrayLike) -> float:
+        """Return the mesh-independent endpoint/stage weighted orbit distance.
+
+        Endpoint and midpoint-stage representations each receive half of the
+        total orbit weight.  The result therefore approximates one scaled L2
+        orbit norm without doubling merely because both representations are
+        stored, and its normalization does not depend on the interval count.
+        """
+        first_variables = self._variables(first)
+        second_variables = self._variables(second)
+        endpoint_delta = (first_variables.endpoints - second_variables.endpoints) * self.state_scaling
+        stage_delta = (first_variables.stages - second_variables.stages) * self.state_scaling
+        next_endpoint_delta = np.roll(endpoint_delta, -1, axis=0)
+        endpoint_term = 0.5 * np.einsum(
+            "i,iq,iq->",
+            self.mesh.widths,
+            endpoint_delta,
+            endpoint_delta,
+        ) + 0.5 * np.einsum(
+            "i,iq,iq->",
+            self.mesh.widths,
+            next_endpoint_delta,
+            next_endpoint_delta,
+        )
+        stage_term = np.einsum(
+            "i,j,ijq,ijq->",
+            self.mesh.widths,
+            np.asarray(self.rule.quadrature_weights),
+            stage_delta,
+            stage_delta,
+        )
+        return float(np.sqrt(0.5 * (endpoint_term + stage_term)))
+
+    def reference_unknowns(
+        self,
+        evaluate: Callable[[np.ndarray], ArrayLike],
+        log_period: float,
+        *,
+        phase_shift: float = 0.0,
+    ) -> np.ndarray:
+        """Sample a continuous periodic reference into this assembler's layout."""
+        endpoint_phases = np.mod(self.mesh.boundaries[:-1] + phase_shift, 1.0)
+        stage_phases = np.mod(
+            self.mesh.stage_phases(self.rule.nodes).reshape(-1) + phase_shift,
+            1.0,
+        )
+        endpoints = np.asarray(evaluate(endpoint_phases), dtype=float)
+        stages = np.asarray(evaluate(stage_phases), dtype=float).reshape(
+            self.layout.interval_count,
+            self.layout.stage_count,
+            STATE_DIMENSION,
+        )
+        return self.layout.pack(endpoints, stages, log_period)
+
+    def compare_with_reference(
+        self,
+        unknowns: ArrayLike,
+        evaluate: Callable[[np.ndarray], ArrayLike],
+        log_period: float,
+        *,
+        align_phase: bool = True,
+    ) -> WeightedOrbitComparison:
+        """Compare to a continuous reference after an optional periodic phase fit."""
+        candidate = np.asarray(unknowns, dtype=float)
+
+        def distance(phase_shift: float) -> float:
+            reference = self.reference_unknowns(evaluate, log_period, phase_shift=phase_shift)
+            return self.weighted_orbit_distance(candidate, reference)
+
+        if not align_phase:
+            return WeightedOrbitComparison(distance=distance(0.0), phase_shift=0.0)
+        optimum = minimize_scalar(
+            distance,
+            bounds=(-0.5, 0.5),
+            method="bounded",
+            options={"xatol": 1.0e-12},
+        )
+        phase_shift = float(optimum.x)
+        wrapped_shift = (phase_shift + 0.5) % 1.0 - 0.5
+        return WeightedOrbitComparison(distance=distance(wrapped_shift), phase_shift=wrapped_shift)
+
     def jacobian(self, unknowns: ArrayLike) -> csr_matrix:
         """Return the explicitly assembled analytic sparse CSR Jacobian."""
         variables = self._variables(unknowns)
@@ -636,3 +779,133 @@ class MidpointCollocationAssembler:
         result.sum_duplicates()
         result.sort_indices()
         return result
+
+
+def midpoint_residual_diagnostics(blocks: CollocationResidualBlocks) -> MidpointResidualDiagnostics:
+    """Compute independent maximum/RMS norms for every nonlinear block."""
+    stages = np.asarray(blocks.stages, dtype=float)
+    updates = np.asarray(blocks.updates, dtype=float)
+    return MidpointResidualDiagnostics(
+        stage_max=float(np.max(np.abs(stages))),
+        stage_rms=float(np.sqrt(np.mean(stages * stages))),
+        update_max=float(np.max(np.abs(updates))),
+        update_rms=float(np.sqrt(np.mean(updates * updates))),
+        phase_abs=abs(float(blocks.phase)),
+    )
+
+
+def correct_midpoint_orbit(
+    assembler: MidpointCollocationAssembler,
+    initial_unknowns: ArrayLike,
+    *,
+    tolerances: MidpointResidualTolerances | None = None,
+    max_nfev: int = 1000,
+    xtol: float = 1.0e-13,
+    ftol: float = 1.0e-13,
+    gtol: float = 1.0e-13,
+) -> MidpointCorrectionResult:
+    """Correct one fixed-parameter orbit with SciPy TRF and strict block gates.
+
+    SciPy's termination flag is only one gate.  A result is accepted only when
+    every independently recomputed residual block meets its explicit tolerance
+    and the packed solution, residual, and positive physical period are finite.
+    """
+    if not isinstance(assembler, MidpointCollocationAssembler):
+        raise TypeError("assembler must be a MidpointCollocationAssembler.")
+    active_tolerances = tolerances or MidpointResidualTolerances()
+    initial = np.asarray(initial_unknowns, dtype=float)
+    assembler._variables(initial)
+    solution = least_squares(
+        assembler.residual,
+        initial,
+        jac=assembler.jacobian,
+        method="trf",
+        x_scale="jac",
+        xtol=xtol,
+        ftol=ftol,
+        gtol=gtol,
+        max_nfev=_positive_integer(max_nfev, "max_nfev"),
+    )
+    unknowns = np.asarray(solution.x, dtype=float).copy()
+    residual = np.full(assembler.layout.residual_size, np.nan)
+    diagnostics = MidpointResidualDiagnostics(*(np.nan for _ in range(5)))
+    reasons: list[str] = []
+    if not bool(solution.success):
+        reasons.append("scipy_unsuccessful")
+
+    shape_is_valid = unknowns.shape == (assembler.layout.unknown_size,)
+    values_are_finite = bool(shape_is_valid and np.all(np.isfinite(unknowns)))
+    physical_state_is_valid = False
+    period_is_valid = False
+    if not shape_is_valid:
+        reasons.append("invalid_solution_shape")
+    elif not values_are_finite:
+        reasons.append("nonfinite_unknowns")
+    else:
+        variables = assembler.layout.unpack(unknowns)
+        with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+            positive_states = np.exp(
+                np.concatenate(
+                    (
+                        variables.endpoints[:, :2].reshape(-1),
+                        variables.stages[:, :, :2].reshape(-1),
+                    )
+                )
+            )
+            period = np.exp(variables.log_period)
+        physical_state_is_valid = bool(
+            np.all(np.isfinite(positive_states)) and np.all(positive_states > 0.0)
+        )
+        period_is_valid = bool(np.isfinite(period) and period > 0.0)
+        if not physical_state_is_valid:
+            reasons.append("nonpositive_or_nonfinite_physical_state")
+        if not period_is_valid:
+            reasons.append("nonpositive_or_nonfinite_period")
+
+    residual_is_available = bool(
+        shape_is_valid and values_are_finite and physical_state_is_valid and period_is_valid
+    )
+    if residual_is_available:
+        try:
+            blocks = assembler.residual_blocks(unknowns)
+            residual = assembler.layout.pack_residual(blocks)
+            diagnostics = midpoint_residual_diagnostics(blocks)
+        except (ArithmeticError, FloatingPointError, OverflowError, ValueError):
+            residual = np.full(assembler.layout.residual_size, np.nan)
+            diagnostics = MidpointResidualDiagnostics(*(np.nan for _ in range(5)))
+            reasons.append("residual_evaluation_failed")
+    else:
+        reasons.append("residual_unavailable")
+    if not np.all(np.isfinite(residual)):
+        reasons.append("nonfinite_residual")
+
+    block_checks = (
+        ("stage_max_tolerance", diagnostics.stage_max, active_tolerances.stage_max),
+        ("stage_rms_tolerance", diagnostics.stage_rms, active_tolerances.stage_rms),
+        ("update_max_tolerance", diagnostics.update_max, active_tolerances.update_max),
+        ("update_rms_tolerance", diagnostics.update_rms, active_tolerances.update_rms),
+        ("phase_tolerance", diagnostics.phase_abs, active_tolerances.phase_abs),
+    )
+    for reason, value, threshold in block_checks:
+        if not np.isfinite(value) or value > threshold:
+            reasons.append(reason)
+    packed_step_norm = (
+        float(np.linalg.norm(unknowns - initial)) if shape_is_valid and values_are_finite else np.nan
+    )
+    unknowns.setflags(write=False)
+    residual.setflags(write=False)
+    return MidpointCorrectionResult(
+        unknowns=unknowns,
+        residual=residual,
+        diagnostics=diagnostics,
+        accepted=not reasons,
+        rejection_reasons=tuple(dict.fromkeys(reasons)),
+        scipy_success=bool(solution.success),
+        scipy_status=int(solution.status),
+        scipy_message=str(solution.message),
+        scipy_cost=float(solution.cost),
+        scipy_optimality=float(solution.optimality),
+        function_evaluations=int(solution.nfev),
+        jacobian_evaluations=(None if solution.njev is None else int(solution.njev)),
+        packed_step_norm=packed_step_norm,
+    )

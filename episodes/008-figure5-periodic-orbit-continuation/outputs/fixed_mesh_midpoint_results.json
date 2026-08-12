@@ -1,0 +1,390 @@
+{
+  "artifact_kind": "episode008_fixed_mesh_midpoint_validation",
+  "canonical_parameters": {
+    "Delta_z": 100.0,
+    "F": 1.0,
+    "N_a": 10000000000.0,
+    "T": 225.0,
+    "include_evaporation": false,
+    "p": 30000.0,
+    "w": 0.1
+  },
+  "episode007_reference": {
+    "period_s": 2461.6112682421517,
+    "seed_id": "episode008-bootstrap-paper_0.99-final-cycle",
+    "seed_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+    "seed_sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c"
+  },
+  "formulation_version": "explicit-stage-midpoint-v1",
+  "mesh_interval_counts": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "residual_tolerances": {
+    "phase_abs": 1e-10,
+    "stage_max": 1e-09,
+    "stage_rms": 1e-09,
+    "update_max": 1e-09,
+    "update_rms": 1e-09
+  },
+  "results": [
+    {
+      "accepted": false,
+      "episode007_comparison_phase_shift_cycles": 0.0005793579743853527,
+      "function_evaluations": 1000,
+      "interval_count": 32,
+      "jacobian_evaluations": 995,
+      "packed_step_norm": 2.7067599721083386,
+      "period_relative_error_vs_episode007": 0.21685073600921362,
+      "period_s": 2995.413483529036,
+      "phase_energy": 34.685062599248,
+      "phase_residual_abs": 0.0008621246202738317,
+      "rejection_reasons": [
+        "scipy_unsuccessful",
+        "stage_max_tolerance",
+        "stage_rms_tolerance",
+        "update_max_tolerance",
+        "update_rms_tolerance",
+        "phase_tolerance"
+      ],
+      "scipy_cost": 1.4970680990552361e-06,
+      "scipy_message": "The maximum number of function evaluations is exceeded.",
+      "scipy_optimality": 9.473044352677119e-08,
+      "scipy_status": 0,
+      "scipy_success": false,
+      "stage_residual_max": 0.0008454905203821172,
+      "stage_residual_rms": 0.00012308902398427095,
+      "update_residual_max": 0.0008119752729658855,
+      "update_residual_rms": 9.108090416799624e-05,
+      "vector_keys": [
+        "n32_boundaries",
+        "n32_phase_reference_derivatives",
+        "n32_phase_reference_values",
+        "n32_residual",
+        "n32_unknowns"
+      ],
+      "weighted_orbit_correction_from_seed": 0.29050218139341355,
+      "weighted_orbit_error_vs_episode007": 0.2904785529558466
+    },
+    {
+      "accepted": true,
+      "episode007_comparison_phase_shift_cycles": -7.188679131231446e-05,
+      "function_evaluations": 9,
+      "interval_count": 64,
+      "jacobian_evaluations": 9,
+      "packed_step_norm": 2.3325173600688984,
+      "period_relative_error_vs_episode007": 0.12467346803581968,
+      "period_s": 2768.508882009953,
+      "phase_energy": 32.677026960313555,
+      "phase_residual_abs": 1.1231413803209704e-17,
+      "rejection_reasons": [],
+      "scipy_cost": 1.7409616718152301e-28,
+      "scipy_message": "`xtol` termination condition is satisfied.",
+      "scipy_optimality": 2.449681329204133e-12,
+      "scipy_status": 3,
+      "scipy_success": true,
+      "stage_residual_max": 5.919872529151137e-15,
+      "stage_residual_rms": 7.304684377867504e-16,
+      "update_residual_max": 1.130762168489543e-14,
+      "update_residual_rms": 1.1313341442156538e-15,
+      "vector_keys": [
+        "n64_boundaries",
+        "n64_nonsolution_residual",
+        "n64_nonsolution_unknowns",
+        "n64_phase_reference_derivatives",
+        "n64_phase_reference_values",
+        "n64_residual",
+        "n64_unknowns"
+      ],
+      "weighted_orbit_correction_from_seed": 0.172603283762154,
+      "weighted_orbit_error_vs_episode007": 0.17260271954440481
+    },
+    {
+      "accepted": true,
+      "episode007_comparison_phase_shift_cycles": -4.321991378675172e-06,
+      "function_evaluations": 8,
+      "interval_count": 128,
+      "jacobian_evaluations": 7,
+      "packed_step_norm": 0.7667659674735398,
+      "period_relative_error_vs_episode007": 0.028377202584545715,
+      "period_s": 2531.4649098854597,
+      "phase_energy": 32.65588419370132,
+      "phase_residual_abs": 2.812066596222057e-17,
+      "rejection_reasons": [],
+      "scipy_cost": 1.1252077363995036e-28,
+      "scipy_message": "`xtol` termination condition is satisfied.",
+      "scipy_optimality": 4.855463402386071e-13,
+      "scipy_status": 3,
+      "scipy_success": true,
+      "stage_residual_max": 2.5941014453583636e-15,
+      "stage_residual_rms": 5.113255762082241e-16,
+      "update_residual_max": 5.188202890716727e-15,
+      "update_residual_rms": 5.697278226092106e-16,
+      "vector_keys": [
+        "n128_boundaries",
+        "n128_phase_reference_derivatives",
+        "n128_phase_reference_values",
+        "n128_residual",
+        "n128_unknowns"
+      ],
+      "weighted_orbit_correction_from_seed": 0.03898687890488549,
+      "weighted_orbit_error_vs_episode007": 0.03898687077584799
+    },
+    {
+      "accepted": true,
+      "episode007_comparison_phase_shift_cycles": -4.987278693358022e-07,
+      "function_evaluations": 8,
+      "interval_count": 256,
+      "jacobian_evaluations": 8,
+      "packed_step_norm": 0.26607689622655734,
+      "period_relative_error_vs_episode007": 0.006931838585997728,
+      "period_s": 2478.6747602150795,
+      "phase_energy": 32.65510859005026,
+      "phase_residual_abs": 4.6027490048992075e-15,
+      "rejection_reasons": [],
+      "scipy_cost": 7.072396819248476e-28,
+      "scipy_message": "`gtol` termination condition is satisfied.",
+      "scipy_optimality": 9.433990870121079e-14,
+      "scipy_status": 1,
+      "scipy_success": true,
+      "stage_residual_max": 3.818923925640008e-15,
+      "stage_residual_rms": 5.75615169733505e-16,
+      "update_residual_max": 6.675426488256382e-15,
+      "update_residual_rms": 1.217724171322974e-15,
+      "vector_keys": [
+        "n256_boundaries",
+        "n256_phase_reference_derivatives",
+        "n256_phase_reference_values",
+        "n256_residual",
+        "n256_unknowns"
+      ],
+      "weighted_orbit_correction_from_seed": 0.009505880589275623,
+      "weighted_orbit_error_vs_episode007": 0.009505880157894683
+    }
+  ],
+  "runtime_provenance": {
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scipy": "1.17.1"
+  },
+  "schema_version": "1.1.0",
+  "scientific_scope": {
+    "accuracy_warning": "A small discrete residual does not establish continuous-orbit or period accuracy; compare the separate Episode 007 error fields.",
+    "discrete_nonlinear_convergence": "accepted only by independent stage/update/phase block thresholds",
+    "production_accuracy_claimed": false
+  },
+  "solver_options": {
+    "ftol": 1e-13,
+    "gtol": 1e-13,
+    "jacobian": "analytic scipy.sparse.csr_matrix",
+    "library": "scipy.optimize.least_squares",
+    "max_nfev": 1000,
+    "method": "trf",
+    "x_scale": "jac",
+    "xtol": 1e-13
+  },
+  "solver_version": "scipy-trf-block-acceptance-v1",
+  "source_provenance": {
+    "generator_path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_fixed_mesh_midpoint_results.py",
+    "generator_sha256": "5191bea5040b6e176e1e1569188e16eb6278af3e8fc7fdae09c6df42790d281a",
+    "periodic_orbits_path": "src/bergner_spichtinger_2026/periodic_orbits.py",
+    "periodic_orbits_sha256": "aaedab7621aeea1f97454441727ed5342ea70823dcad78a753a3fe8a73d3b6b8"
+  },
+  "state_coordinates": [
+    "log(n)",
+    "log(q)",
+    "s"
+  ],
+  "state_scaling": [
+    0.2995588282737741,
+    0.4045543918593854,
+    8.289799046039942
+  ],
+  "state_scaling_definition": "reciprocal exact peak-to-peak ranges of frozen Episode 007 transformed-state knots excluding duplicate terminal knot",
+  "vector_artifact": {
+    "array_checksum": "SHA-256 of contiguous little-endian float64 C-order bytes",
+    "arrays": {
+      "n128_boundaries": {
+        "dtype": "float64-little-endian",
+        "sha256": "d7b1fd07f63d583f1f173a3755b697395a6662671d57068e8d3a0b1cfabde520",
+        "shape": [
+          129
+        ]
+      },
+      "n128_phase_reference_derivatives": {
+        "dtype": "float64-little-endian",
+        "sha256": "93947a7500308141214d7eed9bc01d5ba0c5e7867584d8091541814e81621e71",
+        "shape": [
+          128,
+          1,
+          3
+        ]
+      },
+      "n128_phase_reference_values": {
+        "dtype": "float64-little-endian",
+        "sha256": "23273699e241df17a70b82df30a49c1791f2fc78c673c5252d34d899f7cb59a8",
+        "shape": [
+          128,
+          1,
+          3
+        ]
+      },
+      "n128_residual": {
+        "dtype": "float64-little-endian",
+        "sha256": "ad9ffc9d694e5aa5c2153486dcfaea63716a2feccac952e17945eb41ab9962a3",
+        "shape": [
+          769
+        ]
+      },
+      "n128_unknowns": {
+        "dtype": "float64-little-endian",
+        "sha256": "b6e950173c57f5f5f54e9856986c76c6106e46defc0f89bced851d1c53a61b41",
+        "shape": [
+          769
+        ]
+      },
+      "n256_boundaries": {
+        "dtype": "float64-little-endian",
+        "sha256": "69b4f2ef4e2543b75b00553cff7f4b6fc0b48a8802210e396537971060058f69",
+        "shape": [
+          257
+        ]
+      },
+      "n256_phase_reference_derivatives": {
+        "dtype": "float64-little-endian",
+        "sha256": "bc9ec45c3cecd6745cf863d2f9a192255f5eb9d5f940f7350ac881545823bcf0",
+        "shape": [
+          256,
+          1,
+          3
+        ]
+      },
+      "n256_phase_reference_values": {
+        "dtype": "float64-little-endian",
+        "sha256": "8077039ddfb0f2a05247c24d73918bdfc74df3d76f4e0e1dd9e330c27ed13a25",
+        "shape": [
+          256,
+          1,
+          3
+        ]
+      },
+      "n256_residual": {
+        "dtype": "float64-little-endian",
+        "sha256": "884fd9162873516017d4859b97f004ec3bd66501bf779c1ac1940dfd3f2a0962",
+        "shape": [
+          1537
+        ]
+      },
+      "n256_unknowns": {
+        "dtype": "float64-little-endian",
+        "sha256": "bc39a8e42d36dd2516e956348ce6520d183509ab6cac416d0fdc8c1645518bb0",
+        "shape": [
+          1537
+        ]
+      },
+      "n32_boundaries": {
+        "dtype": "float64-little-endian",
+        "sha256": "2270be3a84c8072f1ca8c6eff5dfe2d94244e3cd89b8655210ec9ca689eecaf2",
+        "shape": [
+          33
+        ]
+      },
+      "n32_phase_reference_derivatives": {
+        "dtype": "float64-little-endian",
+        "sha256": "61901e19ca54b527add1165c5bae7d57c6ca618fbd31069cc67dd3dd88261555",
+        "shape": [
+          32,
+          1,
+          3
+        ]
+      },
+      "n32_phase_reference_values": {
+        "dtype": "float64-little-endian",
+        "sha256": "9b3754021cdf11a52b6c99d2c20eb0527b2ace4d16bfc433e18251213664d5d8",
+        "shape": [
+          32,
+          1,
+          3
+        ]
+      },
+      "n32_residual": {
+        "dtype": "float64-little-endian",
+        "sha256": "72b73c960666c1c00241528733ef490e944732e93185a817b0c71610a3260e04",
+        "shape": [
+          193
+        ]
+      },
+      "n32_unknowns": {
+        "dtype": "float64-little-endian",
+        "sha256": "73d68e90f0823ffa91cfd47a438670a309577a5641d763abdf391f85915c61a4",
+        "shape": [
+          193
+        ]
+      },
+      "n64_boundaries": {
+        "dtype": "float64-little-endian",
+        "sha256": "932f4d3c831e88a56ace948a81f7111c97df65f9f6644c1c95ec30860b6c595d",
+        "shape": [
+          65
+        ]
+      },
+      "n64_nonsolution_residual": {
+        "dtype": "float64-little-endian",
+        "sha256": "5d17080b6c4e3e1a80378a45381bcc1b018f1a9b77e7480a104e3256374c6aa5",
+        "shape": [
+          385
+        ]
+      },
+      "n64_nonsolution_unknowns": {
+        "dtype": "float64-little-endian",
+        "sha256": "6ab30aa6c772b194774407a30709469fdaa29652a2d47abc99d51fdff614f5c2",
+        "shape": [
+          385
+        ]
+      },
+      "n64_phase_reference_derivatives": {
+        "dtype": "float64-little-endian",
+        "sha256": "e37e87ffe9c2d48b4d72309ca313d760966defc10ff82f12c6569b74fdf1a557",
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      "n64_phase_reference_values": {
+        "dtype": "float64-little-endian",
+        "sha256": "455d74461a3bdde12e0bf0b59eea72521f7c44ef03bf08e1fa24b635544c8048",
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      "n64_residual": {
+        "dtype": "float64-little-endian",
+        "sha256": "869bf35de76d225bc707d5eb5116269c1b81d2d1eb42c6668c0e4c21e3309395",
+        "shape": [
+          385
+        ]
+      },
+      "n64_unknowns": {
+        "dtype": "float64-little-endian",
+        "sha256": "ba3fcfdb1001784c8de410fd6a54f99ae42e9bf6ee02074f1f02ff583087115d",
+        "shape": [
+          385
+        ]
+      }
+    },
+    "file_sha256": "c7765031bfcf368f6174e086e038bd0ae48d9402f36987f8680dc1803fe7b5e9",
+    "format": "deterministic uncompressed NPZ containing NumPy .npy float64 arrays; allow_pickle=False",
+    "parity_cases": {
+      "n64_nonsolution": "deterministic 2e-3 state/stage and 3e-4 log-period perturbation of the accepted orbit; all residual blocks are nontrivial",
+      "n64_solution": "accepted corrected orbit and cancellation-scale residual"
+    },
+    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_vectors.npz",
+    "residual_order": "all N scaled stage blocks, all N scaled cyclic-update blocks, then normalized phase residual",
+    "unknown_order": "all N endpoint blocks, all N one-stage midpoint blocks, then log(period_s)"
+  }
+}

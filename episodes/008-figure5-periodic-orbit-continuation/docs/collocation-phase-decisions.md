@@ -205,6 +205,12 @@ Use uniform normalized-phase meshes `theta_i = i/N` with explicit one-stage midp
 
 The frozen IVP orbit supplies interpolated endpoint and stage initial guesses. The `N = 64` case is a machinery milestone only and is not required to meet the eventual scientific period tolerance.
 
+### Observed fixed-mesh baseline (TASK-056)
+
+The versioned SciPy TRF baseline with the analytic sparse Jacobian accepted `N = 64, 128, 256` against independently recomputed stage/update maximum and RMS thresholds of `1e-9` and phase threshold `1e-10`. It rejected `N = 32` after 1000 function evaluations: SciPy did not terminate successfully and the stage (`8.45e-4`), update (`8.12e-4`), and phase (`8.62e-4`) maxima all missed their gates. This failure is frozen rather than hidden so nominal or unsuccessful solver outcomes remain distinguishable from accepted nonlinear solutions.
+
+The accepted periods were `2768.508882 s`, `2531.464910 s`, and `2478.674760 s` for `N = 64, 128, 256`, respectively, versus the Episode 007 Hermite reference period `2461.611268 s`. Phase-aligned, quadrature-weighted orbit errors versus that continuous reference decreased from `0.172603` to `0.0389869` and `0.00950588`. Thus the baseline demonstrates midpoint mesh convergence but also makes the limitation concrete: the `N = 64` finite-dimensional equations converge to near machine residual while their period is still over 12% from the reference. These artifacts are migration/parity fixtures and do not assert production accuracy.
+
 ## Higher-order family and stiffness qualification
 
 Use Gauss--Legendre as the primary order progression:
