@@ -37,6 +37,12 @@ from .hopf import (
     solve_characteristic_hopf_point,
     solve_hopf_point,
 )
+from .periodic_seed import (
+    PeriodicHermiteSeed,
+    SeedValidationError,
+    sha256_file,
+    verify_upstream_checksums,
+)
 from .residuals import (
     equilibrium_residual,
     log_coordinates_from_physical_state,
@@ -88,6 +94,10 @@ __all__ = [
     "normalize_eigenvector",
     "solve_characteristic_hopf_point",
     "solve_hopf_point",
+    "PeriodicHermiteSeed",
+    "SeedValidationError",
+    "sha256_file",
+    "verify_upstream_checksums",
     "equilibrium_residual",
     "log_coordinates_from_physical_state",
     "make_equilibrium_residual",
