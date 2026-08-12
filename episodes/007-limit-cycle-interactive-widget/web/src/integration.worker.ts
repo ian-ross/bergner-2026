@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 import { solveEquilibrium } from "./equilibrium";
-import { IntegrationCancelled, integrateTrajectoryAsync } from "./integrator";
+import { IntegrationCancelled, integrateTrajectoryAsync, type TrajectorySample } from "./integrator";
 import type { MainToWorkerMessage, WorkerToMainMessage } from "./worker-protocol";
 import { initialStateFor } from "./ui";
 
@@ -20,11 +20,25 @@ worker.onmessage = (event: MessageEvent<MainToWorkerMessage>) => {
     if (cancelled.delete(message.jobId)) { post({ type: "cancelled", jobId: message.jobId }); return; }
     try {
       const equilibrium = solveEquilibrium(message.environment);
+      post({ type: "equilibrium", jobId: message.jobId, equilibrium });
       const initialState = message.initialState ?? (message.start ? initialStateFor(equilibrium.state, message.start) : equilibrium.state);
+      let pendingSamples: TrajectorySample[] = [];
+      const flushSamples = () => {
+        if (!pendingSamples.length) return;
+        post({ type: "samples", jobId: message.jobId, samples: pendingSamples });
+        pendingSamples = [];
+      };
       const trajectory = await integrateTrajectoryAsync(initialState, message.environment, message.integration, {
         isCancelled: () => cancelled.has(message.jobId),
-        onProgress: ({ time, acceptedSteps }) => post({ type: "progress", jobId: message.jobId, time, acceptedSteps }),
+        onProgress: ({ time, acceptedSteps }) => {
+          if (acceptedSteps % 32 === 0) post({ type: "progress", jobId: message.jobId, time, acceptedSteps });
+        },
+        onSamples: (samples) => {
+          pendingSamples.push(...samples);
+          if (samples[0]?.time === 0 || pendingSamples.length >= 64) flushSamples();
+        },
       });
+      flushSamples();
       cancelled.delete(message.jobId);
       post({ type: "result", jobId: message.jobId, equilibrium, trajectory });
     } catch (error) {

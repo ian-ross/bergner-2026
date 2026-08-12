@@ -16,7 +16,7 @@ The Figure 4 center case is fixed as:
 | layer depth `Delta z` | `100 m` | metres |
 | evaporation number term | disabled | `include_evaporation=False` |
 
-All numerical cores use SI units. The UI alone accepts `N_a` in `cm^-3` and converts it to `m^-3` before model evaluation. As in the shared Python model, `n` is ice-particle number concentration per dry-air mass; the unregularized no-evaporation equations require strictly positive `n` and `q`.
+All numerical cores use SI units. The browser fixes `N_a` at `10000 cm^-3` and converts it to `m^-3` at the browser-model boundary before evaluation. As in the shared Python model, `n` is ice-particle number concentration per dry-air mass; the unregularized no-evaporation equations require strictly positive `n` and `q`.
 
 ## Long-integration and convergence contract
 
@@ -54,21 +54,18 @@ The supported browser domain is the conservative tested physical domain in `docs
 | UI control | Supported range | Control behavior |
 | --- | ---: | --- |
 | `T` | `190`--`235 K` | linear |
-| `p` | `150`--`600 hPa` | advanced, linear |
 | `w` | `0.005`--`2.0 m s^-1` | logarithmic |
 | `F` | `0.05`--`1.0` | linear |
-| `N_a` | `300`--`10000 cm^-3` | logarithmic; convert at UI boundary |
-| `Delta z` | `50`--`500 m` | advanced, linear |
 
-The primary controls are `T`, `w`, `F`, and `N_a`; `p` and `Delta z` are advanced controls. The UI also exposes physical integration duration, four initial-condition choices, and a Figure 4 preset. The preset restores the canonical case and the paper-style `0.99` start.
+The primary controls are `T`, `w`, and `F`. Pressure, layer depth, and aerosol concentration are fixed at the canonical `p=300 hPa`, `Delta z=100 m`, and `N_a=10000 cm^-3`. The UI also exposes physical integration duration, three initial-condition choices (`paper`, `n`, and `q`), and a Figure 4 preset. The preset restores the canonical case and the paper-style `0.99` start.
 
-The browser solves the positive equilibrium client-side with a safeguarded method in log-state coordinates. It then uses adaptive Dormand--Prince RK45 in `(log(n), log(q), s)`, component-wise error scaling, and explicit accepted-step and output-size limits. It evaluates and returns all process terms and total tendencies at plotting samples. Short-horizon state and process-rate checks target roughly `1e-4` relative agreement with Python before material phase drift; long-run period, extrema, amplitudes, and orbit geometry target roughly `1e-3` relative agreement.
+The browser solves the positive equilibrium client-side with a safeguarded method in log-state coordinates. It then uses adaptive Dormand--Prince RK45 in `(log(n), log(q), s)`, component-wise error scaling, a production maximum trial step of 15 s, cubic Hermite dense output, and explicit accepted-step and output-size limits. Production plotting samples include accepted-step endpoints and saturation stationary points in addition to a sparse uniform baseline, so narrow exponential nucleation peaks do not alias against a fixed output cadence. It evaluates and returns all process terms and total tendencies at every plotting sample. Short-horizon state and process-rate checks target roughly `1e-4` relative agreement with Python before material phase drift; the production browser profile itself must satisfy the long-run period, extrema, amplitudes, and orbit-geometry target of roughly `1e-3` relative agreement and a canonical late-cycle nucleation-peak target of `1e-4` relative variation.
 
 ## Static browser architecture
 
 The application will be a static, vanilla TypeScript/Vite application with Plotly bundled locally. It must not use a CDN, backend, Python process, or notebook kernel at runtime. The main thread owns controls, status, Plotly rendering, and replay. A cancellable Web Worker owns the equilibrium solve and integration so a long run does not block interaction.
 
-The worker protocol is typed and has `start`, `progress`, `result`, `failure`, and `cancel` messages. A result contains equilibrium diagnostics and plot-ready samples; cancellation and numerical failure are explicit outcomes. The main thread may replay only a completed result, synchronizing state, process-budget, and orbit views.
+The worker protocol is typed and has `start`, `equilibrium`, batched `samples`, `progress`, `result`, `failure`, and `cancel` messages. Equilibrium and completed sample batches are buffered while integration continues; cancellation and numerical failure are explicit outcomes. A separate main-thread physical-time clock reveals buffered samples and updates the synchronized state, process-budget, and orbit cursor, so fast worker computation cannot accelerate the visible animation. The 1× rate is 750 model seconds per wall second, scaled directly by the speed selector. Replay follows the cursor with a fixed time window equal to five canonical late-cycle periods and uses initial orbit bounds that already contain the Figure 4 trajectory rather than rebuilding and autoranging every plot.
 
 ## Scope boundary
 

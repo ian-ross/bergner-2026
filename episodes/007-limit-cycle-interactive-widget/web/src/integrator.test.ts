@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { solveEquilibrium } from "./equilibrium";
-import { IntegrationCancelled, integrateTrajectory, integrateTrajectoryAsync } from "./integrator";
+import { browserIntegrationOptions, IntegrationCancelled, integrateTrajectory, integrateTrajectoryAsync, type TrajectorySample } from "./integrator";
 import { processTerms } from "./model";
 import { canonicalUiParameters, environmentFromUi } from "./parameters";
 
@@ -25,16 +25,6 @@ function paperStart() {
 
 function localMaxima(values: number[]): number[] {
   return values.flatMap((value, i) => i > 0 && i < values.length - 1 && value >= values[i - 1] && value > values[i + 1] ? [i] : []);
-}
-function quadraticVertex(values: number[], index: number): { position: number; value: number } {
-  const left = values[index - 1], centre = values[index], right = values[index + 1];
-  const offset = 0.5 * (left - right) / (left - 2 * centre + right);
-  return { position: index + offset, value: centre - 0.25 * (left - right) * offset };
-}
-function extrema(values: number[], start: number, end: number, direction: 1 | -1): number {
-  const transformed = values.map((value) => direction * value);
-  const index = transformed.slice(start, end + 1).reduce((best, value, i) => value > transformed[best] ? start + i : best, start);
-  return direction * quadraticVertex(transformed, index).value;
 }
 function interpolate(points: number[][], time: number): number[] {
   const right = points.findIndex((point) => point[0] >= time);
@@ -68,6 +58,19 @@ describe("adaptive log-coordinate RK45", () => {
     close(sample.tendency.s, sample.terms.Cool + sample.terms.Nuc_s + sample.terms.Dep_s, 1e-12);
   });
 
+  it("uses the validated browser profile and streams each completed plotting sample", () => {
+    const options = browserIntegrationOptions(239_118.05830323207);
+    expect(options.maxStep).toBe(15);
+    expect(options.outputSamples).toBe(1_001);
+    expect(options.includeAcceptedSteps).toBe(true);
+    const streamed: TrajectorySample[] = [];
+    const result = integrateTrajectory(paperStart(), canonical, { ...options, duration: 120, outputSamples: 5, includeAcceptedSteps: false }, {
+      onSamples: (samples) => streamed.push(...samples),
+    });
+    expect(streamed).toEqual(result.samples);
+    expect(streamed.map((sample) => sample.time)).toEqual([0, 30, 60, 90, 120]);
+  });
+
   it("enforces cancellation, invalid-input, step, and output-size limits", async () => {
     expect(() => integrateTrajectory(paperStart(), canonical, { duration: 1 }, { isCancelled: () => true })).toThrow(IntegrationCancelled);
     let cancelled = false;
@@ -92,16 +95,13 @@ describe("adaptive log-coordinate RK45", () => {
 
   it("reproduces canonical late-cycle period and amplitude to 1e-3", () => {
     const duration = 238_305.99976106847;
-    const result = integrateTrajectory(paperStart(), canonical, {
-      duration, maxStep: 797.0601943441069 / 15, outputSamples: 20_000, maxOutputSamples: 20_000,
-    });
+    const result = integrateTrajectory(paperStart(), canonical, browserIntegrationOptions(duration));
     const maxima = localMaxima(result.samples.map((sample) => sample.state.s));
     const last = maxima.slice(-2);
     expect(last).toHaveLength(2);
-    const spacing = duration / 19_999;
     const states = result.samples.map((sample) => sample.state.s);
-    const period = (quadraticVertex(states, last[1]).position - quadraticVertex(states, last[0]).position) * spacing;
-    const amplitude = extrema(states, last[0], last[1], 1) - extrema(states, last[0], last[1], -1);
+    const period = result.samples[last[1]].time - result.samples[last[0]].time;
+    const amplitude = Math.max(...states.slice(last[0], last[1] + 1)) - Math.min(...states.slice(last[0], last[1] + 1));
     close(period, 2461.6049244675669, 1e-3);
     close(amplitude, 0.12070503120469511, 1e-3);
     const cycleStart = 235_844.3884928263;
@@ -110,5 +110,10 @@ describe("adaptive log-coordinate RK45", () => {
     const pythonOrbit = Array.from({ length: 128 }, (_, i) => interpolate(csvRows, cycleStart + (duration - cycleStart) * i / 127));
     // Same symmetric, cyclic-shift-minimized normalized RMS metric as the metadata contract.
     expect(phaseIndependentDistance(browserOrbit, pythonOrbit)).toBeLessThan(1e-3);
+    const nucleation = result.samples.map((sample) => sample.terms.Nuc_n);
+    const lateNucleationPeaks = localMaxima(nucleation).slice(-20).map((peak) => nucleation[peak]);
+    const meanPeak = lateNucleationPeaks.reduce((sum, value) => sum + value, 0) / lateNucleationPeaks.length;
+    expect((Math.max(...lateNucleationPeaks) - Math.min(...lateNucleationPeaks)) / meanPeak).toBeLessThan(1e-4);
+    close(meanPeak, 1635.8950, 1e-5); // SciPy dense-output maximum over the final three reference cycles.
   }, 30_000);
 });

@@ -7,24 +7,20 @@
   </head>
   <body>
     <main id="app">
-      <header><h1>Ice-cloud limit-cycle explorer</h1><p>Integrate a fresh trajectory in your browser, then replay it in synchronized views.</p></header>
+      <header><h1>Ice-cloud limit-cycle explorer</h1></header>
       <section class="controls" aria-label="Integration controls">
         <div class="control-actions"><button id="preset" type="button">Figure 4 preset</button><button id="run" type="button">Run integration</button><button id="cancel" type="button" disabled>Cancel</button><button id="reset" type="button">Reset</button></div>
         <div class="control-grid">
-          <label>T <span>K</span><input id="T" type="number" min="190" max="235" step="0.1" /></label>
-          <label>w <span>m s⁻¹ (log)</span><input id="w" type="range" min="-2.30103" max="0.30103" step="0.01" /></label>
-          <output id="w-value"></output>
-          <label>F <span>1</span><input id="F" type="number" min="0.05" max="1" step="0.01" /></label>
-          <label>N<sub>a</sub> <span>cm⁻³ (log)</span><input id="nAcm3" type="range" min="2.477121" max="4" step="0.01" /></label>
-          <output id="nAcm3-value"></output>
-          <label>Duration <span>s</span><input id="duration" type="number" min="1" step="1" /></label>
+          <label><span class="control-label">T <span class="unit">[K]</span></span><input id="T" type="number" min="190" max="235" step="0.1" /></label>
+          <label><span class="control-label">w <span class="unit">[m s⁻¹, log]</span> <output id="w-value"></output></span><input id="w" type="range" min="-2.30103" max="0.30103" step="0.01" /></label>
+          <label><span class="control-label">F <span class="unit">[1]</span></span><input id="F" type="number" min="0.05" max="1" step="0.01" /></label>
+          <label><span class="control-label">Duration <span class="unit">[s]</span></span><input id="duration" type="number" min="1" step="1" /></label>
         </div>
-        <details><summary>Advanced controls</summary><div class="control-grid"><label>p <span>hPa</span><input id="pHpa" type="number" min="150" max="600" step="1" /></label><label>Δz <span>m</span><input id="deltaZ" type="number" min="50" max="500" step="1" /></label></div></details>
-        <fieldset><legend>Initial condition</legend><label><input type="radio" name="start" value="paper" checked /> paper-style: 0.99 equilibrium</label><label><input type="radio" name="start" value="n" /> n perturbed</label><label><input type="radio" name="start" value="q" /> q perturbed</label><label><input type="radio" name="start" value="s" /> s perturbed</label></fieldset>
-        <p id="status" role="status" aria-atomic="true">Choose parameters and run an integration.</p><p id="equilibrium" aria-live="polite">Equilibrium: not computed.</p>
+        <fieldset><legend>Initial condition</legend><label><input type="radio" name="start" value="paper" checked /> 0.99 equilibrium</label><label><input type="radio" name="start" value="n" /> n +1%</label><label><input type="radio" name="start" value="q" /> q +1%</label></fieldset>
+        <p id="status" role="status" aria-atomic="true">Choose parameters and run an integration.</p>
       </section>
-      <section class="replay" aria-label="Replay controls"><button id="play" type="button" disabled>Play</button><label>Time <span>s</span><input id="scrub" type="range" min="0" max="0" value="0" disabled aria-describedby="replay-help" /></label><span id="replay-help">Use the arrow keys to step through a completed trajectory.</span><label>Speed<select id="speed" disabled><option value="0.25">0.25×</option><option value="1" selected>1×</option><option value="4">4×</option></select></label></section>
-      <section class="plots" aria-label="Trajectory plots"><div><h2>State</h2><div id="state-plot" class="plot" aria-label="State trajectory plot"></div></div><div><h2>Process budget</h2><label>Component <select id="budget" disabled><option value="n">n</option><option value="q">q</option><option value="s">s</option></select></label><div id="budget-plot" class="plot" aria-label="Process budget plot"></div></div><div><h2>Orbit: log10(n)–s</h2><div id="orbit-plot" class="plot" aria-label="Limit-cycle orbit plot"></div></div></section>
+      <section class="replay" aria-label="Replay controls"><button id="play" type="button" disabled>Play</button><label><span class="control-label">Time <output id="time-value">0.0 s</output></span><input id="scrub" type="range" min="0" max="0" value="0" disabled aria-describedby="replay-help" /></label><label><span class="control-label">Speed</span><select id="speed" disabled><option value="0.25">0.25×</option><option value="1" selected>1×</option><option value="4">4×</option></select></label><span id="replay-help">Arrow keys scrub; 1× advances 750 model seconds per wall second.</span></section>
+      <section class="plots" aria-label="Trajectory plots"><div><h2>State</h2><div id="state-plot" class="plot" aria-label="State trajectory plot"></div></div><div><h2>Process budget</h2><label class="inline-control"><span class="control-label">Component</span><select id="budget"><option value="n">n</option><option value="q">q</option><option value="s">s</option></select></label><div id="budget-plot" class="plot" aria-label="Process budget plot"></div></div><div class="orbit-card"><h2>Orbit: log10(n)–s</h2><div id="orbit-plot" class="plot" aria-label="Limit-cycle orbit plot"></div></div></section>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

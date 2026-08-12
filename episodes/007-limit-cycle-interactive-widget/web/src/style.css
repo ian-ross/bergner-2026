@@ -1,2 +1,35 @@
-* { box-sizing: border-box; } body { margin: 0; color: #17202a; background: #f6f8fb; font: 16px system-ui, sans-serif; } button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #075a9c; outline-offset: 2px; } main { max-width: 1400px; margin: auto; padding: 1.5rem; } h1 { margin-bottom: .2rem; } .controls, .replay, .plots > div { background: white; border: 1px solid #d8dee9; border-radius: .5rem; padding: 1rem; margin-top: 1rem; } .control-actions, .replay, fieldset { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .control-grid { display: grid; grid-template-columns: repeat(3, minmax(12rem, 1fr)); gap: .75rem; margin: 1rem 0; } label { display: grid; gap: .25rem; } label span { color: #53606d; font-size: .8rem; } input, select, button { font: inherit; padding: .35rem; } output { align-self: end; color: #315a80; } .plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; } .plots > div:last-child { grid-column: span 2; } .plot { min-height: 330px; } #status[data-error="true"] { color: #a11; font-weight: 600; } @media (max-width: 760px) { main { padding: .75rem; } .control-grid, .plots { grid-template-columns: 1fr; } .plots > div:last-child { grid-column: auto; } .plot { min-height: 280px; } }
+* { box-sizing: border-box; }
+body { margin: 0; color: #17202a; background: #f6f8fb; font: 15px system-ui, sans-serif; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #075a9c; outline-offset: 2px; }
+main { max-width: 1500px; margin: auto; padding: 1.25rem; }
+h1 { margin-bottom: .2rem; }
+h2 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.controls, .replay, .plots > div { background: white; border: 1px solid #d8dee9; border-radius: .5rem; padding: .8rem; margin-top: .8rem; }
+.control-actions, .replay, fieldset { display: flex; gap: .65rem; align-items: center; flex-wrap: wrap; }
+.control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 13rem)); gap: .55rem .8rem; justify-content: start; margin: .8rem 0; }
+label { display: grid; gap: .2rem; align-content: start; }
+.control-label { color: #263746; font-size: .82rem; font-weight: 650; white-space: nowrap; }
+.unit { color: #64717d; font-weight: 400; }
+input, select, button { font: inherit; min-height: 2rem; padding: .25rem .4rem; }
+input[type="number"] { width: 8rem; }
+input[type="range"] { width: 12rem; max-width: 100%; padding-inline: 0; }
+output { color: #315a80; font-weight: 500; }
+details .control-grid { margin-bottom: .2rem; }
+fieldset { border: 0; padding: .5rem 0 0; }
+fieldset label { display: flex; align-items: center; gap: .3rem; font-size: .88rem; }
+fieldset input { min-height: auto; }
+.replay { display: grid; grid-template-columns: auto minmax(14rem, 58rem) auto; justify-content: start; }
+.replay label { min-width: 0; }
+.replay input[type="range"] { width: 100%; }
+#replay-help { grid-column: 2 / 4; grid-row: 2; color: #64717d; font-size: .8rem; }
+.inline-control { display: flex; flex-direction: row; align-items: center; gap: .4rem; width: max-content; }
+.plots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin-top: .8rem; align-items: start; }
+.plots > div { min-width: 0; margin-top: 0; }
+.plot { height: 360px; min-width: 0; }
+.orbit-card { justify-self: center; width: 100%; max-width: 32rem; }
+#orbit-plot { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+#status:empty { display: none; }
+#status[data-error="true"] { color: #a11; font-weight: 600; }
+@media (max-width: 1050px) { .plots { grid-template-columns: repeat(2, minmax(0, 1fr)); } .orbit-card { grid-column: span 2; } }
+@media (max-width: 760px) { main { padding: .7rem; } .control-grid, .plots, .replay { grid-template-columns: 1fr; } #replay-help { grid-column: auto; grid-row: auto; } .orbit-card { grid-column: auto; } .plot { height: 300px; } #orbit-plot { height: auto; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }

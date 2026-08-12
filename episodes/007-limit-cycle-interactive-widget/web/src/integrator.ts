@@ -24,8 +24,10 @@ export interface IntegrationOptions {
   maxAcceptedSteps?: number;
   /** Number of uniform plotting samples, including both endpoints. Default: 1,001. */
   outputSamples?: number;
-  /** Hard cap on requested plotting samples. Default: 20,000. */
+  /** Hard cap on requested uniform plotting samples. Default: 20,000. */
   maxOutputSamples?: number;
+  /** Include every adaptive accepted-step endpoint in the output. Default: false. */
+  includeAcceptedSteps?: boolean;
 }
 
 export interface IntegrationProgress { time: number; acceptedSteps: number; }
@@ -33,6 +35,14 @@ export interface IntegrationResult { samples: TrajectorySample[]; acceptedSteps:
 export interface IntegrationHooks {
   isCancelled?: () => boolean;
   onProgress?: (progress: IntegrationProgress) => void;
+  /** Newly completed output-grid samples, suitable for batched worker streaming. */
+  onSamples?: (samples: TrajectorySample[]) => void;
+}
+
+/** Production profile shared by the widget and its numerical regression tests. */
+export function browserIntegrationOptions(duration: number): IntegrationOptions {
+  finitePositive("duration", duration);
+  return { duration, rtol: 1e-8, atol: 1e-10, maxStep: Math.min(15, duration), outputSamples: 1_001, includeAcceptedSteps: true };
 }
 
 export class IntegrationCancelled extends Error {
@@ -67,13 +77,33 @@ function toState(x: Coordinates): State {
   if (!Number.isFinite(n) || !Number.isFinite(q) || !Number.isFinite(x[2])) throw new RangeError("Log-coordinate integration produced a non-finite state.");
   return { n, q, s: x[2] };
 }
+function hermiteCoordinates(start: Coordinates, end: Coordinates, startDerivative: Coordinates, endDerivative: Coordinates, h: number, fraction: number): Coordinates {
+  const f2 = fraction * fraction, f3 = f2 * fraction;
+  return start.map((value, i) =>
+    (2 * f3 - 3 * f2 + 1) * value
+    + (f3 - 2 * f2 + fraction) * h * startDerivative[i]
+    + (-2 * f3 + 3 * f2) * end[i]
+    + (f3 - f2) * h * endDerivative[i]) as Coordinates;
+}
+/** Interior stationary points of the cubic Hermite saturation-ratio interpolant. */
+function saturationStationaryFractions(start: Coordinates, end: Coordinates, startDerivative: Coordinates, endDerivative: Coordinates, h: number): number[] {
+  const y0 = start[2], y1 = end[2], m0 = startDerivative[2], m1 = endDerivative[2];
+  const a = 2 * y0 - 2 * y1 + h * (m0 + m1);
+  const b = -3 * y0 + 3 * y1 - h * (2 * m0 + m1);
+  const c = h * m0;
+  if (Math.abs(a) < 1e-15) return Math.abs(b) < 1e-15 ? [] : [-c / (2 * b)].filter((root) => root > 0 && root < 1);
+  const discriminant = 4 * b * b - 12 * a * c;
+  if (discriminant < 0) return [];
+  const root = Math.sqrt(discriminant);
+  return [(-2 * b - root) / (6 * a), (-2 * b + root) / (6 * a)].filter((value) => value > 0 && value < 1);
+}
 
 /**
  * Adaptive Dormand--Prince 5(4) integration in `(log(n), log(q), s)`.
  *
- * The returned samples are linearly interpolated in these transformed coordinates
- * onto a uniform, endpoint-inclusive grid. Process terms and physical tendencies
- * are evaluated anew at every grid state, so plotting never uses stale RK stages.
+ * Uniform samples use cubic Hermite dense output in transformed coordinates.
+ * Callers may also retain accepted endpoints and saturation stationary points to
+ * resolve narrow process peaks. Terms and tendencies are reevaluated at every sample.
  */
 function* integrationSteps(initial: State, env: Environment, options: IntegrationOptions, hooks: IntegrationHooks = {}): Generator<IntegrationProgress, IntegrationResult, void> {
   finitePositive("duration", options.duration);
@@ -101,6 +131,7 @@ function* integrationSteps(initial: State, env: Environment, options: Integratio
   };
   const grid = Array.from({ length: outputSamples }, (_, i) => options.duration * i / (outputSamples - 1));
   const samples = [makeSample(0, toCoordinates(initial))];
+  hooks.onSamples?.(samples.slice());
   let nextOutput = 1, t = 0, x = toCoordinates(initial), h = Math.min(maxStep, initialStep);
   let acceptedSteps = 0, rejectedSteps = 0;
 
@@ -120,13 +151,24 @@ function* integrationSteps(initial: State, env: Environment, options: Integratio
     const errorNorm = Math.max(...candidate.map((value, i) => Math.abs(value - embedded[i]) / (atol + rtol * Math.max(Math.abs(x[i]), Math.abs(value)))));
     if (!Number.isFinite(errorNorm)) throw new RangeError(`Trajectory error estimate is non-finite at t=${t}.`);
     if (errorNorm <= 1) {
-      const oldT = t, oldX = x;
+      const oldT = t, oldX = x, oldDerivative = stages[0], newDerivative = stages[6];
       t += h; x = candidate; acceptedSteps += 1;
+      const completedSamples: TrajectorySample[] = [], sampleTimes: number[] = [];
       while (nextOutput < grid.length && grid[nextOutput] <= t + 1e-12 * Math.max(1, options.duration)) {
-        const fraction = (grid[nextOutput] - oldT) / h;
-        samples.push(makeSample(grid[nextOutput], oldX.map((value, i) => value + fraction * (x[i] - value)) as Coordinates));
-        nextOutput += 1;
+        sampleTimes.push(grid[nextOutput]); nextOutput += 1;
       }
+      if (options.includeAcceptedSteps) {
+        sampleTimes.push(...saturationStationaryFractions(oldX, x, oldDerivative, newDerivative, h).map((fraction) => oldT + fraction * h));
+        sampleTimes.push(t);
+      }
+      sampleTimes.sort((left, right) => left - right);
+      for (const sampleTime of sampleTimes) {
+        if (Math.abs((samples.at(-1)?.time ?? -1) - sampleTime) <= 1e-10 * Math.max(1, sampleTime)) continue;
+        const fraction = (sampleTime - oldT) / h;
+        const sample = makeSample(sampleTime, fraction >= 1 - 1e-12 ? x : hermiteCoordinates(oldX, x, oldDerivative, newDerivative, h, fraction));
+        samples.push(sample); completedSamples.push(sample);
+      }
+      if (completedSamples.length) hooks.onSamples?.(completedSamples);
       const progress = { time: t, acceptedSteps };
       hooks.onProgress?.(progress);
       yield progress;

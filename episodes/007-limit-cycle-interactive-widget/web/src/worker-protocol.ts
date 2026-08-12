@@ -1,5 +1,5 @@
 import type { EquilibriumResult } from "./equilibrium";
-import type { IntegrationOptions, IntegrationResult } from "./integrator";
+import type { IntegrationOptions, IntegrationResult, TrajectorySample } from "./integrator";
 import type { State } from "./model";
 import type { Environment } from "./parameters";
 
@@ -10,12 +10,22 @@ export interface StartMessage {
   /** Omit to begin at equilibrium; otherwise the worker derives this from its computed equilibrium. */
   initialState?: State;
   /** Equilibrium-relative perturbation selected by the UI. */
-  start?: "paper" | "n" | "q" | "s";
+  start?: "paper" | "n" | "q";
   integration: IntegrationOptions;
 }
 export interface CancelMessage { type: "cancel"; jobId: string; }
 export type MainToWorkerMessage = StartMessage | CancelMessage;
 
+export interface EquilibriumMessage {
+  type: "equilibrium";
+  jobId: string;
+  equilibrium: EquilibriumResult;
+}
+export interface SamplesMessage {
+  type: "samples";
+  jobId: string;
+  samples: TrajectorySample[];
+}
 export interface ProgressMessage {
   type: "progress";
   jobId: string;
@@ -35,4 +45,4 @@ export interface FailureMessage {
   message: string;
 }
 export interface CancelledMessage { type: "cancelled"; jobId: string; }
-export type WorkerToMainMessage = ProgressMessage | ResultMessage | FailureMessage | CancelledMessage;
+export type WorkerToMainMessage = EquilibriumMessage | SamplesMessage | ProgressMessage | ResultMessage | FailureMessage | CancelledMessage;

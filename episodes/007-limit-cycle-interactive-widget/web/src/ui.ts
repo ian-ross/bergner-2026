@@ -1,8 +1,10 @@
 import type { State } from "./model";
 import { canonicalUiParameters, environmentFromUi, type UiParameters } from "./parameters";
 
-export const FIGURE4_DURATION_SECONDS = 239_118.05830323207;
-export const START_OPTIONS = ["paper", "n", "q", "s"] as const;
+export const DEFAULT_INTEGRATION_DURATION_SECONDS = 60_000;
+export const FIGURE4_LIMIT_CYCLE_PERIOD_SECONDS = 2461.6049244675669;
+export const DEFAULT_TIME_WINDOW_SECONDS = 5 * FIGURE4_LIMIT_CYCLE_PERIOD_SECONDS;
+export const START_OPTIONS = ["paper", "n", "q"] as const;
 export type StartOption = (typeof START_OPTIONS)[number];
 export const BUDGET_OPTIONS = ["n", "q", "s"] as const;
 export type BudgetOption = (typeof BUDGET_OPTIONS)[number];
@@ -23,7 +25,7 @@ export interface Controls {
 
 export const figure4Preset: Controls = {
   parameters: canonicalUiParameters,
-  duration: FIGURE4_DURATION_SECONDS,
+  duration: DEFAULT_INTEGRATION_DURATION_SECONDS,
   start: "paper",
   budget: "n",
   playbackSpeed: 1,
@@ -47,18 +49,18 @@ export function initialStateFor(equilibrium: State, start: StartOption): State {
     case "paper": return { n: equilibrium.n * 0.99, q: equilibrium.q * 0.99, s: equilibrium.s * 0.99 };
     case "n": return { ...equilibrium, n: equilibrium.n * 1.01 };
     case "q": return { ...equilibrium, q: equilibrium.q * 1.01 };
-    case "s": return { ...equilibrium, s: equilibrium.s * 1.01 };
   }
 }
 
-export interface ReplayState { index: number; playing: boolean; speed: number; }
-export function clampReplayIndex(index: number, sampleCount: number): number {
-  return Math.max(0, Math.min(sampleCount - 1, Math.round(index)));
+export const PLAYBACK_SIM_SECONDS_PER_WALL_SECOND = 750;
+/** Advance a physical trajectory clock independently of irregular sample density. */
+export function advancePlaybackTime(currentTime: number, elapsedMilliseconds: number, speed: number, endTime: number): number {
+  return Math.min(endTime, currentTime + elapsedMilliseconds * PLAYBACK_SIM_SECONDS_PER_WALL_SECOND * speed / 1_000);
 }
-export function advanceReplay(state: ReplayState, sampleCount: number, samples: number): ReplayState {
-  if (!state.playing) return state;
-  const index = clampReplayIndex(state.index + samples, sampleCount);
-  return { ...state, index, playing: index < sampleCount - 1 };
+/** Fixed five-cycle window following the current time at its right edge when needed. */
+export function timeWindowRange(currentTime: number): [number, number] {
+  const start = Math.max(0, currentTime - DEFAULT_TIME_WINDOW_SECONDS);
+  return [start, start + DEFAULT_TIME_WINDOW_SECONDS];
 }
 
 export function stepLimitRecovery(message: string): string {
