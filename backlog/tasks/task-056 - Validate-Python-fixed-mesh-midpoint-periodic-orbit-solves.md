@@ -1,9 +1,11 @@
 ---
 id: TASK-056
 title: Validate Python fixed-mesh midpoint periodic-orbit solves
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-12 20:09'
 labels:
   - episode-008
   - python
