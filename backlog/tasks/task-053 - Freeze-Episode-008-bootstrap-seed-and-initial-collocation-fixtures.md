@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 15:07'
+updated_date: '2026-08-12 15:17'
 labels:
   - episode-008
   - python
@@ -34,8 +34,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - [x] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
 - [x] #6 The stale Episode 007 planning-contract test is explicitly disabled so it no longer blocks the repository suite
 - [x] #7 All current tracked Episode 006 and Episode 007 edits are reviewed, validated where practical, and committed together with the disabled Episode 007 test
-- [ ] #8 The periodic seed loader, validator, checksum verification, and Hermite evaluator live in reusable package code rather than the standalone Episode 008 generator script
-- [ ] #9 The Episode 008 generator and tests consume the packaged API while deterministic seed regeneration remains unchanged
+- [x] #8 The periodic seed loader, validator, checksum verification, and Hermite evaluator live in reusable package code rather than the standalone Episode 008 generator script
+- [x] #9 The Episode 008 generator and tests consume the packaged API while deterministic seed regeneration remains unchanged
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -66,25 +66,29 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - Reviewed and committed all tracked Episode 006/007 edits plus the disabled Episode 007 test as commit d7b8bd9 (`feat(episode-007): stream integration samples`). TASK-053 Episode 008 changes remain uncommitted because the user specifically requested committing Episode 006/007 edits.
 
 - Reopened after identifying that PeriodicHermiteSeed and checksum validation were incorrectly isolated inside a standalone episode script. User approved moving the reusable JSON loading/evaluation contract into package code while retaining Episode 007 extraction and CLI concerns in the generator.
+
+- Moved PeriodicHermiteSeed, SeedValidationError, generic SHA-256/upstream verification, JSON loading, validation, and interpolation into reusable src/bergner_spichtinger_2026/periodic_seed.py and exported the API from the package. The Episode 008 script now retains only extraction/generation concerns and calls the explicit validate_mapping API.
+- Updated tests and README to consume the package API. Independent review found no blocker; addressed its malformed top-level JSON finding, added SciPy cross-checks for between-knot values/derivatives, and made loaded arrays defensive read-only copies. Validation: 6 focused tests passed, deterministic artifact check passed byte-for-byte, py_compile/diff checks passed, and full suite passed with 112 passed / 1 explicitly skipped.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
 
 <!-- SECTION:FINAL_SUMMARY:BEGIN -->
-Established the reproducible Episode 007-to-008 periodic-orbit bootstrap without rerunning the long IVP.
+Established a reusable, reproducible Episode 007-to-008 periodic-orbit bootstrap without rerunning the long IVP.
 
 Changes:
-- Added a standalone deterministic seed generator with strict trajectory, metadata, canonical-parameter, cycle-boundary, and source-closure validation.
-- Added a validated periodic cubic-Hermite evaluator for arbitrary endpoint and stage phases using transformed model-field slopes.
-- Frozen the final paper_0.99 saturation-maximum cycle as a schema-versioned JSON artifact containing normalized phase, transformed state, log period, canonical parameters, checksums, and extraction provenance.
-- Documented regeneration and checksum-verifying loading in the Episode 008 README.
-- Added tests covering deterministic regeneration, all-knot slope semantics, periodic value/slope continuity, arbitrary sampling, upstream drift, malformed boundaries, and nonperiodic seed rejection.
-- Disabled the superseded Episode 007 planning-contract test and committed all tracked Episode 006/007 edits as d7b8bd9.
+- Added an Episode 008 deterministic seed generator with strict source, parameter, boundary, closure, and provenance validation.
+- Frozen the final paper_0.99 saturation-maximum cycle as language-neutral JSON containing normalized phase, transformed states, model-field slopes, log period, canonical parameters, and upstream checksums.
+- Added reusable package-level PeriodicHermiteSeed loading, schema validation, checksum verification, and periodic cubic-Hermite evaluation; the standalone episode script now owns only extraction and generation.
+- Added defensive immutable arrays, explicit malformed top-level JSON handling, and package exports.
+- Documented regeneration and downstream package use.
+- Added tests for deterministic regeneration, all-knot field slopes, periodic continuity, arbitrary endpoint/stage sampling, SciPy interpolation parity, upstream drift, malformed data, and nonperiodic construction.
+- Disabled the superseded Episode 007 planning-contract test and committed the prior Episode 006/007 work as d7b8bd9.
 
 Validation:
-- Full Python suite: 111 passed, 1 explicitly skipped.
-- Episode 007 Vitest: 27 passed.
-- Episode 007 production build and offline verification passed.
-- Deterministic Episode 008 generator check and Python compilation passed.
-- Independent review found no TASK-053 blockers.
+- Full Python suite: 112 passed, 1 explicitly skipped.
+- Focused bootstrap tests: 6 passed.
+- Deterministic generator check and Python compilation passed.
+- Episode 007 Vitest/build/offline verification passed for the prior committed edits.
+- Independent review found no remaining blocker.
 <!-- SECTION:FINAL_SUMMARY:END -->
