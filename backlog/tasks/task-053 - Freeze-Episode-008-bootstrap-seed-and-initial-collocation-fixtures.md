@@ -1,9 +1,11 @@
 ---
 id: TASK-053
 title: Freeze Episode 008 bootstrap seed and initial collocation fixtures
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@myself'
 created_date: '2026-08-12 12:51'
+updated_date: '2026-08-12 12:53'
 labels:
   - episode-008
   - python
