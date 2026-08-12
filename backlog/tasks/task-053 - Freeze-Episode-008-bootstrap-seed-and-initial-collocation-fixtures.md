@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 12:57'
+updated_date: '2026-08-12 13:05'
 labels:
   - episode-008
   - python
@@ -27,11 +27,11 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 An Episode 008 script deterministically extracts the final complete saturation-maximum-to-maximum cycle from the committed Episode 007 reference artifacts
-- [ ] #2 The frozen seed stores normalized phase, transformed state, log period, canonical parameter values, upstream checksums, and extraction provenance
-- [ ] #3 Periodic cubic-Hermite evaluation uses transformed model-field slopes and reproduces matching values and slopes at the cycle boundary
-- [ ] #4 The seed can be evaluated at arbitrary endpoint and collocation-stage locations without rerunning the long IVP
-- [ ] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
+- [x] #1 An Episode 008 script deterministically extracts the final complete saturation-maximum-to-maximum cycle from the committed Episode 007 reference artifacts
+- [x] #2 The frozen seed stores normalized phase, transformed state, log period, canonical parameter values, upstream checksums, and extraction provenance
+- [x] #3 Periodic cubic-Hermite evaluation uses transformed model-field slopes and reproduces matching values and slopes at the cycle boundary
+- [x] #4 The seed can be evaluated at arbitrary endpoint and collocation-stage locations without rerunning the long IVP
+- [x] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,4 +52,27 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - The worktree already contains unrelated Episode 006/007 modifications and an untracked Episode 008 scaffold; implementation will avoid overwriting those changes.
 
 - Implementation started after plan approval. Source inspection found the final cycle start event time is recorded in metadata but is not an exact CSV row; it is bracketed by rising/falling saturation samples. The final end event is an exact CSV row. The seed will record this explicitly and reuse the converged terminal saturation-maximum state at both periodic endpoints, while retaining only strict-interior source samples and evaluating model-field slopes at every stored knot.
+
+- Added the deterministic Episode 008 generator/evaluator, frozen bootstrap_seed.json artifact, README regeneration instructions, and focused repository tests. The seed uses the final Episode 007 paper_0.99 cycle (P = 2461.6112682421517 s), records both upstream checksums, and evaluates all stored slopes from the transformed model field.
+- Validation: `uv run pytest -q tests/test_episode8_bootstrap_seed.py tests/test_episode7_diagnostics_notebook.py tests/test_residuals_continuation.py` passed (11 tests); generator `--check`, py_compile, and git diff whitespace checks passed. Independent review found no correctness or acceptance blockers; its optional all-knot slope-test hardening was applied and revalidated.
+- Full suite result: 111 passed and 1 failed. The sole failure is the pre-existing modified Episode 007 planning contract: tests/test_episode7_scaffold.py still expects the old exact worker-message phrase, while the unrelated working-tree edit adds `equilibrium` and `samples` message types. TASK-053 remains In Progress because repository instructions require a green full suite before Done; no unrelated Episode 007 files were changed.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Established the reproducible Episode 007-to-008 periodic-orbit bootstrap without rerunning the long IVP.
+
+Changes:
+- Added a standalone deterministic seed generator with strict trajectory, metadata, canonical-parameter, cycle-boundary, and source-closure validation.
+- Added a validated periodic cubic-Hermite evaluator for arbitrary endpoint and stage phases using transformed model-field slopes.
+- Frozen the final paper_0.99 saturation-maximum cycle as a schema-versioned JSON artifact containing normalized phase, transformed state, log period, canonical parameters, checksums, and extraction provenance.
+- Documented regeneration and checksum-verifying loading in the Episode 008 README.
+- Added tests covering deterministic regeneration, all-knot slope semantics, periodic value/slope continuity, arbitrary sampling, upstream drift, malformed boundaries, and nonperiodic seed rejection.
+
+Validation:
+- Focused Episode 007/008 and residual tests: 11 passed.
+- Deterministic generator check and Python compilation passed.
+- Independent review found no blockers.
+- Full suite: 111 passed, 1 unrelated pre-existing Episode 007 planning-contract failure caused by other working-tree changes.
+<!-- SECTION:FINAL_SUMMARY:END -->
