@@ -1,9 +1,11 @@
 ---
 id: TASK-054
 title: Generate shared Gauss collocation coefficient tables
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-12 15:37'
 labels:
   - episode-008
   - python
