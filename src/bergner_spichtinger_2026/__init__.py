@@ -12,6 +12,13 @@ from .approximations import (
     table_ii_lower_hopf_w,
     table_ii_upper_hopf_w,
 )
+from .collocation_coefficients import (
+    ARTIFACT_SCHEMA_VERSION as COLLOCATION_ARTIFACT_SCHEMA_VERSION,
+    ARTIFACT_SHA256 as COLLOCATION_ARTIFACT_SHA256,
+    GAUSS_LEGENDRE_RULES,
+    CollocationRule,
+    gauss_legendre_rule,
+)
 from .continuation import ContinuationPoint, ContinuationResult, continue_branch
 from .limit_cycles import (
     Cycle,
@@ -71,6 +78,11 @@ __all__ = [
     "table_ii_hopf_w_b",
     "table_ii_lower_hopf_w",
     "table_ii_upper_hopf_w",
+    "COLLOCATION_ARTIFACT_SCHEMA_VERSION",
+    "COLLOCATION_ARTIFACT_SHA256",
+    "GAUSS_LEGENDRE_RULES",
+    "CollocationRule",
+    "gauss_legendre_rule",
     "ContinuationPoint",
     "ContinuationResult",
     "continue_branch",

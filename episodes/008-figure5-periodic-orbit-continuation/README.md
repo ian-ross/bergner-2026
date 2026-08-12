@@ -28,6 +28,34 @@ seed = PeriodicHermiteSeed.from_json(seed_path, verify_upstream_root=repo_root)
 states = seed.evaluate(endpoint_or_stage_phases)
 ```
 
+## Shared Gauss collocation coefficients
+
+[`outputs/collocation_coefficients.json`](outputs/collocation_coefficients.json) is the canonical, language-neutral coefficient artifact for the one-, two-, and three-stage Gauss--Legendre rules (formal orders 2, 4, and 6). The SymPy derivation records exact symbolic forms and 17-significant-digit binary64 literals for the nodes, Runge--Kutta stage matrix, quadrature weights, integrated Lagrange transfer polynomials, and independent defect-check data. Each rule uses the nodes of the next higher Gauss rule as off-collocation check points and stores both Lagrange and integrated-Lagrange evaluation matrices.
+
+The same generator emits the runtime-only standard-library tables used by Python and C++:
+
+- [`src/bergner_spichtinger_2026/collocation_coefficients.py`](../../src/bergner_spichtinger_2026/collocation_coefficients.py)
+- [`loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp`](../../loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp)
+
+Python callers select a rule by stage count without loading the JSON artifact:
+
+```python
+from bergner_spichtinger_2026 import gauss_legendre_rule
+
+rule = gauss_legendre_rule(3)
+```
+
+Matrices use `[evaluation_point][stage]` indexing. `transfer_coefficients[stage][power]` stores coefficients in ascending powers of the element-local coordinate `tau`; the two defect matrices use `[check_point][stage]` indexing.
+
+Regenerate all three outputs or verify byte-for-byte reproducibility with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_collocation_coefficients.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_collocation_coefficients.py --check
+```
+
+The generated Python and C++ table modules are standard-library-only and neither import SymPy nor parse the JSON artifact at runtime. SymPy is used only by the coefficient generator and by pre-existing symbolic-analysis utilities elsewhere in the Python package. The artifact checksum is SHA-256 over canonical sorted-key compact UTF-8 JSON excluding the self-referential `checksum` member.
+
 ## Scope boundary
 
 The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work.
