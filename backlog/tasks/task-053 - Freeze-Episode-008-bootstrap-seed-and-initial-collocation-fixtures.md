@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 13:05'
+updated_date: '2026-08-12 13:07'
 labels:
   - episode-008
   - python
@@ -32,6 +32,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - [x] #3 Periodic cubic-Hermite evaluation uses transformed model-field slopes and reproduces matching values and slopes at the cycle boundary
 - [x] #4 The seed can be evaluated at arbitrary endpoint and collocation-stage locations without rerunning the long IVP
 - [x] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
+- [ ] #6 The stale Episode 007 planning-contract test is explicitly disabled so it no longer blocks the repository suite
+- [ ] #7 All current tracked Episode 006 and Episode 007 edits are reviewed, validated where practical, and committed together with the disabled Episode 007 test
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -56,6 +58,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - Added the deterministic Episode 008 generator/evaluator, frozen bootstrap_seed.json artifact, README regeneration instructions, and focused repository tests. The seed uses the final Episode 007 paper_0.99 cycle (P = 2461.6112682421517 s), records both upstream checksums, and evaluates all stored slopes from the transformed model field.
 - Validation: `uv run pytest -q tests/test_episode8_bootstrap_seed.py tests/test_episode7_diagnostics_notebook.py tests/test_residuals_continuation.py` passed (11 tests); generator `--check`, py_compile, and git diff whitespace checks passed. Independent review found no correctness or acceptance blockers; its optional all-knot slope-test hardening was applied and revalidated.
 - Full suite result: 111 passed and 1 failed. The sole failure is the pre-existing modified Episode 007 planning contract: tests/test_episode7_scaffold.py still expects the old exact worker-message phrase, while the unrelated working-tree edit adds `equilibrium` and `samples` message types. TASK-053 remains In Progress because repository instructions require a green full suite before Done; no unrelated Episode 007 files were changed.
+
+- User explicitly expanded the task to disable the stale Episode 007 planning-contract test and commit the current Episode 006/007 worktree edits. These requirements were added as acceptance criteria before making further changes.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
