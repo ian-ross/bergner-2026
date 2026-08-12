@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 21:02'
+updated_date: '2026-08-12 21:14'
 labels:
   - episode-008
   - python
@@ -50,4 +50,9 @@ Add the transparent Python reference continuation path on an unchanged midpoint 
 <!-- SECTION:NOTES:BEGIN -->
 - Plan approved; implementation started from a clean worktree. Confirmed Python 3.11.15, NumPy 2.4.6, SciPy 1.17.1, uv, git, and backlog CLI are available.
 - Reviewed the completed TASK-056 midpoint solver/artifacts, Episode 008 contracts, and Episode 006 native LOCA Hopf-locus CSV. Exact locus rows give the T=225 K spine w=0.1445622536840862 m/s (bootstrap rho=-0.2639524255 at w=0.1) and the T=210 K spine w=0.0532671872264416 m/s.
+
+- Added analytic transformed-field derivatives with respect to physical T and log(w), including all temperature-dependent coefficients. The normalized rho and T-hat parameter columns apply the documented chain rules; centered differences are tests only.
+- Implemented the fixed-mesh family/path adapters, half-endpoint/half-stage weighted metric, sparse augmented pseudo-arclength corrector, strict independent block gates, deterministic fixed-parameter bootstrap with halving, exact-target landing, and explicit controlled phase-reference restarts.
+- Generated curated N=64 continuation JSON/NPZ artifacts. The fixed-T 225 K branch reaches the exact spine; signed spine branches reach 226 K and the exact 210 K spine through a genuine Delta T-hat=-0.6 multi-step segment; signed 210 K rho branches reach -0.15 and +0.15. One excessive bootstrap attempt is frozen as a rejection before deterministic halving recovery.
+- Recorded two controlled phase-reference refreshes. Segment points/events retain one immutable reference ID; artifacts include residual blocks, normalized/physical coordinates, periods, phase diagnostics, orientations, vectors, metric diagonals, restart lineage, checksums, and explicit non-production-accuracy scope.
 <!-- SECTION:NOTES:END -->
