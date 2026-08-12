@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 15:38'
+updated_date: '2026-08-12 15:46'
 labels:
   - episode-008
   - python
@@ -50,4 +50,8 @@ Create one reproducible SymPy-derived coefficient source for the one-, two-, and
 - Reviewed TASK-054, completed dependency TASK-053, the Episode 008 README, and the binding collocation-phase decisions.
 - Confirmed uv, Python, SymPy 1.14, pytest 9.1, git, the reusable Python package tree, and the shared LOCA C++ include tree are available.
 - The only pre-existing untracked path is `.pi-subagents/`; implementation will leave it untouched.
+
+- Implemented a deterministic SymPy generator for shifted Gauss–Legendre rules with 1–3 stages. It derives exact nodes, Lagrange bases, stage/update integrals, ascending-power transfer coefficients, and off-collocation defect matrices at independently derived (r+1)-point Gauss nodes.
+- Generated the canonical checksummed JSON artifact plus standard-library-only Python and C++ tables, exposed the Python rule lookup through the package, and documented regeneration/checksum/runtime behavior.
+- Added focused coverage for symbolic derivation parity, 17-significant-digit literals, canonical checksum integrity, row-sum identities, Gauss degree 2r-1 exactness, collocation monomial integration, transfer/defect matrices, byte-for-byte regeneration, deliberate drift failure, and C++17 compilation/metadata parity. Focused result: 7 passed; generator --check, C++ smoke compilation, py_compile, and git diff whitespace checks passed.
 <!-- SECTION:NOTES:END -->
