@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 16:22'
+updated_date: '2026-08-12 16:23'
 labels:
   - episode-008
   - python
@@ -34,3 +34,14 @@ Implement the transparent Python reference formulation for fixed-parameter perio
 - [ ] #5 Centered finite-difference directional checks satisfy the versioned Jacobian tolerances
 - [ ] #6 The implementation is reusable package code while Episode 008 orchestration remains episode-local
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Add reusable package-level fixed-mesh collocation primitives: a validated OrbitLayout with deterministic endpoint/stage/log-period and residual-row indexing, plus pack/unpack helpers that support arbitrary interval counts and normalized nonuniform meshes without storing a duplicate terminal endpoint.
+2. Implement the transformed vector field g=(dn/dt/n,dq/dt/q,ds/dt) and its analytic log-state Jacobian by applying chain and quotient rules to the existing validated physical model/Jacobian, rejecting the unsupported discontinuous evaporation mode.
+3. Implement an immutable frozen phase-reference contract and midpoint assembler using the generated one-stage Gauss rule. Assemble component-scaled stage equations, cyclic endpoint updates, and the quadrature-normalized integral phase equation; expose residual block views and phase energy while keeping the reference, scaling, and energy fixed.
+4. Assemble the full analytic Jacobian directly as scipy.sparse.csr_matrix, including local endpoint/stage blocks, periodic wraparound, log-period derivatives, and the dense-in-stage phase row. Define explicit method/tolerance version constants for deterministic parity and centered-difference checks.
+5. Add deterministic N=8 fixtures and focused tests covering exact layout/index contracts, pack/unpack round trips, arbitrary/nonuniform meshes, CSR shape/pattern/wraparound, independently calculated residual blocks, exact reference-phase normalization, controlled nonsolution vectors, analytic transformed-model derivatives, and centered finite-difference Jv agreement at the versioned <=1e-6 relative tolerance.
+6. Export and document the reusable package API while keeping seed loading and fixture/orchestration paths episode-local; run focused tests, the full Python suite, compilation/diff checks, and self-review before updating task notes, acceptance criteria, and final summary.
+<!-- SECTION:PLAN:END -->
