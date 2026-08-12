@@ -5,7 +5,7 @@ status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 16:01'
+updated_date: '2026-08-12 16:02'
 labels:
   - episode-008
   - python
@@ -58,6 +58,8 @@ Create one reproducible SymPy-derived coefficient source for the one-, two-, and
 - Independent review found no mathematical defects and identified hardening opportunities. Applied byte-level UTF-8 comparison/writes with CRLF drift coverage, exact all-table C++/Python parity, independent next-order Legendre-root checks, an immutable public registry, and explicit indexing/orientation documentation.
 - A proposed move of SymPy to development-only dependencies was tested and then reverted because the existing public derive_physical_jacobian_expressions API legitimately requires SymPy. The narrower acceptance contract is verified instead: generated table loading/lookup does not import SymPy, while the package preserves its existing symbolic API.
 - Final validation: full suite 120 passed / 1 pre-existing explicit skip; 8 focused coefficient tests passed; generator --check, py_compile, C++17 -Wall/-Wextra/-pedantic compilation and all-table parity, blocked-SymPy runtime lookup, and git diff whitespace checks passed. The existing numerical suite emits three known overflow warnings in exploratory solver paths.
+
+- Committed the TASK-054 implementation as a733e67 (`feat(episode-008): generate shared collocation tables`).
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
