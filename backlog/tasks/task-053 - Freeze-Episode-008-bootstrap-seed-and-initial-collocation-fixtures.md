@@ -1,7 +1,7 @@
 ---
 id: TASK-053
 title: Freeze Episode 008 bootstrap seed and initial collocation fixtures
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
@@ -69,6 +69,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 
 - Moved PeriodicHermiteSeed, SeedValidationError, generic SHA-256/upstream verification, JSON loading, validation, and interpolation into reusable src/bergner_spichtinger_2026/periodic_seed.py and exported the API from the package. The Episode 008 script now retains only extraction/generation concerns and calls the explicit validate_mapping API.
 - Updated tests and README to consume the package API. Independent review found no blocker; addressed its malformed top-level JSON finding, added SciPy cross-checks for between-knot values/derivatives, and made loaded arrays defensive read-only copies. Validation: 6 focused tests passed, deterministic artifact check passed byte-for-byte, py_compile/diff checks passed, and full suite passed with 112 passed / 1 explicitly skipped.
+
+- Committed the complete Episode 008 bootstrap implementation and reusable periodic-seed refactor as 30af80e (`feat(episode-008): freeze reusable periodic seed`).
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
