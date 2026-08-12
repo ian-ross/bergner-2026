@@ -1,9 +1,11 @@
 ---
 id: TASK-055
 title: Implement the Python fixed-mesh midpoint collocation core
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-12 16:22'
 labels:
   - episode-008
   - python
