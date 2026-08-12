@@ -1,9 +1,11 @@
 ---
 id: TASK-057
 title: Implement Python fixed-mesh pseudo-arclength orbit continuation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-12 20:59'
 labels:
   - episode-008
   - python
