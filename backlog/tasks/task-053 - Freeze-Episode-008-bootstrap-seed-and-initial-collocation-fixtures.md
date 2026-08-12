@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 12:54'
+updated_date: '2026-08-12 12:57'
 labels:
   - episode-008
   - python
@@ -50,4 +50,6 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - Reviewed the task references and Episode 008 decisions. The committed Episode 007 canonical trajectory ends on the final paper_0.99 cycle boundary at 238305.99976106847 s; current upstream SHA-256 values are 899476206a26a3d0a43a3ecf6887975e7ebb14e613b06df01e207c54e1a086b2 (trajectory) and 7077f0516090526da3876c2b259d5ca4cf624ea04a2644162a8d4b04452b64d9 (metadata).
 - Confirmed Python 3.13, pytest 9, NumPy/SciPy project dependencies, and the reusable physical/log-coordinate model functions are available.
 - The worktree already contains unrelated Episode 006/007 modifications and an untracked Episode 008 scaffold; implementation will avoid overwriting those changes.
+
+- Implementation started after plan approval. Source inspection found the final cycle start event time is recorded in metadata but is not an exact CSV row; it is bracketed by rising/falling saturation samples. The final end event is an exact CSV row. The seed will record this explicitly and reuse the converged terminal saturation-maximum state at both periodic endpoints, while retaining only strict-interior source samples and evaluating model-field slopes at every stored knot.
 <!-- SECTION:NOTES:END -->
