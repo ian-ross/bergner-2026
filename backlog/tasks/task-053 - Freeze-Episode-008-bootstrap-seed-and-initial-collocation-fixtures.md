@@ -1,11 +1,11 @@
 ---
 id: TASK-053
 title: Freeze Episode 008 bootstrap seed and initial collocation fixtures
-status: In Progress
+status: Done
 assignee:
   - '@myself'
 created_date: '2026-08-12 12:51'
-updated_date: '2026-08-12 13:07'
+updated_date: '2026-08-12 13:10'
 labels:
   - episode-008
   - python
@@ -32,8 +32,8 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - [x] #3 Periodic cubic-Hermite evaluation uses transformed model-field slopes and reproduces matching values and slopes at the cycle boundary
 - [x] #4 The seed can be evaluated at arbitrary endpoint and collocation-stage locations without rerunning the long IVP
 - [x] #5 Tests detect upstream artifact drift, malformed cycle boundaries, and nonperiodic seed construction
-- [ ] #6 The stale Episode 007 planning-contract test is explicitly disabled so it no longer blocks the repository suite
-- [ ] #7 All current tracked Episode 006 and Episode 007 edits are reviewed, validated where practical, and committed together with the disabled Episode 007 test
+- [x] #6 The stale Episode 007 planning-contract test is explicitly disabled so it no longer blocks the repository suite
+- [x] #7 All current tracked Episode 006 and Episode 007 edits are reviewed, validated where practical, and committed together with the disabled Episode 007 test
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -60,6 +60,9 @@ Establish the reproducible bridge from the validated Episode 007 attracting cycl
 - Full suite result: 111 passed and 1 failed. The sole failure is the pre-existing modified Episode 007 planning contract: tests/test_episode7_scaffold.py still expects the old exact worker-message phrase, while the unrelated working-tree edit adds `equilibrium` and `samples` message types. TASK-053 remains In Progress because repository instructions require a green full suite before Done; no unrelated Episode 007 files were changed.
 
 - User explicitly expanded the task to disable the stale Episode 007 planning-contract test and commit the current Episode 006/007 worktree edits. These requirements were added as acceptance criteria before making further changes.
+
+- Disabled the superseded Episode 007 planning-contract test with an explicit pytest skip. The repository suite is now green: 111 passed, 1 skipped. Episode 007 Vitest passed 27 tests and its production build/offline verification passed.
+- Reviewed and committed all tracked Episode 006/007 edits plus the disabled Episode 007 test as commit d7b8bd9 (`feat(episode-007): stream integration samples`). TASK-053 Episode 008 changes remain uncommitted because the user specifically requested committing Episode 006/007 edits.
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
@@ -73,10 +76,12 @@ Changes:
 - Frozen the final paper_0.99 saturation-maximum cycle as a schema-versioned JSON artifact containing normalized phase, transformed state, log period, canonical parameters, checksums, and extraction provenance.
 - Documented regeneration and checksum-verifying loading in the Episode 008 README.
 - Added tests covering deterministic regeneration, all-knot slope semantics, periodic value/slope continuity, arbitrary sampling, upstream drift, malformed boundaries, and nonperiodic seed rejection.
+- Disabled the superseded Episode 007 planning-contract test and committed all tracked Episode 006/007 edits as d7b8bd9.
 
 Validation:
-- Focused Episode 007/008 and residual tests: 11 passed.
-- Deterministic generator check and Python compilation passed.
-- Independent review found no blockers.
-- Full suite: 111 passed, 1 unrelated pre-existing Episode 007 planning-contract failure caused by other working-tree changes.
+- Full Python suite: 111 passed, 1 explicitly skipped.
+- Episode 007 Vitest: 27 passed.
+- Episode 007 production build and offline verification passed.
+- Deterministic Episode 008 generator check and Python compilation passed.
+- Independent review found no TASK-053 blockers.
 <!-- SECTION:FINAL_SUMMARY:END -->
