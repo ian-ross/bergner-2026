@@ -1,11 +1,11 @@
 ---
 id: TASK-055
 title: Implement the Python fixed-mesh midpoint collocation core
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-12 16:29'
+updated_date: '2026-08-12 16:41'
 labels:
   - episode-008
   - python
@@ -27,12 +27,12 @@ Implement the transparent Python reference formulation for fixed-parameter perio
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 OrbitLayout packs and unpacks endpoint blocks, explicit stage blocks, and log period for arbitrary fixed meshes without a duplicated terminal endpoint
-- [ ] #2 The assembler evaluates scaled stage equations, cyclic endpoint updates, and the normalized integral phase condition with a frozen phase reference
-- [ ] #3 The assembler returns an explicit sparse CSR Jacobian including state blocks, log-period column, and phase row
-- [ ] #4 The N=8 midpoint fixtures cover layout indices, sparsity, residual blocks, phase normalization, and nonsolution vectors deterministically
-- [ ] #5 Centered finite-difference directional checks satisfy the versioned Jacobian tolerances
-- [ ] #6 The implementation is reusable package code while Episode 008 orchestration remains episode-local
+- [x] #1 OrbitLayout packs and unpacks endpoint blocks, explicit stage blocks, and log period for arbitrary fixed meshes without a duplicated terminal endpoint
+- [x] #2 The assembler evaluates scaled stage equations, cyclic endpoint updates, and the normalized integral phase condition with a frozen phase reference
+- [x] #3 The assembler returns an explicit sparse CSR Jacobian including state blocks, log-period column, and phase row
+- [x] #4 The N=8 midpoint fixtures cover layout indices, sparsity, residual blocks, phase normalization, and nonsolution vectors deterministically
+- [x] #5 Centered finite-difference directional checks satisfy the versioned Jacobian tolerances
+- [x] #6 The implementation is reusable package code while Episode 008 orchestration remains episode-local
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,4 +52,30 @@ Implement the transparent Python reference formulation for fixed-parameter perio
 - Plan approved; implementation started.
 - Confirmed Python 3.11, NumPy 2.4.6, SciPy 1.17.1, pytest 9.1.1, generated midpoint coefficients, reusable periodic seed interpolation, and the validated physical Jacobian are available.
 - The worktree was clean before TASK-055 implementation.
+
+- Added reusable periodic_orbits package primitives: arbitrary fixed normalized meshes, deterministic OrbitLayout indexing/pack-unpack, frozen stage-sampled phase references, transformed vector field/Jacobian, scaled midpoint residual blocks, and an explicitly assembled CSR Jacobian.
+- Added deterministic N=8 and nonuniform-mesh tests covering layout indices, no duplicated terminal endpoint, sparsity and cyclic wraparound, independently evaluated stage/update residuals, exact normalized phase displacement, deterministic nonsolution vectors, and state/log-period/mixed centered directional checks. Measured N=8 relative errors were 2.82e-9, 1.51e-9, and 2.75e-9 versus the versioned 1e-6 tolerance.
+- Independent review found no mathematical or acceptance blocker. Its one medium finding was addressed by freezing collocation nodes in the phase-reference contract and rejecting one-stage references sampled away from the midpoint; regression coverage was added.
+- Final validation: 24 focused Episode 008 tests passed; the full suite passed with 130 passed / 1 pre-existing explicit skip and three known exploratory-solver overflow warnings. Bootstrap/coefficient regeneration checks, py_compile, git diff whitespace checks, package exports, and an N=1 directional smoke check also passed.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the reusable Python fixed-mesh explicit-stage midpoint collocation core for Episode 008.
+
+Changes:
+- Added OrbitLayout and FixedMesh contracts for arbitrary uniform/nonuniform meshes, explicit stages, cyclic endpoints without terminal duplication, and log-period coordinates.
+- Added the transformed model field and analytic log-state Jacobian using the validated physical model/Jacobian.
+- Added immutable phase-reference sampling with frozen midpoint nodes, quadrature, scaling, phase tangent, and normalized phase energy.
+- Added scaled midpoint stage/update residual assembly and a complete analytic SciPy CSR Jacobian with endpoint/stage blocks, periodic wraparound, log-period column, and phase row.
+- Exported and documented the reusable package API while leaving Episode 008 seed/fixture orchestration episode-local.
+- Added deterministic N=8 and nonuniform fixtures covering indices, pack/unpack, residual blocks, phase normalization, sparse structure, nonsolution vectors, and versioned centered finite-difference checks.
+
+Validation:
+- Full Python suite: 130 passed, 1 explicitly skipped; three known warnings remain in pre-existing exploratory solver paths.
+- Focused Episode 008 suite: 24 passed.
+- Directional Jacobian errors: 2.82e-9 state, 1.51e-9 log-period, 2.75e-9 mixed (tolerance 1e-6).
+- Bootstrap/coefficient regeneration, py_compile, whitespace, and N=1 smoke checks passed.
+- Independent review found no remaining blocker after midpoint-node compatibility hardening.
+<!-- SECTION:FINAL_SUMMARY:END -->
