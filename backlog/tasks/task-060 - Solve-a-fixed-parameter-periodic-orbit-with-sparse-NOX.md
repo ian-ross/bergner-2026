@@ -1,9 +1,11 @@
 ---
 id: TASK-060
 title: Solve a fixed-parameter periodic orbit with sparse NOX
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-13 10:36'
 labels:
   - episode-008
   - cpp
