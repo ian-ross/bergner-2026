@@ -4,7 +4,7 @@ title: Run native adaptive LOCA remesh/restart continuation
 status: To Do
 assignee: []
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-13 15:49'
+updated_date: '2026-08-13 15:50'
 labels:
   - episode-008
   - cpp
@@ -29,11 +29,10 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Native fixed-mesh LOCA segments stop only at accepted points for remeshing; solution/reference/tangent transfer, full Tpetra/Thyra/NOX/LOCA reconstruction, fixed-parameter NOX/KLU2 correction, tangent renormalization or deterministic rebootstrap, and native restart follow the v1 contract
-- [ ] #2 C++ defect, monitor, h marking, bounded r movement, mesh/cycle budgets, restart retries, phase-refresh triggers, near-Hopf stopping diagnostics, and single-valued tripwires match the Python reference on frozen remesh fixtures
-- [ ] #3 The adaptive run covers the T=225 K move to the spine, both temperature directions over the planned spine range, and signed rho slices on the provisional 2 K skeleton where v1 reliability permits, while retaining exact T=210 K and T=225 K anchors
-- [ ] #4 Every accepted segment point and remesh restart passes independent residual/phase/positivity/linear/restart gates; unresolved points, rejected steps, cap escalations, aliasing, Radau triggers, and tripwires are recorded rather than interpolated or suppressed
-- [ ] #5 Deterministic per-segment artifacts and restart manifests record native vectors or checkpoints, accepted/rejected LOCA events, mesh histories, transfer corrections, defects, period/orbit convergence, phase lineage, runtime/memory profiles, source fingerprints, and resumable completion state
-- [ ] #6 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover remesh rebuild identity, event partitioning, restart recovery, resume behavior, and fixed-mesh regressions
-- [ ] #7 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, and fixed-mesh regressions
+- [ ] #1 Native fixed-mesh LOCA segments stop only at accepted points for remeshing; solution/reference/tangent transfer, full Tpetra/Thyra/NOX/LOCA reconstruction, fixed-parameter NOX/KLU2 correction, tangent renormalization or deterministic rebootstrap, exact retry order, and native restart follow the v1 contract
+- [ ] #2 Before the adaptive run, frozen TASK-067 nonuniform fixtures pass component-level Python/C++ parity for base residuals, analytic Jacobian and normalized parameter columns, nonuniform phase quadrature, continuation metric, collocation-polynomial transfer, and fixed-parameter correction; C++ defect, probe escalation, monitor, h marking, bounded r movement, mesh/cycle budgets, restart retries, phase-refresh triggers, near-Hopf diagnostics, and single-valued tripwires also match the Python intermediate results
+- [ ] #3 The planned manifest covers the T=225 K move to the spine, both temperature directions over the provisional spine range, and signed rho slices for every target on the provisional 2 K skeleton while retaining exact T=210 K and T=225 K anchors; every planned target has exactly one terminal status: accepted, resolution_unresolved, near_hopf_stop, tripwire_stop, or failed with a reason
+- [ ] #4 Every accepted segment point and remesh restart passes independent residual/phase/positivity/linear/restart gates; unresolved points, rejected steps, cap escalations, aliasing, active non-Floquet Radau triggers, and tripwires are recorded rather than interpolated or suppressed; Floquet-dependent evidence is recorded as not_evaluated
+- [ ] #5 Deterministic per-segment artifacts and restart manifests record native vectors or checkpoints, accepted/rejected LOCA events, mesh histories, transfer corrections, defects, period/orbit convergence, phase lineage, terminal target statuses, runtime/memory profiles, source fingerprints, and resumable completion state
+- [ ] #6 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, and fixed-mesh regressions
 <!-- AC:END -->
