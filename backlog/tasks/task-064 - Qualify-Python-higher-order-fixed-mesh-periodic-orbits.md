@@ -4,6 +4,7 @@ title: Qualify Python higher-order fixed-mesh periodic orbits
 status: To Do
 assignee: []
 created_date: '2026-08-13 15:34'
+updated_date: '2026-08-13 15:49'
 labels:
   - episode-008
   - python
@@ -33,4 +34,5 @@ Generalize the Python periodic-orbit reference from one-stage midpoint to explic
 - [ ] #4 Curated artifacts report component residual gates, period and phase-aligned weighted-orbit refinement, two-grid independent defects, solver provenance, and the versioned qualification decisions at every case
 - [ ] #5 Best successive solutions meet the TASK-062 1e-3 period/orbit checks where supported, the canonical point is compared with an independent IVP to 1e-3, and any miss is preserved as evidence rather than tuned away
 - [ ] #6 Focused tests cover pack/unpack, residual/Jacobian directional checks, coefficient use, collocation transfer/evaluation, defect grids, deterministic regeneration, and existing midpoint compatibility
+- [ ] #7 Focused tests cover pack/unpack, residual/Jacobian directional checks, coefficient use, collocation transfer/evaluation, defect grids, parity-fixture schemas and deterministic regeneration, and existing midpoint compatibility
 <!-- AC:END -->
