@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:14'
+updated_date: '2026-08-13 15:16'
 labels:
   - episode-008
   - design
@@ -81,4 +81,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: commit formal production contracts under episodes/008-figure5-periodic-orbit-continuation/schemas/ with identifier episode8-figure5-production-v1. Retain continuation_points.csv, per-orbit NPZ+manifest, continuation_events.jsonl, run_metadata.json, and figure5_browser_dataset.json; add authoritative linearized_period_210.csv for the equilibrium/eigenvalue lower curve. Use JSON Schema for JSON/JSONL and explicit column/array schema JSON for CSV/NPZ. Require stable IDs, method/schema version, backend/source class, units/conventions, validity, and reason codes; incompatible changes increment version.
 
 - Design interview decision: retention tiers: all attempts/accepted steps retain scalar diagnostics/lineage in continuation_events.jsonl; all production-qualified accepted points retain scientific scalars including Floquet in continuation_points.csv; full committed NPZ vectors are limited to canonical T/rho samples, reliable Hopf-extrapolation points, phase/remesh restart anchors, and IVP/Floquet/worst-defect/interpolation fixtures. Intermediate vectors remain in run restart/checkpoint artifacts. Scalar rows use optional orbit_artifact_id; absence does not imply interpolation.
+
+- Design interview decision: T=210 K linearized curve uses native C++ equilibrium continuation over w=5e-4..2 m/s on an initial 401-point log grid plus exact Episode 006 Hopf anchors. Track the conjugate pair by continuation distance with eigenvector overlap for ambiguity. P_lin=2pi/|Im(lambda)| only for a genuinely complex pair with |Im(lambda)|>1e-8 s^-1; otherwise invalidate with real_pair/frequency_below_floor and a gap. Refine if log-period holdout error exceeds 2e-3. Require Hopf frequency and stratified Python physical-Jacobian parity to relative 1e-8; never clip to plot range.
 <!-- SECTION:NOTES:END -->
