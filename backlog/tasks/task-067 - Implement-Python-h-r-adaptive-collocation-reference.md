@@ -4,7 +4,7 @@ title: Implement Python h/r adaptive collocation reference
 status: To Do
 assignee: []
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-13 15:50'
+updated_date: '2026-08-13 16:04'
 labels:
   - episode-008
   - python
@@ -29,9 +29,9 @@ Implement the transparent Python reference for TASK-062 v1 external h/r adaptati
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 The independent defect implementation evaluates next-higher Gauss and staggered dyadic grids, applies the material-disagreement, fixed-128-bin recurrence, and 16-point probe rules, and exposes per-element/max defects plus endpoint/jump/grid-disagreement diagnostics
-- [ ] #2 The v1 r monitor rejects negative/nonfinite densities and implements documented stable max-rescaling, zero-density handling, phase-average normalization, winsorization, and renormalization for defect, scaled speed, curvature, and nucleation densities with the 0.20 floor and 0.50/0.20/0.20/0.10 weights, without landmark snapping
-- [ ] #3 Defect-driven h marking, 50% growth cap, bounded 50%-relaxed r movement, interval width/ratio constraints, N=256 soft and N=512 hard caps, cycle budgets, and forced-h stagnation rule are deterministic and tested
-- [ ] #4 Old collocation polynomials transfer solution, phase reference, and tangent to the new mesh; fixed-parameter correction and v1 restart gates implement the exact three-attempt retry order and deterministic rebootstrap for tangent-only failure
-- [ ] #5 Adaptive qualification runs start from N=32 at the four fixed qualification points and record convergence, mesh distributions, defects, period/orbit changes, phase refreshes, unresolved budgets, aliasing triggers, and active non-Floquet Radau-trigger evidence without hiding failures; Floquet-dependent evidence is recorded as not_evaluated
-- [ ] #6 Curated artifacts emit deterministic language-neutral adaptive/remesh fixtures consumed by TASK-068, including inputs and intermediate expected results for defect grids, probe escalation, monitor construction, marking, movement, transfer, restart/retry, schemas, and checksums; focused tests cover those contracts and fixed-mesh compatibility
+- [ ] #2 Old collocation polynomials transfer solution, phase reference, and tangent to the new mesh; fixed-parameter correction and v1 restart gates implement the exact three-attempt retry order and deterministic rebootstrap for tangent-only failure
+- [ ] #3 Adaptive qualification runs start from N=32 at the four fixed qualification points and record convergence, mesh distributions, defects, period/orbit changes, phase refreshes, unresolved budgets, aliasing triggers, and active non-Floquet Radau-trigger evidence without hiding failures; Floquet-dependent evidence is recorded as not_evaluated
+- [ ] #4 Curated artifacts emit deterministic language-neutral adaptive/remesh fixtures consumed by TASK-068, including inputs and intermediate expected results for defect grids, probe escalation, monitor construction, marking, movement, transfer, restart/retry, schemas, and checksums; focused tests cover those contracts and fixed-mesh compatibility
+- [ ] #5 The v1 r monitor evaluates all four densities at 16 equal subcell midpoints per current element, uses documented weighted deterministic normalization, builds and inverts the piecewise-constant cumulative monitor with the stated tolerance, and applies simultaneous global-beta feasibility retries through 2^-20 with r_movement_stalled fallback
+- [ ] #6 The deterministic adaptation cycle distinguishes ordinary h+r, pure-r, forced single-split h+r after stagnation, convergence stop, N=256 soft-cap escalation, and N=512/cycle-budget resolution_unresolved outcomes
 <!-- AC:END -->
