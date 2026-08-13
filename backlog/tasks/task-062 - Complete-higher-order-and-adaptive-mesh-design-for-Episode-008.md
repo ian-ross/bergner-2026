@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:24'
+updated_date: '2026-08-13 14:29'
 labels:
   - episode-008
   - design
@@ -49,4 +49,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: independent off-collocation defect exclusively controls scientific defect acceptance and h-refinement marking. The composite defect/speed/curvature/nucleation/landmark monitor controls only r-redistribution. Auxiliary monitor components can attract mesh points to potentially missed layers but cannot make an orbit pass; minimum-resolution protections are explicit rather than hidden in weights.
 
 - Design interview decision: independent defect uses two off-collocation grids per element: the existing r+1 Gauss nodes and staggered dyadic points tau={1/8,3/8,5/8,7/8}. Acceptance and h marking use the combined scaled-relative-defect maximum. One-sided endpoint defects, inter-element polynomial-derivative jumps, and grid-max disagreement are separate diagnostics. Landmark-containing elements with material grid disagreement receive a local recursive diagnostic probe before acceptance.
+
+- Design interview decision: v1 r-monitor normalizes combined defect D, scaled speed V=||S_x p_prime||, scaled polynomial curvature C=||S_x p_double_prime||, and the scaled transformed-state homogeneous-nucleation contribution A to unit phase average. Each is winsorized at 20x mean then renormalized. Use m=0.20+0.80*(0.50 D_tilde+0.20 V_tilde+0.20 C_tilde+0.10 A_tilde). Treat saturation extrema, nucleation maxima, and threshold crossings as explicit boundary-alignment targets rather than another continuous weight.
 <!-- SECTION:NOTES:END -->
