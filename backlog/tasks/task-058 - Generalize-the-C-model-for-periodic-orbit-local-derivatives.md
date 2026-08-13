@@ -1,9 +1,11 @@
 ---
 id: TASK-058
 title: Generalize the C++ model for periodic-orbit local derivatives
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-13 04:49'
 labels:
   - episode-008
   - cpp
