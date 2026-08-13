@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:18'
+updated_date: '2026-08-13 15:19'
 labels:
   - episode-008
   - design
@@ -87,4 +87,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: production independent-IVP validation uses >=12 unique points: four fixed qualification points; both T=210 K Hopf sides; low/high-T interiors; largest/shortest periods; worst accepted defect; worst trivial multiplier; worst interpolation holdout, with replacements after deduplication. Every point gets transformed-state DOP853 one-period integration at rtol=1e-10/atol=1e-12 and requires period, phase-aligned trajectory, and weighted return errors <1e-3. Six hardest/headline points also require IVP Radau agreement <1e-3. At least four, including both Hopf sides and largest period, receive perturbed-equilibrium attractor checks.
 
 - Evidence-based design resolution without user question: retain the globally frozen seed-derived state scaling and unit weights for log(P), rho, and T_hat in v1. TASK-061 completed all required native branches and controlled retries with this metric, so there is no evidence supporting a scaling change. Any future change requires conditioning/convergence evidence and a method-version revision.
+
+- Design interview decision: retain serial Amesos2/KLU2 through initial higher-order, adaptive, and production work. Trigger a Belos/Ifpack2 bordered-preconditioner task only if realistic N=256..512 profiling shows >4 GiB factorization memory, >30 s median linear solve/factorization per nonlinear iteration, >70% runtime in linear algebra, or failure to meet the recorded production compute budget. Preserve KLU2 as oracle.
 <!-- SECTION:NOTES:END -->
