@@ -118,6 +118,19 @@ The reference branch starts at the Episode 007 `T = 225 K`, `w = 0.1 m s^-1` orb
 
 **This remains a continuation-machinery and Python-to-LOCA parity milestone.** The accepted `N = 64` midpoint periods range from roughly `2452 s` at `226 K` to `7144 s` on the lower `T = 210 K` slice segment, but the preceding mesh study already showed that `N = 64` can have large period error despite tiny discrete residuals. These values are not production Figure 5 data.
 
+## Shared C++ local model derivatives
+
+[`loca/include/bergner_spichtinger_2026_loca/model.hpp`](../../loca/include/bergner_spichtinger_2026_loca/model.hpp) now scalar-templates the transformed no-evaporation dynamics through all temperature-dependent coefficients and the physical mapping `w = exp(log_w)`. `local_derivatives` seeds only the three local transformed-state variables, physical temperature, and `log_w`; one five-direction Sacado evaluation returns `g`, `D_x g`, `g_T`, and `g_log_w`. It never differentiates an orbit-layout vector.
+
+The same header supplies the normalized continuation columns
+
+```text
+g_rho   = 0.5 (log_w_upper - log_w_lower) g_log_w,
+g_T_hat = 25 [g_T + (d log_w_spine / dT) g_log_w].
+```
+
+The existing value, physical-Jacobian, equilibrium, and Hopf interfaces remain wrappers over the generalized evaluator. Focused C++/Python tests expose local results through deterministic `local-derivatives` and `parameter-columns` CLI test seams and compare values and every derivative column with centered differences. Local environmental derivatives deliberately reject the discontinuous optional evaporation switch.
+
 ## Scope boundary
 
 The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work.

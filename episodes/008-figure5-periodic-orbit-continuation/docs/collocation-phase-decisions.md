@@ -451,6 +451,12 @@ Use these local values to assemble stage, endpoint-update, phase, and `log(P)` b
 
 Validate `D_x g`, both physical-control derivatives, the normalized chain-rule columns, and all temperature-dependent coefficient effects against centered finite differences. Preserve value-level parity with the existing validated C++ model before switching the periodic-orbit path to the generalized evaluator.
 
+### Observed local C++ derivative implementation (TASK-058)
+
+The shared C++ header now promotes the environment and every temperature-dependent coefficient to the active scalar type. Its local Sacado path seeds exactly five directions, `(log(n), log(q), s, T, log(w))`, in one model evaluation and returns the transformed value plus `D_x g`, `g_T`, and `g_log_w`. Existing value-level, physical-Jacobian, equilibrium, and Hopf APIs remain compatible wrappers; no orbit layout is present in or differentiated by this local evaluator.
+
+The parameter helpers implement the formulas above directly. C++/Python parity tests cover representative physical states, and centered differences independently check all three state directions, physical temperature, physical `log(w)`, the temperature-dependent coefficient contributions, and both normalized columns. The differentiable API rejects `include_evaporation=true`, preserving the binding smooth no-evaporation scope rather than silently differentiating through its state-dependent switch.
+
 ## Generated collocation coefficients
 
 Add an Episode 008 SymPy generator for each supported collocation rule. Derive:

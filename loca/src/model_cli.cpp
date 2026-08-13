@@ -36,6 +36,9 @@ struct Options {
   Environment env;
   double log_w_end = std::numeric_limits<double>::quiet_NaN();
   double T_end = std::numeric_limits<double>::quiet_NaN();
+  double log_w_lower = std::numeric_limits<double>::quiet_NaN();
+  double log_w_upper = std::numeric_limits<double>::quiet_NaN();
+  double spine_log_w_temperature_derivative = std::numeric_limits<double>::quiet_NaN();
   int steps = 80;
   int max_newton_iterations = 20;
   double tolerance = 1.0e-10;
@@ -46,6 +49,9 @@ struct Options {
             << "  bs2026_loca_model residual log_n log_q s log_w [--p Pa] [--T K] [--F value] "
                "[--N-a m^-3] [--dz m] [--include-evaporation]\n"
             << "  bs2026_loca_model jacobian log_n log_q s log_w [same options]\n"
+            << "  bs2026_loca_model local-derivatives log_n log_q s log_w [same options]\n"
+            << "  bs2026_loca_model parameter-columns log_n log_q s log_w --log-w-lower value "
+               "--log-w-upper value --d-spine-log-w-dT value [same options]\n"
             << "  bs2026_loca_model physical-rhs n q s w [same environment options]\n"
             << "  bs2026_loca_model physical-jacobian n q s w [same environment options]\n"
             << "  bs2026_loca_model eigenvalues n q s w [same environment options]\n"
@@ -95,6 +101,12 @@ Options parse_options(const std::vector<std::string>& args, size_t first) {
     else if (flag == "--include-evaporation") options.env.include_evaporation = true;
     else if (flag == "--log-w-end") options.log_w_end = parse_double(require_value("--log-w-end"));
     else if (flag == "--T-end") options.T_end = parse_double(require_value("--T-end"));
+    else if (flag == "--log-w-lower") options.log_w_lower = parse_double(require_value("--log-w-lower"));
+    else if (flag == "--log-w-upper") options.log_w_upper = parse_double(require_value("--log-w-upper"));
+    else if (flag == "--d-spine-log-w-dT") {
+      options.spine_log_w_temperature_derivative =
+          parse_double(require_value("--d-spine-log-w-dT"));
+    }
     else if (flag == "--steps") options.steps = parse_int(require_value("--steps"));
     else if (flag == "--max-newton-iterations") options.max_newton_iterations = parse_int(require_value("--max-newton-iterations"));
     else if (flag == "--tol") options.tolerance = parse_double(require_value("--tol"));
@@ -686,7 +698,8 @@ int main(int argc, char** argv) {
     if (argc < 6) usage();
     const std::vector<std::string> args(argv + 1, argv + argc);
     const std::string command = args[0];
-    if (command != "residual" && command != "jacobian" && command != "physical-rhs" &&
+    if (command != "residual" && command != "jacobian" && command != "local-derivatives" &&
+        command != "parameter-columns" && command != "physical-rhs" &&
         command != "physical-jacobian" && command != "eigenvalues" && command != "continue" &&
         command != "nox-loca-continue" && command != "nox-loca-hopf-continue" && command != "nox-loca-smoke") {
       usage();
@@ -704,6 +717,31 @@ int main(int argc, char** argv) {
       const auto J = bs2026_loca::state_jacobian(x, control, options.env);
       for (const auto& row : J) {
         std::cout << row[0] << " " << row[1] << " " << row[2] << "\n";
+      }
+    } else if (command == "local-derivatives") {
+      const auto local = bs2026_loca::local_derivatives(x, options.env.T, control, options.env);
+      for (int row = 0; row < 3; ++row) {
+        std::cout << local.values[row];
+        for (int column = 0; column < 3; ++column) {
+          std::cout << " " << local.state_jacobian[row][column];
+        }
+        std::cout << " " << local.temperature_derivative[row]
+                  << " " << local.log_w_derivative[row] << "\n";
+      }
+    } else if (command == "parameter-columns") {
+      if (!std::isfinite(options.log_w_lower) || !std::isfinite(options.log_w_upper) ||
+          !std::isfinite(options.spine_log_w_temperature_derivative)) {
+        throw std::invalid_argument(
+            "parameter-columns requires --log-w-lower, --log-w-upper, and "
+            "--d-spine-log-w-dT");
+      }
+      const auto local = bs2026_loca::local_derivatives(x, options.env.T, control, options.env);
+      const auto rho = bs2026_loca::rho_parameter_derivative(
+          local, options.log_w_lower, options.log_w_upper);
+      const auto temperature_hat = bs2026_loca::temperature_hat_parameter_derivative(
+          local, options.spine_log_w_temperature_derivative);
+      for (int row = 0; row < 3; ++row) {
+        std::cout << rho[row] << " " << temperature_hat[row] << "\n";
       }
     } else if (command == "physical-rhs") {
       options.env.w = control;
