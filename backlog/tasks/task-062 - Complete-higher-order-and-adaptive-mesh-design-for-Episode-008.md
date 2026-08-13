@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:11'
+updated_date: '2026-08-13 15:12'
 labels:
   - episode-008
   - design
@@ -75,4 +75,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: multivalued support is trigger-only. Always record tangent signs/coordinate sequence and run cheap candidate checks. If none trigger, record single_valued_observed. Initial production does not implement multibranch matching, multiple display values, or attracting-branch selection. A trigger stops automatic processing for that slice and creates a scientific follow-up for exact-coordinate confirmation and artifact/display policy.
 
 - Design interview decision: Figure 5 display interpolation requires maximum |Delta log(P)|<2e-3 (~0.2%) independently for leave-one-out shape-preserving PCHIP along rho and withheld-slice reconstruction between temperatures at fixed rho. Add authoritative solves near worst failures; retain <=2 K maximum temperature separation. Never test/interpolate across Hopf boundaries, unresolved gaps, instability checkpoints, or multivalued triggers. Exact T=210 K lower-panel data remain authoritative solved values.
+
+- Design interview decision: canonical sampling starts with T=190,192,...,240 K plus exact 225 K; native spine points remain separately authoritative. Each reliable slice requests exact rho anchors 0, +/-0.25, +/-0.50, +/-0.75, +/-0.90, +/-0.97, retains additional native points, and adds required Hopf-approach points. Refine by the 2e-3 holdout rule. Browser grid is fixed at 0.5 K x 0.01 rho with solved/interpolated/invalid provenance per value.
 <!-- SECTION:NOTES:END -->
