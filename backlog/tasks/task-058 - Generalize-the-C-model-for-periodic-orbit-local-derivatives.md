@@ -1,11 +1,11 @@
 ---
 id: TASK-058
 title: Generalize the C++ model for periodic-orbit local derivatives
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 04:58'
+updated_date: '2026-08-13 05:05'
 labels:
   - episode-008
   - cpp
@@ -27,11 +27,11 @@ Extend the validated shared C++ model evaluator to provide value-equivalent tran
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The generalized evaluator preserves value-level parity with the existing validated no-evaporation C++ and Python model over representative physical states
-- [ ] #2 Local Sacado evaluation supplies D_x g, g_T, and g_log_w without differentiating the packed orbit vector
-- [ ] #3 T-hat spine and rho slice parameter derivatives apply the documented mappings and chain rules
-- [ ] #4 Centered finite-difference tests cover state derivatives, temperature-dependent coefficients, physical control derivatives, and normalized parameter columns
-- [ ] #5 Existing equilibrium and Hopf backend behavior remains regression-tested
+- [x] #1 The generalized evaluator preserves value-level parity with the existing validated no-evaporation C++ and Python model over representative physical states
+- [x] #2 Local Sacado evaluation supplies D_x g, g_T, and g_log_w without differentiating the packed orbit vector
+- [x] #3 T-hat spine and rho slice parameter derivatives apply the documented mappings and chain rules
+- [x] #4 Centered finite-difference tests cover state derivatives, temperature-dependent coefficients, physical control derivatives, and normalized parameter columns
+- [x] #5 Existing equilibrium and Hopf backend behavior remains regression-tested
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,4 +52,28 @@ Extend the validated shared C++ model evaluator to provide value-equivalent tran
 - Generalized the shared C++ model internals so the environment and all temperature-dependent coefficients use the active scalar type. Added a five-direction local Sacado evaluator for (log(n), log(q), s, T, log(w)) returning g, D_x g, g_T, and g_log_w; the differentiable path explicitly rejects the discontinuous evaporation switch.
 - Added rho and T-hat parameter-column helpers with the documented chain rules, plus deterministic CLI test seams. Existing residual, state/physical Jacobian, equilibrium, and Hopf APIs remain intact.
 - Added representative C++/Python value and analytic-derivative parity tests, centered checks for state/T/log(w) and both normalized coordinates, and documentation of the implemented local derivative contract. Focused model plus equilibrium/Hopf backend regression suite currently passes (32 focused model tests after the final added case; prior combined backend run passed 31 tests before that case was added).
+
+- Final validation: full suite passed with 158 passed / 1 explicit pre-existing skip and three known exploratory-solver overflow warnings. CMake rebuild, py_compile, git diff whitespace checks, and C++ LSP diagnostics passed; Python LSP reports only the repository's existing src-layout import-resolution warnings.
+- Two independent fresh-context reviewers found no blockers or fixes worth doing now. One noted only the existing infrastructure risk that C++/Hopf tests skip on runners without the hard-coded Trilinos toolchain; this runner had Trilinos and exercised them.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Generalized the validated shared C++ model for periodic-orbit local derivatives while preserving existing equilibrium and Hopf behavior.
+
+Changes:
+- Scalar-templated the model environment, coefficients, and transformed dynamics so Sacado propagates through every temperature-dependent coefficient and w = exp(log(w)).
+- Added a compact five-direction local evaluator returning g, D_x g, g_T, and g_log_w without any packed-orbit dependency.
+- Added rho-slice and T-hat-spine derivative helpers implementing the documented normalized-coordinate chain rules.
+- Added deterministic CLI test seams while retaining all existing command contracts and value/Jacobian wrappers.
+- Added representative C++/Python value and derivative parity tests, centered finite differences for state/T/log(w)/normalized columns, evaporation rejection coverage, and Episode 008 documentation.
+
+Validation:
+- uv run pytest -q: 158 passed, 1 pre-existing skip; three known exploratory-solver overflow warnings.
+- Focused C++ model and NOX/LOCA equilibrium/Hopf regression tests passed with the configured Trilinos toolchain.
+- CMake rebuild, py_compile, git diff --check, C++ LSP diagnostics, and two independent review passes succeeded.
+
+Risk:
+- As before, C++/Hopf tests skip on runners lacking the configured /opt/Trilinos installation; they ran successfully in this environment.
+<!-- SECTION:FINAL_SUMMARY:END -->
