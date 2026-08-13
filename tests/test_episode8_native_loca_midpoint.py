@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import shutil
 import subprocess
 from functools import lru_cache
@@ -29,6 +31,16 @@ def run(command: str) -> list[list[str]]:
         cwd=REPO, text=True, capture_output=True, check=True,
     )
     return [line.split() for line in completed.stdout.splitlines() if line.strip()]
+
+
+def test_curated_native_source_provenance_hashes_current_paths():
+    data = json.loads(
+        (REPO / "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_midpoint_results.json").read_text()
+    )
+    for record in data["source_provenance"].values():
+        if isinstance(record, dict) and "path" in record and "sha256" in record:
+            path = REPO / record["path"]
+            assert hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"]
 
 
 def test_native_loca_base_contract_has_one_parameter_and_no_arclength_row():

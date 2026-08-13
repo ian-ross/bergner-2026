@@ -132,15 +132,15 @@
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py",
-      "sha256": "9d53d1244a67c41e6d09b814679d64fde16459faa0fed99eafeeeff900b27346"
+      "sha256": "28d877fa22ff08616921095d8b812edf2fae8336396e8ba994c65d48c87f3cf6"
     },
     "python_assembler": {
       "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
-      "sha256": "75786271ef165b3946b5c6fb754326be81584983f71393f5795854faf5bd6dfb"
+      "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
     },
     "task056_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
-      "sha256": "1bca2862215aeae3207a95d806da7fb625bcdb4e5d89d17552e59cba623a729a"
+      "sha256": "c8d9364262b93f2b4694e1f473c131eb3dec165f3a3e9d72d0f0b47738852f49"
     },
     "task056_vectors": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_vectors.npz",

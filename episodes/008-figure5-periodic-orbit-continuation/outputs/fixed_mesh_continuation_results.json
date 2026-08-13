@@ -2987,7 +2987,7 @@
     "periodic_continuation_path": "src/bergner_spichtinger_2026/periodic_continuation.py",
     "periodic_continuation_sha256": "8f0ac8a34d9f55a187b56670ad2abb56785f27ac09f5118f69a262960f19463f",
     "periodic_orbits_path": "src/bergner_spichtinger_2026/periodic_orbits.py",
-    "periodic_orbits_sha256": "75786271ef165b3946b5c6fb754326be81584983f71393f5795854faf5bd6dfb",
+    "periodic_orbits_sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6",
     "task056_midpoint_vectors_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_vectors.npz",
     "task056_midpoint_vectors_sha256": "c7765031bfcf368f6174e086e038bd0ae48d9402f36987f8680dc1803fe7b5e9"
   },

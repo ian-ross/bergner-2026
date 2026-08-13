@@ -23,6 +23,7 @@ from bergner_spichtinger_2026 import (
     bootstrap_branch,
     controlled_phase_reference_restart,
     gauss_legendre_rule,
+    sha256_file,
     transformed_vector_field,
     transformed_vector_field_environment_derivatives,
 )
@@ -390,6 +391,9 @@ def test_curated_artifact_covers_exact_spine_bidirectional_segments_and_diagnost
         "episode006_hopf_loci_sha256", "task056_midpoint_vectors_path",
         "task056_midpoint_vectors_sha256",
     } <= set(provenance)
+    for prefix in ("generator", "periodic_continuation", "periodic_orbits"):
+        path = REPO_ROOT / provenance[f"{prefix}_path"]
+        assert sha256_file(path) == provenance[f"{prefix}_sha256"]
     solver_fields = {
         "scipy_success", "scipy_status", "scipy_message", "scipy_cost",
         "scipy_optimality", "function_evaluations", "jacobian_evaluations",

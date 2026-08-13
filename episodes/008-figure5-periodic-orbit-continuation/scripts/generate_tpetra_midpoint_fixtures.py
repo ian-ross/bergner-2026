@@ -221,7 +221,10 @@ def build() -> dict[str, bytes]:
             "scipy": scipy.__version__,
         },
         "source_provenance": {
-            key: {"path": path.relative_to(REPO_ROOT).as_posix(), "sha256": _sha256_file(path)}
+            key: {
+                "path": path.relative_to(REPO_ROOT).as_posix(),
+                "sha256": _sha256_file(path),
+            }
             for key, path in source_paths.items()
         },
         "cases": {

@@ -16,6 +16,7 @@ from bergner_spichtinger_2026 import (
     MidpointResidualTolerances,
     PeriodicHermiteSeed,
     correct_midpoint_orbit,
+    sha256_file,
     gauss_legendre_rule,
 )
 from bergner_spichtinger_2026.constants import Environment
@@ -218,12 +219,15 @@ def test_curated_results_cover_all_meshes_and_separate_accuracy_from_residuals()
 
     assert mapping["scientific_scope"]["production_accuracy_claimed"] is False
     assert set(mapping["runtime_provenance"]) == {"python", "numpy", "scipy"}
-    assert set(mapping["source_provenance"]) == {
+    provenance = mapping["source_provenance"]
+    assert set(provenance) == {
         "generator_path",
         "generator_sha256",
         "periodic_orbits_path",
         "periodic_orbits_sha256",
     }
+    assert sha256_file(REPO_ROOT / provenance["generator_path"]) == provenance["generator_sha256"]
+    assert sha256_file(REPO_ROOT / provenance["periodic_orbits_path"]) == provenance["periodic_orbits_sha256"]
     assert "does not establish" in mapping["scientific_scope"]["accuracy_warning"]
     assert [record["interval_count"] for record in results] == [32, 64, 128, 256]
     assert not results[0]["accepted"]

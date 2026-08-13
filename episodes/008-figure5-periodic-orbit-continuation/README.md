@@ -191,6 +191,23 @@ g_T_hat = 25 [g_T + (d log_w_spine / dT) g_log_w].
 
 The existing value, physical-Jacobian, equilibrium, and Hopf interfaces remain wrappers over the generalized evaluator. Focused C++/Python tests expose local results through deterministic `local-derivatives` and `parameter-columns` CLI test seams and compare values and every derivative column with centered differences. Local environmental derivatives deliberately reject the discontinuous optional evaporation switch.
 
+## Python higher-order fixed-mesh qualification
+
+[`src/bergner_spichtinger_2026/periodic_orbits.py`](../../src/bergner_spichtinger_2026/periodic_orbits.py) now provides a rule-driven `GaussCollocationAssembler` for the frozen one-, two-, and three-stage Gauss--Legendre rules. It retains the midpoint class and correction API as exact compatibility wrappers, while adding generic residual/Jacobian assembly, collocation-polynomial evaluation, fixed-mesh/rule transfer, phase-reference transfer, stage-count-independent comparisons, and the versioned two-grid independent-defect diagnostic.
+
+Generate or verify the complete TASK-064 evidence with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_higher_order_fixed_mesh_qualification.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_higher_order_fixed_mesh_qualification.py --check
+```
+
+[`outputs/higher_order_fixed_mesh_qualification.json`](outputs/higher_order_fixed_mesh_qualification.json) and its deterministic NPZ retain the prescribed canonical and `T=210 K` guard ladders, every nonlinear outcome, component gates, two-grid defects, phase-aligned same-rule refinement, and canonical DOP853 evidence. The four language-neutral accepted/nonsolution two-/three-stage fixtures live under [`outputs/higher_order_parity_fixtures/`](outputs/higher_order_parity_fixtures/).
+
+The canonical three-stage `N=16` solve is deliberately retained as rejected after exhausting 1000 evaluations. All other requested higher-order systems converge discretely. The best canonical result is three-stage `N=64`, with period `2461.617474 s`. A versioned DOP853 run integrates for `2.1` collocation periods, independently locates and refines two successive saturation maxima, and obtains period `2461.617092 s` (relative difference `1.55e-7`), scaled return error `1.48e-6`, and phase-aligned weighted dense-orbit error `2.39e-5`; all pass the `1e-3` contract. However, no prescribed same-rule higher-order refinement pair passes both `1e-3` period and weighted-orbit checks, and every independent defect remains above `1e-4` (best canonical maximum approximately `7.38e-3`). The `T=210 K` guard pairs likewise miss the refinement gates. These misses are qualification evidence, not tuned away.
+
+The artifact explicitly separates nonlinear acceptance from discretization qualification: 20 cases satisfy the finite-dimensional residual gates, one is rejected, and zero fixed-uniform cases are qualified because defect and/or same-rule refinement evidence misses. Cross-order comparisons are retained separately. Accordingly, fixed uniform meshes are not production-qualified. The non-Floquet Radau triggers based on defect/convergence stagnation are not yet active because their contract applies only after two adaptive remesh cycles. Finite-positive physical mapping of endpoints/stages is checked; polynomial ringing is `not_evaluated` because TASK-064 defines no versioned ringing metric. Floquet remains `not_evaluated` through TASK-068.
+
 ## TASK-062 higher-order/adaptive design
 
 TASK-062 reviewed the completed midpoint evidence before selecting the next numerical stage. TASK-056 showed that tiny discrete residuals do not imply period accuracy: the canonical `N=64` midpoint period is more than 12% above the Episode 007 reference, while refinement reduces the discrepancy substantially. TASK-057 through TASK-061 then established transparent Python continuation, sparse Tpetra/NOX correction, and genuine native LOCA ownership with close Python/C++ parity. The remaining problem is therefore orbit resolution, not continuation ownership.

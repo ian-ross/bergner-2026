@@ -252,6 +252,20 @@ Three-stage Radau IIA is evidence-triggered, not a routine second family. Throug
 
 NOX difficulty alone is not a Radau trigger until scaling, transfer, and mesh placement have been ruled out. TASK-064 performs only the canonical DOP853 comparison already required by its fixed-mesh qualification contract. The broader IVP-based Radau trigger, production cross-method validation, and Floquet-derived trigger are downstream and recorded as `not_evaluated` through TASK-068. TASK-069 decides later IVP/Radau and Floquet scope.
 
+### Observed fixed-mesh higher-order qualification (TASK-064)
+
+The reusable Python formulation now consumes the frozen `CollocationRule` tables directly for one-, two-, and three-stage Gauss rules. The square `3N(r+1)+1` layout, scaled stage/update residuals, normalized quadrature phase row, and analytic sparse Jacobian are stage-generic. Collocation-polynomial evaluation uses the generated integrated-Lagrange coefficients in ascending powers; mesh/rule and phase-reference transfer evaluate that polynomial rather than reshaping or independently interpolating stages. The established midpoint public API remains a compatibility wrapper and reproduces its frozen vectors and residuals.
+
+The complete prescribed ladder is frozen in `higher_order_fixed_mesh_qualification.json` and its NPZ/parity bundle. Canonical two-stage periods at `N=32,64,128` are approximately `2841.227`, `2466.548`, and `2461.911 s`; three-stage periods at `N=32,64` are `2450.318` and `2461.617 s`. Three-stage `N=16` exhausts 1000 evaluations and is retained with every failed residual gate. Every requested `T=210 K` two-/three-stage guard solve converges discretely from the exact TASK-061 target vector transferred through its midpoint collocation polynomial.
+
+The run does **not** qualify the fixed uniform meshes at the `1e-3` discretization contract. No consecutive higher-order same-rule pair passes both period and phase-independent weighted-orbit gates. The canonical three-stage `N=32 -> 64` changes are about `4.59e-3` in period and `6.37e-3` in weighted orbit; guard-pair misses range similarly or larger. The independent two-grid defect also remains above `1e-4` everywhere, with best canonical maximum about `7.38e-3`. These misses are preserved as evidence supporting the planned adaptive stage.
+
+The canonical best higher-order orbit does pass its independent DOP853 contract. A deterministic run extends through `2.1` collocation periods, scans and bounded-refines successive saturation maxima, and obtains an IVP-derived period of about `2461.617092 s`, a relative collocation/IVP period difference of `1.55e-7`, a scaled return error of `1.48e-6`, and a phase-aligned weighted dense-orbit error of `2.39e-5`. Thus the cross-method trajectory evidence is encouraging while the explicit same-rule/defect evidence still blocks a fixed-uniform production claim.
+
+The curated decision records distinguish finite-dimensional nonlinear acceptance from scientific discretization qualification. Twenty cases pass residual gates and one coarse case fails, but zero fixed-uniform cases qualify under the combined defect and applicable same-rule refinement evidence. Broadly comparable cross-order comparisons are separate evidence and show improvement without overriding those mandatory gates.
+
+The finite-positive physical mapping check passes for accepted endpoint/stage vectors. Polynomial ringing remains `not_evaluated`: TASK-064 defines no versioned ringing metric, so the run makes no unsupported visual/ringing claim. The defect/convergence-stagnation Radau triggers remain inactive/not-yet-applicable because their definition requires evidence after two adaptive Gauss remesh cycles. Floquet and Floquet-derived triggers remain `not_evaluated` through TASK-068.
+
 ## Adaptive mesh design
 
 TASK-062 specifies operational **v1 hypotheses** for the first adaptive implementation. They make the implementation and run reproducible, but they are not claims that production policy is settled before evidence exists. The mandatory post-run review may tighten or replace them; any later change must cite evidence and revise the method version.

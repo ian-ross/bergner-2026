@@ -1,0 +1,73 @@
+{
+  "artifact_kind": "language-neutral-gauss-parity-fixtures",
+  "cases": [
+    {
+      "array_checksums": {
+        "mesh_boundaries": "932f4d3c831e88a56ace948a81f7111c97df65f9f6644c1c95ec30860b6c595d",
+        "phase_reference_derivatives": "329267de7e474e63b6693ea7dfdc83b95e33ef07849013a39d06305f85093a82",
+        "phase_reference_values": "45661488796013d8e4993112ef0e1e89923694a2e6d2ad071b8462c1f6af6163",
+        "residual_phase": "286c2e36c3b71a0972663b7cd6ce487a7b644949ef6b09cb38b87649b2d8876c",
+        "residual_stages": "66fc6b4c8053a323459a3973a66e7f5949c32382a8b6ff275891eeadad18482e",
+        "residual_updates": "618603e83b8d2e295842a6bdd0364ab10b2ade2c5cd25358f8ad975c9638c7b2",
+        "unknowns": "aecd0ad616d74b65ae1711b37a5454d8b36f2e680d8241d35c98c2914bae053f"
+      },
+      "case_id": "g2-n64-converged",
+      "path": "g2-n64-converged.json",
+      "sha256": "0129b83c02198fc458bee92292960f3eeb21493b4087be061204c216498ed93a",
+      "unknown_size": 577
+    },
+    {
+      "array_checksums": {
+        "mesh_boundaries": "932f4d3c831e88a56ace948a81f7111c97df65f9f6644c1c95ec30860b6c595d",
+        "phase_reference_derivatives": "329267de7e474e63b6693ea7dfdc83b95e33ef07849013a39d06305f85093a82",
+        "phase_reference_values": "45661488796013d8e4993112ef0e1e89923694a2e6d2ad071b8462c1f6af6163",
+        "residual_phase": "5c1731078b7ce536f7b38820043df3fd1419ab4d2aaa5a1811ed984b9b5b7360",
+        "residual_stages": "8f677016dccf994a1548089dc962a2bf5d7b8ef027a33038a892a9bd82767cc1",
+        "residual_updates": "bef0b958423d43a5da99a1a5a072d8be49ca77295b2136b89f530547664c9fb4",
+        "unknowns": "260067dc9a0e71a39e140ad800510c92165c88866e5346500058e5166aa14955"
+      },
+      "case_id": "g2-n64-nonsolution",
+      "path": "g2-n64-nonsolution.json",
+      "sha256": "acab6a41d9b561e9d485396686706b447149075313ca317382d976db6e1dd4f2",
+      "unknown_size": 577
+    },
+    {
+      "array_checksums": {
+        "mesh_boundaries": "932f4d3c831e88a56ace948a81f7111c97df65f9f6644c1c95ec30860b6c595d",
+        "phase_reference_derivatives": "be3d4e0fb2020e7793e5387024cd134a327c1580934fa2d74acef236cd5cb426",
+        "phase_reference_values": "699e0136d4eae0b029289b0b178d988e0cfdc8153e8457498a1b1be2d218f210",
+        "residual_phase": "b31ab8be57d5741230a1ae450e195efa5feaac603b24e0977985fff468bba36e",
+        "residual_stages": "e6ca22527ca367d347261339ca8f97a3577c58f981aaee057346e31f6ed7af3f",
+        "residual_updates": "ec7e0161b1b9548a747d0968445e3ac5e597ea15da858b744752b52c17f8b31b",
+        "unknowns": "e3e213a62ed7e2367fd4b219aa91b60b0b22aa365fc6abc02595bc24c42b4230"
+      },
+      "case_id": "g3-n64-converged",
+      "path": "g3-n64-converged.json",
+      "sha256": "3dc39dbb5d9ebc46701ce06ac39da53672b9c90d892ca8d8ea36425fd6e971b2",
+      "unknown_size": 769
+    },
+    {
+      "array_checksums": {
+        "mesh_boundaries": "932f4d3c831e88a56ace948a81f7111c97df65f9f6644c1c95ec30860b6c595d",
+        "phase_reference_derivatives": "be3d4e0fb2020e7793e5387024cd134a327c1580934fa2d74acef236cd5cb426",
+        "phase_reference_values": "699e0136d4eae0b029289b0b178d988e0cfdc8153e8457498a1b1be2d218f210",
+        "residual_phase": "8af174fec7e6fbf58b515d1698d46661bb23820ef72ee7b009b4f0ab531726eb",
+        "residual_stages": "11fbf1a71cf6fef6bc1229fb24d0ba125939722887e46929e469e5066b29d3d7",
+        "residual_updates": "62a30aad48b317ea3878a5b4c2ffe0924d7aaba4cd120f105f4cd7c3cecda865",
+        "unknowns": "efa442902800d09a67928adaf6a5051b1c5a78f82629735f0dd0fc636be3db7c"
+      },
+      "case_id": "g3-n64-nonsolution",
+      "path": "g3-n64-nonsolution.json",
+      "sha256": "fa2e971b4940727caf6604ebe1ba6ee87d180b2fa77410c3097176249c34b040",
+      "unknown_size": 769
+    }
+  ],
+  "checksum_convention": "case file SHA-256 over exact canonical JSON bytes; array SHA-256 over contiguous little-endian float64 C-order bytes",
+  "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+  "formulation_version": "explicit-stage-gauss-fixed-mesh-v1",
+  "ordering": {
+    "residual": "stage interval/stage/component; update interval/component; phase",
+    "unknowns": "endpoint interval/component; stage interval/stage/component; log(period_s)"
+  },
+  "schema_version": "episode008-gauss-parity-v1"
+}

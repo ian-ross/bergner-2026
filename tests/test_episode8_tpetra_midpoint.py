@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import subprocess
@@ -108,6 +109,9 @@ def test_task059_fixture_generator_is_byte_reproducible_and_manifested():
         "generator", "python_assembler", "cpp_assembler", "cpp_nox_adapter", "cpp_cli",
         "bootstrap_seed", "task056_results", "task056_vectors", "uv_lock",
     }
+    for record in manifest["source_provenance"].values():
+        path = REPO_ROOT / record["path"]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == record["sha256"]
     assert set(manifest["runtime_provenance"]) == {"python", "numpy", "scipy"}
 
 

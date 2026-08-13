@@ -29,8 +29,14 @@ from .stability import physical_jacobian
 ArrayLike = Iterable[float] | np.ndarray
 STATE_DIMENSION = 3
 MIDPOINT_FORMULATION_VERSION = "explicit-stage-midpoint-v1"
+GAUSS_FORMULATION_VERSION = "explicit-stage-gauss-fixed-mesh-v1"
 JACOBIAN_DIRECTIONAL_RELATIVE_TOLERANCE = 1.0e-6
 MIDPOINT_SOLVER_VERSION = "scipy-trf-block-acceptance-v1"
+GAUSS_SOLVER_VERSION = "scipy-trf-gauss-block-acceptance-v1"
+DEFECT_DIAGNOSTIC_VERSION = "two-grid-relative-defect-v1"
+DEFECT_MATERIAL_ABSOLUTE_THRESHOLD = 1.0e-5
+DEFECT_MATERIAL_RELATIVE_THRESHOLD = 0.5
+DEFECT_RECURRENCE_BIN_COUNT = 128
 
 
 def _positive_integer(value: int, name: str) -> int:
@@ -129,6 +135,39 @@ class WeightedOrbitComparison:
 
     distance: float
     phase_shift: float
+
+
+@dataclass(frozen=True)
+class DefectGridDiagnostics:
+    """Scaled relative defects on one deterministic off-collocation grid."""
+
+    name: str
+    local_nodes: np.ndarray
+    relative_defects: np.ndarray
+    maximum: float
+    argmax_interval: int
+    argmax_local_node: float
+    argmax_phase: float
+
+
+@dataclass(frozen=True)
+class IndependentDefectDiagnostics:
+    """Two-grid fixed-mesh defect evidence independent of solver residuals."""
+
+    next_gauss: DefectGridDiagnostics
+    staggered_dyadic: DefectGridDiagnostics
+    probe_16: DefectGridDiagnostics | None
+    combined_element_maxima: np.ndarray
+    admitted_probe_element_maxima: np.ndarray
+    probe_admitted: np.ndarray
+    maximum: float
+    argmax_phase: float
+    argmax_bin: int
+    endpoint_left: np.ndarray
+    endpoint_right: np.ndarray
+    derivative_jumps: np.ndarray
+    grid_disagreement: np.ndarray
+    materially_disagreeing_elements: tuple[int, ...]
 
 
 @dataclass(frozen=True)
@@ -550,32 +589,37 @@ def transformed_vector_field_jacobian(
     return jacobian
 
 
-class MidpointCollocationAssembler:
-    """Assemble the fixed-parameter explicit-stage midpoint base system."""
+class GaussCollocationAssembler:
+    """Assemble a fixed-parameter explicit-stage Gauss collocation system."""
 
     def __init__(
         self,
         mesh: FixedMesh,
         env: Environment,
         phase_reference: FrozenPhaseReference,
+        rule: CollocationRule,
         *,
         coeff: Coefficients | None = None,
     ) -> None:
         if env.include_evaporation:
-            raise ValueError("midpoint collocation requires the smooth no-evaporation model.")
+            raise ValueError("Gauss collocation requires the smooth no-evaporation model.")
         if not isinstance(mesh, FixedMesh):
             raise TypeError("mesh must be a FixedMesh.")
         if not isinstance(phase_reference, FrozenPhaseReference):
             raise TypeError("phase_reference must be a FrozenPhaseReference.")
         if not np.array_equal(mesh.boundaries, phase_reference.mesh.boundaries):
             raise ValueError("phase-reference mesh does not match the assembler mesh.")
-        rule = gauss_legendre_rule(1)
+        if not isinstance(rule, CollocationRule):
+            raise TypeError("rule must be a CollocationRule.")
+        canonical_rule = gauss_legendre_rule(rule.stage_count)
+        if rule != canonical_rule:
+            raise ValueError("rule must be one of the frozen one-, two-, or three-stage Gauss rules.")
         if phase_reference.stage_values.shape[1] != rule.stage_count:
-            raise ValueError("midpoint phase reference must contain exactly one stage per interval.")
+            raise ValueError("phase reference stage count does not match the Gauss rule.")
         if not np.array_equal(phase_reference.collocation_nodes, np.asarray(rule.nodes)):
-            raise ValueError("phase-reference nodes do not match the midpoint rule.")
+            raise ValueError("phase-reference nodes do not match the Gauss rule.")
         if not np.array_equal(phase_reference.quadrature_weights, np.asarray(rule.quadrature_weights)):
-            raise ValueError("phase-reference quadrature does not match the midpoint rule.")
+            raise ValueError("phase-reference quadrature does not match the Gauss rule.")
         self.mesh = mesh
         self.env = env
         self.phase_reference = phase_reference
@@ -585,7 +629,7 @@ class MidpointCollocationAssembler:
 
     @property
     def formulation_version(self) -> str:
-        return MIDPOINT_FORMULATION_VERSION
+        return GAUSS_FORMULATION_VERSION
 
     @property
     def phase_energy(self) -> float:
@@ -611,10 +655,13 @@ class MidpointCollocationAssembler:
             np.empty(stages.shape + (STATE_DIMENSION,), dtype=float) if with_jacobian else None
         )
         for interval in range(self.layout.interval_count):
-            state = stages[interval, 0]
-            values[interval, 0] = transformed_vector_field(state, self.env, self.coeff)
-            if jacobians is not None:
-                jacobians[interval, 0] = transformed_vector_field_jacobian(state, self.env, self.coeff)
+            for stage in range(self.layout.stage_count):
+                state = stages[interval, stage]
+                values[interval, stage] = transformed_vector_field(state, self.env, self.coeff)
+                if jacobians is not None:
+                    jacobians[interval, stage] = transformed_vector_field_jacobian(
+                        state, self.env, self.coeff
+                    )
         return values, jacobians
 
     def residual_blocks(self, unknowns: ArrayLike) -> CollocationResidualBlocks:
@@ -624,19 +671,39 @@ class MidpointCollocationAssembler:
         stages = np.empty_like(variables.stages)
         updates = np.empty_like(variables.endpoints)
         scaling = self.state_scaling
-        stage_coefficient = self.rule.stage_coefficients[0][0]
-        update_weight = self.rule.quadrature_weights[0]
+        stage_coefficients = np.asarray(self.rule.stage_coefficients)
+        update_weights = np.asarray(self.rule.quadrature_weights)
         for interval, width in enumerate(self.mesh.widths):
             endpoint = variables.endpoints[interval]
             next_endpoint = variables.endpoints[(interval + 1) % self.layout.interval_count]
-            stage_field = field[interval, 0]
-            stages[interval, 0] = scaling * (
-                variables.stages[interval, 0]
-                - endpoint
-                - width * period * stage_coefficient * stage_field
-            )
+            if self.layout.stage_count == 1:
+                # Preserve the established midpoint operation order exactly.
+                stage_field = field[interval, 0]
+                stages[interval, 0] = scaling * (
+                    variables.stages[interval, 0]
+                    - endpoint
+                    - width * period * stage_coefficients[0, 0] * stage_field
+                )
+                updates[interval] = scaling * (
+                    next_endpoint - endpoint - width * period * update_weights[0] * stage_field
+                )
+                continue
+            for stage in range(self.layout.stage_count):
+                weighted_field = np.zeros(STATE_DIMENSION)
+                for coupled_stage in range(self.layout.stage_count):
+                    weighted_field += stage_coefficients[stage, coupled_stage] * field[
+                        interval, coupled_stage
+                    ]
+                stages[interval, stage] = scaling * (
+                    variables.stages[interval, stage]
+                    - endpoint
+                    - width * period * weighted_field
+                )
+            update_field = np.zeros(STATE_DIMENSION)
+            for stage in range(self.layout.stage_count):
+                update_field += update_weights[stage] * field[interval, stage]
             updates[interval] = scaling * (
-                next_endpoint - endpoint - width * period * update_weight * stage_field
+                next_endpoint - endpoint - width * period * update_field
             )
         delta = (variables.stages - self.phase_reference.stage_values) * scaling
         tangent = self.phase_reference.stage_derivatives * scaling
@@ -719,7 +786,7 @@ class MidpointCollocationAssembler:
     def weighted_orbit_distance(self, first: ArrayLike, second: ArrayLike) -> float:
         """Return the mesh-independent endpoint/stage weighted orbit distance.
 
-        Endpoint and midpoint-stage representations each receive half of the
+        Endpoint and collocation-stage representations each receive half of the
         total orbit weight.  The result therefore approximates one scaled L2
         orbit norm without doubling merely because both representations are
         stored, and its normalization does not depend on the interval count.
@@ -770,6 +837,112 @@ class MidpointCollocationAssembler:
         )
         return self.layout.pack(endpoints, stages, log_period)
 
+    def polynomial_evaluator(self, unknowns: ArrayLike) -> Callable[[ArrayLike], np.ndarray]:
+        """Return the periodic piecewise collocation-polynomial state evaluator."""
+        variables = self._variables(unknowns)
+        period = exp(variables.log_period)
+        field, _ = self._stage_model_values(variables.stages, with_jacobian=False)
+        transfer = np.asarray(self.rule.transfer_coefficients)
+        boundaries = self.mesh.boundaries
+
+        def evaluate(phases: ArrayLike) -> np.ndarray:
+            values = np.asarray(phases, dtype=float)
+            scalar = values.ndim == 0
+            flat = np.mod(values.reshape(-1), 1.0)
+            intervals = np.searchsorted(boundaries, flat, side="right") - 1
+            intervals = np.clip(intervals, 0, self.layout.interval_count - 1)
+            tau = (flat - boundaries[intervals]) / self.mesh.widths[intervals]
+            result = variables.endpoints[intervals].copy()
+            powers = tau[:, None] ** np.arange(transfer.shape[1])[None, :]
+            integrated = powers @ transfer.T
+            for row, interval in enumerate(intervals):
+                result[row] += (
+                    self.mesh.widths[interval]
+                    * period
+                    * np.einsum("j,jq->q", integrated[row], field[interval])
+                )
+            return result[0] if scalar else result.reshape(values.shape + (STATE_DIMENSION,))
+
+        return evaluate
+
+    def polynomial_derivative_evaluator(
+        self, unknowns: ArrayLike
+    ) -> Callable[[ArrayLike], np.ndarray]:
+        """Return ``dp/dtheta`` from the piecewise collocation polynomial."""
+        variables = self._variables(unknowns)
+        period = exp(variables.log_period)
+        field, _ = self._stage_model_values(variables.stages, with_jacobian=False)
+        coefficients = np.asarray(self.rule.transfer_coefficients)
+        derivative_coefficients = (
+            coefficients[:, 1:] * np.arange(1, coefficients.shape[1])[None, :]
+        )
+        boundaries = self.mesh.boundaries
+
+        def evaluate(phases: ArrayLike) -> np.ndarray:
+            values = np.asarray(phases, dtype=float)
+            scalar = values.ndim == 0
+            flat = np.mod(values.reshape(-1), 1.0)
+            intervals = np.searchsorted(boundaries, flat, side="right") - 1
+            intervals = np.clip(intervals, 0, self.layout.interval_count - 1)
+            tau = (flat - boundaries[intervals]) / self.mesh.widths[intervals]
+            powers = tau[:, None] ** np.arange(derivative_coefficients.shape[1])[None, :]
+            lagrange = powers @ derivative_coefficients.T
+            result = np.empty((flat.size, STATE_DIMENSION))
+            for row, interval in enumerate(intervals):
+                result[row] = period * np.einsum("j,jq->q", lagrange[row], field[interval])
+            return result[0] if scalar else result.reshape(values.shape + (STATE_DIMENSION,))
+
+        return evaluate
+
+    def transfer_unknowns(
+        self,
+        unknowns: ArrayLike,
+        destination_mesh: FixedMesh,
+        destination_rule: CollocationRule,
+    ) -> np.ndarray:
+        """Evaluate this collocation polynomial into another fixed Gauss layout."""
+        variables = self._variables(unknowns)
+        evaluate = self.polynomial_evaluator(unknowns)
+        destination_layout = OrbitLayout(
+            destination_mesh.interval_count, destination_rule.stage_count, STATE_DIMENSION
+        )
+        endpoints = evaluate(destination_mesh.boundaries[:-1])
+        stages = evaluate(destination_mesh.stage_phases(destination_rule.nodes).reshape(-1)).reshape(
+            destination_mesh.interval_count, destination_rule.stage_count, STATE_DIMENSION
+        )
+        return destination_layout.pack(endpoints, stages, variables.log_period)
+
+    def transferred_phase_reference(
+        self,
+        unknowns: ArrayLike,
+        destination_mesh: FixedMesh,
+        destination_rule: CollocationRule,
+    ) -> FrozenPhaseReference:
+        """Freeze the represented orbit and its polynomial derivative on a new rule/mesh."""
+        return FrozenPhaseReference.from_evaluator(
+            destination_mesh,
+            destination_rule,
+            self.polynomial_evaluator(unknowns),
+            self.polynomial_derivative_evaluator(unknowns),
+            state_scaling=self.state_scaling,
+        )
+
+    def compare_with_collocation(
+        self,
+        unknowns: ArrayLike,
+        reference_assembler: GaussCollocationAssembler,
+        reference_unknowns: ArrayLike,
+        *,
+        align_phase: bool = True,
+    ) -> WeightedOrbitComparison:
+        reference_variables = reference_assembler._variables(reference_unknowns)
+        return self.compare_with_reference(
+            unknowns,
+            reference_assembler.polynomial_evaluator(reference_unknowns),
+            reference_variables.log_period,
+            align_phase=align_phase,
+        )
+
     def compare_with_reference(
         self,
         unknowns: ArrayLike,
@@ -797,6 +970,154 @@ class MidpointCollocationAssembler:
         wrapped_shift = (phase_shift + 0.5) % 1.0 - 0.5
         return WeightedOrbitComparison(distance=distance(wrapped_shift), phase_shift=wrapped_shift)
 
+    def _defect_grid(
+        self,
+        unknowns: ArrayLike,
+        name: str,
+        local_nodes: np.ndarray,
+    ) -> DefectGridDiagnostics:
+        evaluate = self.polynomial_evaluator(unknowns)
+        derivative = self.polynomial_derivative_evaluator(unknowns)
+        variables = self._variables(unknowns)
+        period = exp(variables.log_period)
+        phases = self.mesh.stage_phases(local_nodes)
+        states = evaluate(phases.reshape(-1)).reshape(phases.shape + (STATE_DIMENSION,))
+        polynomial_slopes = derivative(phases.reshape(-1)).reshape(states.shape)
+        ode_slopes = np.empty_like(states)
+        for interval in range(self.layout.interval_count):
+            for node in range(local_nodes.size):
+                ode_slopes[interval, node] = period * transformed_vector_field(
+                    states[interval, node], self.env, self.coeff
+                )
+        scaled_difference = (polynomial_slopes - ode_slopes) * self.state_scaling
+        scaled_ode = ode_slopes * self.state_scaling
+        relative = np.linalg.norm(scaled_difference, axis=2) / (
+            1.0 + np.linalg.norm(scaled_ode, axis=2)
+        )
+        flat_index = int(np.argmax(relative))
+        interval, node = np.unravel_index(flat_index, relative.shape)
+        local = float(local_nodes[node])
+        phase = float(self.mesh.boundaries[interval] + self.mesh.widths[interval] * local)
+        nodes = np.array(local_nodes, copy=True)
+        relative.setflags(write=False)
+        nodes.setflags(write=False)
+        return DefectGridDiagnostics(
+            name=name,
+            local_nodes=nodes,
+            relative_defects=relative,
+            maximum=float(relative[interval, node]),
+            argmax_interval=int(interval),
+            argmax_local_node=local,
+            argmax_phase=phase,
+        )
+
+    def independent_defect(self, unknowns: ArrayLike) -> IndependentDefectDiagnostics:
+        """Evaluate the TASK-062 two-grid independent fixed-mesh defect contract."""
+        next_grid = self._defect_grid(
+            unknowns,
+            "next_higher_gauss",
+            np.asarray(self.rule.defect_check_nodes),
+        )
+        dyadic = self._defect_grid(
+            unknowns,
+            "staggered_dyadic",
+            np.asarray((0.125, 0.375, 0.625, 0.875)),
+        )
+        next_element = np.max(next_grid.relative_defects, axis=1)
+        dyadic_element = np.max(dyadic.relative_defects, axis=1)
+        larger = np.maximum(next_element, dyadic_element)
+        disagreement = np.divide(
+            np.abs(next_element - dyadic_element),
+            larger,
+            out=np.zeros_like(larger),
+            where=larger > 0.0,
+        )
+        material = np.flatnonzero(
+            (larger > DEFECT_MATERIAL_ABSOLUTE_THRESHOLD)
+            & (disagreement > DEFECT_MATERIAL_RELATIVE_THRESHOLD)
+        )
+        probe = None
+        combined = larger.copy()
+        probe_admitted = np.zeros(self.layout.interval_count, dtype=bool)
+        admitted_probe = np.zeros(self.layout.interval_count, dtype=float)
+        if material.size:
+            probe = self._defect_grid(
+                unknowns,
+                "uniform_probe_16",
+                (np.arange(16, dtype=float) + 0.5) / 16.0,
+            )
+            probe_element = np.max(probe.relative_defects, axis=1)
+            probe_admitted[material] = True
+            admitted_probe[material] = probe_element[material]
+            combined[material] = np.maximum(combined[material], probe_element[material])
+
+        evaluate = self.polynomial_evaluator(unknowns)
+        derivative = self.polynomial_derivative_evaluator(unknowns)
+        variables = self._variables(unknowns)
+        period = exp(variables.log_period)
+        epsilon = np.finfo(float).eps * 32.0
+        left_phases = self.mesh.boundaries[:-1] + epsilon * self.mesh.widths
+        right_phases = self.mesh.boundaries[1:] - epsilon * self.mesh.widths
+
+        def point_defect(phases: np.ndarray) -> np.ndarray:
+            states = evaluate(phases)
+            slopes = derivative(phases)
+            ode = np.array(
+                [period * transformed_vector_field(state, self.env, self.coeff) for state in states]
+            )
+            return np.linalg.norm((slopes - ode) * self.state_scaling, axis=1) / (
+                1.0 + np.linalg.norm(ode * self.state_scaling, axis=1)
+            )
+
+        endpoint_left = point_defect(left_phases)
+        endpoint_right = point_defect(right_phases)
+        left_slopes = derivative(left_phases)
+        right_slopes = derivative(right_phases)
+        derivative_jumps = np.linalg.norm(
+            (np.roll(left_slopes, -1, axis=0) - right_slopes) * self.state_scaling,
+            axis=1,
+        )
+        interval = int(np.argmax(combined))
+        admitted_grids = [next_grid, dyadic]
+        if probe is not None and probe_admitted[interval]:
+            admitted_grids.append(probe)
+        best_grid = max(
+            admitted_grids,
+            key=lambda grid: float(np.max(grid.relative_defects[interval])),
+        )
+        best_node = int(np.argmax(best_grid.relative_defects[interval]))
+        maximum = float(best_grid.relative_defects[interval, best_node])
+        if maximum != float(combined[interval]):
+            raise RuntimeError("independent-defect maximum and admitted argmax are inconsistent.")
+        argmax_phase = float(
+            self.mesh.boundaries[interval]
+            + self.mesh.widths[interval] * best_grid.local_nodes[best_node]
+        )
+        argmax_bin = int(np.floor(DEFECT_RECURRENCE_BIN_COUNT * (argmax_phase % 1.0)))
+        combined.setflags(write=False)
+        admitted_probe.setflags(write=False)
+        probe_admitted.setflags(write=False)
+        disagreement.setflags(write=False)
+        endpoint_left.setflags(write=False)
+        endpoint_right.setflags(write=False)
+        derivative_jumps.setflags(write=False)
+        return IndependentDefectDiagnostics(
+            next_gauss=next_grid,
+            staggered_dyadic=dyadic,
+            probe_16=probe,
+            combined_element_maxima=combined,
+            admitted_probe_element_maxima=admitted_probe,
+            probe_admitted=probe_admitted,
+            maximum=maximum,
+            argmax_phase=argmax_phase,
+            argmax_bin=argmax_bin,
+            endpoint_left=endpoint_left,
+            endpoint_right=endpoint_right,
+            derivative_jumps=derivative_jumps,
+            grid_disagreement=disagreement,
+            materially_disagreeing_elements=tuple(int(value) for value in material),
+        )
+
     def jacobian(self, unknowns: ArrayLike) -> csr_matrix:
         """Return the explicitly assembled analytic sparse CSR Jacobian."""
         variables = self._variables(unknowns)
@@ -808,72 +1129,79 @@ class MidpointCollocationAssembler:
         data: list[float] = []
         scaling = self.state_scaling
         row_scaling = np.diag(scaling)
-        stage_coefficient = self.rule.stage_coefficients[0][0]
-        update_weight = self.rule.quadrature_weights[0]
+        stage_coefficients = np.asarray(self.rule.stage_coefficients)
+        update_weights = np.asarray(self.rule.quadrature_weights)
         identity = np.eye(STATE_DIMENSION)
 
         for interval, width in enumerate(self.mesh.widths):
-            stage_row = self.layout.stage_row_slice(interval).start
             update_row = self.layout.update_row_slice(interval).start
             endpoint_column = self.layout.endpoint_slice(interval).start
             next_endpoint_column = self.layout.endpoint_slice(
                 (interval + 1) % self.layout.interval_count
             ).start
-            stage_column = self.layout.stage_slice(interval).start
-            stage_field = field[interval, 0]
-            local_jacobian = field_jacobian[interval, 0]
 
-            self._append_diagonal(rows, columns, data, stage_row, endpoint_column, -scaling)
-            self._append_dense(
-                rows,
-                columns,
-                data,
-                stage_row,
-                stage_column,
-                row_scaling @ (identity - width * period * stage_coefficient * local_jacobian),
-            )
-            self._append_column(
-                rows,
-                columns,
-                data,
-                stage_row,
-                self.layout.log_period_index,
-                scaling * (-width * period * stage_coefficient * stage_field),
-            )
+            for stage in range(self.layout.stage_count):
+                stage_row = self.layout.stage_row_slice(interval, stage).start
+                self._append_diagonal(rows, columns, data, stage_row, endpoint_column, -scaling)
+                log_period_field = np.zeros(STATE_DIMENSION)
+                for coupled_stage in range(self.layout.stage_count):
+                    stage_column = self.layout.stage_slice(interval, coupled_stage).start
+                    coefficient = stage_coefficients[stage, coupled_stage]
+                    block = -width * period * coefficient * field_jacobian[
+                        interval, coupled_stage
+                    ]
+                    if coupled_stage == stage:
+                        block = identity + block
+                    self._append_dense(
+                        rows, columns, data, stage_row, stage_column, row_scaling @ block
+                    )
+                    log_period_field += coefficient * field[interval, coupled_stage]
+                self._append_column(
+                    rows,
+                    columns,
+                    data,
+                    stage_row,
+                    self.layout.log_period_index,
+                    scaling * (-width * period * log_period_field),
+                )
 
             self._append_diagonal(rows, columns, data, update_row, endpoint_column, -scaling)
             self._append_diagonal(rows, columns, data, update_row, next_endpoint_column, scaling)
-            self._append_dense(
-                rows,
-                columns,
-                data,
-                update_row,
-                stage_column,
-                row_scaling @ (-width * period * update_weight * local_jacobian),
-            )
+            update_field = np.zeros(STATE_DIMENSION)
+            for stage in range(self.layout.stage_count):
+                stage_column = self.layout.stage_slice(interval, stage).start
+                weight = update_weights[stage]
+                self._append_dense(
+                    rows,
+                    columns,
+                    data,
+                    update_row,
+                    stage_column,
+                    row_scaling @ (-width * period * weight * field_jacobian[interval, stage]),
+                )
+                update_field += weight * field[interval, stage]
+                phase_gradient = (
+                    width
+                    * weight
+                    * scaling**2
+                    * self.phase_reference.stage_derivatives[interval, stage]
+                    / self.phase_energy
+                )
+                self._append_row(
+                    rows,
+                    columns,
+                    data,
+                    self.layout.phase_row,
+                    stage_column,
+                    phase_gradient,
+                )
             self._append_column(
                 rows,
                 columns,
                 data,
                 update_row,
                 self.layout.log_period_index,
-                scaling * (-width * period * update_weight * stage_field),
-            )
-
-            phase_gradient = (
-                width
-                * update_weight
-                * scaling**2
-                * self.phase_reference.stage_derivatives[interval, 0]
-                / self.phase_energy
-            )
-            self._append_row(
-                rows,
-                columns,
-                data,
-                self.layout.phase_row,
-                stage_column,
-                phase_gradient,
+                scaling * (-width * period * update_field),
             )
 
         result = csr_matrix(
@@ -883,6 +1211,30 @@ class MidpointCollocationAssembler:
         result.sum_duplicates()
         result.sort_indices()
         return result
+
+
+class MidpointCollocationAssembler(GaussCollocationAssembler):
+    """Compatibility wrapper for the established one-stage midpoint contract."""
+
+    def __init__(
+        self,
+        mesh: FixedMesh,
+        env: Environment,
+        phase_reference: FrozenPhaseReference,
+        *,
+        coeff: Coefficients | None = None,
+    ) -> None:
+        super().__init__(
+            mesh,
+            env,
+            phase_reference,
+            gauss_legendre_rule(1),
+            coeff=coeff,
+        )
+
+    @property
+    def formulation_version(self) -> str:
+        return MIDPOINT_FORMULATION_VERSION
 
 
 def midpoint_residual_diagnostics(blocks: CollocationResidualBlocks) -> MidpointResidualDiagnostics:
@@ -898,8 +1250,8 @@ def midpoint_residual_diagnostics(blocks: CollocationResidualBlocks) -> Midpoint
     )
 
 
-def correct_midpoint_orbit(
-    assembler: MidpointCollocationAssembler,
+def correct_gauss_orbit(
+    assembler: GaussCollocationAssembler,
     initial_unknowns: ArrayLike,
     *,
     tolerances: MidpointResidualTolerances | None = None,
@@ -908,14 +1260,14 @@ def correct_midpoint_orbit(
     ftol: float = 1.0e-13,
     gtol: float = 1.0e-13,
 ) -> MidpointCorrectionResult:
-    """Correct one fixed-parameter orbit with SciPy TRF and strict block gates.
+    """Correct one fixed-parameter Gauss orbit with SciPy TRF and strict block gates.
 
     SciPy's termination flag is only one gate.  A result is accepted only when
     every independently recomputed residual block meets its explicit tolerance
     and the packed solution, residual, and positive physical period are finite.
     """
-    if not isinstance(assembler, MidpointCollocationAssembler):
-        raise TypeError("assembler must be a MidpointCollocationAssembler.")
+    if not isinstance(assembler, GaussCollocationAssembler):
+        raise TypeError("assembler must be a GaussCollocationAssembler.")
     active_tolerances = tolerances or MidpointResidualTolerances()
     initial = np.asarray(initial_unknowns, dtype=float)
     assembler._variables(initial)
@@ -1012,4 +1364,28 @@ def correct_midpoint_orbit(
         function_evaluations=int(solution.nfev),
         jacobian_evaluations=(None if solution.njev is None else int(solution.njev)),
         packed_step_norm=packed_step_norm,
+    )
+
+
+def correct_midpoint_orbit(
+    assembler: MidpointCollocationAssembler,
+    initial_unknowns: ArrayLike,
+    *,
+    tolerances: MidpointResidualTolerances | None = None,
+    max_nfev: int = 1000,
+    xtol: float = 1.0e-13,
+    ftol: float = 1.0e-13,
+    gtol: float = 1.0e-13,
+) -> MidpointCorrectionResult:
+    """Compatibility wrapper for the established midpoint correction API."""
+    if not isinstance(assembler, MidpointCollocationAssembler):
+        raise TypeError("assembler must be a MidpointCollocationAssembler.")
+    return correct_gauss_orbit(
+        assembler,
+        initial_unknowns,
+        tolerances=tolerances,
+        max_nfev=max_nfev,
+        xtol=xtol,
+        ftol=ftol,
+        gtol=gtol,
     )

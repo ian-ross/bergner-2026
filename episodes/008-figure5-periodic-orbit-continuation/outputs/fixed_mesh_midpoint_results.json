@@ -190,7 +190,7 @@
     "generator_path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_fixed_mesh_midpoint_results.py",
     "generator_sha256": "5191bea5040b6e176e1e1569188e16eb6278af3e8fc7fdae09c6df42790d281a",
     "periodic_orbits_path": "src/bergner_spichtinger_2026/periodic_orbits.py",
-    "periodic_orbits_sha256": "75786271ef165b3946b5c6fb754326be81584983f71393f5795854faf5bd6dfb"
+    "periodic_orbits_sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
   },
   "state_coordinates": [
     "log(n)",

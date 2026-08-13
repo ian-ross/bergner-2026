@@ -793,7 +793,7 @@
     "maximum_shared_point_weighted_orbit_error": 2.956585683174853e-11,
     "period_relative_tolerance": 2e-07,
     "reference_backend": "independent Python fixed-parameter correction at every native coordinate",
-    "reference_branch_manifest_sha256": "533568a4624ba71823c2055d6a886e12800a87892fa8586bfa157e134b5e7a19",
+    "reference_branch_manifest_sha256": "50cffe3ca5f371c42175e116b5e88909406d5c424cf573bd2baf944e75ddde7d",
     "status": "measured_at_every_native_accepted_point; nearest transparent-branch diagnostics also retained",
     "version": "native-python-all-point-parity-v1",
     "weighted_orbit_tolerance": 2e-07
@@ -1556,7 +1556,7 @@
     },
     "python_orbit_solver": {
       "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
-      "sha256": "75786271ef165b3946b5c6fb754326be81584983f71393f5795854faf5bd6dfb"
+      "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
     },
     "python_vectors": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
