@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:55'
+updated_date: '2026-08-13 14:56'
 labels:
   - episode-008
   - design
@@ -53,4 +53,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: v1 r-monitor normalizes combined defect D, scaled speed V=||S_x p_prime||, scaled polynomial curvature C=||S_x p_double_prime||, and the scaled transformed-state homogeneous-nucleation contribution A to unit phase average. Each is winsorized at 20x mean then renormalized. Use m=0.20+0.80*(0.50 D_tilde+0.20 V_tilde+0.20 C_tilde+0.10 A_tilde). Treat saturation extrema, nucleation maxima, and threshold crossings as explicit boundary-alignment targets rather than another continuous weight.
 
 - Design interview decision: v1 pure-r remesh moves 50% toward exact monitor equidistribution, caps each interior boundary displacement at half the smaller adjacent old interval, enforces adjacent interval-width ratios in [1/3,3] and widths in [1/(20N),5/N], and preserves boundary ordering and N. Landmark snapping is allowed only within all bounds; larger redistribution proceeds through multiple controlled restarts.
+
+- Design interview decision: assign each element eta_i as its maximum combined two-grid relative defect. If max eta_i >=1e-4, split the smallest descending-defect set contributing 70% of sum eta_i^2 and also every element with eta_i >=0.5 max eta. Cap element-count growth per remesh at 50%, prioritizing highest defect; bisect marked elements before bounded r movement. Initial implementation/qualification has no coarsening. A later calibrated production step may merge adjacent elements only after both stay below 1e-6 for two accepted meshes, no protected landmark lies between them, and mesh-ratio bounds remain satisfied.
 <!-- SECTION:NOTES:END -->
