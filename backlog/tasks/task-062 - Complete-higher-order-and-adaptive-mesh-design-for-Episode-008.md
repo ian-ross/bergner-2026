@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:24'
+updated_date: '2026-08-13 15:26'
 labels:
   - episode-008
   - design
@@ -93,4 +93,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview revision: v1 has no explicit landmark snapping/protection. Saturation extrema, nucleation maximum, and pulse-rise locations are diagnostics only; the two defect grids plus defect/speed/curvature/nucleation monitor are expected to resolve this smooth problem. Trigger a landmark-alignment follow-up only if material check-grid disagreement or convergence stagnation recurs in the same phase region after targeted h/r adaptation. This supersedes the earlier provisional boundary-alignment-target language.
 
 - Design interview decision: material defect-grid disagreement requires max(eta_Gauss,eta_dyadic)>1e-5 and relative difference over that maximum >0.5. Evaluate a 16-point uniform local probe for flagged elements; its maximum joins acceptance/h-marking defect for that cycle. Recurrence in the same phase region on two successive adapted meshes records defect_aliasing_persistent and triggers denser-check or landmark-alignment consideration.
+
+- Design interview decision: paper digitization is an external discrepancy diagnostic, never a numerical acceptance/tuning target. Flag comparison when |Delta log(P)| > max(3*sigma_digitized_logP,0.02). Investigate model assumptions, parameter mapping, paper method, and digitization without weakening convergence or adjusting periods toward pixels. Internal convergence and IVP validation remain authoritative.
 <!-- SECTION:NOTES:END -->
