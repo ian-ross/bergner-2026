@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:19'
+updated_date: '2026-08-13 15:24'
 labels:
   - episode-008
   - design
@@ -89,4 +89,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Evidence-based design resolution without user question: retain the globally frozen seed-derived state scaling and unit weights for log(P), rho, and T_hat in v1. TASK-061 completed all required native branches and controlled retries with this metric, so there is no evidence supporting a scaling change. Any future change requires conditioning/convergence evidence and a method-version revision.
 
 - Design interview decision: retain serial Amesos2/KLU2 through initial higher-order, adaptive, and production work. Trigger a Belos/Ifpack2 bordered-preconditioner task only if realistic N=256..512 profiling shows >4 GiB factorization memory, >30 s median linear solve/factorization per nonlinear iteration, >70% runtime in linear algebra, or failure to meet the recorded production compute budget. Preserve KLU2 as oracle.
+
+- Design interview revision: v1 has no explicit landmark snapping/protection. Saturation extrema, nucleation maximum, and pulse-rise locations are diagnostics only; the two defect grids plus defect/speed/curvature/nucleation monitor are expected to resolve this smooth problem. Trigger a landmark-alignment follow-up only if material check-grid disagreement or convergence stagnation recurs in the same phase region after targeted h/r adaptation. This supersedes the earlier provisional boundary-alignment-target language.
 <!-- SECTION:NOTES:END -->
