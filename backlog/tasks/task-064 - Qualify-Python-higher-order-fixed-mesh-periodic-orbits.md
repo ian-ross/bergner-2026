@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:34'
-updated_date: '2026-08-13 16:11'
+updated_date: '2026-08-13 16:14'
 labels:
   - episode-008
   - python
@@ -50,3 +50,9 @@ Generalize the Python periodic-orbit reference from one-stage midpoint to explic
 8. Add focused tests for generic pack/unpack and dimensions, one-/two-/three-stage coefficient use, residual/Jacobian directional checks, phase rows, polynomial evaluation/transfer, both defect grids and escalation, comparison metrics, fixture schemas/checksums, rejected-case preservation, deterministic regeneration, and exact midpoint compatibility.
 9. Update Episode 008 documentation with observed qualification evidence and any active non-Floquet Radau trigger. Run focused and full Python validation, py_compile, artifact --check, diff checks, self-review, and independent numerical/test review before completing the task.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Resumed TASK-064. Confirmed it is already In Progress and assigned to @iross; TASK-062 is complete. Reviewed the Episode 008 README, the full higher-order fixed-mesh qualification contract in collocation-phase-decisions.md, and the current midpoint-specific periodic_orbits.py implementation. Existing implementation plan remains aligned with the task and is awaiting user approval before code changes.
+<!-- SECTION:NOTES:END -->
