@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:57'
+updated_date: '2026-08-13 15:00'
 labels:
   - episode-008
   - design
@@ -57,4 +57,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: assign each element eta_i as its maximum combined two-grid relative defect. If max eta_i >=1e-4, split the smallest descending-defect set contributing 70% of sum eta_i^2 and also every element with eta_i >=0.5 max eta. Cap element-count growth per remesh at 50%, prioritizing highest defect; bisect marked elements before bounded r movement. Initial implementation/qualification has no coarsening. A later calibrated production step may merge adjacent elements only after both stay below 1e-6 for two accepted meshes, no protected landmark lies between them, and mesh-ratio bounds remain satisfied.
 
 - Design interview decision: adaptive three-stage Gauss starts at N=32 from a qualified transferred orbit, uses ordinary soft cap N=256 and hard cap N=512 only via recorded mesh_cap_escalation, and allows at most 8 remesh/correct cycles per point. At most 3 consecutive pure-r cycles may occur without >=25% max-defect reduction before h marking is forced. Budget exhaustion without all gates yields resolution_unresolved, triggers Radau-comparison consideration, and blocks production interpolation.
+
+- Design interview decision: remesh restart transfers the old collocation polynomial, phase reference, and tangent, then fixed-parameter NOX/KLU2-corrects on rebuilt infrastructure. Accept only with established residual/phase/positivity/linear gates, phase-aligned weighted old/new orbit change <=0.25, |Delta log(P)|<=0.20, new-reference phase residual <=1e-10 with positive finite energy, finite/positive transfer values, and renormalized tangent cosine >=0.5 with preserved active-coordinate orientation. Retry with half r movement then a smaller highest-defect h subset; after 3 failures record remesh_restart_failed. Tangent-only failure uses deterministic two-point rebootstrap rather than rejecting a valid orbit.
 <!-- SECTION:NOTES:END -->
