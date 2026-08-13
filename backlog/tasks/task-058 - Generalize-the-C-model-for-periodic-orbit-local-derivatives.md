@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 04:50'
+updated_date: '2026-08-13 04:51'
 labels:
   - episode-008
   - cpp
@@ -43,3 +43,9 @@ Extend the validated shared C++ model evaluator to provide value-equivalent tran
 4. Expand tests/test_loca_model_core.py with representative no-evaporation value-parity cases against both the legacy C++ wrappers and Python transformed dynamics; centered finite-difference checks for D_x g, physical T and log(w) derivatives across states/temperatures; targeted checks that temperature-dependent coefficients contribute correctly; and rho/T-hat chain-rule column checks.
 5. Run the focused C++ model tests and existing NOX/LOCA equilibrium/Hopf regression suites, then the full Python suite, compile/whitespace checks, and self-review. Record validation and any residual risks in the task before checking acceptance criteria and completing it.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Plan approved; implementation started from a clean worktree. Confirmed cmake, g++, uv, pytest, Backlog CLI, and the configured Trilinos installation are available.
+<!-- SECTION:NOTES:END -->
