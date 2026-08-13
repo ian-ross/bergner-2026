@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:50'
+updated_date: '2026-08-13 15:51'
 labels:
   - episode-008
   - design
@@ -37,11 +37,11 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 
 <!-- SECTION:PLAN:BEGIN -->
 1. Synthesize TASK-056 through TASK-061 evidence and the accepted interview decisions into the Episode 008 decision record, clearly separating the initial higher-order/adaptive continuation contract from policies deferred until results exist.
-2. Finalize the implementable fixed-mesh higher-order sequence: four qualification points, uniform mesh ladders, three-stage Gauss production candidate, convergence gates, and evidence-triggered Radau comparison.
-3. Finalize the initial adaptive continuation contract: two-grid defect, r-monitor normalization, h marking, movement bounds, mesh budgets, remesh/restart acceptance, phase refresh, and near-Hopf/Floquet diagnostics needed to assess the continuation run. Mark landmark alignment, coarsening, iterative solvers, and exceptional production handling as trigger-only or deferred.
-4. Record the agreed future validation/artifact direction without over-specifying pre-evidence production completion policy: formal schemas, independent Floquet/IVP roles, T=210 K linearized curve, sampling/interpolation targets, and paper digitization as non-authoritative comparison evidence.
-5. Create atomic backlog tasks for Python higher-order qualification, C++ higher-order sparse correction, native higher-order LOCA continuation, Python h/r adaptation reference, native adaptive LOCA remesh/restart continuation, and a mandatory post-run evidence-review/design checkpoint. Defer downstream production task creation until that checkpoint.
-6. Update the Episode 008 README/open-question list, verify that every created task depends only on existing lower-numbered tasks, review the documentation and task graph for internal consistency, and complete TASK-062 through the Backlog CLI.
+2. Finalize the implementable fixed-mesh higher-order sequence: four qualification points, uniform mesh ladders, three-stage Gauss production candidate, convergence gates, and active evidence-triggered Radau comparisons based on defect/convergence/ringing and available independent IVP evidence.
+3. Finalize the initial adaptive continuation contract: two-grid defect, deterministic r-monitor normalization, h marking, movement bounds, mesh budgets, exact remesh/restart retry order, phase refresh, near-Hopf diagnostics, and single-valued tripwires needed to assess the continuation run. Mark landmark alignment, coarsening, iterative solvers, Floquet postprocessing, and exceptional production handling as trigger-only, not_evaluated, or deferred as applicable.
+4. Record the agreed future validation/artifact direction without over-specifying pre-evidence production completion policy: downstream Floquet/IVP roles, formal schemas, T=210 K linearized curve, sampling/interpolation targets, and paper digitization as non-authoritative comparison evidence.
+5. Create atomic backlog tasks for Python higher-order qualification, C++ higher-order sparse correction, native higher-order LOCA continuation, Python h/r adaptation reference, native adaptive LOCA remesh/restart continuation, and a mandatory post-run evidence-review/design checkpoint. Defer downstream production tasks, including Floquet implementation, until that checkpoint.
+6. Update the Episode 008 README/open-question list, verify that every created task depends only on existing lower-numbered tasks, review the documentation and task graph for internal consistency, and leave TASK-062 closure to the parent after final review.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
