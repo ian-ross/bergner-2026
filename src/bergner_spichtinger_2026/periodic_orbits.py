@@ -18,9 +18,10 @@ import numpy as np
 from scipy.optimize import least_squares, minimize_scalar
 from scipy.sparse import csr_matrix
 
+from . import constants as C
 from .collocation_coefficients import CollocationRule, gauss_legendre_rule
 from .constants import Environment
-from .core import Coefficients, coefficients, vector_field
+from .core import Coefficients, D_v, K_T, L, coefficients, vector_field
 from .residuals import physical_state_from_log_coordinates
 from .stability import physical_jacobian
 
@@ -421,6 +422,109 @@ def transformed_vector_field(
     n, q, s = physical_state_from_log_coordinates(state)
     rhs = vector_field(float(n), float(q), float(s), env, coeff)
     return np.array([rhs[0] / n, rhs[1] / q, rhs[2]], dtype=float)
+
+
+def transformed_vector_field_environment_derivatives(
+    log_state: ArrayLike,
+    env: Environment,
+    coeff: Coefficients | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return analytic ``(g_T, g_log_w)`` at fixed transformed state.
+
+    This is the Python reference counterpart of the local Sacado derivatives
+    planned for C++.  It differentiates every temperature-dependent model
+    coefficient explicitly; finite differences are reserved for validation.
+    """
+    if env.include_evaporation:
+        raise ValueError("environment derivatives require the smooth no-evaporation model.")
+    state = np.asarray(log_state, dtype=float)
+    if state.shape != (STATE_DIMENSION,) or not np.all(np.isfinite(state)):
+        raise ValueError(f"log_state must be a finite vector of shape ({STATE_DIMENSION},).")
+    n, q, s = physical_state_from_log_coordinates(state)
+    c = coeff or coefficients(env)
+    temperature = env.T
+
+    latent = L(temperature)
+    latent_molar_prime = (
+        C.l1
+        + 2.0 * C.l2 * temperature
+        - 2.0 * C.l3 * temperature / C.T_l**2 * exp(-((temperature / C.T_l) ** 2))
+    )
+    latent_prime = latent_molar_prime / C.M_mol_v
+    saturation_log_prime = -C.b1 / temperature**2 + C.b2 / temperature + C.b3
+    diffusivity_log_prime = 2.0 / temperature
+    conduction_denominator = temperature + C.T_K * 10.0 ** (C.c_K / temperature)
+    conduction_denominator_prime = 1.0 + (
+        C.T_K
+        * 10.0 ** (C.c_K / temperature)
+        * np.log(10.0)
+        * (-C.c_K / temperature**2)
+    )
+    conduction_log_prime = C.b_K / temperature - conduction_denominator_prime / conduction_denominator
+
+    diffusion = D_v(temperature, env.p)
+    conduction = K_T(temperature)
+    howell_first = latent / (C.R_v * temperature) - 1.0
+    howell_first_prime = latent_prime / (C.R_v * temperature) - latent / (C.R_v * temperature**2)
+    howell_second = latent * diffusion / (temperature * conduction)
+    howell_second_log_prime = (
+        latent_prime / latent
+        + diffusivity_log_prime
+        - 1.0 / temperature
+        - conduction_log_prime
+    )
+    howell_second_prime = howell_second * howell_second_log_prime
+    howell_third = C.R_v * temperature / c.p_si
+    howell_third_prime = howell_third * (1.0 / temperature - saturation_log_prime)
+    howell_denominator = howell_first * howell_second + howell_third
+    howell_denominator_prime = (
+        howell_first_prime * howell_second
+        + howell_first * howell_second_prime
+        + howell_third_prime
+    )
+    growth_log_prime = -howell_denominator_prime / howell_denominator
+
+    cooling_prime = C.g * (
+        latent_prime / (C.c_p * C.R_v * temperature**2)
+        - 2.0 * latent / (C.c_p * C.R_v * temperature**3)
+        + 1.0 / (C.R_d * temperature**2)
+    )
+    p1e_prime = np.log(10.0) * C.p1_a1
+    p2_prime = 2.0 * C.p2_as2 * temperature + C.p2_as1
+    exponent = exp(c.p1e * (s - c.p2))
+    exponent_log_prime = p1e_prime * (s - c.p2) - c.p1e * p2_prime
+
+    an_prime = c.A_n / temperature
+    aq_prime = c.A_q / temperature
+    as_prime = c.A_s * (1.0 / temperature - saturation_log_prime)
+    bq_prime = c.B_q * (growth_log_prime + diffusivity_log_prime)
+    bs_prime = c.B_s * (growth_log_prime + diffusivity_log_prime - saturation_log_prime)
+    cn_prime = c.C_n * C.b_c / temperature
+    cq_prime = c.C_q * C.b_c / temperature
+
+    n_two_thirds = n ** (2.0 / 3.0)
+    q_one_third = q ** (1.0 / 3.0)
+    sediment_number_shape = n ** (1.0 / 3.0) * q ** (2.0 / 3.0)
+    sediment_mass_shape = n ** (-2.0 / 3.0) * q ** (5.0 / 3.0)
+    nucleation_number_T = (an_prime + c.A_n * exponent_log_prime) * exponent
+    nucleation_mass_T = (aq_prime + c.A_q * exponent_log_prime) * exponent
+    nucleation_saturation_T = -(as_prime + c.A_s * exponent_log_prime) * exponent
+    deposition_mass_T = bq_prime * n_two_thirds * q_one_third * (s - 1.0)
+    deposition_saturation_T = -bs_prime * n_two_thirds * q_one_third * (s - 1.0)
+    sediment_number_T = -env.F * cn_prime * sediment_number_shape
+    sediment_mass_T = -env.F * cq_prime * sediment_mass_shape
+    cooling_T = cooling_prime * env.w * s
+
+    physical_T = np.array(
+        [
+            nucleation_number_T + sediment_number_T,
+            nucleation_mass_T + deposition_mass_T + sediment_mass_T,
+            cooling_T + nucleation_saturation_T + deposition_saturation_T,
+        ]
+    )
+    transformed_T = np.array([physical_T[0] / n, physical_T[1] / q, physical_T[2]])
+    transformed_log_w = np.array([0.0, 0.0, c.D * env.w * s])
+    return transformed_T, transformed_log_w
 
 
 def transformed_vector_field_jacobian(

@@ -99,6 +99,25 @@ The `N = 64, 128, 256` systems converge discretely under the versioned `1e-9` st
 
 **These results separate two questions.** A small collocation residual establishes convergence of the finite-dimensional midpoint equations only. Period error and phase-aligned continuous-orbit error remain separate discretization diagnostics. In particular, the accepted `N = 64` period is still more than 12% above the Episode 007 reference. No fixed uniform midpoint case here is claimed to meet production accuracy.
 
+## Fixed-mesh pseudo-arclength continuation
+
+[`src/bergner_spichtinger_2026/periodic_continuation.py`](../../src/bergner_spichtinger_2026/periodic_continuation.py) adds the transparent Python continuation reference on the unchanged uniform `N = 64` midpoint mesh. The augmented corrector appends one normalized active coordinate (`rho` for fixed-temperature slices or `T_hat = (T - 215 K)/25 K` for the spine) to the square midpoint system and adds one pseudo-arclength row. It builds a fresh parameter-aware midpoint assembler at every trial coordinate, uses analytic local `g_T` and `g_log(w)` derivatives with the documented path chain rules, and keeps centered parameter differences as tests only.
+
+A single diagonal weighted metric is used for secants, tangent normalization, predictors, the arclength row, and reported step lengths. Endpoint and explicit-stage representations each receive half of the orbit weight; state scales are the exact frozen Episode 007 peak-to-peak reciprocals, while `log(P)` and the active normalized coordinate retain unit weights. Every signed branch begins with a fixed-parameter corrected neighbor. Failed or excessively large neighbors are rejected and the requested coordinate step is halved deterministically before forming the oriented two-point secant.
+
+Generate or verify the curated continuation artifacts with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_fixed_mesh_continuation_results.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_fixed_mesh_continuation_results.py --check
+```
+
+[`outputs/fixed_mesh_continuation_results.json`](outputs/fixed_mesh_continuation_results.json) records accepted/rejected bootstrap and pseudo-arclength events, independent stage/update/phase/arclength diagnostics, physical and normalized coordinates, periods, branch orientation, phase energies/alignment/distance, and controlled restart lineage. [`outputs/fixed_mesh_continuation_vectors.npz`](outputs/fixed_mesh_continuation_vectors.npz) freezes the metric diagonals, all accepted point vectors, and all three phase references with checksums.
+
+The reference branch starts at the Episode 007 `T = 225 K`, `w = 0.1 m s^-1` orbit (`rho = -0.2639524255`) and lands exactly on the validated Episode 006 spine at `w = 0.1445622537 m s^-1` (`rho = 0`). After one recorded phase-reference refresh it converges along the spine in both directions: a short positive segment reaches `T = 226 K`, while the negative segment genuinely traverses `Delta T_hat = -0.6` to the exact `T = 210 K` spine point. A second controlled refresh then seeds fixed-`T = 210 K` slice segments that reach `rho = -0.15` and `rho = +0.15`. References are immutable within each segment and change only in the two `phase_reference_refresh` records. The stricter bootstrap cap deliberately freezes one rejected excessive startup attempt and its deterministic halving recovery.
+
+**This remains a continuation-machinery and Python-to-LOCA parity milestone.** The accepted `N = 64` midpoint periods range from roughly `2452 s` at `226 K` to `7144 s` on the lower `T = 210 K` slice segment, but the preceding mesh study already showed that `N = 64` can have large period error despite tiny discrete residuals. These values are not production Figure 5 data.
+
 ## Scope boundary
 
 The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work.

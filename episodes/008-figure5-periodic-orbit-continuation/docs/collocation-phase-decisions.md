@@ -211,6 +211,16 @@ The versioned SciPy TRF baseline with the analytic sparse Jacobian accepted `N =
 
 The accepted periods were `2768.508882 s`, `2531.464910 s`, and `2478.674760 s` for `N = 64, 128, 256`, respectively, versus the Episode 007 Hermite reference period `2461.611268 s`. Phase-aligned, quadrature-weighted orbit errors versus that continuous reference decreased from `0.172603` to `0.0389869` and `0.00950588`. Thus the baseline demonstrates midpoint mesh convergence but also makes the limitation concrete: the `N = 64` finite-dimensional equations converge to near machine residual while their period is still over 12% from the reference. These artifacts are migration/parity fixtures and do not assert production accuracy.
 
+### Observed fixed-mesh continuation baseline (TASK-057)
+
+The transparent Python reference now performs genuine augmented pseudo-arclength correction on the unchanged uniform `N = 64` midpoint mesh. A parameter-aware family rebuilds the environment and temperature-dependent coefficients at each trial coordinate. The augmented sparse Jacobian uses analytic local `g_T` and `g_log_w` columns, with `g_rho = 0.5(log_w_upper-log_w_lower) g_log_w` and `g_T_hat = 25[g_T + (d log_w_spine/dT)g_log_w]`; centered parameter differences remain validation checks only.
+
+The diagonal continuation metric implements the agreed half endpoint/half stage quadrature weighting plus unit `log(P)` and normalized-coordinate weights. Its exact gradient `W t` supplies the arclength row, and the same inner product supplies every secant, normalized tangent, predictor, and reported step. Every signed direction begins with a fixed-parameter corrected neighbor. A deliberately strict bootstrap-change cap freezes an excessive first `T = 225 K` startup attempt and its deterministic halving recovery before the oriented secant is accepted.
+
+The fixed-temperature branch starts from the Episode 007 point at `rho = -0.2639524255` and lands exactly at the Episode 006 `T = 225 K` spine coordinate (`rho = 0`, `w = 0.1445622537 m s^-1`). A recorded controlled phase-reference refresh then starts the spine segment. The positive branch reaches `T = 226 K`; the negative branch takes multiple accepted pseudo-arclength steps across `Delta T_hat = -0.6` to the exact `T = 210 K` spine. A second recorded refresh starts the `T = 210 K` slice, whose two signed branches reach `rho = -0.15` and `rho = +0.15`. Phase references remain byte-identical within each segment and change only at these explicit restart records.
+
+The curated JSON/NPZ artifacts include accepted and rejected events, all residual blocks including arclength, both physical and normalized coordinates, period, phase energy/alignment/distance, orientation, restart lineage, metric diagonals, phase references, and accepted vectors. This is still an `N = 64` midpoint machinery/parity result; it makes no production period-accuracy claim.
+
 ## Higher-order family and stiffness qualification
 
 Use Gauss--Legendre as the primary order progression:
