@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:26'
+updated_date: '2026-08-13 15:29'
 labels:
   - episode-008
   - design
@@ -32,6 +32,17 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - [ ] #4 Phase refresh, Hopf stopping/extrapolation, Floquet, interpolation-error, and multivalued-branch thresholds are finalized with evidence
 - [ ] #5 The production artifact schemas and remaining implementation tasks are decomposed into atomic verifiable backlog tasks
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Synthesize TASK-056 through TASK-061 evidence and the accepted interview decisions into the Episode 008 decision record, clearly separating the initial higher-order/adaptive continuation contract from policies deferred until results exist.
+2. Finalize the implementable fixed-mesh higher-order sequence: four qualification points, uniform mesh ladders, three-stage Gauss production candidate, convergence gates, and evidence-triggered Radau comparison.
+3. Finalize the initial adaptive continuation contract: two-grid defect, r-monitor normalization, h marking, movement bounds, mesh budgets, remesh/restart acceptance, phase refresh, and near-Hopf/Floquet diagnostics needed to assess the continuation run. Mark landmark alignment, coarsening, iterative solvers, and exceptional production handling as trigger-only or deferred.
+4. Record the agreed future validation/artifact direction without over-specifying pre-evidence production completion policy: formal schemas, independent Floquet/IVP roles, T=210 K linearized curve, sampling/interpolation targets, and paper digitization as non-authoritative comparison evidence.
+5. Create atomic backlog tasks for Python higher-order qualification, C++ higher-order sparse correction, native higher-order LOCA continuation, Python h/r adaptation reference, native adaptive LOCA remesh/restart continuation, and a mandatory post-run evidence-review/design checkpoint. Defer downstream production task creation until that checkpoint.
+6. Update the Episode 008 README/open-question list, verify that every created task depends only on existing lower-numbered tasks, review the documentation and task graph for internal consistency, and complete TASK-062 through the Backlog CLI.
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
@@ -95,4 +106,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: material defect-grid disagreement requires max(eta_Gauss,eta_dyadic)>1e-5 and relative difference over that maximum >0.5. Evaluate a 16-point uniform local probe for flagged elements; its maximum joins acceptance/h-marking defect for that cycle. Recurrence in the same phase region on two successive adapted meshes records defect_aliasing_persistent and triggers denser-check or landmark-alignment consideration.
 
 - Design interview decision: paper digitization is an external discrepancy diagnostic, never a numerical acceptance/tuning target. Flag comparison when |Delta log(P)| > max(3*sigma_digitized_logP,0.02). Investigate model assumptions, parameter mapping, paper method, and digitization without weakening convergence or adjusting periods toward pixels. Internal convergence and IVP validation remain authoritative.
+
+- Scope correction from design interview: stop specifying failure/completion policy before adaptive higher-order continuation evidence exists. Implement the continuation approach in staged Python/C++/native-LOCA tasks, run it, inspect numerical behavior and artifacts, then decide production completion, exceptional-gap handling, and later workflow details at an explicit evidence-review checkpoint. Previously agreed numerical v1 choices remain initial implementation hypotheses, not claims that every downstream policy must be frozen now.
 <!-- SECTION:NOTES:END -->
