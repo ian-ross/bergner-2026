@@ -27,6 +27,32 @@
       ],
       "upstream": "TASK-056 frozen arrays"
     },
+    "n64_perturbed": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_perturbed.txt",
+      "fixture_sha256": "56df9a20547090e8e8e42b2f4d103a5c0b67c5c33bbe9d5de42210d87ba13dbe",
+      "interval_count": 64,
+      "meaning": "deterministically perturbed canonical N=64 Hermite/bootstrap initial seed",
+      "residual_shape": [
+        385
+      ],
+      "unknown_shape": [
+        385
+      ],
+      "upstream": "Episode 007 Hermite seed sampled by the TASK-056 formulation"
+    },
+    "n64_seed": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_seed.txt",
+      "fixture_sha256": "23705e75457cb0c191d8206fd3a25a93a2859ac3590361c03b811f708004a364",
+      "interval_count": 64,
+      "meaning": "canonical N=64 Hermite/bootstrap initial seed",
+      "residual_shape": [
+        385
+      ],
+      "unknown_shape": [
+        385
+      ],
+      "upstream": "Episode 007 Hermite seed sampled by the TASK-056 formulation"
+    },
     "n8_converged": {
       "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n8_converged.txt",
       "fixture_sha256": "79c6e6e71d27c723694910944caf336914a2f64a8a1b5799af3402b50d87ef61",
@@ -55,6 +81,27 @@
     }
   },
   "directional_relative_tolerance": 1e-06,
+  "fixed_parameter_nox": {
+    "accepted_phase_tolerance": 1e-10,
+    "accepted_stage_update_tolerance": 1e-09,
+    "backtrack_default_step": 1.0,
+    "backtrack_minimum_step": 1e-10,
+    "backtrack_recovery_step": 1e-06,
+    "corrected_solution_parity_tolerance": 1e-08,
+    "direction_method": "Newton",
+    "line_search_method": "Backtrack",
+    "linear_solver": "Amesos2 KLU2",
+    "nox_max_iterations": 40,
+    "nox_norm_f_tolerance": 1e-11,
+    "perturbation": {
+      "formula": "x[k] += state_amplitude*sin(k+phase_offset), k < 6N; log(P) += log_period_amplitude*sin(6N+phase_offset)",
+      "log_period_amplitude": 1e-05,
+      "phase_offset": 0.375,
+      "state_amplitude": 0.0001
+    },
+    "refactorization_policy": "REPIVOT_ON_REFACTORIZATION",
+    "solver_version": "thyra-nox-amesos2-klu2-v1"
+  },
   "formulation_version": "explicit-stage-midpoint-v1",
   "parity_tolerance": {
     "absolute_floor": 1e-13,
@@ -65,7 +112,7 @@
     "python": "3.11.15",
     "scipy": "1.17.1"
   },
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "source_provenance": {
     "bootstrap_seed": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
@@ -73,11 +120,19 @@
     },
     "cpp_assembler": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
-      "sha256": "0a30d03d55ed90a9305764e678359dfbecd9cf958f076eb3afd694e00b4cd658"
+      "sha256": "4297617b16284071e409d0bc6c7819bfb884d9ae72d8f76bed58eea417dad6c9"
+    },
+    "cpp_cli": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "39c363f44e229b64e30bfccd630fc9a18685768987e852882a8c8ae09ec05662"
+    },
+    "cpp_nox_adapter": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "sha256": "1d88ec3b39b73b24c9e4ed15f9a983acf5f47288ecce02f1ce7218a8d313834f"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py",
-      "sha256": "7045ecedc1780a9b8032763c56a668a32b1a62d883df62e1d5ad6c6367c7ba49"
+      "sha256": "9d53d1244a67c41e6d09b814679d64fde16459faa0fed99eafeeeff900b27346"
     },
     "python_assembler": {
       "path": "src/bergner_spichtinger_2026/periodic_orbits.py",

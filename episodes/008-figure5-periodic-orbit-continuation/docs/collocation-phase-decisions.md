@@ -427,6 +427,14 @@ The graph and value assembly cover the local endpoint/stage blocks, final-to-fir
 
 Language-neutral accepted and nonsolution fixtures cover `N=8` and translate the frozen TASK-056 `N=64` boundaries, phase samples, unknowns, and residual semantics. A deterministic manifest records source and fixture hashes plus matching formulation/tolerance constants. Focused parity checks compare all residual components at relative `1e-11` with a `1e-13` absolute floor and test assembled Jacobian actions plus rho/T-hat parameter columns against centered differences at `1e-6`; the C++ Jacobian action is independently checked against centered residual evaluations through the C++ assembler.
 
+### Observed sparse Thyra/NOX fixed-parameter solve (TASK-060)
+
+The fixed-parameter midpoint corrector now wraps the existing square one-rank Tpetra maps, residual, and retained-graph Jacobian in a Thyra state-function model. `NOX::Thyra::Group` owns the Newton correction while `log(P)` remains the final solution coordinate and the normalized phase condition remains the final residual row; no continuation or pseudo-arclength row is added. The linear solve factory explicitly selects Amesos2 KLU2 with repivoting on refactorization. Output reports the actual Amesos2 backend plus symbolic-factorization, numeric-factorization, and solve counters/status; no condition metric is claimed because this installed adapter does not expose one.
+
+Solver contract `thyra-nox-amesos2-klu2-v1` uses an unscaled NOX residual-norm target of `1e-11`, at most 40 nonlinear iterations, Newton direction, and backtracking line search. Both the exact Python `N=64` periodic-Hermite/bootstrap sample and its manifest-versioned sinusoidal perturbation correct to the frozen TASK-056 solution. Corrected period and the fixed endpoint/stage weighted orbit metric use the binding `1e-8` Python-to-C++ tolerance.
+
+Final acceptance remains independent of nominal NOX status. It requires stage/update maximum and RMS no greater than `1e-9`, phase no greater than `1e-10`, finite positive physical `n`, `q`, and `P`, finite positive phase energy, and reported successful KLU2 symbolic factorization, numeric factorization, and solve activity. Every failed gate produces a stable rejection reason. This is a fixed-uniform-mesh machinery milestone; its tiny discrete residual does not resolve the already documented `N=64` period discretization error. Native LOCA continuation remains TASK-061 scope.
+
 ## Newton linear solves and preconditioning
 
 Use Amesos2 sparse direct factorization, preferably KLU2, for the initial serial midpoint, higher-order, and remeshing milestones. The expected systems remain modest (`385` unknowns for midpoint `N = 64`; `3073` for three-stage `N = 256`) and direct solves provide a correctness reference while residual/Jacobian behavior is still being established.

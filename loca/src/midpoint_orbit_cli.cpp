@@ -1,4 +1,4 @@
-#include "bergner_spichtinger_2026_loca/midpoint_orbit.hpp"
+#include "bergner_spichtinger_2026_loca/midpoint_nox.hpp"
 
 #include <Teuchos_DefaultComm.hpp>
 #include <Tpetra_Core.hpp>
@@ -18,6 +18,8 @@ using bs2026_loca::Environment;
 using bs2026_loca::midpoint::Assembler;
 using bs2026_loca::midpoint::OrbitLayout;
 using bs2026_loca::midpoint::PhaseReference;
+using bs2026_loca::midpoint::AcceptanceInputs;
+using bs2026_loca::midpoint::SolveResult;
 using bs2026_loca::midpoint::copy_vector_by_global_id;
 using bs2026_loca::midpoint::make_vector;
 using bs2026_loca::midpoint::matrix_type;
@@ -79,6 +81,40 @@ Teuchos::RCP<vector_type> shifted_vector(const OrbitLayout& layout,
   return result;
 }
 
+void write_solve_result(const SolveResult& result, const OrbitLayout& layout) {
+  std::cout << std::setprecision(17) << std::scientific;
+  std::cout << "solver " << bs2026_loca::midpoint::nox_solver_version << "\n";
+  std::cout << "solver_constants "
+            << bs2026_loca::midpoint::nox_norm_f_tolerance << " "
+            << bs2026_loca::midpoint::nox_max_iterations << " "
+            << bs2026_loca::midpoint::accepted_stage_update_tolerance << " "
+            << bs2026_loca::midpoint::accepted_phase_tolerance << " "
+            << bs2026_loca::midpoint::corrected_solution_parity_tolerance << "\n";
+  std::cout << "thyra_system " << layout.unknown_size() << " " << layout.unknown_size()
+            << " " << layout.log_period_index() << " " << layout.phase_row() << "\n";
+  std::cout << "nox " << (result.nox_converged ? "converged" : "not_converged") << " "
+            << result.nonlinear_iterations << " " << result.nox_residual_norm << "\n";
+  std::cout << "linear " << result.linear.backend << " "
+            << (result.linear.reported ? "reported" : "unreported") << " "
+            << result.linear.symbolic_factorizations << " "
+            << result.linear.numeric_factorizations << " " << result.linear.solves << " "
+            << (result.linear.symbolic_complete ? "true" : "false") << " "
+            << (result.linear.numeric_complete ? "true" : "false") << " "
+            << (result.linear.solve_complete ? "true" : "false") << "\n";
+  write_vector("solution", *result.unknowns);
+  write_vector("final_residual", *result.residual);
+  std::cout << "period " << result.period << "\n";
+  std::cout << "diagnostics " << result.diagnostics.stage_max << " " << result.diagnostics.stage_rms << " "
+            << result.diagnostics.update_max << " " << result.diagnostics.update_rms << " "
+            << result.diagnostics.phase_abs << " " << result.diagnostics.phase_energy << "\n";
+  std::cout << "positivity " << (result.physical_states_positive_finite ? "true" : "false") << " "
+            << (result.period_positive_finite ? "true" : "false") << "\n";
+  std::cout << "accepted " << (result.acceptance.accepted ? "true" : "false") << "\n";
+  std::cout << "rejection_reasons " << result.acceptance.rejection_reasons.size();
+  for (const auto& reason : result.acceptance.rejection_reasons) std::cout << " " << reason;
+  std::cout << "\n";
+}
+
 void write_graph(const matrix_type& matrix, const OrbitLayout& layout) {
   std::cout << "graph " << matrix.getGlobalNumEntries() << " " << layout.unknown_size() << "\n";
   for (std::size_t row = 0; row < layout.unknown_size(); ++row) {
@@ -108,13 +144,20 @@ int main(int argc, char** argv) {
       }
       throw std::runtime_error("one-interval layout was not rejected");
     }
-    if (argc != 3) {
-      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
+    const std::string command = argc > 1 ? argv[1] : "";
+    const bool fixture_command = command == "inspect" || command == "evaluate" ||
+        command == "solve" || command == "guard-nonfinite-reference" ||
+        command == "guard-invalid-period";
+    const bool valid_arity = (fixture_command && argc == 3) ||
+        (command == "acceptance-guard" && argc == 4);
+    if (!valid_arity) {
+      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
+                << "       bs2026_midpoint_orbit acceptance-guard block|phase|positivity|period|phase-energy|linear fixture.txt\n"
                 << "       bs2026_midpoint_orbit guard-one-interval\n";
       return 2;
     }
-    const std::string command = argv[1];
-    Fixture fixture = read_fixture(argv[2]);
+    const std::string fixture_path = command == "acceptance-guard" ? argv[3] : argv[2];
+    Fixture fixture = read_fixture(fixture_path);
     const auto comm = Teuchos::DefaultComm<int>::getComm();
     if (command == "guard-nonfinite-reference") {
       fixture.reference.stage_values[0][0] = std::numeric_limits<double>::quiet_NaN();
@@ -143,9 +186,39 @@ int main(int argc, char** argv) {
     OrbitLayout layout(fixture.reference.stage_values.size(), comm);
     Assembler assembler(layout, fixture.environment, fixture.reference);
     auto unknowns = make_vector(layout, fixture.unknowns);
+    if (command == "solve") {
+      auto assembler_ptr = Teuchos::rcp(new Assembler(std::move(assembler)));
+      write_solve_result(bs2026_loca::midpoint::solve_fixed_parameter(assembler_ptr, *unknowns), layout);
+      return 0;
+    }
+    if (command == "acceptance-guard") {
+      if (argc != 4) throw std::invalid_argument("acceptance-guard requires a failure class");
+      AcceptanceInputs inputs;
+      inputs.nox_converged = true;
+      inputs.residual = assembler.diagnostics(*assembler.residual(*unknowns));
+      inputs.physical_states_positive_finite = true;
+      inputs.period_positive_finite = true;
+      inputs.linear = {"KLU2", 1, 1, 1, true, true, true, true};
+      const std::string failure = argv[2];
+      if (failure == "block") inputs.residual.stage_max = 2.0e-9;
+      else if (failure == "phase") inputs.residual.phase_abs = 2.0e-10;
+      else if (failure == "positivity") inputs.physical_states_positive_finite = false;
+      else if (failure == "period") inputs.period_positive_finite = false;
+      else if (failure == "phase-energy") inputs.residual.phase_energy = 0.0;
+      else if (failure == "linear") inputs.linear.solve_complete = false;
+      else throw std::invalid_argument("unknown acceptance failure class: " + failure);
+      const auto acceptance = bs2026_loca::midpoint::evaluate_acceptance(inputs);
+      std::cout << "accepted " << (acceptance.accepted ? "true" : "false") << "\n";
+      std::cout << "rejection_reasons " << acceptance.rejection_reasons.size();
+      for (const auto& reason : acceptance.rejection_reasons) std::cout << " " << reason;
+      std::cout << "\n";
+      return 0;
+    }
     auto residual = assembler.residual(*unknowns);
     auto jacobian = assembler.jacobian(*unknowns);
-    auto second_jacobian = assembler.jacobian(*unknowns);
+    auto second_jacobian = assembler.create_jacobian();
+    assembler.fill_jacobian(*unknowns, *second_jacobian);
+    assembler.fill_jacobian(*unknowns, *second_jacobian);
     const auto columns = assembler.parameter_columns(*unknowns, fixture.log_w_lower,
                                                      fixture.log_w_upper, fixture.spine_derivative);
     const auto diagnostics = assembler.diagnostics(*residual);

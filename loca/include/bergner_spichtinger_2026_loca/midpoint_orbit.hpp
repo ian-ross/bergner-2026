@@ -177,12 +177,24 @@ class Assembler {
     return result;
   }
 
+  Teuchos::RCP<matrix_type> create_jacobian() const {
+    return Teuchos::rcp(new matrix_type(graph_));
+  }
+
   Teuchos::RCP<matrix_type> jacobian(const vector_type& unknowns) const {
+    auto matrix = create_jacobian();
+    fill_jacobian(unknowns, *matrix);
+    return matrix;
+  }
+
+  void fill_jacobian(const vector_type& unknowns, matrix_type& matrix) const {
     require_vector_map(unknowns, layout_.domain_map(), "unknown");
+    if (matrix.getCrsGraph().getRawPtr() != graph_.getRawPtr()) {
+      throw std::invalid_argument("Jacobian matrix does not use the retained midpoint graph");
+    }
     const double period = physical_period(unknowns);
-    auto matrix = Teuchos::rcp(new matrix_type(graph_));
-    matrix->resumeFill();
-    matrix->setAllToScalar(0.0);
+    if (matrix.isFillComplete()) matrix.resumeFill();
+    matrix.setAllToScalar(0.0);
     for (std::size_t interval = 0; interval < layout_.interval_count(); ++interval) {
       const double width = reference_.boundaries[interval + 1] - reference_.boundaries[interval];
       const auto local = local_derivatives(stage_state(unknowns, interval), environment_.T,
@@ -197,7 +209,7 @@ class Assembler {
         }
         stage_cols.push_back(layout_.log_period_index());
         stage_vals.push_back(-scale * 0.5 * width * period * local.values[row]);
-        replace_row(*matrix, layout_.stage_row(interval, row), stage_cols, stage_vals);
+        replace_row(matrix, layout_.stage_row(interval, row), stage_cols, stage_vals);
 
         std::vector<global_ordinal_type> update_cols{layout_.endpoint_index(interval, row),
           layout_.cyclic_endpoint_index(interval + 1, row)};
@@ -208,7 +220,7 @@ class Assembler {
         }
         update_cols.push_back(layout_.log_period_index());
         update_vals.push_back(-scale * width * period * local.values[row]);
-        replace_row(*matrix, layout_.update_row(interval, row), update_cols, update_vals);
+        replace_row(matrix, layout_.update_row(interval, row), update_cols, update_vals);
       }
     }
     std::vector<global_ordinal_type> phase_cols;
@@ -221,9 +233,8 @@ class Assembler {
         phase_vals.push_back(width * scale * scale * reference_.stage_derivatives[interval][component] / phase_energy_);
       }
     }
-    replace_row(*matrix, layout_.phase_row(), phase_cols, phase_vals);
-    matrix->fillComplete(layout_.domain_map(), layout_.range_map());
-    return matrix;
+    replace_row(matrix, layout_.phase_row(), phase_cols, phase_vals);
+    matrix.fillComplete(layout_.domain_map(), layout_.range_map());
   }
 
   std::pair<Teuchos::RCP<vector_type>, Teuchos::RCP<vector_type>> parameter_columns(

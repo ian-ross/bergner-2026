@@ -135,6 +135,30 @@ Python-driven integration tests require component parity at relative tolerance `
 
 [`outputs/tpetra_midpoint_fixtures/manifest.json`](outputs/tpetra_midpoint_fixtures/manifest.json) records the matching C++/Python formulation and tolerance constants, case meanings and shapes, fixture byte hashes, runtime versions, and source/upstream paths and hashes. The `N=64` fixture boundaries, phase samples, unknowns, and residual semantics are translated directly from the frozen TASK-056 NPZ arrays; regeneration asserts byte-level array agreement before emitting fixtures. `--check` validates every fixture and manifest byte.
 
+## Sparse Thyra/NOX fixed-parameter correction
+
+[`loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp`](../../loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp) exposes the existing square `6N+1` Tpetra base system through a `Thyra::StateFuncModelEvaluatorBase<double>`. Its Thyra `x` and `f` spaces wrap the assembler's square domain/range maps, `log(P)` remains the last solution coordinate, and every `W_op` wraps a matrix built from the assembler's retained sparse graph. The fixed-parameter corrector constructs a `NOX::Thyra::Group` with an explicitly selected `Thyra::Amesos2LinearOpWithSolveFactory<double>` using KLU2. It reports the real Amesos2 backend and status counters for symbolic factorizations, numeric factorizations, and solves; it does not report an unavailable condition estimate.
+
+The language-neutral fixture set now also includes `n64_seed.txt`, the exact Episode 007 periodic Hermite seed sampled into the Python `N=64` midpoint layout, and `n64_perturbed.txt`. The perturbation is versioned in the manifest:
+
+```text
+x[k]    += 1e-4 sin(k + 0.375),  k < 6N,
+log(P)  += 1e-5 sin(6N + 0.375).
+```
+
+Run either correction with:
+
+```bash
+loca-build/bs2026_midpoint_orbit solve \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_seed.txt
+loca-build/bs2026_midpoint_orbit solve \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_perturbed.txt
+```
+
+The stable line-oriented output records solver version, square Thyra dimensions and `log(P)`/phase indices, NOX status and iterations, KLU2 status counters, corrected vector, residual vector, period, block diagnostics, physical positivity/finiteness, acceptance, and rejection reasons. Acceptance is centralized and requires NOX convergence; stage/update maximum and RMS at most `1e-9`; normalized phase residual at most `1e-10`; positive finite physical `n`, `q`, and `P`; positive finite phase energy; and successful reported KLU2 symbolic/numeric factorization and solve diagnostics. A nominal NOX success therefore cannot bypass any orbit or linear diagnostic. The corrected period and fixed-metric weighted orbit must match the frozen Python solution within the versioned `1e-8` tolerance.
+
+This correction establishes sparse Thyra/NOX/KLU2 migration parity only. The uniform midpoint `N=64` period remains more than 12% above the Episode 007 reference period, so the result is not production Figure 5 accuracy. Native LOCA continuation remains separate follow-up scope.
+
 ## Shared C++ local model derivatives
 
 [`loca/include/bergner_spichtinger_2026_loca/model.hpp`](../../loca/include/bergner_spichtinger_2026_loca/model.hpp) now scalar-templates the transformed no-evaporation dynamics through all temperature-dependent coefficients and the physical mapping `w = exp(log_w)`. `local_derivatives` seeds only the three local transformed-state variables, physical temperature, and `log_w`; one five-direction Sacado evaluation returns `g`, `D_x g`, `g_T`, and `g_log_w`. It never differentiates an orbit-layout vector.

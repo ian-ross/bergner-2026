@@ -101,11 +101,12 @@ def test_task059_fixture_generator_is_byte_reproducible_and_manifested():
     }
     assert manifest["directional_relative_tolerance"] == DIRECTIONAL_TOLERANCE
     assert set(manifest["cases"]) == {
-        "n8_converged", "n8_nonsolution", "n64_converged", "n64_nonsolution"
+        "n8_converged", "n8_nonsolution", "n64_converged", "n64_nonsolution",
+        "n64_seed", "n64_perturbed",
     }
     assert set(manifest["source_provenance"]) == {
-        "generator", "python_assembler", "cpp_assembler", "bootstrap_seed",
-        "task056_results", "task056_vectors", "uv_lock",
+        "generator", "python_assembler", "cpp_assembler", "cpp_nox_adapter", "cpp_cli",
+        "bootstrap_seed", "task056_results", "task056_vectors", "uv_lock",
     }
     assert set(manifest["runtime_provenance"]) == {"python", "numpy", "scipy"}
 
@@ -213,6 +214,133 @@ def test_tpetra_jacobian_action_and_normalized_parameter_columns_pass_centered_d
     t_fd = (_environment_columns(assembler, unknowns, temperature_step=25*h, log_w_step=25*spine*h) - _environment_columns(assembler, unknowns, temperature_step=-25*h, log_w_step=-25*spine*h)) / (2*h)
     assert np.linalg.norm(cpp["rho"] - rho_fd) / max(1.0, np.linalg.norm(cpp["rho"])) < DIRECTIONAL_TOLERANCE
     assert np.linalg.norm(cpp["temperature_hat"] - t_fd) / max(1.0, np.linalg.norm(cpp["temperature_hat"])) < DIRECTIONAL_TOLERANCE
+
+
+def _run_solve(case: str) -> dict[str, object]:
+    completed = subprocess.run(
+        [str(_executable()), "solve", str(FIXTURES / f"{case}.txt")],
+        cwd=REPO_ROOT, text=True, capture_output=True, check=True,
+    )
+    result: dict[str, object] = {"raw": completed.stdout}
+    for line in completed.stdout.splitlines():
+        fields = line.split()
+        if fields[0] in {"solution", "final_residual"}:
+            result[fields[0]] = np.array(fields[2:], dtype=float)
+        elif fields[0] in {"solver", "solver_constants", "accepted", "period", "positivity", "thyra_system", "nox", "linear", "diagnostics", "rejection_reasons"}:
+            result[fields[0]] = fields[1:]
+    return result
+
+
+@pytest.mark.parametrize("case", ["n64_seed", "n64_perturbed"])
+def test_sparse_thyra_nox_klu2_corrects_n64_starts_with_python_parity(case):
+    output = _run_solve(case)
+    assembler, _ = _python_case("n64_converged")
+    with np.load(FROZEN_VECTORS, allow_pickle=False) as frozen:
+        reference = frozen["n64_unknowns"]
+    solution = output["solution"]
+    residual = assembler.residual(solution)
+    blocks = assembler.layout.unpack_residual(residual)
+    variables = assembler.layout.unpack(solution)
+    manifest_solver = json.loads(MANIFEST.read_text())["fixed_parameter_nox"]
+    parity_tolerance = manifest_solver["corrected_solution_parity_tolerance"]
+
+    assert output["solver"] == [manifest_solver["solver_version"]]
+    solver_constants = output["solver_constants"]
+    assert float(solver_constants[0]) == manifest_solver["nox_norm_f_tolerance"]
+    assert int(solver_constants[1]) == manifest_solver["nox_max_iterations"]
+    assert float(solver_constants[2]) == manifest_solver["accepted_stage_update_tolerance"]
+    assert float(solver_constants[3]) == manifest_solver["accepted_phase_tolerance"]
+    assert float(solver_constants[4]) == parity_tolerance
+    assert tuple(map(int, output["thyra_system"])) == (
+        assembler.layout.unknown_size, assembler.layout.residual_size,
+        assembler.layout.log_period_index, assembler.layout.phase_row,
+    )
+    assert output["nox"][0] == "converged"
+    assert int(output["nox"][1]) > 0
+    assert output["linear"][0:2] == ["KLU2", "reported"]
+    symbolic, numeric, solves = map(int, output["linear"][2:5])
+    assert symbolic > 0 and numeric > 0 and solves > 0
+    assert output["linear"][5:] == ["true", "true", "true"]
+    assert output["accepted"] == ["true"]
+    assert output["rejection_reasons"] == ["0"]
+    assert output["positivity"] == ["true", "true"]
+    physical_log_states = np.concatenate([
+        variables.endpoints[:, :2].reshape(-1),
+        variables.stages[:, :, :2].reshape(-1),
+    ])
+    physical_states = np.exp(physical_log_states)
+    assert np.all(np.isfinite(physical_states)) and np.all(physical_states > 0.0)
+    assert np.all(np.isfinite(variables.endpoints[:, 2]))
+    assert np.all(np.isfinite(variables.stages[:, :, 2]))
+    physical_period = np.exp(variables.log_period)
+    assert np.isfinite(physical_period) and physical_period > 0.0
+    assert np.max(np.abs(blocks.stages)) <= manifest_solver["accepted_stage_update_tolerance"]
+    assert np.sqrt(np.mean(blocks.stages**2)) <= manifest_solver["accepted_stage_update_tolerance"]
+    assert np.max(np.abs(blocks.updates)) <= manifest_solver["accepted_stage_update_tolerance"]
+    assert np.sqrt(np.mean(blocks.updates**2)) <= manifest_solver["accepted_stage_update_tolerance"]
+    assert abs(blocks.phase) <= manifest_solver["accepted_phase_tolerance"]
+    assert np.isfinite(assembler.phase_energy) and assembler.phase_energy > 0
+    period = float(output["period"][0])
+    reference_period = float(np.exp(reference[-1]))
+    assert abs(period - reference_period) / reference_period <= parity_tolerance
+    assert assembler.weighted_orbit_distance(solution, reference) <= parity_tolerance
+
+
+@pytest.mark.parametrize(
+    ("failure", "reason"),
+    [
+        ("block", "block_residual_tolerance"),
+        ("phase", "phase_tolerance"),
+        ("positivity", "physical_state_positivity_or_finiteness"),
+        ("period", "period_positivity_or_finiteness"),
+        ("phase-energy", "phase_energy_invalid"),
+        ("linear", "linear_solve_diagnostics"),
+    ],
+)
+def test_authoritative_acceptance_rejects_each_nominal_success_failure(failure, reason):
+    completed = subprocess.run(
+        [str(_executable()), "acceptance-guard", failure, str(FIXTURES / "n64_converged.txt")],
+        cwd=REPO_ROOT, text=True, capture_output=True, check=True,
+    )
+    lines = completed.stdout.splitlines()
+    assert lines[0] == "accepted false"
+    assert lines[1] == f"rejection_reasons 1 {reason}"
+
+
+@pytest.mark.parametrize(
+    "arguments",
+    [
+        ("inspect", "n8_converged.txt", "extra"),
+        ("evaluate", "n8_converged.txt", "extra"),
+        ("solve", "n64_seed.txt", "extra"),
+        ("guard-invalid-period", "n8_nonsolution.txt", "extra"),
+        ("acceptance-guard", "block"),
+    ],
+)
+def test_midpoint_cli_rejects_command_specific_wrong_arity(arguments):
+    completed = subprocess.run(
+        [str(_executable()), *arguments], cwd=FIXTURES,
+        text=True, capture_output=True,
+    )
+    assert completed.returncode == 2
+    assert completed.stderr.startswith("Usage:")
+
+
+def test_n64_seed_and_perturbation_fixture_contract():
+    assembler, _ = _python_case("n64_converged")
+    seed = PeriodicHermiteSeed.from_json(EPISODE / "outputs/bootstrap_seed.json")
+    expected_seed = assembler.reference_unknowns(seed.evaluate, seed.log_period)
+    tokens = (FIXTURES / "n64_seed.txt").read_text().split()
+    seed_fixture = np.array(tokens[-assembler.layout.unknown_size :], dtype=float)
+    np.testing.assert_array_equal(seed_fixture, expected_seed)
+
+    tokens = (FIXTURES / "n64_perturbed.txt").read_text().split()
+    perturbed = np.array(tokens[-assembler.layout.unknown_size :], dtype=float)
+    direction = np.sin(np.arange(perturbed.size, dtype=float) + 0.375)
+    expected = expected_seed.copy()
+    expected[:-1] += 1.0e-4 * direction[:-1]
+    expected[-1] += 1.0e-5 * direction[-1]
+    np.testing.assert_array_equal(perturbed, expected)
 
 
 def test_n64_fixtures_translate_frozen_task056_arrays_and_residuals():
