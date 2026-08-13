@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:16'
+updated_date: '2026-08-13 15:18'
 labels:
   - episode-008
   - design
@@ -83,4 +83,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: retention tiers: all attempts/accepted steps retain scalar diagnostics/lineage in continuation_events.jsonl; all production-qualified accepted points retain scientific scalars including Floquet in continuation_points.csv; full committed NPZ vectors are limited to canonical T/rho samples, reliable Hopf-extrapolation points, phase/remesh restart anchors, and IVP/Floquet/worst-defect/interpolation fixtures. Intermediate vectors remain in run restart/checkpoint artifacts. Scalar rows use optional orbit_artifact_id; absence does not imply interpolation.
 
 - Design interview decision: T=210 K linearized curve uses native C++ equilibrium continuation over w=5e-4..2 m/s on an initial 401-point log grid plus exact Episode 006 Hopf anchors. Track the conjugate pair by continuation distance with eigenvector overlap for ambiguity. P_lin=2pi/|Im(lambda)| only for a genuinely complex pair with |Im(lambda)|>1e-8 s^-1; otherwise invalidate with real_pair/frequency_below_floor and a gap. Refine if log-period holdout error exceeds 2e-3. Require Hopf frequency and stratified Python physical-Jacobian parity to relative 1e-8; never clip to plot range.
+
+- Design interview decision: production independent-IVP validation uses >=12 unique points: four fixed qualification points; both T=210 K Hopf sides; low/high-T interiors; largest/shortest periods; worst accepted defect; worst trivial multiplier; worst interpolation holdout, with replacements after deduplication. Every point gets transformed-state DOP853 one-period integration at rtol=1e-10/atol=1e-12 and requires period, phase-aligned trajectory, and weighted return errors <1e-3. Six hardest/headline points also require IVP Radau agreement <1e-3. At least four, including both Hopf sides and largest period, receive perturbed-equilibrium attractor checks.
 <!-- SECTION:NOTES:END -->
