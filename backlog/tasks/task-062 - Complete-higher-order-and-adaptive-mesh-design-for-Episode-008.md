@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:51'
+updated_date: '2026-08-13 16:05'
 labels:
   - episode-008
   - design
@@ -114,4 +114,8 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Validated the task graph through Backlog plain views, confirmed the new tasks have no creation-time implementation plans, reviewed the complete documentation diff, and passed git diff --check. No backlog Markdown was edited directly.
 
 - Applied final review fixes: AC #3/#4 now distinguish implementable initial-run v1 hypotheses from production decisions deferred to TASK-069; documentation makes Floquet not_evaluated through TASK-068; deterministic monitor normalization, phase-bin recurrence, and remesh retry order are specified; TASK-064/065 and TASK-067/068 fixture/parity handoffs are explicit; every planned adaptive target requires a terminal manifest status; and downstream tasks created by TASK-069 must depend on it. Preserved exactly six continuation-first tasks and did not split TASK-068.
+
+- Final review clarification: the continuation-first scope correction supersedes earlier interview-note wording that called v1 choices production commitments. Three-stage Gauss and h/r constants are initial-run hypotheses. Earlier active-Floquet wording is likewise superseded: Floquet postprocessing, gates, and Floquet-derived Radau evidence remain downstream and not_evaluated through TASK-068. Broader IVP/Radau validation is also downstream except TASK-064 canonical DOP853.
+
+- Final portability fixes specify 16 equal subcell-midpoint monitor sampling per old element, stable weighted normalization, piecewise-constant CDF inversion with tolerance, simultaneous global-beta mesh feasibility, deterministic adaptation-cycle/soft-cap rules, pure-r retry semantics, and TASK-068/TASK-069 near-Hopf evidence/fit ownership. TASK-067/068/069 acceptance criteria were updated through Backlog CLI; exactly TASK-064..069 remain.
 <!-- SECTION:NOTES:END -->
