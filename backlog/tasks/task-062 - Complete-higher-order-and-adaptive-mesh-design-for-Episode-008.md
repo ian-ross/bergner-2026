@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:13'
+updated_date: '2026-08-13 14:17'
 labels:
   - episode-008
   - design
@@ -43,4 +43,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: fixed-mesh higher-order qualification will use four reproducibly seeded points: T=225 K, w=0.1 m/s; T=210 K at rho=0; and T=210 K at rho=-0.15 and +0.15. The canonical point receives the fullest order/mesh ladder and independent IVP comparison; the other points guard against single-orbit tuning. Near-Hopf and full-slice qualification waits for adaptive continuation.
 
 - Design interview decision: higher-order uniform qualification ladder: canonical 225 K/0.1 m s^-1 retains midpoint N=64,128,256, runs two-stage Gauss N=32,64,128 and three-stage Gauss N=16,32,64; each T=210 K guard point runs two-stage N=64,128 and three-stage N=32,64. Coarse failures remain diagnostic evidence. Qualification checks same-order refinement, order improvement at comparable system size, 1e-3 best-solution period/orbit convergence, independent defect reduction, canonical independent-IVP agreement to 1e-3, and Python/C++ parity.
+
+- Design interview decision: Radau IIA remains evidence-triggered, not routine. Trigger a whole-orbit three-stage Radau comparison if, after two adaptive Gauss refinement/remesh cycles, any qualification point has: defect <1e-4 but period/orbit change >1e-3; Gauss-vs-IVP error >1e-3 while DOP853 and IVP Radau agree; persistent resolved-layer polynomial ringing/nonphysical stage values; convergence stagnation before the mesh cap despite targeted refinement; or trivial Floquet error >1e-3 with residual/defect gates passing. NOX difficulty alone is insufficient until scaling, mesh placement, and transfer are ruled out.
 <!-- SECTION:NOTES:END -->
