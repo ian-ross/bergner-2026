@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:49'
+updated_date: '2026-08-13 15:50'
 labels:
   - episode-008
   - design
@@ -28,10 +28,9 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 <!-- AC:BEGIN -->
 - [ ] #1 Fixed-mesh midpoint evidence is reviewed before production adaptation constants are chosen
 - [ ] #2 The higher-order fixed-mesh validation sequence and criteria for adding a Radau comparison are finalized
-- [ ] #3 Composite monitor normalization, independent defect checks, r-movement bounds, h-marking policy, mesh caps, and remesh restart acceptance are calibrated and documented
-- [ ] #4 Phase refresh, Hopf stopping/extrapolation, Floquet, interpolation-error, and multivalued-branch thresholds are finalized with evidence
+- [ ] #3 Composite monitor normalization, independent defect checks, r-movement bounds, h-marking policy, mesh caps, and remesh restart acceptance are documented as implementable v1 hypotheses for the initial run; production retention or evidence-based revision is deferred to TASK-069
+- [ ] #4 Phase refresh, Hopf stopping/extrapolation, interpolation, and single-valued-tripwire thresholds are documented as implementable v1 hypotheses for the initial run; Floquet thresholds are downstream direction and not_evaluated through TASK-068, with production retention or revision deferred to TASK-069
 - [ ] #5 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
-- [ ] #6 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
 <!-- AC:END -->
 
 ## Implementation Plan
