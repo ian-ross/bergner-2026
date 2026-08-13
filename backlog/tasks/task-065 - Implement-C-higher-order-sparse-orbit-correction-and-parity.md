@@ -4,6 +4,7 @@ title: Implement C++ higher-order sparse orbit correction and parity
 status: To Do
 assignee: []
 created_date: '2026-08-13 15:34'
+updated_date: '2026-08-13 15:49'
 labels:
   - episode-008
   - cpp
@@ -35,4 +36,5 @@ Generalize the serial sparse Tpetra/Thyra periodic-orbit base system and NOX/KLU
 - [ ] #4 Corrected periods and phase-aligned weighted orbits match the corresponding Python fixed-mesh solutions within the versioned 1e-8 fixed-mesh parity tolerance away from Hopf degeneracy
 - [ ] #5 Artifacts and CLI output record rule/order, mesh/layout/graph dimensions, coefficient checksum, block diagnostics, KLU2 counters, source/runtime provenance, and deterministic fixture regeneration
 - [ ] #6 Focused integration tests preserve midpoint behavior and cover higher-order indexing/sparsity, wraparound, retained-graph reuse, finite-difference derivative checks, correction acceptance/rejection, and Python/C++ parity
+- [ ] #7 Focused integration tests preserve midpoint behavior and cover higher-order indexing/sparsity, wraparound, retained-graph reuse, finite-difference derivative checks, correction acceptance/rejection, explicit fixture-rejection propagation, and Python/C++ parity
 <!-- AC:END -->
