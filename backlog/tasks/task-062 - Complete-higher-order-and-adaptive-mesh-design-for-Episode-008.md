@@ -1,7 +1,7 @@
 ---
 id: TASK-062
 title: Complete higher-order and adaptive-mesh design for Episode 008
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
