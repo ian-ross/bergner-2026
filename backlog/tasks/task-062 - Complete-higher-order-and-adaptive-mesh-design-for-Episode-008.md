@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:36'
+updated_date: '2026-08-13 15:49'
 labels:
   - episode-008
   - design
@@ -31,6 +31,7 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - [ ] #3 Composite monitor normalization, independent defect checks, r-movement bounds, h-marking policy, mesh caps, and remesh restart acceptance are calibrated and documented
 - [ ] #4 Phase refresh, Hopf stopping/extrapolation, Floquet, interpolation-error, and multivalued-branch thresholds are finalized with evidence
 - [ ] #5 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
+- [ ] #6 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
 <!-- AC:END -->
 
 ## Implementation Plan
