@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:01'
+updated_date: '2026-08-13 15:02'
 labels:
   - episode-008
   - design
@@ -61,4 +61,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: remesh restart transfers the old collocation polynomial, phase reference, and tangent, then fixed-parameter NOX/KLU2-corrects on rebuilt infrastructure. Accept only with established residual/phase/positivity/linear gates, phase-aligned weighted old/new orbit change <=0.25, |Delta log(P)|<=0.20, new-reference phase residual <=1e-10 with positive finite energy, finite/positive transfer values, and renormalized tangent cosine >=0.5 with preserved active-coordinate orientation. Retry with half r movement then a smaller highest-defect h subset; after 3 failures record remesh_restart_failed. Tangent-only failure uses deterministic two-point rebootstrap rather than rejecting a valid orbit.
 
 - Design interview decision: controlled phase-reference refresh triggers at an accepted orbit if alignment cosine <0.90, weighted orbit distance from reference >0.75, current/reference scaled phase-energy ratio leaves [1/4,4], nonlinear iterations are >=8 and >2x the median of the preceding five accepted points, 20 accepted steps have elapsed, or any remesh occurs. Record every active trigger and rebuild the full model/group/stepper. Refresh cannot override separate near-Hopf reliability gates.
+
+- Design interview decision: near-Hopf regular-orbit v1 stopping triggers if equilibrium-centered weighted amplitude A<1e-3, current scaled phase energy <1e-4, phase/time-shift alignment cosine <0.50 even after one refresh, NOX uses >=20 iterations at two consecutive accepted points, or LOCA has two consecutive rejected attempts at minimum normalized-coordinate step 1e-5. Tangent/parameter reversal indicating a fold stops automatic single-valued sampling but not scientific branch continuation. Exact Hopf points remain separate hopf_linear_limit records.
 <!-- SECTION:NOTES:END -->
