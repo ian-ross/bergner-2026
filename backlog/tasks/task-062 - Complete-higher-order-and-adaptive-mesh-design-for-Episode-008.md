@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:12'
+updated_date: '2026-08-13 15:13'
 labels:
   - episode-008
   - design
@@ -77,4 +77,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: Figure 5 display interpolation requires maximum |Delta log(P)|<2e-3 (~0.2%) independently for leave-one-out shape-preserving PCHIP along rho and withheld-slice reconstruction between temperatures at fixed rho. Add authoritative solves near worst failures; retain <=2 K maximum temperature separation. Never test/interpolate across Hopf boundaries, unresolved gaps, instability checkpoints, or multivalued triggers. Exact T=210 K lower-panel data remain authoritative solved values.
 
 - Design interview decision: canonical sampling starts with T=190,192,...,240 K plus exact 225 K; native spine points remain separately authoritative. Each reliable slice requests exact rho anchors 0, +/-0.25, +/-0.50, +/-0.75, +/-0.90, +/-0.97, retains additional native points, and adds required Hopf-approach points. Refine by the 2e-3 holdout rule. Browser grid is fixed at 0.5 K x 0.01 rho with solved/interpolated/invalid provenance per value.
+
+- Design interview decision: commit formal production contracts under episodes/008-figure5-periodic-orbit-continuation/schemas/ with identifier episode8-figure5-production-v1. Retain continuation_points.csv, per-orbit NPZ+manifest, continuation_events.jsonl, run_metadata.json, and figure5_browser_dataset.json; add authoritative linearized_period_210.csv for the equilibrium/eigenvalue lower curve. Use JSON Schema for JSON/JSONL and explicit column/array schema JSON for CSV/NPZ. Require stable IDs, method/schema version, backend/source class, units/conventions, validity, and reason codes; incompatible changes increment version.
 <!-- SECTION:NOTES:END -->
