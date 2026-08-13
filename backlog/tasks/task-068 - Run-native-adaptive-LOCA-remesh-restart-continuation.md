@@ -4,6 +4,7 @@ title: Run native adaptive LOCA remesh/restart continuation
 status: To Do
 assignee: []
 created_date: '2026-08-13 15:35'
+updated_date: '2026-08-13 15:49'
 labels:
   - episode-008
   - cpp
@@ -34,4 +35,5 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - [ ] #4 Every accepted segment point and remesh restart passes independent residual/phase/positivity/linear/restart gates; unresolved points, rejected steps, cap escalations, aliasing, Radau triggers, and tripwires are recorded rather than interpolated or suppressed
 - [ ] #5 Deterministic per-segment artifacts and restart manifests record native vectors or checkpoints, accepted/rejected LOCA events, mesh histories, transfer corrections, defects, period/orbit convergence, phase lineage, runtime/memory profiles, source fingerprints, and resumable completion state
 - [ ] #6 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover remesh rebuild identity, event partitioning, restart recovery, resume behavior, and fixed-mesh regressions
+- [ ] #7 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, and fixed-mesh regressions
 <!-- AC:END -->
