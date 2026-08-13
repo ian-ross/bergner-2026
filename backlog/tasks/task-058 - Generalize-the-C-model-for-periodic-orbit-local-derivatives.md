@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 04:51'
+updated_date: '2026-08-13 04:58'
 labels:
   - episode-008
   - cpp
@@ -48,4 +48,8 @@ Extend the validated shared C++ model evaluator to provide value-equivalent tran
 
 <!-- SECTION:NOTES:BEGIN -->
 - Plan approved; implementation started from a clean worktree. Confirmed cmake, g++, uv, pytest, Backlog CLI, and the configured Trilinos installation are available.
+
+- Generalized the shared C++ model internals so the environment and all temperature-dependent coefficients use the active scalar type. Added a five-direction local Sacado evaluator for (log(n), log(q), s, T, log(w)) returning g, D_x g, g_T, and g_log_w; the differentiable path explicitly rejects the discontinuous evaporation switch.
+- Added rho and T-hat parameter-column helpers with the documented chain rules, plus deterministic CLI test seams. Existing residual, state/physical Jacobian, equilibrium, and Hopf APIs remain intact.
+- Added representative C++/Python value and analytic-derivative parity tests, centered checks for state/T/log(w) and both normalized coordinates, and documentation of the implemented local derivative contract. Focused model plus equilibrium/Hopf backend regression suite currently passes (32 focused model tests after the final added case; prior combined backend run passed 31 tests before that case was added).
 <!-- SECTION:NOTES:END -->
