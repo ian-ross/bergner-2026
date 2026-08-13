@@ -3,9 +3,9 @@ id: TASK-065
 title: Implement C++ higher-order sparse orbit correction and parity
 status: In Progress
 assignee:
-  - '@myself'
+  - '@iross'
 created_date: '2026-08-13 15:34'
-updated_date: '2026-08-13 19:28'
+updated_date: '2026-08-13 19:30'
 labels:
   - episode-008
   - cpp
@@ -42,13 +42,21 @@ Generalize the serial sparse Tpetra/Thyra periodic-orbit base system and NOX/KLU
 ## Implementation Plan
 
 <!-- SECTION:PLAN:BEGIN -->
-1. Review TASK-064's accepted/rejected case manifest and language-neutral parity bundle, then freeze the C++ higher-order formulation and fixture-reader versions. Preserve the existing one-rank Tpetra, local-Sacado, Thyra/NOX, KLU2, and midpoint CLI contracts while identifying names that can be generalized without breaking regressions.
-2. Generalize OrbitLayout and retained Tpetra graph construction to r explicit stages with square dimension 3N(r+1)+1. Own endpoint, per-stage, update, log-period, and phase indices; preserve cyclic wraparound and stable graph reuse for a fixed rule/mesh.
-3. Generalize residual and sparse Jacobian value assembly to the shared Gauss tables. Assemble every stage equation, endpoint update, log-period column, quadrature phase row, and analytic normalized rho/T-hat parameter column from small local Sacado derivatives without differentiating the packed orbit.
-4. Generalize the Thyra model evaluator and NOX/KLU2 fixed-parameter corrector to rule-driven layouts while retaining independent acceptance gates for stage/update/phase residuals, physical positivity/finiteness, phase energy, and actual Amesos2 factorization/solve activity.
-5. Extend the language-neutral fixture/CLI seams to read TASK-064 two-/three-stage converged and nonsolution cases and report rule, order, mesh/layout/graph dimensions, coefficient checksum, residual blocks, Jacobian actions, parameter columns, solver counters, source fingerprints, and explicit propagation of upstream rejected fixtures.
-6. Establish component-level C++/Python parity for every accepted fixture in the bundle and all nonsolution fixtures. Check residuals, phase rows, log-period/parameter columns, and Jacobian actions against both Python values and centered differences using versioned tolerances.
-7. Run NOX/KLU2 correction at minimum for canonical two-stage N=64, canonical three-stage N=32, and every accepted T=210 K guard three-stage N=32 fixture. Compare corrected periods and phase-aligned weighted orbits with every corresponding accepted Python fixture to 1e-8; preserve explicit upstream rejection status instead of inventing a substitute case.
-8. Emit deterministic higher-order C++ fixture/correction artifacts and add integration tests for indexing, dimensions, sparsity/wraparound, retained graph identity, derivative columns, acceptance/rejection, KLU2 diagnostics, all-fixture parity, midpoint regressions, stale-build/source guards, and regeneration.
-9. Update Episode 008 documentation, run clean CMake/Ninja builds, focused executable and Python-driven integration tests, artifact --check commands, the full applicable suite, compiler diagnostics, diff checks, self-review, and independent correctness/test review before completion.
+1. Freeze the TASK-064 migration contract: inventory all accepted/rejected higher-order cases and the current parity bundle; version the generalized C++ formulation, fixture projection, solver diagnostics, and 1e-11/1e-6/1e-8 tolerances while preserving midpoint CLI and API behavior.
+2. Extend deterministic Episode 008 fixture generation so C++ can consume the required canonical two-stage N=64, canonical three-stage N=32, all three T=210 K three-stage N=32 guards, the upstream-rejected canonical case, and representative two-/three-stage nonsolutions, with source/runtime/coefficient checksums and explicit upstream status.
+3. Generalize the serial OrbitLayout, phase reference, and retained Tpetra graph from one stage to a selected frozen Gauss rule. Own endpoint, interval/stage/component, update, log-period, and phase indices for the square 3N(r+1)+1 system; retain cyclic wraparound and midpoint-compatible entry points.
+4. Generalize residual, sparse Jacobian fill, phase energy/row, log-period column, normalized rho/T-hat columns, diagnostics, and positivity checks using generated Gauss tables and local Sacado derivatives only.
+5. Generalize the Thyra model and fixed-parameter NOX/Amesos2-KLU2 corrector without adding continuation scope. Preserve independent convergence, residual-block, phase, positivity/finiteness, phase-energy, and actual factorization/solve gates, including stable propagation of upstream fixture rejection.
+6. Extend the C++ CLI/artifact seam to report rule/order, mesh and block dimensions, graph reuse/entries, coefficient and source fingerprints, residual/Jacobian/parameter diagnostics, KLU2 counters, correction parity, and upstream status in deterministic output.
+7. Add Python-driven integration tests for one-/two-/three-stage indexing and sparsity, wraparound, retained-graph reuse, residual and derivative parity on accepted/nonsolution fixtures, required NOX corrections, rejected-upstream propagation, all acceptance gates, 1e-8 phase-aligned fixed-mesh parity, and unchanged midpoint behavior.
+8. Regenerate/check artifacts, update Episode 008 documentation, run clean CMake/Ninja builds plus focused and full applicable pytest suites, compiler/LSP diagnostics, py_compile, diff checks, self-review, and independent correctness/test review; then record evidence and complete the task criteria.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-065, moved it to In Progress, and assigned it to @iross.
+- Confirmed TASK-064 is Done and reviewed its accepted/rejected qualification manifest, language-neutral parity bundle, Episode 008 README/design contract, midpoint Tpetra assembler, Thyra/NOX adapter, CLI, CMake target, and focused integration tests.
+- Confirmed required tools are available: cmake, ninja, uv, Python, C++, Backlog CLI, and the configured Trilinos installation path used by the tests. No code changes have been made pending plan approval.
+- Key migration constraint: the current parity bundle contains canonical g2-N64/g3-N64 accepted and nonsolution JSON cases, while TASK-065 additionally requires canonical g3-N32, three accepted T=210 K g3-N32 guards, and explicit propagation of TASK-064's rejected canonical g3-N16 case; fixture generation must be extended rather than silently narrowing coverage.
+<!-- SECTION:NOTES:END -->
