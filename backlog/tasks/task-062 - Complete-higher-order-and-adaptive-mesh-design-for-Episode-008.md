@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:17'
+updated_date: '2026-08-13 14:21'
 labels:
   - episode-008
   - design
@@ -45,4 +45,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: higher-order uniform qualification ladder: canonical 225 K/0.1 m s^-1 retains midpoint N=64,128,256, runs two-stage Gauss N=32,64,128 and three-stage Gauss N=16,32,64; each T=210 K guard point runs two-stage N=64,128 and three-stage N=32,64. Coarse failures remain diagnostic evidence. Qualification checks same-order refinement, order improvement at comparable system size, 1e-3 best-solution period/orbit convergence, independent defect reduction, canonical independent-IVP agreement to 1e-3, and Python/C++ parity.
 
 - Design interview decision: Radau IIA remains evidence-triggered, not routine. Trigger a whole-orbit three-stage Radau comparison if, after two adaptive Gauss refinement/remesh cycles, any qualification point has: defect <1e-4 but period/orbit change >1e-3; Gauss-vs-IVP error >1e-3 while DOP853 and IVP Radau agree; persistent resolved-layer polynomial ringing/nonphysical stage values; convergence stagnation before the mesh cap despite targeted refinement; or trivial Floquet error >1e-3 with residual/defect gates passing. NOX difficulty alone is insufficient until scaling, mesh placement, and transfer are ruled out.
+
+- Design interview decision: independent off-collocation defect exclusively controls scientific defect acceptance and h-refinement marking. The composite defect/speed/curvature/nucleation/landmark monitor controls only r-redistribution. Auxiliary monitor components can attract mesh points to potentially missed layers but cannot make an orbit pass; minimum-resolution protections are explicit rather than hidden in weights.
 <!-- SECTION:NOTES:END -->
