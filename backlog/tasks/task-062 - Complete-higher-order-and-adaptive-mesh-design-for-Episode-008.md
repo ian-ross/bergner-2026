@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:07'
+updated_date: '2026-08-13 15:09'
 labels:
   - episode-008
   - design
@@ -69,4 +69,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: native LOCA owns production orbits; an independent Python/SciPy postprocessor computes Floquet multipliers from saved native piecewise collocation polynomials. Primary variational integration uses DOP853 over normalized phase at rtol=1e-10, atol=1e-12; rerun at 1e-11/1e-13 near or beyond thresholds. Use implicit Radau at stratified difficult points and every suspected unit-circle crossing. Identify the trivial multiplier nearest 1 and record mixed backend provenance explicitly.
 
 - Design interview decision: Floquet gate |mu_trivial-1|<1e-3. Matched multipliers must agree under DOP853 tolerance refinement to relative-with-unit-floor <1e-5 and DOP853/Radau to <1e-4 at required points. Nontrivial multipliers classify attracting below 1-1e-3, unstable above 1+1e-3, otherwise near-unit ambiguous. A crossing candidate requires consecutive points beyond opposite ambiguity bands and confirmation by both integrators; confirmed crossings block automatic production interpolation. Selected finite-difference/Poincare multiplier magnitudes must agree within 1%.
+
+- Design interview provisional decision: multivalued candidate thresholds are active-coordinate tangent sign change, coordinate reversal >1e-4, or coordinate collision within 1e-4 with period separation >1e-3 or weighted-orbit separation >1e-2. Confirmation would fixed-parameter-correct both candidates at identical coordinates/common phase and require both gates plus retained separation. User notes no current evidence and low physical expectation; implementation scope still to be resolved.
 <!-- SECTION:NOTES:END -->
