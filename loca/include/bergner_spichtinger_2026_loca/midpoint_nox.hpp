@@ -58,7 +58,7 @@ class ThyraModelEvaluator final : public Thyra::StateFuncModelEvaluatorBase<doub
     prototype_out_args_ = out_args;
   }
 
-  std::string description() const override { return "bs2026 midpoint collocation-plus-phase Thyra model"; }
+  std::string description() const override { return "bs2026 Gauss collocation-plus-phase Thyra model"; }
   Teuchos::RCP<const Thyra::VectorSpaceBase<double>> get_x_space() const override { return x_space_; }
   Teuchos::RCP<const Thyra::VectorSpaceBase<double>> get_f_space() const override { return f_space_; }
   Thyra::ModelEvaluatorBase::InArgs<double> createInArgs() const override { return prototype_in_args_; }
@@ -167,6 +167,7 @@ struct SolveResult {
   LinearSolveDiagnostics linear;
   AcceptanceResult acceptance;
   bool nox_converged = false;
+  bool residual_available = false;
   int nonlinear_iterations = 0;
   double nox_residual_norm = std::numeric_limits<double>::infinity();
   double period = std::numeric_limits<double>::quiet_NaN();
@@ -179,8 +180,8 @@ inline bool finite_positive_exp(double exponent) {
   return std::isfinite(value) && value > 0.0;
 }
 
-inline SolveResult solve_fixed_parameter(const Teuchos::RCP<const Assembler>& assembler,
-                                         const vector_type& initial_unknowns) {
+inline SolveResult solve_fixed_parameter_impl(const Teuchos::RCP<const Assembler>& assembler,
+                                              const vector_type& initial_unknowns) {
   SolveResult result;
   result.unknowns = Teuchos::rcp(new vector_type(initial_unknowns));
   const auto model = Teuchos::rcp(new ThyraModelEvaluator(assembler));
@@ -218,47 +219,87 @@ inline SolveResult solve_fixed_parameter(const Teuchos::RCP<const Assembler>& as
   parameters->sublist("Line Search").sublist("Backtrack").set("Recovery Step", nox_recovery_step);
 
   auto solver = NOX::Solver::buildSolver(group, status, parameters);
-  const auto status_value = solver->solve();
-  result.nox_converged = status_value == NOX::StatusTest::Converged;
-  result.nonlinear_iterations = solver->getNumIterations();
-  result.nox_residual_norm = solver->getSolutionGroup().getNormF();
+  result.residual = Teuchos::rcp(new vector_type(assembler->layout().range_map()));
+  result.residual->putScalar(0.0);
+  result.diagnostics.phase_energy = assembler->phase_energy();
+  result.diagnostics.stage_max = result.diagnostics.stage_rms = std::numeric_limits<double>::infinity();
+  result.diagnostics.update_max = result.diagnostics.update_rms = std::numeric_limits<double>::infinity();
+  result.diagnostics.phase_abs = std::numeric_limits<double>::infinity();
+  result.diagnostics.state_scaling = assembler->phase_reference().state_scaling;
 
-  const auto& final_vector = dynamic_cast<const NOX::Thyra::Vector&>(solver->getSolutionGroup().getX());
-  auto final_tpetra = Thyra::TpetraOperatorVectorExtraction<double>::getConstTpetraVector(
-      final_vector.getThyraRCPVector());
-  result.unknowns->assign(*final_tpetra);
-  result.residual = assembler->residual(*result.unknowns);
-  result.diagnostics = assembler->diagnostics(*result.residual);
+  bool usable_final_group = false;
+  bool solve_returned = false;
+  try {
+    const auto status_value = solver->solve();
+    solve_returned = true;
+    result.nox_converged = status_value == NOX::StatusTest::Converged;
+    result.nonlinear_iterations = solver->getNumIterations();
+    result.nox_residual_norm = solver->getSolutionGroup().getNormF();
+    const auto* final_vector = dynamic_cast<const NOX::Thyra::Vector*>(&solver->getSolutionGroup().getX());
+    if (final_vector != nullptr) {
+      const auto final_tpetra = Thyra::TpetraOperatorVectorExtraction<double>::getConstTpetraVector(
+          final_vector->getThyraRCPVector());
+      if (!final_tpetra.is_null()) {
+        result.unknowns->assign(*final_tpetra);
+        result.residual = assembler->residual(*result.unknowns);
+        result.diagnostics = assembler->diagnostics(*result.residual);
+        result.residual_available = true;
+        usable_final_group = true;
+      }
+    }
+  } catch (const std::exception&) {
+    // Model, nonlinear, or final-group failures are represented as a stable
+    // rejected result. The safe initial vector and invalid diagnostics above
+    // remain available to callers and no post-failure model evaluation occurs.
+    result.nox_converged = false;
+  }
+  if (!usable_final_group) result.nox_converged = false;
 
-  const auto& linear_group = dynamic_cast<const NOX::Thyra::Group&>(solver->getPreviousSolutionGroup());
-  const auto amesos_lows = Teuchos::rcp_dynamic_cast<const Thyra::Amesos2LinearOpWithSolve<double>>(
-      linear_group.getJacobian(), true);
-  auto amesos_solver = const_cast<Thyra::Amesos2LinearOpWithSolve<double>*>(amesos_lows.get())->get_amesos2Solver();
-  if (!amesos_solver.is_null()) {
-    const auto& status_data = amesos_solver->getStatus();
-    result.linear.backend = amesos_solver->name() == "KLU2" || amesos_solver->name() == "klu2" ? "KLU2" : amesos_solver->name();
-    result.linear.symbolic_factorizations = status_data.getNumSymbolicFact();
-    result.linear.numeric_factorizations = status_data.getNumNumericFact();
-    result.linear.solves = status_data.getNumSolve();
-    result.linear.symbolic_complete = status_data.symbolicFactorizationDone();
-    result.linear.numeric_complete = status_data.numericFactorizationDone();
-    result.linear.solve_complete = status_data.getNumSolve() > 0;
-    result.linear.reported = true;
+  // A converged initial guess may perform no Newton solve and early failures may
+  // not leave a previous Thyra group/Jacobian. Probe each polymorphic seam
+  // without throwing; absent diagnostics remain unreported and fail acceptance.
+  const auto* linear_group = solve_returned && result.nonlinear_iterations > 0
+      ? dynamic_cast<const NOX::Thyra::Group*>(&solver->getPreviousSolutionGroup()) : nullptr;
+  if (linear_group != nullptr) {
+    const auto amesos_lows = Teuchos::rcp_dynamic_cast<const Thyra::Amesos2LinearOpWithSolve<double>>(
+        linear_group->getJacobian(), false);
+    if (!amesos_lows.is_null()) {
+      const auto amesos_solver =
+          const_cast<Thyra::Amesos2LinearOpWithSolve<double>*>(amesos_lows.get())->get_amesos2Solver();
+      if (!amesos_solver.is_null()) {
+        const auto& status_data = amesos_solver->getStatus();
+        result.linear.backend = amesos_solver->name() == "KLU2" || amesos_solver->name() == "klu2"
+            ? "KLU2" : amesos_solver->name();
+        result.linear.symbolic_factorizations = status_data.getNumSymbolicFact();
+        result.linear.numeric_factorizations = status_data.getNumNumericFact();
+        result.linear.solves = status_data.getNumSolve();
+        result.linear.symbolic_complete = status_data.symbolicFactorizationDone();
+        result.linear.numeric_complete = status_data.numericFactorizationDone();
+        result.linear.solve_complete = status_data.getNumSolve() > 0;
+        result.linear.reported = true;
+      }
+    }
   }
 
   const auto values = copy_vector_by_global_id(*result.unknowns);
   result.period_positive_finite = finite_positive_exp(values.back());
   if (result.period_positive_finite) result.period = std::exp(values.back());
-  result.physical_states_positive_finite = true;
+  result.physical_states_positive_finite = usable_final_group;
   for (std::size_t interval = 0; interval < assembler->layout().interval_count(); ++interval) {
     for (int component = 0; component < 2; ++component) {
       result.physical_states_positive_finite = result.physical_states_positive_finite &&
-          finite_positive_exp(values[static_cast<std::size_t>(assembler->layout().endpoint_index(interval, component))]) &&
-          finite_positive_exp(values[static_cast<std::size_t>(assembler->layout().stage_index(interval, component))]);
+          finite_positive_exp(values[static_cast<std::size_t>(assembler->layout().endpoint_index(interval, component))]);
     }
     result.physical_states_positive_finite = result.physical_states_positive_finite &&
-        std::isfinite(values[static_cast<std::size_t>(assembler->layout().endpoint_index(interval, 2))]) &&
-        std::isfinite(values[static_cast<std::size_t>(assembler->layout().stage_index(interval, 2))]);
+        std::isfinite(values[static_cast<std::size_t>(assembler->layout().endpoint_index(interval, 2))]);
+    for (int stage = 0; stage < assembler->layout().stage_count(); ++stage) {
+      for (int component = 0; component < 2; ++component) {
+        result.physical_states_positive_finite = result.physical_states_positive_finite &&
+            finite_positive_exp(values[static_cast<std::size_t>(assembler->layout().stage_index(interval, stage, component))]);
+      }
+      result.physical_states_positive_finite = result.physical_states_positive_finite &&
+          std::isfinite(values[static_cast<std::size_t>(assembler->layout().stage_index(interval, stage, 2))]);
+    }
   }
   AcceptanceInputs acceptance_inputs;
   acceptance_inputs.nox_converged = result.nox_converged;
@@ -268,6 +309,37 @@ inline SolveResult solve_fixed_parameter(const Teuchos::RCP<const Assembler>& as
   acceptance_inputs.linear = result.linear;
   result.acceptance = evaluate_acceptance(acceptance_inputs);
   return result;
+}
+
+inline SolveResult solve_fixed_parameter(const Teuchos::RCP<const Assembler>& assembler,
+                                         const vector_type& initial_unknowns) {
+  try {
+    return solve_fixed_parameter_impl(assembler, initial_unknowns);
+  } catch (const std::exception&) {
+    // Some installed NOX/Amesos2 paths may throw while constructing or
+    // destroying a failed solver, outside solver->solve(). Convert the entire
+    // corrector boundary into the same stable rejected-result contract.
+    SolveResult result;
+    result.unknowns = Teuchos::rcp(new vector_type(initial_unknowns));
+    result.residual = Teuchos::rcp(new vector_type(assembler->layout().range_map()));
+    result.residual->putScalar(0.0);
+    result.diagnostics.stage_max = result.diagnostics.stage_rms = std::numeric_limits<double>::infinity();
+    result.diagnostics.update_max = result.diagnostics.update_rms = std::numeric_limits<double>::infinity();
+    result.diagnostics.phase_abs = std::numeric_limits<double>::infinity();
+    result.diagnostics.phase_energy = assembler->phase_energy();
+    result.diagnostics.state_scaling = assembler->phase_reference().state_scaling;
+    const auto values = copy_vector_by_global_id(*result.unknowns);
+    result.period_positive_finite = finite_positive_exp(values.back());
+    if (result.period_positive_finite) result.period = std::exp(values.back());
+    AcceptanceInputs inputs;
+    inputs.nox_converged = false;
+    inputs.residual = result.diagnostics;
+    inputs.physical_states_positive_finite = false;
+    inputs.period_positive_finite = result.period_positive_finite;
+    inputs.linear = result.linear;
+    result.acceptance = evaluate_acceptance(inputs);
+    return result;
+  }
 }
 
 }  // namespace midpoint

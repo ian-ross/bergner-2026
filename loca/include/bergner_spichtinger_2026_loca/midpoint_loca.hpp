@@ -202,8 +202,14 @@ class ContinuationModelEvaluator final : public Thyra::StateFuncModelEvaluatorBa
   mutable double last_evaluated_coordinate_ = 0.0;
 };
 
+inline void require_midpoint_loca_layout(const OrbitLayout& layout, const char* operation) {
+  if (layout.stage_count() != 1)
+    throw std::invalid_argument(std::string(operation) + " supports midpoint layouts only; higher-order LOCA is TASK-066 scope");
+}
+
 inline std::vector<double> continuation_metric_weights(const Assembler& assembler) {
-  const auto& layout = assembler.layout(); const auto& ref = assembler.phase_reference();
+  const auto& layout = assembler.layout(); require_midpoint_loca_layout(layout, "continuation metric");
+  const auto& ref = assembler.phase_reference();
   std::vector<double> weights(layout.unknown_size() + 1, 0.0);
   for (std::size_t i = 0; i < layout.interval_count(); ++i) {
     const double width = ref.boundaries[i + 1] - ref.boundaries[i];
@@ -211,7 +217,7 @@ inline std::vector<double> continuation_metric_weights(const Assembler& assemble
     const double previous_width = ref.boundaries[previous + 1] - ref.boundaries[previous];
     for (int c = 0; c < state_dimension; ++c) {
       weights[layout.endpoint_index(i, c)] = 0.25 * (width + previous_width) * ref.state_scaling[c] * ref.state_scaling[c];
-      weights[layout.stage_index(i, c)] = 0.5 * width * ref.state_scaling[c] * ref.state_scaling[c];
+      weights[layout.stage_index(i, 0, c)] = 0.5 * width * ref.state_scaling[c] * ref.state_scaling[c];
     }
   }
   weights[layout.log_period_index()] = 1.0; weights.back() = 1.0; return weights;
@@ -369,6 +375,7 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
                                        int maximum_steps = 80,
                                        const std::vector<double>* bootstrap_tangent = nullptr,
                                        bool force_first_native_rejection = false) {
+  require_midpoint_loca_layout(assembler->layout(), "native LOCA continuation");
   NativeRunResult result; result.base_dimension = assembler->layout().unknown_size();
   auto model = Teuchos::rcp(new ContinuationModelEvaluator(assembler, path, initial_coordinate, initial));
   NOX::Thyra::Vector nox_initial(*model->getNominalValues().get_x());
@@ -459,7 +466,7 @@ inline BootstrapResult deterministic_bootstrap(const Teuchos::RCP<Assembler>& as
 
 inline PhaseReference refreshed_phase_reference(const Assembler& assembler,
                                                 const vector_type& accepted_unknowns) {
-  const auto& layout = assembler.layout();
+  const auto& layout = assembler.layout(); require_midpoint_loca_layout(layout, "phase-reference refresh");
   const auto values = copy_vector_by_global_id(accepted_unknowns);
   const double period = std::exp(values.at(static_cast<std::size_t>(layout.log_period_index())));
   PhaseReference refreshed = assembler.phase_reference();
@@ -467,7 +474,7 @@ inline PhaseReference refreshed_phase_reference(const Assembler& assembler,
   for (std::size_t interval = 0; interval < layout.interval_count(); ++interval) {
     std::array<double, state_dimension> stage{};
     for (int component = 0; component < state_dimension; ++component)
-      stage[component] = values.at(static_cast<std::size_t>(layout.stage_index(interval, component)));
+      stage[component] = values.at(static_cast<std::size_t>(layout.stage_index(interval, 0, component)));
     const auto derivatives = local_derivatives(stage, environment.T, std::log(environment.w), environment);
     refreshed.stage_values[interval] = stage;
     for (int component = 0; component < state_dimension; ++component)

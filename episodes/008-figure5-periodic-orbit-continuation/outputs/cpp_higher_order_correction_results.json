@@ -1,0 +1,525 @@
+{
+  "artifact_kind": "cpp-gauss-fixed-parameter-correction-results",
+  "cases": [
+    {
+      "accepted": true,
+      "case_id": "canonical-g2-n64",
+      "corrected_period_s": 2466.547839980708,
+      "final_residual_available": true,
+      "fixture_sha256": "bc558a88ff827905567217f88b589a181804634a8ca1fc2ec1fe0fd8e9aed55f",
+      "graph": {
+        "entry_count": 5184,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 577,
+        "phase_block_dimension": 1,
+        "range_dimension": 577,
+        "stage_block_dimension": 384,
+        "update_block_dimension": 192
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 65,
+        "interval_count": 64,
+        "stage_count": 2
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 5.049378821598319e-14,
+        "status": "converged"
+      },
+      "period_relative_difference": 5.346611552367327e-15,
+      "phase_aligned_weighted_orbit_distance": 3.687143621888588e-13,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 2.6926928321677904e-18,
+        "phase_energy": 51.33756986169297,
+        "stage_max": 2.7570642284642094e-14,
+        "stage_rms": 1.6853670748222743e-15,
+        "update_max": 3.418892674138971e-14,
+        "update_rms": 2.7565123318303445e-15
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 4,
+        "stage_count": 2
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": true,
+      "case_id": "canonical-g3-n32",
+      "corrected_period_s": 2450.3182116411517,
+      "final_residual_available": true,
+      "fixture_sha256": "fa3aeb79d0c48129f01170955f23c9d533bd0e4ff856e0bef67439c09e791e7b",
+      "graph": {
+        "entry_count": 4608,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 385,
+        "phase_block_dimension": 1,
+        "range_dimension": 385,
+        "stage_block_dimension": 288,
+        "update_block_dimension": 96
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 33,
+        "interval_count": 32,
+        "stage_count": 3
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 5.70554764769716e-14,
+        "status": "converged"
+      },
+      "period_relative_difference": 4.9737331852891034e-14,
+      "phase_aligned_weighted_orbit_distance": 7.897727012333911e-13,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 3.559269306628205e-18,
+        "phase_energy": 32.69064935183589,
+        "stage_max": 2.7537384573804166e-14,
+        "stage_rms": 2.403813173742334e-15,
+        "update_max": 3.28586183078726e-14,
+        "update_rms": 4.071204603113736e-15
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": true,
+      "case_id": "canonical-g3-n64",
+      "corrected_period_s": 2461.6174737823117,
+      "final_residual_available": true,
+      "fixture_sha256": "92bad7d0458faaa1ff3febddfb09e075ed8c7c1d569c2ec3c321c396355a5c6e",
+      "graph": {
+        "entry_count": 9216,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 769,
+        "phase_block_dimension": 1,
+        "range_dimension": 769,
+        "stage_block_dimension": 576,
+        "update_block_dimension": 192
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 65,
+        "interval_count": 64,
+        "stage_count": 3
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 4.1902839393702144e-13,
+        "status": "converged"
+      },
+      "period_relative_difference": 8.516291868717092e-14,
+      "phase_aligned_weighted_orbit_distance": 2.7704938647049544e-13,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 8.364158320821055e-18,
+        "phase_energy": 32.22799703176984,
+        "stage_max": 2.1477829659133733e-13,
+        "stage_rms": 1.2593341521372337e-14,
+        "update_max": 2.4012067224983825e-13,
+        "update_rms": 2.0945820295479795e-14
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": true,
+      "case_id": "guard-rho-0-g3-n32",
+      "corrected_period_s": 5672.838604203342,
+      "final_residual_available": true,
+      "fixture_sha256": "172e3169c1583ee57b39149795e470dfc8e8505eeeb3c744c185e76cb5b30fc4",
+      "graph": {
+        "entry_count": 4608,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 385,
+        "phase_block_dimension": 1,
+        "range_dimension": 385,
+        "stage_block_dimension": 288,
+        "update_block_dimension": 96
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 33,
+        "interval_count": 32,
+        "stage_count": 3
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 1.1224781144202588e-14,
+        "status": "converged"
+      },
+      "period_relative_difference": 1.0308861824600754e-13,
+      "phase_aligned_weighted_orbit_distance": 3.8415392146163383e-13,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 5.435996598205713e-18,
+        "phase_energy": 63.905839953280534,
+        "stage_max": 2.012091505694628e-15,
+        "stage_rms": 5.357770563999293e-16,
+        "update_max": 2.9848795477040142e-15,
+        "update_rms": 6.717766446287377e-16
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": true,
+      "case_id": "guard-rho-minus-0.15-g3-n32",
+      "corrected_period_s": 6138.516304888666,
+      "final_residual_available": true,
+      "fixture_sha256": "79494dbe0e832681be8cd33bfe5a2646cea6d333c5cca4fc94efdbd7126d8e85",
+      "graph": {
+        "entry_count": 4608,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 385,
+        "phase_block_dimension": 1,
+        "range_dimension": 385,
+        "stage_block_dimension": 288,
+        "update_block_dimension": 96
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 33,
+        "interval_count": 32,
+        "stage_count": 3
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 2.4633327516857155e-14,
+        "status": "converged"
+      },
+      "period_relative_difference": 4.089270521109925e-14,
+      "phase_aligned_weighted_orbit_distance": 2.803194384516021e-13,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 7.103668186746084e-18,
+        "phase_energy": 62.58225139653692,
+        "stage_max": 1.1174590841543719e-14,
+        "stage_rms": 1.0508869163786513e-15,
+        "update_max": 1.5032485298743336e-14,
+        "update_rms": 1.7342870188438e-15
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": true,
+      "case_id": "guard-rho-plus-0.15-g3-n32",
+      "corrected_period_s": 5090.7098773734015,
+      "final_residual_available": true,
+      "fixture_sha256": "37b33deb11599396b537b633eb701268c13fbd09536fc77c354fd03baed0f977",
+      "graph": {
+        "entry_count": 4608,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 385,
+        "phase_block_dimension": 1,
+        "range_dimension": 385,
+        "stage_block_dimension": 288,
+        "update_block_dimension": 96
+      },
+      "linear": {
+        "backend": "KLU2",
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "solves": 1,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "mesh": {
+        "boundary_count": 33,
+        "interval_count": 32,
+        "stage_count": 3
+      },
+      "nox": {
+        "iterations": 3,
+        "residual_norm": 1.7669399259638894e-14,
+        "status": "converged"
+      },
+      "period_relative_difference": 5.181074346555309e-15,
+      "phase_aligned_weighted_orbit_distance": 1.2335175542148212e-12,
+      "rejection_reasons": [],
+      "residual_diagnostics": {
+        "phase_abs": 6.432537668955452e-18,
+        "phase_energy": 58.2297010629482,
+        "stage_max": 1.130762168489543e-14,
+        "stage_rms": 8.768959260918272e-16,
+        "update_max": 8.247912287806078e-15,
+        "update_rms": 9.722774319135702e-16
+      },
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted": false,
+      "case_id": "canonical-g3-n16",
+      "corrected_period_s": null,
+      "final_residual_available": false,
+      "fixture_sha256": "e6018b733c230a3c92da73e38cb4eb43ca80e0afd26369e4d4c3f732091328c9",
+      "graph": {
+        "entry_count": 2304,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 193,
+        "phase_block_dimension": 1,
+        "range_dimension": 193,
+        "stage_block_dimension": 144,
+        "update_block_dimension": 48
+      },
+      "linear": null,
+      "mesh": {
+        "boundary_count": 17,
+        "interval_count": 16,
+        "stage_count": 3
+      },
+      "nox": null,
+      "period_relative_difference": null,
+      "phase_aligned_weighted_orbit_distance": null,
+      "rejection_reasons": [
+        "upstream_fixture_rejected"
+      ],
+      "residual_diagnostics": null,
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "rejected"
+    },
+    {
+      "accepted": false,
+      "case_id": "canonical-g2-n64-nonsolution",
+      "corrected_period_s": null,
+      "final_residual_available": false,
+      "fixture_sha256": "525ddb1dde5600d2c7685b2ae1029e4e22685e236f1fca0be1505351cd899a09",
+      "graph": {
+        "entry_count": 5184,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 577,
+        "phase_block_dimension": 1,
+        "range_dimension": 577,
+        "stage_block_dimension": 384,
+        "update_block_dimension": 192
+      },
+      "linear": null,
+      "mesh": {
+        "boundary_count": 65,
+        "interval_count": 64,
+        "stage_count": 2
+      },
+      "nox": null,
+      "period_relative_difference": null,
+      "phase_aligned_weighted_orbit_distance": null,
+      "rejection_reasons": [
+        "fixture_not_correction_input"
+      ],
+      "residual_diagnostics": null,
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 4,
+        "stage_count": 2
+      },
+      "upstream_status": "nonsolution"
+    },
+    {
+      "accepted": false,
+      "case_id": "canonical-g3-n64-nonsolution",
+      "corrected_period_s": null,
+      "final_residual_available": false,
+      "fixture_sha256": "772f6cae0ee09f7b524164197824ed5917992b7d921b310ca56937c0830a8a57",
+      "graph": {
+        "entry_count": 9216,
+        "retained_reuse": true
+      },
+      "layout": {
+        "domain_dimension": 769,
+        "phase_block_dimension": 1,
+        "range_dimension": 769,
+        "stage_block_dimension": 576,
+        "update_block_dimension": 192
+      },
+      "linear": null,
+      "mesh": {
+        "boundary_count": 65,
+        "interval_count": 64,
+        "stage_count": 3
+      },
+      "nox": null,
+      "period_relative_difference": null,
+      "phase_aligned_weighted_orbit_distance": null,
+      "rejection_reasons": [
+        "fixture_not_correction_input"
+      ],
+      "residual_diagnostics": null,
+      "rule": {
+        "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+        "family": "gauss-legendre",
+        "formal_order": 6,
+        "stage_count": 3
+      },
+      "upstream_status": "nonsolution"
+    }
+  ],
+  "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+  "fixture_manifest_sha256": "76112de11d14275e39ca1cb5d403fce7be7f8099d14bb73d04653e36f97a5e8a",
+  "parity_tolerance": 1e-08,
+  "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<current-build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check",
+  "runtime_provenance": {
+    "compiler_and_trilinos": [
+      "16.1.1",
+      "20260731",
+      "Trilinos_17.2.0-dev"
+    ],
+    "emitting_executable_source_fingerprints": [
+      "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d",
+      "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428",
+      "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+      "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+      "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+      "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+    ],
+    "executable_sha256": "5fc73da67f886f9c3cfb39f270f889996ea9c2c1ec57c8697bf97a3e2747c720",
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scipy": "1.17.1"
+  },
+  "schema_version": "episode008-cpp-gauss-correction-results-v1",
+  "source_provenance": {
+    "compiled_source_0": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "sha256": "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d"
+    },
+    "compiled_source_1": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428"
+    },
+    "compiled_source_2": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",
+      "sha256": "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38"
+    },
+    "compiled_source_3": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
+    },
+    "compiled_source_4": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
+      "sha256": "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca"
+    },
+    "compiled_source_5": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+    },
+    "fixed_mesh_midpoint_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
+      "sha256": "c8d9364262b93f2b4694e1f473c131eb3dec165f3a3e9d72d0f0b47738852f49"
+    },
+    "fixture_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/manifest.json",
+      "sha256": "76112de11d14275e39ca1cb5d403fce7be7f8099d14bb73d04653e36f97a5e8a"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py",
+      "sha256": "78789f8aea6ce18a59353fbebde309c6276065f713499ef699ae6ef0d32d4900"
+    },
+    "qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification.json",
+      "sha256": "a4f0ff438115e6c8059af008646c3d7774c4d4bc1a669574143b31c02f29e933"
+    },
+    "qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification_vectors.npz",
+      "sha256": "063809e7e688ab2911f285b5b259966074443841f9a82534eb76ad2a42dbd046"
+    }
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "artifact_kind": "cpp-gauss-fixed-parameter-fixtures",
+  "bundle_membership": {
+    "explicit_upstream_rejections": [
+      "canonical-g3-n16"
+    ],
+    "representative_nonsolutions": [
+      "canonical-g2-n64-nonsolution",
+      "canonical-g3-n64-nonsolution"
+    ],
+    "required_accepted_corrections": [
+      "canonical-g2-n64",
+      "canonical-g3-n32",
+      "canonical-g3-n64",
+      "guard-rho-0-g3-n32",
+      "guard-rho-minus-0.15-g3-n32",
+      "guard-rho-plus-0.15-g3-n32"
+    ]
+  },
+  "cases": [
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "canonical-g2-n64",
+      "formal_order": 4,
+      "interval_count": 64,
+      "path": "canonical-g2-n64.txt",
+      "period_s": 2466.547839980695,
+      "phase_reference_id": "canonical-g2-n32__transferred_polynomial",
+      "python_solution_key": "canonical-g2-n64__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification_vectors.npz",
+        "kind": "previous_accepted_collocation_case",
+        "parent_case_id": "canonical-g2-n32",
+        "reference_id": "canonical-g2-n32__transferred_polynomial",
+        "vector_key": "canonical-g2-n32__unknowns"
+      },
+      "sha256": "bc558a88ff827905567217f88b589a181804634a8ca1fc2ec1fe0fd8e9aed55f",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 2,
+      "unknown_sha256": "5332db2aee113ad2a9a3487dc31d03c93438116c870998559fdd17dad398ced1",
+      "unknown_size": 577,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "canonical-g3-n32",
+      "formal_order": 6,
+      "interval_count": 32,
+      "path": "canonical-g3-n32.txt",
+      "period_s": 2450.31821164103,
+      "phase_reference_id": "episode008-bootstrap-paper_0.99-final-cycle",
+      "python_solution_key": "canonical-g3-n32__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+        "artifact_sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c",
+        "kind": "frozen_Episode_007_Hermite_seed",
+        "parent_case_id": null,
+        "reference_artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+        "reference_artifact_sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c",
+        "reference_id": "episode008-bootstrap-paper_0.99-final-cycle",
+        "vector_key": "periodic_hermite_evaluator"
+      },
+      "sha256": "fa3aeb79d0c48129f01170955f23c9d533bd0e4ff856e0bef67439c09e791e7b",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 3,
+      "unknown_sha256": "9418a92448945a3afaf6dae01a70c9c99e297037db46cd914dc191e231651911",
+      "unknown_size": 385,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "canonical-g3-n64",
+      "formal_order": 6,
+      "interval_count": 64,
+      "path": "canonical-g3-n64.txt",
+      "period_s": 2461.6174737825213,
+      "phase_reference_id": "canonical-g3-n32__transferred_polynomial",
+      "python_solution_key": "canonical-g3-n64__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification_vectors.npz",
+        "kind": "previous_accepted_collocation_case",
+        "parent_case_id": "canonical-g3-n32",
+        "reference_id": "canonical-g3-n32__transferred_polynomial",
+        "vector_key": "canonical-g3-n32__unknowns"
+      },
+      "sha256": "92bad7d0458faaa1ff3febddfb09e075ed8c7c1d569c2ec3c321c396355a5c6e",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 3,
+      "unknown_sha256": "f56aeea8a08a576d0cb2614a333d9221c2a39de1f77a683c9f5a5e27956db5aa",
+      "unknown_size": 769,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "guard-rho-0-g3-n32",
+      "formal_order": 6,
+      "interval_count": 32,
+      "path": "guard-rho-0-g3-n32.txt",
+      "period_s": 5672.8386042039265,
+      "phase_reference_id": "phase-ref-slice-210",
+      "python_solution_key": "guard-rho-0-g3-n32__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "kind": "exact_TASK_061_target_midpoint_polynomial",
+        "parent_case_id": "spine-negative-T-hat-to-210-target-restart-phase-ref-slice-210",
+        "reference_artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "reference_artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "reference_id": "phase-ref-slice-210",
+        "vector_key": "point__spine-negative-T-hat-to-210-target-restart-phase-ref-slice-210"
+      },
+      "sha256": "172e3169c1583ee57b39149795e470dfc8e8505eeeb3c744c185e76cb5b30fc4",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 3,
+      "unknown_sha256": "bd4254cbd5e3b2593d83e15e9f9d3eea62af5127ccc5c0bb28ed56c0f7495018",
+      "unknown_size": 385,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "guard-rho-minus-0.15-g3-n32",
+      "formal_order": 6,
+      "interval_count": 32,
+      "path": "guard-rho-minus-0.15-g3-n32.txt",
+      "period_s": 6138.516304888415,
+      "phase_reference_id": "phase-ref-slice-210",
+      "python_solution_key": "guard-rho-minus-0.15-g3-n32__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "kind": "exact_TASK_061_target_midpoint_polynomial",
+        "parent_case_id": "slice210-negative-rho-target",
+        "reference_artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "reference_artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "reference_id": "phase-ref-slice-210",
+        "vector_key": "point__slice210-negative-rho-target"
+      },
+      "sha256": "79494dbe0e832681be8cd33bfe5a2646cea6d333c5cca4fc94efdbd7126d8e85",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 3,
+      "unknown_sha256": "35f231abc0b9a15ac5f06c1e9afef5d38c93d212c4c6ca113529e9dd0924f6aa",
+      "unknown_size": 385,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "guard-rho-plus-0.15-g3-n32",
+      "formal_order": 6,
+      "interval_count": 32,
+      "path": "guard-rho-plus-0.15-g3-n32.txt",
+      "period_s": 5090.709877373375,
+      "phase_reference_id": "phase-ref-slice-210",
+      "python_solution_key": "guard-rho-plus-0.15-g3-n32__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "kind": "exact_TASK_061_target_midpoint_polynomial",
+        "parent_case_id": "slice210-positive-rho-target",
+        "reference_artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_continuation_vectors.npz",
+        "reference_artifact_sha256": "08d2ca93d41fc19facc549037e99b3b565fcc21d15f760792844ad05d6493b1f",
+        "reference_id": "phase-ref-slice-210",
+        "vector_key": "point__slice210-positive-rho-target"
+      },
+      "sha256": "37b33deb11599396b537b633eb701268c13fbd09536fc77c354fd03baed0f977",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-4*sin(k+0.375) for k<last; log_period += 1e-5*sin(last+0.375)",
+        "version": "small-sinusoidal-correction-seed-v1"
+      },
+      "stage_count": 3,
+      "unknown_sha256": "cfe28781a6882daaf0c3ca41625ea4ee6f60c603e33c5b12064a863cf453a21e",
+      "unknown_size": 385,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "accepted"
+    },
+    {
+      "accepted_semantics": "nonlinear_accepted",
+      "case_id": "canonical-g3-n16",
+      "formal_order": 6,
+      "interval_count": 16,
+      "path": "canonical-g3-n16.txt",
+      "period_s": 3430.6296025849915,
+      "phase_reference_id": "episode008-bootstrap-paper_0.99-final-cycle",
+      "python_solution_key": "canonical-g3-n16__unknowns",
+      "scientifically_qualified": false,
+      "seed_lineage": {
+        "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+        "artifact_sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c",
+        "kind": "frozen_Episode_007_Hermite_seed",
+        "parent_case_id": null,
+        "reference_artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+        "reference_artifact_sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c",
+        "reference_id": "episode008-bootstrap-paper_0.99-final-cycle",
+        "vector_key": "periodic_hermite_evaluator"
+      },
+      "sha256": "e6018b733c230a3c92da73e38cb4eb43ca80e0afd26369e4d4c3f732091328c9",
+      "solve_seed_perturbation": null,
+      "stage_count": 3,
+      "unknown_sha256": "e85bb27ac08cb797ca7727646a58f5cd616b15ba35ad6205396a111d40d84ba3",
+      "unknown_size": 193,
+      "upstream_rejection_reasons": [
+        "scipy_unsuccessful",
+        "stage_max_tolerance",
+        "stage_rms_tolerance",
+        "update_max_tolerance",
+        "update_rms_tolerance",
+        "phase_tolerance"
+      ],
+      "upstream_status": "rejected"
+    },
+    {
+      "case_id": "canonical-g2-n64-nonsolution",
+      "formal_order": 4,
+      "interval_count": 64,
+      "path": "canonical-g2-n64-nonsolution.txt",
+      "period_s": 2465.812237159073,
+      "perturbation_version": "sinusoidal-packed-vector-v1",
+      "phase_reference_id": "canonical-g2-n32__transferred_polynomial",
+      "projection_source": {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g2-n64-nonsolution.json",
+        "projection": "exact_unknowns_mesh_and_phase_reference",
+        "sha256": "acab6a41d9b561e9d485396686706b447149075313ca317382d976db6e1dd4f2",
+        "source_case_id": "g2-n64-nonsolution",
+        "unknown_sha256": "260067dc9a0e71a39e140ad800510c92165c88866e5346500058e5166aa14955"
+      },
+      "sha256": "525ddb1dde5600d2c7685b2ae1029e4e22685e236f1fca0be1505351cd899a09",
+      "stage_count": 2,
+      "unknown_sha256": "260067dc9a0e71a39e140ad800510c92165c88866e5346500058e5166aa14955",
+      "unknown_size": 577,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "nonsolution"
+    },
+    {
+      "case_id": "canonical-g3-n64-nonsolution",
+      "formal_order": 6,
+      "interval_count": 64,
+      "path": "canonical-g3-n64-nonsolution.txt",
+      "period_s": 2462.3320713617263,
+      "perturbation_version": "sinusoidal-packed-vector-v1",
+      "phase_reference_id": "canonical-g3-n32__transferred_polynomial",
+      "projection_source": {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g3-n64-nonsolution.json",
+        "projection": "exact_unknowns_mesh_and_phase_reference",
+        "sha256": "fa2e971b4940727caf6604ebe1ba6ee87d180b2fa77410c3097176249c34b040",
+        "source_case_id": "g3-n64-nonsolution",
+        "unknown_sha256": "efa442902800d09a67928adaf6a5051b1c5a78f82629735f0dd0fc636be3db7c"
+      },
+      "sha256": "772f6cae0ee09f7b524164197824ed5917992b7d921b310ca56937c0830a8a57",
+      "stage_count": 3,
+      "unknown_sha256": "efa442902800d09a67928adaf6a5051b1c5a78f82629735f0dd0fc636be3db7c",
+      "unknown_size": 769,
+      "upstream_rejection_reasons": [],
+      "upstream_status": "nonsolution"
+    }
+  ],
+  "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+  "fixture_magic": "BS2026_GAUSS_FIXTURE_V1",
+  "formulation_version": "explicit-stage-gauss-fixed-mesh-v1",
+  "parity_tolerances": {
+    "absolute_floor": 1e-13,
+    "corrected_fixed_mesh": 1e-08,
+    "directional_relative": 1e-06,
+    "residual_relative": 1e-11
+  },
+  "projection_contract": {
+    "accepted_correction_seeds": "qualification solution plus versioned small sinusoidal perturbation",
+    "nonsolutions": "exact unknowns, mesh, and phase reference from TASK-064 language-neutral cases",
+    "upstream_manifest_sha256": "11ba52870f971b83a637deb0ae583830cd6dba6646763b57d2ff80752675c17e",
+    "upstream_schema_version": "episode008-gauss-parity-v1"
+  },
+  "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_fixtures.py --check",
+  "runtime_provenance": {
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scipy": "1.17.1"
+  },
+  "schema_version": "episode008-cpp-gauss-fixtures-v1",
+  "solver_version": "thyra-nox-amesos2-klu2-v1",
+  "source_provenance": {
+    "cpp_assembler": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428"
+    },
+    "cpp_cli": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+    },
+    "cpp_collocation_coefficients": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
+      "sha256": "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca"
+    },
+    "cpp_loca": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "sha256": "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d"
+    },
+    "cpp_model": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",
+      "sha256": "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38"
+    },
+    "cpp_nox": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
+    },
+    "fixed_mesh_midpoint_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
+      "sha256": "c8d9364262b93f2b4694e1f473c131eb3dec165f3a3e9d72d0f0b47738852f49"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_fixtures.py",
+      "sha256": "88c3e5581f89b63b7b4f311584f76c2a0bece57dbcdae2c968ec1790f9968692"
+    },
+    "language_neutral_g2_n64_converged": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g2-n64-converged.json",
+      "sha256": "0129b83c02198fc458bee92292960f3eeb21493b4087be061204c216498ed93a"
+    },
+    "language_neutral_g2_n64_nonsolution": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g2-n64-nonsolution.json",
+      "sha256": "acab6a41d9b561e9d485396686706b447149075313ca317382d976db6e1dd4f2"
+    },
+    "language_neutral_g3_n64_converged": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g3-n64-converged.json",
+      "sha256": "3dc39dbb5d9ebc46701ce06ac39da53672b9c90d892ca8d8ea36425fd6e971b2"
+    },
+    "language_neutral_g3_n64_nonsolution": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/g3-n64-nonsolution.json",
+      "sha256": "fa2e971b4940727caf6604ebe1ba6ee87d180b2fa77410c3097176249c34b040"
+    },
+    "language_neutral_parity_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_parity_fixtures/manifest.json",
+      "sha256": "11ba52870f971b83a637deb0ae583830cd6dba6646763b57d2ff80752675c17e"
+    },
+    "python_collocation_coefficients": {
+      "path": "src/bergner_spichtinger_2026/collocation_coefficients.py",
+      "sha256": "17df2cefd24c37c77a274170538c9a13862853aae5e25c7a85ae7550aa7cf9c8"
+    },
+    "python_periodic_orbits": {
+      "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
+      "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
+    },
+    "qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification.json",
+      "sha256": "a4f0ff438115e6c8059af008646c3d7774c4d4bc1a669574143b31c02f29e933"
+    },
+    "qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification_vectors.npz",
+      "sha256": "063809e7e688ab2911f285b5b259966074443841f9a82534eb76ad2a42dbd046"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  }
+}

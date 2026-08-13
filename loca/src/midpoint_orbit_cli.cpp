@@ -171,6 +171,11 @@ struct Fixture {
   Environment environment;
   PhaseReference reference;
   std::vector<double> unknowns;
+  int stage_count = 1;
+  int formal_order = 2;
+  bool upstream_accepted = true;
+  std::string upstream_status = "accepted";
+  std::string coefficient_checksum = bs2026_loca::collocation::artifact_sha256;
   double log_w_lower = std::log(0.01);
   double log_w_upper = std::log(0.25);
   double spine_derivative = 0.037;
@@ -183,21 +188,40 @@ Fixture read_fixture(const std::string& path) {
   std::string magic;
   std::size_t count = 0;
   input >> magic >> fixture.case_id >> count;
-  if (magic != "BS2026_MIDPOINT_FIXTURE_V1" || count == 0) throw std::runtime_error("invalid fixture header");
+  if (magic == "BS2026_GAUSS_FIXTURE_V1") {
+    input >> fixture.stage_count >> fixture.formal_order >> fixture.upstream_status >> fixture.coefficient_checksum;
+    if (fixture.stage_count < 1 || fixture.stage_count > bs2026_loca::midpoint::maximum_stage_count)
+      throw std::runtime_error("invalid fixture stage count");
+    const auto compiled_rule = bs2026_loca::midpoint::gauss_legendre_rule(fixture.stage_count);
+    if (fixture.formal_order != compiled_rule.formal_order)
+      throw std::runtime_error("fixture formal order does not match compiled Gauss rule");
+    if (fixture.coefficient_checksum != bs2026_loca::collocation::artifact_sha256)
+      throw std::runtime_error("fixture coefficient checksum does not match compiled artifact");
+    if (fixture.upstream_status != "accepted" && fixture.upstream_status != "rejected" &&
+        fixture.upstream_status != "nonsolution")
+      throw std::runtime_error("invalid fixture upstream status");
+    fixture.upstream_accepted = fixture.upstream_status == "accepted";
+  } else if (magic != "BS2026_MIDPOINT_FIXTURE_V1") {
+    throw std::runtime_error("invalid fixture header");
+  }
+  if (count == 0) throw std::runtime_error("invalid fixture interval count");
   input >> fixture.environment.p >> fixture.environment.T >> fixture.environment.w
         >> fixture.environment.F >> fixture.environment.N_a >> fixture.environment.dz;
   fixture.environment.include_evaporation = false;
   input >> fixture.log_w_lower >> fixture.log_w_upper >> fixture.spine_derivative;
   for (double& scale : fixture.reference.state_scaling) input >> scale;
   fixture.reference.boundaries.resize(count + 1);
-  fixture.reference.stage_values.resize(count);
-  fixture.reference.stage_derivatives.resize(count);
-  fixture.unknowns.resize(6 * count + 1);
+  fixture.reference.stage_values.resize(count * static_cast<std::size_t>(fixture.stage_count));
+  fixture.reference.stage_derivatives.resize(count * static_cast<std::size_t>(fixture.stage_count));
+  fixture.unknowns.resize(3 * count * static_cast<std::size_t>(fixture.stage_count + 1) + 1);
   for (double& value : fixture.reference.boundaries) input >> value;
   for (auto& row : fixture.reference.stage_values) for (double& value : row) input >> value;
   for (auto& row : fixture.reference.stage_derivatives) for (double& value : row) input >> value;
   for (double& value : fixture.unknowns) input >> value;
-  if (!input) throw std::runtime_error("truncated or malformed midpoint fixture");
+  if (!input) throw std::runtime_error("truncated or malformed orbit fixture");
+  input >> std::ws;
+  if (input.peek() != std::char_traits<char>::eof())
+    throw std::runtime_error("orbit fixture contains trailing data");
   return fixture;
 }
 
@@ -222,6 +246,25 @@ Teuchos::RCP<vector_type> shifted_vector(const OrbitLayout& layout,
   return result;
 }
 
+void write_runtime_provenance(const OrbitLayout& layout) {
+  std::cout << "rule " << layout.rule().family << " " << layout.stage_count() << " "
+            << layout.formal_order() << " " << bs2026_loca::collocation::artifact_sha256 << "\n";
+  std::cout << "build_identity " << __VERSION__ << " Trilinos_" << TRILINOS_VERSION_STRING << "\n";
+  std::cout << "source_fingerprint " << BS2026_MIDPOINT_LOCA_SHA256 << " " << BS2026_MIDPOINT_ORBIT_SHA256
+            << " " << BS2026_MODEL_SHA256 << " " << BS2026_MIDPOINT_NOX_SHA256 << " "
+            << BS2026_COLLOCATION_COEFFICIENTS_SHA256 << " " << BS2026_MIDPOINT_CLI_SHA256 << "\n";
+}
+
+void write_solve_contract(const Assembler& assembler) {
+  const auto& layout = assembler.layout();
+  const auto graph = assembler.graph();
+  std::cout << "mesh " << layout.interval_count() << " " << layout.stage_count() << " "
+            << assembler.phase_reference().boundaries.size() << "\n";
+  std::cout << "solve_layout " << layout.unknown_size() << " " << layout.unknown_size() << " "
+            << layout.stage_size() << " " << layout.endpoint_size() << " 1\n";
+  std::cout << "solve_graph " << graph->getGlobalNumEntries() << " retained_reuse true\n";
+}
+
 void write_solve_result(const SolveResult& result, const OrbitLayout& layout) {
   std::cout << std::setprecision(17) << std::scientific;
   std::cout << "solver " << bs2026_loca::midpoint::nox_solver_version << "\n";
@@ -233,6 +276,7 @@ void write_solve_result(const SolveResult& result, const OrbitLayout& layout) {
             << bs2026_loca::midpoint::corrected_solution_parity_tolerance << "\n";
   std::cout << "thyra_system " << layout.unknown_size() << " " << layout.unknown_size()
             << " " << layout.log_period_index() << " " << layout.phase_row() << "\n";
+  write_runtime_provenance(layout);
   std::cout << "nox " << (result.nox_converged ? "converged" : "not_converged") << " "
             << result.nonlinear_iterations << " " << result.nox_residual_norm << "\n";
   std::cout << "linear " << result.linear.backend << " "
@@ -243,7 +287,8 @@ void write_solve_result(const SolveResult& result, const OrbitLayout& layout) {
             << (result.linear.numeric_complete ? "true" : "false") << " "
             << (result.linear.solve_complete ? "true" : "false") << "\n";
   write_vector("solution", *result.unknowns);
-  write_vector("final_residual", *result.residual);
+  std::cout << "final_residual_available " << (result.residual_available ? "true" : "false") << "\n";
+  if (result.residual_available) write_vector("final_residual", *result.residual);
   std::cout << "period " << result.period << "\n";
   std::cout << "diagnostics " << result.diagnostics.stage_max << " " << result.diagnostics.stage_rms << " "
             << result.diagnostics.update_max << " " << result.diagnostics.update_rms << " "
@@ -303,7 +348,7 @@ int main(int argc, char** argv) {
     if (command == "guard-nonfinite-reference") {
       fixture.reference.stage_values[0][0] = std::numeric_limits<double>::quiet_NaN();
       try {
-        Assembler invalid_assembler(OrbitLayout(fixture.reference.stage_values.size(), comm),
+        Assembler invalid_assembler(OrbitLayout(fixture.reference.boundaries.size() - 1, fixture.stage_count, comm),
                                     fixture.environment, fixture.reference);
       } catch (const std::invalid_argument&) {
         std::cout << "nonfinite_reference_rejected true\n";
@@ -313,7 +358,7 @@ int main(int argc, char** argv) {
     }
     if (command == "guard-invalid-period") {
       fixture.unknowns.back() = std::numeric_limits<double>::infinity();
-      Assembler guard_assembler(OrbitLayout(fixture.reference.stage_values.size(), comm),
+      Assembler guard_assembler(OrbitLayout(fixture.reference.boundaries.size() - 1, fixture.stage_count, comm),
                                 fixture.environment, fixture.reference);
       auto invalid_unknowns = make_vector(guard_assembler.layout(), fixture.unknowns);
       try {
@@ -324,7 +369,7 @@ int main(int argc, char** argv) {
       }
       throw std::runtime_error("invalid physical period was not rejected");
     }
-    OrbitLayout layout(fixture.reference.stage_values.size(), comm);
+    OrbitLayout layout(fixture.reference.boundaries.size() - 1, fixture.stage_count, comm);
     Assembler assembler(layout, fixture.environment, fixture.reference);
     auto unknowns = make_vector(layout, fixture.unknowns);
     if (command == "loca-contract" || command == "loca-smoke" || command == "loca-branches") {
@@ -513,6 +558,18 @@ int main(int argc, char** argv) {
       return 0;
     }
     if (command == "solve") {
+      std::cout << "upstream_status " << fixture.upstream_status << "\n";
+      write_solve_contract(assembler);
+      if (fixture.upstream_status == "rejected") {
+        write_runtime_provenance(layout);
+        std::cout << "accepted false\nrejection_reasons 1 upstream_fixture_rejected\n";
+        return 0;
+      }
+      if (fixture.upstream_status == "nonsolution") {
+        write_runtime_provenance(layout);
+        std::cout << "accepted false\nrejection_reasons 1 fixture_not_correction_input\n";
+        return 0;
+      }
       auto assembler_ptr = Teuchos::rcp(new Assembler(std::move(assembler)));
       write_solve_result(bs2026_loca::midpoint::solve_fixed_parameter(assembler_ptr, *unknowns), layout);
       return 0;
@@ -551,13 +608,16 @@ int main(int argc, char** argv) {
 
     std::cout << std::setprecision(17) << std::scientific;
     std::cout << "case " << fixture.case_id << "\n";
-    std::cout << "constants " << bs2026_loca::midpoint::formulation_version << " "
+    std::cout << "constants " << (layout.stage_count() == 1 ? bs2026_loca::midpoint::formulation_version : bs2026_loca::midpoint::gauss_formulation_version) << " "
               << bs2026_loca::midpoint::formulation_parity_tolerance << " "
               << bs2026_loca::midpoint::formulation_parity_absolute_floor << " "
               << bs2026_loca::midpoint::directional_relative_tolerance << "\n";
     std::cout << "layout " << layout.interval_count() << " " << layout.unknown_size() << " "
-              << layout.endpoint_index(0, 0) << " " << layout.stage_index(0, 0) << " "
+              << layout.endpoint_index(0, 0) << " " << layout.stage_index(0, 0, 0) << " "
               << layout.log_period_index() << " " << layout.phase_row() << "\n";
+    write_runtime_provenance(layout);
+    std::cout << "blocks " << layout.stage_size() << " " << layout.endpoint_size() << " 1\n";
+    std::cout << "upstream_status " << fixture.upstream_status << "\n";
     const bool graph_reused =
         jacobian->getCrsGraph().getRawPtr() == assembler.graph().getRawPtr() &&
         second_jacobian->getCrsGraph().getRawPtr() == assembler.graph().getRawPtr();
@@ -582,6 +642,12 @@ int main(int argc, char** argv) {
       centered_difference->update(1.0 / (2.0 * epsilon), *plus_residual,
                                   -1.0 / (2.0 * epsilon), *minus_residual, 0.0);
       write_vector("centered_difference", *centered_difference);
+      auto log_period_direction = Teuchos::rcp(new vector_type(layout.domain_map()));
+      log_period_direction->putScalar(0.0);
+      log_period_direction->replaceGlobalValue(layout.log_period_index(), 1.0);
+      auto log_period_column = Teuchos::rcp(new vector_type(layout.range_map()));
+      jacobian->apply(*log_period_direction, *log_period_column);
+      write_vector("log_period", *log_period_column);
       write_vector("rho", *columns.first);
       write_vector("temperature_hat", *columns.second);
       std::cout << "diagnostics " << diagnostics.stage_max << " " << diagnostics.stage_rms << " "
@@ -591,6 +657,8 @@ int main(int argc, char** argv) {
                 << diagnostics.largest_update.interval << " " << diagnostics.largest_update.component;
       for (double scale : diagnostics.state_scaling) std::cout << " " << scale;
       std::cout << "\n";
+      std::cout << "higher_order_diagnostics " << diagnostics.largest_stage.interval << " "
+                << diagnostics.largest_stage.stage << " " << diagnostics.largest_stage.component << "\n";
     } else if (command != "inspect") {
       throw std::invalid_argument("unknown command: " + command);
     }

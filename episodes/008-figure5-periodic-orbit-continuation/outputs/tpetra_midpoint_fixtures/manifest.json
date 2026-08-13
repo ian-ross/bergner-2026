@@ -120,15 +120,15 @@
     },
     "cpp_assembler": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
-      "sha256": "5fbccd9eb241046249aa3e2bd48918a87e01c4d221c4330510ea97b7e2cddda8"
+      "sha256": "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428"
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "3be7da15623f86e90ad4d0c6ebf7b2f40e56698956217b2620e9ef7dc3de0641"
+      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
     },
     "cpp_nox_adapter": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
-      "sha256": "1d88ec3b39b73b24c9e4ed15f9a983acf5f47288ecce02f1ce7218a8d313834f"
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py",

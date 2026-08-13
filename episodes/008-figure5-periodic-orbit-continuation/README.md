@@ -208,6 +208,28 @@ The canonical three-stage `N=16` solve is deliberately retained as rejected afte
 
 The artifact explicitly separates nonlinear acceptance from discretization qualification: 20 cases satisfy the finite-dimensional residual gates, one is rejected, and zero fixed-uniform cases are qualified because defect and/or same-rule refinement evidence misses. Cross-order comparisons are retained separately. Accordingly, fixed uniform meshes are not production-qualified. The non-Floquet Radau triggers based on defect/convergence stagnation are not yet active because their contract applies only after two adaptive remesh cycles. Finite-positive physical mapping of endpoints/stages is checked; polynomial ringing is `not_evaluated` because TASK-064 defines no versioned ringing metric. Floquet remains `not_evaluated` through TASK-068.
 
+## C++ sparse higher-order fixed-parameter correction
+
+The serial Tpetra base assembler now consumes the frozen one-, two-, and three-stage Gauss tables. Its square layout has `3N(r+1)+1` unknowns/residuals, interval-major explicit stages, cyclic endpoint updates, `log(P)`, and one quadrature-normalized phase row. The fill-completed sparse graph is retained for each fixed mesh/rule; Jacobian values and normalized rho/T-hat columns use local Sacado model derivatives. Midpoint constructors/index overloads remain compatibility entry points. `midpoint_loca.hpp` explicitly rejects higher-order layouts because native higher-order continuation is TASK-066 scope.
+
+The generalized Thyra/NOX/Amesos2-KLU2 corrector preserves independent nonlinear, residual-block, phase, physical positivity/finiteness, phase-energy, and concrete factorization/solve gates. Exact upstream solutions receive a small deterministic solve perturbation so each required correction exercises KLU2 instead of terminating at iteration zero. Missing early/zero-iteration linear diagnostics remain stably unreported and therefore fail the independent linear gate.
+
+[`scripts/generate_cpp_higher_order_fixtures.py`](scripts/generate_cpp_higher_order_fixtures.py) projects TASK-064 vectors into versioned text fixtures under [`outputs/cpp_higher_order_fixtures/`](outputs/cpp_higher_order_fixtures/). The explicit bundle contains canonical two-stage `N=64`, canonical three-stage `N=32` and `N=64`, all three accepted `T=210 K` three-stage `N=32` guards, the upstream-rejected canonical three-stage `N=16` case, and the exact versioned two-/three-stage `N=64` nonsolutions from the language-neutral bundle. Its manifest records nonlinear-accepted semantics separately from scientific qualification, exact projection linkage, seed/reference lineage, the canonical coefficient checksum, source/runtime hashes, perturbations, and parity tolerances. Regenerate or check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_fixtures.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_fixtures.py --check
+```
+
+All six accepted bundle seeds correct with real KLU2 activity and match corresponding Python periods and phase-aligned weighted orbits within `1e-8`. The rejected TASK-064 case returns `upstream_fixture_rejected` without attempting NOX; nonsolutions instead return `fixture_not_correction_input`, so neither status is silently omitted or mislabeled.
+
+[`outputs/cpp_higher_order_correction_results.json`](outputs/cpp_higher_order_correction_results.json) freezes the executed C++ evidence for all accepted, rejected, and nonsolution fixture paths. It records rule/mesh/layout/block/retained-graph dimensions, compiled coefficient and source fingerprints, NOX/KLU2 counters, residual diagnostics, correction parity, executable/runtime provenance, and explicit rejection reasons. Its generator rejects stale binaries whose compiled fingerprints do not match current sources:
+
+```bash
+BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py
+BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check
+```
+
 ## TASK-062 higher-order/adaptive design
 
 TASK-062 reviewed the completed midpoint evidence before selecting the next numerical stage. TASK-056 showed that tiny discrete residuals do not imply period accuracy: the canonical `N=64` midpoint period is more than 12% above the Episode 007 reference, while refinement reduces the discrepancy substantially. TASK-057 through TASK-061 then established transparent Python continuation, sparse Tpetra/NOX correction, and genuine native LOCA ownership with close Python/C++ parity. The remaining problem is therefore orbit resolution, not continuation ownership.
