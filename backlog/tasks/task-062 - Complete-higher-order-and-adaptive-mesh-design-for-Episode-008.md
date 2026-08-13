@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:04'
+updated_date: '2026-08-13 15:06'
 labels:
   - episode-008
   - design
@@ -65,4 +65,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: near-Hopf regular-orbit v1 stopping triggers if equilibrium-centered weighted amplitude A<1e-3, current scaled phase energy <1e-4, phase/time-shift alignment cosine <0.50 even after one refresh, NOX uses >=20 iterations at two consecutive accepted points, or LOCA has two consecutive rejected attempts at minimum normalized-coordinate step 1e-5. Tangent/parameter reversal indicating a fold stops automatic single-valued sampling but not scientific branch continuation. Exact Hopf points remain separate hopf_linear_limit records.
 
 - Design interview decision: Hopf connection requires >=5 reliable approach points with monotone decreasing amplitude spanning >=3x, all orbit gates, and no fold/secondary flag. Fit P=P0+c2 A^2 and P=P0+c2 A^2+c4 A^4. Connect only if both P0 values agree with 2pi/omega_H within 1%, intercepts differ <0.5%, leave-one-out linear intercept span <1%, max relative fit residual <1%, and A^2 approaches zero consistently with signed Hopf-coordinate distance. Otherwise preserve an explicit unresolved gap.
+
+- Design interview decision: native LOCA owns production orbits; an independent Python/SciPy postprocessor computes Floquet multipliers from saved native piecewise collocation polynomials. Primary variational integration uses DOP853 over normalized phase at rtol=1e-10, atol=1e-12; rerun at 1e-11/1e-13 near or beyond thresholds. Use implicit Radau at stratified difficult points and every suspected unit-circle crossing. Identify the trivial multiplier nearest 1 and record mixed backend provenance explicitly.
 <!-- SECTION:NOTES:END -->
