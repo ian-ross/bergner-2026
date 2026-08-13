@@ -1,10 +1,11 @@
 ---
 id: TASK-065
 title: Implement C++ higher-order sparse orbit correction and parity
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@myself'
 created_date: '2026-08-13 15:34'
-updated_date: '2026-08-13 16:11'
+updated_date: '2026-08-13 19:28'
 labels:
   - episode-008
   - cpp
