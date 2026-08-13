@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 16:06'
+updated_date: '2026-08-13 16:08'
 labels:
   - episode-008
   - design
@@ -26,11 +26,11 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Fixed-mesh midpoint evidence is reviewed before production adaptation constants are chosen
-- [ ] #2 The higher-order fixed-mesh validation sequence and criteria for adding a Radau comparison are finalized
-- [ ] #3 Composite monitor normalization, independent defect checks, r-movement bounds, h-marking policy, mesh caps, and remesh restart acceptance are documented as implementable v1 hypotheses for the initial run; production retention or evidence-based revision is deferred to TASK-069
-- [ ] #4 Phase refresh, Hopf stopping/extrapolation, interpolation, and single-valued-tripwire thresholds are documented as implementable v1 hypotheses for the initial run; Floquet thresholds are downstream direction and not_evaluated through TASK-068, with production retention or revision deferred to TASK-069
-- [ ] #5 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
+- [x] #1 Fixed-mesh midpoint evidence is reviewed before production adaptation constants are chosen
+- [x] #2 The higher-order fixed-mesh validation sequence and criteria for adding a Radau comparison are finalized
+- [x] #3 Composite monitor normalization, independent defect checks, r-movement bounds, h-marking policy, mesh caps, and remesh restart acceptance are documented as implementable v1 hypotheses for the initial run; production retention or evidence-based revision is deferred to TASK-069
+- [x] #4 Phase refresh, Hopf stopping/extrapolation, interpolation, and single-valued-tripwire thresholds are documented as implementable v1 hypotheses for the initial run; Floquet thresholds are downstream direction and not_evaluated through TASK-068, with production retention or revision deferred to TASK-069
+- [x] #5 Atomic initial implementation tasks are created together with a mandatory post-run evidence-review checkpoint; downstream production tasks are deferred until that checkpoint
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -118,4 +118,27 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Final review clarification: the continuation-first scope correction supersedes earlier interview-note wording that called v1 choices production commitments. Three-stage Gauss and h/r constants are initial-run hypotheses. Earlier active-Floquet wording is likewise superseded: Floquet postprocessing, gates, and Floquet-derived Radau evidence remain downstream and not_evaluated through TASK-068. Broader IVP/Radau validation is also downstream except TASK-064 canonical DOP853.
 
 - Final portability fixes specify 16 equal subcell-midpoint monitor sampling per old element, stable weighted normalization, piecewise-constant CDF inversion with tolerance, simultaneous global-beta mesh feasibility, deterministic adaptation-cycle/soft-cap rules, pure-r retry semantics, and TASK-068/TASK-069 near-Hopf evidence/fit ownership. TASK-067/068/069 acceptance criteria were updated through Backlog CLI; exactly TASK-064..069 remain.
+
+- Final validation: independent numerical, task-quality, and documentation reviews were resolved across provisional-vs-production scope, Floquet/IVP/Hopf ownership, deterministic monitor/equidistribution/adaptation/retry rules, language-neutral fixture handoffs, nonuniform parity, terminal target coverage, and downstream dependency gating. Backlog plain views for TASK-062 and TASK-064..069 passed; git diff --check passed; documentation commit completed.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed the evidence-based higher-order and adaptive continuation design for Episode 008.
+
+Changes:
+- Reviewed TASK-056 through TASK-061 evidence and documented why the next problem is orbit resolution rather than continuation ownership.
+- Defined the initial-run fixed-order Gauss qualification ladder and evidence-triggered Radau policy.
+- Specified deterministic v1 two-grid defect, h marking, composite r monitor, equidistribution, mesh movement/caps, remesh restart, phase refresh, near-Hopf diagnostics, and single-valued tripwires.
+- Clarified that v1 constants are operational hypotheses; Floquet, broader IVP/Radau validation, final Hopf connection policy, production schemas, and exceptional completion policy remain downstream decisions for the evidence checkpoint.
+- Updated the Episode 008 README and decision record.
+- Created six atomic continuation-first tasks: TASK-064 Python higher-order qualification, TASK-065 C++ sparse correction/parity, TASK-066 native higher-order LOCA, TASK-067 Python h/r reference, TASK-068 native adaptive LOCA run, and TASK-069 mandatory post-run evidence review. TASK-063 remains independent non-authoritative paper comparison evidence.
+- Added explicit language-neutral fixture handoffs, nonuniform Python/C++ parity, terminal target statuses, and a dependency gate requiring later production tasks to depend on TASK-069.
+
+Validation:
+- Independent numerical/design, task-quality, and documentation review findings were resolved.
+- Backlog plain views for TASK-062 and TASK-064 through TASK-069 passed.
+- git diff --check passed.
+- No code tests were required for this documentation/backlog-only task.
+<!-- SECTION:FINAL_SUMMARY:END -->
