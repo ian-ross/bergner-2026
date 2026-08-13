@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 15:34'
+updated_date: '2026-08-13 15:36'
 labels:
   - episode-008
   - design
@@ -108,4 +108,8 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: paper digitization is an external discrepancy diagnostic, never a numerical acceptance/tuning target. Flag comparison when |Delta log(P)| > max(3*sigma_digitized_logP,0.02). Investigate model assumptions, parameter mapping, paper method, and digitization without weakening convergence or adjusting periods toward pixels. Internal convergence and IVP validation remain authoritative.
 
 - Scope correction from design interview: stop specifying failure/completion policy before adaptive higher-order continuation evidence exists. Implement the continuation approach in staged Python/C++/native-LOCA tasks, run it, inspect numerical behavior and artifacts, then decide production completion, exceptional-gap handling, and later workflow details at an explicit evidence-review checkpoint. Previously agreed numerical v1 choices remain initial implementation hypotheses, not claims that every downstream policy must be frozen now.
+
+- Implemented the approved continuation-first design record and README summary. The documentation now synthesizes TASK-056..061 evidence; specifies the fixed-order qualification ladder and operational v1 defect/monitor/h-r/restart/phase/Hopf/Floquet hypotheses; explicitly removes v1 landmark snapping; and defers exceptional production policy and exact downstream schema/task definition until adaptive-run evidence exists.
+- Revised AC #5 through the Backlog CLI to require atomic initial implementation tasks plus a mandatory post-run evidence checkpoint. Created exactly six tasks in serial dependency order: TASK-064 Python higher-order qualification; TASK-065 C++ sparse higher-order correction/parity; TASK-066 native higher-order LOCA; TASK-067 Python h/r reference; TASK-068 native adaptive remesh/restart run; TASK-069 evidence review and next-stage design. TASK-063 remains independent, non-blocking comparison evidence.
+- Validated the task graph through Backlog plain views, confirmed the new tasks have no creation-time implementation plans, reviewed the complete documentation diff, and passed git diff --check. No backlog Markdown was edited directly.
 <!-- SECTION:NOTES:END -->
