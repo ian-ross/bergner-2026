@@ -15,20 +15,34 @@ add_executable(bs2026_loca_model
   src/model_cli.cpp
 )
 
-target_include_directories(bs2026_loca_model PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${Trilinos_INCLUDE_DIRS}
+add_executable(bs2026_midpoint_orbit
+  src/midpoint_orbit_cli.cpp
 )
 
+set(BS2026_LOCA_TARGETS bs2026_loca_model bs2026_midpoint_orbit)
+
+foreach(target IN LISTS BS2026_LOCA_TARGETS)
+  target_include_directories(${target} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${Trilinos_INCLUDE_DIRS}
+  )
+endforeach()
+
 if(EXISTS "${BS2026_MPI_ROOT}/include/mpi.h")
-  target_include_directories(bs2026_loca_model PRIVATE "${BS2026_MPI_ROOT}/include")
+  foreach(target IN LISTS BS2026_LOCA_TARGETS)
+    target_include_directories(${target} PRIVATE "${BS2026_MPI_ROOT}/include")
+  endforeach()
 endif()
 if(EXISTS "${BS2026_MPI_ROOT}/lib64/libmpi.so")
-  target_link_directories(bs2026_loca_model PRIVATE "${BS2026_MPI_ROOT}/lib64")
-  target_link_libraries(bs2026_loca_model PRIVATE mpi)
-  set_property(TARGET bs2026_loca_model APPEND PROPERTY BUILD_RPATH "${BS2026_MPI_ROOT}/lib64")
+  foreach(target IN LISTS BS2026_LOCA_TARGETS)
+    target_link_directories(${target} PRIVATE "${BS2026_MPI_ROOT}/lib64")
+    target_link_libraries(${target} PRIVATE mpi)
+    set_property(TARGET ${target} APPEND PROPERTY BUILD_RPATH "${BS2026_MPI_ROOT}/lib64")
+  endforeach()
 endif()
 
 separate_arguments(BS2026_TRILINOS_CXX_FLAGS NATIVE_COMMAND "${Trilinos_CXX_COMPILER_FLAGS}")
-target_compile_options(bs2026_loca_model PRIVATE ${BS2026_TRILINOS_CXX_FLAGS})
-target_link_libraries(bs2026_loca_model PRIVATE ${Trilinos_LIBRARIES})
+foreach(target IN LISTS BS2026_LOCA_TARGETS)
+  target_compile_options(${target} PRIVATE ${BS2026_TRILINOS_CXX_FLAGS})
+  target_link_libraries(${target} PRIVATE ${Trilinos_LIBRARIES})
+endforeach()

@@ -419,6 +419,14 @@ Build the periodic-orbit path with the installed modern sparse stack:
 
 The current Trilinos installation provides Tpetra, Thyra, NOX/LOCA Thyra interfaces, Belos, Amesos2, and Ifpack2; Epetra is not in its configured package list. Starting serially with Tpetra preserves the path to later interval distribution without another algebra-layer rewrite.
 
+### Observed serial Tpetra midpoint assembly (TASK-059)
+
+The midpoint migration core now uses square one-rank Tpetra domain/range maps and rejects communicators whose size is not one. `OrbitLayout` owns every global endpoint, explicit midpoint stage, `log(P)`, stage-row, cyclic update-row, and phase-row index. A fill-completed `Tpetra::CrsGraph` is retained by the assembler and supplied to every `Tpetra::CrsMatrix`; graph identity is therefore stable while the fixed layout is unchanged.
+
+The graph and value assembly cover the local endpoint/stage blocks, final-to-first periodic wraparound, global `log(P)` derivatives, and stage-only normalized phase row. Small local Sacado evaluations provide transformed dynamics, state Jacobians, and physical/normalized parameter columns without differentiating the packed orbit. Ownership-safe diagnostics resolve global residual IDs through the range map and retain block max/RMS, phase magnitude/energy, state scaling, and largest-residual interval/component IDs. No Thyra group, NOX solve, pseudo-arclength row, Epetra path, or dense fallback is part of this milestone.
+
+Language-neutral accepted and nonsolution fixtures cover `N=8` and translate the frozen TASK-056 `N=64` boundaries, phase samples, unknowns, and residual semantics. A deterministic manifest records source and fixture hashes plus matching formulation/tolerance constants. Focused parity checks compare all residual components at relative `1e-11` with a `1e-13` absolute floor and test assembled Jacobian actions plus rho/T-hat parameter columns against centered differences at `1e-6`; the C++ Jacobian action is independently checked against centered residual evaluations through the C++ assembler.
+
 ## Newton linear solves and preconditioning
 
 Use Amesos2 sparse direct factorization, preferably KLU2, for the initial serial midpoint, higher-order, and remeshing milestones. The expected systems remain modest (`385` unknowns for midpoint `N = 64`; `3073` for three-stage `N = 256`) and direct solves provide a correctness reference while residual/Jacobian behavior is still being established.

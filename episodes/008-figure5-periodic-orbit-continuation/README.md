@@ -118,6 +118,23 @@ The reference branch starts at the Episode 007 `T = 225 K`, `w = 0.1 m s^-1` orb
 
 **This remains a continuation-machinery and Python-to-LOCA parity milestone.** The accepted `N = 64` midpoint periods range from roughly `2452 s` at `226 K` to `7144 s` on the lower `T = 210 K` slice segment, but the preceding mesh study already showed that `N = 64` can have large period error despite tiny discrete residuals. These values are not production Figure 5 data.
 
+## Serial sparse Tpetra midpoint assembler
+
+[`loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp`](../../loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp) implements the fixed-mesh midpoint base system directly with `Tpetra::Map`, `Tpetra::Vector`, `Tpetra::CrsGraph`, and `Tpetra::CrsMatrix`. The current `OrbitLayout` deliberately accepts only a one-rank communicator and owns all endpoint, explicit-stage, `log(P)`, stage-row, update-row, and normalized-phase-row global indices through square Tpetra maps. It stores no duplicate terminal endpoint and uses cyclic indexing for the last update row.
+
+The assembler fill-completes one graph at construction and reuses that graph for every Jacobian while the layout is fixed. The graph includes local endpoint/stage couplings, periodic wraparound, the global `log(P)` column, and the stage-only normalized phase row. Values and small local derivatives come from the shared Sacado model evaluator; packed-orbit automatic differentiation and a dense/Epetra fallback are intentionally absent. The base residual remains square and contains only stage equations, endpoint updates, and the phase condition. NOX solving and Thyra wrapping remain TASK-060 scope.
+
+The focused `bs2026_midpoint_orbit` executable reads a simple language-neutral text fixture and exposes layout/graph, component residuals, an assembled Jacobian action, normalized rho/T-hat parameter columns, and block diagnostics. [`scripts/generate_tpetra_midpoint_fixtures.py`](scripts/generate_tpetra_midpoint_fixtures.py) creates accepted and deterministic nonsolution `N=8` fixtures and translates the frozen TASK-056 accepted/nonsolution `N=64` vectors without changing those prior artifacts:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py --check
+```
+
+Python-driven integration tests require component parity at relative tolerance `1e-11` with an explicit `1e-13` absolute floor, verify stable retained-graph reuse and wraparound/global couplings at both `N=8` and `N=64`, and check assembled Jacobian actions and normalized parameter columns against centered finite differences at the versioned `1e-6` directional tolerance. The Jacobian action is checked against a centered residual difference evaluated independently through the C++ assembler as well as against Python. Diagnostics use global-ID-to-local-ID map lookups rather than assuming a distributed local ordering and report block max/RMS values, normalized phase magnitude and energy, fixed state scaling, and the exact interval/component identifiers of the largest stage and update residuals. Generate fixtures through `uv run` using the committed `uv.lock`; the manifest records Python, NumPy, and SciPy versions plus the lockfile checksum because the deterministic `N=8` accepted vector is produced by the versioned SciPy correction path.
+
+[`outputs/tpetra_midpoint_fixtures/manifest.json`](outputs/tpetra_midpoint_fixtures/manifest.json) records the matching C++/Python formulation and tolerance constants, case meanings and shapes, fixture byte hashes, runtime versions, and source/upstream paths and hashes. The `N=64` fixture boundaries, phase samples, unknowns, and residual semantics are translated directly from the frozen TASK-056 NPZ arrays; regeneration asserts byte-level array agreement before emitting fixtures. `--check` validates every fixture and manifest byte.
+
 ## Shared C++ local model derivatives
 
 [`loca/include/bergner_spichtinger_2026_loca/model.hpp`](../../loca/include/bergner_spichtinger_2026_loca/model.hpp) now scalar-templates the transformed no-evaporation dynamics through all temperature-dependent coefficients and the physical mapping `w = exp(log_w)`. `local_derivatives` seeds only the three local transformed-state variables, physical temperature, and `log_w`; one five-direction Sacado evaluation returns `g`, `D_x g`, `g_T`, and `g_log_w`. It never differentiates an orbit-layout vector.

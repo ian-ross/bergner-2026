@@ -1,0 +1,99 @@
+{
+  "artifact_kind": "episode008_tpetra_midpoint_parity_fixtures",
+  "cases": {
+    "n64_converged": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_converged.txt",
+      "fixture_sha256": "1c458ff523d6d50da88193f409846df0cef49b0f016a18147800c32aca44b900",
+      "interval_count": 64,
+      "meaning": "accepted discrete solution",
+      "residual_shape": [
+        385
+      ],
+      "unknown_shape": [
+        385
+      ],
+      "upstream": "TASK-056 frozen arrays"
+    },
+    "n64_nonsolution": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n64_nonsolution.txt",
+      "fixture_sha256": "7487b124a977a1c47ac620da0abcefcc615cd865d7637270333c29d58b99122b",
+      "interval_count": 64,
+      "meaning": "deterministic nonsolution exercising stage, update, and phase blocks",
+      "residual_shape": [
+        385
+      ],
+      "unknown_shape": [
+        385
+      ],
+      "upstream": "TASK-056 frozen arrays"
+    },
+    "n8_converged": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n8_converged.txt",
+      "fixture_sha256": "79c6e6e71d27c723694910944caf336914a2f64a8a1b5799af3402b50d87ef61",
+      "interval_count": 8,
+      "meaning": "accepted discrete solution",
+      "residual_shape": [
+        49
+      ],
+      "unknown_shape": [
+        49
+      ],
+      "upstream": "TASK-059 deterministic N=8 correction"
+    },
+    "n8_nonsolution": {
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/tpetra_midpoint_fixtures/n8_nonsolution.txt",
+      "fixture_sha256": "63d75867f16611681f14ac63ae48a5eea464de7640e7d501c39d096ef610a951",
+      "interval_count": 8,
+      "meaning": "deterministic nonsolution exercising stage, update, and phase blocks",
+      "residual_shape": [
+        49
+      ],
+      "unknown_shape": [
+        49
+      ],
+      "upstream": "TASK-059 deterministic N=8 correction"
+    }
+  },
+  "directional_relative_tolerance": 1e-06,
+  "formulation_version": "explicit-stage-midpoint-v1",
+  "parity_tolerance": {
+    "absolute_floor": 1e-13,
+    "relative": 1e-11
+  },
+  "runtime_provenance": {
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scipy": "1.17.1"
+  },
+  "schema_version": "1.0.0",
+  "source_provenance": {
+    "bootstrap_seed": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+      "sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c"
+    },
+    "cpp_assembler": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "0a30d03d55ed90a9305764e678359dfbecd9cf958f076eb3afd694e00b4cd658"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_tpetra_midpoint_fixtures.py",
+      "sha256": "7045ecedc1780a9b8032763c56a668a32b1a62d883df62e1d5ad6c6367c7ba49"
+    },
+    "python_assembler": {
+      "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
+      "sha256": "75786271ef165b3946b5c6fb754326be81584983f71393f5795854faf5bd6dfb"
+    },
+    "task056_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
+      "sha256": "1bca2862215aeae3207a95d806da7fb625bcdb4e5d89d17552e59cba623a729a"
+    },
+    "task056_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_vectors.npz",
+      "sha256": "c7765031bfcf368f6174e086e038bd0ae48d9402f36987f8680dc1803fe7b5e9"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  }
+}
