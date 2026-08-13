@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 13:55'
+updated_date: '2026-08-13 13:57'
 labels:
   - episode-008
   - design
@@ -32,3 +32,9 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - [ ] #4 Phase refresh, Hopf stopping/extrapolation, Floquet, interpolation-error, and multivalued-branch thresholds are finalized with evidence
 - [ ] #5 The production artifact schemas and remaining implementation tasks are decomposed into atomic verifiable backlog tasks
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Design interview decision: TASK-062 will specify operational, versioned v1 numerical constants. They are final for the initial implementation contract but must be reassessed against higher-order/adaptive calibration evidence; subsequent changes require documented evidence and a method-version revision.
+<!-- SECTION:NOTES:END -->
