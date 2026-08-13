@@ -6,7 +6,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 
 ## Current documentation
 
-- [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) records the binding decisions and unresolved questions for the initial collocation phase.
+- [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) records the binding initial-run decisions and the production questions explicitly deferred until the post-run evidence review.
 
 ## Frozen Episode 007 bootstrap seed
 
@@ -191,6 +191,25 @@ g_T_hat = 25 [g_T + (d log_w_spine / dT) g_log_w].
 
 The existing value, physical-Jacobian, equilibrium, and Hopf interfaces remain wrappers over the generalized evaluator. Focused C++/Python tests expose local results through deterministic `local-derivatives` and `parameter-columns` CLI test seams and compare values and every derivative column with centered differences. Local environmental derivatives deliberately reject the discontinuous optional evaporation switch.
 
+## TASK-062 higher-order/adaptive design
+
+TASK-062 reviewed the completed midpoint evidence before selecting the next numerical stage. TASK-056 showed that tiny discrete residuals do not imply period accuracy: the canonical `N=64` midpoint period is more than 12% above the Episode 007 reference, while refinement reduces the discrepancy substantially. TASK-057 through TASK-061 then established transparent Python continuation, sparse Tpetra/NOX correction, and genuine native LOCA ownership with close Python/C++ parity. The remaining problem is therefore orbit resolution, not continuation ownership.
+
+The initial higher-order/adaptive contract uses globally fixed three-stage Gauss--Legendre collocation with external `h/r` remesh-and-restart adaptation. Two-stage Gauss supplies an order check. Independent defect on both next-higher Gauss and staggered dyadic check grids controls acceptance and `h` marking; a bounded defect/speed/curvature/nucleation monitor controls only `r` redistribution. V1 includes explicit movement, split, mesh-budget, restart, phase-refresh, and near-Hopf diagnostic thresholds. These constants are operational hypotheses for an informative run, not prematurely frozen production policy. Floquet postprocessing and its associated gates are not implemented or evaluated through TASK-068; they remain downstream design direction for TASK-069. Coarsening, local `hp`, explicit landmark snapping, Radau, and iterative solvers remain evidence-triggered.
+
+The next stage is deliberately continuation-first:
+
+1. TASK-064 qualifies Python higher-order fixed-mesh orbits;
+2. TASK-065 establishes C++ sparse higher-order correction/parity;
+3. TASK-066 continues the higher-order fixed-mesh branches with native LOCA;
+4. TASK-067 implements the Python `h/r` adaptation reference;
+5. TASK-068 implements and runs native adaptive LOCA with structural remesh restarts; and
+6. TASK-069 reviews the resulting convergence, meshes, continuation coverage, failures, and cost before defining downstream production tasks.
+
+TASK-063 paper digitization is independent external comparison evidence. It does not block implementing or running continuation and must not be used to tune or accept the numerical method.
+
+See [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) for the full v1 contract, thresholds, and deferred decisions.
+
 ## Scope boundary
 
-The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work.
+The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work. Exact production schemas and full-surface tasks will be frozen only after the adaptive-continuation evidence review.

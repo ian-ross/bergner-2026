@@ -173,7 +173,7 @@ For a small normalized phase displacement `delta`, `psi_hat` is approximately `d
 
 Compute numerator and denominator with the active collocation quadrature. Freeze `x_ref`, `S_x`, `E_ref`, and therefore the base phase row throughout each uninterrupted native LOCA segment, not merely each nonlinear solve. Mutating the reference after every accepted point would change `F(y; lambda)` while LOCA retains previous groups, tangents, and predictor history.
 
-Record `E_ref` and monitor the phase-row angle with the current time-shift direction, accumulated weighted distance from the reference, and nonlinear-iteration deterioration. Stop the regular-orbit approach to Hopf when phase energy or conditioning crosses calibrated reliability thresholds. Trigger a controlled `phase_reference_refresh` restart when alignment diagnostics cross thresholds or after a conservative maximum branch distance:
+Record `E_ref` and monitor the phase-row angle with the current time-shift direction, accumulated weighted distance from the reference, and nonlinear-iteration deterioration. The v1 controlled-refresh triggers are: alignment cosine below `0.90`; weighted reference distance above `0.75`; current/reference phase-energy ratio outside `[1/4, 4]`; at least eight nonlinear iterations and more than twice the median of the preceding five accepted points; 20 accepted continuation steps since the last refresh; or any remesh. Record every active trigger. Stop the regular-orbit approach to Hopf when the separate amplitude/transversality limits below are reached. A refresh proceeds as follows:
 
 1. stop at an accepted orbit;
 2. choose it as the new reference and recompute `E_ref`;
@@ -229,40 +229,83 @@ Use Gauss--Legendre as the primary order progression:
 2. two-stage Gauss, order 4;
 3. three-stage Gauss, order 6.
 
-Gauss methods are A-stable but not L-stable. In this global periodic boundary-value setting they can represent the stiff orbit, but only when the short nucleation layer is resolved by the mesh. Higher polynomial order does not make an element that spans an unresolved transition scientifically accurate.
+The initial-run candidate is globally fixed three-stage Gauss--Legendre with external `h/r` adaptation. Midpoint remains the baseline, and two-stage Gauss is the order-convergence cross-check. Local or orbit-varying `hp` adaptation is deferred so that mesh-placement error can be distinguished from order-selection error.
 
-The Episode 007 canonical orbit has a period near `2458 s`, while the sampled 10--90% increase in `n` takes roughly `38 s` (about `1.6%` of the period). A uniform 64-element mesh therefore places only about one element across this transition; even 128 uniform elements provide only about two. Other Figure 5 points may be more severe.
+Gauss methods are A-stable but not L-stable. In this global periodic boundary-value setting they can represent the stiff orbit, but only when the short nucleation layer is resolved by the mesh. Higher polynomial order does not make an element that spans an unresolved transition scientifically accurate. The Episode 007 canonical orbit has a period near `2458 s`, while the sampled 10--90% increase in `n` takes roughly `38 s` (about `1.6%` of the period). A uniform 64-element mesh therefore places only about one element across this transition; even 128 uniform elements provide only about two. Other Figure 5 points may be more severe.
 
-Production acceptance requires:
+### Fixed-mesh qualification sequence (TASK-062 v1)
 
-- a mesh concentrated around high scaled speed, curvature, and nucleation activity;
-- polynomial defect evaluation at independent off-collocation check points;
-- splitting or redistribution where scaled defect is concentrated;
-- period convergence across mesh refinement and collocation order; and
-- independent IVP comparison at selected easy and difficult points.
+Qualify the higher-order formulation at four reproducibly seeded points:
 
-Keep the coefficient-table interface general enough to add three-stage Radau IIA as a selected stiff-case comparison if adaptive three-stage Gauss shows poor convergence. Do not implement multiple families before evidence justifies it, and do not declare three-stage Gauss the production method solely from its formal order.
+- `T = 225 K`, `w = 0.1 m s^-1`;
+- `T = 210 K`, `rho = 0`;
+- `T = 210 K`, `rho = -0.15`; and
+- `T = 210 K`, `rho = +0.15`.
+
+The canonical `225 K` point retains midpoint `N = 64, 128, 256`, adds two-stage Gauss `N = 32, 64, 128`, and adds three-stage Gauss `N = 16, 32, 64`. Each `210 K` guard point uses two-stage `N = 64, 128` and three-stage `N = 32, 64`. Coarse failures are retained as diagnostic evidence rather than removed. Qualification requires same-order refinement, improvement with order at broadly comparable system sizes, successive best-solution relative period and phase-independent weighted-orbit changes below `1e-3`, independent defect reduction, Python/C++ formulation parity, and canonical-point agreement with an independent IVP below `1e-3`.
+
+Three-stage Radau IIA is evidence-triggered, not a routine second family. Through TASK-068, the active triggers after two adaptive Gauss refinement/remesh cycles are limited to:
+
+- independent defect below `1e-4` but period or weighted-orbit change above `1e-3`;
+- persistent polynomial ringing or nonphysical interior values in the resolved layer; or
+- period/defect convergence stagnation before the mesh cap despite targeted refinement.
+
+NOX difficulty alone is not a Radau trigger until scaling, transfer, and mesh placement have been ruled out. TASK-064 performs only the canonical DOP853 comparison already required by its fixed-mesh qualification contract. The broader IVP-based Radau trigger, production cross-method validation, and Floquet-derived trigger are downstream and recorded as `not_evaluated` through TASK-068. TASK-069 decides later IVP/Radau and Floquet scope.
 
 ## Adaptive mesh design
 
-This section records the agreed direction for a later phase, not parameters that block the initial fixed-mesh implementation. Exact monitor coefficients, movement/splitting bounds, thresholds, and mesh caps will be designed and calibrated only after native fixed-mesh LOCA continuation works (TASK-062).
+TASK-062 specifies operational **v1 hypotheses** for the first adaptive implementation. They make the implementation and run reproducible, but they are not claims that production policy is settled before evidence exists. The mandatory post-run review may tighten or replace them; any later change must cite evidence and revise the method version.
 
-After the deliberately uniform, non-adaptive baseline, use a combined external `h/r` remesh-and-restart design. The orbit remains smooth; its rapid nucleation segment is an internal layer rather than a discontinuous shock, so upwind or ENO/WENO-style numerical dissipation is not appropriate for the collocation equations.
+Use a combined external `h/r` remesh-and-restart design on globally fixed three-stage Gauss elements. The orbit is smooth and its rapid nucleation segment is an internal layer, so dissipative shock-capturing schemes and nonlinear mesh-coordinate unknowns are out of scope.
 
-The first adaptive implementation will:
+### Independent defect and `h` refinement
 
-1. retain piecewise Gauss collocation on a nonuniform normalized-phase mesh;
-2. use `h`-refinement to split difficult elements;
-3. use `r`-adaptation to redistribute a fixed set of element boundaries by approximately equidistributing monitor mass;
-4. use scaled polynomial defect evaluated at independent off-collocation points as the primary error signal;
-5. supplement defect with scaled state-space speed, curvature, and physics landmarks such as saturation extrema, nucleation-rate maxima, and threshold crossings;
-6. retain a positive monitor floor so slow orbit segments keep adequate resolution;
-7. transfer the old piecewise polynomial solution and phase reference to the new layout, then restart nonlinear correction/continuation; and
-8. add coarsening and `hp` decisions only after splitting and redistribution work reliably.
+Scientific defect acceptance and `h` marking are controlled only by an independent scaled relative defect. Evaluate it on two off-collocation grids in every element:
 
-Landmark-aligned element boundaries help prevent the short nucleation pulse from repeatedly falling inside a large element, but landmarks do not replace the integral phase condition. Multiple independent check points and geometric/physics monitors are required because a defect estimator can itself miss a pulse when all check points undersample it.
+1. the existing `r+1` Gauss check nodes; and
+2. staggered dyadic points `tau = {1/8, 3/8, 5/8, 7/8}`.
 
-Do not initially make mesh coordinates nonlinear unknowns. Do not introduce Shishkin/Bakhvalov meshes unless later analysis identifies a useful explicit singular-perturbation parameter and predictable layer width/location.
+Use the combined maximum. Record one-sided endpoint defects, inter-element polynomial-derivative jumps, and disagreement between the two grids separately. Grid disagreement is material only when the larger maximum exceeds `1e-5` and their relative difference (with the larger maximum as denominator) exceeds `0.5`. A materially flagged element receives a 16-point uniform local probe, whose maximum joins the acceptance and marking defect for that cycle.
+
+Define recurrence deterministically with a fixed periodic partition of normalized phase into 128 half-open bins. Map the local-probe argmax phase to `floor(128 * (theta mod 1))`. Two successive adapted meshes identify the same phase region when their argmax bins are identical or adjacent under circular bin distance, including bins `127` and `0`. Such recurrence records `defect_aliasing_persistent` and triggers later consideration of denser checks or landmark alignment.
+
+Let `eta_i` be the resulting maximum defect for element `i`. When `max eta_i >= 1e-4`, split the smallest descending-defect set accounting for 70% of `sum eta_i^2`, and also every element with `eta_i >= 0.5 max eta`. Cap growth at 50% per remesh and prioritize the highest-defect elements if the marking set exceeds the budget. Bisect marked elements before redistribution. Initial qualification has no coarsening.
+
+### Composite `r` monitor
+
+The composite monitor controls only `r` redistribution and cannot make an orbit pass its defect gate. Define:
+
+- `D`: combined two-grid relative defect;
+- `V = ||S_x p'||`: scaled phase speed;
+- `C = ||S_x p''||`: scaled polynomial curvature; and
+- `A_nuc`: norm of the scaled transformed-state contribution from homogeneous nucleation alone.
+
+For redistribution, evaluate `D`, `V`, `C`, and `A_nuc` at the midpoints of 16 equal phase subcells in every pre-`r` element. A sample in element `i` has quadrature weight `Delta theta_i / 16`. Scan raw-sample maxima and accumulate weighted phase averages in ascending old-element index and then ascending subcell index. Reject any density containing a nonfinite or negative sample. Normalize each valid nonnegative density deterministically using stable max-rescaling. If its maximum is zero, its normalized contribution is identically zero. Otherwise divide by its maximum, divide by the resulting weighted phase average, winsorize pointwise at `20`, and divide once more by the weighted phase average after winsorization. Use
+
+```text
+m(theta) = 0.20
+         + 0.80 (0.50 D_tilde + 0.20 V_tilde
+                 + 0.20 C_tilde + 0.10 A_nuc_tilde).
+```
+
+Represent this composite monitor as piecewise constant on the same subcells. Accumulate its mass in the same deterministic order. For target boundary `j/N`, `j=1,...,N-1`, multiply by total monitor mass and choose the first subcell whose closed upper cumulative bound reaches the target, treating `upper + 64*epsilon64*max(1,total_mass) >= target` as reached, where `epsilon64 = 2^-52`. Linearly interpolate within that positive-mass subcell and clamp the interpolation fraction to `[0,1]`. The `0.20` floor guarantees positive subcell and total mass.
+
+The floor protects slow regions while defect retains half of redistribution authority. Saturation extrema, nucleation maxima, and pulse-rise locations are diagnostics only in v1: there is no boundary snapping or landmark protection. Add such machinery only if persistent defect aliasing or same-region convergence stagnation survives targeted `h/r` adaptation.
+
+Apply the mesh constraints without coordinate-by-coordinate clipping or projection. Starting with global relaxation `beta=0.5`, form every candidate interior boundary simultaneously as the old boundary plus `beta` times its displacement toward the equidistributed target. Accept the candidate only if every boundary displacement is at most half the smaller adjacent old interval, every new width satisfies `1/(20N) <= Delta theta_i <= 5/N`, and every cyclic adjacent-width ratio, including the last/first pair, lies in `[1/3,3]`. Otherwise halve `beta` globally and retry through `beta=2^-20`. If no candidate passes, retain the old boundaries and record `r_movement_stalled`.
+
+### Adaptation cycle and mesh budgets
+
+Start three-stage adaptation at `N = 32` from a qualified transferred orbit. At each corrected accepted mesh:
+
+1. if `max eta_i >= 1e-4`, apply ordinary defect-driven `h` marking and then the bounded `r` move;
+2. if the defect gate passes but successive accepted-mesh period or weighted-orbit convergence has not passed, apply a pure `r` move;
+3. after three consecutive pure-`r` cycles with less than 25% reduction in maximum defect, force exactly one split of the maximum-defect old element, breaking ties by lowest old element index, then apply the bounded `r` move; or
+4. if defect, period, and orbit-convergence gates all pass, stop rather than remesh.
+
+Ordinary marking is truncated deterministically in descending defect order, with lower old element index breaking ties, so `N_new <= 256`. At or after reaching `N=256`, if one corrected cycle still fails the defect or period/orbit-convergence gates, emit `mesh_cap_escalation` and permit the same deterministic marking up to `N=512`. Never exceed `N=512`. Allow at most eight remesh/correct cycles per point; exhaustion of either the cycle or hard mesh budget without all gates records `resolution_unresolved` rather than silently accepting the point.
+
+Coarsening, local `hp`, landmark alignment, and Shishkin/Bakhvalov meshes are not part of the first implementation. Serial Amesos2/KLU2 remains the reference linear solver. Consider Belos/Ifpack2 only if realistic `N = 256--512` profiling shows factorization memory above 4 GiB, median factorization/solve time above 30 s per nonlinear iteration, more than 70% of runtime in linear algebra, or inability to meet the recorded run budget; any iterative path must preserve KLU2 as an oracle and explicitly handle the phase row and `log(P)` column.
 
 ## Python nonlinear solver
 
@@ -345,13 +388,12 @@ For each fixed-temperature slice:
    A = [integral_0^1 ||S_x (x(theta) - x_eq)||^2 dtheta]^(1/2);
    ```
 
-3. stop regular orbit continuation when amplitude, phase transversality, or conditioning crosses documented reliability thresholds rather than relying only on a fixed distance from the Hopf coordinate;
+3. stop v1 regular-orbit continuation if `A < 1e-3`, current scaled phase energy is below `1e-4`, phase/time-shift alignment remains below `0.50` after one refresh, NOX requires at least 20 iterations at two consecutive accepted points, or LOCA has two consecutive rejections at normalized-coordinate step `1e-5`;
 4. retain each exact Episode 006 Hopf boundary as a separate `hopf_linear_limit` record with `P_H = 2*pi/omega_H`, not as a collocation orbit;
-5. validate boundary approach over several small-amplitude orbit points with the supercritical-Hopf relation `P(A) = P_H + c A^2 + O(A^4)`;
-6. connect the last reliable nonlinear orbit visually to the marked Hopf limit only when this extrapolation agrees with `P_H` within tolerance; and
-7. distinguish `periodic_orbit`, `hopf_linear_limit`, and outside-cycle-region cells in browser-facing data.
+5. through TASK-068, record amplitude, period, reliability diagnostics, and terminal status while targeting at least five reliable approach points with monotonically decreasing amplitude spanning a factor of at least three when v1 continuation reaches them; and
+6. in TASK-069, perform or review both `P=P_0+c_2 A^2` and `P=P_0+c_2 A^2+c_4 A^4` fits, compare the intercept evidence with `P_H`, and decide the justified downstream connection or explicit-gap policy.
 
-This prevents a clickable heatmap boundary from being misrepresented as a finite-amplitude periodic orbit.
+TASK-068 never invents values at the boundary and does not make the final connection/gap decision. The downstream policy considered by TASK-069 should require both intercepts to agree with `P_H` within 1%, differ from one another by less than 0.5%, leave-one-out linear intercepts to span less than 1%, maximum relative fit residual below 1%, and `A^2` to approach zero consistently with signed Hopf-coordinate distance.
 
 ## Parameter domain and sampling artifacts
 
@@ -369,11 +411,11 @@ Separate numerical continuation from presentation sampling:
 2. **Canonical scientific sampling:** use an irregular, error-controlled set of temperature slices seeded primarily from actual accepted spine points. Represent each converged slice as a monotone parameter sequence over its reliable `rho` range plus separate Hopf-limit records.
 3. **Browser/plot display grid:** use shape-preserving interpolation of `log(P)` first along each slice in `rho`, then between irregular temperatures at fixed `rho`. Map display points to physical `log(w)`, never interpolate across either Hopf boundary, and attach validity/source flags to every displayed value.
 
-Initially limit maximum accepted spine-point temperature separation to approximately `2 K`, while permitting smaller native LOCA steps. Require dedicated exact anchor slices only at `T = 190 K` and `240 K` to avoid extrapolating at the display-domain boundaries, `T = 210 K` for the required lower panel, and the existing `T = 225 K` bootstrap.
+The provisional v1 sampling skeleton uses exact slices at `T = 190, 192, ..., 240 K` plus `225 K`, while retaining every native spine point separately. On each reliable slice request exact anchors at `rho = 0, +/-0.25, +/-0.50, +/-0.75, +/-0.90, +/-0.97`, retain additional native accepted points, and add the approach points needed by the Hopf check. These are initial run targets, not a claim that production completion policy is settled.
 
-Estimate temperature interpolation error by withholding selected computed slices and reconstructing them from neighboring slices. Where the versioned threshold fails, add a new slice near that temperature, using a fixed-parameter corrected spine predictor if no suitable native accepted spine point exists. Continue until the display dataset passes. Retain irregular authoritative temperatures separately from the regular display grid so interpolated pixels cannot be mistaken for solved orbits.
+Estimate interpolation error with shape-preserving interpolation of `log(P)`: withhold solved points along each slice in `rho`, and withhold whole temperature slices at fixed `rho`. Require maximum `|Delta log(P)| < 2e-3` in each test and add authoritative solves near the worst failure. Keep maximum temperature separation at `2 K`; never interpolate across a Hopf boundary, unresolved run point, stability checkpoint, or multivalued tripwire. A provisional browser grid uses `0.5 K` by `0.01 rho`, with solved/interpolated/invalid provenance on every value.
 
-The lower panel uses authoritative exact-`T = 210 K` slice data rather than values sampled back from a heatmap raster. Select final display `rho` and temperature densities using interpolation-error tests instead of coupling solver steps to heatmap pixels.
+The lower panel uses authoritative exact-`T = 210 K` slice data rather than values sampled back from a heatmap raster. Whether the first continuation run is sufficient for the final production artifact is decided only at the post-run evidence-review checkpoint.
 
 ## Exact `T = 210 K` linearized-period curve
 
@@ -387,11 +429,11 @@ d(dn/dt, dq/dt, ds/dt) / d(n, q, s),
 
 not the transformed collocation Jacobian. Track the conjugate eigenpair continuously and compute `P_lin = 2*pi/abs(Im(lambda))`. Where the pair becomes real or `abs(Im(lambda))` falls below a declared threshold, store the period as invalid/divergent and break the plot rather than clipping or inventing a finite value.
 
-Insert the exact Episode 006 Hopf points/frequencies as anchors. Overlay authoritative nonlinear LOCA periods only over their reliable periodic-orbit interval, with separate Hopf-limit records. Validate selected equilibrium/eigenvalue rows against the existing Python physical-Jacobian implementation. Label this artifact as a C++ equilibrium/eigenvalue calculation distinct from native LOCA periodic-orbit continuation; it does not require long IVP integration.
+Use an initial 401-point log-spaced `w` grid and insert the exact Episode 006 Hopf points/frequencies as anchors. Track the conjugate pair by continuation distance, using eigenvector overlap to resolve ambiguity. Store `P_lin` only for a genuinely complex pair with `|Im(lambda)| > 1e-8 s^-1`; otherwise invalidate the row with `real_pair` or `frequency_below_floor` and create a plot gap. Add samples when shape-preserving `log(P_lin)` holdout error exceeds `2e-3`. Require exact Hopf-frequency and stratified Python physical-Jacobian parity to relative `1e-8`, and never clip periods to the paper plot range. Label this artifact as a C++ equilibrium/eigenvalue calculation distinct from native LOCA periodic-orbit continuation; it does not require long IVP integration.
 
 ## Backend authority and validation roles
 
-Trilinos/NOX/LOCA is the authoritative production implementation. Every final production temperature slice and the headline Figure 5 period map will be sourced from it.
+Trilinos/NOX/LOCA is the authoritative backend candidate for eventual production. TASK-064 through TASK-068 generate qualification and continuation-run evidence; TASK-069 decides the justified downstream production scope. Any final production temperature slices and headline Figure 5 period map will be sourced from the native backend rather than Python.
 
 Python is the executable numerical specification and exploration environment. Use it to develop the formulation, generate higher-order collocation coefficient tables with reproducible SymPy derivations where appropriate, and validate:
 
@@ -527,11 +569,21 @@ Bootstrap every new continuation direction with an explicit two-point secant. Fr
 Treat remeshing as a structural continuation boundary:
 
 1. stop the current LOCA stepper at an accepted point;
-2. transfer the solution, phase reference, and tangent;
+2. transfer the solution, phase reference, and tangent with the old piecewise collocation polynomial;
 3. rebuild Tpetra/Thyra/NOX/LOCA maps, graphs, groups, solver objects, and preconditioners;
-4. perform fixed-parameter NOX correction on the new mesh;
+4. perform fixed-parameter NOX/KLU2 correction on the new mesh;
 5. renormalize the transferred tangent in the new metric; and
 6. restart the native LOCA stepper.
+
+Accept the v1 restart only when the established residual, phase, positivity, and linear-solve gates pass; transferred values are finite and physically positive where required; phase-aligned old/new weighted-orbit change is at most `0.25`; `|Delta log(P)| <= 0.20`; the new reference has positive finite energy and phase residual at most `1e-10`; and the renormalized tangent has cosine at least `0.5` with the transferred old tangent while preserving active-coordinate orientation.
+
+For `k>0` originally marked elements, retry in exactly this order:
+
+1. full marked `h` set plus the requested `r` move;
+2. the same full marked `h` set plus half the requested `r` move; and
+3. the first `ceil(k/2)` marked elements sorted by descending defect, breaking ties by lower old element index, plus half the requested `r` move (`k=1` retains that one element).
+
+For a pure-`r` remesh (`k=0`), attempts 1 through 3 use the requested, half, and quarter `r` displacement, respectively. After failure of attempt 3, record `remesh_restart_failed`. A tangent-only failure uses the established deterministic two-point bootstrap instead of rejecting an otherwise valid corrected orbit.
 
 Python retains an explicit augmented pseudo-arclength equation as the transparent reference implementation, but the LOCA base group never duplicates that row. Output diagnostics must distinguish accepted/rejected continuation steps, remesh restarts, and uninterrupted branch steps.
 
@@ -569,34 +621,32 @@ Every signed direction is initialized by a separately recorded fixed-parameter N
 
 The versioned validation artifact independently replays the multi-step `T=225 K` exact-spine move, both spine directions (including exact `T=210 K`), and both signed `T=210 K` rho slices through C++ `LOCA::Stepper`. Its NPZ contains the vectors emitted by native save callbacks rather than copied Python vectors, and generation fails if any native vector digest equals any frozen Python point digest. Callback records distinguish the initial solve, each attempted/retried corrector, and final target solve with finite attempted/accepted coordinates and active-coordinate deltas; these are not presented as LOCA arclength step sizes. Raw LOCA iterator counters are separately named from derived regular attempt/accepted/rejected and initial/final save partitions. A deterministic smoke fault forces one native rejection, confirms a reduced-coordinate-delta retry, and is persisted in the curated contract. Every native accepted point satisfies the versioned `2e-7` period-relative and weighted-orbit tolerance against an independent Python fixed-parameter correction at the identical coordinate, seeded from the nearest frozen Python branch vector rather than the native result. Interior adaptive points also retain nearest transparent-Python-branch diagnostic differences because the native and Python pseudo-arclength steppers select different grids. Five separately corrected signed bootstrap secants are injected through LOCA's Restart first-step predictor. At both refreshes, a strict fixed-parameter NOX/KLU2 solve under the refreshed phase row supplies the accepted restart origin, and the artifact records residual gates, unchanged physical coordinates, chronology, and rebuilt assembler/model/weighted-group/stepper lineage. Executable transitive source fingerprints (including the NOX adapter and collocation coefficients) plus source, fixture, seed, Hopf-locus, runtime, Trilinos, and lockfile hashes prevent stale arbitrary builds from satisfying artifact checks. The previously observed second-step NaN came from misnested Predictor/Step Size sublists plus a MaxIters status test that bypassed parameter-bound stopping and left the finish target at zero; it was not an installed-LOCA defect. These remain `N=64` midpoint machinery results and do not supersede the production discretization requirements.
 
-## Fold, multistability, and secondary-bifurcation policy
+## Fold, multistability, and secondary-bifurcation tripwire
 
-The physical expectation is one unique attracting periodic orbit at each parameter point inside the two Hopf loci, but treat this as a hypothesis to test rather than an interpolation assumption.
+The physical expectation, supported by all evidence through TASK-061, is one unique attracting periodic orbit at each point inside the Hopf loci. The first adaptive implementation therefore provides a cheap tripwire rather than speculative multibranch infrastructure.
 
-Allow native pseudo-arclength LOCA to continue through folds in `rho` or `T_hat`. Detect active-parameter tangent sign changes, repeated physical `(T, w)` values with distinct weighted orbit geometry or periods, and Floquet unit-circle crossings associated with cycle folds or secondary bifurcations.
+Always record active-coordinate tangent signs and the accepted coordinate sequence. Flag a candidate on a tangent sign change, a normalized-coordinate reversal above `1e-4`, or two accepted points within `1e-4` in normalized coordinate whose relative periods differ by more than `1e-3` or whose phase-aligned weighted orbits differ by more than `1e-2`. If no trigger occurs, record `single_valued_observed`. If one occurs, stop automatic processing for that slice and defer exact-coordinate confirmation, multibranch artifacts, and display policy to the mandatory evidence-review checkpoint. Do not implement branch selection or multiple display values in v1.
 
-If a branch is multivalued, retain every distinct orbit with a stable branch ID; do not collapse them into one heatmap value. Mark the affected browser/display region `multivalued_requires_policy` and stop automatic production interpolation there pending scientific review. If later evidence shows only one branch is attracting, selecting it for display still requires an explicit documented policy.
+## Downstream Floquet stability direction
 
-Treat discovered multistability or a secondary periodic-orbit bifurcation as a scientific result and scope checkpoint rather than a routine solver failure. Require monotonicity in the active physical parameter only for a final branch segment used as a single-valued Figure 5 slice after these checks pass.
+Floquet postprocessing is outside TASK-064 through TASK-068. Those tasks must record Floquet-dependent evidence and gates as `not_evaluated`; they must not reject an initial-run orbit or activate a Floquet-derived Radau trigger. TASK-069 reviews the continuation evidence and decides whether to create and require this downstream capability.
 
-## Floquet stability diagnostics
-
-Compute all three Floquet multipliers for every authoritative production periodic orbit as post-solve diagnostics, not as nonlinear collocation unknowns. Integrate the transformed variational equation over normalized phase,
+If approved downstream, native LOCA owns the orbit and an independent Python/SciPy postprocessor computes all three Floquet multipliers from saved native piecewise collocation polynomials. They remain post-solve diagnostics, not nonlinear collocation unknowns. Integrate the transformed variational equation over normalized phase,
 
 ```text
 Phi'(theta) = P D_x g(x_coll(theta)) Phi(theta),
 Phi(0) = I,
 ```
 
-evaluating `x_coll` from the accepted piecewise collocation polynomial. Use a strict high-accuracy variational integrator independent of the collocation residual assembly.
+evaluating `x_coll` from the accepted piecewise collocation polynomial. Use DOP853 at `rtol=1e-10`, `atol=1e-12`, repeating at `1e-11`/`1e-13` near or beyond a threshold. Require implicit-Radau comparison at stratified difficult points and every suspected unit-circle crossing. Record the mixed C++-orbit/Python-postprocessor provenance.
 
-Require and report one trivial multiplier near `1`; its error is an independent orbit-resolution diagnostic. Classify attraction from the remaining multipliers and flag unit-circle crossings or ambiguous near-unit cases. Validate selected multipliers against finite-difference perturbations or a Poincare-return calculation.
+Identify the trivial multiplier as the one nearest `1` and require `|mu_trivial-1| < 1e-3`. Matched multipliers must agree under DOP853 tolerance refinement to `|Delta mu|/max(1,|mu|) < 1e-5`, and DOP853/Radau comparisons to `1e-4`. Classify nontrivial multipliers as attracting when all magnitudes are below `1-1e-3`, unstable when any exceeds `1+1e-3`, and otherwise near-unit ambiguous. A crossing candidate requires consecutive points beyond opposite sides of the ambiguity band and confirmation by both integrators. Selected finite-difference or Poincare-return multiplier magnitudes must agree within 1%.
 
-Store Floquet data in authoritative periodic-orbit branch records, but browser display is not required in Episode 008. `hopf_linear_limit` records retain equilibrium eigenvalues and frequency rather than regular-orbit Floquet multipliers.
+If this downstream direction is approved, store Floquet data in authoritative periodic-orbit branch records; browser display is not required in Episode 008. `hopf_linear_limit` records retain equilibrium eigenvalues and frequency rather than regular-orbit Floquet multipliers.
 
-## Independent IVP validation scope
+## Downstream independent IVP validation direction
 
-IVP integration is a selected validation method, never the production period-generation algorithm. The authoritative Figure 5 surface comes from native LOCA periodic-orbit continuation. Do not reproduce the paper's long-integration period extraction at every parameter point.
+Except for TASK-064's canonical DOP853 comparison, IVP integration and IVP-based Radau decisions are outside TASK-064 through TASK-068 and are recorded as `not_evaluated`. TASK-069 decides the later IVP/Radau validation scope. If approved downstream, IVP integration is a selected validation method, never the period-generation algorithm. The authoritative Figure 5 surface remains based on native LOCA periodic-orbit continuation; do not reproduce the paper's long-integration period extraction at every parameter point.
 
 At stratified validation points, perform two complementary checks:
 
@@ -611,7 +661,7 @@ At stratified validation points, perform two complementary checks:
 
 Use a high-accuracy adaptive IVP solver independent of collocation. At the most difficult selected points, require an explicit high-order method such as DOP853 and implicit Radau to agree before treating the IVP result as reference.
 
-Stratify selected points across the canonical `225 K` case; both sides and the interior period maximum of the `210 K` slice; low/high-temperature interiors; small-amplitude neighborhoods of both Hopf boundaries; largest/shortest interior periods; and worst accepted defect, trivial-multiplier, and interpolation-error cases.
+The downstream validation direction uses at least 12 unique points after deduplication: the four fixed higher-order qualification points; both `210 K` Hopf sides; low/high-temperature interiors; largest/shortest accepted periods; worst accepted defect; worst trivial-multiplier error; and worst interpolation holdout. Every selected point receives transformed-state DOP853 one-period integration at `rtol=1e-10`, `atol=1e-12`, with period, phase-aligned weighted-trajectory, and weighted return errors below `1e-3`. The six hardest or headline points also require IVP Radau agreement below `1e-3`; at least four, including both Hopf sides and the largest-period case, receive perturbed-equilibrium attractor checks. This selection is applied after the adaptive run exposes the actual worst cases.
 
 ## Versioned numerical acceptance hierarchy
 
@@ -640,7 +690,7 @@ Require:
 - no failed or unreported linear solve; and
 - acceptable phase energy and phase-row conditioning.
 
-### Production discretization
+### Initial-run discretization evidence
 
 Two successive adapted/order-refined solutions must satisfy:
 
@@ -654,27 +704,32 @@ Two successive adapted/order-refined solutions must satisfy:
       < 1e-4;
   ```
 
-- trivial Floquet multiplier error `|mu_trivial - 1| < 1e-3`.
+A future production method that includes the downstream Floquet stage also requires trivial Floquet multiplier error `|mu_trivial - 1| < 1e-3`. This criterion is `not_evaluated` and is not an initial-run acceptance gate in TASK-064 through TASK-068.
 
 Period and orbit-convergence checks remain mandatory even when the defect passes.
 
-### Cross-method validation
+### Downstream cross-method validation
 
-At stratified validation points, require both LOCA-to-Python and collocation-to-independent-IVP period/orbit differences below `1e-3`.
+TASK-064 requires its canonical DOP853 comparison. Broader stratified collocation-to-IVP validation is `not_evaluated` through TASK-068. If TASK-069 approves that downstream scope, require LOCA-to-Python and collocation-to-independent-IVP period/orbit differences below `1e-3` at the selected points.
 
-### Hopf approach
+### Hopf approach evidence and ownership
 
-Initially require the small-amplitude `P(A)` extrapolation to agree with `2*pi/omega_H` within `1%`, tightening this threshold if observed convergence supports it.
+TASK-068 records amplitude, period, diagnostics, and terminal status for near-Hopf approach points, targeting at least five reliable points when v1 continuation reaches them. It does not decide whether to connect the nonlinear curve to the Hopf limit or preserve a final gap. TASK-069 performs or reviews the documented quadratic and quartic fits, compares them with `2*pi/omega_H`, and decides the justified downstream connection/gap policy.
 
-## Schema-versioned output contract
+## Schema-versioned output direction
 
-Produce five artifact layers. The curated Figure 5 image must be regenerated from normalized artifacts rather than transient solver memory.
+The eventual production contract uses identifier `episode8-figure5-production-v1` and formal schemas under `episodes/008-figure5-periodic-orbit-continuation/schemas/`. JSON/JSONL use JSON Schema; CSV and NPZ manifests use explicit column/array schema JSON. Stable IDs, method/schema version, backend/source class, units and coordinate conventions, validity, and reason codes are mandatory. Incompatible changes increment the schema version.
 
-1. **`continuation_points.csv`:** one row per authoritative accepted periodic orbit or Hopf-limit record. Include stable point/branch IDs, parent/restart IDs, physical and normalized parameters, period, amplitude, collocation order, mesh size, residual/defect/phase/conditioning/convergence fields, Floquet multipliers, stability classification, record type, and backend provenance.
-2. **`orbits/<point_id>.npz`:** full normalized mesh, endpoints, stages, `log(P)`, collocation coefficients, and phase reference for every canonical production point and validation fixture. Accompany these with a JSON manifest defining shapes, units, coordinates, and checksums.
+The six intended artifact layers are:
+
+1. **`continuation_points.csv`:** one row per authoritative accepted periodic orbit or Hopf-limit record, with scientific scalars and Floquet diagnostics.
+2. **`orbits/<point_id>.npz`:** curated full vectors for canonical samples, reliable Hopf-approach points, phase/remesh anchors, and IVP/Floquet/worst-defect/interpolation fixtures, with a checksummed manifest. Intermediate native vectors remain restart/checkpoint artifacts; an absent `orbit_artifact_id` never implies interpolation.
 3. **`continuation_events.jsonl`:** append-only accepted/rejected LOCA steps, NOX and linear-solve diagnostics, step-size changes, remesh decisions, transfers, and restarts.
-4. **`run_metadata.json`:** method/schema versions, model parameters, coefficient-table checksums, tolerances, reproduction commands, Trilinos configuration, source commits, upstream Episode 006/007 checksums, and completion summaries.
-5. **`figure5_browser_dataset.json`:** compact browser-facing display `T`, `rho`, and physical-`w` coordinates; periods and validity/source flags; Hopf curves; authoritative `T = 210 K` nonlinear and linearized slice samples; units; color range; interpolation method; and links to authoritative point IDs. Do not include full orbit vectors.
+4. **`run_metadata.json`:** method/schema versions, model parameters, coefficient-table checksums, tolerances, commands, Trilinos configuration, source commits, upstream checksums, and completion summaries.
+5. **`linearized_period_210.csv`:** the authoritative C++ equilibrium/eigenvalue lower-panel curve and validity reasons.
+6. **`figure5_browser_dataset.json`:** compact display coordinates, periods, validity/source flags, Hopf curves, authoritative lower-panel samples, interpolation method, and authoritative-point links, without full orbit vectors.
+
+These schemas are a recorded downstream direction, not part of the first continuation implementation tasks. Exact fields and downstream production tasks are defined after the adaptive run has been inspected.
 
 ## Required diagnostics already agreed in principle
 
@@ -691,34 +746,33 @@ At minimum, retain enough information to distinguish discrete convergence from o
 - comparison against an independent IVP-derived orbit/period at selected points;
 - comparison of nonlinear period with `2*pi/Im(lambda)` near Hopf boundaries.
 
-Exact acceptance tolerances and the stability/Floquet scope remain unresolved.
+The v1 adaptation, phase, Hopf, interpolation, and tripwire thresholds above are implementable operational hypotheses for the initial adaptive run. Their retention or revision as production tolerances remains a decision for the post-run checkpoint. Floquet thresholds are downstream direction only and are `not_evaluated` through TASK-068.
 
-## Implementation staging and backlog boundary
+## TASK-062 continuation-first staging and backlog boundary
 
-The design is sufficient to begin the conservative fixed-mesh phase. Work is staged as:
+TASK-053 through TASK-061 completed the conservative midpoint migration: frozen seed and coefficient tables, Python fixed-parameter and pseudo-arclength references, Sacado local derivatives, sparse Tpetra assembly, fixed-parameter NOX/KLU2 correction, and native LOCA continuation. The evidence is internally consistent: Python and C++ agree closely on identical midpoint problems, native LOCA genuinely owns continuation, and the discrete midpoint residual can be tiny while period error remains scientifically large. In particular, the canonical `N=64` midpoint period is over 12% above the Episode 007 reference, while midpoint refinement reduces that error to about 0.7% at `N=256`. TASK-061's native/Python parity therefore validates machinery, not Figure 5 periods.
 
-- TASK-053: freeze the Episode 007 bootstrap cycle and interpolation fixture;
-- TASK-054: generate shared Gauss coefficient tables;
-- TASK-055: implement the Python explicit-stage midpoint layout, residual, phase equation, and sparse Jacobian;
-- TASK-056: correct and study fixed-mesh midpoint orbits;
-- TASK-057: implement Python fixed-mesh pseudo-arclength continuation;
-- TASK-058: generalize local C++ model derivatives with Sacado;
-- TASK-059: implement the serial sparse Tpetra midpoint assembler and Python parity;
-- TASK-060: solve a fixed-parameter orbit through sparse Thyra/NOX with KLU2;
-- TASK-061: perform genuine native LOCA fixed-mesh midpoint continuation; and
-- TASK-062: resume higher-order/adaptive/Figure 5 production design using evidence from the fixed-mesh implementation and create the remaining atomic implementation tasks.
+The approved next stage deliberately stops short of planning every exceptional production outcome. Execute six atomic tasks in order:
 
-No adaptive-mesh implementation, production Floquet workflow, or full Figure 5 surface generation is required by TASK-053 through TASK-061. Minor operational constants needed by those tasks may be calibrated within their versioned tests, but changes to the mathematical contracts in this document require an explicit recorded decision.
+1. TASK-064: Python higher-order fixed-mesh qualification;
+2. TASK-065: C++ higher-order sparse fixed-parameter correction and parity;
+3. TASK-066: native higher-order fixed-mesh LOCA continuation;
+4. TASK-067: Python `h/r` adaptation reference;
+5. TASK-068: native adaptive LOCA remesh/restart continuation and the planned run; and
+6. TASK-069: mandatory post-run evidence review and next-stage design checkpoint.
 
-## Open design questions
+Only the checkpoint may define downstream production tasks after inspecting period/order convergence, defects, mesh distributions, restart behavior, continuation coverage, failure modes, and cost. TASK-063 digitization may proceed independently and supplies external image-derived comparison evidence; it does not block implementing or running continuation and is never a numerical tuning target. Flag later paper discrepancies when `|Delta log(P)| > max(3 sigma_digitized_logP, 0.02)`, but internal convergence and independent IVP validation remain authoritative.
 
-The interview still needs to resolve at least:
+## Deferred decisions for the post-run checkpoint
 
-- exact monitor normalization, split/redistribution thresholds, coarsening policy, and restart acceptance criteria;
-- whether later evidence requires a non-unit fixed weight for `log(P)` or residual-block-specific scaling beyond the frozen state scales;
-- profiling criteria that would trigger Belos/Ifpack2 and the exact later bordered preconditioner;
-- numerical amplitude, phase-transversality, conditioning, and Hopf-extrapolation acceptance thresholds;
-- final display-`rho` density and its interpolation-error threshold;
-- explicit absolute floors for relative comparisons and calibrated phase-energy/conditioning cutoffs;
-- exact schema field names, JSON Schema definitions, and binary-array manifest conventions;
-- task breakdown and implementation order.
+The operational constants above are v1 hypotheses for an informative run. The checkpoint must decide, from evidence, whether to:
+
+- retain or revise monitor weights, mesh caps, and phase/Hopf thresholds;
+- add Radau, coarsening, landmark alignment, local `hp`, or iterative linear solvers;
+- implement multibranch confirmation or secondary-bifurcation policy after a tripwire;
+- freeze exact production schema fields and curated-vector retention in code;
+- accept or revise the provisional sampling/interpolation skeleton;
+- create tasks for Floquet production postprocessing, the `210 K` linearized curve, full-domain production continuation, IVP validation, paper comparison, and final Figure 5/browser artifacts; and
+- define exceptional-gap and final scientific-completion policies based on observed rather than hypothetical failures.
+
+Until then, do not interpret a v1 unresolved point as permission to interpolate over it or as proof that elaborate exceptional handling is needed.
