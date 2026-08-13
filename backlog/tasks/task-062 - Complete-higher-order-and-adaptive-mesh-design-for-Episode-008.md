@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 14:56'
+updated_date: '2026-08-13 14:57'
 labels:
   - episode-008
   - design
@@ -55,4 +55,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 - Design interview decision: v1 pure-r remesh moves 50% toward exact monitor equidistribution, caps each interior boundary displacement at half the smaller adjacent old interval, enforces adjacent interval-width ratios in [1/3,3] and widths in [1/(20N),5/N], and preserves boundary ordering and N. Landmark snapping is allowed only within all bounds; larger redistribution proceeds through multiple controlled restarts.
 
 - Design interview decision: assign each element eta_i as its maximum combined two-grid relative defect. If max eta_i >=1e-4, split the smallest descending-defect set contributing 70% of sum eta_i^2 and also every element with eta_i >=0.5 max eta. Cap element-count growth per remesh at 50%, prioritizing highest defect; bisect marked elements before bounded r movement. Initial implementation/qualification has no coarsening. A later calibrated production step may merge adjacent elements only after both stay below 1e-6 for two accepted meshes, no protected landmark lies between them, and mesh-ratio bounds remain satisfied.
+
+- Design interview decision: adaptive three-stage Gauss starts at N=32 from a qualified transferred orbit, uses ordinary soft cap N=256 and hard cap N=512 only via recorded mesh_cap_escalation, and allows at most 8 remesh/correct cycles per point. At most 3 consecutive pure-r cycles may occur without >=25% max-defect reduction before h marking is forced. Budget exhaustion without all gates yields resolution_unresolved, triggers Radau-comparison consideration, and blocks production interpolation.
 <!-- SECTION:NOTES:END -->
