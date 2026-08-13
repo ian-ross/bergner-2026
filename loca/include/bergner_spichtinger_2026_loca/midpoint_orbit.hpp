@@ -147,8 +147,15 @@ class Assembler {
   }
 
   const OrbitLayout& layout() const { return layout_; }
+  const Environment& environment() const { return environment_; }
+  const PhaseReference& phase_reference() const { return reference_; }
   double phase_energy() const { return phase_energy_; }
   const Teuchos::RCP<const graph_type>& graph() const { return graph_; }
+
+  void set_environment(const Environment& environment) {
+    validate_environment(environment);
+    environment_ = environment;
+  }
 
   Teuchos::RCP<vector_type> residual(const vector_type& unknowns) const {
     require_vector_map(unknowns, layout_.domain_map(), "unknown");
@@ -355,15 +362,18 @@ class Assembler {
     for (double scale : reference_.state_scaling) {
       if (!std::isfinite(scale) || scale <= 0.0) throw std::invalid_argument("state scaling must be positive and finite");
     }
+    validate_environment(environment_);
+  }
+  static void validate_environment(const Environment& environment) {
     const std::array<double, 6> environment_values = {
-        environment_.p, environment_.T, environment_.w,
-        environment_.F, environment_.N_a, environment_.dz};
+        environment.p, environment.T, environment.w,
+        environment.F, environment.N_a, environment.dz};
     for (double parameter : environment_values) {
       if (!std::isfinite(parameter) || parameter <= 0.0) {
         throw std::invalid_argument("environment parameters must be positive and finite");
       }
     }
-    if (environment_.include_evaporation)
+    if (environment.include_evaporation)
       throw std::invalid_argument("assembler requires the smooth no-evaporation environment");
   }
   void compute_phase_energy() {

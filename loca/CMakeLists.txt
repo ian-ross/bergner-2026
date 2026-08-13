@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.18)
 project(bergner_spichtinger_2026_loca LANGUAGES CXX)
 
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp" BS2026_MIDPOINT_LOCA_SHA256)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp" BS2026_MIDPOINT_ORBIT_SHA256)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/include/bergner_spichtinger_2026_loca/model.hpp" BS2026_MODEL_SHA256)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp" BS2026_MIDPOINT_NOX_SHA256)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp" BS2026_COLLOCATION_COEFFICIENTS_SHA256)
+file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/src/midpoint_orbit_cli.cpp" BS2026_MIDPOINT_CLI_SHA256)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -17,6 +24,14 @@ add_executable(bs2026_loca_model
 
 add_executable(bs2026_midpoint_orbit
   src/midpoint_orbit_cli.cpp
+)
+target_compile_definitions(bs2026_midpoint_orbit PRIVATE
+  BS2026_MIDPOINT_LOCA_SHA256="${BS2026_MIDPOINT_LOCA_SHA256}"
+  BS2026_MIDPOINT_ORBIT_SHA256="${BS2026_MIDPOINT_ORBIT_SHA256}"
+  BS2026_MODEL_SHA256="${BS2026_MODEL_SHA256}"
+  BS2026_MIDPOINT_NOX_SHA256="${BS2026_MIDPOINT_NOX_SHA256}"
+  BS2026_COLLOCATION_COEFFICIENTS_SHA256="${BS2026_COLLOCATION_COEFFICIENTS_SHA256}"
+  BS2026_MIDPOINT_CLI_SHA256="${BS2026_MIDPOINT_CLI_SHA256}"
 )
 
 set(BS2026_LOCA_TARGETS bs2026_loca_model bs2026_midpoint_orbit)

@@ -120,11 +120,11 @@
     },
     "cpp_assembler": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
-      "sha256": "4297617b16284071e409d0bc6c7819bfb884d9ae72d8f76bed58eea417dad6c9"
+      "sha256": "5fbccd9eb241046249aa3e2bd48918a87e01c4d221c4330510ea97b7e2cddda8"
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "39c363f44e229b64e30bfccd630fc9a18685768987e852882a8c8ae09ec05662"
+      "sha256": "3be7da15623f86e90ad4d0c6ebf7b2f40e56698956217b2620e9ef7dc3de0641"
     },
     "cpp_nox_adapter": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
