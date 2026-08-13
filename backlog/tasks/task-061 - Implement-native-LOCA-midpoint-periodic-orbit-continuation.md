@@ -1,9 +1,11 @@
 ---
 id: TASK-061
 title: Implement native LOCA midpoint periodic-orbit continuation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-12 12:52'
+updated_date: '2026-08-13 11:31'
 labels:
   - episode-008
   - cpp
