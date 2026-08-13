@@ -47,3 +47,11 @@ Use LOCA's native pseudo-arclength stepper around the sparse periodic-orbit base
 6. Add focused Python-driven integration tests for the one-parameter/no-duplicate-row contract, analytic DfDp, exact metric use by LOCA, deterministic bootstrap halving/orientation, native rejection/retry, controlled refresh semantics, exact bidirectional endpoints, event partitioning, and fixed-mesh period/weighted-orbit parity against the versioned Python branches. Update the Episode 008 README and decision record with the implementation, commands, calibrated tolerances, evidence, and non-production-accuracy warning.
 7. Validate fixture/artifact regeneration, direct native branch runs, focused TASK-061/TASK-060/backend tests, a clean CMake/Ninja build, the full Python suite, compiler/LSP diagnostics where reliable, py_compile, and git diff whitespace checks; then self-review and obtain independent correctness and test-quality review before completing the acceptance criteria.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-061 and assigned it to @iross. Reviewed completed dependencies TASK-057 and TASK-060, the Episode 008 README, and the binding collocation/phase decisions.
+- Confirmed CMake, Ninja, CTest, g++, uv, Backlog, and the installed Trilinos LOCA Thyra/Stepper headers are available. Repository worktree was clean before planning.
+- Architecture review confirmed the key seams: TASK-060 currently exposes Np=0 and needs a one-parameter Thyra model; native LOCA must use the frozen weighted continuation metric rather than the stock dimension-normalized Thyra dot product; bootstrap and controlled refreshes remain separate provenance events.
+<!-- SECTION:NOTES:END -->
