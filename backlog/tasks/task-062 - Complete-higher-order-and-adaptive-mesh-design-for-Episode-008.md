@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-12 12:52'
-updated_date: '2026-08-13 13:57'
+updated_date: '2026-08-13 14:09'
 labels:
   - episode-008
   - design
@@ -37,4 +37,6 @@ Resume the numerical design interview after fixed-mesh native LOCA continuation 
 
 <!-- SECTION:NOTES:BEGIN -->
 - Design interview decision: TASK-062 will specify operational, versioned v1 numerical constants. They are final for the initial implementation contract but must be reassessed against higher-order/adaptive calibration evidence; subsequent changes require documented evidence and a method-version revision.
+
+- Design interview decision: initial production uses globally fixed three-stage Gauss--Legendre collocation with external h/r adaptation. One-stage midpoint remains the baseline and two-stage Gauss an order-convergence cross-check. Local or orbit-varying hp adaptation is deferred; Radau, if triggered by evidence, is a whole-orbit comparison.
 <!-- SECTION:NOTES:END -->
