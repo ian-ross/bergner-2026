@@ -1,7 +1,7 @@
 ---
 id: TASK-059
 title: Implement the sparse Tpetra midpoint orbit assembler
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-12 12:52'
