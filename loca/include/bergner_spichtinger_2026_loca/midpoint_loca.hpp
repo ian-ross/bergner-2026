@@ -34,6 +34,7 @@ namespace bs2026_loca {
 namespace midpoint {
 
 inline constexpr char loca_continuation_version[] = "native-loca-midpoint-pseudo-arclength-v2";
+inline constexpr char higher_order_loca_continuation_version[] = "native-loca-gauss-fixed-mesh-pseudo-arclength-v1";
 inline constexpr char loca_metric_version[] = "endpoint-stage-half-weighted-l2-v1";
 inline constexpr char loca_parity_version[] = "native-python-all-point-parity-v1";
 inline constexpr double loca_period_relative_tolerance = 2.0e-7;
@@ -138,7 +139,7 @@ class ContinuationModelEvaluator final : public Thyra::StateFuncModelEvaluatorBa
     out.setSupports(Thyra::ModelEvaluatorBase::OUT_ARG_DfDp, 0,
                     Thyra::ModelEvaluatorBase::DERIV_MV_BY_COL); prototype_out_ = out;
   }
-  std::string description() const override { return "bs2026 square midpoint LOCA family"; }
+  std::string description() const override { return "bs2026 square fixed-mesh Gauss LOCA family"; }
   Teuchos::RCP<const Thyra::VectorSpaceBase<double>> get_x_space() const override { return x_space_; }
   Teuchos::RCP<const Thyra::VectorSpaceBase<double>> get_f_space() const override { return f_space_; }
   Teuchos::RCP<const Thyra::VectorSpaceBase<double>> get_p_space(int l) const override {
@@ -202,13 +203,12 @@ class ContinuationModelEvaluator final : public Thyra::StateFuncModelEvaluatorBa
   mutable double last_evaluated_coordinate_ = 0.0;
 };
 
-inline void require_midpoint_loca_layout(const OrbitLayout& layout, const char* operation) {
-  if (layout.stage_count() != 1)
-    throw std::invalid_argument(std::string(operation) + " supports midpoint layouts only; higher-order LOCA is TASK-066 scope");
+inline const char* continuation_version(const OrbitLayout& layout) {
+  return layout.stage_count() == 1 ? loca_continuation_version : higher_order_loca_continuation_version;
 }
 
 inline std::vector<double> continuation_metric_weights(const Assembler& assembler) {
-  const auto& layout = assembler.layout(); require_midpoint_loca_layout(layout, "continuation metric");
+  const auto& layout = assembler.layout();
   const auto& ref = assembler.phase_reference();
   std::vector<double> weights(layout.unknown_size() + 1, 0.0);
   for (std::size_t i = 0; i < layout.interval_count(); ++i) {
@@ -216,8 +216,11 @@ inline std::vector<double> continuation_metric_weights(const Assembler& assemble
     const std::size_t previous = (i + layout.interval_count() - 1) % layout.interval_count();
     const double previous_width = ref.boundaries[previous + 1] - ref.boundaries[previous];
     for (int c = 0; c < state_dimension; ++c) {
-      weights[layout.endpoint_index(i, c)] = 0.25 * (width + previous_width) * ref.state_scaling[c] * ref.state_scaling[c];
-      weights[layout.stage_index(i, 0, c)] = 0.5 * width * ref.state_scaling[c] * ref.state_scaling[c];
+      const double scaling_squared = ref.state_scaling[c] * ref.state_scaling[c];
+      weights[layout.endpoint_index(i, c)] = 0.25 * (width + previous_width) * scaling_squared;
+      for (int stage = 0; stage < layout.stage_count(); ++stage)
+        weights[layout.stage_index(i, stage, c)] = 0.5 * width *
+            layout.rule().quadrature_weights[stage] * scaling_squared;
     }
   }
   weights[layout.log_period_index()] = 1.0; weights.back() = 1.0; return weights;
@@ -351,6 +354,15 @@ struct NativeRunResult {
   std::string predictor_method = "Secant";
   std::string step_size_method = "Adaptive";
   bool used_bootstrap_restart_tangent = false;
+  double signed_bootstrap_parameter_component = 0.0;
+  double signed_bootstrap_weighted_norm = 0.0;
+  double injected_restart_parameter_component = 0.0;
+  double injected_restart_weighted_norm = 0.0;
+  double signed_initial_step = 0.0;
+  bool injected_restart_orientation_canonicalized = false;
+  bool model_evaluator_constructed = false;
+  bool weighted_group_constructed = false;
+  bool stepper_constructed = false;
 };
 
 inline Teuchos::RCP<LOCA::MultiContinuation::ExtendedVector> make_restart_tangent(
@@ -375,9 +387,9 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
                                        int maximum_steps = 80,
                                        const std::vector<double>* bootstrap_tangent = nullptr,
                                        bool force_first_native_rejection = false) {
-  require_midpoint_loca_layout(assembler->layout(), "native LOCA continuation");
   NativeRunResult result; result.base_dimension = assembler->layout().unknown_size();
   auto model = Teuchos::rcp(new ContinuationModelEvaluator(assembler, path, initial_coordinate, initial));
+  result.model_evaluator_constructed = !model.is_null();
   NOX::Thyra::Vector nox_initial(*model->getNominalValues().get_x());
   LOCA::ParameterVector parameters; parameters.addParameter(path->name(), initial_coordinate);
   auto top = Teuchos::rcp(new Teuchos::ParameterList);
@@ -392,7 +404,8 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
   auto& predictor = top->sublist("LOCA").sublist("Predictor");
   predictor.set("Method", "Secant");
   auto& step_size = top->sublist("LOCA").sublist("Step Size"); step_size.set("Method", "Adaptive");
-  step_size.set("Initial Step Size", std::copysign(std::abs(initial_step), target_coordinate - initial_coordinate));
+  result.signed_initial_step = std::copysign(std::abs(initial_step), target_coordinate - initial_coordinate);
+  step_size.set("Initial Step Size", result.signed_initial_step);
   stepper.set("Continuation Parameter", std::string(path->name()));
   step_size.set("Min Step Size", 1.0e-8); step_size.set("Max Step Size", 0.04);
   step_size.set("Aggressiveness", 0.5);
@@ -402,8 +415,19 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
   auto global = LOCA::createGlobalData(top);
   if (bootstrap_tangent != nullptr) {
     auto oriented_tangent = *bootstrap_tangent;
-    if (oriented_tangent.back() < 0.0)
+    const auto metric_weights = continuation_metric_weights(*assembler);
+    result.signed_bootstrap_parameter_component = bootstrap_tangent->back();
+    result.signed_bootstrap_weighted_norm = weighted_norm(*bootstrap_tangent, metric_weights);
+    // LOCA's Restart predictor stores its canonical tangent with a positive
+    // continuation-parameter component; the signed Step Size selects branch
+    // direction.  Preserve the signed bootstrap in provenance, but canonicalize
+    // only the injected Restart vector as required by this LOCA convention.
+    if (oriented_tangent.back() < 0.0) {
       for (double& value : oriented_tangent) value = -value;
+      result.injected_restart_orientation_canonicalized = true;
+    }
+    result.injected_restart_parameter_component = oriented_tangent.back();
+    result.injected_restart_weighted_norm = weighted_norm(oriented_tangent, metric_weights);
     auto restart = make_restart_tangent(global, nox_initial, oriented_tangent);
     auto& first = predictor.sublist("First Step Predictor");
     first.set("Method", "Restart"); first.set("Restart Vector", restart);
@@ -411,6 +435,7 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
   }
   auto group = Teuchos::rcp(new WeightedThyraGroup(global, nox_initial, model, parameters,
                                                     [&]() { auto weights = continuation_metric_weights(*assembler); weights.pop_back(); return weights; }()));
+  result.weighted_group_constructed = !group.is_null();
   auto recorder = Teuchos::rcp(new ContinuationRecorder(initial_coordinate, target_coordinate, model)); group->installSaveDataStrategy(recorder);
   auto norm = Teuchos::rcp(new NOX::StatusTest::NormF(nox_norm_f_tolerance, NOX::StatusTest::NormF::Unscaled));
   auto maxit = Teuchos::rcp(new NOX::StatusTest::MaxIters(nox_max_iterations));
@@ -425,6 +450,7 @@ inline NativeRunResult run_native_loca(const Teuchos::RCP<Assembler>& assembler,
   // its zero sentinel, causing finish() to attempt an unrelated natural step.
   stepper.set("Return Failed on Reaching Max Steps", false);
   LOCA::Stepper native(global, group, nonlinear_status, top);
+  result.stepper_constructed = true;
   result.status = native.run(); result.raw_step_number = native.getStepNumber();
   result.raw_failed_step_count = native.getNumFailedSteps(); result.raw_total_step_count = native.getNumTotalSteps();
   recorder->reconcile(); result.points = recorder->points; result.events = recorder->events;
@@ -466,19 +492,24 @@ inline BootstrapResult deterministic_bootstrap(const Teuchos::RCP<Assembler>& as
 
 inline PhaseReference refreshed_phase_reference(const Assembler& assembler,
                                                 const vector_type& accepted_unknowns) {
-  const auto& layout = assembler.layout(); require_midpoint_loca_layout(layout, "phase-reference refresh");
+  const auto& layout = assembler.layout();
   const auto values = copy_vector_by_global_id(accepted_unknowns);
   const double period = std::exp(values.at(static_cast<std::size_t>(layout.log_period_index())));
   PhaseReference refreshed = assembler.phase_reference();
   const auto environment = assembler.environment();
   for (std::size_t interval = 0; interval < layout.interval_count(); ++interval) {
-    std::array<double, state_dimension> stage{};
-    for (int component = 0; component < state_dimension; ++component)
-      stage[component] = values.at(static_cast<std::size_t>(layout.stage_index(interval, 0, component)));
-    const auto derivatives = local_derivatives(stage, environment.T, std::log(environment.w), environment);
-    refreshed.stage_values[interval] = stage;
-    for (int component = 0; component < state_dimension; ++component)
-      refreshed.stage_derivatives[interval][component] = period * derivatives.values[component];
+    for (int stage_index = 0; stage_index < layout.stage_count(); ++stage_index) {
+      std::array<double, state_dimension> stage{};
+      for (int component = 0; component < state_dimension; ++component)
+        stage[component] = values.at(static_cast<std::size_t>(
+            layout.stage_index(interval, stage_index, component)));
+      const auto derivatives = local_derivatives(stage, environment.T, std::log(environment.w), environment);
+      const std::size_t reference_index = interval * static_cast<std::size_t>(layout.stage_count()) +
+                                          static_cast<std::size_t>(stage_index);
+      refreshed.stage_values[reference_index] = stage;
+      for (int component = 0; component < state_dimension; ++component)
+        refreshed.stage_derivatives[reference_index][component] = period * derivatives.values[component];
+    }
   }
   return refreshed;
 }

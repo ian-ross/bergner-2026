@@ -308,7 +308,7 @@
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+      "sha256": "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
     },
     "cpp_collocation_coefficients": {
       "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
@@ -316,7 +316,7 @@
     },
     "cpp_loca": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
-      "sha256": "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d"
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
     },
     "cpp_model": {
       "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",

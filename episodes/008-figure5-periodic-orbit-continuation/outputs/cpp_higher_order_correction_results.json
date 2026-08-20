@@ -453,24 +453,23 @@
     }
   ],
   "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
-  "fixture_manifest_sha256": "76112de11d14275e39ca1cb5d403fce7be7f8099d14bb73d04653e36f97a5e8a",
+  "fixture_manifest_sha256": "fe3d980169f718a947583e383ce11c6bc337f712b45294e92d3819ddc34e9f33",
   "parity_tolerance": 1e-08,
   "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<current-build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check",
   "runtime_provenance": {
     "compiler_and_trilinos": [
-      "16.1.1",
-      "20260731",
+      "16.2.0",
       "Trilinos_17.2.0-dev"
     ],
     "emitting_executable_source_fingerprints": [
-      "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d",
+      "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
       "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428",
       "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
       "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
       "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-      "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+      "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
     ],
-    "executable_sha256": "5fc73da67f886f9c3cfb39f270f889996ea9c2c1ec57c8697bf97a3e2747c720",
+    "executable_sha256": "4d1ccb5c4b6b56c8559781800dedbfe54e458f6540361ebf2eddfae6c4060742",
     "numpy": "2.4.6",
     "python": "3.11.15",
     "scipy": "1.17.1"
@@ -479,7 +478,7 @@
   "source_provenance": {
     "compiled_source_0": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
-      "sha256": "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d"
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
     },
     "compiled_source_1": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
@@ -499,7 +498,7 @@
     },
     "compiled_source_5": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+      "sha256": "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
     },
     "fixed_mesh_midpoint_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
@@ -507,7 +506,7 @@
     },
     "fixture_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/manifest.json",
-      "sha256": "76112de11d14275e39ca1cb5d403fce7be7f8099d14bb73d04653e36f97a5e8a"
+      "sha256": "fe3d980169f718a947583e383ce11c6bc337f712b45294e92d3819ddc34e9f33"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py",

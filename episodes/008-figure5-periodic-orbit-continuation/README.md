@@ -210,7 +210,7 @@ The artifact explicitly separates nonlinear acceptance from discretization quali
 
 ## C++ sparse higher-order fixed-parameter correction
 
-The serial Tpetra base assembler now consumes the frozen one-, two-, and three-stage Gauss tables. Its square layout has `3N(r+1)+1` unknowns/residuals, interval-major explicit stages, cyclic endpoint updates, `log(P)`, and one quadrature-normalized phase row. The fill-completed sparse graph is retained for each fixed mesh/rule; Jacobian values and normalized rho/T-hat columns use local Sacado model derivatives. Midpoint constructors/index overloads remain compatibility entry points. `midpoint_loca.hpp` explicitly rejects higher-order layouts because native higher-order continuation is TASK-066 scope.
+The serial Tpetra base assembler now consumes the frozen one-, two-, and three-stage Gauss tables. Its square layout has `3N(r+1)+1` unknowns/residuals, interval-major explicit stages, cyclic endpoint updates, `log(P)`, and one quadrature-normalized phase row. The fill-completed sparse graph is retained for each fixed mesh/rule; Jacobian values and normalized rho/T-hat columns use local Sacado model derivatives. Midpoint constructors/index overloads remain compatibility entry points. The same square groups now feed native LOCA for every frozen Gauss rule; LOCA alone adds the continuation coordinate/arclength extension.
 
 The generalized Thyra/NOX/Amesos2-KLU2 corrector preserves independent nonlinear, residual-block, phase, physical positivity/finiteness, phase-energy, and concrete factorization/solve gates. Exact upstream solutions receive a small deterministic solve perturbation so each required correction exercises KLU2 instead of terminating at iteration zero. Missing early/zero-iteration linear diagnostics remain stably unreported and therefore fail the independent linear gate.
 
@@ -229,6 +229,21 @@ All six accepted bundle seeds correct with real KLU2 activity and match correspo
 BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py
 BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check
 ```
+
+## Native higher-order fixed-mesh LOCA continuation
+
+The native Thyra/LOCA family is rule-aware for one-, two-, and three-stage Gauss layouts. The base group remains square (`3N(r+1)+1`) and has no repository-owned arclength row. Endpoint storage receives half of the orbit metric; stage `j` receives `0.5 Delta theta_i b_j S_x^2`, so the summed endpoint and stage weights are each `0.5 S_x^2` for every rule. `log(P)` and the normalized coordinate retain unit weights. Analytic normalized `DfDp`, signed fixed-parameter bootstrap, Secant/Restart prediction, Arc Length continuation, Adaptive stepping, and rejection/retry ownership remain native LOCA contracts.
+
+The curated three-stage `N=32` run replays exactly five segments: `T=225 K` to the spine, both spine directions (including exact `T=210 K`), and both signed `T=210 K` rho guards. Every recorded native point passes a perturbed fixed-parameter NOX/KLU2 residual, phase, physical-positivity, period, and linear-solve validation. The two phase changes rebuild the assembler/model/group/stepper stack and record old/new physical-coordinate equality plus zero stage/derivative-to-refreshed-reference identity error. Two- and three-stage Thyra seams request `OUT_ARG_DfDp` for both rho and normalized temperature, restore the center environment after shared-model trials, and measure centered-residual relative errors from `1.10e-10` to `1.55e-9` against a `2e-6` gate. A two-stage `N=64` smoke run freezes the same dimensions, metric, bootstrap, and forced native rejection/reduced-retry behavior.
+
+Generate or byte-check the source-bound native-only artifacts after configuring the executable (re-run CMake configuration after source edits so its compiled fingerprints are current):
+
+```bash
+BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_loca_higher_order_results.py
+BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_loca_higher_order_results.py --check
+```
+
+[`outputs/native_loca_higher_order_results.json`](outputs/native_loca_higher_order_results.json) stores rule/mesh/metric/base/extended dimensions, signed bootstrap and injected-Restart orientation/norms, refresh lineage, raw and callback-derived event accounting, exact targets, source/runtime fingerprints, native validation gates, and independent Python all-point parity. Generator invariants reconcile contiguous callbacks, one initial/final save, regular attempts, saved points, rejected retry adjacency/linkage, and raw failed/total counts. Runtime provenance binds the exact executable SHA-256, emitted compiler/Trilinos identity, Release build type, CMake source/configuration hash, and six compiled sources. Consequently `--check` must use the exact recorded build; regenerate intentionally when another environment produces a different executable digest. Each Python comparison is a separate three-stage fixed-parameter correction at the identical native coordinate, seeded only from frozen or Python-derived higher-order vectors—never from the native vector. Maximum observed relative period and weighted-orbit errors are about `1.58e-12` and `2.84e-12`, below the versioned `2e-7` limits. [`outputs/native_loca_higher_order_vectors.npz`](outputs/native_loca_higher_order_vectors.npz) contains only C++ recorder vectors and is checksum-disjoint from frozen Python arrays. This remains fixed-mesh continuation evidence, not production Figure 5 accuracy.
 
 ## TASK-062 higher-order/adaptive design
 

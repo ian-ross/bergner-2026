@@ -339,8 +339,10 @@ def test_fixture_trailing_data_is_rejected(tmp_path: Path):
     assert "trailing data" in completed.stderr
 
 
-def test_midpoint_loca_helpers_explicitly_reject_higher_order_layout():
-    completed = subprocess.run([str(executable()), "loca-contract", str(FIXTURES / "canonical-g3-n32.txt")],
-                               cwd=ROOT, text=True, capture_output=True)
-    assert completed.returncode == 2
-    assert "higher-order LOCA is TASK-066 scope" in completed.stderr
+def test_higher_order_layout_is_accepted_by_native_loca_without_extra_base_row():
+    output = run("loca-contract", "canonical-g3-n32")
+    assert output["loca_contract"][0] == "native-loca-gauss-fixed-mesh-pseudo-arclength-v1"
+    assert tuple(map(int, output["loca_contract"][1:])) == (1, 1, 385, 386, 384, 384)
+    assert output["loca_method"][:6] == [
+        "Arc_Length", "native_stepper", "true", "base_has_arclength", "false", "metric",
+    ]

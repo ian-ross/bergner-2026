@@ -671,7 +671,7 @@
       "tangent_coordinate_component": 0.5250063606213328,
       "weighted_step": 0.038094776559145845
     },
-    "build_identity": "16.1.1 20260731 Trilinos_17.2.0-dev",
+    "build_identity": "16.2.0 Trilinos_17.2.0-dev",
     "continuation_method": "Arc_Length",
     "extended_dimension": 386,
     "forced_native_rejection": {
@@ -775,12 +775,12 @@
       "step_size_method": "Adaptive"
     },
     "source_fingerprint_sha256": [
-      "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d",
+      "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
       "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428",
       "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
       "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
       "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-      "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+      "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
     ],
     "version": "native-loca-midpoint-pseudo-arclength-v2"
   },
@@ -1516,7 +1516,7 @@
   "source_provenance": {
     "cpp_adapter": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
-      "sha256": "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d"
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
     },
     "cpp_assembler": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
@@ -1524,7 +1524,7 @@
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+      "sha256": "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
     },
     "cpp_collocation_coefficients": {
       "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
@@ -1564,16 +1564,16 @@
     },
     "runtime": {
       "emitting_executable_source_fingerprint_sha256": [
-        "6283f4922edab0c6652c9650dd77fbddb6f14c839f9518460119dc71e3126e5d",
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
         "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428",
         "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
         "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
         "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-        "7bb0e94c8cbb4431957b562f5957d4cd6af58a2694ca7f8bebc85bd23956e8f1"
+        "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
       ],
       "numpy": "2.4.6",
       "python": "3.11.15",
-      "trilinos_build_identity": "16.1.1 20260731 Trilinos_17.2.0-dev"
+      "trilinos_build_identity": "16.2.0 Trilinos_17.2.0-dev"
     },
     "seed": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",

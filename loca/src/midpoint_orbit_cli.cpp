@@ -250,6 +250,7 @@ void write_runtime_provenance(const OrbitLayout& layout) {
   std::cout << "rule " << layout.rule().family << " " << layout.stage_count() << " "
             << layout.formal_order() << " " << bs2026_loca::collocation::artifact_sha256 << "\n";
   std::cout << "build_identity " << __VERSION__ << " Trilinos_" << TRILINOS_VERSION_STRING << "\n";
+  std::cout << "cmake_identity " << BS2026_CMAKE_SOURCE_SHA256 << " build_type_" << BS2026_CMAKE_BUILD_TYPE << "\n";
   std::cout << "source_fingerprint " << BS2026_MIDPOINT_LOCA_SHA256 << " " << BS2026_MIDPOINT_ORBIT_SHA256
             << " " << BS2026_MODEL_SHA256 << " " << BS2026_MIDPOINT_NOX_SHA256 << " "
             << BS2026_COLLOCATION_COEFFICIENTS_SHA256 << " " << BS2026_MIDPOINT_CLI_SHA256 << "\n";
@@ -333,11 +334,11 @@ int main(int argc, char** argv) {
     const std::string command = argc > 1 ? argv[1] : "";
     const bool fixture_command = command == "inspect" || command == "evaluate" ||
         command == "solve" || command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" ||
-        command == "guard-nonfinite-reference" || command == "guard-invalid-period";
+        command == "loca-dfdp" || command == "guard-nonfinite-reference" || command == "guard-invalid-period";
     const bool valid_arity = (fixture_command && argc == 3) ||
         (command == "acceptance-guard" && argc == 4);
     if (!valid_arity) {
-      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|loca-contract|loca-smoke|loca-branches|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
+      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|loca-contract|loca-smoke|loca-branches|loca-dfdp|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
                 << "       bs2026_midpoint_orbit acceptance-guard block|phase|positivity|period|phase-energy|linear fixture.txt\n"
                 << "       bs2026_midpoint_orbit guard-one-interval\n";
       return 2;
@@ -372,7 +373,7 @@ int main(int argc, char** argv) {
     OrbitLayout layout(fixture.reference.boundaries.size() - 1, fixture.stage_count, comm);
     Assembler assembler(layout, fixture.environment, fixture.reference);
     auto unknowns = make_vector(layout, fixture.unknowns);
-    if (command == "loca-contract" || command == "loca-smoke" || command == "loca-branches") {
+    if (command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" || command == "loca-dfdp") {
       auto assembler_ptr = Teuchos::rcp(new Assembler(std::move(assembler)));
       const double origin = (std::log(fixture.environment.w) -
           0.5 * (fixture.log_w_lower + fixture.log_w_upper)) /
@@ -383,13 +384,16 @@ int main(int argc, char** argv) {
       auto model = Teuchos::rcp(new bs2026_loca::midpoint::ContinuationModelEvaluator(
           assembler_ptr, path, origin, *unknowns));
       std::cout << std::setprecision(17) << std::scientific;
-      std::cout << "loca_contract " << bs2026_loca::midpoint::loca_continuation_version << " "
+      std::cout << "loca_contract " << bs2026_loca::midpoint::continuation_version(layout) << " "
                 << model->createOutArgs().Np() << " " << model->get_p_space(0)->dim() << " "
                 << layout.unknown_size() << " " << layout.unknown_size() + 1 << " "
                 << layout.phase_row() << " " << layout.log_period_index() << "\n";
       std::cout << "loca_method Arc_Length native_stepper true base_has_arclength false metric "
                 << bs2026_loca::midpoint::loca_metric_version << "\n";
+      std::cout << "rule " << layout.rule().family << " " << layout.stage_count() << " "
+                << layout.formal_order() << " " << bs2026_loca::collocation::artifact_sha256 << "\n";
       std::cout << "build_identity " << __VERSION__ << " Trilinos_" << TRILINOS_VERSION_STRING << "\n";
+      std::cout << "cmake_identity " << BS2026_CMAKE_SOURCE_SHA256 << " build_type_" << BS2026_CMAKE_BUILD_TYPE << "\n";
       std::cout << "source_fingerprint " << BS2026_MIDPOINT_LOCA_SHA256 << " " << BS2026_MIDPOINT_ORBIT_SHA256
                 << " " << BS2026_MODEL_SHA256 << " " << BS2026_MIDPOINT_NOX_SHA256 << " "
                 << BS2026_COLLOCATION_COEFFICIENTS_SHA256 << " " << BS2026_MIDPOINT_CLI_SHA256 << "\n";
@@ -416,6 +420,76 @@ int main(int argc, char** argv) {
       std::cout << "group_weighted_dot " << metric_group.computeScaledDotProduct(nox_a, nox_b)
                 << " " << expected_dot << "\n";
       LOCA::destroyGlobalData(dot_global);
+      if (command == "loca-dfdp") {
+        constexpr double epsilon = 1.0e-6;
+        auto check_dfdp = [&](const std::string& path_name,
+                              const std::shared_ptr<const bs2026_loca::midpoint::ContinuationPath>& trial_path,
+                              double coordinate) {
+          auto trial_model = Teuchos::rcp(new bs2026_loca::midpoint::ContinuationModelEvaluator(
+              assembler_ptr, trial_path, coordinate, *unknowns));
+          auto evaluate_model = [&](double trial_coordinate, bool request_derivative) {
+            auto in = trial_model->getNominalValues();
+            auto parameter = Thyra::createMember(trial_model->get_p_space(0));
+            { Thyra::DetachedVectorView<double> value(*parameter); value[0] = trial_coordinate; }
+            in.set_p(0, parameter);
+            auto out = trial_model->createOutArgs();
+            auto residual = Thyra::createMember(trial_model->get_f_space());
+            out.set_f(residual);
+            Teuchos::RCP<Thyra::MultiVectorBase<double>> derivative = Teuchos::null;
+            if (request_derivative) {
+              derivative = Thyra::createMembers(trial_model->get_f_space(), 1);
+              out.set_DfDp(0, Thyra::ModelEvaluatorBase::Derivative<double>(
+                  derivative, Thyra::ModelEvaluatorBase::DERIV_MV_BY_COL));
+            }
+            trial_model->evalModel(in, out);
+            auto residual_tpetra = Thyra::TpetraOperatorVectorExtraction<double>::getConstTpetraVector(residual);
+            std::vector<double> derivative_values;
+            if (!derivative.is_null()) {
+              auto derivative_tpetra = Thyra::TpetraOperatorVectorExtraction<double>::getConstTpetraVector(
+                  derivative->col(0));
+              derivative_values = copy_vector_by_global_id(*derivative_tpetra);
+            }
+            return std::make_pair(copy_vector_by_global_id(*residual_tpetra), derivative_values);
+          };
+          const auto center = evaluate_model(coordinate, true);
+          const auto plus = evaluate_model(coordinate + epsilon, false).first;
+          const auto minus = evaluate_model(coordinate - epsilon, false).first;
+          // A final center evaluation proves trial calls do not leave the shared
+          // assembler at either finite-difference environment.
+          (void)evaluate_model(coordinate, false);
+          std::vector<double> difference(center.first.size());
+          double error_squared = 0.0, column_squared = 0.0;
+          for (std::size_t i = 0; i < difference.size(); ++i) {
+            difference[i] = (plus[i] - minus[i]) / (2.0 * epsilon);
+            const double error = center.second[i] - difference[i];
+            error_squared += error * error; column_squared += center.second[i] * center.second[i];
+          }
+          const auto expected = trial_path->coordinates(coordinate);
+          const double relative_error = std::sqrt(error_squared) / std::max(1.0, std::sqrt(column_squared));
+          std::cout << "dfdp " << path_name << " " << epsilon << " " << relative_error << " "
+                    << trial_model->last_evaluated_coordinate() << " " << assembler_ptr->environment().T << " "
+                    << std::log(assembler_ptr->environment().w) << " " << expected.temperature << " "
+                    << expected.log_w << " " << expected.coordinate << "\n";
+          std::cout << "dfdp_column " << path_name << " " << center.second.size();
+          for (double value : center.second) std::cout << " " << value;
+          std::cout << "\n";
+          std::cout << "dfdp_centered_difference " << path_name << " " << difference.size();
+          for (double value : difference) std::cout << " " << value;
+          std::cout << "\n";
+        };
+        check_dfdp("rho", path, origin);
+        const double temperature_hat = (fixture.environment.T - 215.0) / 25.0;
+        const auto lower = [fixture](double temperature) {
+          return fixture.log_w_lower + fixture.spine_derivative * (temperature - fixture.environment.T);
+        };
+        const auto upper = [fixture](double temperature) {
+          return fixture.log_w_upper + fixture.spine_derivative * (temperature - fixture.environment.T);
+        };
+        auto temperature_path = std::make_shared<bs2026_loca::midpoint::SpineTemperaturePath>(
+            lower, upper, [fixture](double) { return fixture.spine_derivative; });
+        check_dfdp("temperature_hat", temperature_path, temperature_hat);
+        return 0;
+      }
       if (command == "loca-branches") {
         const PchipFunction lower(false), upper(true);
         auto fixed225 = std::make_shared<bs2026_loca::midpoint::FixedTemperatureRhoPath>(
@@ -445,6 +519,13 @@ int main(int argc, char** argv) {
             std::cout << "branch_bootstrap " << spec.id << " " << attempt.attempt << " "
                       << attempt.requested_step << " " << attempt.coordinate << " "
                       << (attempt.accepted ? "accepted" : "rejected") << " " << attempt.weighted_step << "\n";
+          std::cout << "branch_restart " << spec.id << " "
+                    << native.signed_bootstrap_parameter_component << " "
+                    << native.signed_bootstrap_weighted_norm << " "
+                    << native.injected_restart_parameter_component << " "
+                    << native.injected_restart_weighted_norm << " "
+                    << native.signed_initial_step << " "
+                    << (native.injected_restart_orientation_canonicalized ? "true" : "false") << "\n";
           for (std::size_t index = 0; index < native.events.size(); ++index) {
             const auto& event = native.events[index];
             std::cout << "branch_event " << spec.id << " " << index << " " << event.status << " "
@@ -453,9 +534,65 @@ int main(int argc, char** argv) {
                       << (event.initial_solve ? "initial" : (event.final_target_solve ? "final" : "regular")) << "\n";
           }
           for (std::size_t index = 0; index < native.points.size(); ++index) {
+            const auto& point = native.points[index];
+            spec.assembler->set_environment(bs2026_loca::midpoint::environment_on_path(
+                spec.assembler->environment(), *spec.path, point.coordinate));
+            auto native_vector = make_vector(spec.assembler->layout(), point.unknowns);
+            const auto native_diagnostics = spec.assembler->diagnostics(*spec.assembler->residual(*native_vector));
+            bool native_states_positive_finite = true;
+            for (std::size_t interval = 0; interval < spec.assembler->layout().interval_count(); ++interval) {
+              for (int component = 0; component < 2; ++component)
+                native_states_positive_finite = native_states_positive_finite &&
+                    bs2026_loca::midpoint::finite_positive_exp(point.unknowns[static_cast<std::size_t>(
+                        spec.assembler->layout().endpoint_index(interval, component))]);
+              native_states_positive_finite = native_states_positive_finite &&
+                  std::isfinite(point.unknowns[static_cast<std::size_t>(
+                      spec.assembler->layout().endpoint_index(interval, 2))]);
+              for (int stage = 0; stage < spec.assembler->layout().stage_count(); ++stage) {
+                for (int component = 0; component < 2; ++component)
+                  native_states_positive_finite = native_states_positive_finite &&
+                      bs2026_loca::midpoint::finite_positive_exp(point.unknowns[static_cast<std::size_t>(
+                          spec.assembler->layout().stage_index(interval, stage, component))]);
+                native_states_positive_finite = native_states_positive_finite &&
+                    std::isfinite(point.unknowns[static_cast<std::size_t>(
+                        spec.assembler->layout().stage_index(interval, stage, 2))]);
+              }
+            }
+            const bool native_period_positive_finite =
+                bs2026_loca::midpoint::finite_positive_exp(point.unknowns.back());
+            auto validation_seed = Teuchos::rcp(new vector_type(*native_vector));
+            for (std::size_t gid = 0; gid < point.unknowns.size(); ++gid)
+              validation_seed->replaceGlobalValue(static_cast<long long>(gid),
+                  point.unknowns[gid] + 1.0e-7 * std::sin(static_cast<double>(gid) + 0.375));
+            const auto validation = bs2026_loca::midpoint::solve_fixed_parameter(spec.assembler, *validation_seed);
+            std::vector<double> validation_delta(point.unknowns.size() + 1, 0.0);
+            const auto validated_values = copy_vector_by_global_id(*validation.unknowns);
+            for (std::size_t gid = 0; gid < point.unknowns.size(); ++gid)
+              validation_delta[gid] = validated_values[gid] - point.unknowns[gid];
+            const double validation_distance = bs2026_loca::midpoint::weighted_norm(
+                validation_delta, bs2026_loca::midpoint::continuation_metric_weights(*spec.assembler));
+            bs2026_loca::midpoint::AcceptanceInputs native_acceptance_inputs;
+            native_acceptance_inputs.nox_converged = true;
+            native_acceptance_inputs.residual = native_diagnostics;
+            native_acceptance_inputs.physical_states_positive_finite = native_states_positive_finite;
+            native_acceptance_inputs.period_positive_finite = native_period_positive_finite;
+            native_acceptance_inputs.linear = validation.linear;
+            const auto native_acceptance = bs2026_loca::midpoint::evaluate_acceptance(native_acceptance_inputs);
+            if (!validation.acceptance.accepted || !native_acceptance.accepted ||
+                validation_distance > bs2026_loca::midpoint::loca_weighted_orbit_tolerance)
+              throw std::runtime_error("native accepted-point validation failed: " + spec.id);
+            std::cout << "branch_validation " << spec.id << " " << index << " "
+                      << native_diagnostics.stage_max << " " << native_diagnostics.stage_rms << " "
+                      << native_diagnostics.update_max << " " << native_diagnostics.update_rms << " "
+                      << native_diagnostics.phase_abs << " "
+                      << (native_states_positive_finite ? "true" : "false") << " "
+                      << (native_period_positive_finite ? "true" : "false") << " "
+                      << validation.linear.backend << " "
+                      << (validation.linear.solve_complete ? "true" : "false") << " "
+                      << validation_distance << "\n";
             std::cout << "branch_point " << spec.id << " " << index << " " << spec.reference_id << " "
-                      << native.points[index].coordinate << " " << std::exp(native.points[index].unknowns.back());
-            for (double value : native.points[index].unknowns) std::cout << " " << value;
+                      << point.coordinate << " " << std::exp(point.unknowns.back());
+            for (double value : point.unknowns) std::cout << " " << value;
             std::cout << "\n";
           }
           const int initial_saves = static_cast<int>(std::count_if(native.events.begin(), native.events.end(),
@@ -479,48 +616,114 @@ int main(int argc, char** argv) {
         const auto spine225_physical = fixed225->coordinates(0.0);
         const auto spine225_mapped = spine->coordinates(0.4);
         const auto spine225_reference = bs2026_loca::midpoint::refreshed_phase_reference(*initial_assembler, *spine225_unknowns);
+        double spine225_stage_identity_max = 0.0, spine225_derivative_identity_max = 0.0;
+        const auto spine225_values = copy_vector_by_global_id(*spine225_unknowns);
+        const double spine225_period = std::exp(spine225_values[static_cast<std::size_t>(layout.log_period_index())]);
+        for (std::size_t interval = 0; interval < layout.interval_count(); ++interval)
+          for (int stage = 0; stage < layout.stage_count(); ++stage) {
+            std::array<double, 3> values{};
+            const std::size_t reference_index = interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage);
+            for (int component = 0; component < 3; ++component) {
+              values[component] = spine225_values[static_cast<std::size_t>(layout.stage_index(interval, stage, component))];
+              spine225_stage_identity_max = std::max(spine225_stage_identity_max,
+                  std::abs(values[component] - spine225_reference.stage_values[reference_index][component]));
+            }
+            const auto derivatives = bs2026_loca::local_derivatives(values, fixture.environment.T,
+                spine225_physical.log_w, fixture.environment);
+            for (int component = 0; component < 3; ++component)
+              spine225_derivative_identity_max = std::max(spine225_derivative_identity_max,
+                  std::abs(spine225_period * derivatives.values[component] -
+                           spine225_reference.stage_derivatives[reference_index][component]));
+          }
         auto spine_assembler = Teuchos::rcp(new Assembler(layout,
             bs2026_loca::midpoint::environment_on_path(fixture.environment, *spine, 0.4), spine225_reference));
         auto spine225_verify_seed = make_vector(layout, to_spine.points[to_spine.points.size() - 2].unknowns);
         const auto spine225_verified = bs2026_loca::midpoint::solve_fixed_parameter(spine_assembler, *spine225_verify_seed);
-        if (!spine225_verified.acceptance.accepted || std::abs(spine225_physical.log_w - spine225_mapped.log_w) > 1.0e-12)
+        if (!spine225_verified.acceptance.accepted ||
+            std::abs(spine225_physical.temperature - spine225_mapped.temperature) > 1.0e-12 ||
+            std::abs(spine225_physical.log_w - spine225_mapped.log_w) > 1.0e-12)
           throw std::runtime_error("spine-225 phase refresh verification failed");
         spine225_unknowns = spine225_verified.unknowns;
-        std::cout << "phase_refresh phase-ref-episode007-seed phase-ref-spine-225 fixed225-to-spine temperature_hat 0.4 "
-                  << spine225_physical.temperature << " " << spine225_physical.log_w << " "
-                  << spine225_mapped.temperature << " " << spine225_mapped.log_w << " "
-                  << spine225_verified.diagnostics.stage_max << " " << spine225_verified.diagnostics.update_max << " "
-                  << spine225_verified.diagnostics.phase_abs << " " << spine225_verified.linear.backend << " "
-                  << (spine225_verified.linear.solve_complete ? "true" : "false") << "\n";
+        if (layout.stage_count() == 1)
+          std::cout << "phase_refresh phase-ref-episode007-seed phase-ref-spine-225 fixed225-to-spine temperature_hat 0.4 "
+                    << spine225_physical.temperature << " " << spine225_physical.log_w << " "
+                    << spine225_mapped.temperature << " " << spine225_mapped.log_w << " "
+                    << spine225_verified.diagnostics.stage_max << " " << spine225_verified.diagnostics.update_max << " "
+                    << spine225_verified.diagnostics.phase_abs << " " << spine225_verified.linear.backend << " "
+                    << (spine225_verified.linear.solve_complete ? "true" : "false") << "\n";
         auto spine_up = run_segment({"spine-positive-T-hat", "phase-ref-spine-225", spine,
                                      spine_assembler, spine225_unknowns, 0.4, 0.44, 0.01, 0.25});
         (void)spine_up;
         auto spine_down = run_segment({"spine-negative-T-hat-to-210", "phase-ref-spine-225", spine,
                                        spine_assembler, spine225_unknowns, 0.4, -0.2, 0.01, 0.25});
+        if (layout.stage_count() > 1)
+          std::cout << "phase_refresh phase-ref-episode007-seed phase-ref-spine-225 fixed225-to-spine temperature_hat 0.4 "
+                    << spine225_physical.temperature << " " << spine225_physical.log_w << " "
+                    << spine225_mapped.temperature << " " << spine225_mapped.log_w << " "
+                    << spine225_verified.diagnostics.stage_max << " " << spine225_verified.diagnostics.update_max << " "
+                    << spine225_verified.diagnostics.phase_abs << " " << spine225_verified.linear.backend << " "
+                    << (spine225_verified.linear.solve_complete ? "true" : "false") << " "
+                    << spine225_stage_identity_max << " " << spine225_derivative_identity_max << " "
+                    << (spine_assembler.get() != initial_assembler.get() ? "true" : "false") << " "
+                    << (spine_up.model_evaluator_constructed && spine_up.weighted_group_constructed &&
+                        spine_up.stepper_constructed ? "true" : "false") << "\n";
         auto spine210_unknowns = make_vector(layout, spine_down.points.back().unknowns);
         auto slice210 = std::make_shared<bs2026_loca::midpoint::FixedTemperatureRhoPath>(
             210.0, lower(210.0), upper(210.0));
         const auto slice210_physical = spine->coordinates(-0.2);
         const auto slice210_mapped = slice210->coordinates(0.0);
         const auto slice210_reference = bs2026_loca::midpoint::refreshed_phase_reference(*spine_assembler, *spine210_unknowns);
+        double slice210_stage_identity_max = 0.0, slice210_derivative_identity_max = 0.0;
+        const auto slice210_values = copy_vector_by_global_id(*spine210_unknowns);
+        const double slice210_period = std::exp(slice210_values[static_cast<std::size_t>(layout.log_period_index())]);
+        for (std::size_t interval = 0; interval < layout.interval_count(); ++interval)
+          for (int stage = 0; stage < layout.stage_count(); ++stage) {
+            std::array<double, 3> values{};
+            const std::size_t reference_index = interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage);
+            for (int component = 0; component < 3; ++component) {
+              values[component] = slice210_values[static_cast<std::size_t>(layout.stage_index(interval, stage, component))];
+              slice210_stage_identity_max = std::max(slice210_stage_identity_max,
+                  std::abs(values[component] - slice210_reference.stage_values[reference_index][component]));
+            }
+            const auto derivatives = bs2026_loca::local_derivatives(values, slice210_physical.temperature,
+                slice210_physical.log_w, fixture.environment);
+            for (int component = 0; component < 3; ++component)
+              slice210_derivative_identity_max = std::max(slice210_derivative_identity_max,
+                  std::abs(slice210_period * derivatives.values[component] -
+                           slice210_reference.stage_derivatives[reference_index][component]));
+          }
         auto slice_assembler = Teuchos::rcp(new Assembler(layout,
             bs2026_loca::midpoint::environment_on_path(fixture.environment, *slice210, 0.0), slice210_reference));
         auto slice210_verify_seed = make_vector(layout, spine_down.points[spine_down.points.size() - 2].unknowns);
         const auto slice210_verified = bs2026_loca::midpoint::solve_fixed_parameter(slice_assembler, *slice210_verify_seed);
-        if (!slice210_verified.acceptance.accepted || std::abs(slice210_physical.log_w - slice210_mapped.log_w) > 1.0e-12)
+        if (!slice210_verified.acceptance.accepted ||
+            std::abs(slice210_physical.temperature - slice210_mapped.temperature) > 1.0e-12 ||
+            std::abs(slice210_physical.log_w - slice210_mapped.log_w) > 1.0e-12)
           throw std::runtime_error("slice-210 phase refresh verification failed");
         spine210_unknowns = slice210_verified.unknowns;
-        std::cout << "phase_refresh phase-ref-spine-225 phase-ref-slice-210 spine-negative-T-hat-to-210 rho 0 "
-                  << slice210_physical.temperature << " " << slice210_physical.log_w << " "
-                  << slice210_mapped.temperature << " " << slice210_mapped.log_w << " "
-                  << slice210_verified.diagnostics.stage_max << " " << slice210_verified.diagnostics.update_max << " "
-                  << slice210_verified.diagnostics.phase_abs << " " << slice210_verified.linear.backend << " "
-                  << (slice210_verified.linear.solve_complete ? "true" : "false") << "\n";
+        if (layout.stage_count() == 1)
+          std::cout << "phase_refresh phase-ref-spine-225 phase-ref-slice-210 spine-negative-T-hat-to-210 rho 0 "
+                    << slice210_physical.temperature << " " << slice210_physical.log_w << " "
+                    << slice210_mapped.temperature << " " << slice210_mapped.log_w << " "
+                    << slice210_verified.diagnostics.stage_max << " " << slice210_verified.diagnostics.update_max << " "
+                    << slice210_verified.diagnostics.phase_abs << " " << slice210_verified.linear.backend << " "
+                    << (slice210_verified.linear.solve_complete ? "true" : "false") << "\n";
         auto slice_down = run_segment({"slice210-negative-rho", "phase-ref-slice-210", slice210,
                                        slice_assembler, spine210_unknowns, 0.0, -0.15, 0.02, 0.25});
         auto slice_up = run_segment({"slice210-positive-rho", "phase-ref-slice-210", slice210,
                                      slice_assembler, spine210_unknowns, 0.0, 0.15, 0.02, 0.25});
         (void)slice_down; (void)slice_up;
+        if (layout.stage_count() > 1)
+          std::cout << "phase_refresh phase-ref-spine-225 phase-ref-slice-210 spine-negative-T-hat-to-210 rho 0 "
+                    << slice210_physical.temperature << " " << slice210_physical.log_w << " "
+                    << slice210_mapped.temperature << " " << slice210_mapped.log_w << " "
+                    << slice210_verified.diagnostics.stage_max << " " << slice210_verified.diagnostics.update_max << " "
+                    << slice210_verified.diagnostics.phase_abs << " " << slice210_verified.linear.backend << " "
+                    << (slice210_verified.linear.solve_complete ? "true" : "false") << " "
+                    << slice210_stage_identity_max << " " << slice210_derivative_identity_max << " "
+                    << (slice_assembler.get() != spine_assembler.get() ? "true" : "false") << " "
+                    << (slice_down.model_evaluator_constructed && slice_down.weighted_group_constructed &&
+                        slice_down.stepper_constructed ? "true" : "false") << "\n";
       } else if (command == "loca-smoke") {
         const auto bootstrap = bs2026_loca::midpoint::deterministic_bootstrap(
             assembler_ptr, *path, *unknowns, origin, 1, 0.02, 0.25);
