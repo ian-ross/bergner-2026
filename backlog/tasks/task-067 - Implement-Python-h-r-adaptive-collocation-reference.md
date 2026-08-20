@@ -1,10 +1,11 @@
 ---
 id: TASK-067
 title: Implement Python h/r adaptive collocation reference
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-13 16:11'
+updated_date: '2026-08-20 15:57'
 labels:
   - episode-008
   - python
