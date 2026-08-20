@@ -1,10 +1,11 @@
 ---
 id: TASK-066
 title: Implement native higher-order fixed-mesh LOCA continuation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-13 16:11'
+updated_date: '2026-08-20 13:02'
 labels:
   - episode-008
   - cpp
