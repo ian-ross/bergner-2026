@@ -1,0 +1,326 @@
+{
+  "downstream_evidence_status": {
+    "broader_ivp_radau_evidence": "not_evaluated_through_TASK_068",
+    "floquet_dependent_evidence": "not_evaluated_through_TASK_068"
+  },
+  "marking": {
+    "growth_limit": 2,
+    "marked_elements": [
+      2,
+      3
+    ],
+    "new_interval_count": 7,
+    "split_mesh_sha256": "071c5e3fdcf7ae6f04a3977e599d951afda103fb73c37813728c3fdc84292af6",
+    "uncapped_marked_elements": [
+      2,
+      3
+    ],
+    "version": "defect-bulk-halfmax-marking-v1"
+  },
+  "method_version": "external-gauss3-hr-adaptive-v1",
+  "monitor": {
+    "densities": [
+      {
+        "maximum": 2.924511172452006,
+        "name": "D",
+        "normalized_sha256": "96ac17e6290cdd4c104ebc3ed4c0f967af10c680d4c89a8e172cec14dfbd6025",
+        "raw_sha256": "22ad20768ae17105e0b7ae5f7a3d4d22b056b4b1f9743dd28244d28541d4a913",
+        "weighted_average_after_max_rescale": 0.09041400453739885,
+        "weighted_average_after_winsorization": 0.9999999999999999
+      },
+      {
+        "maximum": 24.14600838109582,
+        "name": "V",
+        "normalized_sha256": "2b745bf4e16a5551a2bfb1a246563c3af869d2bb576bad8fd5edcdf5a9a8f5d7",
+        "raw_sha256": "85d86bbdc9d1fd0b003bab7f27fea318bc5e4e4908b875e72aa2463d1f50f634",
+        "weighted_average_after_max_rescale": 0.18265233416138837,
+        "weighted_average_after_winsorization": 1.0
+      },
+      {
+        "maximum": 503.870393969587,
+        "name": "C",
+        "normalized_sha256": "9d3bd6d5c08efce257dd70e9e9d602d6ffab2c03f59b0e09680fc8698a403da4",
+        "raw_sha256": "a279d1d05f87e958bf2f97ca4968df7b6b9942965afdaff995cf8b34517dd2a3",
+        "weighted_average_after_max_rescale": 0.13055669161131433,
+        "weighted_average_after_winsorization": 1.0
+      },
+      {
+        "maximum": 13.903616079731684,
+        "name": "A_nuc",
+        "normalized_sha256": "6199583e3f8b32f0778a411f81ffe49cb8b4be4479091f884ad750ad831bd6bc",
+        "raw_sha256": "4b1b54c1f3d76112681236280020db343be7e215a5a0efa333cfc6d9b0297e11",
+        "weighted_average_after_max_rescale": 0.028672932431276686,
+        "weighted_average_after_winsorization": 0.9032269360014729
+      }
+    ],
+    "density_order": [
+      "D",
+      "V",
+      "C",
+      "A_nuc"
+    ],
+    "subcells_per_element": 16,
+    "target_boundary_sha256": "fe7cd393c23c656b26cee15c1a24a21de597d20d2618218bd6eb4044a60639b6",
+    "total_mass": 1.0000000000000002,
+    "value_sha256": "2ac0dd81d5fb2ba45497af1d3d6072f5299a36072012f26460919d36582ff638",
+    "version": "composite-r-monitor-v1"
+  },
+  "movement": {
+    "accepted": true,
+    "attempted_betas": [
+      0.5,
+      0.25,
+      0.125
+    ],
+    "beta": 0.125,
+    "new_boundaries_sha256": "0b4615059f48a7b927452944c355c45f24f98917bf9b4215a7250660bd3be26e",
+    "rejection_reasons": [],
+    "stalled": false,
+    "version": "global-beta-r-movement-v1"
+  },
+  "restart_retry": {
+    "h_plus_r": [
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "h_r_transfer_correct",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "h_r_refresh_reference_recorrect",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "h_r_rebootstrap_tangent_recorrect",
+        "rebootstrap_tangent": true,
+        "refresh_phase_reference": true
+      }
+    ],
+    "pure_r": [
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "pure_r_transfer_correct",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "pure_r_refresh_reference_recorrect",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "pure_r_rebootstrap_tangent_recorrect",
+        "rebootstrap_tangent": true,
+        "refresh_phase_reference": true
+      }
+    ],
+    "tangent_only_failure": [
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": false,
+        "name": "deterministic_two_point_rebootstrap",
+        "rebootstrap_tangent": true,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": true,
+        "name": "restart_with_rebootstrapped_tangent",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      },
+      {
+        "accept_tangent_failure": false,
+        "apply_fixed_parameter_correction": false,
+        "name": "reject_after_rebootstrap_failure",
+        "rebootstrap_tangent": false,
+        "refresh_phase_reference": true
+      }
+    ],
+    "version": "fixed-parameter-remesh-restart-retry-v1"
+  },
+  "schema_version": "episode008-adaptive-collocation-fixtures-v1",
+  "source_provenance": {
+    "adaptive_orbits": {
+      "path": "src/bergner_spichtinger_2026/adaptive_orbits.py",
+      "sha256": "2fc3e8faab9555392fc7df5fd22c8b7d66ba5fdef32451eb032eecfac12d41d3"
+    },
+    "bootstrap_seed": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
+      "sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py",
+      "sha256": "bae585bb88ddb780c5977eb2be5dfe7c56599dba634317bbb0d8db24d09b7d18"
+    },
+    "periodic_orbits": {
+      "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
+      "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
+    }
+  },
+  "transfer": {
+    "destination_interval_count": 7,
+    "transferred_phase_energy": 37.309164787244114,
+    "transferred_tangent_sha256": "7abb95f98e1cc5cd72e281c8d43925dd0a3ccd0735a34c1b5cdd155084860337",
+    "transferred_unknowns_sha256": "db95c0484207a16225456ee4e3bdcce42d299efb8d4a51c328af089dcaa367e1"
+  },
+  "vector_artifact": {
+    "arrays": {
+      "density_A_nuc_normalized": {
+        "sha256": "6199583e3f8b32f0778a411f81ffe49cb8b4be4479091f884ad750ad831bd6bc",
+        "shape": [
+          80
+        ]
+      },
+      "density_A_nuc_raw": {
+        "sha256": "4b1b54c1f3d76112681236280020db343be7e215a5a0efa333cfc6d9b0297e11",
+        "shape": [
+          80
+        ]
+      },
+      "density_C_normalized": {
+        "sha256": "9d3bd6d5c08efce257dd70e9e9d602d6ffab2c03f59b0e09680fc8698a403da4",
+        "shape": [
+          80
+        ]
+      },
+      "density_C_raw": {
+        "sha256": "a279d1d05f87e958bf2f97ca4968df7b6b9942965afdaff995cf8b34517dd2a3",
+        "shape": [
+          80
+        ]
+      },
+      "density_D_normalized": {
+        "sha256": "96ac17e6290cdd4c104ebc3ed4c0f967af10c680d4c89a8e172cec14dfbd6025",
+        "shape": [
+          80
+        ]
+      },
+      "density_D_raw": {
+        "sha256": "22ad20768ae17105e0b7ae5f7a3d4d22b056b4b1f9743dd28244d28541d4a913",
+        "shape": [
+          80
+        ]
+      },
+      "density_V_normalized": {
+        "sha256": "2b745bf4e16a5551a2bfb1a246563c3af869d2bb576bad8fd5edcdf5a9a8f5d7",
+        "shape": [
+          80
+        ]
+      },
+      "density_V_raw": {
+        "sha256": "85d86bbdc9d1fd0b003bab7f27fea318bc5e4e4908b875e72aa2463d1f50f634",
+        "shape": [
+          80
+        ]
+      },
+      "destination_mesh_boundaries": {
+        "sha256": "0697737ac42ff1c5ad40bb9b6072170826b131795e0f514e6de788c4bf709b93",
+        "shape": [
+          8
+        ]
+      },
+      "input_mesh_boundaries": {
+        "sha256": "e7afca648d5129af120eacc3d256544b5a165557f49683624b82b8780b1b3a35",
+        "shape": [
+          6
+        ]
+      },
+      "input_unknowns": {
+        "sha256": "3a6b39b81386a63f349756183a0db7ec044b4b0df0a09f9406250e5f150f136e",
+        "shape": [
+          61
+        ]
+      },
+      "monitor_cumulative_upper": {
+        "sha256": "1b6cb85f34dcc8c6ba7c6f4634f0e88976cd9482430506f4e0ba003c1126cb01",
+        "shape": [
+          80
+        ]
+      },
+      "monitor_subcell_midpoints": {
+        "sha256": "b84eb2c67411d95389ef5f8d177f72a8463396c351fe6da383a0245ea05d8fbc",
+        "shape": [
+          80
+        ]
+      },
+      "monitor_subcell_widths": {
+        "sha256": "5e1f6c71571b5be5e4c06ea98cc30e0e7f5cfdebc31c947103a4559656d2728e",
+        "shape": [
+          80
+        ]
+      },
+      "monitor_target_boundaries": {
+        "sha256": "fe7cd393c23c656b26cee15c1a24a21de597d20d2618218bd6eb4044a60639b6",
+        "shape": [
+          6
+        ]
+      },
+      "monitor_values": {
+        "sha256": "2ac0dd81d5fb2ba45497af1d3d6072f5299a36072012f26460919d36582ff638",
+        "shape": [
+          80
+        ]
+      },
+      "movement_boundaries": {
+        "sha256": "0b4615059f48a7b927452944c355c45f24f98917bf9b4215a7250660bd3be26e",
+        "shape": [
+          6
+        ]
+      },
+      "split_mesh_boundaries": {
+        "sha256": "071c5e3fdcf7ae6f04a3977e599d951afda103fb73c37813728c3fdc84292af6",
+        "shape": [
+          8
+        ]
+      },
+      "synthetic_defects": {
+        "sha256": "a601ec60ec24cc9398cffaa6aa41f6f9be7311ae8365f65aadec344ba6dc6b82",
+        "shape": [
+          5
+        ]
+      },
+      "transferred_phase_derivatives": {
+        "sha256": "5b7e6559028f5e01ecc1be98b8807c4909a28a3334a63b29738c5049107f4aea",
+        "shape": [
+          7,
+          3,
+          3
+        ]
+      },
+      "transferred_phase_values": {
+        "sha256": "b968763915af90e120738359493c765cfe773f17342fd00aa2e7b591b61352ec",
+        "shape": [
+          7,
+          3,
+          3
+        ]
+      },
+      "transferred_tangent": {
+        "sha256": "7abb95f98e1cc5cd72e281c8d43925dd0a3ccd0735a34c1b5cdd155084860337",
+        "shape": [
+          85
+        ]
+      },
+      "transferred_unknowns": {
+        "sha256": "db95c0484207a16225456ee4e3bdcce42d299efb8d4a51c328af089dcaa367e1",
+        "shape": [
+          85
+        ]
+      }
+    },
+    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_collocation_fixtures_vectors.npz",
+    "sha256": "2d43e07b6bf18697f4c7120db40aa37db1c3d734a6b20e5b74f60bef935867c8"
+  }
+}
