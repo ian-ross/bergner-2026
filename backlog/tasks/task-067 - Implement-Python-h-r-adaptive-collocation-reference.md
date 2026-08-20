@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-20 15:57'
+updated_date: '2026-08-20 16:03'
 labels:
   - episode-008
   - python
@@ -51,3 +51,12 @@ Implement the transparent Python reference for TASK-062 v1 external h/r adaptati
 9. Add focused tests for all deterministic rules, zero/nonfinite densities, circular recurrence, tie-breaking, cap transitions, pure-r and h+r retries, transfer order accuracy, restart acceptance/rejection, fixed-mesh compatibility, fixture regeneration, and terminal evidence preservation.
 10. Update documentation with observed adaptive qualification behavior; run focused/full Python tests, artifact --check, py_compile, numerical invariants, diff checks, self-review, and independent numerical/test review before completion.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added src/bergner_spichtinger_2026/adaptive_orbits.py with deterministic v1 external h/r primitives: composite 16-subcell r monitor, density normalization, CDF inversion, defect h-marking, bisection, global-beta movement retries/stall, cycle decision statuses, collocation-polynomial solution/phase/tangent transfer, and restart retry plans.
+- Added adaptive fixture generator and curated JSON/NPZ outputs for monitor, marking, movement, transfer, retry schemas, checksums, and downstream not_evaluated evidence flags.
+- Added focused tests for monitor normalization/inversion, h marking and bisection, r movement feasibility/stall, controller outcomes, transfer/retry plans, fixture checksums, and generator --check.
+- Verification: uv run pytest tests/test_episode8_higher_order_collocation.py tests/test_episode8_adaptive_collocation.py tests/test_episode8_adaptive_fixtures.py -q; uv run python -m py_compile src/bergner_spichtinger_2026/adaptive_orbits.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py
+<!-- SECTION:NOTES:END -->
