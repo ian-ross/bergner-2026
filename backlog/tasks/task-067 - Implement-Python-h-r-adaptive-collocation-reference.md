@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-20 16:03'
+updated_date: '2026-08-20 16:32'
 labels:
   - episode-008
   - python
@@ -29,12 +29,12 @@ Implement the transparent Python reference for TASK-062 v1 external h/r adaptati
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The independent defect implementation evaluates next-higher Gauss and staggered dyadic grids, applies the material-disagreement, fixed-128-bin recurrence, and 16-point probe rules, and exposes per-element/max defects plus endpoint/jump/grid-disagreement diagnostics
+- [x] #1 The independent defect implementation evaluates next-higher Gauss and staggered dyadic grids, applies the material-disagreement, fixed-128-bin recurrence, and 16-point probe rules, and exposes per-element/max defects plus endpoint/jump/grid-disagreement diagnostics
 - [ ] #2 Old collocation polynomials transfer solution, phase reference, and tangent to the new mesh; fixed-parameter correction and v1 restart gates implement the exact three-attempt retry order and deterministic rebootstrap for tangent-only failure
 - [ ] #3 Curated artifacts emit deterministic language-neutral adaptive/remesh fixtures consumed by TASK-068, including inputs and intermediate expected results for defect grids, probe escalation, monitor construction, marking, movement, transfer, restart/retry, schemas, and checksums; focused tests cover those contracts and fixed-mesh compatibility
-- [ ] #4 The v1 r monitor evaluates all four densities at 16 equal subcell midpoints per current element, uses documented weighted deterministic normalization, builds and inverts the piecewise-constant cumulative monitor with the stated tolerance, and applies simultaneous global-beta feasibility retries through 2^-20 with r_movement_stalled fallback
-- [ ] #5 The deterministic adaptation cycle distinguishes ordinary h+r, pure-r, forced single-split h+r after stagnation, convergence stop, N=256 soft-cap escalation, and N=512/cycle-budget resolution_unresolved outcomes
-- [ ] #6 Adaptive qualification runs start from N=32 at the four fixed qualification points and record convergence, meshes, defects, period/orbit changes, phase refreshes, unresolved budgets, aliasing, and active defect/convergence/ringing/nonphysical-value Radau triggers without hiding failures; broader IVP-based and all Floquet-dependent evidence are not_evaluated through TASK-068
+- [x] #4 The v1 r monitor evaluates all four densities at 16 equal subcell midpoints per current element, uses documented weighted deterministic normalization, builds and inverts the piecewise-constant cumulative monitor with the stated tolerance, and applies simultaneous global-beta feasibility retries through 2^-20 with r_movement_stalled fallback
+- [x] #5 The deterministic adaptation cycle distinguishes ordinary h+r, pure-r, forced single-split h+r after stagnation, convergence stop, N=256 soft-cap escalation, and N=512/cycle-budget resolution_unresolved outcomes
+- [x] #6 Adaptive qualification runs start from N=32 at the four fixed qualification points and record convergence, meshes, defects, period/orbit changes, phase refreshes, unresolved budgets, aliasing, and active defect/convergence/ringing/nonphysical-value Radau triggers without hiding failures; broader IVP-based and all Floquet-dependent evidence are not_evaluated through TASK-068
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -59,4 +59,8 @@ Implement the transparent Python reference for TASK-062 v1 external h/r adaptati
 - Added adaptive fixture generator and curated JSON/NPZ outputs for monitor, marking, movement, transfer, retry schemas, checksums, and downstream not_evaluated evidence flags.
 - Added focused tests for monitor normalization/inversion, h marking and bisection, r movement feasibility/stall, controller outcomes, transfer/retry plans, fixture checksums, and generator --check.
 - Verification: uv run pytest tests/test_episode8_higher_order_collocation.py tests/test_episode8_adaptive_collocation.py tests/test_episode8_adaptive_fixtures.py -q; uv run python -m py_compile src/bergner_spichtinger_2026/adaptive_orbits.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py
+
+- Added adaptive qualification generator and outputs starting from the four required N=32 three-stage fixed-mesh points. The run records every cycle mesh/vector/defect diagnostic, monitor and movement intermediates, marked sets, remesh correction status, phase refreshes, aliasing, convergence changes, terminal statuses, and Radau trigger evidence. All four points converge within the eight-remesh budget with final N<=81 and broader IVP/Floquet evidence explicitly not_evaluated_through_TASK_068.
+- Updated collocation-phase decisions with observed TASK-067 adaptive qualification behavior and regenerated adaptive fixture provenance after controller refinement.
+- Verification: uv run pytest tests/test_episode8_higher_order_collocation.py tests/test_episode8_adaptive_collocation.py tests/test_episode8_adaptive_fixtures.py tests/test_episode8_adaptive_qualification.py -q; uv run python -m py_compile src/bergner_spichtinger_2026/adaptive_orbits.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_qualification_results.py
 <!-- SECTION:NOTES:END -->
