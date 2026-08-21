@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-21 08:48'
+updated_date: '2026-08-21 08:57'
 labels:
   - episode-008
   - cpp
@@ -60,4 +60,10 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Started TASK-068: moved to In Progress and assigned @iross.
 - Reviewed dependency TASK-067 plus documented references: Episode 008 README, collocation-phase decisions, and midpoint_loca.hpp.
 - No code changes started yet; awaiting confirmation of the existing implementation plan.
+
+- Added a truthful TASK-068 preparatory native adaptive LOCA manifest generator and curated outputs: episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py, outputs/native_adaptive_loca_manifest.json, and outputs/native_adaptive_loca_manifest_vectors.npz.
+- The manifest reconciles TASK-067 adaptive/remesh fixtures with executed native three-stage fixed-mesh LOCA/C++ correction evidence, embeds the v1 remesh/restart contract and retry order, records source/vector fingerprints, and enumerates the provisional spine-and-slices target manifest with explicit terminal statuses. It deliberately records native_adaptive_remesh_executed=false and marks not-yet-run adaptive targets as failed with reasons rather than relabeling fixed-mesh/Python evidence.
+- Updated the Episode 008 README with regeneration/check commands and scope boundaries for the new manifest.
+- Added focused tests in tests/test_episode8_native_adaptive_loca_manifest.py for current artifacts, v1 contract/retry capture, planned-target coverage and single terminal statuses, vector/source checksums, parity summaries, and near-Hopf scope.
+- Verification: uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py; uv run pytest tests/test_episode8_native_adaptive_loca_manifest.py -q; uv run pytest -q (267 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
