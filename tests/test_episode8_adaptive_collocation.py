@@ -20,10 +20,14 @@ from bergner_spichtinger_2026 import (
     gauss_legendre_rule,
     mark_h_refinement,
     normalize_monitor_density,
+    deterministic_two_point_rebootstrap_tangent,
+    evaluate_restart_gates,
+    execute_fixed_parameter_restart,
     restart_plan,
     transfer_orbit_phase_and_tangent,
 )
 from bergner_spichtinger_2026.constants import Environment
+from bergner_spichtinger_2026.periodic_orbits import MidpointCorrectionResult, MidpointResidualDiagnostics
 
 ROOT = Path(__file__).resolve().parents[1]
 SEED_PATH = ROOT / "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json"
@@ -137,6 +141,64 @@ def test_controller_distinguishes_stop_hr_purer_forced_caps_and_unresolved():
         consecutive_pure_r_cycles=0, pure_r_defect_reduction=None, soft_cap_escalated=True,
     )
     assert unresolved.terminal_status == "resolution_unresolved"
+
+
+def test_restart_gates_and_tangent_only_rebootstrap_are_deterministic(monkeypatch):
+    assembler, unknowns = fixture(FixedMesh.uniform(4))
+
+    def fake_corrector(active_assembler, initial, **kwargs):
+        vector = np.asarray(initial, dtype=float).copy()
+        vector.setflags(write=False)
+        residual = np.zeros(active_assembler.layout.residual_size)
+        residual.setflags(write=False)
+        return MidpointCorrectionResult(
+            unknowns=vector,
+            residual=residual,
+            diagnostics=MidpointResidualDiagnostics(0.0, 0.0, 0.0, 0.0, 0.0),
+            accepted=True,
+            rejection_reasons=(),
+            scipy_success=True,
+            scipy_status=1,
+            scipy_message="synthetic accepted correction",
+            scipy_cost=0.0,
+            scipy_optimality=0.0,
+            function_evaluations=1,
+            jacobian_evaluations=1,
+            packed_step_norm=0.0,
+        )
+
+    monkeypatch.setattr("bergner_spichtinger_2026.adaptive_orbits.correct_gauss_orbit", fake_corrector)
+    previous = unknowns.copy()
+    previous[0] += 1.0e-3
+    result = execute_fixed_parameter_restart(
+        assembler,
+        unknowns,
+        remesh_kind="h+r",
+        tangent=np.zeros_like(unknowns),
+        previous_unknowns=previous,
+        require_tangent=True,
+        max_nfev=20,
+    )
+    assert result.accepted
+    assert [attempt.attempt.name for attempt in result.attempts] == [
+        "h_r_transfer_correct",
+        "deterministic_two_point_rebootstrap",
+        "restart_with_rebootstrapped_tangent",
+    ]
+    assert result.tangent is not None
+    np.testing.assert_allclose(result.tangent, deterministic_two_point_rebootstrap_tangent(previous, unknowns))
+    assert np.linalg.norm(result.tangent) == pytest.approx(1.0)
+    final = result.attempts[-1]
+    assert final.gates.accepted
+    assert final.gates.residual_gate and final.gates.phase_gate and final.gates.positivity_gate
+
+    no_tangent_result = execute_fixed_parameter_restart(
+        assembler, unknowns, remesh_kind="pure-r", require_tangent=False, max_nfev=20
+    )
+    assert no_tangent_result.accepted
+    assert [attempt.attempt.name for attempt in no_tangent_result.attempts] == ["pure_r_transfer_correct"]
+    gates = evaluate_restart_gates(assembler, no_tangent_result.attempts[0].correction, unknowns, None, require_tangent=False)
+    assert gates.accepted
 
 
 def test_transfer_solution_phase_reference_tangent_and_retry_plans_are_versioned():

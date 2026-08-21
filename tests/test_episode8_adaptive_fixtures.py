@@ -51,6 +51,24 @@ def test_adaptive_fixture_vectors_recompute_monitor_marking_movement_and_checksu
             assert list(arrays[key].shape) == spec["shape"]
             assert _array_hash(arrays[key]) == spec["sha256"]
         mesh = FixedMesh(arrays["input_mesh_boundaries"])
+        assert arrays["defect_next_gauss_relative"].shape[0] == mesh.interval_count
+        assert arrays["defect_staggered_dyadic_relative"].shape == (mesh.interval_count, 4)
+        assert arrays["defect_combined_element_maxima"].shape == (mesh.interval_count,)
+        assert data["defect"]["combined_element_maxima_sha256"] == _array_hash(arrays["defect_combined_element_maxima"])
+        assert data["defect"]["grid_disagreement_sha256"] == _array_hash(arrays["defect_grid_disagreement"])
+        next_grid = arrays["synthetic_probe_next"]
+        dyadic_grid = arrays["synthetic_probe_dyadic"]
+        probe_grid = arrays["synthetic_probe_probe16"]
+        larger = np.maximum(next_grid, dyadic_grid)
+        disagreement = np.divide(np.abs(next_grid - dyadic_grid), larger, out=np.zeros_like(larger), where=larger > 0)
+        material = (larger > 1.0e-5) & (disagreement > 0.5)
+        combined = larger.copy()
+        combined[material] = np.maximum(combined[material], probe_grid[material])
+        np.testing.assert_allclose(disagreement, arrays["synthetic_probe_disagreement"])
+        np.testing.assert_allclose(combined, arrays["synthetic_probe_combined"])
+        assert data["synthetic_probe_escalation"]["materially_disagreeing_elements"] == np.flatnonzero(material).tolist()
+        assert data["synthetic_probe_escalation"]["unflagged_probe_element_ignored"]
+
         assert arrays["monitor_values"].shape == (mesh.interval_count * MONITOR_SUBCELLS_PER_ELEMENT,)
         assert np.all(arrays["monitor_values"] >= 0.20)
         assert np.all(np.diff(arrays["monitor_cumulative_upper"]) > 0.0)
@@ -71,6 +89,8 @@ def test_adaptive_fixture_vectors_recompute_monitor_marking_movement_and_checksu
         np.testing.assert_array_equal(movement.new_boundaries, arrays["movement_boundaries"])
         assert arrays["transferred_unknowns"].shape == arrays["transferred_tangent"].shape
         assert arrays["transferred_phase_values"].shape == arrays["transferred_phase_derivatives"].shape
+        assert data["restart_retry"]["executed_tangent_only_rebootstrap"]["unknowns_sha256"] == _array_hash(arrays["restart_corrected_unknowns"])
+        assert data["restart_retry"]["executed_tangent_only_rebootstrap"]["tangent_sha256"] == _array_hash(arrays["restart_rebootstrapped_tangent"])
 
 
 def test_restart_retry_attempt_order_and_generator_check():
@@ -82,6 +102,12 @@ def test_restart_retry_attempt_order_and_generator_check():
         "pure_r_transfer_correct", "pure_r_refresh_reference_recorrect", "pure_r_rebootstrap_tangent_recorrect"
     ]
     assert data["restart_retry"]["tangent_only_failure"][0]["name"] == "deterministic_two_point_rebootstrap"
+    executed = data["restart_retry"]["executed_tangent_only_rebootstrap"]
+    assert executed["accepted"]
+    assert executed["attempt_names"] == [
+        "h_r_transfer_correct", "deterministic_two_point_rebootstrap", "restart_with_rebootstrapped_tangent"
+    ]
+    assert executed["final_rejection_reasons"] == []
 
     sys.path.insert(0, str(SCRIPT))
     try:

@@ -1,4 +1,39 @@
 {
+  "defect": {
+    "argmax_bin": 123,
+    "combined_element_maxima_sha256": "0bafe0f1372f1e7693089c180690ef8ee505112d5678546301a4b5090974440f",
+    "grid_disagreement_sha256": "6a2a48eb09113ac5f48749a1c9788df15a24cde5227daf314e9c38f5a5b679f4",
+    "maximum": 1.9506105327431944,
+    "next_gauss": {
+      "argmax_interval": 4,
+      "argmax_local_node": 0.6699905217924281,
+      "argmax_phase": 0.9141975356660313,
+      "maximum": 1.3933499592358594,
+      "name": "next_higher_gauss",
+      "nodes": [
+        0.06943184420297371,
+        0.33000947820757187,
+        0.6699905217924281,
+        0.9305681557970263
+      ],
+      "relative_defects_sha256": "f958de1509272dfa207910d7178686c2d843c3b88799e032482532b6b1863275"
+    },
+    "probe_16": null,
+    "staggered_dyadic": {
+      "argmax_interval": 4,
+      "argmax_local_node": 0.875,
+      "argmax_phase": 0.9675,
+      "maximum": 1.9506105327431944,
+      "name": "staggered_dyadic",
+      "nodes": [
+        0.125,
+        0.375,
+        0.625,
+        0.875
+      ],
+      "relative_defects_sha256": "de5f0a48e2db1a59a0650ef66640fddd83e5ef28c47fbb3604b6157036aeb2fe"
+    }
+  },
   "downstream_evidence_status": {
     "broader_ivp_radau_evidence": "not_evaluated_through_TASK_068",
     "floquet_dependent_evidence": "not_evaluated_through_TASK_068"
@@ -79,6 +114,17 @@
     "version": "global-beta-r-movement-v1"
   },
   "restart_retry": {
+    "executed_tangent_only_rebootstrap": {
+      "accepted": true,
+      "attempt_names": [
+        "h_r_transfer_correct",
+        "deterministic_two_point_rebootstrap",
+        "restart_with_rebootstrapped_tangent"
+      ],
+      "final_rejection_reasons": [],
+      "tangent_sha256": "be687cf91bdb0bd6670833e71479617562837f3a69c34b09e27c9015dbf9eb0f",
+      "unknowns_sha256": "66a1304c3ac84d410fe97ef20d3ff0f2c8082a36150becc261d2ac245c291017"
+    },
     "h_plus_r": [
       {
         "accept_tangent_failure": false,
@@ -154,20 +200,37 @@
   "source_provenance": {
     "adaptive_orbits": {
       "path": "src/bergner_spichtinger_2026/adaptive_orbits.py",
-      "sha256": "2fc3e8faab9555392fc7df5fd22c8b7d66ba5fdef32451eb032eecfac12d41d3"
+      "sha256": "80c565de2dce55ed87742a440b16320fc5258c16330a3ffbc121a064fe9cce3e"
     },
     "bootstrap_seed": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/bootstrap_seed.json",
       "sha256": "540c546202c39c8c4250d8af9440fa33646e6aa1e029d0affb469473a5ca0a9c"
     },
+    "fixed_qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification.json",
+      "sha256": "a4f0ff438115e6c8059af008646c3d7774c4d4bc1a669574143b31c02f29e933"
+    },
+    "fixed_qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification_vectors.npz",
+      "sha256": "063809e7e688ab2911f285b5b259966074443841f9a82534eb76ad2a42dbd046"
+    },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py",
-      "sha256": "bae585bb88ddb780c5977eb2be5dfe7c56599dba634317bbb0d8db24d09b7d18"
+      "sha256": "29720a555ac27155f34a7e7b88c45e003c5665327e165bdd09e6ee9b43d884a2"
     },
     "periodic_orbits": {
       "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
       "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
     }
+  },
+  "synthetic_probe_escalation": {
+    "combined_sha256": "efbdf446915485228479667d5ad0812763705df114a1f328e546bbdc41a16dfb",
+    "materially_disagreeing_elements": [
+      0,
+      3
+    ],
+    "probe_admitted_sha256": "75740b7a62b26e884951f669e56b07783ca798be0e3031a46ce5f44c30829a6b",
+    "unflagged_probe_element_ignored": true
   },
   "transfer": {
     "destination_interval_count": 7,
@@ -177,6 +240,39 @@
   },
   "vector_artifact": {
     "arrays": {
+      "defect_combined_element_maxima": {
+        "sha256": "0bafe0f1372f1e7693089c180690ef8ee505112d5678546301a4b5090974440f",
+        "shape": [
+          5
+        ]
+      },
+      "defect_grid_disagreement": {
+        "sha256": "6a2a48eb09113ac5f48749a1c9788df15a24cde5227daf314e9c38f5a5b679f4",
+        "shape": [
+          5
+        ]
+      },
+      "defect_next_gauss_relative": {
+        "sha256": "f958de1509272dfa207910d7178686c2d843c3b88799e032482532b6b1863275",
+        "shape": [
+          5,
+          4
+        ]
+      },
+      "defect_probe_16_relative": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "shape": [
+          0,
+          0
+        ]
+      },
+      "defect_staggered_dyadic_relative": {
+        "sha256": "de5f0a48e2db1a59a0650ef66640fddd83e5ef28c47fbb3604b6157036aeb2fe",
+        "shape": [
+          5,
+          4
+        ]
+      },
       "density_A_nuc_normalized": {
         "sha256": "6199583e3f8b32f0778a411f81ffe49cb8b4be4479091f884ad750ad831bd6bc",
         "shape": [
@@ -279,6 +375,18 @@
           6
         ]
       },
+      "restart_corrected_unknowns": {
+        "sha256": "66a1304c3ac84d410fe97ef20d3ff0f2c8082a36150becc261d2ac245c291017",
+        "shape": [
+          385
+        ]
+      },
+      "restart_rebootstrapped_tangent": {
+        "sha256": "be687cf91bdb0bd6670833e71479617562837f3a69c34b09e27c9015dbf9eb0f",
+        "shape": [
+          385
+        ]
+      },
       "split_mesh_boundaries": {
         "sha256": "071c5e3fdcf7ae6f04a3977e599d951afda103fb73c37813728c3fdc84292af6",
         "shape": [
@@ -287,6 +395,42 @@
       },
       "synthetic_defects": {
         "sha256": "a601ec60ec24cc9398cffaa6aa41f6f9be7311ae8365f65aadec344ba6dc6b82",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_admitted": {
+        "sha256": "75740b7a62b26e884951f669e56b07783ca798be0e3031a46ce5f44c30829a6b",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_combined": {
+        "sha256": "efbdf446915485228479667d5ad0812763705df114a1f328e546bbdc41a16dfb",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_disagreement": {
+        "sha256": "5f8345e184a16c41575f00a69515e4bf1552a21c97aed5de57e833b1779c27fa",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_dyadic": {
+        "sha256": "e18f99e606f9cd5c05bdbc80e8085317e9371945259ef9918351091eb234f396",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_next": {
+        "sha256": "5bdad732ce76d2fe7d110fce6f9fc23480e64bc62dcf13680544aa5b1cf3728e",
+        "shape": [
+          5
+        ]
+      },
+      "synthetic_probe_probe16": {
+        "sha256": "011a63b959e2d51804b0c8fd10f1939c51ef321075974296e0d07bce0bc1cd40",
         "shape": [
           5
         ]
@@ -321,6 +465,6 @@
       }
     },
     "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_collocation_fixtures_vectors.npz",
-    "sha256": "2d43e07b6bf18697f4c7120db40aa37db1c3d734a6b20e5b74f60bef935867c8"
+    "sha256": "aab91401773e73849b33fc54fe9496fc1360a33578f4b8af80499e6e98c4d5d6"
   }
 }

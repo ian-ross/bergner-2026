@@ -25,6 +25,7 @@ from bergner_spichtinger_2026 import (
     apply_global_beta_r_movement,
     bisect_marked_elements,
     build_composite_r_monitor,
+    execute_fixed_parameter_restart,
     gauss_legendre_rule,
     mark_h_refinement,
     restart_plan,
@@ -37,6 +38,9 @@ ROOT = Path(__file__).resolve().parents[3]
 EPISODE = Path(__file__).resolve().parents[1]
 OUTPUT = EPISODE / "outputs"
 SEED_PATH = OUTPUT / "bootstrap_seed.json"
+FIXED_QUALIFICATION_JSON = OUTPUT / "higher_order_fixed_mesh_qualification.json"
+FIXED_QUALIFICATION_NPZ = OUTPUT / "higher_order_fixed_mesh_qualification_vectors.npz"
+MIDPOINT_JSON = OUTPUT / "fixed_mesh_midpoint_results.json"
 RESULTS_PATH = OUTPUT / "adaptive_collocation_fixtures.json"
 VECTORS_PATH = OUTPUT / "adaptive_collocation_fixtures_vectors.npz"
 SCRIPT_PATH = EPISODE / "scripts/generate_adaptive_collocation_fixtures.py"
@@ -88,6 +92,48 @@ def build_case() -> tuple[GaussCollocationAssembler, np.ndarray]:
     return assembler, unknowns
 
 
+def grid_record(grid: Any) -> dict[str, Any]:
+    return {
+        "name": grid.name,
+        "nodes": grid.local_nodes.tolist(),
+        "relative_defects_sha256": array_digest(grid.relative_defects),
+        "maximum": grid.maximum,
+        "argmax_interval": grid.argmax_interval,
+        "argmax_local_node": grid.argmax_local_node,
+        "argmax_phase": grid.argmax_phase,
+    }
+
+
+def build_accepted_restart_case() -> tuple[GaussCollocationAssembler, np.ndarray]:
+    records = {item["case_id"]: item for item in json.loads(FIXED_QUALIFICATION_JSON.read_text())["results"]}
+    parameters = json.loads(SEED_PATH.read_text())["canonical_parameters"]
+    scaling = np.asarray(json.loads(MIDPOINT_JSON.read_text())["state_scaling"])
+    case_id = "canonical-g3-n32"
+    record = records[case_id]
+    env = Environment(
+        T=float(record.get("temperature_K", parameters["T"])),
+        p=float(parameters["p"]),
+        w=float(record.get("w_m_s", parameters["w"])),
+        F=float(parameters["F"]),
+        N_a=float(parameters["N_a"]),
+        Δz=float(parameters["Delta_z"]),
+        include_evaporation=False,
+    )
+    rule = gauss_legendre_rule(3)
+    with np.load(FIXED_QUALIFICATION_NPZ, allow_pickle=False) as source:
+        mesh = FixedMesh(source[case_id + "__boundaries"])
+        reference = FrozenPhaseReference(
+            mesh,
+            source[case_id + "__phase_values"],
+            source[case_id + "__phase_derivatives"],
+            scaling,
+            np.asarray(rule.nodes),
+            np.asarray(rule.quadrature_weights),
+        )
+        unknowns = np.asarray(source[case_id + "__unknowns"])
+    return GaussCollocationAssembler(mesh, env, reference, rule), unknowns
+
+
 def density_record(density: Any) -> dict[str, Any]:
     return {
         "name": density.name,
@@ -101,7 +147,24 @@ def density_record(density: Any) -> dict[str, Any]:
 
 def generate(*, check: bool = False) -> None:
     assembler, unknowns = build_case()
+    defect = assembler.independent_defect(unknowns)
     monitor = build_composite_r_monitor(assembler, unknowns)
+    synthetic_next = np.array([2.0e-4, 2.0e-5, 8.0e-5, 6.0e-5, 1.0e-5])
+    synthetic_dyadic = np.array([2.0e-5, 2.2e-5, 7.0e-5, 2.0e-5, 1.0e-5])
+    synthetic_probe = np.array([3.0e-4, 9.0e-1, 1.0e-4, 8.0e-5, 1.0e-5])
+    synthetic_larger = np.maximum(synthetic_next, synthetic_dyadic)
+    synthetic_disagreement = np.divide(
+        np.abs(synthetic_next - synthetic_dyadic),
+        synthetic_larger,
+        out=np.zeros_like(synthetic_larger),
+        where=synthetic_larger > 0.0,
+    )
+    synthetic_material = (synthetic_larger > 1.0e-5) & (synthetic_disagreement > 0.5)
+    synthetic_probe_admitted = synthetic_material.astype(float)
+    synthetic_combined = synthetic_larger.copy()
+    synthetic_combined[synthetic_material] = np.maximum(
+        synthetic_combined[synthetic_material], synthetic_probe[synthetic_material]
+    )
     synthetic_defects = np.array([2.5e-4, 1.0e-5, 6.0e-4, 3.0e-4, 4.0e-5])
     marking = mark_h_refinement(synthetic_defects, max_interval_count=7)
     split_mesh = bisect_marked_elements(assembler.mesh, marking.marked_elements)
@@ -112,9 +175,32 @@ def generate(*, check: bool = False) -> None:
     transferred, transferred_reference, transferred_tangent = transfer_orbit_phase_and_tangent(
         assembler, unknowns, tangent, destination_mesh, rule
     )
+    restart_assembler, restart_unknowns = build_accepted_restart_case()
+    previous_for_rebootstrap = restart_unknowns.copy()
+    previous_for_rebootstrap[0] += 1.0e-3
+    restart_execution = execute_fixed_parameter_restart(
+        restart_assembler,
+        restart_unknowns,
+        remesh_kind="h+r",
+        tangent=np.zeros_like(transferred),
+        previous_unknowns=previous_for_rebootstrap,
+        require_tangent=True,
+        max_nfev=50,
+    )
     arrays = {
         "input_mesh_boundaries": assembler.mesh.boundaries,
         "input_unknowns": unknowns,
+        "defect_next_gauss_relative": defect.next_gauss.relative_defects,
+        "defect_staggered_dyadic_relative": defect.staggered_dyadic.relative_defects,
+        "defect_probe_16_relative": np.empty((0, 0)) if defect.probe_16 is None else defect.probe_16.relative_defects,
+        "defect_combined_element_maxima": defect.combined_element_maxima,
+        "defect_grid_disagreement": defect.grid_disagreement,
+        "synthetic_probe_next": synthetic_next,
+        "synthetic_probe_dyadic": synthetic_dyadic,
+        "synthetic_probe_probe16": synthetic_probe,
+        "synthetic_probe_disagreement": synthetic_disagreement,
+        "synthetic_probe_admitted": synthetic_probe_admitted,
+        "synthetic_probe_combined": synthetic_combined,
         "monitor_subcell_midpoints": monitor.subcell_midpoint_phases,
         "monitor_subcell_widths": monitor.subcell_widths,
         "monitor_values": monitor.values,
@@ -128,6 +214,8 @@ def generate(*, check: bool = False) -> None:
         "transferred_phase_values": transferred_reference.stage_values,
         "transferred_phase_derivatives": transferred_reference.stage_derivatives,
         "transferred_tangent": transferred_tangent,
+        "restart_corrected_unknowns": restart_execution.unknowns,
+        "restart_rebootstrapped_tangent": np.empty(0) if restart_execution.tangent is None else restart_execution.tangent,
     }
     for density in monitor.densities:
         arrays[f"density_{density.name}_raw"] = density.raw
@@ -142,6 +230,23 @@ def generate(*, check: bool = False) -> None:
             "adaptive_orbits": {"path": str(ADAPTIVE_ORBITS_PATH.relative_to(ROOT)), "sha256": sha256_file(ADAPTIVE_ORBITS_PATH)},
             "periodic_orbits": {"path": str(PERIODIC_ORBITS_PATH.relative_to(ROOT)), "sha256": sha256_file(PERIODIC_ORBITS_PATH)},
             "bootstrap_seed": {"path": str(SEED_PATH.relative_to(ROOT)), "sha256": sha256_file(SEED_PATH)},
+        "fixed_qualification": {"path": str(FIXED_QUALIFICATION_JSON.relative_to(ROOT)), "sha256": sha256_file(FIXED_QUALIFICATION_JSON)},
+        "fixed_qualification_vectors": {"path": str(FIXED_QUALIFICATION_NPZ.relative_to(ROOT)), "sha256": sha256_file(FIXED_QUALIFICATION_NPZ)},
+        },
+        "defect": {
+            "next_gauss": grid_record(defect.next_gauss),
+            "staggered_dyadic": grid_record(defect.staggered_dyadic),
+            "probe_16": None if defect.probe_16 is None else grid_record(defect.probe_16),
+            "combined_element_maxima_sha256": array_digest(defect.combined_element_maxima),
+            "grid_disagreement_sha256": array_digest(defect.grid_disagreement),
+            "maximum": defect.maximum,
+            "argmax_bin": defect.argmax_bin,
+        },
+        "synthetic_probe_escalation": {
+            "materially_disagreeing_elements": np.flatnonzero(synthetic_material).tolist(),
+            "probe_admitted_sha256": array_digest(synthetic_probe_admitted),
+            "combined_sha256": array_digest(synthetic_combined),
+            "unflagged_probe_element_ignored": int(np.argmax(synthetic_probe)) not in np.flatnonzero(synthetic_material).tolist(),
         },
         "monitor": {
             "version": MONITOR_VERSION,
@@ -180,6 +285,13 @@ def generate(*, check: bool = False) -> None:
             "h_plus_r": [attempt.__dict__ for attempt in restart_plan(remesh_kind="h+r").attempts],
             "pure_r": [attempt.__dict__ for attempt in restart_plan(remesh_kind="pure-r").attempts],
             "tangent_only_failure": [attempt.__dict__ for attempt in restart_plan(remesh_kind="h+r", tangent_only_failure=True).attempts],
+            "executed_tangent_only_rebootstrap": {
+                "accepted": restart_execution.accepted,
+                "attempt_names": [attempt.attempt.name for attempt in restart_execution.attempts],
+                "final_rejection_reasons": list(restart_execution.rejection_reasons),
+                "unknowns_sha256": array_digest(restart_execution.unknowns),
+                "tangent_sha256": "" if restart_execution.tangent is None else array_digest(restart_execution.tangent),
+            },
         },
         "vector_artifact": {
             "path": str(VECTORS_PATH.relative_to(ROOT)),

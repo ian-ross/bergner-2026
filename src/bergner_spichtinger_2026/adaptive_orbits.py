@@ -24,8 +24,11 @@ from .periodic_orbits import (
     FrozenPhaseReference,
     GaussCollocationAssembler,
     IndependentDefectDiagnostics,
+    MidpointCorrectionResult,
+    MidpointResidualTolerances,
     OrbitLayout,
     _positive_integer,
+    correct_gauss_orbit,
     transformed_vector_field,
 )
 from .residuals import physical_state_from_log_coordinates
@@ -135,6 +138,47 @@ class RestartPlan:
     version: str
     context: str
     attempts: tuple[RestartAttempt, ...]
+
+
+@dataclass(frozen=True)
+class RestartGateDiagnostics:
+    """Independent gates applied after a fixed-parameter remesh correction."""
+
+    residual_gate: bool
+    phase_gate: bool
+    positivity_gate: bool
+    finite_change_gate: bool
+    tangent_gate: bool
+    packed_change_norm: float
+    tangent_norm: float | None
+    rejection_reasons: tuple[str, ...]
+
+    @property
+    def accepted(self) -> bool:
+        return not self.rejection_reasons
+
+
+@dataclass(frozen=True)
+class RemeshRestartAttemptResult:
+    """One executed remesh-restart attempt and its gates."""
+
+    attempt: RestartAttempt
+    correction: MidpointCorrectionResult | None
+    gates: RestartGateDiagnostics
+    tangent: np.ndarray | None
+
+
+@dataclass(frozen=True)
+class RemeshRestartResult:
+    """Executed v1 restart plan with correction and tangent-gate evidence."""
+
+    version: str
+    plan: RestartPlan
+    accepted: bool
+    attempts: tuple[RemeshRestartAttemptResult, ...]
+    unknowns: np.ndarray
+    tangent: np.ndarray | None
+    rejection_reasons: tuple[str, ...]
 
 
 def _readonly(value: np.ndarray) -> np.ndarray:
@@ -412,11 +456,6 @@ def decide_adaptation_cycle(
 ) -> AdaptationCycleDecision:
     """Classify the next v1 adaptive action or terminal status."""
     n = _positive_integer(interval_count, "interval_count")
-    if cycle_index >= CYCLE_BUDGET or n >= HARD_INTERVAL_CAP:
-        return AdaptationCycleDecision(
-            ADAPTIVE_CONTROLLER_VERSION, "resolution_unresolved", "resolution_unresolved", None, soft_cap_escalated,
-            ("cycle_budget_exhausted" if cycle_index >= CYCLE_BUDGET else "hard_cap_reached",),
-        )
     defect_pass = defect_maximum < DEFECT_ACCEPTANCE_TOLERANCE
     convergence_pass = False
     if period_relative_change is not None and weighted_orbit_change is not None:
@@ -426,6 +465,11 @@ def decide_adaptation_cycle(
         )
     if defect_pass and convergence_pass:
         return AdaptationCycleDecision(ADAPTIVE_CONTROLLER_VERSION, "stop_converged", "converged", None, soft_cap_escalated, ())
+    if cycle_index >= CYCLE_BUDGET or n >= HARD_INTERVAL_CAP:
+        return AdaptationCycleDecision(
+            ADAPTIVE_CONTROLLER_VERSION, "resolution_unresolved", "resolution_unresolved", None, soft_cap_escalated,
+            ("cycle_budget_exhausted" if cycle_index >= CYCLE_BUDGET else "hard_cap_reached",),
+        )
     if n >= SOFT_INTERVAL_CAP and not soft_cap_escalated:
         return AdaptationCycleDecision(
             ADAPTIVE_CONTROLLER_VERSION, "mesh_cap_escalation", "continue", None, True, ("soft_cap_failed_after_corrected_cycle",)
@@ -510,4 +554,200 @@ def restart_plan(*, remesh_kind: Literal["h+r", "pure-r"], tangent_only_failure:
             RestartAttempt(f"{prefix}_refresh_reference_recorrect", True, True, False),
             RestartAttempt(f"{prefix}_rebootstrap_tangent_recorrect", True, True, True),
         ),
+    )
+
+
+def physical_mapping_passes(assembler: GaussCollocationAssembler, unknowns: ArrayLike) -> bool:
+    """Check that transformed endpoint/stage states and period map to positive finite values."""
+    variables = assembler.layout.unpack(np.asarray(unknowns, dtype=float))
+    with np.errstate(over="ignore", invalid="ignore"):
+        positives = np.exp(
+            np.concatenate(
+                (variables.endpoints[:, :2].reshape(-1), variables.stages[:, :, :2].reshape(-1))
+            )
+        )
+        period = np.exp(variables.log_period)
+    return bool(np.all(np.isfinite(positives)) and np.all(positives > 0.0) and np.isfinite(period) and period > 0.0)
+
+
+def deterministic_two_point_rebootstrap_tangent(
+    previous_unknowns: ArrayLike,
+    current_unknowns: ArrayLike,
+) -> np.ndarray:
+    """Return the deterministic two-point secant used for tangent-only restart failure."""
+    previous = np.asarray(previous_unknowns, dtype=float)
+    current = np.asarray(current_unknowns, dtype=float)
+    if previous.shape != current.shape:
+        raise ValueError("previous_unknowns and current_unknowns must have identical shape.")
+    if not np.all(np.isfinite(previous)) or not np.all(np.isfinite(current)):
+        raise ValueError("two-point tangent inputs must be finite.")
+    tangent = current - previous
+    norm = float(np.linalg.norm(tangent))
+    if not np.isfinite(norm) or norm <= 0.0:
+        raise ValueError("two-point tangent inputs must be distinct.")
+    result = tangent / norm
+    result.setflags(write=False)
+    return result
+
+
+def evaluate_restart_gates(
+    assembler: GaussCollocationAssembler,
+    correction: MidpointCorrectionResult | None,
+    initial_unknowns: ArrayLike,
+    tangent: ArrayLike | None,
+    *,
+    tolerances: MidpointResidualTolerances | None = None,
+    max_packed_change_norm: float = np.inf,
+    require_tangent: bool = True,
+) -> RestartGateDiagnostics:
+    """Evaluate v1 residual, phase, positivity, finite-change, and tangent gates."""
+    active_tolerances = tolerances or MidpointResidualTolerances()
+    reasons: list[str] = []
+    if correction is None:
+        residual_gate = False
+        phase_gate = False
+        positivity_gate = False
+        finite_change_gate = False
+        packed_change_norm = np.nan
+        unknowns = np.asarray(initial_unknowns, dtype=float)
+        reasons.append("correction_not_executed")
+    else:
+        unknowns = np.asarray(correction.unknowns, dtype=float)
+        residual_gate = bool(correction.accepted)
+        phase_gate = bool(np.isfinite(correction.diagnostics.phase_abs) and correction.diagnostics.phase_abs <= active_tolerances.phase_abs)
+        positivity_gate = physical_mapping_passes(assembler, unknowns)
+        initial = np.asarray(initial_unknowns, dtype=float)
+        packed_change_norm = float(np.linalg.norm(unknowns - initial)) if initial.shape == unknowns.shape else np.nan
+        finite_change_gate = bool(
+            np.isfinite(packed_change_norm)
+            and (np.isinf(max_packed_change_norm) or packed_change_norm <= max_packed_change_norm)
+        )
+        if not residual_gate:
+            reasons.append("residual_gate_failed")
+        if not phase_gate:
+            reasons.append("phase_gate_failed")
+        if not positivity_gate:
+            reasons.append("positivity_gate_failed")
+        if not finite_change_gate:
+            reasons.append("finite_change_gate_failed")
+    tangent_norm: float | None = None
+    tangent_gate = True
+    if require_tangent:
+        if tangent is None:
+            tangent_gate = False
+            reasons.append("tangent_missing")
+        else:
+            tangent_array = np.asarray(tangent, dtype=float)
+            tangent_norm = float(np.linalg.norm(tangent_array))
+            tangent_gate = bool(
+                tangent_array.shape == unknowns.shape
+                and np.all(np.isfinite(tangent_array))
+                and np.isfinite(tangent_norm)
+                and tangent_norm > 0.0
+            )
+            if not tangent_gate:
+                reasons.append("tangent_gate_failed")
+    return RestartGateDiagnostics(
+        residual_gate=residual_gate,
+        phase_gate=phase_gate,
+        positivity_gate=positivity_gate,
+        finite_change_gate=finite_change_gate,
+        tangent_gate=tangent_gate,
+        packed_change_norm=packed_change_norm,
+        tangent_norm=tangent_norm,
+        rejection_reasons=tuple(dict.fromkeys(reasons)),
+    )
+
+
+def execute_fixed_parameter_restart(
+    assembler: GaussCollocationAssembler,
+    initial_unknowns: ArrayLike,
+    *,
+    remesh_kind: Literal["h+r", "pure-r"],
+    tangent: ArrayLike | None = None,
+    previous_unknowns: ArrayLike | None = None,
+    require_tangent: bool = True,
+    tolerances: MidpointResidualTolerances | None = None,
+    max_nfev: int = 1000,
+    max_packed_change_norm: float = np.inf,
+) -> RemeshRestartResult:
+    """Execute fixed-parameter correction attempts in the v1 deterministic order.
+
+    A tangent-only failure (all non-tangent gates pass but the tangent is missing
+    or invalid) switches to the documented deterministic two-point rebootstrap
+    plan.  The caller supplies ``previous_unknowns`` from the preceding accepted
+    mesh when tangent rebootstrap is allowed.
+    """
+    active_plan = restart_plan(remesh_kind=remesh_kind)
+    initial = np.asarray(initial_unknowns, dtype=float)
+    active_tangent = None if tangent is None else np.asarray(tangent, dtype=float).copy()
+    attempts: list[RemeshRestartAttemptResult] = []
+
+    def run_attempt(attempt: RestartAttempt, attempt_tangent: np.ndarray | None) -> RemeshRestartAttemptResult:
+        correction = None
+        if attempt.apply_fixed_parameter_correction:
+            correction = correct_gauss_orbit(
+                assembler,
+                initial,
+                tolerances=tolerances,
+                max_nfev=max_nfev,
+            )
+        gates = evaluate_restart_gates(
+            assembler,
+            correction,
+            initial,
+            attempt_tangent,
+            tolerances=tolerances,
+            max_packed_change_norm=max_packed_change_norm,
+            require_tangent=require_tangent,
+        )
+        return RemeshRestartAttemptResult(attempt=attempt, correction=correction, gates=gates, tangent=attempt_tangent)
+
+    for attempt in active_plan.attempts:
+        if attempt.rebootstrap_tangent and previous_unknowns is not None:
+            active_tangent = deterministic_two_point_rebootstrap_tangent(previous_unknowns, initial)
+        result = run_attempt(attempt, active_tangent)
+        attempts.append(result)
+        correction = result.correction
+        if result.gates.accepted and correction is not None:
+            return RemeshRestartResult(
+                RESTART_RETRY_VERSION,
+                active_plan,
+                True,
+                tuple(attempts),
+                correction.unknowns,
+                result.tangent,
+                (),
+            )
+        only_tangent_failed = result.gates.rejection_reasons in (("tangent_missing",), ("tangent_gate_failed",))
+        if only_tangent_failed and previous_unknowns is not None:
+            tangent_plan = restart_plan(remesh_kind=remesh_kind, tangent_only_failure=True)
+            for tangent_attempt in tangent_plan.attempts:
+                if tangent_attempt.rebootstrap_tangent:
+                    active_tangent = deterministic_two_point_rebootstrap_tangent(previous_unknowns, initial)
+                tangent_result = run_attempt(tangent_attempt, active_tangent)
+                attempts.append(tangent_result)
+                tangent_correction = tangent_result.correction
+                if tangent_result.gates.accepted and tangent_correction is not None:
+                    return RemeshRestartResult(
+                        RESTART_RETRY_VERSION,
+                        tangent_plan,
+                        True,
+                        tuple(attempts),
+                        tangent_correction.unknowns,
+                        tangent_result.tangent,
+                        (),
+                    )
+            active_plan = tangent_plan
+            break
+    final_unknowns = initial if not attempts or attempts[-1].correction is None else attempts[-1].correction.unknowns
+    final_reasons = attempts[-1].gates.rejection_reasons if attempts else ("no_restart_attempts",)
+    return RemeshRestartResult(
+        RESTART_RETRY_VERSION,
+        active_plan,
+        False,
+        tuple(attempts),
+        final_unknowns,
+        active_tangent,
+        final_reasons,
     )
