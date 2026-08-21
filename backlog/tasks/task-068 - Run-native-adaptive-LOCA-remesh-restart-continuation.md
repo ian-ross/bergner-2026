@@ -53,3 +53,11 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 9. Compare a stratified set of native adaptive points with independent Python adaptive correction at identical physical coordinates and versioned tolerances. Regenerate/check the planned run and reconcile every event, checkpoint, target, and terminal status.
 10. Update Episode 008 documentation with observed coverage, mesh behavior, convergence, failures, and cost. Run clean builds, fixture parity, focused/full integration tests, artifact/checkpoint regeneration, resume checks, profiling, compiler/diff checks, self-review, and independent numerical/correctness/test review before completion.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-068: moved to In Progress and assigned @iross.
+- Reviewed dependency TASK-067 plus documented references: Episode 008 README, collocation-phase decisions, and midpoint_loca.hpp.
+- No code changes started yet; awaiting confirmation of the existing implementation plan.
+<!-- SECTION:NOTES:END -->
