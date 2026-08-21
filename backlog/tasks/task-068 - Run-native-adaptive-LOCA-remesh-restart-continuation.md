@@ -1,10 +1,11 @@
 ---
 id: TASK-068
 title: Run native adaptive LOCA remesh/restart continuation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-13 16:11'
+updated_date: '2026-08-21 08:48'
 labels:
   - episode-008
   - cpp
