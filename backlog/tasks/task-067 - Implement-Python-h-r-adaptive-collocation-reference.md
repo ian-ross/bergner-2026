@@ -1,7 +1,7 @@
 ---
 id: TASK-067
 title: Implement Python h/r adaptive collocation reference
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
@@ -68,3 +68,19 @@ Implement the transparent Python reference for TASK-062 v1 external h/r adaptati
 - Expanded focused tests to verify restart gate ordering/rebootstrap, defect/probe fixture contracts, restart execution checksums, qualification evidence preservation, and generator --check.
 - Verification: uv run pytest -q (262 passed, 1 skipped, 3 warnings); focused adaptive suite passed; py_compile passed for adaptive module and generators.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-067 transparent Python h/r adaptive collocation reference for globally fixed three-stage Gauss orbits.
+
+Changes:
+- Added deterministic external adaptive primitives for defect-driven h marking, 16-subcell composite r monitor construction/CDF inversion, simultaneous global-beta r movement, cycle-status decisions, collocation-polynomial solution/phase/tangent transfer, fixed-parameter restart gates, exact h+r/pure-r retry ordering, and deterministic two-point tangent rebootstrap.
+- Added language-neutral adaptive/remesh fixture generation with real defect-grid diagnostics, synthetic probe-escalation cases, monitor/marking/movement/transfer/restart intermediates, schemas, arrays, and checksums for TASK-068.
+- Added adaptive qualification generation from the four required N=32 points; all four converge within the eight-remesh budget with final N<=81, final defects below 1e-4, convergence gates passed, aliasing evidence preserved, and broader IVP/Floquet evidence explicitly not_evaluated_through_TASK_068.
+- Updated Episode 008 collocation decisions with observed TASK-067 adaptive qualification behavior.
+
+Tests:
+- uv run pytest -q (262 passed, 1 skipped, 3 warnings)
+- uv run python -m py_compile src/bergner_spichtinger_2026/adaptive_orbits.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_collocation_fixtures.py episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_qualification_results.py
+<!-- SECTION:FINAL_SUMMARY:END -->
