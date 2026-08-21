@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-21 08:57'
+updated_date: '2026-08-21 09:07'
 labels:
   - episode-008
   - cpp
@@ -66,4 +66,9 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Updated the Episode 008 README with regeneration/check commands and scope boundaries for the new manifest.
 - Added focused tests in tests/test_episode8_native_adaptive_loca_manifest.py for current artifacts, v1 contract/retry capture, planned-target coverage and single terminal statuses, vector/source checksums, parity summaries, and near-Hopf scope.
 - Verification: uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py; uv run pytest tests/test_episode8_native_adaptive_loca_manifest.py -q; uv run pytest -q (267 passed, 1 skipped, 3 warnings).
+
+- Continued TASK-068 by projecting the final TASK-067 nonuniform adaptive meshes into C++ parity fixtures: added scripts/generate_cpp_adaptive_nonuniform_fixtures.py and outputs/cpp_adaptive_nonuniform_fixtures/. The fixtures use final adaptive nonuniform boundaries, refreshed phase references from accepted orbits, and small deterministic solve perturbations.
+- Added tests/test_episode8_cpp_adaptive_nonuniform.py to verify fixture determinism/provenance, C++ vs Python residual parity, analytic Jacobian action parity, normalized rho/T-hat parameter-column finite-difference checks, nonuniform phase quadrature through refreshed references, and fixed-parameter NOX/KLU2 correction gates on all four final adaptive qualification meshes.
+- Updated the native adaptive manifest to reference the nonuniform C++ fixture parity bundle, and updated README documentation.
+- Verification: uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py --check; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run python -m py_compile both TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q; uv run pytest -q (276 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
