@@ -47,6 +47,7 @@ struct CollocationRule {
   std::array<double, maximum_stage_count> nodes{};
   std::array<double, maximum_stage_count> quadrature_weights{};
   std::array<std::array<double, maximum_stage_count>, maximum_stage_count> stage_coefficients{};
+  std::array<std::array<double, maximum_stage_count + 1>, maximum_stage_count> transfer_coefficients{};
   std::string family = "gauss-legendre";
 };
 
@@ -61,6 +62,8 @@ inline CollocationRule make_rule() {
     rule.quadrature_weights[j] = collocation::GaussLegendreRule<Stages>::quadrature_weights[j];
     for (std::size_t k = 0; k < Stages; ++k)
       rule.stage_coefficients[j][k] = collocation::GaussLegendreRule<Stages>::stage_coefficients[j][k];
+    for (std::size_t k = 0; k < Stages + 1; ++k)
+      rule.transfer_coefficients[j][k] = collocation::GaussLegendreRule<Stages>::transfer_coefficients[j][k];
   }
   return rule;
 }

@@ -316,6 +316,191 @@ void write_graph(const matrix_type& matrix, const OrbitLayout& layout) {
   }
 }
 
+std::vector<double> deterministic_split_boundaries(const std::vector<double>& old_boundaries) {
+  if (old_boundaries.size() < 3) throw std::invalid_argument("adaptive transfer requires at least two intervals");
+  std::vector<double> result;
+  result.reserve(old_boundaries.size() + old_boundaries.size() / 9 + 2);
+  result.push_back(old_boundaries.front());
+  for (std::size_t interval = 0; interval + 1 < old_boundaries.size(); ++interval) {
+    if (interval % 9 == 0) result.push_back(0.5 * (old_boundaries[interval] + old_boundaries[interval + 1]));
+    result.push_back(old_boundaries[interval + 1]);
+  }
+  return result;
+}
+
+std::vector<std::array<double, 3>> stage_fields(const Fixture& fixture, const OrbitLayout& layout,
+                                                const std::vector<double>& values) {
+  std::vector<std::array<double, 3>> fields(layout.interval_count() * static_cast<std::size_t>(layout.stage_count()));
+  const double log_w = std::log(fixture.environment.w);
+  for (std::size_t interval = 0; interval < layout.interval_count(); ++interval) {
+    for (int stage = 0; stage < layout.stage_count(); ++stage) {
+      std::array<double, 3> state{};
+      for (int component = 0; component < 3; ++component)
+        state[component] = values[static_cast<std::size_t>(layout.stage_index(interval, stage, component))];
+      fields[interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage)] =
+          bs2026_loca::local_derivatives(state, fixture.environment.T, log_w, fixture.environment).values;
+    }
+  }
+  return fields;
+}
+
+std::size_t interval_for_phase(const std::vector<double>& boundaries, double phase) {
+  double wrapped = std::fmod(phase, 1.0);
+  if (wrapped < 0.0) wrapped += 1.0;
+  auto it = std::upper_bound(boundaries.begin(), boundaries.end(), wrapped);
+  std::size_t interval = it == boundaries.begin() ? 0 : static_cast<std::size_t>(it - boundaries.begin() - 1);
+  if (interval + 1 >= boundaries.size()) interval = boundaries.size() - 2;
+  return interval;
+}
+
+std::array<double, 3> evaluate_polynomial(const Fixture& fixture, const OrbitLayout& layout,
+                                          const std::vector<double>& values,
+                                          const std::vector<std::array<double, 3>>& fields,
+                                          double phase) {
+  const auto& rule = layout.rule();
+  const std::size_t interval = interval_for_phase(fixture.reference.boundaries, phase);
+  const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+  const double tau = (std::fmod(phase, 1.0) + (std::fmod(phase, 1.0) < 0.0 ? 1.0 : 0.0) - fixture.reference.boundaries[interval]) / width;
+  const double period = std::exp(values[static_cast<std::size_t>(layout.log_period_index())]);
+  std::array<double, 3> result{};
+  for (int component = 0; component < 3; ++component)
+    result[component] = values[static_cast<std::size_t>(layout.endpoint_index(interval, component))];
+  for (int stage = 0; stage < layout.stage_count(); ++stage) {
+    double integrated = 0.0;
+    double power = 1.0;
+    for (int degree = 0; degree <= layout.stage_count(); ++degree) {
+      integrated += rule.transfer_coefficients[stage][degree] * power;
+      power *= tau;
+    }
+    const auto& field = fields[interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage)];
+    for (int component = 0; component < 3; ++component)
+      result[component] += width * period * integrated * field[component];
+  }
+  return result;
+}
+
+std::array<double, 3> evaluate_polynomial_derivative(const Fixture& fixture, const OrbitLayout& layout,
+                                                     const std::vector<std::array<double, 3>>& fields,
+                                                     double log_period,
+                                                     double phase) {
+  const auto& rule = layout.rule();
+  const std::size_t interval = interval_for_phase(fixture.reference.boundaries, phase);
+  const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+  const double wrapped = std::fmod(phase, 1.0) + (std::fmod(phase, 1.0) < 0.0 ? 1.0 : 0.0);
+  const double tau = (wrapped - fixture.reference.boundaries[interval]) / width;
+  const double period = std::exp(log_period);
+  std::array<double, 3> result{};
+  for (int stage = 0; stage < layout.stage_count(); ++stage) {
+    double lagrange = 0.0;
+    double power = 1.0;
+    for (int degree = 1; degree <= layout.stage_count(); ++degree) {
+      lagrange += static_cast<double>(degree) * rule.transfer_coefficients[stage][degree] * power;
+      power *= tau;
+    }
+    const auto& field = fields[interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage)];
+    for (int component = 0; component < 3; ++component)
+      result[component] += period * lagrange * field[component];
+  }
+  return result;
+}
+
+std::vector<double> transfer_values(const Fixture& fixture, const OrbitLayout& layout,
+                                    const std::vector<double>& values,
+                                    const std::vector<double>& destination_boundaries) {
+  const auto fields = stage_fields(fixture, layout, values);
+  const auto& rule = layout.rule();
+  const std::size_t destination_intervals = destination_boundaries.size() - 1;
+  std::vector<double> result(3 * destination_intervals * static_cast<std::size_t>(layout.stage_count() + 1) + 1);
+  auto endpoint_index = [](std::size_t interval, int component) { return 3 * interval + static_cast<std::size_t>(component); };
+  auto stage_index = [destination_intervals, &layout](std::size_t interval, int stage, int component) {
+    return 3 * destination_intervals + 3 * (interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage)) + static_cast<std::size_t>(component);
+  };
+  for (std::size_t interval = 0; interval < destination_intervals; ++interval) {
+    const auto endpoint = evaluate_polynomial(fixture, layout, values, fields, destination_boundaries[interval]);
+    for (int component = 0; component < 3; ++component) result[endpoint_index(interval, component)] = endpoint[component];
+    const double width = destination_boundaries[interval + 1] - destination_boundaries[interval];
+    for (int stage = 0; stage < layout.stage_count(); ++stage) {
+      const auto stage_value = evaluate_polynomial(fixture, layout, values, fields,
+          destination_boundaries[interval] + width * rule.nodes[stage]);
+      for (int component = 0; component < 3; ++component)
+        result[stage_index(interval, stage, component)] = stage_value[component];
+    }
+  }
+  result.back() = values[static_cast<std::size_t>(layout.log_period_index())];
+  return result;
+}
+
+PhaseReference transferred_phase_reference(const Fixture& fixture, const OrbitLayout& layout,
+                                           const std::vector<double>& values,
+                                           const std::vector<double>& destination_boundaries) {
+  const auto fields = stage_fields(fixture, layout, values);
+  const auto& rule = layout.rule();
+  PhaseReference reference;
+  reference.boundaries = destination_boundaries;
+  reference.state_scaling = fixture.reference.state_scaling;
+  const std::size_t destination_intervals = destination_boundaries.size() - 1;
+  reference.stage_values.resize(destination_intervals * static_cast<std::size_t>(layout.stage_count()));
+  reference.stage_derivatives.resize(reference.stage_values.size());
+  const double log_period = values[static_cast<std::size_t>(layout.log_period_index())];
+  for (std::size_t interval = 0; interval < destination_intervals; ++interval) {
+    const double width = destination_boundaries[interval + 1] - destination_boundaries[interval];
+    for (int stage = 0; stage < layout.stage_count(); ++stage) {
+      const double phase = destination_boundaries[interval] + width * rule.nodes[stage];
+      const auto sample = evaluate_polynomial(fixture, layout, values, fields, phase);
+      const auto derivative = evaluate_polynomial_derivative(fixture, layout, fields, log_period, phase);
+      const std::size_t index = interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage);
+      reference.stage_values[index] = sample;
+      reference.stage_derivatives[index] = derivative;
+    }
+  }
+  return reference;
+}
+
+void write_adaptive_transfer(const Fixture& fixture, const OrbitLayout& layout) {
+  const auto destination_boundaries = deterministic_split_boundaries(fixture.reference.boundaries);
+  const auto transferred = transfer_values(fixture, layout, fixture.unknowns, destination_boundaries);
+  const auto reference = transferred_phase_reference(fixture, layout, fixture.unknowns, destination_boundaries);
+  const double epsilon = 1.0e-6;
+  std::vector<double> tangent(fixture.unknowns.size());
+  double norm_squared = 0.0;
+  for (std::size_t gid = 0; gid < tangent.size(); ++gid) {
+    tangent[gid] = std::cos(static_cast<double>(gid) + 0.21);
+    norm_squared += tangent[gid] * tangent[gid];
+  }
+  const double norm = std::sqrt(norm_squared);
+  for (double& value : tangent) value /= norm;
+  auto plus = fixture.unknowns;
+  auto minus = fixture.unknowns;
+  for (std::size_t gid = 0; gid < tangent.size(); ++gid) {
+    plus[gid] += epsilon * tangent[gid];
+    minus[gid] -= epsilon * tangent[gid];
+  }
+  const auto plus_transfer = transfer_values(fixture, layout, plus, destination_boundaries);
+  const auto minus_transfer = transfer_values(fixture, layout, minus, destination_boundaries);
+  std::vector<double> transferred_tangent(plus_transfer.size());
+  for (std::size_t gid = 0; gid < transferred_tangent.size(); ++gid)
+    transferred_tangent[gid] = (plus_transfer[gid] - minus_transfer[gid]) / (2.0 * epsilon);
+  std::cout << std::setprecision(17) << std::scientific;
+  std::cout << "adaptive_transfer_contract collocation-polynomial-transfer-v1 "
+            << fixture.reference.boundaries.size() - 1 << " " << destination_boundaries.size() - 1 << " "
+            << layout.stage_count() << " " << epsilon << "\n";
+  write_runtime_provenance(layout);
+  std::cout << "destination_boundaries " << destination_boundaries.size();
+  for (double value : destination_boundaries) std::cout << " " << value;
+  std::cout << "\ntransferred_unknowns " << transferred.size();
+  for (double value : transferred) std::cout << " " << value;
+  std::cout << "\ntransferred_tangent " << transferred_tangent.size();
+  for (double value : transferred_tangent) std::cout << " " << value;
+  std::cout << "\ntransferred_phase_values " << reference.stage_values.size();
+  for (const auto& row : reference.stage_values) for (double value : row) std::cout << " " << value;
+  std::cout << "\ntransferred_phase_derivatives " << reference.stage_derivatives.size();
+  for (const auto& row : reference.stage_derivatives) for (double value : row) std::cout << " " << value;
+  OrbitLayout destination_layout(destination_boundaries.size() - 1, layout.stage_count(),
+                                 Teuchos::DefaultComm<int>::getComm());
+  Assembler destination_assembler(destination_layout, fixture.environment, reference);
+  std::cout << "\ntransferred_phase_energy " << destination_assembler.phase_energy() << "\n";
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -333,12 +518,12 @@ int main(int argc, char** argv) {
     }
     const std::string command = argc > 1 ? argv[1] : "";
     const bool fixture_command = command == "inspect" || command == "evaluate" ||
-        command == "solve" || command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" ||
+        command == "solve" || command == "adaptive-transfer" || command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" ||
         command == "loca-dfdp" || command == "guard-nonfinite-reference" || command == "guard-invalid-period";
     const bool valid_arity = (fixture_command && argc == 3) ||
         (command == "acceptance-guard" && argc == 4);
     if (!valid_arity) {
-      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|loca-contract|loca-smoke|loca-branches|loca-dfdp|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
+      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|adaptive-transfer|loca-contract|loca-smoke|loca-branches|loca-dfdp|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
                 << "       bs2026_midpoint_orbit acceptance-guard block|phase|positivity|period|phase-energy|linear fixture.txt\n"
                 << "       bs2026_midpoint_orbit guard-one-interval\n";
       return 2;
@@ -758,6 +943,10 @@ int main(int argc, char** argv) {
                     << (event.initial_solve ? "initial" : (event.final_target_solve ? "final" : "regular")) << "\n";
         }
       }
+      return 0;
+    }
+    if (command == "adaptive-transfer") {
+      write_adaptive_transfer(fixture, layout);
       return 0;
     }
     if (command == "solve") {

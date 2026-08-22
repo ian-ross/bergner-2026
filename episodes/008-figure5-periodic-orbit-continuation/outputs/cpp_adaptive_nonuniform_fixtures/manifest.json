@@ -1,0 +1,205 @@
+{
+  "adaptive_method_version": "external-gauss3-hr-adaptive-v1",
+  "artifact_kind": "cpp-gauss-adaptive-nonuniform-fixtures",
+  "cases": [
+    {
+      "boundaries_sha256": "20b3d1659962b33097c6449668942efb89cf51b4671eae4f52c2e4baf25ce22f",
+      "case_id": "adaptive-canonical-g3-n32",
+      "environment": {
+        "F": 1.0,
+        "N_a": 10000000000.0,
+        "T": 225.0,
+        "dz": 100.0,
+        "p": 30000.0,
+        "w": 0.1
+      },
+      "exact_unknowns_sha256": "123f296028c918bc7ebc5e94ba3adfba7d38d0391f708870113917244391b885",
+      "final_defect_maximum": 8.049250611379694e-05,
+      "final_period_s": 2461.6044678183184,
+      "fixture_unknowns_sha256": "3653254ba31593c9ad371ebea62a9b705abf6186ba4f66a9e83db6857f99caef",
+      "formal_order": 6,
+      "interval_count": 72,
+      "path": "adaptive-canonical-g3-n32.txt",
+      "phase_derivatives_sha256": "5b76c875d6769377ac814cffa36f29ab0826ab66a7c82168fdd7868ca951bcc5",
+      "phase_reference_policy": "refreshed from final adaptive accepted orbit stage values and period*g(stage)",
+      "phase_values_sha256": "bd57a0b9e05262e047ca722d53faf0a6d5b747698299f74489870c34cf876c87",
+      "sha256": "ab4174ed0044733503a0ffce9a60b86135659c83da8b05f0bb445071735964e4",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-6*sin(k+0.625) for k<last; log_period += 1e-7*sin(last+0.625)",
+        "version": "small-sinusoidal-nonuniform-correction-seed-v1"
+      },
+      "source_case_id": "canonical-g3-n32",
+      "stage_count": 3,
+      "status": "accepted",
+      "terminal_status": "converged"
+    },
+    {
+      "boundaries_sha256": "c7351e6b27b2107b128425a04720111c8ff30e28492bc4aed7a8faf2504b6a6a",
+      "case_id": "adaptive-guard-rho-0-g3-n32",
+      "environment": {
+        "F": 1.0,
+        "N_a": 10000000000.0,
+        "T": 210.0,
+        "dz": 100.0,
+        "p": 30000.0,
+        "w": 0.0532671872264416
+      },
+      "exact_unknowns_sha256": "66f74adaac0d451625f5cd648378098a01b119d258018fa6ba5444dbb36284f3",
+      "final_defect_maximum": 6.525956307952771e-05,
+      "final_period_s": 5718.140412404464,
+      "fixture_unknowns_sha256": "3afe3d3745c3613862f4f7ebdc8e752e6ecf836b244a8e89358bcc194b0d5b02",
+      "formal_order": 6,
+      "interval_count": 75,
+      "path": "adaptive-guard-rho-0-g3-n32.txt",
+      "phase_derivatives_sha256": "a50c9eacc07d79d5f3aa09b88c8ea7a67632031700342ca1b43075da503c81c2",
+      "phase_reference_policy": "refreshed from final adaptive accepted orbit stage values and period*g(stage)",
+      "phase_values_sha256": "f9fb03fc82c7b92ee1d02a989c44d173130f7641119e5230254461ff3d239b76",
+      "sha256": "549b828788147728c85d61c8863ec7fc6e622b70a1101699ca37fa783a180e71",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-6*sin(k+0.625) for k<last; log_period += 1e-7*sin(last+0.625)",
+        "version": "small-sinusoidal-nonuniform-correction-seed-v1"
+      },
+      "source_case_id": "guard-rho-0-g3-n32",
+      "stage_count": 3,
+      "status": "accepted",
+      "terminal_status": "converged"
+    },
+    {
+      "boundaries_sha256": "ce010de8a57ba73bcd25b2ee9c2966f519992beec6f9ced6f6ff6f4e9c5c30f3",
+      "case_id": "adaptive-guard-rho-minus-0.15-g3-n32",
+      "environment": {
+        "F": 1.0,
+        "N_a": 10000000000.0,
+        "T": 210.0,
+        "dz": 100.0,
+        "p": 30000.0,
+        "w": 0.04303432084376704
+      },
+      "exact_unknowns_sha256": "038c38d103111572c1ecbe120e237f82ca4a123643204c2d3418b676603b8e7f",
+      "final_defect_maximum": 5.117321340268515e-05,
+      "final_period_s": 6183.898589836555,
+      "fixture_unknowns_sha256": "9a54ecd9b7469537d82c983dc209d3cf4db1e72f0e8615480bbc04fd846d9b61",
+      "formal_order": 6,
+      "interval_count": 81,
+      "path": "adaptive-guard-rho-minus-0.15-g3-n32.txt",
+      "phase_derivatives_sha256": "db2bd0d5c2cea9e9ff0a327f68792ac33a0b09ba299bcc3605af00c846f40ac5",
+      "phase_reference_policy": "refreshed from final adaptive accepted orbit stage values and period*g(stage)",
+      "phase_values_sha256": "9d493c28a261ce85ea109091bd09648766552c1d3e7353747c46ae240932023a",
+      "sha256": "045831d998597fd93ac26b0ea5ef9d6a75772cad6890afe3535fb80e6c98cc09",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-6*sin(k+0.625) for k<last; log_period += 1e-7*sin(last+0.625)",
+        "version": "small-sinusoidal-nonuniform-correction-seed-v1"
+      },
+      "source_case_id": "guard-rho-minus-0.15-g3-n32",
+      "stage_count": 3,
+      "status": "accepted",
+      "terminal_status": "converged"
+    },
+    {
+      "boundaries_sha256": "29a1b1ad4ac292a7d68ba37be51f63b2d46fbf7d2b460144570bf73b66e65422",
+      "case_id": "adaptive-guard-rho-plus-0.15-g3-n32",
+      "environment": {
+        "F": 1.0,
+        "N_a": 10000000000.0,
+        "T": 210.0,
+        "dz": 100.0,
+        "p": 30000.0,
+        "w": 0.06593326394804119
+      },
+      "exact_unknowns_sha256": "3fd9758b087e539d2f2b2c11a304b95ee7853fa66afb6990619102771b289a66",
+      "final_defect_maximum": 7.322899879974985e-05,
+      "final_period_s": 5109.345768676884,
+      "fixture_unknowns_sha256": "d6b4270fac2cbe4fdf3740a77d474f6515efea7531dee1fbf240b0e1ec43d109",
+      "formal_order": 6,
+      "interval_count": 75,
+      "path": "adaptive-guard-rho-plus-0.15-g3-n32.txt",
+      "phase_derivatives_sha256": "484a0478099b527a78ee39dc42253c58a4fb7fc5f05fd6479fdabd5616eb1444",
+      "phase_reference_policy": "refreshed from final adaptive accepted orbit stage values and period*g(stage)",
+      "phase_values_sha256": "11247d40320fb3461957836c187a406448ae8833ee43e92bd041516176a7e8b8",
+      "sha256": "71643c8d0fc42ac4a80f5bf9490742ee6a2f0c6973a90ac701a25eed7c56b6a8",
+      "solve_seed_perturbation": {
+        "definition": "unknowns[k] += 1e-6*sin(k+0.625) for k<last; log_period += 1e-7*sin(last+0.625)",
+        "version": "small-sinusoidal-nonuniform-correction-seed-v1"
+      },
+      "source_case_id": "guard-rho-plus-0.15-g3-n32",
+      "stage_count": 3,
+      "status": "accepted",
+      "terminal_status": "converged"
+    }
+  ],
+  "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
+  "controller_version": "adaptive-cycle-controller-v1",
+  "fixture_magic": "BS2026_GAUSS_FIXTURE_V1",
+  "formulation_version": "explicit-stage-gauss-fixed-mesh-v1",
+  "parity_tolerances": {
+    "absolute_floor": 1e-13,
+    "directional_relative": 1e-06,
+    "residual_relative": 1e-11
+  },
+  "projection_contract": {
+    "mesh": "nonuniform final cycle boundaries",
+    "phase_reference": "full remesh-refresh reference from exact final orbit stage values and derivatives",
+    "source": "TASK-067 final adaptive qualification cycles",
+    "unknowns": "versioned small perturbation of exact final accepted adaptive unknowns so C++ corrections exercise NOX/KLU2"
+  },
+  "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py --check",
+  "runtime_provenance": {
+    "numpy": "2.4.6",
+    "python": "3.11.15"
+  },
+  "schema_version": "episode008-cpp-adaptive-nonuniform-fixtures-v1",
+  "source_provenance": {
+    "adaptive_qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json",
+      "sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b"
+    },
+    "adaptive_qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_vectors.npz",
+      "sha256": "28a7fd8c3b6b653c85cbe90b84f80845939d8d345cd4be245228ce926fa37485"
+    },
+    "cpp_assembler": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
+    },
+    "cpp_cli": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+    },
+    "cpp_collocation_coefficients": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
+      "sha256": "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca"
+    },
+    "cpp_loca": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
+    },
+    "cpp_nox": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
+    },
+    "fixed_mesh_midpoint_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
+      "sha256": "c8d9364262b93f2b4694e1f473c131eb3dec165f3a3e9d72d0f0b47738852f49"
+    },
+    "fixed_mesh_qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification.json",
+      "sha256": "a4f0ff438115e6c8059af008646c3d7774c4d4bc1a669574143b31c02f29e933"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py",
+      "sha256": "acf1a4c954efd4a41d532b07d6585b13c54f56a8ff9e52dce63703f75646ed0b"
+    },
+    "python_adaptive_orbits": {
+      "path": "src/bergner_spichtinger_2026/adaptive_orbits.py",
+      "sha256": "80c565de2dce55ed87742a440b16320fc5258c16330a3ffbc121a064fe9cce3e"
+    },
+    "python_periodic_orbits": {
+      "path": "src/bergner_spichtinger_2026/periodic_orbits.py",
+      "sha256": "94428b77d42f2f171fd3114a701008623e6f40ea02c80b336f06602f228d2ca6"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  }
+}

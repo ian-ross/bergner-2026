@@ -304,11 +304,11 @@
   "source_provenance": {
     "cpp_assembler": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
-      "sha256": "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428"
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
+      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
     },
     "cpp_collocation_coefficients": {
       "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",

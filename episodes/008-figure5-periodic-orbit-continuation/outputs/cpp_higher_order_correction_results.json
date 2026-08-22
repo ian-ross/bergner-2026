@@ -453,7 +453,7 @@
     }
   ],
   "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
-  "fixture_manifest_sha256": "fe3d980169f718a947583e383ce11c6bc337f712b45294e92d3819ddc34e9f33",
+  "fixture_manifest_sha256": "4be59b0bc56aa5b0b86cf3ff384645c37760d1bcc0c376f73edb780132017fff",
   "parity_tolerance": 1e-08,
   "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<current-build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check",
   "runtime_provenance": {
@@ -463,13 +463,13 @@
     ],
     "emitting_executable_source_fingerprints": [
       "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
-      "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428",
+      "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
       "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
       "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
       "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-      "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
+      "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
     ],
-    "executable_sha256": "4d1ccb5c4b6b56c8559781800dedbfe54e458f6540361ebf2eddfae6c4060742",
+    "executable_sha256": "e903f8f8ff7fb08bff47ea769ab9e0ca6ee4bb3813c6be95fa6dc724a1b28f8e",
     "numpy": "2.4.6",
     "python": "3.11.15",
     "scipy": "1.17.1"
@@ -482,7 +482,7 @@
     },
     "compiled_source_1": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
-      "sha256": "bd0d5d5262c374bfac9bec16981c11128a4e47bdb33dac0ec8201b9746106428"
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
     },
     "compiled_source_2": {
       "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",
@@ -498,7 +498,7 @@
     },
     "compiled_source_5": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "b24cc188a30bf92754568b8068b8af673b0fbb9a7b5501c8efe9ce18681fafd5"
+      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
     },
     "fixed_mesh_midpoint_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
@@ -506,7 +506,7 @@
     },
     "fixture_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/manifest.json",
-      "sha256": "fe3d980169f718a947583e383ce11c6bc337f712b45294e92d3819ddc34e9f33"
+      "sha256": "4be59b0bc56aa5b0b86cf3ff384645c37760d1bcc0c376f73edb780132017fff"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py",

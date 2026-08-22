@@ -1,0 +1,795 @@
+{
+  "adaptive_reference_evidence": {
+    "all_cases_converged": true,
+    "final_defect_maxima": {
+      "canonical-g3-n32": 8.049250611379694e-05,
+      "guard-rho-0-g3-n32": 6.525956307952771e-05,
+      "guard-rho-minus-0.15-g3-n32": 5.117321340268515e-05,
+      "guard-rho-plus-0.15-g3-n32": 7.322899879974985e-05
+    },
+    "final_interval_counts": {
+      "canonical-g3-n32": 72,
+      "guard-rho-0-g3-n32": 75,
+      "guard-rho-minus-0.15-g3-n32": 81,
+      "guard-rho-plus-0.15-g3-n32": 75
+    },
+    "qualification_case_count": 4,
+    "qualification_source_sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b",
+    "restart_fixture_source_sha256": "9239a1c4effa702f39fb5dd439948bc8ce9ecd91f0e835437d5f2b546b9d5bf1"
+  },
+  "artifact_kind": "task068-native-adaptive-loca-remesh-restart-manifest",
+  "native_fixed_mesh_evidence": {
+    "accepted_event_count": 32,
+    "all_branches_reached_exact_target": true,
+    "all_restart_tangents_used": true,
+    "branch_count": 5,
+    "controlled_phase_reference_refresh_count": 2,
+    "rejected_event_count": 0,
+    "required_branch_ids": [
+      "fixed225-to-spine",
+      "spine-positive-T-hat",
+      "spine-negative-T-hat-to-210",
+      "slice210-negative-rho",
+      "slice210-positive-rho"
+    ],
+    "source_manifest_sha256": "9d7c4656169b02e4c45d717101d796aa675488eddf9e8371307c42c507f07d33"
+  },
+  "native_segment_contract": {
+    "base_system": "square three-stage Gauss residual; LOCA owns Arc Length extension",
+    "fixed_mesh_segment_owner": "LOCA::Stepper",
+    "full_rebuild_lineage": [
+      "Tpetra::Map",
+      "Tpetra::CrsGraph",
+      "Tpetra::CrsMatrix",
+      "Thyra model",
+      "NOX group",
+      "KLU2 LOWS",
+      "WeightedThyraGroup",
+      "LOCA::Stepper"
+    ],
+    "post_transfer_restart_gates": [
+      "residual",
+      "phase",
+      "positivity",
+      "finite_change",
+      "linear_KLU2",
+      "restart_tangent"
+    ],
+    "remesh_boundary_policy": "stop only at accepted native points before any h/r rebuild",
+    "retry_order_from_TASK067_fixture": {
+      "executed_tangent_only_rebootstrap": {
+        "accepted": true,
+        "attempt_names": [
+          "h_r_transfer_correct",
+          "deterministic_two_point_rebootstrap",
+          "restart_with_rebootstrapped_tangent"
+        ],
+        "final_rejection_reasons": [],
+        "tangent_sha256": "be687cf91bdb0bd6670833e71479617562837f3a69c34b09e27c9015dbf9eb0f",
+        "unknowns_sha256": "66a1304c3ac84d410fe97ef20d3ff0f2c8082a36150becc261d2ac245c291017"
+      },
+      "h_plus_r": [
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "h_r_transfer_correct",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "h_r_refresh_reference_recorrect",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "h_r_rebootstrap_tangent_recorrect",
+          "rebootstrap_tangent": true,
+          "refresh_phase_reference": true
+        }
+      ],
+      "pure_r": [
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "pure_r_transfer_correct",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "pure_r_refresh_reference_recorrect",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "pure_r_rebootstrap_tangent_recorrect",
+          "rebootstrap_tangent": true,
+          "refresh_phase_reference": true
+        }
+      ],
+      "tangent_only_failure": [
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": false,
+          "name": "deterministic_two_point_rebootstrap",
+          "rebootstrap_tangent": true,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": true,
+          "name": "restart_with_rebootstrapped_tangent",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        },
+        {
+          "accept_tangent_failure": false,
+          "apply_fixed_parameter_correction": false,
+          "name": "reject_after_rebootstrap_failure",
+          "rebootstrap_tangent": false,
+          "refresh_phase_reference": true
+        }
+      ],
+      "version": "fixed-parameter-remesh-restart-retry-v1"
+    },
+    "tangent_policy": "renormalize transferred tangent; deterministic two-point rebootstrap only for tangent-only failure"
+  },
+  "near_hopf_evidence": {
+    "fit_review_deferred_to": "TASK-069",
+    "minimum_reliable_point_target_when_reached": 5,
+    "required_future_recording": [
+      "amplitude",
+      "period",
+      "terminal_status",
+      "approach_coordinate",
+      "near_hopf_stop_reason"
+    ],
+    "status": "not_reached_in_this_preparatory_manifest"
+  },
+  "parity": {
+    "cpp_nonuniform_fixture_parity": {
+      "all_projected_from_final_adaptive_cycles": true,
+      "case_count": 4,
+      "manifest_sha256": "d922b7aa0500b5eace0fb370075bab89f5e3daa77776c1da13a8bcc399acfac1",
+      "schema_version": "episode008-cpp-adaptive-nonuniform-fixtures-v1",
+      "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/solve seams"
+    },
+    "evidence_boundary": "Native parity here is fixed-mesh three-stage LOCA and fixed-parameter C++ correction. Adaptive remesh transfer/restart intermediates are from TASK-067 Python fixtures until the native adaptive run is executed.",
+    "native_fixed_parameter_correction_cases": {
+      "accepted_count": 6,
+      "case_count": 9,
+      "maximum_period_relative_difference": 1.0308861824600754e-13,
+      "maximum_phase_aligned_weighted_orbit_distance": 1.2335175542148212e-12,
+      "rejected_or_nonsolution_count": 3
+    },
+    "python_adaptive_all_qualification_cases_converged": true,
+    "python_adaptive_final_defect_maximum": 8.049250611379694e-05,
+    "stratified_native_fixed_mesh_python_corrections": {
+      "maximum_all_point_period_relative_error": 1.5783465568548391e-12,
+      "maximum_all_point_weighted_orbit_error": 2.8330217299948895e-12,
+      "native_vectors_are_never_Python_seeds": true,
+      "period_relative_tolerance": 2e-07,
+      "reference_backend": "independent Python three-stage fixed-parameter correction at every native coordinate",
+      "version": "native-python-all-point-parity-v1",
+      "weighted_orbit_tolerance": 2e-07
+    }
+  },
+  "planned_run_manifest": {
+    "coverage_statement": "The manifest enumerates T=225 K to spine, both temperature directions over the provisional 210--226 K range, and signed rho slices for every 2 K skeleton target. Targets not yet executed by native adaptive remeshing are explicit failed terminal statuses with reasons rather than interpolated or suppressed points.",
+    "provisional_spine_range_K": [
+      210,
+      226
+    ],
+    "signed_rho_slice_targets": [
+      -0.15,
+      0.15
+    ],
+    "target_count": 31,
+    "targets": [
+      {
+        "direction": "rho_positive",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint_plus_TASK067_adaptive_contract",
+        "native_branch_id": "fixed225-to-spine",
+        "rho": 0.0,
+        "target_id": "move-225K-to-spine-rho0",
+        "target_type": "fixed_temperature_spine_move",
+        "temperature_K": 225.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint",
+        "native_branch_id": "spine-negative-T-hat-to-210",
+        "rho": 0.0,
+        "target_id": "spine-210K",
+        "target_type": "spine_temperature",
+        "temperature_K": 210.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint",
+        "native_branch_id": "slice210-negative-rho",
+        "rho": -0.15,
+        "target_id": "slice-210K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 210.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint",
+        "native_branch_id": "slice210-positive-rho",
+        "rho": 0.15,
+        "target_id": "slice-210K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 210.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-212K",
+        "target_type": "spine_temperature",
+        "temperature_K": 212.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-212K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 212.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-212K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 212.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-214K",
+        "target_type": "spine_temperature",
+        "temperature_K": 214.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-214K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 214.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-214K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 214.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-216K",
+        "target_type": "spine_temperature",
+        "temperature_K": 216.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-216K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 216.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-216K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 216.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-218K",
+        "target_type": "spine_temperature",
+        "temperature_K": 218.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-218K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 218.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-218K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 218.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-220K",
+        "target_type": "spine_temperature",
+        "temperature_K": 220.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-220K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 220.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-220K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 220.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-222K",
+        "target_type": "spine_temperature",
+        "temperature_K": 222.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-222K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 222.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-222K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 222.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.0,
+        "target_id": "spine-224K",
+        "target_type": "spine_temperature",
+        "temperature_K": 224.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-224K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 224.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-224K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 224.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "anchor",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint",
+        "native_branch_id": "fixed225-to-spine",
+        "rho": 0.0,
+        "target_id": "spine-225K",
+        "target_type": "spine_temperature",
+        "temperature_K": 225.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-225K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 225.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-225K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 225.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "temperature_positive",
+        "evidence_level": "native_fixed_mesh_three_stage_LOCA_checkpoint",
+        "native_branch_id": "spine-positive-T-hat",
+        "rho": 0.0,
+        "target_id": "spine-226K",
+        "target_type": "spine_temperature",
+        "temperature_K": 226.0,
+        "terminal_status": "accepted"
+      },
+      {
+        "direction": "rho_negative",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": -0.15,
+        "target_id": "slice-226K-rho--0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 226.0,
+        "terminal_status": "failed"
+      },
+      {
+        "direction": "rho_positive",
+        "evidence_level": "planned_target_only",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "rho": 0.15,
+        "target_id": "slice-226K-rho-+0.15",
+        "target_type": "fixed_temperature_rho_slice",
+        "temperature_K": 226.0,
+        "terminal_status": "failed"
+      }
+    ],
+    "temperature_skeleton_K": [
+      210,
+      212,
+      214,
+      216,
+      218,
+      220,
+      222,
+      224,
+      225,
+      226
+    ],
+    "terminal_status_allowed_values": [
+      "accepted",
+      "resolution_unresolved",
+      "near_hopf_stop",
+      "tripwire_stop",
+      "failed"
+    ],
+    "terminal_status_counts": {
+      "accepted": 6,
+      "failed": 25,
+      "near_hopf_stop": 0,
+      "resolution_unresolved": 0,
+      "tripwire_stop": 0
+    }
+  },
+  "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py [--check]",
+  "resumability": {
+    "checkpoint_arrays": "first/last native fixed-mesh checkpoints and final Python adaptive meshes are in vector_artifact",
+    "completion_state": "pre_run_manifest_ready",
+    "stale_checkpoint_rejection_basis": [
+      "source_provenance",
+      "vector_artifact.sha256",
+      "source_npz hashes",
+      "schema_version"
+    ]
+  },
+  "schema_version": "episode008-native-adaptive-loca-manifest-v1",
+  "scope": "TASK-068 start artifact: native fixed-mesh LOCA plus Python adaptive fixtures reconciled into a resumable adaptive-run manifest; not final Figure 5 production data.",
+  "source_provenance": {
+    "adaptive_fixture_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_collocation_fixtures_vectors.npz",
+      "sha256": "aab91401773e73849b33fc54fe9496fc1360a33578f4b8af80499e6e98c4d5d6"
+    },
+    "adaptive_fixtures": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_collocation_fixtures.json",
+      "sha256": "9239a1c4effa702f39fb5dd439948bc8ce9ecd91f0e835437d5f2b546b9d5bf1"
+    },
+    "adaptive_orbits_source": {
+      "path": "src/bergner_spichtinger_2026/adaptive_orbits.py",
+      "sha256": "80c565de2dce55ed87742a440b16320fc5258c16330a3ffbc121a064fe9cce3e"
+    },
+    "adaptive_qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json",
+      "sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b"
+    },
+    "adaptive_qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_vectors.npz",
+      "sha256": "28a7fd8c3b6b653c85cbe90b84f80845939d8d345cd4be245228ce926fa37485"
+    },
+    "cpp_adaptive_nonuniform_fixture_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py",
+      "sha256": "acf1a4c954efd4a41d532b07d6585b13c54f56a8ff9e52dce63703f75646ed0b"
+    },
+    "cpp_adaptive_nonuniform_fixture_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json",
+      "sha256": "d922b7aa0500b5eace0fb370075bab89f5e3daa77776c1da13a8bcc399acfac1"
+    },
+    "cpp_higher_order_correction_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_correction_results.json",
+      "sha256": "5fa9685f8f2d0503f334bd5a35f0eba468b9b72fe4ae03c1bc7e5cab6b0fd07c"
+    },
+    "manifest_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py",
+      "sha256": "f04aeb459fea570828bba8e05cceeeee43dc87651d63852c0b65dc4832c0ccb7"
+    },
+    "native_cli_source": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+    },
+    "native_loca_header": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
+    },
+    "native_loca_higher_order_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json",
+      "sha256": "9d7c4656169b02e4c45d717101d796aa675488eddf9e8371307c42c507f07d33"
+    },
+    "native_loca_higher_order_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz",
+      "sha256": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    },
+    "native_orbit_header": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
+    }
+  },
+  "truthfulness_policy": {
+    "broader_ivp_based_evidence": "not_evaluated",
+    "fixed_mesh_native_evidence_may_seed_adaptive_run": true,
+    "floquet_dependent_evidence": "not_evaluated",
+    "native_adaptive_remesh_executed": false,
+    "python_adaptive_evidence_not_rebranded_as_native": true
+  },
+  "vector_artifact": {
+    "array_count": 26,
+    "arrays": {
+      "adaptive_final__canonical-g3-n32__boundaries": {
+        "sha256": "20b3d1659962b33097c6449668942efb89cf51b4671eae4f52c2e4baf25ce22f",
+        "shape": [
+          73
+        ]
+      },
+      "adaptive_final__canonical-g3-n32__defect_maxima": {
+        "sha256": "d4130729744c2cc00b868386ea2b0f618e5655ff4e0df6bb68280e402923853e",
+        "shape": [
+          72
+        ]
+      },
+      "adaptive_final__canonical-g3-n32__probe_admitted": {
+        "sha256": "1a0295f4bf5986c5f74eca9153a6a4cb10b073a01a76ba4a457fd862c78966a4",
+        "shape": [
+          72
+        ]
+      },
+      "adaptive_final__canonical-g3-n32__unknowns": {
+        "sha256": "123f296028c918bc7ebc5e94ba3adfba7d38d0391f708870113917244391b885",
+        "shape": [
+          865
+        ]
+      },
+      "adaptive_final__guard-rho-0-g3-n32__boundaries": {
+        "sha256": "c7351e6b27b2107b128425a04720111c8ff30e28492bc4aed7a8faf2504b6a6a",
+        "shape": [
+          76
+        ]
+      },
+      "adaptive_final__guard-rho-0-g3-n32__defect_maxima": {
+        "sha256": "c6c55a4995fcb3c264db52f6643421ca0c3edf0cdcd9e0866630b86dc9a45f5d",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive_final__guard-rho-0-g3-n32__probe_admitted": {
+        "sha256": "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive_final__guard-rho-0-g3-n32__unknowns": {
+        "sha256": "66f74adaac0d451625f5cd648378098a01b119d258018fa6ba5444dbb36284f3",
+        "shape": [
+          901
+        ]
+      },
+      "adaptive_final__guard-rho-minus-0.15-g3-n32__boundaries": {
+        "sha256": "ce010de8a57ba73bcd25b2ee9c2966f519992beec6f9ced6f6ff6f4e9c5c30f3",
+        "shape": [
+          82
+        ]
+      },
+      "adaptive_final__guard-rho-minus-0.15-g3-n32__defect_maxima": {
+        "sha256": "045434d541825ff03de1c001197594a7da0de2debbbbaf1eec5add191e3a1672",
+        "shape": [
+          81
+        ]
+      },
+      "adaptive_final__guard-rho-minus-0.15-g3-n32__probe_admitted": {
+        "sha256": "f4bd841308415de6ed2727462cd66a7333ac8155b4e8e95de0220355189c785c",
+        "shape": [
+          81
+        ]
+      },
+      "adaptive_final__guard-rho-minus-0.15-g3-n32__unknowns": {
+        "sha256": "038c38d103111572c1ecbe120e237f82ca4a123643204c2d3418b676603b8e7f",
+        "shape": [
+          973
+        ]
+      },
+      "adaptive_final__guard-rho-plus-0.15-g3-n32__boundaries": {
+        "sha256": "29a1b1ad4ac292a7d68ba37be51f63b2d46fbf7d2b460144570bf73b66e65422",
+        "shape": [
+          76
+        ]
+      },
+      "adaptive_final__guard-rho-plus-0.15-g3-n32__defect_maxima": {
+        "sha256": "4a56b8e9b8e5dbe6b38f869c1a3aa750f11928788735be4cb8951af499633b96",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive_final__guard-rho-plus-0.15-g3-n32__probe_admitted": {
+        "sha256": "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive_final__guard-rho-plus-0.15-g3-n32__unknowns": {
+        "sha256": "3fd9758b087e539d2f2b2c11a304b95ee7853fa66afb6990619102771b289a66",
+        "shape": [
+          901
+        ]
+      },
+      "native_fixed_mesh_checkpoint__fixed225-to-spine__first": {
+        "sha256": "c3cdfc81c5a367b8284d0eec14a54e9f5e1ec75923ae70653595234f04dbe5f8",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__fixed225-to-spine__last": {
+        "sha256": "5070888e0dc44745ee96c76c6084e56387fb26ce24a314c3799058ae0ed0f5ca",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__slice210-negative-rho__first": {
+        "sha256": "c1a68d779b4cecf07b70d9185d0cdf02949316aae127a4dac62d6772d4560c7c",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__slice210-negative-rho__last": {
+        "sha256": "85447329880303d398f78dffc790e56774c9c59e2ef1257ab781aeda1340e4d6",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__slice210-positive-rho__first": {
+        "sha256": "9a1a6c49128b4e03f670e47f45707f615764512f307fc2740569de7b665976c2",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__slice210-positive-rho__last": {
+        "sha256": "a17524a8620297c635eea9ae3b9224367dad7ffbbe64ef2a0bcc5ea390c891e2",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__spine-negative-T-hat-to-210__first": {
+        "sha256": "49e62d18506c431776f8adfe1ba0a1b3f73cf73d4cadf7059bdc1d80a85d1753",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__spine-negative-T-hat-to-210__last": {
+        "sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__spine-positive-T-hat__first": {
+        "sha256": "7b1d31c26564b2bb6e943519c3b2a5b382229ebe330a5174409ae902d5044044",
+        "shape": [
+          385
+        ]
+      },
+      "native_fixed_mesh_checkpoint__spine-positive-T-hat__last": {
+        "sha256": "5bb9109c77d5f6e2a71a56ae6e585fefa79ce2c1675d9164a45e65fbc864ec7a",
+        "shape": [
+          385
+        ]
+      }
+    },
+    "artifact_kind": "task068-native-adaptive-loca-manifest-vectors",
+    "sha256": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
+    "source_npz": {
+      "adaptive_qualification_vectors": {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_vectors.npz",
+        "sha256": "28a7fd8c3b6b653c85cbe90b84f80845939d8d345cd4be245228ce926fa37485"
+      },
+      "native_loca_higher_order_vectors": {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz",
+        "sha256": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+      }
+    }
+  },
+  "versions": {
+    "adaptive_controller": "adaptive-cycle-controller-v1",
+    "adaptive_method": "external-gauss3-hr-adaptive-v1",
+    "h_marking": "defect-bulk-halfmax-marking-v1",
+    "manifest_schema": "episode008-native-adaptive-loca-manifest-v1",
+    "monitor": "composite-r-monitor-v1",
+    "native_loca_fixed_mesh": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "r_movement": "global-beta-r-movement-v1",
+    "restart_retry": "fixed-parameter-remesh-restart-retry-v1"
+  }
+}
