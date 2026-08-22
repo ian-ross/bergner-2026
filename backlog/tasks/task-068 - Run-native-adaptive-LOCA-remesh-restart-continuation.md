@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-21 09:07'
+updated_date: '2026-08-22 14:12'
 labels:
   - episode-008
   - cpp
@@ -71,4 +71,9 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Added tests/test_episode8_cpp_adaptive_nonuniform.py to verify fixture determinism/provenance, C++ vs Python residual parity, analytic Jacobian action parity, normalized rho/T-hat parameter-column finite-difference checks, nonuniform phase quadrature through refreshed references, and fixed-parameter NOX/KLU2 correction gates on all four final adaptive qualification meshes.
 - Updated the native adaptive manifest to reference the nonuniform C++ fixture parity bundle, and updated README documentation.
 - Verification: uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py --check; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run python -m py_compile both TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q; uv run pytest -q (276 passed, 1 skipped, 3 warnings).
+
+- Extended native C++ nonuniform support with an adaptive-transfer CLI seam. The C++ Gauss rule now exposes transfer coefficients, and bs2026_midpoint_orbit adaptive-transfer deterministically splits nonuniform meshes, transfers solution values, refreshed phase-reference samples/derivatives, and a finite-difference tangent by collocation-polynomial evaluation, then rebuilds a destination assembler to report phase energy.
+- Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to verify native continuation metric weights/group dot products and C++ collocation-polynomial solution/phase/tangent transfer against independent Python on representative TASK-067 final nonuniform adaptive meshes.
+- Regenerated source-provenance-sensitive Episode 008 manifests/results after the C++ source change: Tpetra midpoint fixture manifest, C++ higher-order fixture/correction artifacts, native midpoint/native higher-order LOCA artifacts, C++ adaptive nonuniform fixtures, and native adaptive manifest.
+- Verification: generator --check commands for affected Episode 008 artifacts; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (18 passed); uv run pytest -q (280 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
