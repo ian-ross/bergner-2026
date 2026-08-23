@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-22 14:12'
+updated_date: '2026-08-23 17:15'
 labels:
   - episode-008
   - cpp
@@ -76,4 +76,9 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to verify native continuation metric weights/group dot products and C++ collocation-polynomial solution/phase/tangent transfer against independent Python on representative TASK-067 final nonuniform adaptive meshes.
 - Regenerated source-provenance-sensitive Episode 008 manifests/results after the C++ source change: Tpetra midpoint fixture manifest, C++ higher-order fixture/correction artifacts, native midpoint/native higher-order LOCA artifacts, C++ adaptive nonuniform fixtures, and native adaptive manifest.
 - Verification: generator --check commands for affected Episode 008 artifacts; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (18 passed); uv run pytest -q (280 passed, 1 skipped, 3 warnings).
+
+- Added a native adaptive-controller CLI seam that computes the v1 adaptive intermediates on nonuniform Gauss fixtures: independent two-grid defect diagnostics with material probe escalation, endpoint/jump diagnostics, composite 16-subcell r monitor inversion, h marking, bounded global-beta r movement, controller decisions, and restart retry order.
+- Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to compare those native adaptive-controller outputs against independent Python TASK-067 adaptive helper functions on representative final nonuniform meshes. Updated the native adaptive manifest/README to include adaptive-controller coverage.
+- Regenerated provenance-sensitive Episode 008 artifacts after the C++ CLI change: Tpetra midpoint fixture manifest, C++ higher-order fixture/correction artifacts, native midpoint/native higher-order LOCA artifacts, C++ adaptive nonuniform fixture manifest, and native adaptive manifest.
+- Verification: affected generator --check commands; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (20 passed); uv run pytest -q (282 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
