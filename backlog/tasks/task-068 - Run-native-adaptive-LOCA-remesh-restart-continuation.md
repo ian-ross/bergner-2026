@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-23 17:15'
+updated_date: '2026-08-23 17:27'
 labels:
   - episode-008
   - cpp
@@ -81,4 +81,8 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to compare those native adaptive-controller outputs against independent Python TASK-067 adaptive helper functions on representative final nonuniform meshes. Updated the native adaptive manifest/README to include adaptive-controller coverage.
 - Regenerated provenance-sensitive Episode 008 artifacts after the C++ CLI change: Tpetra midpoint fixture manifest, C++ higher-order fixture/correction artifacts, native midpoint/native higher-order LOCA artifacts, C++ adaptive nonuniform fixture manifest, and native adaptive manifest.
 - Verification: affected generator --check commands; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (20 passed); uv run pytest -q (282 passed, 1 skipped, 3 warnings).
+
+- Added a native adaptive-restart CLI seam for deterministic h+r restart smoke coverage. It transfers a final nonuniform Gauss fixture to a split destination mesh, rebuilds a fresh OrbitLayout/Assembler graph, renormalizes the transferred tangent, runs fixed-parameter NOX/KLU2 correction on the rebuilt mesh, and reports transfer residuals, graph/rebuild identity, retry order, linear diagnostics, gates, and corrected vectors.
+- Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to compare adaptive-restart corrected vectors/periods against independent Python transfer plus fixed-parameter Gauss correction on representative remeshes, while checking remesh rebuild identity and all restart gates. Updated manifest/README language to include adaptive-restart coverage.
+- Regenerated provenance-sensitive Episode 008 artifacts after the C++ CLI change. Verification: affected generator --check commands; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (22 passed); uv run pytest -q (284 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
