@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-23 17:27'
+updated_date: '2026-08-23 19:38'
 labels:
   - episode-008
   - cpp
@@ -85,4 +85,8 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Added a native adaptive-restart CLI seam for deterministic h+r restart smoke coverage. It transfers a final nonuniform Gauss fixture to a split destination mesh, rebuilds a fresh OrbitLayout/Assembler graph, renormalizes the transferred tangent, runs fixed-parameter NOX/KLU2 correction on the rebuilt mesh, and reports transfer residuals, graph/rebuild identity, retry order, linear diagnostics, gates, and corrected vectors.
 - Expanded tests/test_episode8_cpp_adaptive_nonuniform.py to compare adaptive-restart corrected vectors/periods against independent Python transfer plus fixed-parameter Gauss correction on representative remeshes, while checking remesh rebuild identity and all restart gates. Updated manifest/README language to include adaptive-restart coverage.
 - Regenerated provenance-sensitive Episode 008 artifacts after the C++ CLI change. Verification: affected generator --check commands; uv run python -m py_compile for TASK-068 generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_loca_manifest.py -q (22 passed); uv run pytest -q (284 passed, 1 skipped, 3 warnings).
+
+- Added native adaptive restart smoke artifacts: scripts/generate_native_adaptive_restart_smoke.py produces outputs/native_adaptive_restart_smoke.json and vectors.npz from the C++ adaptive-controller/adaptive-restart seams. The smoke artifact records controller intermediates for all projected final nonuniform fixtures and representative h+r transfer/rebuild/fixed-parameter NOX/KLU2 restart corrections with vector hashes and source/build provenance, while explicitly stating it is not the full spine-and-slices adaptive run.
+- Updated the native adaptive manifest to include the restart-smoke artifact and source provenance, and added tests/test_episode8_native_adaptive_restart_smoke.py for determinism, truthful scope, restart gates, rebuild evidence, vector checksums, and source hashes. Updated Episode 008 README regeneration instructions.
+- Verification: BS2026_MIDPOINT_EXECUTABLE=.pytest_cache/task068-nonuniform-build/bs2026_midpoint_orbit uv run python scripts/generate_native_adaptive_restart_smoke.py --check; native adaptive manifest --check; uv run python -m py_compile for TASK-068 manifest/smoke generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_loca_manifest.py -q (25 passed); uv run pytest -q (287 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
