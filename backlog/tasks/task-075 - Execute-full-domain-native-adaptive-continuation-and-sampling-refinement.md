@@ -4,6 +4,7 @@ title: Execute full-domain native adaptive continuation and sampling refinement
 status: To Do
 assignee: []
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-24 16:28'
 labels:
   - episode-008
   - loca
@@ -14,6 +15,7 @@ dependencies:
   - TASK-070
   - TASK-071
   - TASK-073
+  - TASK-081
 priority: high
 ---
 
