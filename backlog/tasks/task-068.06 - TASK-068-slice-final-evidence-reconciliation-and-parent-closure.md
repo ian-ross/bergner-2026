@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 12:47'
+updated_date: '2026-08-24 13:01'
 labels:
   - episode-008
   - docs
@@ -41,3 +41,12 @@ Reconcile all TASK-068 native adaptive evidence into reviewer-facing documentati
 6. Review TASK-068 parent acceptance criteria one by one and check only those fully supported by completed evidence. Add final summary and mark the parent done only if every AC is satisfied; otherwise create explicit follow-up tasks for any remaining scope.
 7. Record final verification commands and reviewer-facing summary in the relevant backlog tasks.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added final TASK-068 sink reconciliation generator and curated manifest: scripts/generate_native_adaptive_final_reconciliation.py and outputs/native_adaptive_final_reconciliation.json. The manifest is acyclic/sink-only and reconciles upstream artifact hashes, vector artifacts, run checkpoints, target terminal statuses, remesh/restart gates, mesh/convergence validation, runtime placeholders, deferred near-Hopf/IVP/Floquet evidence, and parent AC review.
+- Fixed the structural manifest phase-refresh trigger ledger serialization from flattened dictionary keys to per-cycle records, then regenerated downstream spine-slices and Python-validation artifacts so provenance hashes are current.
+- Added docs/task068-final-evidence-reconciliation.md plus README coverage/handoff notes for native adaptive coverage, mesh behavior, convergence, failures, near-Hopf status, runtime/resource boundaries, and TASK-069 scope.
+- Verification: TASK-068 generator checks passed for C++ adaptive nonuniform fixtures, native adaptive restart smoke, one-branch segment, structural manifest, spine-slices run, Python validation, and final reconciliation. Focused TASK-068 tests passed (58 passed). Full test suite passed: uv run pytest -q (320 passed, 1 skipped, 3 warnings).
+<!-- SECTION:NOTES:END -->
