@@ -1,9 +1,11 @@
 ---
 id: TASK-072
 title: Run measured native adaptive pilot on 210-226 K skeleton
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:18'
+updated_date: '2026-08-24 15:26'
 labels:
   - episode-008
   - loca
