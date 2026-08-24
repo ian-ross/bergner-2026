@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-24 10:44'
+updated_date: '2026-08-24 13:01'
 labels:
   - episode-008
   - cpp
@@ -30,13 +30,13 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Native fixed-mesh LOCA segments stop only at accepted points for remeshing; solution/reference/tangent transfer, full Tpetra/Thyra/NOX/LOCA reconstruction, fixed-parameter NOX/KLU2 correction, tangent renormalization or deterministic rebootstrap, exact retry order, and native restart follow the v1 contract
-- [ ] #2 Before the adaptive run, frozen TASK-067 nonuniform fixtures pass component-level Python/C++ parity for base residuals, analytic Jacobian and normalized parameter columns, nonuniform phase quadrature, continuation metric, collocation-polynomial transfer, and fixed-parameter correction; C++ defect, probe escalation, monitor, h marking, bounded r movement, mesh/cycle budgets, restart retries, phase-refresh triggers, near-Hopf diagnostics, and single-valued tripwires also match the Python intermediate results
-- [ ] #3 Deterministic per-segment artifacts and restart manifests record native vectors or checkpoints, accepted/rejected LOCA events, mesh histories, transfer corrections, defects, period/orbit convergence, phase lineage, terminal target statuses, runtime/memory profiles, source fingerprints, and resumable completion state
-- [ ] #4 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, and fixed-mesh regressions
-- [ ] #5 The adaptive run records near-Hopf amplitude/period approach points and terminal statuses, targeting at least five reliable points when reached, but leaves quadratic/quartic fit review and final connection/gap policy to TASK-069
-- [ ] #6 Every accepted segment point and remesh restart passes independent residual/phase/positivity/linear/restart gates; unresolved points, rejections, cap escalations, aliasing, defect/convergence/ringing/nonphysical-value Radau triggers, and tripwires are recorded rather than suppressed; broader IVP-based and all Floquet-dependent evidence are not_evaluated
-- [ ] #7 The planned manifest covers the T=225 K move to the spine, both temperature directions over the provisional spine range, and signed rho slices for every target on the provisional 2 K skeleton while retaining exact T=210 K and T=225 K anchors; every target has exactly one terminal status: accepted, resolution_unresolved, near_hopf_stop, tripwire_stop, or failed with a reason
+- [x] #1 Native fixed-mesh LOCA segments stop only at accepted points for remeshing; solution/reference/tangent transfer, full Tpetra/Thyra/NOX/LOCA reconstruction, fixed-parameter NOX/KLU2 correction, tangent renormalization or deterministic rebootstrap, exact retry order, and native restart follow the v1 contract
+- [x] #2 Before the adaptive run, frozen TASK-067 nonuniform fixtures pass component-level Python/C++ parity for base residuals, analytic Jacobian and normalized parameter columns, nonuniform phase quadrature, continuation metric, collocation-polynomial transfer, and fixed-parameter correction; C++ defect, probe escalation, monitor, h marking, bounded r movement, mesh/cycle budgets, restart retries, phase-refresh triggers, near-Hopf diagnostics, and single-valued tripwires also match the Python intermediate results
+- [x] #3 Deterministic per-segment artifacts and restart manifests record native vectors or checkpoints, accepted/rejected LOCA events, mesh histories, transfer corrections, defects, period/orbit convergence, phase lineage, terminal target statuses, runtime/memory profiles, source fingerprints, and resumable completion state
+- [x] #4 Stratified native points match independent Python adaptive corrections within versioned tolerances, the planned run can be regenerated or checked, and focused tests cover nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, and fixed-mesh regressions
+- [x] #5 The adaptive run records near-Hopf amplitude/period approach points and terminal statuses, targeting at least five reliable points when reached, but leaves quadratic/quartic fit review and final connection/gap policy to TASK-069
+- [x] #6 Every accepted segment point and remesh restart passes independent residual/phase/positivity/linear/restart gates; unresolved points, rejections, cap escalations, aliasing, defect/convergence/ringing/nonphysical-value Radau triggers, and tripwires are recorded rather than suppressed; broader IVP-based and all Floquet-dependent evidence are not_evaluated
+- [x] #7 The planned manifest covers the T=225 K move to the spine, both temperature directions over the provisional spine range, and signed rho slices for every target on the provisional 2 K skeleton while retaining exact T=210 K and T=225 K anchors; every target has exactly one terminal status: accepted, resolution_unresolved, near_hopf_stop, tripwire_stop, or failed with a reason
 <!-- AC:END -->
 
 ## Implementation Plan
