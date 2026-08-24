@@ -1,9 +1,11 @@
 ---
 id: TASK-071
 title: Profile native adaptive continuation resource usage
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:18'
+updated_date: '2026-08-24 14:56'
 labels:
   - episode-008
   - profiling
