@@ -1,7 +1,7 @@
 ---
 id: TASK-068.04
 title: 'TASK-068 slice: independent Python validation of native adaptive points'
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:52'
