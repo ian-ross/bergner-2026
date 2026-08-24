@@ -1,9 +1,11 @@
 ---
 id: TASK-070
 title: Define Episode 008 production schemas and validators
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:18'
+updated_date: '2026-08-24 14:21'
 labels:
   - episode-008
   - schemas
