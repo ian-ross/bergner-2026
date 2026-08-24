@@ -1,10 +1,11 @@
 ---
 id: TASK-068.01
 title: 'TASK-068 slice: native adaptive one-branch segment runner'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-24 10:51'
-updated_date: '2026-08-24 10:53'
+updated_date: '2026-08-24 10:54'
 labels:
   - episode-008
   - cpp
