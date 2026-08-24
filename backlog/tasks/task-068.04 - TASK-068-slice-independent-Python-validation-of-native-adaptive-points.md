@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 12:10'
+updated_date: '2026-08-24 12:16'
 labels:
   - episode-008
   - python
@@ -42,3 +42,12 @@ Validate a stratified set of accepted native adaptive continuation points agains
 6. Add focused tests for deterministic stratification, identical-coordinate enforcement, tolerance failures, source/vector checksum checks, --check byte/regeneration behavior, and truthfulness labels.
 7. Run the new focused tests plus relevant native adaptive manifest/spine-slices checks, then update task notes/final summary and mark acceptance criteria complete as they pass.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added episode-local `generate_native_adaptive_python_validation.py` with deterministic stratification across branch starts/midpoints/finals, spine/slice/anchor contexts, accepted remesh boundary, and explicit near-Hopf absence.
+- Generated `outputs/native_adaptive_python_validation.json` and `.npz` artifacts recording same-coordinate Python validation contracts, seed/native-vector truthfulness boundaries, period/weighted-orbit/residual/phase/positivity/linear gates, mesh comparisons, vector/source fingerprints, and tolerance versions.
+- Added focused validation tests covering --check regeneration, stratification, tolerance failure reporting, identical-coordinate guard behavior, vector/source checksums, and no relabeling of Python/restart evidence as native adaptive execution.
+- Verification: `uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_loca_manifest.py` (17 passed).
+<!-- SECTION:NOTES:END -->
