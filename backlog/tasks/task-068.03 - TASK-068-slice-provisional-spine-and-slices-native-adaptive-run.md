@@ -54,3 +54,22 @@ Execute the planned provisional native adaptive spine-and-slices continuation us
 - Added tests/test_episode8_native_adaptive_spine_slices_run.py and updated the Episode 008 README with regeneration/check commands and scope boundaries.
 - Verification: uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check; uv run pytest tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_driver.py -q; uv run pytest -q (302 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-068.03 provisional spine-and-slices native adaptive run evidence.
+
+Changes:
+- Added `generate_native_adaptive_spine_slices_run.py`, which runs the complete provisional 31-target manifest through the generalized `NativeAdaptiveDriver` with curated native fixed-mesh and one-branch remesh/restart evidence.
+- Added deterministic run artifacts: `outputs/native_adaptive_spine_slices_run.json` plus `outputs/native_adaptive_spine_slices_run/manifest.json` and per-segment checkpoints.
+- The target ledger covers the T=225 K spine move, both temperature directions over the 210--226 K skeleton, exact T=210 K/T=225 K anchors, and signed rho slices for every skeleton target. It records 6 accepted targets and 25 explicit failed targets with reasons.
+- Accepted points and the selected remesh restart retain residual/phase/positivity/linear/restart gates; near-Hopf evidence is explicitly not reached and fit/connection policy remains deferred to TASK-069.
+- Added focused tests and README regeneration/check documentation.
+
+Tests:
+- `uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check`
+- `uv run pytest tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_driver.py -q`
+- `uv run pytest -q` (302 passed, 1 skipped, 3 warnings)
+<!-- SECTION:FINAL_SUMMARY:END -->
