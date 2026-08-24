@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 11:36'
+updated_date: '2026-08-24 11:47'
 labels:
   - episode-008
   - cpp
@@ -48,4 +48,9 @@ Execute the planned provisional native adaptive spine-and-slices continuation us
 <!-- SECTION:NOTES:BEGIN -->
 - Started TASK-068.03: moved to In Progress and assigned @pi.
 - Reviewed parent TASK-068, completed TASK-068.02 driver/resumability slice, and Episode 008 README/native adaptive context. No implementation changes started yet; awaiting plan confirmation.
+
+- Implemented TASK-068.03 provisional spine-and-slices run generator: scripts/generate_native_adaptive_spine_slices_run.py. It executes the full 31-target provisional manifest through the generalized NativeAdaptiveDriver using curated native fixed-mesh and one-branch remesh/restart evidence, then writes deterministic summary and checkpointed run directory artifacts.
+- Added outputs/native_adaptive_spine_slices_run.json and outputs/native_adaptive_spine_slices_run/ with a normalized resumable driver manifest and 32 per-segment checkpoints. The target ledger records 6 accepted targets and 25 explicit failed targets with reasons; no Python/fixed-mesh evidence is relabeled as full production adaptive completion.
+- Added tests/test_episode8_native_adaptive_spine_slices_run.py and updated the Episode 008 README with regeneration/check commands and scope boundaries.
+- Verification: uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check; uv run pytest tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_driver.py -q; uv run pytest -q (302 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
