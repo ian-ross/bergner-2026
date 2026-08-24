@@ -42,3 +42,10 @@ Execute the planned provisional native adaptive spine-and-slices continuation us
 6. Emit curated run artifacts and vectors with deterministic manifests, source/build/runtime/resource provenance, and resumable completion state.
 7. Run generator --check, resume/check commands, focused driver tests, and full relevant test suites. Update Episode 008 documentation with observed coverage, failures, cost, and scope boundaries.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-068.03: moved to In Progress and assigned @pi.
+- Reviewed parent TASK-068, completed TASK-068.02 driver/resumability slice, and Episode 008 README/native adaptive context. No implementation changes started yet; awaiting plan confirmation.
+<!-- SECTION:NOTES:END -->
