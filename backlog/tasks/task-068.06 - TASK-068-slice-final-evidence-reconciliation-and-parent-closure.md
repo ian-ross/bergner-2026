@@ -1,11 +1,11 @@
 ---
 id: TASK-068.06
 title: 'TASK-068 slice: final evidence reconciliation and parent closure'
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 13:01'
+updated_date: '2026-08-24 13:02'
 labels:
   - episode-008
   - docs
