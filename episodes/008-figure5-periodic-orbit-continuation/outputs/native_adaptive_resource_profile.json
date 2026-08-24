@@ -1,0 +1,367 @@
+{
+  "aggregate_resource_accounting": {
+    "counter_aggregation_policy": "NOX/KLU2 totals include only independent measured correction rows; pilot-style lower-bound duplicate counters are reported per-row but not added again.",
+    "cpu_time_s": 17.33,
+    "klu2_numeric_factorizations": 2,
+    "klu2_symbolic_factorizations": 2,
+    "linear_solves": 2,
+    "max_rss_kib": 112140,
+    "nonlinear_iterations": 5,
+    "unique_counter_row_count": 2,
+    "wall_clock_s": 2.87
+  },
+  "artifact_id": "task071-native-adaptive-resource-profile",
+  "artifact_kind": "task071-native-adaptive-resource-profile",
+  "check_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check",
+  "created_at": "2026-08-24T15:14:38.896708Z",
+  "klu2_iterative_solver_review": {
+    "all_measured_klu2_solves_complete": true,
+    "cost_is_scientific_acceptance": false,
+    "decision": "serial_KLU2_remains_acceptable_for_current_native_adaptive_pilot_seams",
+    "documented_trigger_source": "episodes/008-figure5-periodic-orbit-continuation/docs/collocation-phase-decisions.md",
+    "documented_triggers": {
+      "inability_to_meet_recorded_run_budget": false,
+      "median_factorization_or_solve_time_above_30_s_per_nonlinear_iteration": "not_evaluated_backend_does_not_expose_factorization_timing",
+      "more_than_70_percent_runtime_in_linear_algebra": "not_evaluated_backend_does_not_expose_linear_algebra_timing_split",
+      "realistic_N_256_to_512_factorization_memory_above_4_GiB": false
+    },
+    "iterative_solver_thresholds_met": false,
+    "measured_bounds": {
+      "max_rss_gib": 0.10694503784179688,
+      "max_rss_kib": 112140,
+      "max_segment_cpu_time_s": 11.92,
+      "max_segment_wall_clock_s": 1.93,
+      "total_klu2_numeric_factorizations": 2,
+      "total_klu2_symbolic_factorizations": 2,
+      "total_linear_solves": 2,
+      "total_nonlinear_iterations": 5,
+      "total_wall_clock_s": 2.87
+    },
+    "policy_version": "task062-klu2-iterative-trigger-policy-v1",
+    "rationale": "All measured representative seams completed with reported KLU2 activity. The max-RSS trigger is evaluated directly from measurements and the run-budget trigger is false for this checkable pilot profile. The backend does not expose factorization/solve timing splits, so those trigger channels remain explicit not-evaluated rather than inferred. Belos/Ifpack2 work is not justified unless an evaluated trigger is true; retain KLU2 as the serial oracle/reference pending larger production profiling."
+  },
+  "measurement_method": {
+    "counter_policy": "extract NOX/KLU2 counters from native line output and current native adaptive artifact seams; do not infer unexposed factorization timing",
+    "cpu_time_unit": "s",
+    "max_rss_unit": "KiB",
+    "timer": "/usr/bin/time -f wall/user/system/max-rss",
+    "version": "episode008-native-adaptive-resource-profile-v1",
+    "wall_clock_unit": "s"
+  },
+  "measurements": [
+    {
+      "build_identity": {
+        "cmake_identity": [
+          "23ce2844e7a6a9dabdac92b175973f93c0b07165d0fe07e5def6a7280a35a88a",
+          "build_type_Release"
+        ],
+        "compiler_and_trilinos": [
+          "16.2.0",
+          "Trilinos_17.2.0-dev"
+        ]
+      },
+      "counter_aggregation_role": "independent_measured_correction",
+      "counter_source": "line-oriented bs2026_midpoint_orbit solve output",
+      "description": "Native three-stage N=32 fixed-mesh NOX/KLU2 correction of the canonical higher-order fixture.",
+      "diagnostics": {
+        "phase_energy": 32.69064935183589,
+        "phase_residual_abs": 3.559269306628205e-18,
+        "stage_residual_max": 2.7537384573804166e-14,
+        "stage_residual_rms": 2.403813173742334e-15,
+        "update_residual_max": 3.28586183078726e-14,
+        "update_residual_rms": 4.071204603113736e-15
+      },
+      "klu2": {
+        "backend": "KLU2",
+        "linear_solves": 1,
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "measurement_command": [
+        "loca-build/bs2026_midpoint_orbit",
+        "solve",
+        "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/canonical-g3-n32.txt"
+      ],
+      "native_acceptance_gates_passed": true,
+      "nonlinear_iterations": 3,
+      "nox_residual_norm": 5.70554764769716e-14,
+      "nox_status": "converged",
+      "resources": {
+        "cpu_time_s": 0.37,
+        "exit_status": 0,
+        "max_rss_kib": 50380,
+        "system_cpu_s": 0.01,
+        "user_cpu_s": 0.36,
+        "wall_clock_s": 0.22
+      },
+      "segment_id": "fixed-mesh-gauss3-n32-correction",
+      "segment_type": "fixed_mesh",
+      "source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ]
+    },
+    {
+      "build_identity": {
+        "compiler_and_trilinos": [
+          "16.2.0",
+          "Trilinos_17.2.0-dev"
+        ],
+        "emitting_executable_source_fingerprints": [
+          "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+          "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+          "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+          "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+          "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+          "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+        ],
+        "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+        "numpy": "2.4.6",
+        "python": "3.11.15",
+        "scipy": "1.17.1"
+      },
+      "counter_aggregation_role": "independent_measured_correction",
+      "counter_source": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "description": "Current one-branch native adaptive seam: fixed-mesh LOCA segment, h+r transfer, rebuild, and fixed-parameter NOX/KLU2 restart correction.",
+      "klu2": {
+        "backend": "KLU2",
+        "linear_solves": 1,
+        "numeric_complete": true,
+        "numeric_factorizations": 1,
+        "reported": true,
+        "solve_complete": true,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 1
+      },
+      "measurement_command": [
+        "uv",
+        "run",
+        "python",
+        "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py",
+        "--check"
+      ],
+      "native_fixed_mesh_accepted_point_count": 9,
+      "native_fixed_mesh_event_count": 9,
+      "nonlinear_iterations": 2,
+      "nox_residual_norm": 1.6543434215594583e-14,
+      "nox_status": "converged",
+      "resources": {
+        "cpu_time_s": 11.92,
+        "exit_status": 0,
+        "max_rss_kib": 112140,
+        "system_cpu_s": 0.17,
+        "user_cpu_s": 11.75,
+        "wall_clock_s": 1.93
+      },
+      "restart_gates_passed": true,
+      "segment_id": "one-branch-remesh-restart",
+      "segment_type": "remesh_restart",
+      "selected_branch_id": "spine-negative-T-hat-to-210"
+    },
+    {
+      "accepted_point_count": 40,
+      "accepted_segment_count": 7,
+      "build_identity": {
+        "driver_fingerprints_sha256": "090df0cc68e9ba97f29f6d6bb04d88ee9373e1588955cd7e4821ee2b5d9a40c8",
+        "executable_path": "loca-build/bs2026_midpoint_orbit",
+        "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
+      },
+      "counter_aggregation_role": "contextual_lower_bound_duplicate_not_added_to_unique_counter_totals",
+      "counter_source": "aggregate lower bound from measured fixed-mesh correction plus measured one-branch restart; driver-internal TASK-068 resources remain placeholders and are not used",
+      "description": "Check-mode execution of the current resumable spine-and-slices driver seam using curated native fixed-mesh/restart evidence.",
+      "driver_manifest_placeholder_resources_ignored": true,
+      "failed_or_unresolved_outcome_count": 25,
+      "klu2": {
+        "backend": "KLU2",
+        "linear_solves": 2,
+        "numeric_complete": true,
+        "numeric_factorizations": 2,
+        "reported": true,
+        "solve_complete": true,
+        "symbolic_complete": true,
+        "symbolic_factorizations": 2
+      },
+      "measurement_command": [
+        "uv",
+        "run",
+        "python",
+        "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py",
+        "--check"
+      ],
+      "nonlinear_iterations": 5,
+      "nox_status": "aggregate_measured_representative_seams",
+      "resources": {
+        "cpu_time_s": 5.04,
+        "exit_status": 0,
+        "max_rss_kib": 111420,
+        "system_cpu_s": 0.04,
+        "user_cpu_s": 5.0,
+        "wall_clock_s": 0.72
+      },
+      "restart_count": 1,
+      "run_manifest_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
+      "segment_id": "pilot-style-spine-slices-driver-check",
+      "segment_type": "pilot_style_native_adaptive_driver",
+      "summary_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
+      "terminal_status_counts": {
+        "accepted": 6,
+        "failed": 25,
+        "near_hopf_stop": 0,
+        "resolution_unresolved": 0,
+        "tripwire_stop": 0
+      },
+      "truthfulness_policy": {
+        "generalized_native_adaptive_driver_executed": true,
+        "native_fixed_mesh_evidence_replayed_as_segment_evidence": true,
+        "native_one_branch_remesh_restart_evidence_replayed": true,
+        "production_cpp_adaptive_backend_executed": false,
+        "python_or_fixed_mesh_evidence_not_rebranded_as_full_native_adaptive_completion": true,
+        "unreached_targets_are_terminal_failed_with_reasons": true
+      }
+    }
+  ],
+  "pilot_terminal_status_counts": {
+    "accepted": 6,
+    "failed": 25,
+    "near_hopf_stop": 0,
+    "resolution_unresolved": 0,
+    "tripwire_stop": 0
+  },
+  "production_schema_metadata_artifact": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
+  "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py",
+  "runtime_identity": {
+    "compiled_source_fingerprint_sha256": [
+      "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+      "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+      "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+      "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+      "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+      "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+    ],
+    "executable_path": "loca-build/bs2026_midpoint_orbit",
+    "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+    "machine": "x86_64",
+    "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
+    "processor": "x86_64",
+    "python": "3.11.15",
+    "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+  },
+  "schema_version": "episode008-native-adaptive-resource-profile-v1",
+  "scope": "Measured resource evidence for current native adaptive seams; not production Figure 5 scientific acceptance.",
+  "source_provenance": {
+    "collocation_decisions": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/collocation-phase-decisions.md",
+      "role": "documented iterative-solver trigger thresholds",
+      "sha256": "04e78cef1475fb27f00c224ae5735dfab7af5ff7931f9e88b2467a1b6628c5ff"
+    },
+    "cpp_collocation_coefficients": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
+      "role": "compiled collocation coefficients",
+      "sha256": "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca"
+    },
+    "cpp_midpoint_cli": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "role": "compiled native CLI",
+      "sha256": "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+    },
+    "cpp_midpoint_loca": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "role": "compiled native LOCA adapter",
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
+    },
+    "cpp_midpoint_nox": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "role": "compiled native NOX/KLU2 adapter",
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
+    },
+    "cpp_midpoint_orbit": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "role": "compiled native sparse orbit assembler",
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
+    },
+    "cpp_model": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",
+      "role": "compiled native local model",
+      "sha256": "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38"
+    },
+    "episode_readme": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+      "role": "Episode 008 documentation",
+      "sha256": "cee69c221785181807f750c7840204014ba0e9233147bf601706b26058f49f82"
+    },
+    "fixed_mesh_fixture": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/canonical-g3-n32.txt",
+      "role": "fixed-mesh correction fixture",
+      "sha256": "fa3aeb79d0c48129f01170955f23c9d533bd0e4ff856e0bef67439c09e791e7b"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py",
+      "role": "TASK-071 profiling generator",
+      "sha256": "4070f85223753aaf13b1f7c217a8a824c8f321b692c90a899767e156f983ab52"
+    },
+    "native_adaptive_driver": {
+      "path": "src/bergner_spichtinger_2026/native_adaptive_driver.py",
+      "role": "pilot-style driver implementation",
+      "sha256": "3dd596655fa76f2b3ac40cf7dfb95d7b9ebfdc0c6af5effe6983685cf16036c4"
+    },
+    "one_branch_artifact": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "role": "remesh/restart counter source",
+      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
+    },
+    "one_branch_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py",
+      "role": "remesh/restart generator command",
+      "sha256": "84d9050506612c9b17c3519702b9badd298e050f512d64d70c958f9d80820699"
+    },
+    "spine_slices_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py",
+      "role": "pilot-style driver generator command",
+      "sha256": "6c1e8bcc160851d8b7aac2f06db4b4bfc6a10db4740040f409c5a5bd19899d65"
+    },
+    "spine_slices_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
+      "role": "pilot-style driver manifest source",
+      "sha256": "1a3b149a217e2301ca6e8a9e267d81e5a9e2523d4b2aa21ce29ecdc3df6c8a1f"
+    },
+    "spine_slices_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
+      "role": "pilot-style driver summary source",
+      "sha256": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e"
+    },
+    "task069_review": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+      "role": "profiling requirement and KLU2 pending-profile decision",
+      "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+    },
+    "task070_schema_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+      "role": "production-v1 metadata boundary",
+      "sha256": "5f9fb930799e89c8872e7cdc4909e5087f07022c31673f7e8bb30aedb4c23584"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "role": "Python environment lockfile",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  },
+  "truthfulness_policy": {
+    "cost_measurements_are_not_scientific_acceptance": true,
+    "current_backend_seams_profiled": [
+      "fixed_mesh",
+      "remesh_restart",
+      "pilot_style_native_adaptive_driver"
+    ],
+    "failed_or_pending_targets_not_rebranded_as_accepted": true,
+    "production_cpp_full_adaptive_backend_executed": false,
+    "replaces_task068_zero_resource_placeholders": true
+  }
+}

@@ -10,6 +10,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task068-final-evidence-reconciliation.md`](docs/task068-final-evidence-reconciliation.md) summarizes the completed TASK-068 native adaptive evidence, failures, resource-cost boundaries, and TASK-069 handoff.
 - [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) records the TASK-069 post-run review, TASK-062 hypothesis dispositions, unsupported near-Hopf fit status, and approved downstream production task boundary.
 - [`docs/production-schemas.md`](docs/production-schemas.md) defines the TASK-070 `episode8-figure5-production-v1` schema and validation boundary for downstream production, orbit-vector, T=210 K linearized-period, and browser/display artifacts.
+- [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
 
 ## Production schema boundary
 
@@ -21,6 +22,23 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The validator requires explicit provenance, SHA-256 checksums, schema/method versions, coordinate conventions, units, validity/source flags, and unambiguous gap/unresolved/interpolated-source policy. Digitized paper Figure 5 data remain non-authoritative external comparison evidence only.
+
+## Native adaptive resource profile
+
+TASK-071 replaces the TASK-068 zero resource placeholders with measured wall-clock, CPU-time, max-RSS, NOX-iteration, KLU2 factorization, and linear-solve evidence for representative current seams. The profiling artifacts are:
+
+- [`outputs/native_adaptive_resource_profile.json`](outputs/native_adaptive_resource_profile.json)
+- [`outputs/native_adaptive_resource_profile_run_metadata.json`](outputs/native_adaptive_resource_profile_run_metadata.json)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json
+```
+
+The measured profile is cost evidence only, not scientific acceptance of continuation points. It preserves the TASK-068 failed/pending target boundary. Its KLU2 review concludes that serial KLU2 remains acceptable for the current native adaptive pilot seams; the documented iterative-solver trigger thresholds are not met by available measured evidence.
 
 ## Frozen Episode 007 bootstrap seed
 

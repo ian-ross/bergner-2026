@@ -1,0 +1,103 @@
+{
+  "artifact_id": "task071-native-adaptive-resource-profile-run-metadata",
+  "artifact_kind": "run-metadata",
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "method_versions": {
+    "continuation_method": "external-gauss3-hr-adaptive-v1",
+    "profiling_method": "episode008-native-adaptive-resource-profile-v1",
+    "schema": "episode8-figure5-production-v1",
+    "validator": "episode8-production-validator-v1"
+  },
+  "provenance": {
+    "created_by": "generate_native_adaptive_resource_profile.py",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "source_artifacts": [
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
+        "role": "TASK-071 measured profile artifact",
+        "sha256": "8c792d4f02a253cda6dcd0b98d48e1b33322a13b582474fd7bb5812d60f1cc1a"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+        "role": "TASK-069 profiling requirement",
+        "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+        "role": "production schema boundary",
+        "sha256": "5f9fb930799e89c8872e7cdc4909e5087f07022c31673f7e8bb30aedb4c23584"
+      }
+    ],
+    "task": "TASK-071"
+  },
+  "run_metadata": {
+    "backend": "native-adaptive-loca-current-seams-profiled",
+    "build_identity": {
+      "compiled_source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "executable_path": "loca-build/bs2026_midpoint_orbit",
+      "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+      "machine": "x86_64",
+      "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
+      "processor": "x86_64",
+      "python": "3.11.15",
+      "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    },
+    "coordinate_domain": {
+      "convention": "temperature-log_w-rho-spine-slices-v1",
+      "log_w": {
+        "max": -1.3862943611198906,
+        "min": -4.605170185988091,
+        "unit": "ln(m s^-1)"
+      },
+      "rho": {
+        "max": 0.15,
+        "min": -0.15,
+        "unit": "dimensionless"
+      },
+      "temperature": {
+        "max": 226.0,
+        "min": 210.0,
+        "unit": "K"
+      }
+    },
+    "executable_identity": {
+      "path": "loca-build/bs2026_midpoint_orbit",
+      "sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
+    },
+    "resource_accounting": {
+      "cpu_time": {
+        "unit": "s",
+        "value": 17.33
+      },
+      "max_rss": {
+        "unit": "KiB",
+        "value": 112140
+      },
+      "wall_clock": {
+        "unit": "s",
+        "value": 2.87
+      }
+    },
+    "run_id": "task071-native-adaptive-resource-profile",
+    "terminal_status_counts": {
+      "accepted": 6,
+      "failed": 25,
+      "near_hopf_stop": 0,
+      "resolution_unresolved": 0,
+      "tripwire_stop": 0
+    }
+  },
+  "schema_version": "episode8-figure5-production-v1"
+}

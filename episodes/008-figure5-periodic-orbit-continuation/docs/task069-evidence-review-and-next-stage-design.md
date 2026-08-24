@@ -105,7 +105,7 @@ No tripwire or near-Hopf terminal status is observed in the provisional run. The
 
 ### Runtime, memory, and linear solver evidence
 
-Runtime and memory evidence is insufficient for production policy. TASK-068 artifacts record executable/source/runtime identities, but [`native_adaptive_final_reconciliation.json`](../outputs/native_adaptive_final_reconciliation.json) states that provisional `segment_wall_clock_s`, `segment_cpu_s`, and `max_rss_kib` are deterministic zero placeholders. There is no measured wall-clock, CPU, RSS, nonlinear-iteration, linear-solve, factorization-time, or memory profile for a full adaptive native run. Consequently, iterative solvers are not warranted by evidence, but production profiling is mandatory before freezing KLU2-only production policy.
+Runtime and memory evidence was insufficient for TASK-069 production policy because TASK-068 artifacts recorded executable/source/runtime identities but kept provisional `segment_wall_clock_s`, `segment_cpu_s`, and `max_rss_kib` as deterministic zero placeholders. TASK-071 supersedes those placeholder policy fields for the current pilot seams with [`native_adaptive_resource_profile.json`](../outputs/native_adaptive_resource_profile.json) and production-v1 companion metadata in [`native_adaptive_resource_profile_run_metadata.json`](../outputs/native_adaptive_resource_profile_run_metadata.json). The TASK-071 profile records measured wall-clock time, CPU time, max RSS, nonlinear iterations, KLU2 symbolic/numeric factorization counts, linear solves, and source/build/runtime identity for representative fixed-mesh, remesh/restart, and pilot-style native adaptive seams. It remains cost evidence only, not scientific acceptance of the unresolved continuation targets. Its review keeps serial KLU2 acceptable for the current pilot seams; documented iterative-solver thresholds are not met by the available measured evidence, while backend-unexposed factorization/solve timing split channels remain explicitly not evaluated.
 
 ### Paper Figure 5 digitization
 
@@ -130,7 +130,7 @@ TASK-063 is still `To Do`, so there is no digitized Figure 5 dataset available f
 | Near-Hopf stopping and quadratic/quartic fit policy | Defer, retain policy as unevaluated | No near-Hopf approach points. Fits are not performed. Later tasks must either acquire at least five reliable approach points or preserve explicit gaps. |
 | Radau whole-orbit collocation comparison | Not warranted now; defer trigger-only | Evaluated evidence does not show defect-passing/Gauss-failing production points, persistent ringing/nonphysical values, or mesh-cap stagnation. Broader IVP/Radau validation remains downstream for selected difficult points, not a replacement method. |
 | Floquet postprocessing and gates | Defer but approve downstream implementation | Floquet is not evaluated through TASK-068. It is warranted downstream as postprocessing/diagnostic evidence for production records, not as a TASK-068 acceptance gate. |
-| Serial KLU2 direct solver | Retain pending real profiling | No measured full-run resource evidence exists. KLU2 remains oracle/reference; iterative Belos/Ifpack2 is not warranted unless production profiling triggers it. |
+| Serial KLU2 direct solver | Retain after TASK-071 pilot-seam profiling | TASK-071 records measured current-seam wall-clock, CPU, RSS, nonlinear-iteration, KLU2 factorization, and solve evidence. The available measured evidence does not meet documented iterative-solver triggers; KLU2 remains oracle/reference pending larger production profiling. |
 | Single-valued tripwire and multibranch confirmation | Retain tripwire only; multibranch not warranted now | No tripwire observed. Confirmation/display machinery should be created only after a real trigger. |
 | Provisional sampling/interpolation skeleton | Revise | Keep solved target ideas, but interpolation is blocked until a real native adaptive production run supplies accepted or explicit unresolved statuses and holdout tests. Never interpolate across pending/failed targets. |
 | TASK-063 paper digitization comparison | Deferred | TASK-063 is not complete. Future comparison is external image-derived evidence only. |
@@ -145,7 +145,7 @@ Current evidence is sufficient to justify **continued development of the native 
 Scientific/numerical blockers before final Figure 5 production:
 
 1. The full native adaptive backend has not accepted or explicitly resolved the 25 pending provisional targets.
-2. Runtime, memory, nonlinear-iteration, and linear-solve profiles are placeholders.
+2. Full-domain production runtime and linear-algebra timing split evidence remains absent; TASK-071 has replaced the prior pilot-seam zero placeholders with measured current-seam resource/counter evidence only.
 3. Near-Hopf approach evidence is absent, so nonlinear-period/Hopf-limit connection is unresolved.
 4. Floquet and broader IVP validation are not evaluated for production accepted points.
 5. The T=210 K equilibrium-linearized period curve is absent.
