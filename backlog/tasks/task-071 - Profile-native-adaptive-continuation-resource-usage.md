@@ -1,7 +1,7 @@
 ---
 id: TASK-071
 title: Profile native adaptive continuation resource usage
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
@@ -60,3 +60,29 @@ Validation run:
 
 Two read-only subagent reviews initially found stale TASK-069 wording, hard-coded trigger semantics, duplicate aggregate counters, and weak check semantics; fixes were applied. Follow-up read-only reviews reported no blockers.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Added measured TASK-071 native adaptive resource profiling for current Episode 008 seams.
+
+Changes:
+- Added `scripts/generate_native_adaptive_resource_profile.py` to measure representative fixed-mesh, remesh/restart, and pilot-style native adaptive seams with `/usr/bin/time`, extract NOX iteration and KLU2 symbolic/numeric/solve counters, record source/build/runtime identities, and provide check-mode drift validation.
+- Added curated outputs `native_adaptive_resource_profile.json` and production-v1 `native_adaptive_resource_profile_run_metadata.json`; the companion metadata validates with the TASK-070 production schema.
+- Added focused tests for non-placeholder resource measurements, required counters, KLU2 trigger review, source/check semantics, production metadata, and documentation links.
+- Documented the measured profile in `docs/task071-resource-profile.md`, linked it from the Episode 008 README, and updated TASK-069 decision text so pilot-seam resource placeholders are superseded without treating cost as scientific acceptance.
+- Regenerated the TASK-068 final reconciliation manifest after README provenance changed.
+
+KLU2 review:
+- Serial KLU2 remains acceptable for the current native adaptive pilot seams.
+- Evaluated trigger channels are not met; backend-unexposed factorization/solve timing split triggers remain explicitly `not_evaluated`.
+- No Belos/Ifpack2 work is justified by TASK-071 evidence.
+
+Validation:
+- TASK-071 profile check and production metadata validation passed.
+- Final reconciliation check passed.
+- Focused tests: 24 passed.
+- Full suite: `uv run pytest -q` -> 338 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+- Follow-up read-only reviews reported no blockers.
+<!-- SECTION:FINAL_SUMMARY:END -->
