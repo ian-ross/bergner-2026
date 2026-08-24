@@ -25,10 +25,10 @@ Validate a stratified set of accepted native adaptive continuation points agains
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 A deterministic stratification policy selects representative accepted native adaptive points across spine, slices, remesh events, anchors, and near-Hopf approach regions when present
-- [ ] #2 Python validation corrects at identical physical coordinates without seeding from native vectors except as explicitly forbidden/allowed by the validation contract
-- [ ] #3 Validation artifacts record period error, weighted orbit distance, residual/phase/positivity gates, mesh comparison, source fingerprints, and tolerance versions
-- [ ] #4 Focused tests verify regeneration/check behavior, tolerance enforcement, failure reporting, and no relabeling of Python-only evidence as native adaptive execution
+- [x] #1 A deterministic stratification policy selects representative accepted native adaptive points across spine, slices, remesh events, anchors, and near-Hopf approach regions when present
+- [x] #2 Python validation corrects at identical physical coordinates without seeding from native vectors except as explicitly forbidden/allowed by the validation contract
+- [x] #3 Validation artifacts record period error, weighted orbit distance, residual/phase/positivity gates, mesh comparison, source fingerprints, and tolerance versions
+- [x] #4 Focused tests verify regeneration/check behavior, tolerance enforcement, failure reporting, and no relabeling of Python-only evidence as native adaptive execution
 <!-- AC:END -->
 
 ## Implementation Plan
