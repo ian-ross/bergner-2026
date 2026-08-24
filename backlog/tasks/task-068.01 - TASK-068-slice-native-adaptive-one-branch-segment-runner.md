@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:51'
-updated_date: '2026-08-24 10:54'
+updated_date: '2026-08-24 10:55'
 labels:
   - episode-008
   - cpp
@@ -42,3 +42,11 @@ Implement the first real integrated native adaptive LOCA slice for one branch/sm
 6. Add focused tests comparing the one-branch runner to existing Python expectations and restart-smoke outputs, including gate enforcement and no false full-run claims.
 7. Regenerate/check artifacts, run focused tests and relevant fixed-mesh regression tests, then update TASK-068 parent manifest/README references to the one-branch evidence.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Started TASK-068.01: moved subtask to In Progress and assigned @pi.
+- Reviewed subtask scope plus parent TASK-068 references/docs: midpoint_loca.hpp, Episode 008 README native adaptive remesh/restart section, and collocation-phase native remesh/restart contract.
+- Confirmed implementation will begin from existing native higher-order LOCA, adaptive-controller/transfer/restart seams, restart-smoke artifacts, and native adaptive manifest/tests. No code changes made yet pending plan approval.
+<!-- SECTION:NOTES:END -->
