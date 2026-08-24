@@ -1,11 +1,11 @@
 ---
 id: TASK-073
 title: Reconcile native adaptive pilot with independent validation
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 16:37'
+updated_date: '2026-08-24 16:38'
 labels:
   - episode-008
   - validation
@@ -67,3 +67,29 @@ Validation run:
 
 Independent read-only reviews: initial review found executable-provenance and TASK-075 dependency blockers; both were fixed. Follow-up read-only review reported no blockers.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed the TASK-073 native adaptive pilot reconciliation gate.
+
+Changes:
+- Added `scripts/generate_native_adaptive_pilot_reconciliation.py` and the curated `outputs/native_adaptive_pilot_reconciliation.json` review artifact.
+- Added focused tests for terminal-status preservation, zero-accepted validation semantics, IVP non-selection, production go/no-go decision, documentation links, and check-mode/source-hash freshness.
+- Documented the review in `docs/task073-native-adaptive-pilot-reconciliation.md` and updated the Episode 008 README and collocation decision record.
+- Created follow-up TASK-081 through the Backlog CLI and updated TASK-075 dependencies to include it.
+- Regenerated affected TASK-071/TASK-072/TASK-068 sink artifacts after documentation/source-provenance changes, using stable `loca-build/bs2026_midpoint_orbit` provenance; added `loca-build/` to `.gitignore`.
+
+Decision:
+- TASK-072 terminal statuses are preserved exactly: 0 accepted, 31 resolution_unresolved, 0 failed, 0 near_hopf_stop, 0 tripwire_stop.
+- No accepted pilot point exists, so no IVP subset is justified; DOP853/Radau difficulty triggers are recorded for future accepted points.
+- Full-domain native adaptive continuation is not authorized from this pilot gate. The retained v1 method is not falsified and no method-version revision is required now, but TASK-081 follow-up gate work is required before TASK-075 may proceed as production-authorized.
+
+Validation:
+- TASK-071/TASK-072/TASK-073/final-reconciliation check commands passed.
+- TASK-071/TASK-072 production-v1 metadata/events validate.
+- Focused tests: 47 passed.
+- Full suite: `uv run pytest -q` -> 351 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+- Independent read-only follow-up review reported no blockers.
+<!-- SECTION:FINAL_SUMMARY:END -->
