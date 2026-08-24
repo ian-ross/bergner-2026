@@ -24,10 +24,10 @@ Reconcile all TASK-068 native adaptive evidence into reviewer-facing documentati
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Episode 008 documentation summarizes native adaptive coverage, mesh behavior, convergence, failures, near-Hopf evidence, runtime/resource cost, and scope boundaries for TASK-069
-- [ ] #2 Final manifests regenerate/check cleanly and reconcile every event, checkpoint, target, terminal status, source fingerprint, vector artifact, and resume state
-- [ ] #3 Focused and full test suites pass, including nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, fixed-mesh regressions, and Python validation
-- [ ] #4 TASK-068 parent acceptance criteria are reviewed and checked only where the completed evidence truthfully satisfies them; any remaining production/fitting policy is deferred to TASK-069 or new follow-up tasks
+- [x] #1 Episode 008 documentation summarizes native adaptive coverage, mesh behavior, convergence, failures, near-Hopf evidence, runtime/resource cost, and scope boundaries for TASK-069
+- [x] #2 Final manifests regenerate/check cleanly and reconcile every event, checkpoint, target, terminal status, source fingerprint, vector artifact, and resume state
+- [x] #3 Focused and full test suites pass, including nonuniform parity, remesh rebuild identity, event partitioning, restart recovery, resume behavior, terminal manifest coverage, fixed-mesh regressions, and Python validation
+- [x] #4 TASK-068 parent acceptance criteria are reviewed and checked only where the completed evidence truthfully satisfies them; any remaining production/fitting policy is deferred to TASK-069 or new follow-up tasks
 <!-- AC:END -->
 
 ## Implementation Plan
