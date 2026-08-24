@@ -25,10 +25,10 @@ Review the measured 210--226 K native adaptive pilot and validate accepted backe
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Every accepted pilot point, including post-remesh points, receives independent same-coordinate Python correction or an explicit validation-unavailable reason that blocks production use
-- [ ] #2 A stratified subset receives independent IVP one-period validation where justified by TASK-069, with DOP853 and Radau used according to documented difficulty triggers
-- [ ] #3 The pilot review decides whether full-domain continuation can proceed under the retained v1 method or whether a documented method-version revision/follow-up is required
-- [ ] #4 Documentation records accepted, unresolved, failed, near-Hopf, and tripwire outcomes without changing terminal statuses through interpolation
+- [x] #1 Every accepted pilot point, including post-remesh points, receives independent same-coordinate Python correction or an explicit validation-unavailable reason that blocks production use
+- [x] #2 A stratified subset receives independent IVP one-period validation where justified by TASK-069, with DOP853 and Radau used according to documented difficulty triggers
+- [x] #3 The pilot review decides whether full-domain continuation can proceed under the retained v1 method or whether a documented method-version revision/follow-up is required
+- [x] #4 Documentation records accepted, unresolved, failed, near-Hopf, and tripwire outcomes without changing terminal statuses through interpolation
 <!-- AC:END -->
 
 ## Implementation Plan
