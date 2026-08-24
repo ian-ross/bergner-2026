@@ -1,7 +1,7 @@
 ---
 id: TASK-068.02
 title: 'TASK-068 slice: generalized adaptive driver and resumability'
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
@@ -50,3 +50,19 @@ Generalize the one-branch slice into a reusable native adaptive continuation dri
 - Added focused Episode 008 tests for interruption/resume, stale source/config rejection, event partitioning, remesh rebuild/retry identity, and fixed-mesh no-remesh regression.
 - Updated Episode 008 README with the generalized driver/resumability contract.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented a reusable native adaptive continuation driver/resumability layer for TASK-068.02.
+
+Changes:
+- Added `src/bergner_spichtinger_2026/native_adaptive_driver.py` with a pluggable native backend protocol, versioned segment lifecycle states, repeated fixed-mesh segment orchestration, accepted-point remesh boundaries, h+r and pure-r restart paths, deterministic TASK-067 retry ordering, tangent policy recording, event partitioning, atomic manifest/checkpoint writes, resume validation, and runtime/resource accounting.
+- Exported the driver API from the package.
+- Added focused tests covering interruption/resume without rerunning completed checkpoints, stale source/config fingerprint rejection, event partitioning, remesh rebuild/retry identity, and fixed-mesh no-remesh behavior.
+- Updated the Episode 008 README with driver contracts and resume/stale-checkpoint behavior.
+
+Tests:
+- `uv run pytest tests/test_episode8_native_adaptive_driver.py tests/test_episode8_native_adaptive_loca_manifest.py -q`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check`
+<!-- SECTION:FINAL_SUMMARY:END -->
