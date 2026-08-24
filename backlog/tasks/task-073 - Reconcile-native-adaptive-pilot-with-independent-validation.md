@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 16:11'
+updated_date: '2026-08-24 16:37'
 labels:
   - episode-008
   - validation
@@ -51,4 +51,19 @@ Started TASK-073: moved task to In Progress, assigned to @iross, reviewed TASK-0
 Plan approved by user. Initial input checks passed:
 - TASK-072 measured pilot generator --check
 - TASK-072 production-v1 events/run-metadata validation
+
+Implemented TASK-073 reconciliation artifacts and gate decision. Added `generate_native_adaptive_pilot_reconciliation.py`, `outputs/native_adaptive_pilot_reconciliation.json`, `docs/task073-native-adaptive-pilot-reconciliation.md`, README/decision-record updates, and focused tests.
+
+Outcome: TASK-072 terminal statuses are preserved exactly (`accepted=0`, `resolution_unresolved=31`, `failed=0`, `near_hopf_stop=0`, `tripwire_stop=0`). No IVP subset is selected because no accepted native adaptive pilot point exists; DOP853/Radau triggers are recorded for future accepted points. Full-domain continuation is not authorized; retained v1 is not falsified, no method-version revision is required now, and TASK-081 was created as the required follow-up gate before TASK-075. TASK-075 dependencies were updated to include TASK-081.
+
+Regeneration note: after documentation/source-provenance changes, rebuilt `loca-build/bs2026_midpoint_orbit`, added `loca-build/` to `.gitignore`, and regenerated affected TASK-071/TASK-072/TASK-068 sink artifacts with stable `loca-build/bs2026_midpoint_orbit` provenance.
+
+Validation run:
+- TASK-071/TASK-072/TASK-073/final-reconciliation check commands passed with `BS2026_MIDPOINT_EXECUTABLE=loca-build/bs2026_midpoint_orbit` where needed
+- TASK-072 production-v1 events/run metadata and TASK-071 run metadata validate
+- Focused tests: `uv run pytest tests/test_episode8_native_adaptive_pilot_reconciliation.py tests/test_episode8_native_adaptive_measured_pilot.py tests/test_episode8_native_adaptive_resource_profile.py tests/test_episode8_native_adaptive_one_branch_segment.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_final_reconciliation.py tests/test_episode8_production_schema.py -q` -> 47 passed
+- Full suite: `uv run pytest -q` -> 351 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check` passed
+
+Independent read-only reviews: initial review found executable-provenance and TASK-075 dependency blockers; both were fixed. Follow-up read-only review reported no blockers.
 <!-- SECTION:NOTES:END -->
