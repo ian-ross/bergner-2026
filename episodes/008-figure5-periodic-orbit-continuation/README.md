@@ -289,6 +289,19 @@ The provisional manifest covers the exact `T=225 K` move to the spine, both temp
 
 This artifact is intentionally not a production C++ adaptive-backend run and does not relabel Python or fixed-mesh evidence as full native adaptive completion.
 
+## Independent Python validation of native adaptive points
+
+[`scripts/generate_native_adaptive_python_validation.py`](scripts/generate_native_adaptive_python_validation.py) freezes the TASK-068.04 same-coordinate validation ledger for accepted provisional native adaptive points:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py --check
+```
+
+[`outputs/native_adaptive_python_validation.json`](outputs/native_adaptive_python_validation.json) deterministically selects the unique accepted native points from the provisional driver across branch starts/midpoints/finals, spine/slice/anchor contexts, and the accepted pre-remesh boundary. Near-Hopf approach points are explicitly absent because the provisional run did not reach them. Each selected point records the independent Python same-coordinate correction contract, seed provenance, period relative error, weighted orbit distance, residual/phase/positivity/linear gates, mesh comparison, tolerance version, native vector fingerprint, and source fingerprints. [`outputs/native_adaptive_python_validation_vectors.npz`](outputs/native_adaptive_python_validation_vectors.npz) stores only selected native recorder vectors for checksum/provenance; those vectors are not used as Python correction seeds.
+
+All 32 selected fixed-mesh native points pass the versioned `2e-7` period and weighted-orbit tolerances by a wide margin (maximum observed errors approximately `1.58e-12` and `2.84e-12`). The post-remesh restart point is recorded separately as native C++ NOX/KLU2 restart evidence without relabeling it as independent Python validation. This artifact is a TASK-068 evidence-ledger supplement for TASK-069 review, not a claim that failed provisional targets have become native adaptive successes.
+
 ## TASK-062 higher-order/adaptive design
 
 TASK-062 reviewed the completed midpoint evidence before selecting the next numerical stage. TASK-056 showed that tiny discrete residuals do not imply period accuracy: the canonical `N=64` midpoint period is more than 12% above the Episode 007 reference, while refinement reduces the discrepancy substantially. TASK-057 through TASK-061 then established transparent Python continuation, sparse Tpetra/NOX correction, and genuine native LOCA ownership with close Python/C++ parity. The remaining problem is therefore orbit resolution, not continuation ownership.

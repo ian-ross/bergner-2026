@@ -1,0 +1,3818 @@
+{
+  "accepted_points_without_independent_python_validation": [
+    {
+      "active_coordinate": -0.2,
+      "active_coordinate_name": "temperature_hat",
+      "mesh_comparison": {
+        "post_restart_interval_count": 84,
+        "pre_transfer_interval_count": 75,
+        "stage_count": 3
+      },
+      "native_vector_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+      "period_s": 5718.140409482163,
+      "point_id": "spine-210K-post-remesh-restart",
+      "reason": "post-remesh restart evidence is native C++ NOX/KLU2 restart-smoke parity; it is recorded separately and is not relabeled as Python validation",
+      "restart_gates": {
+        "finite_change": true,
+        "linear": true,
+        "phase": true,
+        "positivity": true,
+        "residual": true,
+        "tangent": true
+      },
+      "segment_id": "segment-0002__spine-210K__cycle-01",
+      "target_id": "spine-210K",
+      "validation_status": "not_independent_python_corrected_in_this_artifact",
+      "vector_key": "restart__adaptive-guard-rho-0-g3-n32__corrected_solution"
+    }
+  ],
+  "artifact_kind": "task06804-independent-python-validation-of-native-adaptive-points",
+  "manifest_feedback": {
+    "parent_review_target": "TASK-069",
+    "statement": "This validation artifact is a TASK-068 evidence-ledger supplement. It preserves native/Python evidence boundaries and must not change failed provisional targets into accepted native adaptive execution.",
+    "task068_native_manifest": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
+    "task068_spine_slices_run": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json"
+  },
+  "provenance": {
+    "adaptive_qualification": {
+      "converged_case_count": 4,
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json",
+      "sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b"
+    },
+    "adaptive_qualification_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_vectors.npz",
+      "sha256": "28a7fd8c3b6b653c85cbe90b84f80845939d8d345cd4be245228ce926fa37485"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py",
+      "sha256": "c61fa6033f6c6d843e337644f1c1450a9ad666cc24b2a179aec01a5fc594e685"
+    },
+    "native_higher_order_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json",
+      "sha256": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd"
+    },
+    "native_higher_order_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz",
+      "sha256": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    },
+    "one_branch_segment": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
+    },
+    "one_branch_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz",
+      "sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+    },
+    "preparatory_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
+      "sha256": "db691e668a325fbe483ed3ec07021a23f18ed2a2723693994fc47528186cd873"
+    },
+    "run_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
+      "sha256": "c419753473638a561e7a5331d495ebafb9415fe1f2521ae6ab222b2bacf14bf0"
+    },
+    "run_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
+      "sha256": "6ce9fb531a80a5d0c6154e4c03d4e3c06d33d334c242f79c52c219d0973308a1"
+    }
+  },
+  "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py [--check]",
+  "schema_version": "episode008-native-adaptive-python-validation-v1",
+  "scope": "independent Python validation of a deterministic stratified subset of accepted provisional native adaptive points; not production Figure 5 accuracy evidence",
+  "selected_validations": [
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.893414319274524e-15,
+        "period_relative_error": 4.8067048320517826e-14,
+        "period_s_native": 2450.318211640912,
+        "weighted_orbit_distance": 8.456419912326587e-14
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.893414319274524e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 6.310853907534655e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.8890379755942955e-14,
+        "stage_residual_rms": 1.4731811809448258e-15,
+        "update_residual_max": 1.8624318069239533e-14,
+        "update_residual_rms": 2.019287765013341e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.2639524255342412,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.2639524255342412,
+        "python_correction_target_coordinate": -0.2639524255342412,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-000",
+      "point_index": 0,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 1,
+        "phase_residual_abs": 8.079014159561139e-16,
+        "stage_residual_max": 1.5165516142095047e-14,
+        "update_residual_max": 1.6628855418963868e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-000",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_first_accepted_point",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__000",
+        "native_vector_sha256": "c3cdfc81c5a367b8284d0eec14a54e9f5e1ec75923ae70653595234f04dbe5f8",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.1333513035483549e-15,
+        "period_relative_error": 1.6762254612798322e-15,
+        "period_s_native": 2441.6322580217247,
+        "weighted_orbit_distance": 2.416630781981782e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.1333513035483549e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 7.601172946980975e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 9.578220721323188e-15,
+        "stage_residual_rms": 8.550968843734698e-16,
+        "update_residual_max": 1.0243374938081743e-14,
+        "update_residual_rms": 1.2412491359726272e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.24403660325118365,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.24509868085322398,
+        "python_correction_target_coordinate": -0.24403660325118365,
+        "seed_to_target_offset": 0.0010620776020403289,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-001",
+      "point_index": 1,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 9.226982693656464e-18,
+        "stage_residual_max": 1.0908529154840297e-14,
+        "update_residual_max": 1.1706714214950563e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-001",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__001",
+        "native_vector_sha256": "6bea08b7ed5400baeed721966e53582cc4eeb8946e9a484d2ebe3d822f889e20",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.0104098837570607e-15,
+        "period_relative_error": 6.439103214941975e-13,
+        "period_s_native": 2420.242570227164,
+        "weighted_orbit_distance": 1.1272947665919093e-12
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.0104098837570607e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 6.867593245196403e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 9.578220721323188e-15,
+        "stage_residual_rms": 8.154341272605093e-16,
+        "update_residual_max": 1.1706714214950563e-14,
+        "update_residual_rms": 1.3189310604622012e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.20682899498983628,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.2073911914911895,
+        "python_correction_target_coordinate": -0.20682899498983628,
+        "seed_to_target_offset": 0.0005621965013532237,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-002",
+      "point_index": 2,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 5,
+        "phase_residual_abs": 3.3249064686020963e-16,
+        "stage_residual_max": 9.977313251378321e-15,
+        "update_residual_max": 1.0368347000749147e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-003",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__002",
+        "native_vector_sha256": "b9303cd500484e6cb298aae5304859364e21a1b9595414b320a1c8b3791a50a0",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 8.689559228072981e-16,
+        "period_relative_error": 1.7062496105733042e-13,
+        "period_s_native": 2382.6767735104695,
+        "weighted_orbit_distance": 3.041832806568044e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 8.689559228072981e-16,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 7.078660645971237e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 3.0597093970893516e-15,
+        "stage_residual_rms": 5.568351664433949e-16,
+        "update_residual_max": 2.660616867034219e-15,
+        "update_residual_rms": 5.937010682489521e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.15790843025357754,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.15082995744813782,
+        "python_correction_target_coordinate": -0.15790843025357754,
+        "seed_to_target_offset": 0.007078472805439717,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-003",
+      "point_index": 3,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 2.8418125204546693e-15,
+        "stage_residual_max": 6.385480480882125e-15,
+        "update_residual_max": 2.8761018032591256e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-006",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_interior_midpoint",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__003",
+        "native_vector_sha256": "57c927ac5d604edfcc923319cb495b83a01bdb9c11d1c54a1f0ffc8d454e30bb",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 8.335254291155385e-16,
+        "period_relative_error": 9.777878172399734e-16,
+        "period_s_native": 2325.3887135252444,
+        "weighted_orbit_distance": 1.4490721552354098e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 4,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 4,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 8.335254291155385e-16,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 8.043673446665804e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 5.986387950826992e-15,
+        "stage_residual_rms": 6.539754414701861e-16,
+        "update_residual_max": 6.252449637530414e-15,
+        "update_residual_rms": 8.991046278236804e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.09940235270199871,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.09426872340508616,
+        "python_correction_target_coordinate": -0.09940235270199871,
+        "seed_to_target_offset": 0.005133629296912551,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-004",
+      "point_index": 4,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 1.8350893189880777e-18,
+        "stage_residual_max": 6.385480480882125e-15,
+        "update_residual_max": 6.385480480882125e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-009",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__004",
+        "native_vector_sha256": "5fb9bb78bb6e8af36c2164c074166d17e1b23c725c6fc6e9205119b5375c4218",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.686663901757618e-15,
+        "period_relative_error": 2.6197887471049473e-15,
+        "period_s_native": 2256.5619338799415,
+        "weighted_orbit_distance": 4.588839806988012e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 5,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 5,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.686663901757618e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.0082316104775794e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.6495824575612157e-14,
+        "stage_residual_rms": 1.2761121718003253e-15,
+        "update_residual_max": 1.2371868431709118e-14,
+        "update_residual_rms": 1.3542038942787668e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.04053655533288008,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.03770748936203447,
+        "python_correction_target_coordinate": -0.04053655533288008,
+        "seed_to_target_offset": 0.002829065970845611,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-005",
+      "point_index": 5,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 4.49987614358031e-17,
+        "stage_residual_max": 8.38094313115779e-15,
+        "update_residual_max": 5.055172047365016e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-012",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__005",
+        "native_vector_sha256": "a9b9f721ec57055e18fb6775ee01725404ef834313db6b337260c13ebe636803",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.828290571876723e-16,
+        "period_relative_error": 0.0,
+        "period_s_native": 2204.2822736846383,
+        "weighted_orbit_distance": 4.47103206048361e-16
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 6,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 6,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.828290571876723e-16,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 7.917437210896715e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.510957168263544e-15,
+        "stage_residual_rms": 5.479682537620217e-16,
+        "update_residual_max": 2.876791987480749e-15,
+        "update_residual_rms": 6.373020017783552e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.00014784774883164401,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0,
+        "python_correction_target_coordinate": -0.00014784774883164401,
+        "seed_to_target_offset": 0.00014784774883164401,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-006",
+      "point_index": 6,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 1.0252082077016982e-17,
+        "stage_residual_max": 2.4776994574256164e-15,
+        "update_residual_max": 3.5086884934013762e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-014",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__006",
+        "native_vector_sha256": "46c1e5e590cc479f82fa3bc3d1b1a3a293e8889fb21e25bd3cedcf42b0c28df6",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "fixed225-to-spine",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 3.0700224967539952e-15,
+        "period_relative_error": 8.252810761640951e-16,
+        "period_s_native": 2204.084712569101,
+        "weighted_orbit_distance": 1.9721041110260764e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 7,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "segment_order": 0,
+          "target_direction": "rho_positive",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "fixed_temperature_spine_move",
+          "terminal_status": "accepted"
+        },
+        {
+          "cycle_index": 0,
+          "event_callback_index": 7,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0026__spine-225K__cycle-00",
+          "segment_order": 26,
+          "target_direction": "anchor",
+          "target_id": "spine-225K",
+          "target_rho": 0.0,
+          "target_temperature_K": 225.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 3.0700224967539952e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.031468198375305e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 6.784573010937258e-15,
+        "stage_residual_rms": 6.791672139043743e-16,
+        "update_residual_max": 1.8125452406670615e-15,
+        "update_residual_rms": 5.062451774579851e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.0,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0,
+        "python_correction_target_coordinate": 0.0,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-fixed225-to-spine-007",
+      "point_index": 7,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 1.677760414310347e-18,
+        "stage_residual_max": 5.919872529151137e-15,
+        "update_residual_max": 2.261524336979086e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-fixed225-014",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_final_accepted_point",
+        "spine_move_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__fixed225-to-spine__007",
+        "native_vector_sha256": "5070888e0dc44745ee96c76c6084e56387fb26ce24a314c3799058ae0ed0f5ca",
+        "phase_reference_id": "phase-ref-episode007-seed"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.796802847175732e-13,
+        "period_relative_error": 2.663594673319617e-13,
+        "period_s_native": 2204.0847125696864,
+        "weighted_orbit_distance": 4.789396691644299e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.796802847175732e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.1228750187943195e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.6552956333001504e-13,
+        "stage_residual_rms": 2.146010427106176e-14,
+        "update_residual_max": 2.699195811606215e-13,
+        "update_residual_rms": 3.312841277293722e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.4,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.4,
+        "python_correction_target_coordinate": 0.4,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-000",
+      "point_index": 0,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 1.2522606917773414e-18,
+        "stage_residual_max": 5.919872529151137e-15,
+        "update_residual_max": 2.261524336979086e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-positive-000",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_first_accepted_point",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__000",
+        "native_vector_sha256": "49e62d18506c431776f8adfe1ba0a1b3f73cf73d4cadf7059bdc1d80a85d1753",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.423830344072014e-13,
+        "period_relative_error": 1.3227583673630756e-13,
+        "period_s_native": 2268.9952979350487,
+        "weighted_orbit_distance": 2.6161995507911814e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.423830344072014e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 7.446500221171123e-19,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 6.855079357913665e-13,
+        "stage_residual_rms": 4.6634978416936944e-14,
+        "update_residual_max": 7.429772601193056e-13,
+        "update_residual_rms": 7.717522077878547e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.3800480322733723,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.36250000000000004,
+        "python_correction_target_coordinate": 0.3800480322733723,
+        "seed_to_target_offset": 0.01754803227337226,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-001",
+      "point_index": 1,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 9,
+        "jacobian_evaluations": 8,
+        "phase_residual_abs": 6.339104961954809e-17,
+        "stage_residual_max": 2.394555180330797e-15,
+        "update_residual_max": 2.0619780719515196e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-001",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__001",
+        "native_vector_sha256": "833d79013e2160177f946c32bec47fe8288e6d2650d41ec7715ca0407c660776",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.4832093320224174e-15,
+        "period_relative_error": 5.394250161707377e-15,
+        "period_s_native": 2444.764847823334,
+        "weighted_orbit_distance": 7.875573769890847e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.4832093320224174e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 4.893667864228837e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 4.7392237944047025e-15,
+        "stage_residual_rms": 6.933349848332399e-16,
+        "update_residual_max": 4.157213854740967e-15,
+        "update_residual_rms": 8.411874292105442e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.32929864044644624,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.325,
+        "python_correction_target_coordinate": 0.32929864044644624,
+        "seed_to_target_offset": 0.0042986404464462336,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-002",
+      "point_index": 2,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 8,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 5.740768246744447e-17,
+        "stage_residual_max": 3.533631776529822e-15,
+        "update_residual_max": 2.1950089153032306e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-002",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__002",
+        "native_vector_sha256": "3555f144bcf3aa6bc3639199f1d587af8d09a7d086007698093cd2db1ceddd4b",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 3.063041692427772e-15,
+        "period_relative_error": 1.1716697542894986e-13,
+        "period_s_native": 2701.3085816911307,
+        "weighted_orbit_distance": 2.2136532842952356e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 3.063041692427772e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.7268429577815298e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 5.6671139267828864e-14,
+        "stage_residual_rms": 3.8979214009376974e-15,
+        "update_residual_max": 5.986387950826992e-14,
+        "update_residual_rms": 6.300469779672032e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.2625763237176263,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.25,
+        "python_correction_target_coordinate": 0.2625763237176263,
+        "seed_to_target_offset": 0.012576323717626292,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-003",
+      "point_index": 3,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 8,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 8.259893991607584e-17,
+        "stage_residual_max": 2.727132288710074e-15,
+        "update_residual_max": 2.4943283128445803e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-004",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__003",
+        "native_vector_sha256": "9f7fbab8b75a16948c39d68dfc318ad37e954ad7e526681fc2ff549567e6580c",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.665401289416553e-13,
+        "period_relative_error": 2.1845782719240293e-13,
+        "period_s_native": 3089.132018698544,
+        "weighted_orbit_distance": 4.102210428089467e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 4,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.665401289416553e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 3.768044424006543e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.0526659129168997e-13,
+        "stage_residual_rms": 1.3814316653281695e-14,
+        "update_residual_max": 2.1910179900026792e-13,
+        "update_residual_rms": 2.2414708951068416e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.17480109767561064,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.175,
+        "python_correction_target_coordinate": 0.17480109767561064,
+        "seed_to_target_offset": 0.00019890232438934952,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-004",
+      "point_index": 4,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 5,
+        "phase_residual_abs": 2.345589913621932e-16,
+        "stage_residual_max": 1.3303084335171094e-14,
+        "update_residual_max": 1.5298546985446758e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-006",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_interior_midpoint",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__004",
+        "native_vector_sha256": "33004091390e32ff7315800fc55506c1867c2c3db277dbe1d6174a6ca91f289c",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.4518635444121419e-15,
+        "period_relative_error": 7.744772143129285e-13,
+        "period_s_native": 3702.674193244362,
+        "weighted_orbit_distance": 1.4889248443270983e-12
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 5,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.4518635444121419e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.5646964133586493e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.1573683371598852e-14,
+        "stage_residual_rms": 9.482853931193425e-16,
+        "update_residual_max": 1.1706714214950563e-14,
+        "update_residual_rms": 1.305879836666968e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.05947517215475801,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0625,
+        "python_correction_target_coordinate": 0.05947517215475801,
+        "seed_to_target_offset": 0.0030248278452419883,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-005",
+      "point_index": 5,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 5.929418832454831e-16,
+        "stage_residual_max": 8.139368103223326e-15,
+        "update_residual_max": 1.0483391072879513e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-009",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__005",
+        "native_vector_sha256": "10b54d94421000f6d3a9449d272f1b059d47b852b401c9b4bc4990fdd71e1b48",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 3.137533269479724e-15,
+        "period_relative_error": 1.7452286698169638e-15,
+        "period_s_native": 4690.189003607672,
+        "weighted_orbit_distance": 3.329965404135768e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 6,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 3.137533269479724e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.4461910614172006e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.4477675176714813e-14,
+        "stage_residual_rms": 1.7679372726873065e-15,
+        "update_residual_max": 2.687223035704561e-14,
+        "update_residual_rms": 2.811959150987225e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": -0.08600777048608861,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.08750000000000002,
+        "python_correction_target_coordinate": -0.08600777048608861,
+        "seed_to_target_offset": 0.0014922295139114111,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-006",
+      "point_index": 6,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 6.1878243648469185e-18,
+        "stage_residual_max": 1.569763951550189e-14,
+        "update_residual_max": 1.2371868431709118e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-013",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__006",
+        "native_vector_sha256": "a6e60b02bc2a5a62f6d3426ccc8d8ef598913e16b5e4f7892ff0af01904bcbdc",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.5332687992943134e-15,
+        "period_relative_error": 1.473619911778127e-13,
+        "period_s_native": 5653.40587600284,
+        "weighted_orbit_distance": 2.9332440253644567e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 7,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.5332687992943134e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.0559039741848844e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.2238837588357407e-14,
+        "stage_residual_rms": 9.371799652074138e-16,
+        "update_residual_max": 1.0376405781433454e-14,
+        "update_residual_rms": 1.2227281901522018e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": -0.19728746786382276,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.2,
+        "python_correction_target_coordinate": -0.19728746786382276,
+        "seed_to_target_offset": 0.0027125321361772536,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-007",
+      "point_index": 7,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 9.994897497576703e-17,
+        "stage_residual_max": 1.3037022648467672e-14,
+        "update_residual_max": 1.2238837588357407e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-016",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__007",
+        "native_vector_sha256": "ea74aa9ca264e63d70c6c429d01970c3bc1111b4336a6ae2f350e4f441e0988e",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-negative-T-hat-to-210",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.1034608498394915e-15,
+        "period_relative_error": 0.0,
+        "period_s_native": 5679.57323053456,
+        "weighted_orbit_distance": 4.49492609960728e-16
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 8,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": true,
+          "remesh_kind": "h+r",
+          "segment_id": "segment-0001__spine-210K__cycle-00",
+          "segment_order": 1,
+          "target_direction": "temperature_negative",
+          "target_id": "spine-210K",
+          "target_rho": 0.0,
+          "target_temperature_K": 210.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "continue"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": true
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.1034608498394915e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.7094574420775447e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 5.986387950826992e-15,
+        "stage_residual_rms": 6.450360047048872e-16,
+        "update_residual_max": 4.789110360661594e-15,
+        "update_residual_rms": 7.130198829388841e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": -0.2,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.2,
+        "python_correction_target_coordinate": -0.2,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-negative-T-hat-to-210-008",
+      "point_index": 8,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 5.754960504461985e-18,
+        "stage_residual_max": 4.789110360661594e-15,
+        "update_residual_max": 3.990925300551328e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-negative-016",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "accepted_remesh_boundary_point",
+        "anchor_target_context",
+        "branch_final_accepted_point",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-negative-T-hat-to-210__008",
+        "native_vector_sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.435661610940173e-13,
+        "period_relative_error": 1.4219929251591783e-13,
+        "period_s_native": 5679.573230533752,
+        "weighted_orbit_distance": 4.434102836331988e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.435661610940173e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 5.004310163524808e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.8841086838650933e-13,
+        "stage_residual_rms": 2.192592298369854e-14,
+        "update_residual_max": 3.245952577781747e-13,
+        "update_residual_rms": 3.770242434708833e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.0,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0,
+        "python_correction_target_coordinate": 0.0,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-000",
+      "point_index": 0,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 2.7259057177685526e-18,
+        "stage_residual_max": 5.587295420771859e-15,
+        "update_residual_max": 4.390017830606461e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-000",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_first_accepted_point",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__000",
+        "native_vector_sha256": "c1a68d779b4cecf07b70d9185d0cdf02949316aae127a4dac62d6772d4560c7c",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 9.66009326422092e-13,
+        "period_relative_error": 3.2156429667640784e-13,
+        "period_s_native": 5750.024949332082,
+        "weighted_orbit_distance": 9.632455054054492e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 9.66009326422092e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.6190638903187395e-17,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 5.66578361834937e-13,
+        "stage_residual_rms": 4.359947070576715e-14,
+        "update_residual_max": 6.428050350754673e-13,
+        "update_residual_rms": 7.543602483532485e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.02,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.01875,
+        "python_correction_target_coordinate": -0.02,
+        "seed_to_target_offset": 0.0012500000000000011,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-001",
+      "point_index": 1,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 6.585170593389378e-18,
+        "stage_residual_max": 6.119418794178703e-15,
+        "update_residual_max": 2.012091505694628e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-001",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__001",
+        "native_vector_sha256": "c45557c53e4009d6ace561bb6c3c3099549db763bb3040f7a783abd6965c7169",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 6.106971996521203e-16,
+        "period_relative_error": 0.0,
+        "period_s_native": 5904.601028272485,
+        "weighted_orbit_distance": 8.535538243800947e-16
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 6.106971996521203e-16,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 4.928133898233809e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 4.922141204013305e-15,
+        "stage_residual_rms": 6.620587440280265e-16,
+        "update_residual_max": 7.05063469764068e-15,
+        "update_residual_rms": 9.604415860043954e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.0664355827418922,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.075,
+        "python_correction_target_coordinate": -0.0664355827418922,
+        "seed_to_target_offset": 0.008564417258107804,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-002",
+      "point_index": 2,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 8.255828156629913e-18,
+        "stage_residual_max": 5.188202890716727e-15,
+        "update_residual_max": 7.05063469764068e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-004",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_interior_midpoint",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__002",
+        "native_vector_sha256": "8fe334ec10a771f5c34501dd88e459e1af399fe9ef29b6fc6c1ae2520ceebcbd",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 3.888378099298495e-15,
+        "period_relative_error": 0.0,
+        "period_s_native": 6084.70524501905,
+        "weighted_orbit_distance": 1.8017515238804674e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 3.888378099298495e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 8.92589576154553e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 6.917603854288969e-15,
+        "stage_residual_rms": 6.525282556665565e-16,
+        "update_residual_max": 7.449727227695812e-15,
+        "update_residual_rms": 8.78491210010861e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.12813067129658537,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.13125,
+        "python_correction_target_coordinate": -0.12813067129658537,
+        "seed_to_target_offset": 0.0031193287034146366,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-003",
+      "point_index": 3,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 7,
+        "phase_residual_abs": 3.1793232053192992e-18,
+        "stage_residual_max": 6.119418794178703e-15,
+        "update_residual_max": 6.385480480882125e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-007",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__003",
+        "native_vector_sha256": "dbc7d7ce5423feb1633ef8b659d12a82ec692cfb85f7e7d4c87f1e0d54e27475",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.1752505401193125e-15,
+        "period_relative_error": 1.777316099430018e-15,
+        "period_s_native": 6140.683936174998,
+        "weighted_orbit_distance": 4.444911760172011e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 4,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.1752505401193125e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 8.747613183273183e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 4.123956143903039e-15,
+        "stage_residual_rms": 6.276463128616389e-16,
+        "update_residual_max": 1.6628855418963868e-15,
+        "update_residual_rms": 6.237579719397335e-16
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.15022977497294907,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.15,
+        "python_correction_target_coordinate": -0.15022977497294907,
+        "seed_to_target_offset": 0.00022977497294907057,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-004",
+      "point_index": 4,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 7.220493860567469e-18,
+        "stage_residual_max": 2.7188178610005922e-15,
+        "update_residual_max": 1.4633392768688203e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-008",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__004",
+        "native_vector_sha256": "1d32b86e25f5bef7c967ca951620c6ac0840de0b45728fa74cc59c347b3c7f89",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-negative-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.3737798833173078e-14,
+        "period_relative_error": 7.109908705727318e-15,
+        "period_s_native": 6140.127460417939,
+        "weighted_orbit_distance": 1.2697688152862287e-14
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 5,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+          "segment_order": 3,
+          "target_direction": "rho_negative",
+          "target_id": "slice-210K-rho--0.15",
+          "target_rho": -0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.3737798833173078e-14,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.3115585791483225e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 5.7036974087046064e-15,
+        "stage_residual_rms": 7.708280467631899e-16,
+        "update_residual_max": 6.385480480882125e-15,
+        "update_residual_rms": 1.2166051519576318e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": -0.15,
+        "passed": true,
+        "python_correction_seed_coordinate": -0.15,
+        "python_correction_target_coordinate": -0.15,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-negative-rho-005",
+      "point_index": 5,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 2.8434241934550977e-18,
+        "stage_residual_max": 4.922141204013305e-15,
+        "update_residual_max": 6.385480480882125e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-008",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_final_accepted_point",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-negative-rho__005",
+        "native_vector_sha256": "85447329880303d398f78dffc790e56774c9c59e2ef1257ab781aeda1340e4d6",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-positive-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 5.285854612508856e-13,
+        "period_relative_error": 1.8303354881271855e-13,
+        "period_s_native": 5679.5732305335205,
+        "weighted_orbit_distance": 5.296543100318714e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+          "segment_order": 4,
+          "target_direction": "rho_positive",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_rho": 0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 5.285854612508856e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 2.1860738465256975e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.84419943085958e-13,
+        "stage_residual_rms": 2.2231891023620146e-14,
+        "update_residual_max": 3.28586183078726e-13,
+        "update_residual_rms": 3.9023777057000333e-14
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.0,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0,
+        "python_correction_target_coordinate": 0.0,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-positive-rho-000",
+      "point_index": 0,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 2.7259057177685526e-18,
+        "stage_residual_max": 5.587295420771859e-15,
+        "update_residual_max": 4.390017830606461e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-negative-000",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_first_accepted_point",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-positive-rho__000",
+        "native_vector_sha256": "9a1a6c49128b4e03f670e47f45707f615764512f307fc2740569de7b665976c2",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-positive-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.463507091565724e-15,
+        "period_relative_error": 0.0,
+        "period_s_native": 5533.182451792082,
+        "weighted_orbit_distance": 5.766124171927607e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+          "segment_order": 4,
+          "target_direction": "rho_positive",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_rho": 0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.463507091565724e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 5.018165117045219e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.1573683371598852e-14,
+        "stage_residual_rms": 9.768775882258373e-16,
+        "update_residual_max": 1.1839745058302274e-14,
+        "update_residual_rms": 1.3853411823876728e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.040060434965459586,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.0375,
+        "python_correction_target_coordinate": 0.040060434965459586,
+        "seed_to_target_offset": 0.0025604349654595876,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-positive-rho-001",
+      "point_index": 1,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 1.2010392015914472e-17,
+        "stage_residual_max": 1.689491710566729e-14,
+        "update_residual_max": 1.396823855192965e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-positive-002",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-positive-rho__001",
+        "native_vector_sha256": "9d4e8e8efa212c3855ccb250e200b994b071a290c431b187a22148c5dca3752e",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-positive-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 4.136532251525488e-15,
+        "period_relative_error": 1.7248668005387125e-15,
+        "period_s_native": 5272.840207074977,
+        "weighted_orbit_distance": 6.145862128554824e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+          "segment_order": 4,
+          "target_direction": "rho_positive",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_rho": 0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 4.136532251525488e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 1.0731068667224947e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.5830670358853602e-14,
+        "stage_residual_rms": 1.2099795364597221e-15,
+        "update_residual_max": 1.5298546985446758e-14,
+        "update_residual_rms": 1.689322826126699e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.10838905150217687,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.11249999999999999,
+        "python_correction_target_coordinate": 0.10838905150217687,
+        "seed_to_target_offset": 0.004110948497823119,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-positive-rho-002",
+      "point_index": 2,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 7,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 1.71656557434835e-17,
+        "stage_residual_max": 1.2903991805115962e-14,
+        "update_residual_max": 1.3037022648467672e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-positive-006",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_interior_midpoint",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-positive-rho__002",
+        "native_vector_sha256": "b114897c19d43aafa06c052be7176416902abfb8870d34f1c78380c60cb9f8d2",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-positive-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.9140045249114097e-15,
+        "period_relative_error": 2.771754385850981e-13,
+        "period_s_native": 5108.978118294895,
+        "weighted_orbit_distance": 5.521639226457465e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+          "segment_order": 4,
+          "target_direction": "rho_positive",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_rho": 0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.9140045249114097e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 6.961029919698703e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.7959163852480978e-14,
+        "stage_residual_rms": 1.3053327705337196e-15,
+        "update_residual_max": 1.835825638253611e-14,
+        "update_residual_rms": 1.9361156788287135e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.15043625602480262,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.15,
+        "python_correction_target_coordinate": 0.15043625602480262,
+        "seed_to_target_offset": 0.00043625602480262815,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-positive-rho-003",
+      "point_index": 3,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 5,
+        "phase_residual_abs": 5.275759216785277e-16,
+        "stage_residual_max": 1.0243374938081743e-14,
+        "update_residual_max": 5.853357107475281e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-positive-008",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-positive-rho__003",
+        "native_vector_sha256": "dfe186af912cc81f1bbe5018405a3339ac7d5437cd9f5c3949f652fdb6d9f531",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "slice210-positive-rho",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 1.7795151938057177e-13,
+        "period_relative_error": 1.4040995054096231e-13,
+        "period_s_native": 5110.687076906234,
+        "weighted_orbit_distance": 2.792385154605593e-13
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 4,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+          "segment_order": 4,
+          "target_direction": "rho_positive",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_rho": 0.15,
+          "target_temperature_K": 210.0,
+          "target_type": "fixed_temperature_rho_slice",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 1.7795151938057177e-13,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 4.629611932729528e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 3.0464063127541805e-14,
+        "stage_residual_rms": 2.0913467200524346e-15,
+        "update_residual_max": 2.953284722407983e-14,
+        "update_residual_rms": 3.3165968862182593e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "rho",
+        "native_active_coordinate": 0.15,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.15,
+        "python_correction_target_coordinate": 0.15,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-slice210-positive-rho-004",
+      "point_index": 4,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 1,
+        "phase_residual_abs": 2.0349615976816154e-15,
+        "stage_residual_max": 1.410126939528136e-14,
+        "update_residual_max": 1.2105806745005696e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-slice-positive-008",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "branch_final_accepted_point",
+        "slice_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__slice210-positive-rho__004",
+        "native_vector_sha256": "a17524a8620297c635eea9ae3b9224367dad7ffbbe64ef2a0bcc5ea390c891e2",
+        "phase_reference_id": "phase-ref-slice-210"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-positive-T-hat",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.229993910751185e-12,
+        "period_relative_error": 1.241635379088881e-12,
+        "period_s_native": 2204.084712571836,
+        "weighted_orbit_distance": 2.2299500336224227e-12
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 0,
+          "event_save_role": "initial",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0029__spine-226K__cycle-00",
+          "segment_order": 29,
+          "target_direction": "temperature_positive",
+          "target_id": "spine-226K",
+          "target_rho": 0.0,
+          "target_temperature_K": 226.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.229993910751185e-12,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 4.7479262007700974e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.7035858294368213e-12,
+        "stage_residual_rms": 1.8684951314791517e-13,
+        "update_residual_max": 2.82943300724754e-12,
+        "update_residual_rms": 2.929358333252487e-13
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.4,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.4,
+        "python_correction_target_coordinate": 0.4,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-positive-T-hat-000",
+      "point_index": 0,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 1.2522606917773414e-18,
+        "stage_residual_max": 5.919872529151137e-15,
+        "update_residual_max": 2.261524336979086e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-positive-000",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_first_accepted_point",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-positive-T-hat__000",
+        "native_vector_sha256": "7b1d31c26564b2bb6e943519c3b2a5b382229ebe330a5174409ae902d5044044",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-positive-T-hat",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.7299813732021456e-12,
+        "period_relative_error": 1.5783465568548391e-12,
+        "period_s_native": 2172.396810318951,
+        "weighted_orbit_distance": 2.8330217299948895e-12
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 1,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0029__spine-226K__cycle-00",
+          "segment_order": 29,
+          "target_direction": "temperature_positive",
+          "target_id": "spine-226K",
+          "target_rho": 0.0,
+          "target_temperature_K": 226.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.7299813732021456e-12,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 4.785562776146022e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.9926618520400893e-12,
+        "stage_residual_rms": 2.088267743549181e-13,
+        "update_residual_max": 3.1291514973189448e-12,
+        "update_residual_rms": 3.2624328714863137e-13
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.41000000000000003,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.41000000000000003,
+        "python_correction_target_coordinate": 0.41000000000000003,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-positive-T-hat-001",
+      "point_index": 1,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 1,
+        "phase_residual_abs": 2.879686704798016e-17,
+        "stage_residual_max": 6.917603854288969e-15,
+        "update_residual_max": 6.252449637530414e-15
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-positive-001",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_interior_midpoint",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-positive-T-hat__001",
+        "native_vector_sha256": "64c985fe344df3b64dc5ab4e54bf82ce262e3c9ed454ff29b8d69b6111ff7dea",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-positive-T-hat",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 3.0418033381865863e-15,
+        "period_relative_error": 5.246313142187383e-15,
+        "period_s_native": 2080.3059454290924,
+        "weighted_orbit_distance": 9.218569489232968e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 2,
+          "event_save_role": "regular",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0029__spine-226K__cycle-00",
+          "segment_order": 29,
+          "target_direction": "temperature_positive",
+          "target_id": "spine-226K",
+          "target_rho": 0.0,
+          "target_temperature_K": 226.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 3.0418033381865863e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 5.332740837365193e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 2.7005261200397322e-14,
+        "stage_residual_rms": 1.86883168061399e-15,
+        "update_residual_max": 2.687223035704561e-14,
+        "update_residual_rms": 2.85772485825048e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.4400971152140719,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.44,
+        "python_correction_target_coordinate": 0.4400971152140719,
+        "seed_to_target_offset": 9.711521407190782e-05,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-positive-T-hat-002",
+      "point_index": 2,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 6,
+        "jacobian_evaluations": 6,
+        "phase_residual_abs": 4.1161982461399266e-18,
+        "stage_residual_max": 1.3170053491819383e-14,
+        "update_residual_max": 1.2105806745005696e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-positive-004",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-positive-T-hat__002",
+        "native_vector_sha256": "4b61a1911b9738323924617dce415174bc3cc7c7064ed0a1c18e7556d55bde7f",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    },
+    {
+      "branch_id": "spine-positive-T-hat",
+      "comparison": {
+        "fixed_parameter_weighted_distance_from_native": 2.5939308796381244e-15,
+        "period_relative_error": 8.742638905014787e-16,
+        "period_s_native": 2080.5953709268306,
+        "weighted_orbit_distance": 1.439046143809204e-15
+      },
+      "driver_contexts": [
+        {
+          "cycle_index": 0,
+          "event_callback_index": 3,
+          "event_save_role": "final",
+          "remesh_boundary_candidate": false,
+          "remesh_kind": null,
+          "segment_id": "segment-0029__spine-226K__cycle-00",
+          "segment_order": 29,
+          "target_direction": "temperature_positive",
+          "target_id": "spine-226K",
+          "target_rho": 0.0,
+          "target_temperature_K": 226.0,
+          "target_type": "spine_temperature",
+          "terminal_status": "accepted"
+        }
+      ],
+      "failure_reasons": [],
+      "gates": {
+        "identical_physical_coordinate": true,
+        "native_linear_solve_complete": true,
+        "native_period_positivity_finiteness": true,
+        "native_physical_positivity_finiteness": true,
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "mesh_comparison": {
+        "identical_mesh_for_same_coordinate_correction": true,
+        "native_interval_count": 32,
+        "native_rule": "gauss3",
+        "python_validation_interval_count": 32,
+        "python_validation_rule": "gauss3",
+        "remesh_boundary_context_present": false
+      },
+      "native_gates": {
+        "fixed_parameter_weighted_distance_from_native": 2.5939308796381244e-15,
+        "linear_backend": "KLU2",
+        "linear_solve_complete": true,
+        "period_positive_finite": true,
+        "phase_residual_abs": 9.74653298751975e-18,
+        "physical_states_positive_finite": true,
+        "stage_residual_max": 1.6495824575612157e-14,
+        "stage_residual_rms": 1.1446545600317467e-15,
+        "update_residual_max": 1.82252255391844e-14,
+        "update_residual_rms": 1.9383612019890074e-15
+      },
+      "physical_coordinate_contract": {
+        "absolute_error": 0.0,
+        "active_coordinate_name": "temperature_hat",
+        "native_active_coordinate": 0.44,
+        "passed": true,
+        "python_correction_seed_coordinate": 0.44,
+        "python_correction_target_coordinate": 0.44,
+        "seed_to_target_offset": 0.0,
+        "tolerance": 0.0
+      },
+      "point_id": "native-g3-spine-positive-T-hat-003",
+      "point_index": 3,
+      "python_correction": {
+        "backend": "independent Python three-stage fixed-parameter correction at identical physical coordinate",
+        "function_evaluations": 2,
+        "jacobian_evaluations": 2,
+        "phase_residual_abs": 4.258120823315314e-18,
+        "stage_residual_max": 1.7294009635722423e-14,
+        "update_residual_max": 1.8890379755942955e-14
+      },
+      "seed_contract": {
+        "allowed_seed_sources": [
+          "deterministic frozen/Python-only bank",
+          "nearest frozen Python branch point"
+        ],
+        "forbidden_seed_sources": [
+          "native recorder vector",
+          "native adaptive checkpoint vector"
+        ],
+        "native_vector_access": "fingerprint_only_not_solver_seed",
+        "native_vector_seeded": false,
+        "python_seed_id": "Python-g3-spine-positive-004",
+        "python_seed_origin": "deterministic frozen/Python-only bank independent of native adaptive coordinates",
+        "version": "task06804-independent-python-same-coordinate-validation-v1"
+      },
+      "selection_reasons": [
+        "anchor_target_context",
+        "branch_final_accepted_point",
+        "spine_target_context"
+      ],
+      "source_fingerprints": {
+        "native_vector_key": "native_g3__spine-positive-T-hat__003",
+        "native_vector_sha256": "5bb9109c77d5f6e2a71a56ae6e585fefa79ce2c1675d9164a45e65fbc864ec7a",
+        "phase_reference_id": "phase-ref-spine-225"
+      },
+      "validation_status": "passed"
+    }
+  ],
+  "stratification_policy": {
+    "deterministic_sort_key": [
+      "first_driver_segment_order",
+      "branch_id",
+      "point_index",
+      "point_id"
+    ],
+    "near_hopf": {
+      "approach_point_count": 0,
+      "selected_point_count": 0,
+      "status": "not_reached_in_provisional_run"
+    },
+    "selected_by_branch": {
+      "fixed225-to-spine": 8,
+      "slice210-negative-rho": 6,
+      "slice210-positive-rho": 5,
+      "spine-negative-T-hat-to-210": 9,
+      "spine-positive-T-hat": 4
+    },
+    "selected_by_reason": {
+      "accepted_remesh_boundary_point": 1,
+      "anchor_target_context": 21,
+      "branch_final_accepted_point": 5,
+      "branch_first_accepted_point": 5,
+      "branch_interior_midpoint": 5,
+      "slice_target_context": 11,
+      "spine_move_context": 8,
+      "spine_target_context": 21
+    },
+    "selected_point_count": 32,
+    "selection_rules": [
+      "select first, midpoint, and final accepted point of every native branch represented in the provisional run",
+      "select every accepted remesh-boundary candidate before restart",
+      "select accepted points carrying spine, slice, spine-move, and anchor target contexts",
+      "select near-Hopf approach points when terminal evidence reaches them; none are present in this provisional run"
+    ],
+    "unique_accepted_native_points_available": 32,
+    "version": "task06804-deterministic-stratified-native-point-selection-v1"
+  },
+  "summary": {
+    "all_selected_points_pass": true,
+    "all_validation_failures_report_reasons": true,
+    "failed_count": 0,
+    "maximum_period_relative_error": 1.5783465568548391e-12,
+    "maximum_weighted_orbit_distance": 2.8330217299948895e-12,
+    "nonvalidated_accepted_point_count": 1,
+    "passed_count": 32,
+    "selected_point_count": 32
+  },
+  "tolerances": {
+    "identical_coordinate": 0.0,
+    "period_relative": 2e-07,
+    "phase_abs": 1e-10,
+    "residual_max": 1e-09,
+    "version": "task06804-python-validation-tolerances-v1",
+    "weighted_orbit": 2e-07
+  },
+  "truthfulness_policy": {
+    "failed_targets_remain_failed": true,
+    "native_vectors_used_as_python_seeds": false,
+    "native_vectors_used_for_fingerprints_only": true,
+    "post_remesh_restart_not_rebranded_as_python_validation": true,
+    "production_cpp_adaptive_backend_executed": false,
+    "python_validation_is_not_native_adaptive_execution": true
+  },
+  "validation_contract": {
+    "coordinate_policy": "Python correction/evidence must use the same active physical coordinate recorded by the accepted native point",
+    "mesh_policy": "selected fixed-mesh native points use identical gauss3/N=32 Python correction meshes; post-remesh native restart is listed separately when no Python same-mesh correction is available",
+    "python_correction_backend": "independent Python three-stage fixed-parameter correction at identical coordinate",
+    "seeding_policy": "Python validation seeds come from frozen Python-only branch/fixture evidence; native recorder vectors are fingerprinted but forbidden as solver seeds",
+    "source_native_correction_backend": "native LOCA/NOX/KLU2 accepted vector recorder",
+    "version": "task06804-independent-python-same-coordinate-validation-v1"
+  },
+  "vector_artifact": {
+    "array_count": 32,
+    "arrays": {
+      "selected_native__native-g3-fixed225-to-spine-000": {
+        "sha256": "c3cdfc81c5a367b8284d0eec14a54e9f5e1ec75923ae70653595234f04dbe5f8",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-001": {
+        "sha256": "6bea08b7ed5400baeed721966e53582cc4eeb8946e9a484d2ebe3d822f889e20",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-002": {
+        "sha256": "b9303cd500484e6cb298aae5304859364e21a1b9595414b320a1c8b3791a50a0",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-003": {
+        "sha256": "57c927ac5d604edfcc923319cb495b83a01bdb9c11d1c54a1f0ffc8d454e30bb",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-004": {
+        "sha256": "5fb9bb78bb6e8af36c2164c074166d17e1b23c725c6fc6e9205119b5375c4218",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-005": {
+        "sha256": "a9b9f721ec57055e18fb6775ee01725404ef834313db6b337260c13ebe636803",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-006": {
+        "sha256": "46c1e5e590cc479f82fa3bc3d1b1a3a293e8889fb21e25bd3cedcf42b0c28df6",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-fixed225-to-spine-007": {
+        "sha256": "5070888e0dc44745ee96c76c6084e56387fb26ce24a314c3799058ae0ed0f5ca",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-000": {
+        "sha256": "c1a68d779b4cecf07b70d9185d0cdf02949316aae127a4dac62d6772d4560c7c",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-001": {
+        "sha256": "c45557c53e4009d6ace561bb6c3c3099549db763bb3040f7a783abd6965c7169",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-002": {
+        "sha256": "8fe334ec10a771f5c34501dd88e459e1af399fe9ef29b6fc6c1ae2520ceebcbd",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-003": {
+        "sha256": "dbc7d7ce5423feb1633ef8b659d12a82ec692cfb85f7e7d4c87f1e0d54e27475",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-004": {
+        "sha256": "1d32b86e25f5bef7c967ca951620c6ac0840de0b45728fa74cc59c347b3c7f89",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-negative-rho-005": {
+        "sha256": "85447329880303d398f78dffc790e56774c9c59e2ef1257ab781aeda1340e4d6",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-positive-rho-000": {
+        "sha256": "9a1a6c49128b4e03f670e47f45707f615764512f307fc2740569de7b665976c2",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-positive-rho-001": {
+        "sha256": "9d4e8e8efa212c3855ccb250e200b994b071a290c431b187a22148c5dca3752e",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-positive-rho-002": {
+        "sha256": "b114897c19d43aafa06c052be7176416902abfb8870d34f1c78380c60cb9f8d2",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-positive-rho-003": {
+        "sha256": "dfe186af912cc81f1bbe5018405a3339ac7d5437cd9f5c3949f652fdb6d9f531",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-slice210-positive-rho-004": {
+        "sha256": "a17524a8620297c635eea9ae3b9224367dad7ffbbe64ef2a0bcc5ea390c891e2",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-000": {
+        "sha256": "49e62d18506c431776f8adfe1ba0a1b3f73cf73d4cadf7059bdc1d80a85d1753",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-001": {
+        "sha256": "833d79013e2160177f946c32bec47fe8288e6d2650d41ec7715ca0407c660776",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-002": {
+        "sha256": "3555f144bcf3aa6bc3639199f1d587af8d09a7d086007698093cd2db1ceddd4b",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-003": {
+        "sha256": "9f7fbab8b75a16948c39d68dfc318ad37e954ad7e526681fc2ff549567e6580c",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-004": {
+        "sha256": "33004091390e32ff7315800fc55506c1867c2c3db277dbe1d6174a6ca91f289c",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-005": {
+        "sha256": "10b54d94421000f6d3a9449d272f1b059d47b852b401c9b4bc4990fdd71e1b48",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-006": {
+        "sha256": "a6e60b02bc2a5a62f6d3426ccc8d8ef598913e16b5e4f7892ff0af01904bcbdc",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-007": {
+        "sha256": "ea74aa9ca264e63d70c6c429d01970c3bc1111b4336a6ae2f350e4f441e0988e",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-negative-T-hat-to-210-008": {
+        "sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-positive-T-hat-000": {
+        "sha256": "7b1d31c26564b2bb6e943519c3b2a5b382229ebe330a5174409ae902d5044044",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-positive-T-hat-001": {
+        "sha256": "64c985fe344df3b64dc5ab4e54bf82ce262e3c9ed454ff29b8d69b6111ff7dea",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-positive-T-hat-002": {
+        "sha256": "4b61a1911b9738323924617dce415174bc3cc7c7064ed0a1c18e7556d55bde7f",
+        "shape": [
+          385
+        ]
+      },
+      "selected_native__native-g3-spine-positive-T-hat-003": {
+        "sha256": "5bb9109c77d5f6e2a71a56ae6e585fefa79ce2c1675d9164a45e65fbc864ec7a",
+        "shape": [
+          385
+        ]
+      }
+    },
+    "artifact_kind": "task06804-independent-python-validation-vectors",
+    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation_vectors.npz",
+    "sha256": "611cd47ac0ef98e8ee2f96b781ca061c2772f1fecbeb28637c5667c10f1aa574"
+  }
+}
