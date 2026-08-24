@@ -1,7 +1,7 @@
 ---
 id: TASK-069
 title: Review adaptive continuation evidence and design next stage
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:36'
