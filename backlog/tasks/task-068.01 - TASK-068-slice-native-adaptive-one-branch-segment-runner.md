@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:51'
-updated_date: '2026-08-24 10:55'
+updated_date: '2026-08-24 11:08'
 labels:
   - episode-008
   - cpp
@@ -25,10 +25,10 @@ Implement the first real integrated native adaptive LOCA slice for one branch/sm
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 One selected native three-stage branch runs through at least one accepted fixed-mesh LOCA segment and stops for remeshing only at an accepted point
-- [ ] #2 The remesh path transfers solution, refreshed phase reference, and tangent; rebuilds Tpetra/Thyra/NOX/KLU2/LOCA objects; applies fixed-parameter correction; and enforces residual, phase, positivity, linear, finite-change, and tangent gates
-- [ ] #3 Per-segment artifacts record native checkpoints, accepted/rejected events, mesh/transfer history, defect/controller output, correction diagnostics, source fingerprints, and resumable state without claiming full spine-and-slices completion
-- [ ] #4 Focused tests verify the one-branch runner against independent Python expectations and existing restart-smoke parity
+- [x] #1 One selected native three-stage branch runs through at least one accepted fixed-mesh LOCA segment and stops for remeshing only at an accepted point
+- [x] #2 The remesh path transfers solution, refreshed phase reference, and tangent; rebuilds Tpetra/Thyra/NOX/KLU2/LOCA objects; applies fixed-parameter correction; and enforces residual, phase, positivity, linear, finite-change, and tangent gates
+- [x] #3 Per-segment artifacts record native checkpoints, accepted/rejected events, mesh/transfer history, defect/controller output, correction diagnostics, source fingerprints, and resumable state without claiming full spine-and-slices completion
+- [x] #4 Focused tests verify the one-branch runner against independent Python expectations and existing restart-smoke parity
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -49,4 +49,10 @@ Implement the first real integrated native adaptive LOCA slice for one branch/sm
 - Started TASK-068.01: moved subtask to In Progress and assigned @pi.
 - Reviewed subtask scope plus parent TASK-068 references/docs: midpoint_loca.hpp, Episode 008 README native adaptive remesh/restart section, and collocation-phase native remesh/restart contract.
 - Confirmed implementation will begin from existing native higher-order LOCA, adaptive-controller/transfer/restart seams, restart-smoke artifacts, and native adaptive manifest/tests. No code changes made yet pending plan approval.
+
+- Implemented TASK-068.01 one-branch native adaptive segment generator: scripts/generate_native_adaptive_one_branch_segment.py. It reruns the native three-stage spine-negative-T-hat-to-210 LOCA branch, selects only the accepted final point as the remesh boundary, applies adaptive-controller/transfer/restart on adaptive-guard-rho-0-g3-n32, and emits JSON/NPZ artifacts.
+- Added curated one-branch outputs: outputs/native_adaptive_one_branch_segment.json and native_adaptive_one_branch_segment_vectors.npz. The artifact records native checkpoints/events, controller defect/h/r decisions, transferred solution/reference/tangent arrays, remesh rebuild/correction diagnostics, gates, source fingerprints, restart-smoke parity, and resumable state without claiming the full spine-and-slices run.
+- Integrated the one-branch evidence into the native adaptive LOCA manifest and Episode 008 README, preserving native_adaptive_remesh_executed=false for the full planned run while recording native_adaptive_one_branch_segment_executed=true.
+- Added focused tests in tests/test_episode8_native_adaptive_one_branch_segment.py and expanded manifest tests for the one-branch ledger/parity.
+- Verification: one-branch generator --check; native adaptive manifest --check; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_one_branch_segment.py tests/test_episode8_native_adaptive_loca_manifest.py -q (30 passed); uv run pytest -q (292 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
