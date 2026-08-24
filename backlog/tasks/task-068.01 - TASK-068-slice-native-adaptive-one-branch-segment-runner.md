@@ -1,7 +1,7 @@
 ---
 id: TASK-068.01
 title: 'TASK-068 slice: native adaptive one-branch segment runner'
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:51'
@@ -56,3 +56,21 @@ Implement the first real integrated native adaptive LOCA slice for one branch/sm
 - Added focused tests in tests/test_episode8_native_adaptive_one_branch_segment.py and expanded manifest tests for the one-branch ledger/parity.
 - Verification: one-branch generator --check; native adaptive manifest --check; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_one_branch_segment.py tests/test_episode8_native_adaptive_loca_manifest.py -q (30 passed); uv run pytest -q (292 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-068.01 native adaptive one-branch segment slice.
+
+Changes:
+- Added scripts/generate_native_adaptive_one_branch_segment.py to rerun the native three-stage spine-negative-T-hat-to-210 LOCA branch, stop for remeshing only at the accepted final point, apply TASK-067 adaptive-controller/transfer/restart seams on adaptive-guard-rho-0-g3-n32, and record resumable JSON/NPZ evidence.
+- Added curated outputs/native_adaptive_one_branch_segment.json and native_adaptive_one_branch_segment_vectors.npz with native checkpoints/events, controller h/r decisions, transferred solution/reference/tangent arrays, rebuild/correction diagnostics, residual/phase/positivity/finite-change/linear/tangent gates, source fingerprints, restart-smoke parity, and no full-run claim.
+- Integrated the one-branch evidence into the native adaptive LOCA manifest and Episode 008 README while preserving the truthful boundary that the full spine-and-slices adaptive run remains unexecuted.
+- Added focused tests for the one-branch runner and expanded manifest coverage.
+
+Tests:
+- BS2026_MIDPOINT_EXECUTABLE=.pytest_cache/task068-native-adaptive-restart-smoke-build/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py --check
+- uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check
+- uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_one_branch_segment.py tests/test_episode8_native_adaptive_loca_manifest.py -q
+- uv run pytest -q
+<!-- SECTION:FINAL_SUMMARY:END -->
