@@ -47,4 +47,8 @@ Review the measured 210--226 K native adaptive pilot and validate accepted backe
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-073: moved task to In Progress, assigned to @iross, reviewed TASK-069/TASK-070/TASK-072 dependency outputs and Episode 008 docs, and added an implementation plan. Pausing before code/artifact changes pending plan confirmation.
+
+Plan approved by user. Initial input checks passed:
+- TASK-072 measured pilot generator --check
+- TASK-072 production-v1 events/run-metadata validation
 <!-- SECTION:NOTES:END -->
