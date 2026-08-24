@@ -320,6 +320,28 @@ def validation_summary(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def failure_policy_diagnostics(manifest: dict[str, Any], preparatory: dict[str, Any]) -> dict[str, Any]:
+    diagnostics = [segment["diagnostics"] for segment in manifest["segments"]]
+    failed_targets = [target for target in target_terminal_ledger(manifest)["targets"] if target["terminal_status"] == "failed"]
+    return {
+        "source": "NativeAdaptiveDriver normalized per-segment diagnostics plus preparatory TASK-068.05 coverage ledger",
+        "cap_escalation_channel_present": all("cap_escalations" in item for item in diagnostics),
+        "aliasing_channel_present": all("aliasing_events" in item for item in diagnostics),
+        "radau_trigger_channel_present": all("radau_triggers" in item for item in diagnostics),
+        "single_valued_tripwire_channel_present": all("single_valued_tripwire" in item for item in diagnostics),
+        "rejection_reasons_preserved_for_failed_targets": len(failed_targets) == len([
+            segment for segment in manifest["segments"] if segment["terminal_status"] == "failed"
+        ]),
+        "failed_targets_have_reasons": all(bool(target.get("reason")) for target in failed_targets),
+        "not_evaluated_evidence": {
+            "broader_ivp_based": "not_evaluated_through_TASK_068",
+            "floquet_dependent": "not_evaluated_through_TASK_068",
+        },
+        "preparatory_failure_policy_coverage_sha256": sha256_file(PREPARATORY_MANIFEST),
+        "preparatory_single_valued_tripwire_version": preparatory["failure_policy_coverage"]["diagnostic_channels"]["single_valued_tripwire"]["version"],
+    }
+
+
 def near_hopf_evidence(manifest: dict[str, Any]) -> dict[str, Any]:
     terminal_statuses = [item["terminal_status"] for item in manifest["target_status"].values()]
     return {
@@ -428,6 +450,7 @@ def build() -> tuple[bytes, dict[str, bytes]]:
         },
         "terminal_target_ledger": ledger,
         "validation_gates": validation,
+        "failure_policy_diagnostics": failure_policy_diagnostics(normalized_manifest, preparatory),
         "near_hopf_evidence": near_hopf_evidence(normalized_manifest),
         "provenance": {
             "preparatory_manifest": source_record(PREPARATORY_MANIFEST),

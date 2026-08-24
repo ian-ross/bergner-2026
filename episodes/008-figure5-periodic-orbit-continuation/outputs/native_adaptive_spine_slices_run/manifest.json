@@ -42,13 +42,13 @@
     },
     "schema_version": "episode008-native-adaptive-driver-v1",
     "source_fingerprints": {
-      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py": "eb6fdbaf92c94d8ca445443c7d7c4e08a0c315c2218dae1c642ed99bab6e87af",
-      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "91cea7c5faeb568ca3beb48b2d433c2e797cb344640539c4d70ddc635036c4ba"
+      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py": "6c1e8bcc160851d8b7aac2f06db4b4bfc6a10db4740040f409c5a5bd19899d65",
+      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "3dd596655fa76f2b3ac40cf7dfb95d7b9ebfdc0c6af5effe6983685cf16036c4"
     },
     "target_manifest_sha256": "6b1a86b2609148ead5795a0be8e434df5a893161daefd95bb9261babeec55940",
     "vector_fingerprints": {
       "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
-      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "db691e668a325fbe483ed3ec07021a23f18ed2a2723693994fc47528186cd873",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
@@ -58,7 +58,7 @@
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
     }
   },
-  "fingerprints_sha256": "846767b197dbc3f34e9581ab66e3504bc291447d9897dcbf2f03d56f6bbaab4c",
+  "fingerprints_sha256": "4a7eb2169c6b1065e9fdaaccf2462ddedfebb1a17dac874a66ed4b40651b8893",
   "lifecycle_states": [
     "pending",
     "running_fixed_mesh",
@@ -108,11 +108,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0000__move-225K-to-spine-rho0__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "a8d17d2fbb0862060d99249ed53f502187b0c06d1cf0aed1915ee0120be9a2f1",
+      "checkpoint_sha256": "f120738f4ba650efd086caa36b02cfe09e9bdfd880612b39cea7226b15ec91d7",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 8,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 1.031468198375305e-17,
@@ -122,6 +124,7 @@
           "maximum": 1.8890379755942955e-14,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 1.8890379755942955e-14,
         "maximum_phase_residual_abs": 1.031468198375305e-17,
         "mesh_history": [
@@ -131,9 +134,28 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-episode007-seed"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
+        "single_valued_tripwire": {
+          "status": "single_valued_observed",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -602,11 +624,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0001__spine-210K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "5415e7dbb9820c506478cd53623ecae0699987a3aa5fd711bb2c345258c4af9f",
+      "checkpoint_sha256": "0f65d4af5dd3caad08dbc08842bb1537cae445582f89dc9a02b162944f2fdfe1",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 9,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 1.7268429577815298e-17,
@@ -616,6 +640,7 @@
           "maximum": 7.429772601193056e-13,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 7.429772601193056e-13,
         "maximum_phase_residual_abs": 1.7268429577815298e-17,
         "mesh_history": [
@@ -625,9 +650,35 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-spine-225"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "reasons": [
+              "accepted final spine point selected as remesh boundary before adaptive restart"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "status": "single_valued_observed",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": [
           {
             "contract": [
@@ -1531,9 +1582,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0002__spine-210K__cycle-01/checkpoint.json",
-      "checkpoint_sha256": "a0bd52bdf0159a909bc6bd58deaf27434f9d9d9e62ef8462aec60556cdc0f376",
+      "checkpoint_sha256": "9cf8e76e0fdf5a6041806fe8e752dc853e9b0b7a23ddc120f5a8965c0bdada38",
       "cycle_index": 1,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "nox_status": "converged"
@@ -1541,6 +1594,7 @@
         "defects": {
           "maximum": 1.78767702708825e-15
         },
+        "failed_or_unresolved_points_preserved": [],
         "mesh_history": [
           {
             "new_unknown_size": 1009,
@@ -1548,12 +1602,32 @@
             "source": "native_adaptive_one_branch_restart"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-spine-225",
           "native_adaptive_one_branch_restart"
         ],
         "post_restart_phase_abs": 2.162742138889051e-18,
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
         "restart_gates_passed": true,
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -1681,11 +1755,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0003__slice-210K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "aca5d0646b88594d2ba9516d45f492bcf60887fd21698001a09f36c5106d7f38",
+      "checkpoint_sha256": "7c26fcaf6a15957bc5d171c675059d9649375a0e87987eef90250c6d614c4635",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 6,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 1.6190638903187395e-17,
@@ -1695,6 +1771,7 @@
           "maximum": 6.428050350754673e-13,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 6.428050350754673e-13,
         "maximum_phase_residual_abs": 1.6190638903187395e-17,
         "mesh_history": [
@@ -1704,9 +1781,35 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-slice-210"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
+        "single_valued_tripwire": {
+          "status": "tripwire_stop",
+          "trigger_count": 1,
+          "triggers": [
+            {
+              "delta": 0.00022977497294907057,
+              "kind": "normalized_coordinate_reversal",
+              "point_index": 5,
+              "threshold": 0.0001
+            }
+          ],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -2077,11 +2180,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0004__slice-210K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "35f98b997ad5f1ca51ccf64e5e5ba551784dabb02aa2d382e1647725f6f1bad4",
+      "checkpoint_sha256": "d32e75cba318d5969cc855d284601d1300a8d16531a28fa69dca2c0b13b5c293",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 5,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 6.961029919698703e-18,
@@ -2091,6 +2196,7 @@
           "maximum": 3.28586183078726e-13,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 3.28586183078726e-13,
         "maximum_phase_residual_abs": 6.961029919698703e-18,
         "mesh_history": [
@@ -2100,9 +2206,35 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-slice-210"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
+        "single_valued_tripwire": {
+          "status": "tripwire_stop",
+          "trigger_count": 1,
+          "triggers": [
+            {
+              "delta": -0.00043625602480262815,
+              "kind": "normalized_coordinate_reversal",
+              "point_index": 4,
+              "threshold": 0.0001
+            }
+          ],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -2426,9 +2558,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0005__spine-212K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "ff2c503d31d7af148ca4ccab5837d9d7da71cf27a428932d00565f45bd520d32",
+      "checkpoint_sha256": "3cb82b1fe3fa78f2b962f7c87b0d324b5ca6fb774962fed24ea4f5cd42a563df",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2438,13 +2572,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -2535,9 +2710,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0006__slice-212K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "d826f683b89e941f80810592e9e8b920c4440d229442ed1c3c84f740c35106ec",
+      "checkpoint_sha256": "557115ee43fecdcc823a11411bfde7184ebfdd96e78c43d683369dc257096b2c",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2547,13 +2724,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -2644,9 +2862,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0007__slice-212K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "05ddefb8fea9ae64fb6f97c1de4351a44a98b472f79a7ddde0d3d2d0d22200f8",
+      "checkpoint_sha256": "d7cce678a7ac37330c733afd66bc4f892fbb98182c4b93aadf5ec2d7947995b2",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2656,13 +2876,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -2753,9 +3014,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0008__spine-214K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "d8e30b014c55a3923674649aad3fa2f23603ca46060556060c08dcb31529d61e",
+      "checkpoint_sha256": "19134372bfdb1a9144ff9c0322347bd15ea4ec9beecf2e320cc39cba91daf9ed",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2765,13 +3028,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -2862,9 +3166,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0009__slice-214K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "a1b15e9c9c1391d30ea8340aa12a0ee5c22d7b7fe7054350b15f717c4669d48f",
+      "checkpoint_sha256": "7d63eca8ebd470dbf588294d7a3cdf2369e31d329d3c2ac1eeb0b3da3533f460",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2874,13 +3180,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -2971,9 +3318,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0010__slice-214K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "2faabc54437632df1e4afa8adbd4222312a7ca56bdb994dd75f9c922d2dbccf6",
+      "checkpoint_sha256": "1b197ee81e67c4ea94cef79e978986675dc94bd66b0beb8fda9e3d597bda58ae",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -2983,13 +3332,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3080,9 +3470,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0011__spine-216K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "3c5202efa8991a63c38da5309a28fcd21f9f2ecfb685e9b50c30dfa9e40ecffd",
+      "checkpoint_sha256": "6b87b82aa2f1d1e1b119cb31e6feb104a96aea9f6c10f82df02448d60c39c5f0",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3092,13 +3484,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3189,9 +3622,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0012__slice-216K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "98d41dd0b57ef884a6f9ca41014c0a746029de4bbd6d5b21a20c75863364353b",
+      "checkpoint_sha256": "ae1839f5cea7b06e2421900b969230dc5d09e5d2cfe5090aad7e847d82029c0b",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3201,13 +3636,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3298,9 +3774,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0013__slice-216K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "6c9056e4853ff905393e7ed0aeded22c979b309c93214924de4645d19ae05f8a",
+      "checkpoint_sha256": "64347c3762d4cbe9c6e7f4e7528452e1f748699b61d68fda61d64b7433a22090",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3310,13 +3788,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3407,9 +3926,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0014__spine-218K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "b2664555e563775cf338a632a75c7d4318ed8c501e9380007efc53e8ffc84c6e",
+      "checkpoint_sha256": "613e7edc904daf3093f1ef7d21e05bced17b218efa3a92c558bd54d6e44e8f7e",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3419,13 +3940,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3516,9 +4078,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0015__slice-218K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "308c53fe8175fdc79046306b80b3bbbc922acef3d8ee49e33e0741622a76f622",
+      "checkpoint_sha256": "21c69336e96833d68f2d22e3462ca842e78d355a86d4af83aa634876692d7773",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3528,13 +4092,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3625,9 +4230,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0016__slice-218K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "4db0b1e22d1a8c98db0b95f562a62e9185aaf7fef1d848b5a501231d07feaa75",
+      "checkpoint_sha256": "7b69dcf1ee6d322fb664991c7b072601afa7cd3713a2406b32cf82816601f536",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3637,13 +4244,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3734,9 +4382,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0017__spine-220K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "a381cc2e5c23db9a94277d01b74c6439099816d53d7a0a60f86e2a419d93f7b5",
+      "checkpoint_sha256": "9a5840528b9820acc1af14aeab2e89d8f0b0366e597cbb8342bd2250efa72cd4",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3746,13 +4396,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3843,9 +4534,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0018__slice-220K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "ecd60340ab877e5a9ceb0fe2c1aec68a526d6108ab52e01880a65ef2242686c8",
+      "checkpoint_sha256": "1d39b26ecafc2545a0aefa0077c550e63f725af07bbd4b7c5ca296565c2775ea",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3855,13 +4548,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -3952,9 +4686,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0019__slice-220K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "1802f2cf846223dd3c6e355b146c5218258fd764382059557d7357e1b9e1e648",
+      "checkpoint_sha256": "0c454c34eb207507241e679d139121f447cf7e21411be323563aec12ff4b0d60",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -3964,13 +4700,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4061,9 +4838,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0020__spine-222K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "29041167d7e70017f557ff030f2dd8d2d0b5db4e1d6ba4a3fcc46536e27986cb",
+      "checkpoint_sha256": "f1154449d43ab805e7ab23446d1ff1d5e409d98483e168616636b9b37b4ea97d",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4073,13 +4852,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4170,9 +4990,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0021__slice-222K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "12c93c4297464eb695800acacf531493b66839873918d3aaee017f3d72379c38",
+      "checkpoint_sha256": "030700f2ed5114409b92ccf2c85efa857bdb100c8cc271804db33b62d3086eb0",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4182,13 +5004,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4279,9 +5142,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0022__slice-222K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "a551362fe1549b277948cfd2c074cfa5640235bd175f51480e8ed5ceeace2983",
+      "checkpoint_sha256": "4201434b3a97276d1400a313f2e44aa15b651689f8d1649dc53cd468eb36dce7",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4291,13 +5156,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4388,9 +5294,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0023__spine-224K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "1f85b5f9dd0e0c9df73f9fdc7681222a07f9531cf9c0f810eb797e374c4104c3",
+      "checkpoint_sha256": "58099e7dc5291a7ebd8e0e07af223ea7efeb160f985756cccc228e4ac0fd3c2e",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4400,13 +5308,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4497,9 +5446,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0024__slice-224K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "b00a29c62fbf6efaba04949941dbd1d0d8ed14b184e603768afbb5806eaedd27",
+      "checkpoint_sha256": "5ef4b352d800762ef4d3fb8120359045f87abac4962f4b9cf7797c3f13f77b7a",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4509,13 +5460,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4606,9 +5598,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0025__slice-224K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "40da2f5b22ef2b5a518cb61ba9f4b314956337edecd5a7064fc3806a16a39908",
+      "checkpoint_sha256": "ad76f968c9a4f95ab4ad9fd09781be533cf22a337e76d9f3bb26c2f02a0b2b28",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -4618,13 +5612,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -4714,11 +5749,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0026__spine-225K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "13bc271a59825b34621ff4e7d1d9c7f03d57908ebb01806d6e238388670798fe",
+      "checkpoint_sha256": "3365fcaa4e8990a7d0927f0d6a89e040cd11b304d505adbf415e08cbc66de6b9",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 8,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 1.031468198375305e-17,
@@ -4728,6 +5765,7 @@
           "maximum": 1.8890379755942955e-14,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 1.8890379755942955e-14,
         "maximum_phase_residual_abs": 1.031468198375305e-17,
         "mesh_history": [
@@ -4737,9 +5775,28 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-episode007-seed"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
+        "single_valued_tripwire": {
+          "status": "single_valued_observed",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -5207,9 +6264,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0027__slice-225K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "8b82cb8deb3b80362333adaf186ada33fda92185c1a2feffd7575ce9e8e10039",
+      "checkpoint_sha256": "73d0c7bfb2ef44ad9d366878c95e151c828d99165685f6b874a9726ad87c14f5",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -5219,13 +6278,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -5316,9 +6416,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0028__slice-225K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "5664b40b1b27a5a7d915707448792c3bc26ec8129cc24bb715afd25a85470a5c",
+      "checkpoint_sha256": "22fc14a1a64ad0107bcd4eed1577711a890a7850f8cce2cb04fa2d47141191a8",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -5328,13 +6430,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -5424,11 +6567,13 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0029__spine-226K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "96f8946f7c3189a4a83b4cccd89e5ae28d94b3ff8d084759c32c8af8009ab0f0",
+      "checkpoint_sha256": "dff92890e57b6d68b0df92250721e0a2f59d02174734df1a3949770728ea44a2",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 4,
+        "aliasing_events": [],
         "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "cap_escalations": [],
         "convergence": {
           "linear_backend": "KLU2",
           "maximum_phase_residual_abs": 9.74653298751975e-18,
@@ -5438,6 +6583,7 @@
           "maximum": 3.1291514973189448e-12,
           "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
         },
+        "failed_or_unresolved_points_preserved": [],
         "maximum_native_residual": 3.1291514973189448e-12,
         "maximum_phase_residual_abs": 9.74653298751975e-18,
         "mesh_history": [
@@ -5447,9 +6593,28 @@
             "source": "native_fixed_mesh_higher_order_checkpoint"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [
           "phase-ref-spine-225"
         ],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [],
+        "single_valued_tripwire": {
+          "status": "single_valued_observed",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "transfer_correction_details": []
       },
       "event_partition": {
@@ -5725,9 +6890,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0030__slice-226K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "3fd57c617dcce262ed9f9d1195f4fcb8b22627dbf8db9b18bf1c8c95a4e15600",
+      "checkpoint_sha256": "b0bf302dffad6e4e4664f147523919af2191a6fc5bc3664ab3084755bbc39f01",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -5737,13 +6904,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },
@@ -5834,9 +7042,11 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0031__slice-226K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "f30fbc226ca386856074d615b1f60cdc421c82ae6f4269d086230c8e684cb321",
+      "checkpoint_sha256": "d12165bfd8d7f10d830be058763c871f1452494b182b27a3acd2a7f77b814a00",
       "cycle_index": 0,
       "diagnostics": {
+        "aliasing_events": [],
+        "cap_escalations": [],
         "convergence": {
           "nox_status": "not_started",
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
@@ -5846,13 +7056,54 @@
           "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
           "status": "not_evaluated"
         },
+        "failed_or_unresolved_points_preserved": [
+          {
+            "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+            "source": "adaptive_decision",
+            "terminal_status": "failed"
+          }
+        ],
         "mesh_history": [
           {
             "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
             "status": "not_started"
           }
         ],
+        "not_evaluated_evidence": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "floquet_dependent": "not_evaluated_through_TASK_068"
+        },
         "phase_lineage": [],
+        "radau_triggers": {
+          "broader_ivp_based": "not_evaluated_through_TASK_068",
+          "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+          "floquet_dependent": "not_evaluated_through_TASK_068",
+          "nonphysical_value": "not_evaluated",
+          "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+          "polynomial_ringing": "not_evaluated"
+        },
+        "rejection_reasons": [
+          {
+            "callback_index": 0,
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "loca_event"
+          },
+          {
+            "reasons": [
+              "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+            ],
+            "source": "adaptive_decision"
+          }
+        ],
+        "single_valued_tripwire": {
+          "reason": "fewer_than_two_accepted_points",
+          "status": "not_evaluated",
+          "trigger_count": 0,
+          "triggers": [],
+          "version": "single-valued-tripwire-v1"
+        },
         "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
         "transfer_correction_details": []
       },

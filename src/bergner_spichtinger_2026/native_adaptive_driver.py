@@ -38,6 +38,22 @@ TERMINAL_STATUS_ALLOWED_VALUES = (
 )
 
 CONTINUE_ACTIONS = {"ordinary_h_r", "forced_single_split_h_r", "mesh_cap_escalation", "pure_r"}
+SINGLE_VALUED_TRIPWIRE_VERSION = "single-valued-tripwire-v1"
+SINGLE_VALUED_COORDINATE_TOLERANCE = 1.0e-4
+SINGLE_VALUED_PERIOD_RELATIVE_TOLERANCE = 1.0e-3
+SINGLE_VALUED_WEIGHTED_ORBIT_TOLERANCE = 1.0e-2
+RADAU_TRIGGER_KEYS = (
+    "defect_below_1e-4_but_convergence_failed",
+    "period_or_defect_stagnation_before_mesh_cap",
+    "polynomial_ringing",
+    "nonphysical_value",
+    "broader_ivp_based",
+    "floquet_dependent",
+)
+NOT_EVALUATED_THROUGH_TASK_068 = {
+    "broader_ivp_based": "not_evaluated_through_TASK_068",
+    "floquet_dependent": "not_evaluated_through_TASK_068",
+}
 
 
 class SegmentLifecycleState(StrEnum):
@@ -199,6 +215,126 @@ def fingerprint_bundle_sha256(fingerprints: Mapping[str, Any]) -> str:
     return canonical_sha256(fingerprints)
 
 
+def _as_float_or_none(value: Any) -> float | None:
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        return None
+    return result if result == result and result not in (float("inf"), float("-inf")) else None
+
+
+def evaluate_single_valued_tripwire(points: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Evaluate the documented TASK-068 cheap single-valuedness tripwire.
+
+    The native adaptive run is expected to stop a slice, not choose a branch, if
+    a tangent sign change, normalized-coordinate reversal, or duplicate
+    coordinate with incompatible period/orbit evidence is observed.  Empty or
+    single-point slices are recorded truthfully as not evaluated.
+    """
+
+    records = [dict(point) for point in points]
+    if len(records) < 2:
+        return {
+            "version": SINGLE_VALUED_TRIPWIRE_VERSION,
+            "status": "not_evaluated",
+            "reason": "fewer_than_two_accepted_points",
+            "trigger_count": 0,
+            "triggers": [],
+        }
+
+    def coordinate(point: Mapping[str, Any]) -> float | None:
+        for key in ("normalized_coordinate", "active_coordinate", "coordinate", "rho", "temperature_hat"):
+            if key in point:
+                return _as_float_or_none(point[key])
+        return None
+
+    def tangent_sign(point: Mapping[str, Any]) -> int | None:
+        for key in ("active_tangent_sign", "tangent_sign"):
+            if key in point:
+                value = _as_float_or_none(point[key])
+                if value is None or value == 0.0:
+                    return None
+                return 1 if value > 0.0 else -1
+        value = _as_float_or_none(point.get("active_tangent_component"))
+        if value is None or value == 0.0:
+            return None
+        return 1 if value > 0.0 else -1
+
+    def period(point: Mapping[str, Any]) -> float | None:
+        return _as_float_or_none(point.get("period_s", point.get("period")))
+
+    def orbit_marker(point: Mapping[str, Any]) -> float | None:
+        for key in ("weighted_orbit_marker", "weighted_orbit_coordinate", "phase_aligned_weighted_orbit_distance"):
+            if key in point:
+                return _as_float_or_none(point[key])
+        return None
+
+    triggers: list[dict[str, Any]] = []
+    coordinates = [coordinate(point) for point in records]
+    tangent_signs = [tangent_sign(point) for point in records]
+    for index, (previous, current) in enumerate(zip(tangent_signs[:-1], tangent_signs[1:]), start=1):
+        if previous is not None and current is not None and previous * current < 0:
+            triggers.append({
+                "kind": "active_coordinate_tangent_sign_change",
+                "point_index": index,
+                "previous_sign": previous,
+                "current_sign": current,
+            })
+
+    reference_direction: int | None = None
+    for index, (previous, current) in enumerate(zip(coordinates[:-1], coordinates[1:]), start=1):
+        if previous is None or current is None:
+            continue
+        delta = current - previous
+        if abs(delta) <= SINGLE_VALUED_COORDINATE_TOLERANCE:
+            continue
+        sign = 1 if delta > 0.0 else -1
+        if reference_direction is None:
+            reference_direction = sign
+        elif sign != reference_direction:
+            triggers.append({
+                "kind": "normalized_coordinate_reversal",
+                "point_index": index,
+                "delta": delta,
+                "threshold": SINGLE_VALUED_COORDINATE_TOLERANCE,
+            })
+
+    for i, first in enumerate(records):
+        ci = coordinates[i]
+        if ci is None:
+            continue
+        pi = period(first)
+        oi = orbit_marker(first)
+        for j in range(i + 1, len(records)):
+            cj = coordinates[j]
+            if cj is None or abs(cj - ci) > SINGLE_VALUED_COORDINATE_TOLERANCE:
+                continue
+            pj = period(records[j])
+            oj = orbit_marker(records[j])
+            period_rel = None if pi is None or pj is None else abs(pj - pi) / max(1.0, abs(pi), abs(pj))
+            orbit_diff = None if oi is None or oj is None else abs(oj - oi)
+            if ((period_rel is not None and period_rel > SINGLE_VALUED_PERIOD_RELATIVE_TOLERANCE)
+                    or (orbit_diff is not None and orbit_diff > SINGLE_VALUED_WEIGHTED_ORBIT_TOLERANCE)):
+                triggers.append({
+                    "kind": "duplicate_coordinate_incompatible_orbit",
+                    "first_point_index": i,
+                    "second_point_index": j,
+                    "coordinate_difference": abs(cj - ci),
+                    "period_relative_difference": period_rel,
+                    "weighted_orbit_difference": orbit_diff,
+                    "coordinate_threshold": SINGLE_VALUED_COORDINATE_TOLERANCE,
+                    "period_relative_threshold": SINGLE_VALUED_PERIOD_RELATIVE_TOLERANCE,
+                    "weighted_orbit_threshold": SINGLE_VALUED_WEIGHTED_ORBIT_TOLERANCE,
+                })
+
+    return {
+        "version": SINGLE_VALUED_TRIPWIRE_VERSION,
+        "status": "tripwire_stop" if triggers else "single_valued_observed",
+        "trigger_count": len(triggers),
+        "triggers": triggers,
+    }
+
+
 def partition_loca_events(events: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
     """Partition LOCA save/callback records into accepted/rejected accounting fields."""
 
@@ -242,6 +378,91 @@ def _default_diagnostics(segment: Mapping[str, Any]) -> dict[str, Any]:
     diagnostics.setdefault("phase_lineage", segment.get("phase_lineage", []))
     diagnostics.setdefault("mesh_history", segment.get("mesh_history", []))
     diagnostics.setdefault("transfer_correction_details", segment.get("transfer_correction_details", []))
+    return diagnostics
+
+
+def _collect_rejection_reasons(
+    fixed: Mapping[str, Any],
+    decision: Mapping[str, Any],
+    restart: Mapping[str, Any] | None,
+    events: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    reasons: list[dict[str, Any]] = []
+    for event in events:
+        if event.get("status") == "rejected" or event.get("accepted") is False:
+            event_reasons = event.get("rejection_reasons", event.get("reason"))
+            if event_reasons is None:
+                event_reasons = "rejected_callback"
+            if isinstance(event_reasons, str):
+                event_reasons = [event_reasons]
+            reasons.append({
+                "source": "loca_event",
+                "callback_index": event.get("callback_index"),
+                "reasons": list(event_reasons),
+            })
+    for source_name, payload in (("fixed_mesh_segment", fixed), ("adaptive_decision", decision)):
+        payload_reasons = payload.get("rejection_reasons", payload.get("reasons", payload.get("reason")))
+        if payload_reasons:
+            if isinstance(payload_reasons, str):
+                payload_reasons = [payload_reasons]
+            reasons.append({"source": source_name, "reasons": list(payload_reasons)})
+    if restart is not None and not restart.get("accepted", restart.get("status") == "accepted"):
+        payload_reasons = restart.get("rejection_reasons", restart.get("reason", "remesh_restart_failed"))
+        if isinstance(payload_reasons, str):
+            payload_reasons = [payload_reasons]
+        reasons.append({"source": "restart", "reasons": list(payload_reasons)})
+    return reasons
+
+
+def native_adaptive_diagnostics(
+    fixed: Mapping[str, Any],
+    decision: Mapping[str, Any],
+    restart: Mapping[str, Any] | None,
+    events: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Normalize native adaptive diagnostic channels for manifests/checkpoints.
+
+    Missing channels are filled with explicit empty or not-evaluated values so a
+    later successful retry cannot erase failed callbacks, cap escalations,
+    unresolved evidence, or TASK-068 deferred IVP/Floquet boundaries.
+    """
+
+    diagnostics = _default_diagnostics(fixed)
+    diagnostics.setdefault("cap_escalations", fixed.get("cap_escalations", []))
+    if decision.get("action") == "mesh_cap_escalation":
+        diagnostics["cap_escalations"] = [
+            *diagnostics["cap_escalations"],
+            {
+                "kind": "mesh_cap_escalation",
+                "cycle_decision_version": decision.get("version"),
+                "reasons": list(decision.get("reasons", ("soft_cap_failed_after_corrected_cycle",))),
+                "permit_hard_cap": bool(decision.get("permit_hard_cap", True)),
+            },
+        ]
+    diagnostics.setdefault("aliasing_events", fixed.get("aliasing_events", []))
+    radau = dict(diagnostics.get("radau_triggers", fixed.get("active_radau_triggers", {})))
+    for key in RADAU_TRIGGER_KEYS:
+        radau.setdefault(key, NOT_EVALUATED_THROUGH_TASK_068.get(key, "not_evaluated"))
+    radau["broader_ivp_based"] = NOT_EVALUATED_THROUGH_TASK_068["broader_ivp_based"]
+    radau["floquet_dependent"] = NOT_EVALUATED_THROUGH_TASK_068["floquet_dependent"]
+    diagnostics["radau_triggers"] = radau
+    diagnostics.setdefault("single_valued_tripwire", evaluate_single_valued_tripwire(fixed.get("points", [])))
+    diagnostics["rejection_reasons"] = _collect_rejection_reasons(fixed, decision, restart, events)
+    preserved: list[dict[str, Any]] = []
+    if decision.get("terminal_status") in {"failed", "resolution_unresolved", "tripwire_stop", "near_hopf_stop"}:
+        preserved.append({
+            "source": "adaptive_decision",
+            "terminal_status": decision.get("terminal_status"),
+            "reason": decision.get("reason", decision.get("reasons")),
+        })
+    if restart is not None and not restart.get("accepted", restart.get("status") == "accepted"):
+        preserved.append({
+            "source": "restart",
+            "terminal_status": "failed",
+            "reason": restart.get("rejection_reasons", restart.get("reason", "remesh_restart_failed")),
+        })
+    diagnostics["failed_or_unresolved_points_preserved"] = preserved
+    diagnostics["not_evaluated_evidence"] = dict(NOT_EVALUATED_THROUGH_TASK_068)
     return diagnostics
 
 
@@ -513,7 +734,7 @@ class NativeAdaptiveDriver:
             "event_partition": partition,
             "mesh_history": fixed.get("mesh_history", decision.get("mesh_history", [])),
             "transfer_correction_details": fixed.get("transfer_correction_details", []),
-            "diagnostics": _default_diagnostics(fixed),
+            "diagnostics": native_adaptive_diagnostics(fixed, decision, restart, events),
             "adaptive_decision": decision,
             "restart": restart,
             "resources": resources,

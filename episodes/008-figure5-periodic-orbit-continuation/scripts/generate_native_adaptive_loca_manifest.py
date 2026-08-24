@@ -32,6 +32,8 @@ from bergner_spichtinger_2026 import (  # noqa: E402
     MONITOR_VERSION,
     R_MOVEMENT_VERSION,
     RESTART_RETRY_VERSION,
+    RADAU_TRIGGER_KEYS,
+    SINGLE_VALUED_TRIPWIRE_VERSION,
 )
 
 EPISODE = Path(__file__).resolve().parents[1]
@@ -256,6 +258,83 @@ def build_planned_manifest(native: dict[str, Any]) -> dict[str, Any]:
             "Targets not yet executed by native adaptive remeshing are explicit failed terminal "
             "statuses with reasons rather than interpolated or suppressed points."
         ),
+    }
+
+
+def build_failure_policy_coverage(adaptive: dict[str, Any], planned: dict[str, Any]) -> dict[str, Any]:
+    radau_statuses: dict[str, list[Any]] = {key: [] for key in RADAU_TRIGGER_KEYS}
+    aliasing_events = []
+    phase_refresh_triggers = []
+    for result in adaptive["results"]:
+        aliasing_events.extend({"case_id": result["case_id"], **event} for event in result["aliasing_events"])
+        for cycle in result["cycles"]:
+            phase_refresh_triggers.extend({
+                "case_id": result["case_id"],
+                "cycle_index": cycle["cycle_index"],
+                "triggers": cycle["phase_refresh_triggers"],
+            })
+            for key, value in cycle["active_radau_triggers"].items():
+                radau_statuses.setdefault(key, []).append(value)
+
+    failed_targets = [target for target in planned["targets"] if target["terminal_status"] == "failed"]
+    return {
+        "artifact_purpose": "TASK-068.05 explicit failure-policy/tripwire coverage ledger",
+        "native_driver_synthetic_test_coverage": {
+            "test_file": "tests/test_episode8_native_adaptive_driver.py",
+            "covered_paths": [
+                "failed h+r transfer/correction restart with preserved rejection reasons",
+                "pure-r deterministic retry order",
+                "mesh cap escalation diagnostic channel",
+                "phase refresh trigger preservation",
+                "single-valued tangent-sign/reversal/duplicate-coordinate tripwires",
+                "process interruption and resume without rerunning completed checkpoints",
+                "stale source/configuration checkpoint rejection",
+                "fixed-mesh no-remesh regression path",
+            ],
+            "tangent_only_rebootstrap_coverage": "tests/test_episode8_adaptive_collocation.py::test_restart_gates_and_tangent_only_rebootstrap_are_deterministic",
+            "native_branch_smoke_coverage": [
+                "tests/test_episode8_native_adaptive_restart_smoke.py",
+                "tests/test_episode8_native_adaptive_one_branch_segment.py",
+                "tests/test_episode8_native_adaptive_spine_slices_run.py",
+            ],
+        },
+        "diagnostic_channels": {
+            "cap_escalations": "native driver records mesh_cap_escalation entries; no TASK-067 qualification case reached the soft cap",
+            "aliasing_events": {
+                "source": "TASK-067 adaptive qualification fixtures",
+                "event_count": len(aliasing_events),
+                "persistent_case_ids": [result["case_id"] for result in adaptive["results"] if result["defect_aliasing_persistent"]],
+            },
+            "radau_triggers": {
+                key: {
+                    "unique_recorded_values": sorted({repr(value) for value in values}),
+                    "not_evaluated_through_TASK_068": all(value == "not_evaluated_through_TASK_068" for value in values) if key in {"broader_ivp_based", "floquet_dependent"} else None,
+                }
+                for key, values in radau_statuses.items()
+            },
+            "phase_refresh_triggers": phase_refresh_triggers,
+            "single_valued_tripwire": {
+                "version": SINGLE_VALUED_TRIPWIRE_VERSION,
+                "documented_policy": "stop slice automation on tangent sign change, normalized-coordinate reversal above 1e-4, or incompatible duplicate coordinate",
+                "fixture_status": "synthetic_policy_tests; no native full-run slice tripwire fixture observed yet",
+            },
+            "rejection_reasons": {
+                "failed_target_count": len(failed_targets),
+                "failed_targets_have_reasons": all(bool(target.get("reason")) for target in failed_targets),
+            },
+        },
+        "near_hopf_policy": {
+            "fixture_status": "fixture_missing",
+            "diagnostics_status": "not_evaluated",
+            "reason": "preparatory manifest and provisional scripted run do not reach near-Hopf approach points",
+            "required_when_reached": ["amplitude", "period_s", "coordinates", "diagnostics", "terminal_status"],
+            "minimum_reliable_point_target_when_reached": 5,
+            "fit_review_deferred_to": "TASK-069",
+        },
+        "truthful_deferred_evidence": {
+            "broader_ivp_based": "not_evaluated_through_TASK_068",
+            "floquet_dependent": "not_evaluated_through_TASK_068",
+        },
     }
 
 
@@ -555,6 +634,7 @@ def build_manifest() -> tuple[bytes, bytes]:
         },
         "planned_run_manifest": planned,
         "segment_restart_artifacts": build_segment_restart_artifacts(native, adaptive, restart_smoke, one_branch, planned),
+        "failure_policy_coverage": build_failure_policy_coverage(adaptive, planned),
         "near_hopf_evidence": {
             "status": "not_reached_in_this_preparatory_manifest",
             "required_future_recording": ["amplitude", "period", "terminal_status", "approach_coordinate", "near_hopf_stop_reason"],
@@ -585,6 +665,8 @@ def build_manifest() -> tuple[bytes, bytes]:
             "native_adaptive_one_branch_segment_vectors": source_record(NATIVE_ADAPTIVE_ONE_BRANCH_VECTORS),
             "native_adaptive_one_branch_segment_generator": source_record(EPISODE / "scripts/generate_native_adaptive_one_branch_segment.py"),
             "adaptive_orbits_source": source_record(ROOT / "src/bergner_spichtinger_2026/adaptive_orbits.py"),
+            "native_adaptive_driver_source": source_record(ROOT / "src/bergner_spichtinger_2026/native_adaptive_driver.py"),
+            "native_adaptive_driver_tests": source_record(ROOT / "tests/test_episode8_native_adaptive_driver.py"),
             "native_loca_header": source_record(ROOT / "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp"),
             "native_orbit_header": source_record(ROOT / "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp"),
             "native_cli_source": source_record(ROOT / "loca/src/midpoint_orbit_cli.cpp"),

@@ -93,6 +93,22 @@ def test_accepted_points_and_remesh_restart_gates_are_recorded() -> None:
     assert remesh["restart"]["linear"]["backend"] == "KLU2"
 
 
+def test_failure_policy_diagnostics_and_deferred_evidence_are_explicit() -> None:
+    data = load_summary()
+    diagnostics = data["failure_policy_diagnostics"]
+    assert diagnostics["cap_escalation_channel_present"] is True
+    assert diagnostics["aliasing_channel_present"] is True
+    assert diagnostics["radau_trigger_channel_present"] is True
+    assert diagnostics["single_valued_tripwire_channel_present"] is True
+    assert diagnostics["rejection_reasons_preserved_for_failed_targets"] is True
+    assert diagnostics["failed_targets_have_reasons"] is True
+    assert diagnostics["not_evaluated_evidence"] == {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "floquet_dependent": "not_evaluated_through_TASK_068",
+    }
+    assert diagnostics["preparatory_single_valued_tripwire_version"] == "single-valued-tripwire-v1"
+
+
 def test_near_hopf_and_truthfulness_boundaries_are_explicit() -> None:
     data = load_summary()
     assert data["truthfulness_policy"]["generalized_native_adaptive_driver_executed"] is True

@@ -154,6 +154,38 @@ def test_segment_restart_artifact_ledger_records_events_meshes_gates_and_termina
     }
 
 
+def test_failure_policy_coverage_records_tripwires_reasons_and_deferred_evidence() -> None:
+    coverage = load()["failure_policy_coverage"]
+    assert coverage["artifact_purpose"].startswith("TASK-068.05")
+    synthetic = coverage["native_driver_synthetic_test_coverage"]
+    assert synthetic["test_file"] == "tests/test_episode8_native_adaptive_driver.py"
+    assert "failed h+r transfer/correction restart with preserved rejection reasons" in synthetic["covered_paths"]
+    assert "pure-r deterministic retry order" in synthetic["covered_paths"]
+    assert "mesh cap escalation diagnostic channel" in synthetic["covered_paths"]
+    assert "process interruption and resume without rerunning completed checkpoints" in synthetic["covered_paths"]
+    assert "stale source/configuration checkpoint rejection" in synthetic["covered_paths"]
+    assert "tangent_only_rebootstrap" in synthetic["tangent_only_rebootstrap_coverage"]
+
+    channels = coverage["diagnostic_channels"]
+    assert channels["aliasing_events"]["event_count"] >= 1
+    assert channels["aliasing_events"]["persistent_case_ids"]
+    radau = channels["radau_triggers"]
+    assert radau["polynomial_ringing"]["unique_recorded_values"] == ["'not_evaluated'"]
+    assert radau["broader_ivp_based"]["not_evaluated_through_TASK_068"] is True
+    assert radau["floquet_dependent"]["not_evaluated_through_TASK_068"] is True
+    assert channels["single_valued_tripwire"]["version"] == "single-valued-tripwire-v1"
+    assert channels["rejection_reasons"]["failed_targets_have_reasons"] is True
+
+    near_hopf = coverage["near_hopf_policy"]
+    assert near_hopf["fixture_status"] == "fixture_missing"
+    assert near_hopf["diagnostics_status"] == "not_evaluated"
+    assert near_hopf["minimum_reliable_point_target_when_reached"] == 5
+    assert coverage["truthful_deferred_evidence"] == {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "floquet_dependent": "not_evaluated_through_TASK_068",
+    }
+
+
 def test_parity_and_near_hopf_scope_are_explicit() -> None:
     data = load()
     parity = data["parity"]

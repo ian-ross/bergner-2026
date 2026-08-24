@@ -144,6 +144,9 @@ from .periodic_seed import (
 from .native_adaptive_driver import (
     NATIVE_ADAPTIVE_CHECKPOINT_SCHEMA_VERSION,
     NATIVE_ADAPTIVE_DRIVER_SCHEMA_VERSION,
+    NOT_EVALUATED_THROUGH_TASK_068,
+    RADAU_TRIGGER_KEYS,
+    SINGLE_VALUED_TRIPWIRE_VERSION,
     NativeAdaptiveBackend,
     NativeAdaptiveDriver,
     NativeAdaptiveDriverConfig,
@@ -152,6 +155,8 @@ from .native_adaptive_driver import (
     StaleCheckpointError,
     build_run_fingerprints,
     canonical_sha256,
+    evaluate_single_valued_tripwire,
+    native_adaptive_diagnostics,
     partition_loca_events,
 )
 from .residuals import (
@@ -301,6 +306,9 @@ __all__ = [
     "verify_upstream_checksums",
     "NATIVE_ADAPTIVE_CHECKPOINT_SCHEMA_VERSION",
     "NATIVE_ADAPTIVE_DRIVER_SCHEMA_VERSION",
+    "NOT_EVALUATED_THROUGH_TASK_068",
+    "RADAU_TRIGGER_KEYS",
+    "SINGLE_VALUED_TRIPWIRE_VERSION",
     "NativeAdaptiveBackend",
     "NativeAdaptiveDriver",
     "NativeAdaptiveDriverConfig",
@@ -309,6 +317,8 @@ __all__ = [
     "StaleCheckpointError",
     "build_run_fingerprints",
     "canonical_sha256",
+    "evaluate_single_valued_tripwire",
+    "native_adaptive_diagnostics",
     "partition_loca_events",
     "equilibrium_residual",
     "log_coordinates_from_physical_state",

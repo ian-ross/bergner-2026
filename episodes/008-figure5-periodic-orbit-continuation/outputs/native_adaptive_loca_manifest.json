@@ -18,6 +18,210 @@
     "restart_fixture_source_sha256": "9239a1c4effa702f39fb5dd439948bc8ce9ecd91f0e835437d5f2b546b9d5bf1"
   },
   "artifact_kind": "task068-native-adaptive-loca-remesh-restart-manifest",
+  "failure_policy_coverage": {
+    "artifact_purpose": "TASK-068.05 explicit failure-policy/tripwire coverage ledger",
+    "diagnostic_channels": {
+      "aliasing_events": {
+        "event_count": 1,
+        "persistent_case_ids": [
+          "guard-rho-minus-0.15-g3-n32"
+        ],
+        "source": "TASK-067 adaptive qualification fixtures"
+      },
+      "cap_escalations": "native driver records mesh_cap_escalation entries; no TASK-067 qualification case reached the soft cap",
+      "phase_refresh_triggers": [
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers",
+        "case_id",
+        "cycle_index",
+        "triggers"
+      ],
+      "radau_triggers": {
+        "broader_ivp_based": {
+          "not_evaluated_through_TASK_068": true,
+          "unique_recorded_values": [
+            "'not_evaluated_through_TASK_068'"
+          ]
+        },
+        "defect_below_1e-4_but_convergence_failed": {
+          "not_evaluated_through_TASK_068": null,
+          "unique_recorded_values": [
+            "False"
+          ]
+        },
+        "floquet_dependent": {
+          "not_evaluated_through_TASK_068": true,
+          "unique_recorded_values": [
+            "'not_evaluated_through_TASK_068'"
+          ]
+        },
+        "nonphysical_value": {
+          "not_evaluated_through_TASK_068": null,
+          "unique_recorded_values": [
+            "False"
+          ]
+        },
+        "period_or_defect_stagnation_before_mesh_cap": {
+          "not_evaluated_through_TASK_068": null,
+          "unique_recorded_values": [
+            "False"
+          ]
+        },
+        "polynomial_ringing": {
+          "not_evaluated_through_TASK_068": null,
+          "unique_recorded_values": [
+            "'not_evaluated'"
+          ]
+        }
+      },
+      "rejection_reasons": {
+        "failed_target_count": 25,
+        "failed_targets_have_reasons": true
+      },
+      "single_valued_tripwire": {
+        "documented_policy": "stop slice automation on tangent sign change, normalized-coordinate reversal above 1e-4, or incompatible duplicate coordinate",
+        "fixture_status": "synthetic_policy_tests; no native full-run slice tripwire fixture observed yet",
+        "version": "single-valued-tripwire-v1"
+      }
+    },
+    "native_driver_synthetic_test_coverage": {
+      "covered_paths": [
+        "failed h+r transfer/correction restart with preserved rejection reasons",
+        "pure-r deterministic retry order",
+        "mesh cap escalation diagnostic channel",
+        "phase refresh trigger preservation",
+        "single-valued tangent-sign/reversal/duplicate-coordinate tripwires",
+        "process interruption and resume without rerunning completed checkpoints",
+        "stale source/configuration checkpoint rejection",
+        "fixed-mesh no-remesh regression path"
+      ],
+      "native_branch_smoke_coverage": [
+        "tests/test_episode8_native_adaptive_restart_smoke.py",
+        "tests/test_episode8_native_adaptive_one_branch_segment.py",
+        "tests/test_episode8_native_adaptive_spine_slices_run.py"
+      ],
+      "tangent_only_rebootstrap_coverage": "tests/test_episode8_adaptive_collocation.py::test_restart_gates_and_tangent_only_rebootstrap_are_deterministic",
+      "test_file": "tests/test_episode8_native_adaptive_driver.py"
+    },
+    "near_hopf_policy": {
+      "diagnostics_status": "not_evaluated",
+      "fit_review_deferred_to": "TASK-069",
+      "fixture_status": "fixture_missing",
+      "minimum_reliable_point_target_when_reached": 5,
+      "reason": "preparatory manifest and provisional scripted run do not reach near-Hopf approach points",
+      "required_when_reached": [
+        "amplitude",
+        "period_s",
+        "coordinates",
+        "diagnostics",
+        "terminal_status"
+      ]
+    },
+    "truthful_deferred_evidence": {
+      "broader_ivp_based": "not_evaluated_through_TASK_068",
+      "floquet_dependent": "not_evaluated_through_TASK_068"
+    }
+  },
   "native_fixed_mesh_evidence": {
     "accepted_event_count": 32,
     "all_branches_reached_exact_target": true,
@@ -1849,7 +2053,15 @@
     },
     "manifest_generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py",
-      "sha256": "766879813369ac07d1f33f0d9509a0f5bbd31d55a679cc681e1622853e99e7eb"
+      "sha256": "a5dc5ec678ec6fa72460d954872523a8150413250a406019911da761da92dc2c"
+    },
+    "native_adaptive_driver_source": {
+      "path": "src/bergner_spichtinger_2026/native_adaptive_driver.py",
+      "sha256": "3dd596655fa76f2b3ac40cf7dfb95d7b9ebfdc0c6af5effe6983685cf16036c4"
+    },
+    "native_adaptive_driver_tests": {
+      "path": "tests/test_episode8_native_adaptive_driver.py",
+      "sha256": "755ed50be330119e24f9aeef96d85124de00ce135f65539e79b8b249bb2957b2"
     },
     "native_adaptive_one_branch_segment": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
