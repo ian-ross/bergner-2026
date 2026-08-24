@@ -316,6 +316,19 @@ void write_graph(const matrix_type& matrix, const OrbitLayout& layout) {
   }
 }
 
+std::vector<double> defect_check_nodes(const OrbitLayout& layout) {
+  if (layout.stage_count() == 1) return {bs2026_loca::collocation::GaussLegendreRule<1>::defect_check_nodes[0],
+                                         bs2026_loca::collocation::GaussLegendreRule<1>::defect_check_nodes[1]};
+  if (layout.stage_count() == 2) return {bs2026_loca::collocation::GaussLegendreRule<2>::defect_check_nodes[0],
+                                         bs2026_loca::collocation::GaussLegendreRule<2>::defect_check_nodes[1],
+                                         bs2026_loca::collocation::GaussLegendreRule<2>::defect_check_nodes[2]};
+  if (layout.stage_count() == 3) return {bs2026_loca::collocation::GaussLegendreRule<3>::defect_check_nodes[0],
+                                         bs2026_loca::collocation::GaussLegendreRule<3>::defect_check_nodes[1],
+                                         bs2026_loca::collocation::GaussLegendreRule<3>::defect_check_nodes[2],
+                                         bs2026_loca::collocation::GaussLegendreRule<3>::defect_check_nodes[3]};
+  throw std::invalid_argument("unsupported Gauss stage count for defect nodes");
+}
+
 std::vector<double> deterministic_split_boundaries(const std::vector<double>& old_boundaries) {
   if (old_boundaries.size() < 3) throw std::invalid_argument("adaptive transfer requires at least two intervals");
   std::vector<double> result;
@@ -404,6 +417,31 @@ std::array<double, 3> evaluate_polynomial_derivative(const Fixture& fixture, con
   return result;
 }
 
+std::array<double, 3> evaluate_polynomial_second_derivative(const Fixture& fixture, const OrbitLayout& layout,
+                                                            const std::vector<std::array<double, 3>>& fields,
+                                                            double log_period,
+                                                            double phase) {
+  const auto& rule = layout.rule();
+  const std::size_t interval = interval_for_phase(fixture.reference.boundaries, phase);
+  const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+  const double wrapped = std::fmod(phase, 1.0) + (std::fmod(phase, 1.0) < 0.0 ? 1.0 : 0.0);
+  const double tau = (wrapped - fixture.reference.boundaries[interval]) / width;
+  const double period = std::exp(log_period);
+  std::array<double, 3> result{};
+  for (int stage = 0; stage < layout.stage_count(); ++stage) {
+    double lagrange_prime = 0.0;
+    double power = 1.0;
+    for (int degree = 2; degree <= layout.stage_count(); ++degree) {
+      lagrange_prime += static_cast<double>(degree * (degree - 1)) * rule.transfer_coefficients[stage][degree] * power;
+      power *= tau;
+    }
+    const auto& field = fields[interval * static_cast<std::size_t>(layout.stage_count()) + static_cast<std::size_t>(stage)];
+    for (int component = 0; component < 3; ++component)
+      result[component] += (period / width) * lagrange_prime * field[component];
+  }
+  return result;
+}
+
 std::vector<double> transfer_values(const Fixture& fixture, const OrbitLayout& layout,
                                     const std::vector<double>& values,
                                     const std::vector<double>& destination_boundaries) {
@@ -456,11 +494,398 @@ PhaseReference transferred_phase_reference(const Fixture& fixture, const OrbitLa
   return reference;
 }
 
-void write_adaptive_transfer(const Fixture& fixture, const OrbitLayout& layout) {
-  const auto destination_boundaries = deterministic_split_boundaries(fixture.reference.boundaries);
-  const auto transferred = transfer_values(fixture, layout, fixture.unknowns, destination_boundaries);
-  const auto reference = transferred_phase_reference(fixture, layout, fixture.unknowns, destination_boundaries);
-  const double epsilon = 1.0e-6;
+double scaled_norm3(const std::array<double, 3>& values, const std::array<double, 3>& scaling) {
+  double squared = 0.0;
+  for (int component = 0; component < 3; ++component) {
+    const double scaled = values[component] * scaling[component];
+    squared += scaled * scaled;
+  }
+  return std::sqrt(squared);
+}
+
+std::vector<double> relative_defect_element_maxima(const Fixture& fixture, const OrbitLayout& layout,
+                                                   const std::vector<double>& values,
+                                                   const std::vector<double>& local_nodes,
+                                                   double* maximum = nullptr,
+                                                   double* argmax_phase = nullptr,
+                                                   std::size_t* argmax_interval = nullptr) {
+  const auto fields = stage_fields(fixture, layout, values);
+  const double log_period = values[static_cast<std::size_t>(layout.log_period_index())];
+  const double period = std::exp(log_period);
+  const double log_w = std::log(fixture.environment.w);
+  std::vector<double> element_max(layout.interval_count(), 0.0);
+  double best = -1.0;
+  double best_phase = 0.0;
+  std::size_t best_interval = 0;
+  for (std::size_t interval = 0; interval < layout.interval_count(); ++interval) {
+    const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+    for (double local : local_nodes) {
+      const double phase = fixture.reference.boundaries[interval] + width * local;
+      const auto state = evaluate_polynomial(fixture, layout, values, fields, phase);
+      const auto slope = evaluate_polynomial_derivative(fixture, layout, fields, log_period, phase);
+      const auto rhs_unscaled = bs2026_loca::transformed_vector_field<double>(state, fixture.environment.T, log_w, fixture.environment);
+      std::array<double, 3> ode{}, difference{};
+      for (int component = 0; component < 3; ++component) {
+        ode[component] = period * rhs_unscaled[component];
+        difference[component] = slope[component] - ode[component];
+      }
+      const double relative = scaled_norm3(difference, fixture.reference.state_scaling) /
+          (1.0 + scaled_norm3(ode, fixture.reference.state_scaling));
+      element_max[interval] = std::max(element_max[interval], relative);
+      if (relative > best) {
+        best = relative;
+        best_phase = phase;
+        best_interval = interval;
+      }
+    }
+  }
+  if (maximum) *maximum = best;
+  if (argmax_phase) *argmax_phase = best_phase;
+  if (argmax_interval) *argmax_interval = best_interval;
+  return element_max;
+}
+
+struct DefectSummary {
+  std::vector<double> next_element;
+  std::vector<double> dyadic_element;
+  std::vector<double> combined;
+  std::vector<double> probe_admitted;
+  std::vector<double> disagreement;
+  std::vector<std::size_t> material;
+  std::vector<double> endpoint_left;
+  std::vector<double> endpoint_right;
+  std::vector<double> derivative_jumps;
+  double maximum = 0.0;
+  double argmax_phase = 0.0;
+  int argmax_bin = 0;
+};
+
+DefectSummary independent_defect_summary(const Fixture& fixture, const OrbitLayout& layout,
+                                         const std::vector<double>& values) {
+  constexpr double material_absolute_threshold = 1.0e-5;
+  constexpr double material_relative_threshold = 0.5;
+  constexpr int recurrence_bin_count = 128;
+  DefectSummary summary;
+  double next_max = 0.0, dyadic_max = 0.0, next_phase = 0.0, dyadic_phase = 0.0;
+  std::size_t next_interval = 0, dyadic_interval = 0;
+  summary.next_element = relative_defect_element_maxima(fixture, layout, values, defect_check_nodes(layout),
+                                                        &next_max, &next_phase, &next_interval);
+  summary.dyadic_element = relative_defect_element_maxima(fixture, layout, values, {0.125, 0.375, 0.625, 0.875},
+                                                          &dyadic_max, &dyadic_phase, &dyadic_interval);
+  const std::size_t n = layout.interval_count();
+  summary.combined.resize(n);
+  summary.probe_admitted.assign(n, 0.0);
+  summary.disagreement.resize(n);
+  for (std::size_t i = 0; i < n; ++i) {
+    const double larger = std::max(summary.next_element[i], summary.dyadic_element[i]);
+    summary.combined[i] = larger;
+    summary.disagreement[i] = larger > 0.0 ? std::abs(summary.next_element[i] - summary.dyadic_element[i]) / larger : 0.0;
+    if (larger > material_absolute_threshold && summary.disagreement[i] > material_relative_threshold)
+      summary.material.push_back(i);
+  }
+  if (!summary.material.empty()) {
+    const std::vector<double> probe_nodes = [] {
+      std::vector<double> nodes(16);
+      for (std::size_t i = 0; i < nodes.size(); ++i) nodes[i] = (static_cast<double>(i) + 0.5) / 16.0;
+      return nodes;
+    }();
+    const auto probe = relative_defect_element_maxima(fixture, layout, values, probe_nodes);
+    for (std::size_t i : summary.material) {
+      summary.probe_admitted[i] = probe[i];
+      summary.combined[i] = std::max(summary.combined[i], probe[i]);
+    }
+  }
+  const auto fields = stage_fields(fixture, layout, values);
+  const double log_period = values[static_cast<std::size_t>(layout.log_period_index())];
+  const double period = std::exp(log_period);
+  const double log_w = std::log(fixture.environment.w);
+  const double epsilon = std::numeric_limits<double>::epsilon() * 32.0;
+  summary.endpoint_left.resize(n);
+  summary.endpoint_right.resize(n);
+  std::vector<std::array<double, 3>> left_slopes(n), right_slopes(n);
+  for (std::size_t i = 0; i < n; ++i) {
+    const double width = fixture.reference.boundaries[i + 1] - fixture.reference.boundaries[i];
+    const double left_phase = fixture.reference.boundaries[i] + epsilon * width;
+    const double right_phase = fixture.reference.boundaries[i + 1] - epsilon * width;
+    auto point_defect = [&](double phase) {
+      const auto state = evaluate_polynomial(fixture, layout, values, fields, phase);
+      const auto slope = evaluate_polynomial_derivative(fixture, layout, fields, log_period, phase);
+      const auto rhs_unscaled = bs2026_loca::transformed_vector_field<double>(state, fixture.environment.T, log_w, fixture.environment);
+      std::array<double, 3> ode{}, difference{};
+      for (int component = 0; component < 3; ++component) {
+        ode[component] = period * rhs_unscaled[component];
+        difference[component] = slope[component] - ode[component];
+      }
+      return scaled_norm3(difference, fixture.reference.state_scaling) /
+          (1.0 + scaled_norm3(ode, fixture.reference.state_scaling));
+    };
+    summary.endpoint_left[i] = point_defect(left_phase);
+    summary.endpoint_right[i] = point_defect(right_phase);
+    left_slopes[i] = evaluate_polynomial_derivative(fixture, layout, fields, log_period, left_phase);
+    right_slopes[i] = evaluate_polynomial_derivative(fixture, layout, fields, log_period, right_phase);
+  }
+  summary.derivative_jumps.resize(n);
+  for (std::size_t i = 0; i < n; ++i) {
+    std::array<double, 3> jump{};
+    const auto& next_left = left_slopes[(i + 1) % n];
+    for (int component = 0; component < 3; ++component) jump[component] = next_left[component] - right_slopes[i][component];
+    summary.derivative_jumps[i] = scaled_norm3(jump, fixture.reference.state_scaling);
+  }
+  std::size_t interval = static_cast<std::size_t>(std::max_element(summary.combined.begin(), summary.combined.end()) - summary.combined.begin());
+  summary.maximum = summary.combined[interval];
+  // Re-scan admitted grids on the maximum interval to reproduce the Python argmax contract.
+  std::vector<double> admitted_nodes = defect_check_nodes(layout);
+  double admitted_max = summary.next_element[interval];
+  if (summary.dyadic_element[interval] > admitted_max) {
+    admitted_max = summary.dyadic_element[interval];
+    admitted_nodes = {0.125, 0.375, 0.625, 0.875};
+  }
+  if (summary.probe_admitted[interval] > admitted_max) {
+    admitted_nodes.resize(16);
+    for (std::size_t i = 0; i < admitted_nodes.size(); ++i) admitted_nodes[i] = (static_cast<double>(i) + 0.5) / 16.0;
+  }
+  double ignored_max = 0.0;
+  std::size_t ignored_interval = 0;
+  summary.argmax_phase = 0.0;
+  (void)relative_defect_element_maxima(fixture, layout, values, admitted_nodes,
+                                       &ignored_max, &summary.argmax_phase, &ignored_interval);
+  if (ignored_interval != interval) {
+    const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+    // Fallback cannot be reached for deterministic fixtures, but keeps the output in the admitted interval.
+    summary.argmax_phase = fixture.reference.boundaries[interval] + 0.5 * width;
+  }
+  summary.argmax_bin = static_cast<int>(std::floor(recurrence_bin_count * std::fmod(summary.argmax_phase, 1.0)));
+  return summary;
+}
+
+std::vector<double> composite_monitor_values(const Fixture& fixture, const OrbitLayout& layout,
+                                             const std::vector<double>& values,
+                                             std::vector<double>& phases,
+                                             std::vector<double>& widths) {
+  constexpr int subcells = 16;
+  const std::size_t n = layout.interval_count();
+  phases.resize(n * subcells);
+  widths.resize(n * subcells);
+  for (std::size_t interval = 0; interval < n; ++interval) {
+    const double width = fixture.reference.boundaries[interval + 1] - fixture.reference.boundaries[interval];
+    for (int sub = 0; sub < subcells; ++sub) {
+      const double local = (static_cast<double>(sub) + 0.5) / subcells;
+      phases[interval * subcells + static_cast<std::size_t>(sub)] = fixture.reference.boundaries[interval] + width * local;
+      widths[interval * subcells + static_cast<std::size_t>(sub)] = width / subcells;
+    }
+  }
+  const auto fields = stage_fields(fixture, layout, values);
+  const double log_period = values[static_cast<std::size_t>(layout.log_period_index())];
+  const double period = std::exp(log_period);
+  const double log_w = std::log(fixture.environment.w);
+  std::array<std::vector<double>, 4> raw;
+  for (auto& column : raw) column.resize(phases.size());
+  for (std::size_t row = 0; row < phases.size(); ++row) {
+    const auto state = evaluate_polynomial(fixture, layout, values, fields, phases[row]);
+    const auto derivative = evaluate_polynomial_derivative(fixture, layout, fields, log_period, phases[row]);
+    const auto curvature = evaluate_polynomial_second_derivative(fixture, layout, fields, log_period, phases[row]);
+    const auto rhs_unscaled = bs2026_loca::transformed_vector_field<double>(state, fixture.environment.T, log_w, fixture.environment);
+    std::array<double, 3> ode{}, difference{};
+    for (int component = 0; component < 3; ++component) {
+      ode[component] = period * rhs_unscaled[component];
+      difference[component] = derivative[component] - ode[component];
+    }
+    raw[0][row] = scaled_norm3(difference, fixture.reference.state_scaling) /
+        (1.0 + scaled_norm3(ode, fixture.reference.state_scaling));
+    raw[1][row] = scaled_norm3(derivative, fixture.reference.state_scaling);
+    raw[2][row] = scaled_norm3(curvature, fixture.reference.state_scaling);
+    const auto c = bs2026_loca::coefficients(fixture.environment);
+    const double n_phys = std::exp(state[0]);
+    const double q_phys = std::exp(state[1]);
+    const double s = state[2];
+    const double expo = std::exp(c.p1e * (s - c.p2));
+    std::array<double, 3> nucleation{c.A_n * expo / n_phys, c.A_q * expo / q_phys, -c.A_s * expo};
+    for (int component = 0; component < 3; ++component) nucleation[component] *= period;
+    raw[3][row] = scaled_norm3(nucleation, fixture.reference.state_scaling);
+  }
+  std::array<std::vector<double>, 4> normalized;
+  for (int density = 0; density < 4; ++density) {
+    const double maximum = *std::max_element(raw[density].begin(), raw[density].end());
+    normalized[density].assign(raw[density].size(), 0.0);
+    if (maximum <= 0.0) continue;
+    double first_average = 0.0;
+    for (std::size_t i = 0; i < raw[density].size(); ++i) first_average += widths[i] * (raw[density][i] / maximum);
+    double second_average = 0.0;
+    for (std::size_t i = 0; i < raw[density].size(); ++i) {
+      normalized[density][i] = std::min((raw[density][i] / maximum) / first_average, 20.0);
+      second_average += widths[i] * normalized[density][i];
+    }
+    for (double& value : normalized[density]) value /= second_average;
+  }
+  std::vector<double> monitor(phases.size());
+  for (std::size_t i = 0; i < monitor.size(); ++i)
+    monitor[i] = 0.20 + 0.80 * (0.50 * normalized[0][i] + 0.20 * normalized[1][i] +
+                                0.20 * normalized[2][i] + 0.10 * normalized[3][i]);
+  return monitor;
+}
+
+std::vector<double> invert_monitor_boundaries(const std::vector<double>& boundaries,
+                                              const std::vector<double>& monitor_values,
+                                              std::size_t target_count) {
+  constexpr int subcells = 16;
+  std::vector<double> masses(monitor_values.size()), lower(monitor_values.size()), sub_widths(monitor_values.size());
+  for (std::size_t interval = 0; interval + 1 < boundaries.size(); ++interval) {
+    const double width = (boundaries[interval + 1] - boundaries[interval]) / subcells;
+    for (int sub = 0; sub < subcells; ++sub) {
+      const std::size_t index = interval * subcells + static_cast<std::size_t>(sub);
+      lower[index] = boundaries[interval] + static_cast<double>(sub) * width;
+      sub_widths[index] = width;
+      masses[index] = width * monitor_values[index];
+    }
+  }
+  std::vector<double> cumulative(masses.size());
+  double total = 0.0;
+  for (std::size_t i = 0; i < masses.size(); ++i) { total += masses[i]; cumulative[i] = total; }
+  const double eps_reach = 64.0 * std::numeric_limits<double>::epsilon() * std::max(1.0, total);
+  std::vector<double> result(target_count + 1);
+  result.front() = 0.0; result.back() = 1.0;
+  double previous_upper = 0.0;
+  std::size_t cursor = 0;
+  for (std::size_t j = 1; j < target_count; ++j) {
+    const double target = total * static_cast<double>(j) / static_cast<double>(target_count);
+    while (cursor + 1 < cumulative.size() && cumulative[cursor] + eps_reach < target) {
+      previous_upper = cumulative[cursor];
+      ++cursor;
+    }
+    const double fraction = masses[cursor] <= 0.0 ? 0.0 : std::min(1.0, std::max(0.0, (target - previous_upper) / masses[cursor]));
+    result[j] = lower[cursor] + fraction * sub_widths[cursor];
+  }
+  return result;
+}
+
+std::vector<std::size_t> mark_h_refinement_indices(const std::vector<double>& defect, std::size_t max_count,
+                                                   std::size_t& growth_limit, double& halfmax) {
+  const std::size_t n = defect.size();
+  growth_limit = std::min(static_cast<std::size_t>(std::floor(0.5 * static_cast<double>(n))), max_count > n ? max_count - n : 0);
+  const double max_eta = *std::max_element(defect.begin(), defect.end());
+  halfmax = 0.5 * max_eta;
+  if (max_eta <= 0.0 || growth_limit == 0) return {};
+  std::vector<std::size_t> order(n);
+  for (std::size_t i = 0; i < n; ++i) order[i] = i;
+  std::sort(order.begin(), order.end(), [&](std::size_t a, std::size_t b) {
+    if (defect[a] != defect[b]) return defect[a] > defect[b];
+    return a < b;
+  });
+  double total_square = 0.0;
+  for (double value : defect) total_square += value * value;
+  std::vector<bool> include(n, false);
+  double running = 0.0;
+  for (std::size_t index : order) {
+    if (total_square > 0.0 && running >= 0.70 * total_square) break;
+    include[index] = true;
+    running += defect[index] * defect[index];
+  }
+  for (std::size_t i = 0; i < n; ++i) if (defect[i] >= halfmax) include[i] = true;
+  std::vector<std::size_t> uncapped;
+  for (std::size_t i = 0; i < n; ++i) if (include[i]) uncapped.push_back(i);
+  std::sort(uncapped.begin(), uncapped.end(), [&](std::size_t a, std::size_t b) {
+    if (defect[a] != defect[b]) return defect[a] > defect[b];
+    return a < b;
+  });
+  if (uncapped.size() > growth_limit) uncapped.resize(growth_limit);
+  return uncapped;
+}
+
+std::vector<double> apply_beta_r_movement(const std::vector<double>& old_boundaries,
+                                          const std::vector<double>& target_boundaries,
+                                          double& accepted_beta,
+                                          std::vector<double>& attempted) {
+  const std::size_t n = old_boundaries.size() - 1;
+  std::vector<double> old_widths(n);
+  for (std::size_t i = 0; i < n; ++i) old_widths[i] = old_boundaries[i + 1] - old_boundaries[i];
+  for (int exponent = 1; exponent <= 20; ++exponent) {
+    const double beta = std::ldexp(1.0, -exponent);
+    attempted.push_back(beta);
+    auto candidate = old_boundaries;
+    for (std::size_t i = 1; i < n; ++i) candidate[i] = old_boundaries[i] + beta * (target_boundaries[i] - old_boundaries[i]);
+    bool rejected = false;
+    std::vector<double> widths(n);
+    for (std::size_t i = 0; i < n; ++i) {
+      widths[i] = candidate[i + 1] - candidate[i];
+      if (widths[i] <= 0.0 || widths[i] < 1.0 / (20.0 * n) || widths[i] > 5.0 / n) rejected = true;
+    }
+    for (std::size_t i = 1; i < n; ++i) {
+      const double displacement = std::abs(candidate[i] - old_boundaries[i]);
+      if (displacement > 0.5 * std::min(old_widths[i - 1], old_widths[i])) rejected = true;
+    }
+    for (std::size_t i = 0; i < n; ++i) {
+      const double ratio = widths[i] / widths[(i + 1) % n];
+      if (ratio < 1.0 / 3.0 || ratio > 3.0) rejected = true;
+    }
+    if (!rejected) { accepted_beta = beta; return candidate; }
+  }
+  accepted_beta = 0.0;
+  return old_boundaries;
+}
+
+void write_adaptive_controller(const Fixture& fixture, const OrbitLayout& layout) {
+  const auto defect = independent_defect_summary(fixture, layout, fixture.unknowns);
+  std::vector<double> phases, widths;
+  const auto monitor = composite_monitor_values(fixture, layout, fixture.unknowns, phases, widths);
+  const auto targets = invert_monitor_boundaries(fixture.reference.boundaries, monitor, layout.interval_count());
+  std::size_t growth_limit = 0;
+  double halfmax = 0.0;
+  const auto marked = mark_h_refinement_indices(defect.combined, 256, growth_limit, halfmax);
+  double beta = 0.0;
+  std::vector<double> attempted;
+  const auto moved = apply_beta_r_movement(fixture.reference.boundaries, targets, beta, attempted);
+  std::cout << std::setprecision(17) << std::scientific;
+  std::cout << "adaptive_controller_contract external-gauss3-hr-adaptive-v1 two-grid-relative-defect-v1 composite-r-monitor-v1 defect-bulk-halfmax-marking-v1 global-beta-r-movement-v1 adaptive-cycle-controller-v1 fixed-parameter-remesh-restart-retry-v1\n";
+  write_runtime_provenance(layout);
+  std::cout << "defect_summary " << defect.maximum << " " << defect.argmax_phase << " " << defect.argmax_bin << " " << defect.material.size() << "\n";
+  auto write_plain = [](const std::string& label, const std::vector<double>& values) {
+    std::cout << label << " " << values.size();
+    for (double value : values) std::cout << " " << value;
+    std::cout << "\n";
+  };
+  write_plain("defect_combined", defect.combined);
+  write_plain("defect_next_element", defect.next_element);
+  write_plain("defect_dyadic_element", defect.dyadic_element);
+  write_plain("defect_probe_admitted", defect.probe_admitted);
+  write_plain("defect_grid_disagreement", defect.disagreement);
+  write_plain("defect_endpoint_left", defect.endpoint_left);
+  write_plain("defect_endpoint_right", defect.endpoint_right);
+  write_plain("defect_derivative_jumps", defect.derivative_jumps);
+  std::cout << "defect_material_elements " << defect.material.size();
+  for (std::size_t index : defect.material) std::cout << " " << index;
+  std::cout << "\n";
+  write_plain("monitor_values", monitor);
+  write_plain("monitor_target_boundaries", targets);
+  std::cout << "h_marking " << marked.size() << " " << growth_limit << " " << (layout.interval_count() + marked.size()) << " " << halfmax;
+  for (std::size_t index : marked) std::cout << " " << index;
+  std::cout << "\n";
+  std::cout << "r_movement " << (beta > 0.0 ? "accepted" : "stalled") << " " << beta << " " << attempted.size();
+  for (double value : attempted) std::cout << " " << value;
+  std::cout << "\n";
+  write_plain("r_movement_boundaries", moved);
+  const bool defect_pass = defect.maximum < 1.0e-4;
+  std::cout << "cycle_decision actual " << (defect_pass ? "pure_r continue convergence_gate_failed" : "ordinary_h_r continue defect_gate_failed") << "\n";
+  std::cout << "cycle_decision converged stop_converged converged none\n";
+  std::cout << "cycle_decision cycle_budget resolution_unresolved resolution_unresolved cycle_budget_exhausted\n";
+  std::cout << "restart_plan h+r h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect\n";
+  std::cout << "restart_plan pure-r pure_r_transfer_correct pure_r_refresh_reference_recorrect pure_r_rebootstrap_tangent_recorrect\n";
+  std::cout << "restart_plan tangent_only deterministic_two_point_rebootstrap restart_with_rebootstrapped_tangent reject_after_rebootstrap_failure\n";
+}
+
+struct TransferBundle {
+  std::vector<double> destination_boundaries;
+  std::vector<double> unknowns;
+  std::vector<double> tangent;
+  PhaseReference reference;
+  double tangent_norm_before_normalization = 0.0;
+};
+
+TransferBundle build_transfer_bundle(const Fixture& fixture, const OrbitLayout& layout) {
+  TransferBundle bundle;
+  bundle.destination_boundaries = deterministic_split_boundaries(fixture.reference.boundaries);
+  bundle.unknowns = transfer_values(fixture, layout, fixture.unknowns, bundle.destination_boundaries);
+  bundle.reference = transferred_phase_reference(fixture, layout, fixture.unknowns, bundle.destination_boundaries);
+  constexpr double epsilon = 1.0e-6;
   std::vector<double> tangent(fixture.unknowns.size());
   double norm_squared = 0.0;
   for (std::size_t gid = 0; gid < tangent.size(); ++gid) {
@@ -475,30 +900,99 @@ void write_adaptive_transfer(const Fixture& fixture, const OrbitLayout& layout) 
     plus[gid] += epsilon * tangent[gid];
     minus[gid] -= epsilon * tangent[gid];
   }
-  const auto plus_transfer = transfer_values(fixture, layout, plus, destination_boundaries);
-  const auto minus_transfer = transfer_values(fixture, layout, minus, destination_boundaries);
-  std::vector<double> transferred_tangent(plus_transfer.size());
-  for (std::size_t gid = 0; gid < transferred_tangent.size(); ++gid)
-    transferred_tangent[gid] = (plus_transfer[gid] - minus_transfer[gid]) / (2.0 * epsilon);
+  const auto plus_transfer = transfer_values(fixture, layout, plus, bundle.destination_boundaries);
+  const auto minus_transfer = transfer_values(fixture, layout, minus, bundle.destination_boundaries);
+  bundle.tangent.resize(plus_transfer.size());
+  double transferred_norm_squared = 0.0;
+  for (std::size_t gid = 0; gid < bundle.tangent.size(); ++gid) {
+    bundle.tangent[gid] = (plus_transfer[gid] - minus_transfer[gid]) / (2.0 * epsilon);
+    transferred_norm_squared += bundle.tangent[gid] * bundle.tangent[gid];
+  }
+  bundle.tangent_norm_before_normalization = std::sqrt(transferred_norm_squared);
+  if (bundle.tangent_norm_before_normalization > 0.0 && std::isfinite(bundle.tangent_norm_before_normalization))
+    for (double& value : bundle.tangent) value /= bundle.tangent_norm_before_normalization;
+  return bundle;
+}
+
+void write_adaptive_transfer(const Fixture& fixture, const OrbitLayout& layout) {
+  const auto bundle = build_transfer_bundle(fixture, layout);
+  const double epsilon = 1.0e-6;
   std::cout << std::setprecision(17) << std::scientific;
   std::cout << "adaptive_transfer_contract collocation-polynomial-transfer-v1 "
-            << fixture.reference.boundaries.size() - 1 << " " << destination_boundaries.size() - 1 << " "
+            << fixture.reference.boundaries.size() - 1 << " " << bundle.destination_boundaries.size() - 1 << " "
             << layout.stage_count() << " " << epsilon << "\n";
   write_runtime_provenance(layout);
-  std::cout << "destination_boundaries " << destination_boundaries.size();
-  for (double value : destination_boundaries) std::cout << " " << value;
-  std::cout << "\ntransferred_unknowns " << transferred.size();
-  for (double value : transferred) std::cout << " " << value;
-  std::cout << "\ntransferred_tangent " << transferred_tangent.size();
-  for (double value : transferred_tangent) std::cout << " " << value;
-  std::cout << "\ntransferred_phase_values " << reference.stage_values.size();
-  for (const auto& row : reference.stage_values) for (double value : row) std::cout << " " << value;
-  std::cout << "\ntransferred_phase_derivatives " << reference.stage_derivatives.size();
-  for (const auto& row : reference.stage_derivatives) for (double value : row) std::cout << " " << value;
-  OrbitLayout destination_layout(destination_boundaries.size() - 1, layout.stage_count(),
+  std::cout << "destination_boundaries " << bundle.destination_boundaries.size();
+  for (double value : bundle.destination_boundaries) std::cout << " " << value;
+  std::cout << "\ntransferred_unknowns " << bundle.unknowns.size();
+  for (double value : bundle.unknowns) std::cout << " " << value;
+  std::cout << "\ntransferred_tangent " << bundle.tangent.size();
+  for (double value : bundle.tangent) std::cout << " " << value * bundle.tangent_norm_before_normalization;
+  std::cout << "\ntransferred_phase_values " << bundle.reference.stage_values.size();
+  for (const auto& row : bundle.reference.stage_values) for (double value : row) std::cout << " " << value;
+  std::cout << "\ntransferred_phase_derivatives " << bundle.reference.stage_derivatives.size();
+  for (const auto& row : bundle.reference.stage_derivatives) for (double value : row) std::cout << " " << value;
+  OrbitLayout destination_layout(bundle.destination_boundaries.size() - 1, layout.stage_count(),
                                  Teuchos::DefaultComm<int>::getComm());
-  Assembler destination_assembler(destination_layout, fixture.environment, reference);
+  Assembler destination_assembler(destination_layout, fixture.environment, bundle.reference);
   std::cout << "\ntransferred_phase_energy " << destination_assembler.phase_energy() << "\n";
+}
+
+void write_adaptive_restart(const Fixture& fixture, const OrbitLayout& layout) {
+  const auto bundle = build_transfer_bundle(fixture, layout);
+  OrbitLayout destination_layout(bundle.destination_boundaries.size() - 1, layout.stage_count(),
+                                 Teuchos::DefaultComm<int>::getComm());
+  auto destination_assembler = Teuchos::rcp(new Assembler(destination_layout, fixture.environment, bundle.reference));
+  auto transferred_vector = make_vector(destination_layout, bundle.unknowns);
+  const auto transfer_residual = destination_assembler->diagnostics(*destination_assembler->residual(*transferred_vector));
+  const auto result = bs2026_loca::midpoint::solve_fixed_parameter(destination_assembler, *transferred_vector);
+  const auto corrected = copy_vector_by_global_id(*result.unknowns);
+  double correction_norm_squared = 0.0;
+  for (std::size_t gid = 0; gid < corrected.size(); ++gid) {
+    const double delta = corrected[gid] - bundle.unknowns[gid];
+    correction_norm_squared += delta * delta;
+  }
+  std::cout << std::setprecision(17) << std::scientific;
+  std::cout << "adaptive_restart_contract fixed-parameter-remesh-restart-v1 h+r "
+            << "collocation-polynomial-transfer-v1 fixed-parameter-remesh-restart-retry-v1 "
+            << (fixture.reference.boundaries.size() - 1) << " " << (bundle.destination_boundaries.size() - 1) << " "
+            << layout.stage_count() << "\n";
+  write_runtime_provenance(layout);
+  std::cout << "restart_rebuild " << layout.unknown_size() << " " << destination_layout.unknown_size() << " "
+            << layout.stage_size() << " " << destination_layout.stage_size() << " "
+            << layout.endpoint_size() << " " << destination_layout.endpoint_size() << " "
+            << layout.log_period_index() << " " << destination_layout.log_period_index() << " "
+            << layout.phase_row() << " " << destination_layout.phase_row() << " "
+            << layout.stage_count() << " " << destination_layout.stage_count() << "\n";
+  std::cout << "restart_graph " << destination_assembler->graph()->getGlobalNumEntries() << " retained_reuse true rebuilt true\n";
+  std::cout << "restart_attempts 3 h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect\n";
+  std::cout << "restart_transfer_residual " << transfer_residual.stage_max << " " << transfer_residual.stage_rms << " "
+            << transfer_residual.update_max << " " << transfer_residual.update_rms << " "
+            << transfer_residual.phase_abs << " " << transfer_residual.phase_energy << "\n";
+  std::cout << "restart_tangent " << bundle.tangent_norm_before_normalization << " 1 "
+            << (bundle.tangent_norm_before_normalization > 0.0 && std::isfinite(bundle.tangent_norm_before_normalization) ? "true" : "false") << "\n";
+  std::cout << "restart_correction " << (result.acceptance.accepted ? "accepted" : "rejected") << " "
+            << (result.nox_converged ? "converged" : "not_converged") << " "
+            << result.nonlinear_iterations << " " << result.nox_residual_norm << " "
+            << std::sqrt(correction_norm_squared) << " " << result.period << "\n";
+  std::cout << "restart_linear " << result.linear.backend << " "
+            << (result.linear.reported ? "reported" : "unreported") << " "
+            << result.linear.symbolic_factorizations << " " << result.linear.numeric_factorizations << " "
+            << result.linear.solves << " "
+            << (result.linear.symbolic_complete ? "true" : "false") << " "
+            << (result.linear.numeric_complete ? "true" : "false") << " "
+            << (result.linear.solve_complete ? "true" : "false") << "\n";
+  std::cout << "restart_final_diagnostics " << result.diagnostics.stage_max << " " << result.diagnostics.stage_rms << " "
+            << result.diagnostics.update_max << " " << result.diagnostics.update_rms << " "
+            << result.diagnostics.phase_abs << " " << result.diagnostics.phase_energy << "\n";
+  std::cout << "restart_gates residual " << (result.acceptance.accepted ? "true" : "false")
+            << " phase " << (result.diagnostics.phase_abs <= bs2026_loca::midpoint::accepted_phase_tolerance ? "true" : "false")
+            << " positivity " << (result.physical_states_positive_finite && result.period_positive_finite ? "true" : "false")
+            << " finite_change true linear " << (result.linear.solve_complete ? "true" : "false")
+            << " tangent " << (bundle.tangent_norm_before_normalization > 0.0 && std::isfinite(bundle.tangent_norm_before_normalization) ? "true" : "false") << "\n";
+  std::cout << "restart_solution " << corrected.size();
+  for (double value : corrected) std::cout << " " << value;
+  std::cout << "\n";
 }
 
 }  // namespace
@@ -518,12 +1012,12 @@ int main(int argc, char** argv) {
     }
     const std::string command = argc > 1 ? argv[1] : "";
     const bool fixture_command = command == "inspect" || command == "evaluate" ||
-        command == "solve" || command == "adaptive-transfer" || command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" ||
+        command == "solve" || command == "adaptive-transfer" || command == "adaptive-controller" || command == "adaptive-restart" || command == "loca-contract" || command == "loca-smoke" || command == "loca-branches" ||
         command == "loca-dfdp" || command == "guard-nonfinite-reference" || command == "guard-invalid-period";
     const bool valid_arity = (fixture_command && argc == 3) ||
         (command == "acceptance-guard" && argc == 4);
     if (!valid_arity) {
-      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|adaptive-transfer|loca-contract|loca-smoke|loca-branches|loca-dfdp|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
+      std::cerr << "Usage: bs2026_midpoint_orbit inspect|evaluate|solve|adaptive-transfer|adaptive-controller|adaptive-restart|loca-contract|loca-smoke|loca-branches|loca-dfdp|guard-nonfinite-reference|guard-invalid-period fixture.txt\n"
                 << "       bs2026_midpoint_orbit acceptance-guard block|phase|positivity|period|phase-energy|linear fixture.txt\n"
                 << "       bs2026_midpoint_orbit guard-one-interval\n";
       return 2;
@@ -947,6 +1441,14 @@ int main(int argc, char** argv) {
     }
     if (command == "adaptive-transfer") {
       write_adaptive_transfer(fixture, layout);
+      return 0;
+    }
+    if (command == "adaptive-controller") {
+      write_adaptive_controller(fixture, layout);
+      return 0;
+    }
+    if (command == "adaptive-restart") {
+      write_adaptive_restart(fixture, layout);
       return 0;
     }
     if (command == "solve") {

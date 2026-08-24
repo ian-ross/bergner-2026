@@ -453,7 +453,7 @@
     }
   ],
   "coefficient_artifact_sha256": "f47a6f789fa463abdfdb8d0b158a78bd228bbe85881199d601d086f49396ba6a",
-  "fixture_manifest_sha256": "4be59b0bc56aa5b0b86cf3ff384645c37760d1bcc0c376f73edb780132017fff",
+  "fixture_manifest_sha256": "d8a98f75b63639a1df7b6fd4caba30b117e9f493baa38df75843a486505e6ad4",
   "parity_tolerance": 1e-08,
   "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<current-build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py --check",
   "runtime_provenance": {
@@ -467,9 +467,9 @@
       "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
       "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
       "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-      "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+      "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
     ],
-    "executable_sha256": "e903f8f8ff7fb08bff47ea769ab9e0ca6ee4bb3813c6be95fa6dc724a1b28f8e",
+    "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
     "numpy": "2.4.6",
     "python": "3.11.15",
     "scipy": "1.17.1"
@@ -498,7 +498,7 @@
     },
     "compiled_source_5": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+      "sha256": "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
     },
     "fixed_mesh_midpoint_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
@@ -506,7 +506,7 @@
     },
     "fixture_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/manifest.json",
-      "sha256": "4be59b0bc56aa5b0b86cf3ff384645c37760d1bcc0c376f73edb780132017fff"
+      "sha256": "d8a98f75b63639a1df7b6fd4caba30b117e9f493baa38df75843a486505e6ad4"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_higher_order_correction_results.py",

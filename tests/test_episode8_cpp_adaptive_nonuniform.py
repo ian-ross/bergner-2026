@@ -14,7 +14,14 @@ from bergner_spichtinger_2026 import (
     FixedMesh,
     FrozenPhaseReference,
     GaussCollocationAssembler,
+    MidpointResidualTolerances,
+    apply_global_beta_r_movement,
+    build_composite_r_monitor,
+    correct_gauss_orbit,
+    decide_adaptation_cycle,
     gauss_legendre_rule,
+    mark_h_refinement,
+    restart_plan,
     transfer_tangent_by_collocation_polynomial,
 )
 from bergner_spichtinger_2026.constants import Environment
@@ -86,10 +93,18 @@ def run(command: str, fixture: str) -> dict[str, object]:
             "residual", "jacobian_action", "centered_difference", "log_period", "rho", "temperature_hat", "solution",
             "destination_boundaries", "transferred_unknowns", "transferred_tangent",
             "transferred_phase_values", "transferred_phase_derivatives",
+            "defect_combined", "defect_next_element", "defect_dyadic_element", "defect_probe_admitted",
+            "defect_grid_disagreement", "defect_endpoint_left", "defect_endpoint_right",
+            "defect_derivative_jumps", "monitor_values", "monitor_target_boundaries",
+            "r_movement_boundaries", "restart_solution",
         }:
             output[fields[0]] = np.asarray(fields[2:], dtype=float)
         elif fields[0] == "row":
             output["rows"][int(fields[1])] = list(map(int, fields[3:]))
+        elif fields[0] == "defect_material_elements":
+            output[fields[0]] = [int(value) for value in fields[2:]]
+        elif fields[0] == "h_marking":
+            output[fields[0]] = fields[1:4] + [float(fields[4])] + [int(value) for value in fields[5:]]
         else:
             output[fields[0]] = fields[1:]
     return output
@@ -232,6 +247,123 @@ def test_cpp_nonuniform_collocation_polynomial_transfer_matches_python(fixture: 
     np.testing.assert_allclose(phase_values, reference.stage_values, rtol=1e-11, atol=1e-13)
     np.testing.assert_allclose(phase_derivatives, reference.stage_derivatives, rtol=1e-11, atol=1e-13)
     np.testing.assert_allclose(float(output["transferred_phase_energy"][0]), reference.phase_energy, rtol=1e-11)
+
+
+@pytest.mark.parametrize("fixture", [
+    "adaptive-canonical-g3-n32.txt",
+    "adaptive-guard-rho-minus-0.15-g3-n32.txt",
+])
+def test_cpp_nonuniform_adaptive_controller_intermediates_match_python(fixture: str) -> None:
+    assembler, unknowns, _ = parse_fixture(FIXTURES / fixture)
+    output = run("adaptive-controller", fixture)
+    assert output["adaptive_controller_contract"] == [
+        "external-gauss3-hr-adaptive-v1",
+        "two-grid-relative-defect-v1",
+        "composite-r-monitor-v1",
+        "defect-bulk-halfmax-marking-v1",
+        "global-beta-r-movement-v1",
+        "adaptive-cycle-controller-v1",
+        "fixed-parameter-remesh-restart-retry-v1",
+    ]
+    defect = assembler.independent_defect(unknowns)
+    np.testing.assert_allclose(output["defect_combined"], defect.combined_element_maxima, rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_next_element"], np.max(defect.next_gauss.relative_defects, axis=1), rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_dyadic_element"], np.max(defect.staggered_dyadic.relative_defects, axis=1), rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_probe_admitted"], defect.admitted_probe_element_maxima, rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_grid_disagreement"], defect.grid_disagreement, rtol=3e-8, atol=1e-12)
+    np.testing.assert_allclose(output["defect_endpoint_left"], defect.endpoint_left, rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_endpoint_right"], defect.endpoint_right, rtol=1e-10, atol=1e-13)
+    np.testing.assert_allclose(output["defect_derivative_jumps"], defect.derivative_jumps, rtol=1e-10, atol=1e-13)
+    summary = np.asarray(output["defect_summary"][:3], dtype=float)
+    np.testing.assert_allclose(summary[0], defect.maximum, rtol=1e-10, atol=1e-13)
+    assert int(summary[2]) == defect.argmax_bin
+    assert output["defect_material_elements"] == list(defect.materially_disagreeing_elements)
+
+    monitor = build_composite_r_monitor(assembler, unknowns)
+    np.testing.assert_allclose(output["monitor_values"], monitor.values, rtol=1e-9, atol=2e-12)
+    np.testing.assert_allclose(output["monitor_target_boundaries"], monitor.target_boundaries, rtol=1e-9, atol=2e-12)
+    h = mark_h_refinement(defect)
+    cpp_h = output["h_marking"]
+    assert int(cpp_h[0]) == len(h.marked_elements)
+    assert int(cpp_h[1]) == h.growth_limit
+    assert int(cpp_h[2]) == h.new_interval_count
+    np.testing.assert_allclose(float(cpp_h[3]), h.halfmax_threshold, rtol=1e-12, atol=1e-15)
+    assert cpp_h[4:] == list(h.marked_elements)
+    r = apply_global_beta_r_movement(assembler.mesh, monitor.target_boundaries)
+    assert output["r_movement"][0] == ("accepted" if r.accepted else "stalled")
+    np.testing.assert_allclose(float(output["r_movement"][1]), r.beta, rtol=0, atol=0)
+    np.testing.assert_allclose(np.asarray(output["r_movement"][3:], dtype=float), r.attempted_betas, rtol=0, atol=0)
+    np.testing.assert_allclose(output["r_movement_boundaries"], r.new_boundaries, rtol=3e-12, atol=2e-13)
+    decision = decide_adaptation_cycle(
+        interval_count=assembler.mesh.interval_count,
+        cycle_index=0,
+        defect_maximum=defect.maximum,
+        period_relative_change=None,
+        weighted_orbit_change=None,
+        consecutive_pure_r_cycles=0,
+        pure_r_defect_reduction=None,
+        maximum_defect_element=int(np.argmax(defect.combined_element_maxima)),
+    )
+    assert output["cycle_decision"] == ["cycle_budget", "resolution_unresolved", "resolution_unresolved", "cycle_budget_exhausted"]
+    assert f"cycle_decision actual {decision.action} {decision.terminal_status} {' '.join(decision.reasons)}" in output["raw"]
+    assert output["restart_plan"] == [
+        "tangent_only", "deterministic_two_point_rebootstrap",
+        "restart_with_rebootstrapped_tangent", "reject_after_rebootstrap_failure",
+    ]
+    assert f"restart_plan h+r {' '.join(attempt.name for attempt in restart_plan(remesh_kind='h+r').attempts)}" in output["raw"]
+    assert f"restart_plan pure-r {' '.join(attempt.name for attempt in restart_plan(remesh_kind='pure-r').attempts)}" in output["raw"]
+
+
+@pytest.mark.parametrize("fixture", [
+    "adaptive-canonical-g3-n32.txt",
+    "adaptive-guard-rho-0-g3-n32.txt",
+])
+def test_cpp_nonuniform_adaptive_restart_rebuild_and_correction_match_python(fixture: str) -> None:
+    assembler, unknowns, _ = parse_fixture(FIXTURES / fixture)
+    output = run("adaptive-restart", fixture)
+    assert output["adaptive_restart_contract"][:4] == [
+        "fixed-parameter-remesh-restart-v1", "h+r",
+        "collocation-polynomial-transfer-v1", "fixed-parameter-remesh-restart-retry-v1",
+    ]
+    old_intervals = assembler.mesh.interval_count
+    destination_boundaries = deterministic_split_boundaries(assembler.mesh.boundaries)
+    destination_mesh = FixedMesh(destination_boundaries)
+    destination_reference = assembler.transferred_phase_reference(unknowns, destination_mesh, assembler.rule)
+    destination_assembler = GaussCollocationAssembler(destination_mesh, assembler.env, destination_reference, assembler.rule)
+    transferred = assembler.transfer_unknowns(unknowns, destination_mesh, assembler.rule)
+    python_correction = correct_gauss_orbit(
+        destination_assembler, transferred,
+        tolerances=MidpointResidualTolerances(), max_nfev=300,
+    )
+    assert python_correction.accepted
+    rebuild = [int(value) for value in output["restart_rebuild"]]
+    assert rebuild[:2] == [unknowns.size, transferred.size]
+    assert rebuild[10:] == [assembler.rule.stage_count, assembler.rule.stage_count]
+    assert int(output["adaptive_restart_contract"][4]) == old_intervals
+    assert int(output["adaptive_restart_contract"][5]) == destination_mesh.interval_count
+    assert output["restart_graph"][1:] == ["retained_reuse", "true", "rebuilt", "true"]
+    assert output["restart_attempts"] == [
+        "3", "h_r_transfer_correct", "h_r_refresh_reference_recorrect", "h_r_rebootstrap_tangent_recorrect",
+    ]
+    transfer_residual = np.asarray(output["restart_transfer_residual"][:5], dtype=float)
+    assert transfer_residual[:4].max() > 1e-8
+    assert transfer_residual[4] <= 1e-12
+    tangent = np.asarray(output["restart_tangent"][:2], dtype=float)
+    assert tangent[0] > 0.0
+    np.testing.assert_allclose(tangent[1], 1.0, rtol=0, atol=0)
+    assert output["restart_tangent"][2] == "true"
+    assert output["restart_correction"][:2] == ["accepted", "converged"]
+    assert output["restart_linear"][:2] == ["KLU2", "reported"]
+    assert output["restart_linear"][5:] == ["true", "true", "true"]
+    assert output["restart_gates"] == [
+        "residual", "true", "phase", "true", "positivity", "true",
+        "finite_change", "true", "linear", "true", "tangent", "true",
+    ]
+    diagnostics = np.asarray(output["restart_final_diagnostics"][:5], dtype=float)
+    assert diagnostics[:4].max() <= 1e-9
+    assert diagnostics[4] <= 1e-10
+    np.testing.assert_allclose(float(output["restart_correction"][5]), np.exp(python_correction.unknowns[-1]), rtol=2e-12)
+    np.testing.assert_allclose(output["restart_solution"], python_correction.unknowns, rtol=2e-9, atol=2e-10)
 
 
 @pytest.mark.parametrize("fixture", [

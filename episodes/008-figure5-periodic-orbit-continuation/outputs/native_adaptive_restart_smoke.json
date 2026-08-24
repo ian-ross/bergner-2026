@@ -1,0 +1,569 @@
+{
+  "artifact_kind": "task068-native-adaptive-restart-smoke",
+  "cases": [
+    {
+      "case_id": "adaptive-canonical-g3-n32",
+      "controller": {
+        "argmax_bin": 126,
+        "argmax_phase": 0.9866254177179603,
+        "contract": [
+          "external-gauss3-hr-adaptive-v1",
+          "two-grid-relative-defect-v1",
+          "composite-r-monitor-v1",
+          "defect-bulk-halfmax-marking-v1",
+          "global-beta-r-movement-v1",
+          "adaptive-cycle-controller-v1",
+          "fixed-parameter-remesh-restart-retry-v1"
+        ],
+        "cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "decision_and_retry_lines": [
+          "cycle_decision actual ordinary_h_r continue defect_gate_failed",
+          "restart_plan h+r h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect",
+          "restart_plan pure-r pure_r_transfer_correct pure_r_refresh_reference_recorrect pure_r_rebootstrap_tangent_recorrect",
+          "restart_plan tangent_only deterministic_two_point_rebootstrap restart_with_rebootstrapped_tangent reject_after_rebootstrap_failure"
+        ],
+        "defect_maximum": 0.0007358828938860484,
+        "h_growth_limit": 36,
+        "h_halfmax_threshold": 0.0003679414469430242,
+        "h_marked_count": 20,
+        "h_marked_elements": [
+          68,
+          59,
+          67,
+          60,
+          58,
+          66,
+          69,
+          57,
+          0,
+          1,
+          61,
+          65,
+          70,
+          2,
+          55,
+          53,
+          54,
+          56,
+          71,
+          62
+        ],
+        "h_new_interval_count": 92,
+        "material_probe_count": 1,
+        "r_attempt_count": 5,
+        "r_beta": 0.03125,
+        "r_status": "accepted",
+        "restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ]
+      },
+      "fixture_path": "adaptive-canonical-g3-n32.txt",
+      "fixture_sha256": "ab4174ed0044733503a0ffce9a60b86135659c83da8b05f0bb445071735964e4",
+      "restart": {
+        "attempts": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "contract": [
+          "fixed-parameter-remesh-restart-v1",
+          "h+r",
+          "collocation-polynomial-transfer-v1",
+          "fixed-parameter-remesh-restart-retry-v1",
+          "72",
+          "80",
+          "3"
+        ],
+        "correction": {
+          "correction_norm": 5.472469882055534e-05,
+          "iterations": 2,
+          "nox_residual_norm": 1.5454386198701272e-14,
+          "nox_status": "converged",
+          "period_s": 2461.604464376329,
+          "status": "accepted"
+        },
+        "final_diagnostics": {
+          "phase_abs": 4.821175582737333e-19,
+          "phase_energy": 32.65450314217796,
+          "stage_max": 2.1118646382084112e-15,
+          "stage_rms": 4.838423280078975e-16,
+          "update_max": 2.1118646382084112e-15,
+          "update_rms": 5.411546517950368e-16
+        },
+        "gates": {
+          "finite_change": true,
+          "linear": true,
+          "phase": true,
+          "positivity": true,
+          "residual": true,
+          "tangent": true
+        },
+        "graph": {
+          "entry_count": 11520,
+          "rebuilt": true,
+          "retained_reuse": true
+        },
+        "linear": {
+          "backend": "KLU2",
+          "numeric_complete": true,
+          "numeric_factorizations": 1,
+          "reported": true,
+          "solve_complete": true,
+          "solves": 1,
+          "symbolic_complete": true,
+          "symbolic_factorizations": 1
+        },
+        "rebuild": {
+          "new_endpoint_size": 240,
+          "new_log_period_index": 960,
+          "new_phase_row": 960,
+          "new_stage_count": 3,
+          "new_stage_size": 720,
+          "new_unknown_size": 961,
+          "old_endpoint_size": 216,
+          "old_log_period_index": 864,
+          "old_phase_row": 864,
+          "old_stage_count": 3,
+          "old_stage_size": 648,
+          "old_unknown_size": 865
+        },
+        "solution_sha256": "a9d175cad2c7834b9174a60aebed201780b4d130dd1ec3e6915a2be83de8f949",
+        "tangent": {
+          "accepted": true,
+          "post_normalization_norm": 1.0,
+          "pre_normalization_norm": 2.4250413032926423
+        },
+        "transfer_residual": {
+          "phase_abs": 0.0,
+          "phase_energy": 32.65450314217796,
+          "stage_max": 1.962063894703305e-05,
+          "stage_rms": 2.1993902011444263e-06,
+          "update_max": 2.2183965390204173e-05,
+          "update_rms": 7.265101440037377e-06
+        }
+      }
+    },
+    {
+      "case_id": "adaptive-guard-rho-0-g3-n32",
+      "controller": {
+        "argmax_bin": 127,
+        "argmax_phase": 0.998091997721623,
+        "contract": [
+          "external-gauss3-hr-adaptive-v1",
+          "two-grid-relative-defect-v1",
+          "composite-r-monitor-v1",
+          "defect-bulk-halfmax-marking-v1",
+          "global-beta-r-movement-v1",
+          "adaptive-cycle-controller-v1",
+          "fixed-parameter-remesh-restart-retry-v1"
+        ],
+        "cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "decision_and_retry_lines": [
+          "cycle_decision actual ordinary_h_r continue defect_gate_failed",
+          "restart_plan h+r h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect",
+          "restart_plan pure-r pure_r_transfer_correct pure_r_refresh_reference_recorrect pure_r_rebootstrap_tangent_recorrect",
+          "restart_plan tangent_only deterministic_two_point_rebootstrap restart_with_rebootstrapped_tangent reject_after_rebootstrap_failure"
+        ],
+        "defect_maximum": 0.0007300552443293067,
+        "h_growth_limit": 37,
+        "h_halfmax_threshold": 0.0003650276221646534,
+        "h_marked_count": 12,
+        "h_marked_elements": [
+          73,
+          74,
+          72,
+          71,
+          59,
+          68,
+          58,
+          66,
+          67,
+          70,
+          57,
+          65
+        ],
+        "h_new_interval_count": 87,
+        "material_probe_count": 1,
+        "r_attempt_count": 20,
+        "r_beta": 0.0,
+        "r_status": "stalled",
+        "restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ]
+      },
+      "fixture_path": "adaptive-guard-rho-0-g3-n32.txt",
+      "fixture_sha256": "549b828788147728c85d61c8863ec7fc6e622b70a1101699ca37fa783a180e71",
+      "restart": {
+        "attempts": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "contract": [
+          "fixed-parameter-remesh-restart-v1",
+          "h+r",
+          "collocation-polynomial-transfer-v1",
+          "fixed-parameter-remesh-restart-retry-v1",
+          "75",
+          "84",
+          "3"
+        ],
+        "correction": {
+          "correction_norm": 5.030277371165648e-05,
+          "iterations": 2,
+          "nox_residual_norm": 1.6543434215594583e-14,
+          "nox_status": "converged",
+          "period_s": 5718.140409482163,
+          "status": "accepted"
+        },
+        "final_diagnostics": {
+          "phase_abs": 2.162742138889051e-18,
+          "phase_energy": 34.81473536621455,
+          "stage_max": 1.78767702708825e-15,
+          "stage_rms": 5.149853573424467e-16,
+          "update_max": 1.7229647365149198e-15,
+          "update_rms": 5.389087767385191e-16
+        },
+        "gates": {
+          "finite_change": true,
+          "linear": true,
+          "phase": true,
+          "positivity": true,
+          "residual": true,
+          "tangent": true
+        },
+        "graph": {
+          "entry_count": 12096,
+          "rebuilt": true,
+          "retained_reuse": true
+        },
+        "linear": {
+          "backend": "KLU2",
+          "numeric_complete": true,
+          "numeric_factorizations": 1,
+          "reported": true,
+          "solve_complete": true,
+          "solves": 1,
+          "symbolic_complete": true,
+          "symbolic_factorizations": 1
+        },
+        "rebuild": {
+          "new_endpoint_size": 252,
+          "new_log_period_index": 1008,
+          "new_phase_row": 1008,
+          "new_stage_count": 3,
+          "new_stage_size": 756,
+          "new_unknown_size": 1009,
+          "old_endpoint_size": 225,
+          "old_log_period_index": 900,
+          "old_phase_row": 900,
+          "old_stage_count": 3,
+          "old_stage_size": 675,
+          "old_unknown_size": 901
+        },
+        "solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "tangent": {
+          "accepted": true,
+          "post_normalization_norm": 1.0,
+          "pre_normalization_norm": 2.2019886836435045
+        },
+        "transfer_residual": {
+          "phase_abs": 0.0,
+          "phase_energy": 34.81473536621455,
+          "stage_max": 1.9920571871932037e-05,
+          "stage_rms": 1.7006913817745897e-06,
+          "update_max": 2.1467663050724683e-05,
+          "update_rms": 7.061531854828259e-06
+        }
+      }
+    },
+    {
+      "case_id": "adaptive-guard-rho-minus-0.15-g3-n32",
+      "controller": {
+        "argmax_bin": 125,
+        "argmax_phase": 0.9778685668565887,
+        "contract": [
+          "external-gauss3-hr-adaptive-v1",
+          "two-grid-relative-defect-v1",
+          "composite-r-monitor-v1",
+          "defect-bulk-halfmax-marking-v1",
+          "global-beta-r-movement-v1",
+          "adaptive-cycle-controller-v1",
+          "fixed-parameter-remesh-restart-retry-v1"
+        ],
+        "cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "decision_and_retry_lines": [
+          "cycle_decision actual ordinary_h_r continue defect_gate_failed",
+          "restart_plan h+r h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect",
+          "restart_plan pure-r pure_r_transfer_correct pure_r_refresh_reference_recorrect pure_r_rebootstrap_tangent_recorrect",
+          "restart_plan tangent_only deterministic_two_point_rebootstrap restart_with_rebootstrapped_tangent reject_after_rebootstrap_failure"
+        ],
+        "defect_maximum": 0.0007970597921163128,
+        "h_growth_limit": 40,
+        "h_halfmax_threshold": 0.0003985298960581564,
+        "h_marked_count": 13,
+        "h_marked_elements": [
+          72,
+          71,
+          73,
+          70,
+          74,
+          69,
+          78,
+          77,
+          79,
+          76,
+          64,
+          80,
+          63
+        ],
+        "h_new_interval_count": 94,
+        "material_probe_count": 1,
+        "r_attempt_count": 5,
+        "r_beta": 0.03125,
+        "r_status": "accepted",
+        "restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ]
+      },
+      "fixture_path": "adaptive-guard-rho-minus-0.15-g3-n32.txt",
+      "fixture_sha256": "045831d998597fd93ac26b0ea5ef9d6a75772cad6890afe3535fb80e6c98cc09",
+      "restart": null
+    },
+    {
+      "case_id": "adaptive-guard-rho-plus-0.15-g3-n32",
+      "controller": {
+        "argmax_bin": 127,
+        "argmax_phase": 0.9980438485681214,
+        "contract": [
+          "external-gauss3-hr-adaptive-v1",
+          "two-grid-relative-defect-v1",
+          "composite-r-monitor-v1",
+          "defect-bulk-halfmax-marking-v1",
+          "global-beta-r-movement-v1",
+          "adaptive-cycle-controller-v1",
+          "fixed-parameter-remesh-restart-retry-v1"
+        ],
+        "cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "decision_and_retry_lines": [
+          "cycle_decision actual ordinary_h_r continue defect_gate_failed",
+          "restart_plan h+r h_r_transfer_correct h_r_refresh_reference_recorrect h_r_rebootstrap_tangent_recorrect",
+          "restart_plan pure-r pure_r_transfer_correct pure_r_refresh_reference_recorrect pure_r_rebootstrap_tangent_recorrect",
+          "restart_plan tangent_only deterministic_two_point_rebootstrap restart_with_rebootstrapped_tangent reject_after_rebootstrap_failure"
+        ],
+        "defect_maximum": 0.0007090961123952019,
+        "h_growth_limit": 37,
+        "h_halfmax_threshold": 0.00035454805619760093,
+        "h_marked_count": 13,
+        "h_marked_elements": [
+          73,
+          74,
+          72,
+          71,
+          58,
+          66,
+          59,
+          67,
+          68,
+          57,
+          65,
+          70,
+          60
+        ],
+        "h_new_interval_count": 88,
+        "material_probe_count": 1,
+        "r_attempt_count": 20,
+        "r_beta": 0.0,
+        "r_status": "stalled",
+        "restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ]
+      },
+      "fixture_path": "adaptive-guard-rho-plus-0.15-g3-n32.txt",
+      "fixture_sha256": "71643c8d0fc42ac4a80f5bf9490742ee6a2f0c6973a90ac701a25eed7c56b6a8",
+      "restart": null
+    }
+  ],
+  "controller_case_count": 4,
+  "fixture_manifest_sha256": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
+  "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<current-build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_restart_smoke.py [--check]",
+  "restart_case_count": 2,
+  "restart_case_ids": [
+    "adaptive-canonical-g3-n32",
+    "adaptive-guard-rho-0-g3-n32"
+  ],
+  "runtime_provenance": {
+    "compiler_and_trilinos": [
+      "16.2.0",
+      "Trilinos_17.2.0-dev"
+    ],
+    "emitting_executable_source_fingerprints": [
+      "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+      "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+      "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+      "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+      "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+      "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+    ],
+    "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "scipy": "1.17.1"
+  },
+  "schema_version": "episode008-native-adaptive-restart-smoke-v1",
+  "scope": "component smoke for native adaptive controller/restart seams; not the full spine-and-slices adaptive LOCA run",
+  "source_provenance": {
+    "compiled_source_0": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
+      "sha256": "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879"
+    },
+    "compiled_source_1": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp",
+      "sha256": "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29"
+    },
+    "compiled_source_2": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/model.hpp",
+      "sha256": "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38"
+    },
+    "compiled_source_3": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp",
+      "sha256": "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1"
+    },
+    "compiled_source_4": {
+      "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
+      "sha256": "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca"
+    },
+    "compiled_source_5": {
+      "path": "loca/src/midpoint_orbit_cli.cpp",
+      "sha256": "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+    },
+    "fixture_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json",
+      "sha256": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_restart_smoke.py",
+      "sha256": "139ecdf8c881a0ead453f75ee497ac58aa45cde602a5ed8372fb91e9d17532a2"
+    }
+  },
+  "truthfulness_policy": {
+    "native_adaptive_spine_and_slices_executed": false,
+    "native_remesh_restart_smoke_executed": true,
+    "python_adaptive_evidence_not_rebranded_as_native": true
+  },
+  "vector_artifact": {
+    "array_count": 14,
+    "arrays": {
+      "adaptive-canonical-g3-n32__defect_combined": {
+        "sha256": "6658880506078f425c7e0e5be7ec72c3b953a8a59966e2f140fde84ed7eac3f9",
+        "shape": [
+          72
+        ]
+      },
+      "adaptive-canonical-g3-n32__monitor_target_boundaries": {
+        "sha256": "36741e6b06452a246fadc85b891103078056491a43286422f36631a52273ab42",
+        "shape": [
+          73
+        ]
+      },
+      "adaptive-canonical-g3-n32__r_movement_boundaries": {
+        "sha256": "69788d4395e61186a7449d5e740d80e0c8fea0a5809dc03b7cd17c97677397e3",
+        "shape": [
+          73
+        ]
+      },
+      "adaptive-canonical-g3-n32__restart_solution": {
+        "sha256": "a9d175cad2c7834b9174a60aebed201780b4d130dd1ec3e6915a2be83de8f949",
+        "shape": [
+          961
+        ]
+      },
+      "adaptive-guard-rho-0-g3-n32__defect_combined": {
+        "sha256": "81c143d610ab82bede7b71fed7586509733c54392bf8f02f7542166720a97f37",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive-guard-rho-0-g3-n32__monitor_target_boundaries": {
+        "sha256": "4cb2603cc5f774d26a591cb12d365cc1e46a7119e003a6ac5f949f9696074d68",
+        "shape": [
+          76
+        ]
+      },
+      "adaptive-guard-rho-0-g3-n32__r_movement_boundaries": {
+        "sha256": "c7351e6b27b2107b128425a04720111c8ff30e28492bc4aed7a8faf2504b6a6a",
+        "shape": [
+          76
+        ]
+      },
+      "adaptive-guard-rho-0-g3-n32__restart_solution": {
+        "sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "shape": [
+          1009
+        ]
+      },
+      "adaptive-guard-rho-minus-0.15-g3-n32__defect_combined": {
+        "sha256": "1a1b0aa3f4738bf602abd7ad37d2b3f08bc08b311f27b0542c997281a05147e2",
+        "shape": [
+          81
+        ]
+      },
+      "adaptive-guard-rho-minus-0.15-g3-n32__monitor_target_boundaries": {
+        "sha256": "86fd30eb6b72ac2624f6baadf4e643aba25b0214a177962c6c024f0a2e8d62d6",
+        "shape": [
+          82
+        ]
+      },
+      "adaptive-guard-rho-minus-0.15-g3-n32__r_movement_boundaries": {
+        "sha256": "e0c558af3a04b629d6e23967d1b076653b82c8be34d29ae63df0bb7ba2f994b3",
+        "shape": [
+          82
+        ]
+      },
+      "adaptive-guard-rho-plus-0.15-g3-n32__defect_combined": {
+        "sha256": "b760db74b979fdbaa249a78b6df99140de9a1bfb7fa894bc17f4e7c5766e9df4",
+        "shape": [
+          75
+        ]
+      },
+      "adaptive-guard-rho-plus-0.15-g3-n32__monitor_target_boundaries": {
+        "sha256": "6a71a6265263778aadb6fc40d1bca700d83dbdd16c6927c0fec1c1c0b794bdf6",
+        "shape": [
+          76
+        ]
+      },
+      "adaptive-guard-rho-plus-0.15-g3-n32__r_movement_boundaries": {
+        "sha256": "29a1b1ad4ac292a7d68ba37be51f63b2d46fbf7d2b460144570bf73b66e65422",
+        "shape": [
+          76
+        ]
+      }
+    },
+    "artifact_kind": "task068-native-adaptive-restart-smoke-vectors",
+    "sha256": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee"
+  }
+}

@@ -31,6 +31,8 @@ def test_native_adaptive_manifest_records_truthful_evidence_boundary_and_version
     assert data["schema_version"] == "episode008-native-adaptive-loca-manifest-v1"
     assert data["truthfulness_policy"] == {
         "native_adaptive_remesh_executed": False,
+        "native_adaptive_remesh_restart_smoke_executed": True,
+        "native_adaptive_one_branch_segment_executed": True,
         "fixed_mesh_native_evidence_may_seed_adaptive_run": True,
         "python_adaptive_evidence_not_rebranded_as_native": True,
         "broader_ivp_based_evidence": "not_evaluated",
@@ -89,6 +91,69 @@ def test_vector_artifact_hashes_match_arrays_and_sources() -> None:
         assert sha(ROOT / source["path"]) == source["sha256"]
 
 
+def test_segment_restart_artifact_ledger_records_events_meshes_gates_and_terminal_targets() -> None:
+    artifacts = load()["segment_restart_artifacts"]
+    assert artifacts["artifact_purpose"].startswith("deterministic segment/restart ledger")
+    branches = artifacts["native_fixed_mesh_branch_ledgers"]
+    assert len(branches) == 5
+    assert all(branch["event_partition"]["loca_accepted_count"] == len(branch["checkpoint_vector_keys"]) for branch in branches)
+    assert all(branch["event_partition"]["loca_rejected_count"] == 0 for branch in branches)
+    assert all(branch["accounting_invariants"]["saved_points_equal_accepted_callbacks"] for branch in branches)
+    assert max(branch["maximum_python_same_coordinate_period_relative_error"] for branch in branches) <= 2e-7
+
+    histories = artifacts["adaptive_reference_mesh_histories"]
+    assert len(histories) == 4
+    assert all(history["converged"] and history["final_defect_maximum"] < 1e-4 for history in histories)
+    assert any(event["kind"] == "h+r" and event["correction_accepted"] for history in histories for event in history["remesh_events"])
+    assert all(
+        event["restart_plan"] == [
+            "h_r_transfer_correct",
+            "h_r_refresh_reference_recorrect",
+            "h_r_rebootstrap_tangent_recorrect",
+        ]
+        for history in histories
+        for event in history["remesh_events"]
+        if event["kind"] == "h+r"
+    )
+
+    restart_cases = artifacts["native_remesh_restart_smoke_cases"]
+    assert sum(case["restart_executed"] for case in restart_cases) == 2
+    for case in restart_cases:
+        assert case["controller_restart_retry_order_h_plus_r"] == [
+            "h_r_transfer_correct",
+            "h_r_refresh_reference_recorrect",
+            "h_r_rebootstrap_tangent_recorrect",
+        ]
+        if case["restart_executed"]:
+            restart = case["restart"]
+            assert restart["graph_rebuilt"] is True
+            assert restart["retained_graph_reuse"] is True
+            assert all(restart["gates"].values())
+            assert restart["linear"]["backend"] == "KLU2"
+            assert restart["correction"]["status"] == "accepted"
+    one_branch = artifacts["native_adaptive_one_branch_segment"]
+    assert one_branch["branch_id"] == "spine-negative-T-hat-to-210"
+    assert one_branch["adaptive_case_id"] == "adaptive-guard-rho-0-g3-n32"
+    assert one_branch["remesh_boundary"]["policy"].startswith("stop only after an accepted native LOCA callback")
+    assert all(one_branch["gates"].values())
+    assert all(one_branch["restart_gates"].values())
+    assert one_branch["resumable_state"]["full_run_terminal_status"] == "not_claimed"
+
+    assert len(artifacts["phase_lineage"]) == 2
+    assert all(refresh["verification"]["accepted"] for refresh in artifacts["phase_lineage"])
+    terminal = artifacts["terminal_target_ledger"]
+    assert terminal["exactly_one_terminal_status_per_target"] is True
+    assert terminal["target_count"] == 31
+    assert sum(terminal["terminal_status_counts"].values()) == terminal["target_count"]
+    profile = artifacts["runtime_memory_profile_policy"]
+    assert profile["deterministic_artifact_records_runtime_identity"] is True
+    assert "segment_wall_clock_s" in profile["required_full_run_fields"]
+    assert artifacts["not_evaluated_evidence"] == {
+        "broader_ivp_based": "not_evaluated",
+        "floquet_dependent": "not_evaluated",
+    }
+
+
 def test_parity_and_near_hopf_scope_are_explicit() -> None:
     data = load()
     parity = data["parity"]
@@ -96,6 +161,18 @@ def test_parity_and_near_hopf_scope_are_explicit() -> None:
     assert parity["native_fixed_parameter_correction_cases"]["accepted_count"] >= 6
     assert parity["cpp_nonuniform_fixture_parity"]["case_count"] == 4
     assert parity["cpp_nonuniform_fixture_parity"]["all_projected_from_final_adaptive_cycles"] is True
+    assert "adaptive-controller" in parity["cpp_nonuniform_fixture_parity"]["source"]
+    assert "adaptive-restart" in parity["cpp_nonuniform_fixture_parity"]["source"]
+    smoke = parity["native_adaptive_restart_smoke"]
+    assert smoke["controller_case_count"] == 4
+    assert smoke["restart_case_count"] == 2
+    assert smoke["all_restart_gates_passed"] is True
+    assert "not the full adaptive" in smoke["source"]
+    one_branch = parity["native_adaptive_one_branch_segment"]
+    assert one_branch["selected_branch_id"] == "spine-negative-T-hat-to-210"
+    assert one_branch["selected_adaptive_case_id"] == "adaptive-guard-rho-0-g3-n32"
+    assert one_branch["all_gates_passed"] is True
+    assert one_branch["restart_solution_matches_smoke"] is True
     assert parity["stratified_native_fixed_mesh_python_corrections"]["maximum_all_point_period_relative_error"] <= 2e-7
     assert "Adaptive remesh" in parity["evidence_boundary"]
     near_hopf = data["near_hopf_evidence"]

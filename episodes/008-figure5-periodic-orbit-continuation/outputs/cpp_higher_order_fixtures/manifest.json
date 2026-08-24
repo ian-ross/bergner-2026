@@ -308,7 +308,7 @@
     },
     "cpp_cli": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+      "sha256": "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
     },
     "cpp_collocation_coefficients": {
       "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",

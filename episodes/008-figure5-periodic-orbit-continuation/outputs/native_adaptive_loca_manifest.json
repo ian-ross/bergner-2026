@@ -32,7 +32,7 @@
       "slice210-negative-rho",
       "slice210-positive-rho"
     ],
-    "source_manifest_sha256": "9d7c4656169b02e4c45d717101d796aa675488eddf9e8371307c42c507f07d33"
+    "source_manifest_sha256": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd"
   },
   "native_segment_contract": {
     "base_system": "square three-stage Gauss residual; LOCA owns Arc Length extension",
@@ -157,11 +157,26 @@
     "cpp_nonuniform_fixture_parity": {
       "all_projected_from_final_adaptive_cycles": true,
       "case_count": 4,
-      "manifest_sha256": "d922b7aa0500b5eace0fb370075bab89f5e3daa77776c1da13a8bcc399acfac1",
+      "manifest_sha256": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
       "schema_version": "episode008-cpp-adaptive-nonuniform-fixtures-v1",
-      "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/solve seams"
+      "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/adaptive-controller/adaptive-restart/solve seams"
     },
     "evidence_boundary": "Native parity here is fixed-mesh three-stage LOCA and fixed-parameter C++ correction. Adaptive remesh transfer/restart intermediates are from TASK-067 Python fixtures until the native adaptive run is executed.",
+    "native_adaptive_one_branch_segment": {
+      "all_gates_passed": true,
+      "restart_solution_matches_smoke": true,
+      "schema_version": "episode008-native-adaptive-one-branch-segment-v1",
+      "selected_adaptive_case_id": "adaptive-guard-rho-0-g3-n32",
+      "selected_branch_id": "spine-negative-T-hat-to-210",
+      "source": "checked by tests/test_episode8_native_adaptive_one_branch_segment.py as the first integrated one-branch adaptive segment; not the full adaptive spine-and-slices run"
+    },
+    "native_adaptive_restart_smoke": {
+      "all_restart_gates_passed": true,
+      "controller_case_count": 4,
+      "restart_case_count": 2,
+      "schema_version": "episode008-native-adaptive-restart-smoke-v1",
+      "source": "checked by tests/test_episode8_native_adaptive_restart_smoke.py as native remesh/rebuild/restart smoke evidence; not the full adaptive spine-and-slices run"
+    },
     "native_fixed_parameter_correction_cases": {
       "accepted_count": 6,
       "case_count": 9,
@@ -544,6 +559,1261 @@
   },
   "schema_version": "episode008-native-adaptive-loca-manifest-v1",
   "scope": "TASK-068 start artifact: native fixed-mesh LOCA plus Python adaptive fixtures reconciled into a resumable adaptive-run manifest; not final Figure 5 production data.",
+  "segment_restart_artifacts": {
+    "adaptive_reference_mesh_histories": [
+      {
+        "case_id": "canonical-g3-n32",
+        "converged": true,
+        "cycle_count": 8,
+        "final_defect_maximum": 8.049250611379694e-05,
+        "final_interval_count": 72,
+        "final_period_s": 2461.6044678183184,
+        "remesh_events": [
+          {
+            "correction_accepted": true,
+            "cycle_index": 0,
+            "kind": "h+r",
+            "marked_count": 1,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 33,
+            "old_interval_count": 32,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 1,
+            "kind": "h+r",
+            "marked_count": 2,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 35,
+            "old_interval_count": 33,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 2,
+            "kind": "h+r",
+            "marked_count": 4,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 39,
+            "old_interval_count": 35,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 3,
+            "kind": "h+r",
+            "marked_count": 5,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 44,
+            "old_interval_count": 39,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 4,
+            "kind": "h+r",
+            "marked_count": 6,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 50,
+            "old_interval_count": 44,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 5,
+            "kind": "h+r",
+            "marked_count": 10,
+            "movement_beta": 0.015625,
+            "movement_status": "accepted",
+            "new_interval_count": 60,
+            "old_interval_count": 50,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 6,
+            "kind": "h+r",
+            "marked_count": 12,
+            "movement_beta": 0.00390625,
+            "movement_status": "accepted",
+            "new_interval_count": 72,
+            "old_interval_count": 60,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          }
+        ],
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-0-g3-n32",
+        "converged": true,
+        "cycle_count": 9,
+        "final_defect_maximum": 6.525956307952771e-05,
+        "final_interval_count": 75,
+        "final_period_s": 5718.140412404464,
+        "remesh_events": [
+          {
+            "correction_accepted": true,
+            "cycle_index": 0,
+            "kind": "h+r",
+            "marked_count": 2,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 34,
+            "old_interval_count": 32,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 1,
+            "kind": "h+r",
+            "marked_count": 1,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 35,
+            "old_interval_count": 34,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 2,
+            "kind": "h+r",
+            "marked_count": 3,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 38,
+            "old_interval_count": 35,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 3,
+            "kind": "h+r",
+            "marked_count": 3,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 41,
+            "old_interval_count": 38,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 4,
+            "kind": "h+r",
+            "marked_count": 6,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 47,
+            "old_interval_count": 41,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 5,
+            "kind": "h+r",
+            "marked_count": 7,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 54,
+            "old_interval_count": 47,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 6,
+            "kind": "h+r",
+            "marked_count": 9,
+            "movement_beta": 0.015625,
+            "movement_status": "accepted",
+            "new_interval_count": 63,
+            "old_interval_count": 54,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 7,
+            "kind": "h+r",
+            "marked_count": 12,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 75,
+            "old_interval_count": 63,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          }
+        ],
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-minus-0.15-g3-n32",
+        "converged": true,
+        "cycle_count": 9,
+        "final_defect_maximum": 5.117321340268515e-05,
+        "final_interval_count": 81,
+        "final_period_s": 6183.898589836555,
+        "remesh_events": [
+          {
+            "correction_accepted": true,
+            "cycle_index": 0,
+            "kind": "h+r",
+            "marked_count": 2,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 34,
+            "old_interval_count": 32,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 1,
+            "kind": "h+r",
+            "marked_count": 1,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 35,
+            "old_interval_count": 34,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 2,
+            "kind": "h+r",
+            "marked_count": 4,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 39,
+            "old_interval_count": 35,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 3,
+            "kind": "h+r",
+            "marked_count": 4,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 43,
+            "old_interval_count": 39,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 4,
+            "kind": "h+r",
+            "marked_count": 7,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 50,
+            "old_interval_count": 43,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 5,
+            "kind": "h+r",
+            "marked_count": 6,
+            "movement_beta": 0.125,
+            "movement_status": "accepted",
+            "new_interval_count": 56,
+            "old_interval_count": 50,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 6,
+            "kind": "h+r",
+            "marked_count": 11,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 67,
+            "old_interval_count": 56,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 7,
+            "kind": "h+r",
+            "marked_count": 14,
+            "movement_beta": 0.00390625,
+            "movement_status": "accepted",
+            "new_interval_count": 81,
+            "old_interval_count": 67,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          }
+        ],
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-plus-0.15-g3-n32",
+        "converged": true,
+        "cycle_count": 9,
+        "final_defect_maximum": 7.322899879974985e-05,
+        "final_interval_count": 75,
+        "final_period_s": 5109.345768676884,
+        "remesh_events": [
+          {
+            "correction_accepted": true,
+            "cycle_index": 0,
+            "kind": "h+r",
+            "marked_count": 2,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 34,
+            "old_interval_count": 32,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 1,
+            "kind": "h+r",
+            "marked_count": 2,
+            "movement_beta": 0.03125,
+            "movement_status": "accepted",
+            "new_interval_count": 36,
+            "old_interval_count": 34,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 2,
+            "kind": "h+r",
+            "marked_count": 3,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 39,
+            "old_interval_count": 36,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 3,
+            "kind": "h+r",
+            "marked_count": 3,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 42,
+            "old_interval_count": 39,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 4,
+            "kind": "h+r",
+            "marked_count": 6,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 48,
+            "old_interval_count": 42,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 5,
+            "kind": "h+r",
+            "marked_count": 5,
+            "movement_beta": 0.0625,
+            "movement_status": "accepted",
+            "new_interval_count": 53,
+            "old_interval_count": 48,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 6,
+            "kind": "h+r",
+            "marked_count": 10,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 63,
+            "old_interval_count": 53,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          },
+          {
+            "correction_accepted": true,
+            "cycle_index": 7,
+            "kind": "h+r",
+            "marked_count": 12,
+            "movement_beta": 0.0,
+            "movement_status": "stalled",
+            "new_interval_count": 75,
+            "old_interval_count": 63,
+            "phase_refresh": "full_remesh_refresh",
+            "restart_plan": [
+              "h_r_transfer_correct",
+              "h_r_refresh_reference_recorrect",
+              "h_r_rebootstrap_tangent_recorrect"
+            ]
+          }
+        ],
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      }
+    ],
+    "artifact_purpose": "deterministic segment/restart ledger for native adaptive remesh orchestration review",
+    "native_adaptive_one_branch_segment": {
+      "adaptive_case_id": "adaptive-guard-rho-0-g3-n32",
+      "artifact_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "artifact_sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
+      "branch_id": "spine-negative-T-hat-to-210",
+      "controller_cycle_decision_actual": [
+        "ordinary_h_r",
+        "continue",
+        "defect_gate_failed"
+      ],
+      "event_partition": {
+        "accepted_point_count": 9,
+        "final_save_count": 1,
+        "initial_save_count": 1,
+        "regular_accepted_count": 7,
+        "regular_attempt_count": 7,
+        "regular_rejected_count": 0
+      },
+      "gates": {
+        "native_segment_accepted_point_residual_phase_positivity_linear": true,
+        "remesh_boundary_is_accepted_native_point": true,
+        "remesh_transfer_solution_reference_tangent_recorded": true,
+        "restart_residual_phase_positivity_finite_change_linear_tangent": true
+      },
+      "remesh_boundary": {
+        "active_coordinate": -0.2,
+        "checkpoint_vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_008",
+        "checkpoint_vector_sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d",
+        "event_callback_index": 8,
+        "period_s": 5679.57323053456,
+        "point_index": 8,
+        "policy": "stop only after an accepted native LOCA callback; rejected/native in-flight attempts are not remesh boundaries"
+      },
+      "restart_attempts": [
+        "h_r_transfer_correct",
+        "h_r_refresh_reference_recorrect",
+        "h_r_rebootstrap_tangent_recorrect"
+      ],
+      "restart_gates": {
+        "finite_change": true,
+        "linear": true,
+        "phase": true,
+        "positivity": true,
+        "residual": true,
+        "tangent": true
+      },
+      "resumable_state": {
+        "checkpoint_vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_008",
+        "full_run_terminal_status": "not_claimed",
+        "next_step_scope": "TASK-068.02 generalized adaptive driver/resume behavior",
+        "restart_solution_vector_key": "restart__adaptive-guard-rho-0-g3-n32__corrected_solution",
+        "resume_after": "accepted_remesh_restart"
+      },
+      "vector_artifact_sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+    },
+    "native_fixed_mesh_branch_ledgers": [
+      {
+        "accounting_invariants": {
+          "callback_indices_contiguous": true,
+          "exactly_one_accepted_initial_and_final": true,
+          "raw_counts_consistent": true,
+          "regular_attempts_equal_accepted_plus_rejected": true,
+          "rejected_retries_are_adjacent_and_linked": true,
+          "saved_points_equal_accepted_callbacks": true
+        },
+        "active_coordinate_name": "rho",
+        "branch_id": "fixed225-to-spine",
+        "checkpoint_vector_keys": [
+          "native_g3__fixed225-to-spine__000",
+          "native_g3__fixed225-to-spine__001",
+          "native_g3__fixed225-to-spine__002",
+          "native_g3__fixed225-to-spine__003",
+          "native_g3__fixed225-to-spine__004",
+          "native_g3__fixed225-to-spine__005",
+          "native_g3__fixed225-to-spine__006",
+          "native_g3__fixed225-to-spine__007"
+        ],
+        "event_partition": {
+          "bootstrap_attempt_count": 2,
+          "final_save_count": 1,
+          "initial_save_count": 1,
+          "loca_accepted_count": 8,
+          "loca_attempt_count": 8,
+          "loca_rejected_count": 0,
+          "regular_save_count": 6
+        },
+        "maximum_native_validation_residual": 1.8890379755942955e-14,
+        "maximum_python_same_coordinate_period_relative_error": 6.439103214941975e-13,
+        "period_s_range": [
+          2204.084712569101,
+          2450.318211640912
+        ],
+        "phase_reference_id": "phase-ref-episode007-seed",
+        "reached_exact_target": true,
+        "target_coordinate": 0.0
+      },
+      {
+        "accounting_invariants": {
+          "callback_indices_contiguous": true,
+          "exactly_one_accepted_initial_and_final": true,
+          "raw_counts_consistent": true,
+          "regular_attempts_equal_accepted_plus_rejected": true,
+          "rejected_retries_are_adjacent_and_linked": true,
+          "saved_points_equal_accepted_callbacks": true
+        },
+        "active_coordinate_name": "temperature_hat",
+        "branch_id": "spine-positive-T-hat",
+        "checkpoint_vector_keys": [
+          "native_g3__spine-positive-T-hat__000",
+          "native_g3__spine-positive-T-hat__001",
+          "native_g3__spine-positive-T-hat__002",
+          "native_g3__spine-positive-T-hat__003"
+        ],
+        "event_partition": {
+          "bootstrap_attempt_count": 1,
+          "final_save_count": 1,
+          "initial_save_count": 1,
+          "loca_accepted_count": 4,
+          "loca_attempt_count": 4,
+          "loca_rejected_count": 0,
+          "regular_save_count": 2
+        },
+        "maximum_native_validation_residual": 3.1291514973189448e-12,
+        "maximum_python_same_coordinate_period_relative_error": 1.5783465568548391e-12,
+        "period_s_range": [
+          2080.3059454290924,
+          2204.084712571836
+        ],
+        "phase_reference_id": "phase-ref-spine-225",
+        "reached_exact_target": true,
+        "target_coordinate": 0.44
+      },
+      {
+        "accounting_invariants": {
+          "callback_indices_contiguous": true,
+          "exactly_one_accepted_initial_and_final": true,
+          "raw_counts_consistent": true,
+          "regular_attempts_equal_accepted_plus_rejected": true,
+          "rejected_retries_are_adjacent_and_linked": true,
+          "saved_points_equal_accepted_callbacks": true
+        },
+        "active_coordinate_name": "temperature_hat",
+        "branch_id": "spine-negative-T-hat-to-210",
+        "checkpoint_vector_keys": [
+          "native_g3__spine-negative-T-hat-to-210__000",
+          "native_g3__spine-negative-T-hat-to-210__001",
+          "native_g3__spine-negative-T-hat-to-210__002",
+          "native_g3__spine-negative-T-hat-to-210__003",
+          "native_g3__spine-negative-T-hat-to-210__004",
+          "native_g3__spine-negative-T-hat-to-210__005",
+          "native_g3__spine-negative-T-hat-to-210__006",
+          "native_g3__spine-negative-T-hat-to-210__007",
+          "native_g3__spine-negative-T-hat-to-210__008"
+        ],
+        "event_partition": {
+          "bootstrap_attempt_count": 1,
+          "final_save_count": 1,
+          "initial_save_count": 1,
+          "loca_accepted_count": 9,
+          "loca_attempt_count": 9,
+          "loca_rejected_count": 0,
+          "regular_save_count": 7
+        },
+        "maximum_native_validation_residual": 7.429772601193056e-13,
+        "maximum_python_same_coordinate_period_relative_error": 7.744772143129285e-13,
+        "period_s_range": [
+          2204.0847125696864,
+          5679.57323053456
+        ],
+        "phase_reference_id": "phase-ref-spine-225",
+        "reached_exact_target": true,
+        "target_coordinate": -0.2
+      },
+      {
+        "accounting_invariants": {
+          "callback_indices_contiguous": true,
+          "exactly_one_accepted_initial_and_final": true,
+          "raw_counts_consistent": true,
+          "regular_attempts_equal_accepted_plus_rejected": true,
+          "rejected_retries_are_adjacent_and_linked": true,
+          "saved_points_equal_accepted_callbacks": true
+        },
+        "active_coordinate_name": "rho",
+        "branch_id": "slice210-negative-rho",
+        "checkpoint_vector_keys": [
+          "native_g3__slice210-negative-rho__000",
+          "native_g3__slice210-negative-rho__001",
+          "native_g3__slice210-negative-rho__002",
+          "native_g3__slice210-negative-rho__003",
+          "native_g3__slice210-negative-rho__004",
+          "native_g3__slice210-negative-rho__005"
+        ],
+        "event_partition": {
+          "bootstrap_attempt_count": 1,
+          "final_save_count": 1,
+          "initial_save_count": 1,
+          "loca_accepted_count": 6,
+          "loca_attempt_count": 6,
+          "loca_rejected_count": 0,
+          "regular_save_count": 4
+        },
+        "maximum_native_validation_residual": 6.428050350754673e-13,
+        "maximum_python_same_coordinate_period_relative_error": 3.2156429667640784e-13,
+        "period_s_range": [
+          5679.573230533752,
+          6140.683936174998
+        ],
+        "phase_reference_id": "phase-ref-slice-210",
+        "reached_exact_target": true,
+        "target_coordinate": -0.15
+      },
+      {
+        "accounting_invariants": {
+          "callback_indices_contiguous": true,
+          "exactly_one_accepted_initial_and_final": true,
+          "raw_counts_consistent": true,
+          "regular_attempts_equal_accepted_plus_rejected": true,
+          "rejected_retries_are_adjacent_and_linked": true,
+          "saved_points_equal_accepted_callbacks": true
+        },
+        "active_coordinate_name": "rho",
+        "branch_id": "slice210-positive-rho",
+        "checkpoint_vector_keys": [
+          "native_g3__slice210-positive-rho__000",
+          "native_g3__slice210-positive-rho__001",
+          "native_g3__slice210-positive-rho__002",
+          "native_g3__slice210-positive-rho__003",
+          "native_g3__slice210-positive-rho__004"
+        ],
+        "event_partition": {
+          "bootstrap_attempt_count": 1,
+          "final_save_count": 1,
+          "initial_save_count": 1,
+          "loca_accepted_count": 5,
+          "loca_attempt_count": 5,
+          "loca_rejected_count": 0,
+          "regular_save_count": 3
+        },
+        "maximum_native_validation_residual": 3.28586183078726e-13,
+        "maximum_python_same_coordinate_period_relative_error": 2.771754385850981e-13,
+        "period_s_range": [
+          5108.978118294895,
+          5679.5732305335205
+        ],
+        "phase_reference_id": "phase-ref-slice-210",
+        "reached_exact_target": true,
+        "target_coordinate": 0.15
+      }
+    ],
+    "native_remesh_restart_smoke_cases": [
+      {
+        "case_id": "adaptive-canonical-g3-n32",
+        "controller_cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "controller_defect_maximum": 0.0007358828938860484,
+        "controller_restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "fixture_path": "adaptive-canonical-g3-n32.txt",
+        "restart": {
+          "attempts": [
+            "h_r_transfer_correct",
+            "h_r_refresh_reference_recorrect",
+            "h_r_rebootstrap_tangent_recorrect"
+          ],
+          "contract": [
+            "fixed-parameter-remesh-restart-v1",
+            "h+r",
+            "collocation-polynomial-transfer-v1",
+            "fixed-parameter-remesh-restart-retry-v1",
+            "72",
+            "80",
+            "3"
+          ],
+          "correction": {
+            "correction_norm": 5.472469882055534e-05,
+            "iterations": 2,
+            "nox_residual_norm": 1.5454386198701272e-14,
+            "nox_status": "converged",
+            "period_s": 2461.604464376329,
+            "status": "accepted"
+          },
+          "gates": {
+            "finite_change": true,
+            "linear": true,
+            "phase": true,
+            "positivity": true,
+            "residual": true,
+            "tangent": true
+          },
+          "graph_rebuilt": true,
+          "linear": {
+            "backend": "KLU2",
+            "numeric_complete": true,
+            "numeric_factorizations": 1,
+            "reported": true,
+            "solve_complete": true,
+            "solves": 1,
+            "symbolic_complete": true,
+            "symbolic_factorizations": 1
+          },
+          "mesh_history": {
+            "new_stage_size": 720,
+            "new_unknown_size": 961,
+            "old_stage_size": 648,
+            "old_unknown_size": 865
+          },
+          "retained_graph_reuse": true,
+          "solution_sha256": "a9d175cad2c7834b9174a60aebed201780b4d130dd1ec3e6915a2be83de8f949",
+          "transfer_residual": {
+            "phase_abs": 0.0,
+            "phase_energy": 32.65450314217796,
+            "stage_max": 1.962063894703305e-05,
+            "stage_rms": 2.1993902011444263e-06,
+            "update_max": 2.2183965390204173e-05,
+            "update_rms": 7.265101440037377e-06
+          }
+        },
+        "restart_executed": true
+      },
+      {
+        "case_id": "adaptive-guard-rho-0-g3-n32",
+        "controller_cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "controller_defect_maximum": 0.0007300552443293067,
+        "controller_restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "fixture_path": "adaptive-guard-rho-0-g3-n32.txt",
+        "restart": {
+          "attempts": [
+            "h_r_transfer_correct",
+            "h_r_refresh_reference_recorrect",
+            "h_r_rebootstrap_tangent_recorrect"
+          ],
+          "contract": [
+            "fixed-parameter-remesh-restart-v1",
+            "h+r",
+            "collocation-polynomial-transfer-v1",
+            "fixed-parameter-remesh-restart-retry-v1",
+            "75",
+            "84",
+            "3"
+          ],
+          "correction": {
+            "correction_norm": 5.030277371165648e-05,
+            "iterations": 2,
+            "nox_residual_norm": 1.6543434215594583e-14,
+            "nox_status": "converged",
+            "period_s": 5718.140409482163,
+            "status": "accepted"
+          },
+          "gates": {
+            "finite_change": true,
+            "linear": true,
+            "phase": true,
+            "positivity": true,
+            "residual": true,
+            "tangent": true
+          },
+          "graph_rebuilt": true,
+          "linear": {
+            "backend": "KLU2",
+            "numeric_complete": true,
+            "numeric_factorizations": 1,
+            "reported": true,
+            "solve_complete": true,
+            "solves": 1,
+            "symbolic_complete": true,
+            "symbolic_factorizations": 1
+          },
+          "mesh_history": {
+            "new_stage_size": 756,
+            "new_unknown_size": 1009,
+            "old_stage_size": 675,
+            "old_unknown_size": 901
+          },
+          "retained_graph_reuse": true,
+          "solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+          "transfer_residual": {
+            "phase_abs": 0.0,
+            "phase_energy": 34.81473536621455,
+            "stage_max": 1.9920571871932037e-05,
+            "stage_rms": 1.7006913817745897e-06,
+            "update_max": 2.1467663050724683e-05,
+            "update_rms": 7.061531854828259e-06
+          }
+        },
+        "restart_executed": true
+      },
+      {
+        "case_id": "adaptive-guard-rho-minus-0.15-g3-n32",
+        "controller_cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "controller_defect_maximum": 0.0007970597921163128,
+        "controller_restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "fixture_path": "adaptive-guard-rho-minus-0.15-g3-n32.txt",
+        "restart": null,
+        "restart_executed": false
+      },
+      {
+        "case_id": "adaptive-guard-rho-plus-0.15-g3-n32",
+        "controller_cycle_decision_actual": [
+          "ordinary_h_r",
+          "continue",
+          "defect_gate_failed"
+        ],
+        "controller_defect_maximum": 0.0007090961123952019,
+        "controller_restart_retry_order_h_plus_r": [
+          "h_r_transfer_correct",
+          "h_r_refresh_reference_recorrect",
+          "h_r_rebootstrap_tangent_recorrect"
+        ],
+        "fixture_path": "adaptive-guard-rho-plus-0.15-g3-n32.txt",
+        "restart": null,
+        "restart_executed": false
+      }
+    ],
+    "not_evaluated_evidence": {
+      "broader_ivp_based": "not_evaluated",
+      "floquet_dependent": "not_evaluated"
+    },
+    "phase_lineage": [
+      {
+        "new_phase_reference_id": "phase-ref-spine-225",
+        "old_phase_reference_id": "phase-ref-episode007-seed",
+        "parent_branch_id": "fixed225-to-spine",
+        "rebuild_lineage": [
+          "Assembler",
+          "ContinuationModelEvaluator",
+          "WeightedThyraGroup",
+          "LOCA::Stepper"
+        ],
+        "restart_index": 0,
+        "verification": {
+          "accepted": true,
+          "backend": "fixed-parameter NOX/KLU2",
+          "linear_backend": "KLU2",
+          "phase_residual_abs": 7.728473969085465e-18,
+          "physical_log_w_identity_abs": 0.0,
+          "physical_temperature_identity_abs": 0.0,
+          "source_derivative_to_reference_max_abs": 0.0,
+          "source_stage_to_reference_max_abs": 0.0,
+          "stage_residual_max": 7.981850601102656e-15,
+          "update_residual_max": 4.107327288484075e-15
+        }
+      },
+      {
+        "new_phase_reference_id": "phase-ref-slice-210",
+        "old_phase_reference_id": "phase-ref-spine-225",
+        "parent_branch_id": "spine-negative-T-hat-to-210",
+        "rebuild_lineage": [
+          "Assembler",
+          "ContinuationModelEvaluator",
+          "WeightedThyraGroup",
+          "LOCA::Stepper"
+        ],
+        "restart_index": 1,
+        "verification": {
+          "accepted": true,
+          "backend": "fixed-parameter NOX/KLU2",
+          "linear_backend": "KLU2",
+          "phase_residual_abs": 1.4173830791313774e-18,
+          "physical_log_w_identity_abs": 0.0,
+          "physical_temperature_identity_abs": 0.0,
+          "source_derivative_to_reference_max_abs": 0.0,
+          "source_stage_to_reference_max_abs": 0.0,
+          "stage_residual_max": 5.986387950826992e-15,
+          "update_residual_max": 4.789110360661594e-15
+        }
+      }
+    ],
+    "runtime_memory_profile_policy": {
+      "deterministic_artifact_records_runtime_identity": true,
+      "dynamic_wall_clock_and_max_rss": "required for full native adaptive run; not sampled into byte-checked smoke artifacts",
+      "native_fixed_mesh_runtime_provenance": {
+        "check_semantics": "--check executes the selected binary and requires byte-identical artifact provenance, including its exact SHA-256; regenerate when build environment changes the executable digest",
+        "cmake_build_type": "build_type_Release",
+        "cmake_source_sha256": "23ce2844e7a6a9dabdac92b175973f93c0b07165d0fe07e5def6a7280a35a88a",
+        "compiler_and_trilinos": [
+          "16.2.0",
+          "Trilinos_17.2.0-dev"
+        ],
+        "emitting_executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+        "emitting_executable_source_fingerprint_sha256": [
+          "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+          "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+          "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+          "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+          "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+          "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+        ],
+        "numpy": "2.4.6",
+        "python": "3.11.15"
+      },
+      "required_full_run_fields": [
+        "segment_wall_clock_s",
+        "segment_cpu_s",
+        "segment_max_rss_kib",
+        "linear_solve_count",
+        "nonlinear_iteration_count"
+      ],
+      "restart_smoke_runtime_provenance": {
+        "compiler_and_trilinos": [
+          "16.2.0",
+          "Trilinos_17.2.0-dev"
+        ],
+        "emitting_executable_source_fingerprints": [
+          "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+          "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+          "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+          "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+          "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+          "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+        ],
+        "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+        "numpy": "2.4.6",
+        "python": "3.11.15",
+        "scipy": "1.17.1"
+      }
+    },
+    "terminal_target_ledger": {
+      "exactly_one_terminal_status_per_target": true,
+      "target_count": 31,
+      "targets": [
+        {
+          "reason": null,
+          "target_id": "move-225K-to-spine-rho0",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": null,
+          "target_id": "spine-210K",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": null,
+          "target_id": "slice-210K-rho--0.15",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": null,
+          "target_id": "slice-210K-rho-+0.15",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-212K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-212K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-212K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-214K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-214K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-214K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-216K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-216K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-216K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-218K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-218K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-218K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-220K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-220K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-220K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-222K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-222K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-222K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "spine-224K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-224K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-224K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": null,
+          "target_id": "spine-225K",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-225K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-225K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": null,
+          "target_id": "spine-226K",
+          "terminal_status": "accepted"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-226K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "target_id": "slice-226K-rho-+0.15",
+          "terminal_status": "failed"
+        }
+      ],
+      "terminal_status_counts": {
+        "accepted": 6,
+        "failed": 25,
+        "near_hopf_stop": 0,
+        "resolution_unresolved": 0,
+        "tripwire_stop": 0
+      }
+    }
+  },
   "source_provenance": {
     "adaptive_fixture_vectors": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_collocation_fixtures_vectors.npz",
@@ -571,19 +1841,43 @@
     },
     "cpp_adaptive_nonuniform_fixture_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json",
-      "sha256": "d922b7aa0500b5eace0fb370075bab89f5e3daa77776c1da13a8bcc399acfac1"
+      "sha256": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab"
     },
     "cpp_higher_order_correction_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_correction_results.json",
-      "sha256": "5fa9685f8f2d0503f334bd5a35f0eba468b9b72fe4ae03c1bc7e5cab6b0fd07c"
+      "sha256": "fa457456c9278f8f795d7e163f5e46c460d748097234b00d33a59bd215dfee5e"
     },
     "manifest_generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py",
-      "sha256": "f04aeb459fea570828bba8e05cceeeee43dc87651d63852c0b65dc4832c0ccb7"
+      "sha256": "766879813369ac07d1f33f0d9509a0f5bbd31d55a679cc681e1622853e99e7eb"
+    },
+    "native_adaptive_one_branch_segment": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
+    },
+    "native_adaptive_one_branch_segment_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py",
+      "sha256": "84d9050506612c9b17c3519702b9badd298e050f512d64d70c958f9d80820699"
+    },
+    "native_adaptive_one_branch_segment_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz",
+      "sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+    },
+    "native_adaptive_restart_smoke": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke.json",
+      "sha256": "59aedaa2ab754a657d79e6724f981c277ab9eed88d375fc01d486d0eb00d3c0e"
+    },
+    "native_adaptive_restart_smoke_generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_restart_smoke.py",
+      "sha256": "139ecdf8c881a0ead453f75ee497ac58aa45cde602a5ed8372fb91e9d17532a2"
+    },
+    "native_adaptive_restart_smoke_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke_vectors.npz",
+      "sha256": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee"
     },
     "native_cli_source": {
       "path": "loca/src/midpoint_orbit_cli.cpp",
-      "sha256": "928db6cb63be005557f0056cf50fb928d1a79a4c1c002362b9bd93c6f0a73a8d"
+      "sha256": "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
     },
     "native_loca_header": {
       "path": "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp",
@@ -591,7 +1885,7 @@
     },
     "native_loca_higher_order_results": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json",
-      "sha256": "9d7c4656169b02e4c45d717101d796aa675488eddf9e8371307c42c507f07d33"
+      "sha256": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd"
     },
     "native_loca_higher_order_vectors": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz",
@@ -606,7 +1900,9 @@
     "broader_ivp_based_evidence": "not_evaluated",
     "fixed_mesh_native_evidence_may_seed_adaptive_run": true,
     "floquet_dependent_evidence": "not_evaluated",
+    "native_adaptive_one_branch_segment_executed": true,
     "native_adaptive_remesh_executed": false,
+    "native_adaptive_remesh_restart_smoke_executed": true,
     "python_adaptive_evidence_not_rebranded_as_native": true
   },
   "vector_artifact": {

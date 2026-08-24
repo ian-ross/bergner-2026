@@ -47,6 +47,10 @@ NATIVE_HIGHER_ORDER = OUTPUT / "native_loca_higher_order_results.json"
 NATIVE_HIGHER_ORDER_VECTORS = OUTPUT / "native_loca_higher_order_vectors.npz"
 CPP_CORRECTION = OUTPUT / "cpp_higher_order_correction_results.json"
 CPP_NONUNIFORM_FIXTURES = OUTPUT / "cpp_adaptive_nonuniform_fixtures/manifest.json"
+ADAPTIVE_RESTART_SMOKE = OUTPUT / "native_adaptive_restart_smoke.json"
+ADAPTIVE_RESTART_SMOKE_VECTORS = OUTPUT / "native_adaptive_restart_smoke_vectors.npz"
+NATIVE_ADAPTIVE_ONE_BRANCH = OUTPUT / "native_adaptive_one_branch_segment.json"
+NATIVE_ADAPTIVE_ONE_BRANCH_VECTORS = OUTPUT / "native_adaptive_one_branch_segment_vectors.npz"
 
 SCHEMA_VERSION = "episode008-native-adaptive-loca-manifest-v1"
 ARTIFACT_KIND = "task068-native-adaptive-loca-remesh-restart-manifest"
@@ -255,7 +259,7 @@ def build_planned_manifest(native: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def parity_summary(native: dict[str, Any], cpp: dict[str, Any], adaptive: dict[str, Any], nonuniform: dict[str, Any]) -> dict[str, Any]:
+def parity_summary(native: dict[str, Any], cpp: dict[str, Any], adaptive: dict[str, Any], nonuniform: dict[str, Any], restart_smoke: dict[str, Any], one_branch: dict[str, Any]) -> dict[str, Any]:
     final_defects = [final_cycle(case)["defect"]["maximum"] for case in adaptive["results"]]
     accepted_cpp = [case for case in cpp["cases"] if case["accepted"]]
     return {
@@ -274,7 +278,25 @@ def parity_summary(native: dict[str, Any], cpp: dict[str, Any], adaptive: dict[s
             "all_projected_from_final_adaptive_cycles": all(case["status"] == "accepted" and case["final_defect_maximum"] < 1e-4 for case in nonuniform["cases"]),
             "schema_version": nonuniform["schema_version"],
             "manifest_sha256": sha(CPP_NONUNIFORM_FIXTURES),
-            "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/solve seams",
+            "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/adaptive-controller/adaptive-restart/solve seams",
+        },
+        "native_adaptive_restart_smoke": {
+            "schema_version": restart_smoke["schema_version"],
+            "controller_case_count": restart_smoke["controller_case_count"],
+            "restart_case_count": restart_smoke["restart_case_count"],
+            "all_restart_gates_passed": all(
+                all(case["restart"]["gates"].values())
+                for case in restart_smoke["cases"] if case.get("restart") is not None
+            ),
+            "source": "checked by tests/test_episode8_native_adaptive_restart_smoke.py as native remesh/rebuild/restart smoke evidence; not the full adaptive spine-and-slices run",
+        },
+        "native_adaptive_one_branch_segment": {
+            "schema_version": one_branch["schema_version"],
+            "selected_branch_id": one_branch["selected_branch_id"],
+            "selected_adaptive_case_id": one_branch["selected_adaptive_case_id"],
+            "all_gates_passed": all(one_branch["gates"].values()),
+            "restart_solution_matches_smoke": one_branch["parity"]["restart_vs_existing_restart_smoke"]["restart_smoke_all_gates_passed"],
+            "source": "checked by tests/test_episode8_native_adaptive_one_branch_segment.py as the first integrated one-branch adaptive segment; not the full adaptive spine-and-slices run",
         },
         "evidence_boundary": (
             "Native parity here is fixed-mesh three-stage LOCA and fixed-parameter C++ correction. "
@@ -284,12 +306,171 @@ def parity_summary(native: dict[str, Any], cpp: dict[str, Any], adaptive: dict[s
     }
 
 
+def build_segment_restart_artifacts(
+    native: dict[str, Any],
+    adaptive: dict[str, Any],
+    restart_smoke: dict[str, Any],
+    one_branch: dict[str, Any],
+    planned: dict[str, Any],
+) -> dict[str, Any]:
+    events_by_branch: dict[str, list[dict[str, Any]]] = {
+        branch["branch_id"]: [event for event in native["events"] if event.get("branch_id") == branch["branch_id"]]
+        for branch in native["branches"]
+    }
+    points_by_branch: dict[str, list[dict[str, Any]]] = {
+        branch["branch_id"]: [point for point in native["points"] if point["branch_id"] == branch["branch_id"]]
+        for branch in native["branches"]
+    }
+    native_branch_ledgers = []
+    for branch in native["branches"]:
+        branch_id = branch["branch_id"]
+        events = events_by_branch[branch_id]
+        points = points_by_branch[branch_id]
+        loca_events = [event for event in events if event.get("backend") == "LOCA::Stepper"]
+        native_branch_ledgers.append({
+            "branch_id": branch_id,
+            "phase_reference_id": branch["phase_reference_id"],
+            "active_coordinate_name": branch["active_coordinate_name"],
+            "target_coordinate": branch["target_coordinate"],
+            "reached_exact_target": branch["reached_exact_target"],
+            "event_partition": {
+                "bootstrap_attempt_count": sum(event.get("event_type") == "native_branch_bootstrap_attempt" for event in events),
+                "loca_attempt_count": len(loca_events),
+                "loca_accepted_count": sum(event.get("status") == "accepted" for event in loca_events),
+                "loca_rejected_count": sum(event.get("status") == "rejected" for event in loca_events),
+                "initial_save_count": sum(event.get("save_role") == "initial" for event in loca_events),
+                "regular_save_count": sum(event.get("save_role") == "regular" for event in loca_events),
+                "final_save_count": sum(event.get("save_role") == "final" for event in loca_events),
+            },
+            "accounting_invariants": branch["accounting_invariants"],
+            "checkpoint_vector_keys": [point["vector_key"] for point in points],
+            "period_s_range": [min(point["period_s"] for point in points), max(point["period_s"] for point in points)],
+            "maximum_native_validation_residual": max(
+                max(point["native_validation"]["stage_residual_max"], point["native_validation"]["update_residual_max"])
+                for point in points
+            ),
+            "maximum_python_same_coordinate_period_relative_error": max(
+                point["python_same_coordinate_period_relative_error"] for point in points
+            ),
+        })
+
+    adaptive_histories = []
+    for case in adaptive["results"]:
+        adaptive_histories.append({
+            "case_id": case["case_id"],
+            "terminal_status": case["terminal_status"],
+            "converged": case["converged"],
+            "cycle_count": case["cycle_count"],
+            "start_interval_count": case["start_interval_count"],
+            "final_interval_count": case["final_interval_count"],
+            "final_defect_maximum": case["final_defect_maximum"],
+            "final_period_s": case["final_period_s"],
+            "remesh_events": [{
+                "cycle_index": event["cycle_index"],
+                "kind": event["kind"],
+                "old_interval_count": event["old_interval_count"],
+                "new_interval_count": event["new_interval_count"],
+                "marked_count": len(event["marked_elements"]),
+                "movement_status": "stalled" if event["movement"]["stalled"] else "accepted",
+                "movement_beta": event["movement"]["beta"],
+                "correction_accepted": event["correction_accepted"],
+                "phase_refresh": event["phase_refresh"],
+                "restart_plan": [attempt["name"] for attempt in event["restart_plan"]],
+            } for event in case["remesh_events"]],
+        })
+
+    restart_cases = []
+    for case in restart_smoke["cases"]:
+        restart = case.get("restart")
+        restart_cases.append({
+            "case_id": case["case_id"],
+            "fixture_path": case["fixture_path"],
+            "controller_defect_maximum": case["controller"]["defect_maximum"],
+            "controller_cycle_decision_actual": case["controller"]["cycle_decision_actual"],
+            "controller_restart_retry_order_h_plus_r": case["controller"]["restart_retry_order_h_plus_r"],
+            "restart_executed": restart is not None,
+            "restart": None if restart is None else {
+                "contract": restart["contract"],
+                "mesh_history": {
+                    "old_unknown_size": restart["rebuild"]["old_unknown_size"],
+                    "new_unknown_size": restart["rebuild"]["new_unknown_size"],
+                    "old_stage_size": restart["rebuild"]["old_stage_size"],
+                    "new_stage_size": restart["rebuild"]["new_stage_size"],
+                },
+                "graph_rebuilt": restart["graph"]["rebuilt"],
+                "retained_graph_reuse": restart["graph"]["retained_reuse"],
+                "attempts": restart["attempts"],
+                "transfer_residual": restart["transfer_residual"],
+                "correction": restart["correction"],
+                "linear": restart["linear"],
+                "gates": restart["gates"],
+                "solution_sha256": restart["solution_sha256"],
+            },
+        })
+
+    refresh_events = [event for event in native["events"] if event.get("event_type") == "native_phase_reference_refresh"]
+    return {
+        "artifact_purpose": "deterministic segment/restart ledger for native adaptive remesh orchestration review",
+        "native_fixed_mesh_branch_ledgers": native_branch_ledgers,
+        "adaptive_reference_mesh_histories": adaptive_histories,
+        "native_remesh_restart_smoke_cases": restart_cases,
+        "native_adaptive_one_branch_segment": {
+            "artifact_path": NATIVE_ADAPTIVE_ONE_BRANCH.relative_to(ROOT).as_posix(),
+            "artifact_sha256": sha(NATIVE_ADAPTIVE_ONE_BRANCH),
+            "vector_artifact_sha256": sha(NATIVE_ADAPTIVE_ONE_BRANCH_VECTORS),
+            "branch_id": one_branch["selected_branch_id"],
+            "adaptive_case_id": one_branch["selected_adaptive_case_id"],
+            "remesh_boundary": one_branch["native_fixed_mesh_segment"]["remesh_boundary"],
+            "event_partition": one_branch["native_fixed_mesh_segment"]["event_partition"],
+            "controller_cycle_decision_actual": one_branch["adaptive_controller"]["cycle_decision_actual"],
+            "restart_attempts": one_branch["restart"]["attempts"],
+            "gates": one_branch["gates"],
+            "restart_gates": one_branch["restart"]["gates"],
+            "resumable_state": one_branch["resumable_state"],
+        },
+        "phase_lineage": [{
+            "restart_index": event["restart_index"],
+            "parent_branch_id": event["parent_branch_id"],
+            "old_phase_reference_id": event["old_phase_reference_id"],
+            "new_phase_reference_id": event["new_phase_reference_id"],
+            "rebuild_lineage": event["rebuild_lineage"],
+            "verification": event["verification"],
+        } for event in refresh_events],
+        "terminal_target_ledger": {
+            "target_count": planned["target_count"],
+            "terminal_status_counts": planned["terminal_status_counts"],
+            "exactly_one_terminal_status_per_target": (
+                len({target["target_id"] for target in planned["targets"]}) == planned["target_count"]
+                and sum(planned["terminal_status_counts"].values()) == planned["target_count"]
+            ),
+            "targets": [{
+                "target_id": target["target_id"],
+                "terminal_status": target["terminal_status"],
+                "reason": target.get("reason"),
+            } for target in planned["targets"]],
+        },
+        "runtime_memory_profile_policy": {
+            "deterministic_artifact_records_runtime_identity": True,
+            "native_fixed_mesh_runtime_provenance": native["runtime_provenance"],
+            "restart_smoke_runtime_provenance": restart_smoke["runtime_provenance"],
+            "dynamic_wall_clock_and_max_rss": "required for full native adaptive run; not sampled into byte-checked smoke artifacts",
+            "required_full_run_fields": ["segment_wall_clock_s", "segment_cpu_s", "segment_max_rss_kib", "linear_solve_count", "nonlinear_iteration_count"],
+        },
+        "not_evaluated_evidence": {
+            "broader_ivp_based": "not_evaluated",
+            "floquet_dependent": "not_evaluated",
+        },
+    }
+
+
 def build_manifest() -> tuple[bytes, bytes]:
     fixtures = load_json(ADAPTIVE_FIXTURES)
     adaptive = load_json(ADAPTIVE_QUALIFICATION)
     native = load_json(NATIVE_HIGHER_ORDER)
     cpp = load_json(CPP_CORRECTION)
     nonuniform = load_json(CPP_NONUNIFORM_FIXTURES)
+    restart_smoke = load_json(ADAPTIVE_RESTART_SMOKE)
+    one_branch = load_json(NATIVE_ADAPTIVE_ONE_BRANCH)
 
     if fixtures["method_version"] != ADAPTIVE_METHOD_VERSION:
         raise RuntimeError("adaptive fixture method version mismatch")
@@ -301,6 +482,10 @@ def build_manifest() -> tuple[bytes, bytes]:
         raise RuntimeError("unexpected C++ correction schema")
     if nonuniform["schema_version"] != "episode008-cpp-adaptive-nonuniform-fixtures-v1":
         raise RuntimeError("unexpected C++ nonuniform fixture schema")
+    if restart_smoke["schema_version"] != "episode008-native-adaptive-restart-smoke-v1":
+        raise RuntimeError("unexpected native adaptive restart smoke schema")
+    if one_branch["schema_version"] != "episode008-native-adaptive-one-branch-segment-v1":
+        raise RuntimeError("unexpected native adaptive one-branch schema")
 
     vector_bytes, vector_manifest = build_vector_artifact(adaptive, native)
     vector_manifest["sha256"] = hashlib.sha256(vector_bytes).hexdigest()
@@ -324,6 +509,8 @@ def build_manifest() -> tuple[bytes, bytes]:
         ),
         "truthfulness_policy": {
             "native_adaptive_remesh_executed": False,
+            "native_adaptive_remesh_restart_smoke_executed": True,
+            "native_adaptive_one_branch_segment_executed": True,
             "fixed_mesh_native_evidence_may_seed_adaptive_run": True,
             "python_adaptive_evidence_not_rebranded_as_native": True,
             "broader_ivp_based_evidence": "not_evaluated",
@@ -367,13 +554,14 @@ def build_manifest() -> tuple[bytes, bytes]:
             "qualification_source_sha256": sha(ADAPTIVE_QUALIFICATION),
         },
         "planned_run_manifest": planned,
+        "segment_restart_artifacts": build_segment_restart_artifacts(native, adaptive, restart_smoke, one_branch, planned),
         "near_hopf_evidence": {
             "status": "not_reached_in_this_preparatory_manifest",
             "required_future_recording": ["amplitude", "period", "terminal_status", "approach_coordinate", "near_hopf_stop_reason"],
             "minimum_reliable_point_target_when_reached": 5,
             "fit_review_deferred_to": "TASK-069",
         },
-        "parity": parity_summary(native, cpp, adaptive, nonuniform),
+        "parity": parity_summary(native, cpp, adaptive, nonuniform, restart_smoke, one_branch),
         "resumability": {
             "completion_state": "pre_run_manifest_ready",
             "checkpoint_arrays": "first/last native fixed-mesh checkpoints and final Python adaptive meshes are in vector_artifact",
@@ -390,6 +578,12 @@ def build_manifest() -> tuple[bytes, bytes]:
             "cpp_higher_order_correction_results": source_record(CPP_CORRECTION),
             "cpp_adaptive_nonuniform_fixture_manifest": source_record(CPP_NONUNIFORM_FIXTURES),
             "cpp_adaptive_nonuniform_fixture_generator": source_record(EPISODE / "scripts/generate_cpp_adaptive_nonuniform_fixtures.py"),
+            "native_adaptive_restart_smoke": source_record(ADAPTIVE_RESTART_SMOKE),
+            "native_adaptive_restart_smoke_vectors": source_record(ADAPTIVE_RESTART_SMOKE_VECTORS),
+            "native_adaptive_restart_smoke_generator": source_record(EPISODE / "scripts/generate_native_adaptive_restart_smoke.py"),
+            "native_adaptive_one_branch_segment": source_record(NATIVE_ADAPTIVE_ONE_BRANCH),
+            "native_adaptive_one_branch_segment_vectors": source_record(NATIVE_ADAPTIVE_ONE_BRANCH_VECTORS),
+            "native_adaptive_one_branch_segment_generator": source_record(EPISODE / "scripts/generate_native_adaptive_one_branch_segment.py"),
             "adaptive_orbits_source": source_record(ROOT / "src/bergner_spichtinger_2026/adaptive_orbits.py"),
             "native_loca_header": source_record(ROOT / "loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp"),
             "native_orbit_header": source_record(ROOT / "loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp"),
