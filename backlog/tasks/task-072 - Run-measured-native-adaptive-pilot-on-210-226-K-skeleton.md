@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 15:28'
+updated_date: '2026-08-24 16:08'
 labels:
   - episode-008
   - loca
@@ -26,10 +26,10 @@ Execute a real measured native adaptive pilot over the TASK-068 provisional 210-
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 All 31 provisional skeleton targets have exactly one backend-emitted terminal status with reasons, not relabeled fixed-mesh or Python evidence
-- [ ] #2 Accepted points and remesh restarts pass residual, phase, positivity, finite-change, tangent, linear-solve, defect, and period/orbit convergence gates required by the schemas
-- [ ] #3 Runtime/resource fields are measured, source/build/checkpoint identities are recorded, and the run can be regenerated, checked, or safely resumed without stale checkpoint reuse
-- [ ] #4 Unaccepted targets remain explicit unresolved/gap records and no interpolation is used to fill them
+- [x] #1 All 31 provisional skeleton targets have exactly one backend-emitted terminal status with reasons, not relabeled fixed-mesh or Python evidence
+- [x] #2 Accepted points and remesh restarts pass residual, phase, positivity, finite-change, tangent, linear-solve, defect, and period/orbit convergence gates required by the schemas
+- [x] #3 Runtime/resource fields are measured, source/build/checkpoint identities are recorded, and the run can be regenerated, checked, or safely resumed without stale checkpoint reuse
+- [x] #4 Unaccepted targets remain explicit unresolved/gap records and no interpolation is used to fill them
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -49,4 +49,21 @@ Execute a real measured native adaptive pilot over the TASK-068 provisional 210-
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-072: moved task to In Progress and assigned to @iross. Reviewed TASK-069/TASK-070/TASK-071 dependencies, Episode 008 README, TASK-069 review, TASK-071 resource profile, the provisional spine-and-slices generator, and the reusable native adaptive driver. Tool check: backlog, uv, cmake, ninja, /usr/bin/time, and Python are available; no `loca-build/bs2026_midpoint_orbit` binary is currently present, so implementation should begin by building or selecting the native executable.
+
+Implemented TASK-072 measured pilot artifacts and conservative unresolved-gap policy. Added `generate_native_adaptive_measured_pilot.py`, generated `outputs/native_adaptive_measured_pilot.json`, the resumable `outputs/native_adaptive_measured_pilot/` run/checkpoints, production-v1 events and run-metadata artifacts, documentation, README links, and focused tests.
+
+Scientific truthfulness decision: the measured `spine-210K` native remesh/restart seam records residual/phase/positivity/finite-change/tangent/KLU2 evidence, but the exact native restart vector does not yet have backend-bound independent defect and period/orbit convergence gates. Therefore no target is accepted in TASK-072; all 31 skeleton targets have backend-emitted `resolution_unresolved` terminal statuses with reasons and explicit gap records. No fixed-mesh-only or Python-only evidence is relabeled, and no interpolation is used.
+
+Regenerated TASK-071 resource-profile artifacts after README provenance changed, regenerated TASK-072 artifacts, and regenerated the TASK-068 final reconciliation manifest after README provenance changed.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py --check`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py --check`
+- `uv run pytest tests/test_episode8_native_adaptive_measured_pilot.py tests/test_episode8_production_schema.py tests/test_episode8_native_adaptive_resource_profile.py tests/test_episode8_native_adaptive_final_reconciliation.py -q`: 30 passed
+- `uv run pytest -q`: 344 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
+
+Read-only review initially flagged an overclaim that `spine-210K` was accepted using TASK-067/Python adaptive gates for a different mesh; fixed by downgrading all targets to explicit `resolution_unresolved`. Follow-up read-only review reported no blockers.
 <!-- SECTION:NOTES:END -->
