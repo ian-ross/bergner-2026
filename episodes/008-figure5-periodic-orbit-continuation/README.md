@@ -7,6 +7,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 ## Current documentation
 
 - [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) records the binding initial-run decisions and the production questions explicitly deferred until the post-run evidence review.
+- [`docs/task068-final-evidence-reconciliation.md`](docs/task068-final-evidence-reconciliation.md) summarizes the completed TASK-068 native adaptive evidence, failures, resource-cost boundaries, and TASK-069 handoff.
 
 ## Frozen Episode 007 bootstrap seed
 
@@ -301,6 +302,19 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_
 [`outputs/native_adaptive_python_validation.json`](outputs/native_adaptive_python_validation.json) deterministically selects the unique accepted native points from the provisional driver across branch starts/midpoints/finals, spine/slice/anchor contexts, and the accepted pre-remesh boundary. Near-Hopf approach points are explicitly absent because the provisional run did not reach them. Each selected point records the independent Python same-coordinate correction contract, seed provenance, period relative error, weighted orbit distance, residual/phase/positivity/linear gates, mesh comparison, tolerance version, native vector fingerprint, and source fingerprints. [`outputs/native_adaptive_python_validation_vectors.npz`](outputs/native_adaptive_python_validation_vectors.npz) stores only selected native recorder vectors for checksum/provenance; those vectors are not used as Python correction seeds.
 
 All 32 selected fixed-mesh native points pass the versioned `2e-7` period and weighted-orbit tolerances by a wide margin (maximum observed errors approximately `1.58e-12` and `2.84e-12`). The post-remesh restart point is recorded separately as native C++ NOX/KLU2 restart evidence without relabeling it as independent Python validation. This artifact is a TASK-068 evidence-ledger supplement for TASK-069 review, not a claim that failed provisional targets have become native adaptive successes.
+
+## TASK-068 final native adaptive evidence reconciliation
+
+[`scripts/generate_native_adaptive_final_reconciliation.py`](scripts/generate_native_adaptive_final_reconciliation.py) creates the final TASK-068 sink manifest:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py --check
+```
+
+[`outputs/native_adaptive_final_reconciliation.json`](outputs/native_adaptive_final_reconciliation.json) reconciles the structural remesh/restart manifest, restart smoke, one-branch integrated remesh, provisional spine-and-slices run manifest and checkpoints, independent Python validation, vector artifacts, source fingerprints, terminal target ledger, resume state, and parent TASK-068 acceptance-criteria review. It is a sink artifact, so upstream manifests do not reference it and the provenance graph remains acyclic.
+
+The final evidence remains intentionally bounded. The provisional target ledger covers the `T=225 K` move to the spine, both temperature directions over the `210--226 K` skeleton, exact `T=210 K` and `T=225 K` anchors, and signed `rho = +/-0.15` slices for every skeleton temperature. Six targets are accepted and twenty-five retain explicit failed terminal statuses with reasons. Adaptive reference meshes converge below the `1e-4` defect gate, accepted native points/restarts pass the recorded residual/phase/positivity/linear/restart gates, and all selected same-coordinate Python validations pass their `2e-7` tolerances. Near-Hopf approach points are not reached; amplitude/period/coordinate diagnostics, fit/connection policy, production runtime profiling, broader IVP checks, and Floquet-dependent evidence remain TASK-069 scope.
 
 ## TASK-062 higher-order/adaptive design
 

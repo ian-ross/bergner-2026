@@ -30,111 +30,251 @@
       },
       "cap_escalations": "native driver records mesh_cap_escalation entries; no TASK-067 qualification case reached the soft cap",
       "phase_refresh_triggers": [
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers",
-        "case_id",
-        "cycle_index",
-        "triggers"
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 0,
+          "triggers": [
+            "initial_reference"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 1,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 2,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 3,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 4,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 5,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 6,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "canonical-g3-n32",
+          "cycle_index": 7,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 0,
+          "triggers": [
+            "initial_reference"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 1,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 2,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 3,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 4,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 5,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 6,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 7,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-0-g3-n32",
+          "cycle_index": 8,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 0,
+          "triggers": [
+            "initial_reference"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 1,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 2,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 3,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 4,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 5,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 6,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 7,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-minus-0.15-g3-n32",
+          "cycle_index": 8,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 0,
+          "triggers": [
+            "initial_reference"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 1,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 2,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 3,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 4,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 5,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 6,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 7,
+          "triggers": [
+            "remesh"
+          ]
+        },
+        {
+          "case_id": "guard-rho-plus-0.15-g3-n32",
+          "cycle_index": 8,
+          "triggers": [
+            "remesh"
+          ]
+        }
       ],
       "radau_triggers": {
         "broader_ivp_based": {
@@ -365,7 +505,7 @@
       "schema_version": "episode008-cpp-adaptive-nonuniform-fixtures-v1",
       "source": "checked by tests/test_episode8_cpp_adaptive_nonuniform.py against native C++ evaluate/loca-contract/adaptive-transfer/adaptive-controller/adaptive-restart/solve seams"
     },
-    "evidence_boundary": "Native parity here is fixed-mesh three-stage LOCA and fixed-parameter C++ correction. Adaptive remesh transfer/restart intermediates are from TASK-067 Python fixtures until the native adaptive run is executed.",
+    "evidence_boundary": "Native parity here includes fixed-mesh three-stage LOCA, fixed-parameter C++ correction, Adaptive remesh nonuniform controller/transfer/restart seams, and one integrated native accepted remesh/restart segment. The full provisional spine-and-slices driver run is summarized in native_adaptive_spine_slices_run.json, while final production fitting remains TASK-069 scope.",
     "native_adaptive_one_branch_segment": {
       "all_gates_passed": true,
       "restart_solution_matches_smoke": true,
@@ -762,7 +902,7 @@
     ]
   },
   "schema_version": "episode008-native-adaptive-loca-manifest-v1",
-  "scope": "TASK-068 start artifact: native fixed-mesh LOCA plus Python adaptive fixtures reconciled into a resumable adaptive-run manifest; not final Figure 5 production data.",
+  "scope": "TASK-068 structural manifest: native fixed-mesh LOCA, adaptive parity fixtures, restart smoke evidence, one integrated remesh/restart segment, and provisional target terminal statuses reconciled for final review; not final Figure 5 production data.",
   "segment_restart_artifacts": {
     "adaptive_reference_mesh_histories": [
       {
@@ -2053,7 +2193,7 @@
     },
     "manifest_generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py",
-      "sha256": "a5dc5ec678ec6fa72460d954872523a8150413250a406019911da761da92dc2c"
+      "sha256": "45707868597d1ea06518163485d6767c7356ff0dcf20bb366f5758ad4a767d41"
     },
     "native_adaptive_driver_source": {
       "path": "src/bergner_spichtinger_2026/native_adaptive_driver.py",

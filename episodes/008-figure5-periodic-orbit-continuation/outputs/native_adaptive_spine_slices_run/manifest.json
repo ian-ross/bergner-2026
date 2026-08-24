@@ -48,7 +48,7 @@
     "target_manifest_sha256": "6b1a86b2609148ead5795a0be8e434df5a893161daefd95bb9261babeec55940",
     "vector_fingerprints": {
       "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
-      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
@@ -58,7 +58,7 @@
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
     }
   },
-  "fingerprints_sha256": "4a7eb2169c6b1065e9fdaaccf2462ddedfebb1a17dac874a66ed4b40651b8893",
+  "fingerprints_sha256": "090df0cc68e9ba97f29f6d6bb04d88ee9373e1588955cd7e4821ee2b5d9a40c8",
   "lifecycle_states": [
     "pending",
     "running_fixed_mesh",
@@ -108,7 +108,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0000__move-225K-to-spine-rho0__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "f120738f4ba650efd086caa36b02cfe09e9bdfd880612b39cea7226b15ec91d7",
+      "checkpoint_sha256": "70ea4609e5f752b4c796f8c4a1a07bd9f2842c95ad4d6f14c947be3a5c231c98",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 8,
@@ -624,7 +624,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0001__spine-210K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "0f65d4af5dd3caad08dbc08842bb1537cae445582f89dc9a02b162944f2fdfe1",
+      "checkpoint_sha256": "7a8801328ff72ad9d55fdca9d860d55ab84ac03468ba951d44769f23e343bd0a",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 9,
@@ -1582,7 +1582,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0002__spine-210K__cycle-01/checkpoint.json",
-      "checkpoint_sha256": "9cf8e76e0fdf5a6041806fe8e752dc853e9b0b7a23ddc120f5a8965c0bdada38",
+      "checkpoint_sha256": "422bdb0daccd0799b8a26afbbf8e83199036cf1e48ffa4a7c7994aceed774171",
       "cycle_index": 1,
       "diagnostics": {
         "aliasing_events": [],
@@ -1755,7 +1755,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0003__slice-210K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "7c26fcaf6a15957bc5d171c675059d9649375a0e87987eef90250c6d614c4635",
+      "checkpoint_sha256": "18389029ddfe7d29f249aa1373eb4583aac7921d866addca3aedc69c2f26e1e7",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 6,
@@ -2180,7 +2180,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0004__slice-210K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "d32e75cba318d5969cc855d284601d1300a8d16531a28fa69dca2c0b13b5c293",
+      "checkpoint_sha256": "4ed92e30cdceb7665e99b1b77145bf35fab1a63b63cffbb7309061f722fa5eeb",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 5,
@@ -2558,7 +2558,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0005__spine-212K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "3cb82b1fe3fa78f2b962f7c87b0d324b5ca6fb774962fed24ea4f5cd42a563df",
+      "checkpoint_sha256": "936a7a6f53059409d7dccf96a3195e2ebb18176bf8a06cba1ece1426f96916c4",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -2710,7 +2710,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0006__slice-212K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "557115ee43fecdcc823a11411bfde7184ebfdd96e78c43d683369dc257096b2c",
+      "checkpoint_sha256": "1f3cd912ce009aebc15a679845f5dfe16d853cf521d0a4e4dc6a1b118f22dc13",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -2862,7 +2862,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0007__slice-212K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "d7cce678a7ac37330c733afd66bc4f892fbb98182c4b93aadf5ec2d7947995b2",
+      "checkpoint_sha256": "9f851251d63f41afbf815f50ceffe19a45333e36c8caa5c68a85f35bbe37d36a",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3014,7 +3014,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0008__spine-214K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "19134372bfdb1a9144ff9c0322347bd15ea4ec9beecf2e320cc39cba91daf9ed",
+      "checkpoint_sha256": "85dc0ba232e000051b601cc2644bf1d81c7318374c2a38ab29e90f864ed36751",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3166,7 +3166,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0009__slice-214K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "7d63eca8ebd470dbf588294d7a3cdf2369e31d329d3c2ac1eeb0b3da3533f460",
+      "checkpoint_sha256": "6b9f7a119ea0e452a11d835b169c721beb4485b6792a7984d224d7d576c78fb2",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3318,7 +3318,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0010__slice-214K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "1b197ee81e67c4ea94cef79e978986675dc94bd66b0beb8fda9e3d597bda58ae",
+      "checkpoint_sha256": "6d8be829bff83c0d668b9fafcb570ed032f7bf0d2cb32c24a51fbe16702d7d99",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3470,7 +3470,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0011__spine-216K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "6b87b82aa2f1d1e1b119cb31e6feb104a96aea9f6c10f82df02448d60c39c5f0",
+      "checkpoint_sha256": "91d63966e80ad66356174165e114b1bdfe2a618a164c2c1dd03cb0f07d95a1db",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3622,7 +3622,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0012__slice-216K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "ae1839f5cea7b06e2421900b969230dc5d09e5d2cfe5090aad7e847d82029c0b",
+      "checkpoint_sha256": "a1d3f0e8312d070cd664e46c313cdd3dc839b11b0bb115f22d62050cfb228316",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3774,7 +3774,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0013__slice-216K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "64347c3762d4cbe9c6e7f4e7528452e1f748699b61d68fda61d64b7433a22090",
+      "checkpoint_sha256": "9f5c38d55010293eafaec8e3e6f23f3c78eb1266b3a103ff336d12fa862a517a",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -3926,7 +3926,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0014__spine-218K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "613e7edc904daf3093f1ef7d21e05bced17b218efa3a92c558bd54d6e44e8f7e",
+      "checkpoint_sha256": "06286a395947513b72e456d53320e136c33a2cf5c18b6de3b1aa6fb4e13394dc",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4078,7 +4078,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0015__slice-218K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "21c69336e96833d68f2d22e3462ca842e78d355a86d4af83aa634876692d7773",
+      "checkpoint_sha256": "4f1a9573aaa4a40a3d9df6ed77ead665b2b18d519d3689471c4d5c535e082fed",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4230,7 +4230,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0016__slice-218K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "7b69dcf1ee6d322fb664991c7b072601afa7cd3713a2406b32cf82816601f536",
+      "checkpoint_sha256": "2e13d4ed370eb5b154a7a9e8dc4ac220f321a583e6581e34aad7a45de6cecfe9",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4382,7 +4382,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0017__spine-220K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "9a5840528b9820acc1af14aeab2e89d8f0b0366e597cbb8342bd2250efa72cd4",
+      "checkpoint_sha256": "ce40df04f8e705eed4fa0a443b7afaeca73a2a43351331f47b55344396f84bfd",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4534,7 +4534,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0018__slice-220K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "1d39b26ecafc2545a0aefa0077c550e63f725af07bbd4b7c5ca296565c2775ea",
+      "checkpoint_sha256": "972cd7a71a325620aa5ef720766edc37b9b046c3d69522aa79c885d71742b0eb",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4686,7 +4686,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0019__slice-220K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "0c454c34eb207507241e679d139121f447cf7e21411be323563aec12ff4b0d60",
+      "checkpoint_sha256": "aa6ffff407a699dcd80952bb330095ec3be1aeef33e185f2096c79714ceeb684",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4838,7 +4838,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0020__spine-222K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "f1154449d43ab805e7ab23446d1ff1d5e409d98483e168616636b9b37b4ea97d",
+      "checkpoint_sha256": "94ef1d6d4deea2cc72c2cf89ce7a86c2e75d83a13732bf524b8aaccb145fc00e",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -4990,7 +4990,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0021__slice-222K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "030700f2ed5114409b92ccf2c85efa857bdb100c8cc271804db33b62d3086eb0",
+      "checkpoint_sha256": "737c3bc663ac21e9d6d5cebb00579aa5afc4a899eac8b0bdcc48a76d7db9ffb4",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -5142,7 +5142,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0022__slice-222K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "4201434b3a97276d1400a313f2e44aa15b651689f8d1649dc53cd468eb36dce7",
+      "checkpoint_sha256": "2ca984a88f917e4ee2a3c2e68410ddf5eb0e767b4934a35d88fd35586d8c8efa",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -5294,7 +5294,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0023__spine-224K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "58099e7dc5291a7ebd8e0e07af223ea7efeb160f985756cccc228e4ac0fd3c2e",
+      "checkpoint_sha256": "0a7dd12673cea4ee05125a358ccf3f21653101762c5709f68f28fd2c8b68a0d4",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -5446,7 +5446,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0024__slice-224K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "5ef4b352d800762ef4d3fb8120359045f87abac4962f4b9cf7797c3f13f77b7a",
+      "checkpoint_sha256": "1732a14ffefe43ce5662833c235081a769ee307b07b7dec8d953ea64ea24ed78",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -5598,7 +5598,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0025__slice-224K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "ad76f968c9a4f95ab4ad9fd09781be533cf22a337e76d9f3bb26c2f02a0b2b28",
+      "checkpoint_sha256": "0133077c091ea0f646ba82a80c1b81e7770ac6ddf2e44c8904b84944f09bd973",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -5749,7 +5749,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0026__spine-225K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "3365fcaa4e8990a7d0927f0d6a89e040cd11b304d505adbf415e08cbc66de6b9",
+      "checkpoint_sha256": "7e4e41e33a69c779c4649bf02654f525992a124a2a320cdfc2e841aa60fc7401",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 8,
@@ -6264,7 +6264,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0027__slice-225K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "73d0c7bfb2ef44ad9d366878c95e151c828d99165685f6b874a9726ad87c14f5",
+      "checkpoint_sha256": "5146c7103e892e1d25598adc3ec3939056f97f7d47ad0123c300471d636c3dd4",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -6416,7 +6416,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0028__slice-225K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "22fc14a1a64ad0107bcd4eed1577711a890a7850f8cce2cb04fa2d47141191a8",
+      "checkpoint_sha256": "645f7c72203d3dce5ce4a9e9ee534227a55affec729c75a002ea73776743ade0",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -6567,7 +6567,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0029__spine-226K__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "dff92890e57b6d68b0df92250721e0a2f59d02174734df1a3949770728ea44a2",
+      "checkpoint_sha256": "92b02f42a2c9450956cf4a1712e52ee59b8fbfbf054b77aa64183ba77b688fd9",
       "cycle_index": 0,
       "diagnostics": {
         "accepted_point_count": 4,
@@ -6890,7 +6890,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0030__slice-226K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "b0bf302dffad6e4e4664f147523919af2191a6fc5bc3664ab3084755bbc39f01",
+      "checkpoint_sha256": "2890c1c5f21f7584f6ce9147854aa495b9407853cb1f5c9c188cfb02758b318d",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],
@@ -7042,7 +7042,7 @@
       },
       "checkpoint_complete": true,
       "checkpoint_path": "checkpoints/segment-0031__slice-226K-rho--0.15__cycle-00/checkpoint.json",
-      "checkpoint_sha256": "d12165bfd8d7f10d830be058763c871f1452494b182b27a3acd2a7f77b814a00",
+      "checkpoint_sha256": "130be85265bc2e050d49702de1c7ed653b9a5ced01a299f76927067a76f39a25",
       "cycle_index": 0,
       "diagnostics": {
         "aliasing_events": [],

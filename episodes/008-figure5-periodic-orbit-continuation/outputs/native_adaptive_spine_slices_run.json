@@ -8,7 +8,7 @@
       "broader_ivp_based": "not_evaluated_through_TASK_068",
       "floquet_dependent": "not_evaluated_through_TASK_068"
     },
-    "preparatory_failure_policy_coverage_sha256": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8",
+    "preparatory_failure_policy_coverage_sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
     "preparatory_single_valued_tripwire_version": "single-valued-tripwire-v1",
     "radau_trigger_channel_present": true,
     "rejection_reasons_preserved_for_failed_targets": true,
@@ -73,7 +73,7 @@
     },
     "input_files": {
       "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
-      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
@@ -96,7 +96,7 @@
     },
     "preparatory_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
-      "sha256": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8"
+      "sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce"
     }
   },
   "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py [--check]",
@@ -114,7 +114,7 @@
       "latest_complete_segment_id": "segment-0031__slice-226K-rho-+0.15__cycle-00"
     },
     "segment_count": 32,
-    "sha256": "93c5e7f9024958686b36c25d55e6c2ec6606f8d10c52919735b72de2389b7e4f",
+    "sha256": "1a3b149a217e2301ca6e8a9e267d81e5a9e2523d4b2aa21ce29ecdc3df6c8a1f",
     "status": "complete"
   },
   "schema_version": "episode008-native-adaptive-spine-slices-run-v1",

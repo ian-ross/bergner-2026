@@ -1,0 +1,1406 @@
+{
+  "artifact_kind": "task068-final-native-adaptive-evidence-reconciliation",
+  "failure_and_deferred_evidence": {
+    "failure_policy_coverage": {
+      "artifact_purpose": "TASK-068.05 explicit failure-policy/tripwire coverage ledger",
+      "diagnostic_channels": {
+        "aliasing_events": {
+          "event_count": 1,
+          "persistent_case_ids": [
+            "guard-rho-minus-0.15-g3-n32"
+          ],
+          "source": "TASK-067 adaptive qualification fixtures"
+        },
+        "cap_escalations": "native driver records mesh_cap_escalation entries; no TASK-067 qualification case reached the soft cap",
+        "phase_refresh_triggers": [
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 0,
+            "triggers": [
+              "initial_reference"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 1,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 2,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 3,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 4,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 5,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 6,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "canonical-g3-n32",
+            "cycle_index": 7,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 0,
+            "triggers": [
+              "initial_reference"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 1,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 2,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 3,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 4,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 5,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 6,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 7,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-0-g3-n32",
+            "cycle_index": 8,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 0,
+            "triggers": [
+              "initial_reference"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 1,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 2,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 3,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 4,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 5,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 6,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 7,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-minus-0.15-g3-n32",
+            "cycle_index": 8,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 0,
+            "triggers": [
+              "initial_reference"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 1,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 2,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 3,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 4,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 5,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 6,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 7,
+            "triggers": [
+              "remesh"
+            ]
+          },
+          {
+            "case_id": "guard-rho-plus-0.15-g3-n32",
+            "cycle_index": 8,
+            "triggers": [
+              "remesh"
+            ]
+          }
+        ],
+        "radau_triggers": {
+          "broader_ivp_based": {
+            "not_evaluated_through_TASK_068": true,
+            "unique_recorded_values": [
+              "'not_evaluated_through_TASK_068'"
+            ]
+          },
+          "defect_below_1e-4_but_convergence_failed": {
+            "not_evaluated_through_TASK_068": null,
+            "unique_recorded_values": [
+              "False"
+            ]
+          },
+          "floquet_dependent": {
+            "not_evaluated_through_TASK_068": true,
+            "unique_recorded_values": [
+              "'not_evaluated_through_TASK_068'"
+            ]
+          },
+          "nonphysical_value": {
+            "not_evaluated_through_TASK_068": null,
+            "unique_recorded_values": [
+              "False"
+            ]
+          },
+          "period_or_defect_stagnation_before_mesh_cap": {
+            "not_evaluated_through_TASK_068": null,
+            "unique_recorded_values": [
+              "False"
+            ]
+          },
+          "polynomial_ringing": {
+            "not_evaluated_through_TASK_068": null,
+            "unique_recorded_values": [
+              "'not_evaluated'"
+            ]
+          }
+        },
+        "rejection_reasons": {
+          "failed_target_count": 25,
+          "failed_targets_have_reasons": true
+        },
+        "single_valued_tripwire": {
+          "documented_policy": "stop slice automation on tangent sign change, normalized-coordinate reversal above 1e-4, or incompatible duplicate coordinate",
+          "fixture_status": "synthetic_policy_tests; no native full-run slice tripwire fixture observed yet",
+          "version": "single-valued-tripwire-v1"
+        }
+      },
+      "native_driver_synthetic_test_coverage": {
+        "covered_paths": [
+          "failed h+r transfer/correction restart with preserved rejection reasons",
+          "pure-r deterministic retry order",
+          "mesh cap escalation diagnostic channel",
+          "phase refresh trigger preservation",
+          "single-valued tangent-sign/reversal/duplicate-coordinate tripwires",
+          "process interruption and resume without rerunning completed checkpoints",
+          "stale source/configuration checkpoint rejection",
+          "fixed-mesh no-remesh regression path"
+        ],
+        "native_branch_smoke_coverage": [
+          "tests/test_episode8_native_adaptive_restart_smoke.py",
+          "tests/test_episode8_native_adaptive_one_branch_segment.py",
+          "tests/test_episode8_native_adaptive_spine_slices_run.py"
+        ],
+        "tangent_only_rebootstrap_coverage": "tests/test_episode8_adaptive_collocation.py::test_restart_gates_and_tangent_only_rebootstrap_are_deterministic",
+        "test_file": "tests/test_episode8_native_adaptive_driver.py"
+      },
+      "near_hopf_policy": {
+        "diagnostics_status": "not_evaluated",
+        "fit_review_deferred_to": "TASK-069",
+        "fixture_status": "fixture_missing",
+        "minimum_reliable_point_target_when_reached": 5,
+        "reason": "preparatory manifest and provisional scripted run do not reach near-Hopf approach points",
+        "required_when_reached": [
+          "amplitude",
+          "period_s",
+          "coordinates",
+          "diagnostics",
+          "terminal_status"
+        ]
+      },
+      "truthful_deferred_evidence": {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "floquet_dependent": "not_evaluated_through_TASK_068"
+      }
+    },
+    "near_hopf_evidence": {
+      "approach_point_count": 0,
+      "approach_points": [],
+      "fit_and_connection_policy_deferred_to": "TASK-069",
+      "reason": "The provisional run terminates accepted fixed-mesh/restart anchors and explicit failed targets before any near-Hopf approach is reached.",
+      "reliable_point_target_when_reachable": 5,
+      "required_fields_when_reached": [
+        "amplitude",
+        "period_s",
+        "coordinates",
+        "diagnostics",
+        "terminal_status"
+      ],
+      "status": "not_reached_in_provisional_run",
+      "terminal_statuses_observed": [
+        "accepted",
+        "failed"
+      ]
+    },
+    "run_failure_policy_diagnostics": {
+      "aliasing_channel_present": true,
+      "cap_escalation_channel_present": true,
+      "failed_targets_have_reasons": true,
+      "not_evaluated_evidence": {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "floquet_dependent": "not_evaluated_through_TASK_068"
+      },
+      "preparatory_failure_policy_coverage_sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
+      "preparatory_single_valued_tripwire_version": "single-valued-tripwire-v1",
+      "radau_trigger_channel_present": true,
+      "rejection_reasons_preserved_for_failed_targets": true,
+      "single_valued_tripwire_channel_present": true,
+      "source": "NativeAdaptiveDriver normalized per-segment diagnostics plus preparatory TASK-068.05 coverage ledger"
+    },
+    "task069_handoff_items": [
+      "quadratic/quartic near-Hopf fit review",
+      "final connection/gap policy",
+      "production C++ adaptive backend policy if stricter evidence is required",
+      "broader IVP-based and Floquet-dependent evidence design",
+      "runtime/resource profiling with non-placeholder wall-clock, CPU, and RSS fields"
+    ]
+  },
+  "input_artifacts": [
+    {
+      "artifact_kind": "task068-native-adaptive-loca-remesh-restart-manifest",
+      "name": "native_adaptive_loca_manifest",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
+      "role": "structural remesh/restart and preparatory evidence ledger",
+      "schema_version": "episode008-native-adaptive-loca-manifest-v1",
+      "sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce"
+    },
+    {
+      "name": "native_adaptive_loca_manifest_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz",
+      "role": "preparatory vector artifact",
+      "sha256": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69"
+    },
+    {
+      "artifact_kind": "task068-native-adaptive-restart-smoke",
+      "name": "native_adaptive_restart_smoke",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke.json",
+      "role": "native controller/restart seam smoke evidence",
+      "schema_version": "episode008-native-adaptive-restart-smoke-v1",
+      "sha256": "59aedaa2ab754a657d79e6724f981c277ab9eed88d375fc01d486d0eb00d3c0e"
+    },
+    {
+      "name": "native_adaptive_restart_smoke_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke_vectors.npz",
+      "role": "restart-smoke vector artifact",
+      "sha256": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee"
+    },
+    {
+      "artifact_kind": "task06801-native-adaptive-one-branch-segment-runner",
+      "name": "native_adaptive_one_branch_segment",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "role": "integrated one-branch accepted remesh/restart slice",
+      "schema_version": "episode008-native-adaptive-one-branch-segment-v1",
+      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
+    },
+    {
+      "name": "native_adaptive_one_branch_segment_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz",
+      "role": "one-branch vector artifact",
+      "sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+    },
+    {
+      "artifact_kind": "task06803-provisional-native-adaptive-spine-slices-run",
+      "name": "native_adaptive_spine_slices_summary",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
+      "role": "provisional driver-run summary",
+      "schema_version": "episode008-native-adaptive-spine-slices-run-v1",
+      "sha256": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e"
+    },
+    {
+      "artifact_kind": "native-adaptive-driver-run-manifest",
+      "name": "native_adaptive_spine_slices_run_manifest",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
+      "role": "resumable driver run manifest",
+      "schema_version": "episode008-native-adaptive-driver-v1",
+      "sha256": "1a3b149a217e2301ca6e8a9e267d81e5a9e2523d4b2aa21ce29ecdc3df6c8a1f"
+    },
+    {
+      "artifact_kind": "task06804-independent-python-validation-of-native-adaptive-points",
+      "name": "native_adaptive_python_validation",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation.json",
+      "role": "independent same-coordinate Python validation",
+      "schema_version": "episode008-native-adaptive-python-validation-v1",
+      "sha256": "2ce350c4de17f10fc1562600fd525241b61fce6bb848f9f2502e3d549927b141"
+    },
+    {
+      "name": "native_adaptive_python_validation_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation_vectors.npz",
+      "role": "Python-validation vector fingerprints",
+      "sha256": "611cd47ac0ef98e8ee2f96b781ca061c2772f1fecbeb28637c5667c10f1aa574"
+    },
+    {
+      "artifact_kind": "cpp-gauss-adaptive-nonuniform-fixtures",
+      "name": "cpp_adaptive_nonuniform_fixture_manifest",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json",
+      "role": "C++ nonuniform parity fixture manifest",
+      "schema_version": "episode008-cpp-adaptive-nonuniform-fixtures-v1",
+      "sha256": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab"
+    },
+    {
+      "artifact_kind": "independently_executed_native_loca_three_stage_gauss_branches",
+      "name": "native_loca_higher_order_results",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json",
+      "role": "native fixed-mesh LOCA input evidence",
+      "schema_version": "episode8-native-loca-higher-order-v1",
+      "sha256": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd"
+    },
+    {
+      "name": "native_loca_higher_order_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz",
+      "role": "native fixed-mesh LOCA vector artifact",
+      "sha256": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    }
+  ],
+  "manifest_identity": {
+    "deterministic_serialization": "canonical sorted-key JSON with trailing newline",
+    "generator_path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py",
+    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_final_reconciliation.json",
+    "self_hash_policy": "no in-payload sha256; tests compute file hash externally"
+  },
+  "mesh_convergence_validation": {
+    "accepted_points_without_independent_python_validation": [
+      {
+        "active_coordinate": -0.2,
+        "active_coordinate_name": "temperature_hat",
+        "mesh_comparison": {
+          "post_restart_interval_count": 84,
+          "pre_transfer_interval_count": 75,
+          "stage_count": 3
+        },
+        "native_vector_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "period_s": 5718.140409482163,
+        "point_id": "spine-210K-post-remesh-restart",
+        "reason": "post-remesh restart evidence is native C++ NOX/KLU2 restart-smoke parity; it is recorded separately and is not relabeled as Python validation",
+        "restart_gates": {
+          "finite_change": true,
+          "linear": true,
+          "phase": true,
+          "positivity": true,
+          "residual": true,
+          "tangent": true
+        },
+        "segment_id": "segment-0002__spine-210K__cycle-01",
+        "target_id": "spine-210K",
+        "validation_status": "not_independent_python_corrected_in_this_artifact",
+        "vector_key": "restart__adaptive-guard-rho-0-g3-n32__corrected_solution"
+      }
+    ],
+    "adaptive_reference_mesh_histories": [
+      {
+        "case_id": "canonical-g3-n32",
+        "cycle_count": 8,
+        "final_defect_maximum": 8.049250611379694e-05,
+        "final_interval_count": 72,
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-0-g3-n32",
+        "cycle_count": 9,
+        "final_defect_maximum": 6.525956307952771e-05,
+        "final_interval_count": 75,
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-minus-0.15-g3-n32",
+        "cycle_count": 9,
+        "final_defect_maximum": 5.117321340268515e-05,
+        "final_interval_count": 81,
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      },
+      {
+        "case_id": "guard-rho-plus-0.15-g3-n32",
+        "cycle_count": 9,
+        "final_defect_maximum": 7.322899879974985e-05,
+        "final_interval_count": 75,
+        "start_interval_count": 32,
+        "terminal_status": "converged"
+      }
+    ],
+    "all_adaptive_reference_cases_converged": true,
+    "cpp_nonuniform_all_cases_project_final_adaptive_cycles": true,
+    "cpp_nonuniform_fixture_case_count": 4,
+    "final_defect_maxima": {
+      "canonical-g3-n32": 8.049250611379694e-05,
+      "guard-rho-0-g3-n32": 6.525956307952771e-05,
+      "guard-rho-minus-0.15-g3-n32": 5.117321340268515e-05,
+      "guard-rho-plus-0.15-g3-n32": 7.322899879974985e-05
+    },
+    "final_interval_counts": {
+      "canonical-g3-n32": 72,
+      "guard-rho-0-g3-n32": 75,
+      "guard-rho-minus-0.15-g3-n32": 81,
+      "guard-rho-plus-0.15-g3-n32": 75
+    },
+    "native_gate_summary": {
+      "accepted_point_count": 40,
+      "accepted_segment_count": 7,
+      "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+      "all_restart_gates_pass_residual_phase_positivity_finite_change_linear_tangent": true,
+      "restart_count": 1,
+      "unresolved_rejected_capped_tripwire_outcomes_recorded": [
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0005__spine-212K__cycle-00",
+          "target_id": "spine-212K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0006__slice-212K-rho--0.15__cycle-00",
+          "target_id": "slice-212K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0007__slice-212K-rho-+0.15__cycle-00",
+          "target_id": "slice-212K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0008__spine-214K__cycle-00",
+          "target_id": "spine-214K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0009__slice-214K-rho--0.15__cycle-00",
+          "target_id": "slice-214K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0010__slice-214K-rho-+0.15__cycle-00",
+          "target_id": "slice-214K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0011__spine-216K__cycle-00",
+          "target_id": "spine-216K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0012__slice-216K-rho--0.15__cycle-00",
+          "target_id": "slice-216K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0013__slice-216K-rho-+0.15__cycle-00",
+          "target_id": "slice-216K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0014__spine-218K__cycle-00",
+          "target_id": "spine-218K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0015__slice-218K-rho--0.15__cycle-00",
+          "target_id": "slice-218K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0016__slice-218K-rho-+0.15__cycle-00",
+          "target_id": "slice-218K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0017__spine-220K__cycle-00",
+          "target_id": "spine-220K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0018__slice-220K-rho--0.15__cycle-00",
+          "target_id": "slice-220K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0019__slice-220K-rho-+0.15__cycle-00",
+          "target_id": "slice-220K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0020__spine-222K__cycle-00",
+          "target_id": "spine-222K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0021__slice-222K-rho--0.15__cycle-00",
+          "target_id": "slice-222K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0022__slice-222K-rho-+0.15__cycle-00",
+          "target_id": "slice-222K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0023__spine-224K__cycle-00",
+          "target_id": "spine-224K",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0024__slice-224K-rho--0.15__cycle-00",
+          "target_id": "slice-224K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0025__slice-224K-rho-+0.15__cycle-00",
+          "target_id": "slice-224K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0027__slice-225K-rho--0.15__cycle-00",
+          "target_id": "slice-225K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0028__slice-225K-rho-+0.15__cycle-00",
+          "target_id": "slice-225K-rho-+0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0030__slice-226K-rho--0.15__cycle-00",
+          "target_id": "slice-226K-rho--0.15",
+          "terminal_status": "failed"
+        },
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "segment_id": "segment-0031__slice-226K-rho-+0.15__cycle-00",
+          "target_id": "slice-226K-rho-+0.15",
+          "terminal_status": "failed"
+        }
+      ]
+    },
+    "post_remesh_restart_not_rebranded_as_python_validation": true,
+    "python_validation_summary": {
+      "all_selected_points_pass": true,
+      "all_validation_failures_report_reasons": true,
+      "failed_count": 0,
+      "maximum_period_relative_error": 1.5783465568548391e-12,
+      "maximum_weighted_orbit_distance": 2.8330217299948895e-12,
+      "nonvalidated_accepted_point_count": 1,
+      "passed_count": 32,
+      "selected_point_count": 32
+    },
+    "python_validation_tolerances": {
+      "identical_coordinate": 0.0,
+      "period_relative": 2e-07,
+      "phase_abs": 1e-10,
+      "residual_max": 1e-09,
+      "version": "task06804-python-validation-tolerances-v1",
+      "weighted_orbit": 2e-07
+    }
+  },
+  "parent_acceptance_criteria_review": [
+    {
+      "boundary": "Production C++ adaptive backend coverage remains provisional and reviewer-facing, not final Figure 5 production policy.",
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "native_adaptive_one_branch_segment accepted remesh boundary and restart gates",
+        "native_adaptive_driver segment lifecycle/retry/resume contract",
+        "native_adaptive_spine_slices_run accepted remesh segment and checkpointed restart"
+      ],
+      "parent_ac": 1,
+      "review_status": "satisfied_by_slice_evidence"
+    },
+    {
+      "boundary": "TASK-067 Python fixtures supply reference policy where native full-run fixtures do not exist.",
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "cpp_adaptive_nonuniform_fixtures parity bundle",
+        "native adaptive restart-smoke controller/restart seams",
+        "failure-policy synthetic/native-driver coverage"
+      ],
+      "parent_ac": 2,
+      "review_status": "satisfied_by_component_and_policy_evidence"
+    },
+    {
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "preparatory segment/restart ledger",
+        "provisional run driver manifest with checkpoints",
+        "source/vector/checkpoint hashes and resume state in this sink manifest"
+      ],
+      "parent_ac": 3,
+      "review_status": "satisfied_by_manifest_reconciliation"
+    },
+    {
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "32 stratified native points pass Python validation",
+        "focused tests cover nonuniform parity, restart recovery, resume, terminal manifest coverage, and fixed-mesh regressions",
+        "generator --check commands pass for all TASK-068 artifacts"
+      ],
+      "parent_ac": 4,
+      "review_status": "satisfied_by_validation_and_tests"
+    },
+    {
+      "checked_for_parent_closure": true,
+      "deferred_to_TASK_069": "quadratic/quartic fit review and final connection/gap policy",
+      "evidence": [
+        "near-Hopf status: not_reached_in_provisional_run",
+        "required amplitude/period/coordinate/diagnostic fields and five-point target are recorded for TASK-069 when reachable"
+      ],
+      "parent_ac": 5,
+      "review_status": "satisfied_with_truthful_not_reached_boundary"
+    },
+    {
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "accepted points/restarts pass residual, phase, positivity, linear, finite-change, and tangent gates",
+        "failed targets preserve reasons and failed/unresolved evidence is not suppressed",
+        "broader IVP and Floquet evidence are explicitly not_evaluated through TASK-068"
+      ],
+      "parent_ac": 6,
+      "review_status": "satisfied_by_gate_and_failure_policy_ledger"
+    },
+    {
+      "checked_for_parent_closure": true,
+      "evidence": [
+        "31 targets cover T=225 spine move, 210--226 K skeleton, exact anchors, and signed rho slices",
+        "each target has exactly one accepted or failed terminal status with reason when failed"
+      ],
+      "parent_ac": 7,
+      "review_status": "satisfied_by_terminal_target_ledger"
+    }
+  ],
+  "phase_lineage": [
+    {
+      "new_phase_reference_id": "phase-ref-spine-225",
+      "old_phase_reference_id": "phase-ref-episode007-seed",
+      "parent_branch_id": "fixed225-to-spine",
+      "rebuild_lineage": [
+        "Assembler",
+        "ContinuationModelEvaluator",
+        "WeightedThyraGroup",
+        "LOCA::Stepper"
+      ],
+      "restart_index": 0,
+      "verification": {
+        "accepted": true,
+        "backend": "fixed-parameter NOX/KLU2",
+        "linear_backend": "KLU2",
+        "phase_residual_abs": 7.728473969085465e-18,
+        "physical_log_w_identity_abs": 0.0,
+        "physical_temperature_identity_abs": 0.0,
+        "source_derivative_to_reference_max_abs": 0.0,
+        "source_stage_to_reference_max_abs": 0.0,
+        "stage_residual_max": 7.981850601102656e-15,
+        "update_residual_max": 4.107327288484075e-15
+      }
+    },
+    {
+      "new_phase_reference_id": "phase-ref-slice-210",
+      "old_phase_reference_id": "phase-ref-spine-225",
+      "parent_branch_id": "spine-negative-T-hat-to-210",
+      "rebuild_lineage": [
+        "Assembler",
+        "ContinuationModelEvaluator",
+        "WeightedThyraGroup",
+        "LOCA::Stepper"
+      ],
+      "restart_index": 1,
+      "verification": {
+        "accepted": true,
+        "backend": "fixed-parameter NOX/KLU2",
+        "linear_backend": "KLU2",
+        "phase_residual_abs": 1.4173830791313774e-18,
+        "physical_log_w_identity_abs": 0.0,
+        "physical_temperature_identity_abs": 0.0,
+        "source_derivative_to_reference_max_abs": 0.0,
+        "source_stage_to_reference_max_abs": 0.0,
+        "stage_residual_max": 5.986387950826992e-15,
+        "update_residual_max": 4.789110360661594e-15
+      }
+    }
+  ],
+  "provenance_policy": {
+    "final_manifest_is_sink": true,
+    "input_graph_acyclic": true,
+    "self_reference_allowed": false,
+    "upstream_artifacts_must_not_reference_final_manifest": true
+  },
+  "remesh_restart_reconciliation": {
+    "accepted_boundary_policy": "stop only at accepted native points before any h/r rebuild",
+    "full_rebuild_lineage": [
+      "Tpetra::Map",
+      "Tpetra::CrsGraph",
+      "Tpetra::CrsMatrix",
+      "Thyra model",
+      "NOX group",
+      "KLU2 LOWS",
+      "WeightedThyraGroup",
+      "LOCA::Stepper"
+    ],
+    "one_branch_all_gates_passed": true,
+    "one_branch_transfer_vector_keys": [
+      "controller__adaptive-guard-rho-0-g3-n32__defect_combined",
+      "controller__adaptive-guard-rho-0-g3-n32__monitor_target_boundaries",
+      "controller__adaptive-guard-rho-0-g3-n32__r_movement_boundaries",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_000",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_001",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_002",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_003",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_004",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_005",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_006",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_007",
+      "native_fixed_mesh__spine-negative-T-hat-to-210__point_008",
+      "restart__adaptive-guard-rho-0-g3-n32__corrected_solution",
+      "transfer__adaptive-guard-rho-0-g3-n32__destination_boundaries",
+      "transfer__adaptive-guard-rho-0-g3-n32__transferred_phase_derivatives",
+      "transfer__adaptive-guard-rho-0-g3-n32__transferred_phase_values",
+      "transfer__adaptive-guard-rho-0-g3-n32__transferred_tangent",
+      "transfer__adaptive-guard-rho-0-g3-n32__transferred_unknowns"
+    ],
+    "provisional_run_remesh_segment_count": 1,
+    "provisional_run_remesh_segments": [
+      {
+        "linear_backend": "KLU2",
+        "rejected_remesh_boundary_count": 0,
+        "remesh_kind": "h+r",
+        "restart_accepted": true,
+        "restart_gates": {
+          "finite_change": true,
+          "linear": true,
+          "phase": true,
+          "positivity": true,
+          "residual": true,
+          "tangent": true
+        },
+        "segment_id": "segment-0001__spine-210K__cycle-00",
+        "target_id": "spine-210K"
+      }
+    ],
+    "restart_smoke_all_gates_passed": true,
+    "restart_smoke_case_count": 2,
+    "restart_smoke_graph_rebuild_identity": [
+      {
+        "case_id": "adaptive-canonical-g3-n32",
+        "graph_rebuilt": true,
+        "new_unknown_size": 961,
+        "old_unknown_size": 865,
+        "retained_graph_reuse": true
+      },
+      {
+        "case_id": "adaptive-guard-rho-0-g3-n32",
+        "graph_rebuilt": true,
+        "new_unknown_size": 1009,
+        "old_unknown_size": 901,
+        "retained_graph_reuse": true
+      }
+    ],
+    "retry_order_h_plus_r": [
+      "h_r_transfer_correct",
+      "h_r_refresh_reference_recorrect",
+      "h_r_rebootstrap_tangent_recorrect"
+    ],
+    "retry_order_pure_r": [
+      "pure_r_transfer_correct",
+      "pure_r_refresh_reference_recorrect",
+      "pure_r_rebootstrap_tangent_recorrect"
+    ]
+  },
+  "runtime_resource_reconciliation": {
+    "native_fixed_mesh_runtime_provenance": {
+      "check_semantics": "--check executes the selected binary and requires byte-identical artifact provenance, including its exact SHA-256; regenerate when build environment changes the executable digest",
+      "cmake_build_type": "build_type_Release",
+      "cmake_source_sha256": "23ce2844e7a6a9dabdac92b175973f93c0b07165d0fe07e5def6a7280a35a88a",
+      "compiler_and_trilinos": [
+        "16.2.0",
+        "Trilinos_17.2.0-dev"
+      ],
+      "emitting_executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+      "emitting_executable_source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "numpy": "2.4.6",
+      "python": "3.11.15"
+    },
+    "provisional_run_resource_accounting": {
+      "max_rss_kib": 0,
+      "segment_cpu_s": 0.0,
+      "segment_wall_clock_s": 0.0
+    },
+    "provisional_run_resource_fields_are_deterministic_placeholders": true,
+    "required_full_run_fields": [
+      "segment_wall_clock_s",
+      "segment_cpu_s",
+      "segment_max_rss_kib",
+      "linear_solve_count",
+      "nonlinear_iteration_count"
+    ],
+    "restart_smoke_runtime_provenance": {
+      "compiler_and_trilinos": [
+        "16.2.0",
+        "Trilinos_17.2.0-dev"
+      ],
+      "emitting_executable_source_fingerprints": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "executable_sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4",
+      "numpy": "2.4.6",
+      "python": "3.11.15",
+      "scipy": "1.17.1"
+    },
+    "run_manifest_segment_count": 32,
+    "run_manifest_status": "complete"
+  },
+  "schema_version": "episode008-native-adaptive-final-reconciliation-v1",
+  "scope": "TASK-068 final evidence reconciliation across native adaptive slices; this is reviewer-facing closure evidence and not final Figure 5 production data or TASK-069 fitting policy.",
+  "segment_checkpoint_reconciliation": {
+    "all_segment_checkpoint_files_exist_and_hash_match": true,
+    "checkpoint_count": 32,
+    "checkpoints": [
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0000__move-225K-to-spine-rho0__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "70ea4609e5f752b4c796f8c4a1a07bd9f2842c95ad4d6f14c947be3a5c231c98",
+        "remesh_kind": null,
+        "segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+        "target_id": "move-225K-to-spine-rho0",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0001__spine-210K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "7a8801328ff72ad9d55fdca9d860d55ab84ac03468ba951d44769f23e343bd0a",
+        "remesh_kind": "h+r",
+        "segment_id": "segment-0001__spine-210K__cycle-00",
+        "target_id": "spine-210K",
+        "terminal_status": "continue"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0002__spine-210K__cycle-01/checkpoint.json",
+        "checkpoint_sha256": "422bdb0daccd0799b8a26afbbf8e83199036cf1e48ffa4a7c7994aceed774171",
+        "remesh_kind": null,
+        "segment_id": "segment-0002__spine-210K__cycle-01",
+        "target_id": "spine-210K",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0003__slice-210K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "18389029ddfe7d29f249aa1373eb4583aac7921d866addca3aedc69c2f26e1e7",
+        "remesh_kind": null,
+        "segment_id": "segment-0003__slice-210K-rho--0.15__cycle-00",
+        "target_id": "slice-210K-rho--0.15",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0004__slice-210K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "4ed92e30cdceb7665e99b1b77145bf35fab1a63b63cffbb7309061f722fa5eeb",
+        "remesh_kind": null,
+        "segment_id": "segment-0004__slice-210K-rho-+0.15__cycle-00",
+        "target_id": "slice-210K-rho-+0.15",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0005__spine-212K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "936a7a6f53059409d7dccf96a3195e2ebb18176bf8a06cba1ece1426f96916c4",
+        "remesh_kind": null,
+        "segment_id": "segment-0005__spine-212K__cycle-00",
+        "target_id": "spine-212K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0006__slice-212K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "1f3cd912ce009aebc15a679845f5dfe16d853cf521d0a4e4dc6a1b118f22dc13",
+        "remesh_kind": null,
+        "segment_id": "segment-0006__slice-212K-rho--0.15__cycle-00",
+        "target_id": "slice-212K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0007__slice-212K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "9f851251d63f41afbf815f50ceffe19a45333e36c8caa5c68a85f35bbe37d36a",
+        "remesh_kind": null,
+        "segment_id": "segment-0007__slice-212K-rho-+0.15__cycle-00",
+        "target_id": "slice-212K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0008__spine-214K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "85dc0ba232e000051b601cc2644bf1d81c7318374c2a38ab29e90f864ed36751",
+        "remesh_kind": null,
+        "segment_id": "segment-0008__spine-214K__cycle-00",
+        "target_id": "spine-214K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0009__slice-214K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "6b9f7a119ea0e452a11d835b169c721beb4485b6792a7984d224d7d576c78fb2",
+        "remesh_kind": null,
+        "segment_id": "segment-0009__slice-214K-rho--0.15__cycle-00",
+        "target_id": "slice-214K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0010__slice-214K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "6d8be829bff83c0d668b9fafcb570ed032f7bf0d2cb32c24a51fbe16702d7d99",
+        "remesh_kind": null,
+        "segment_id": "segment-0010__slice-214K-rho-+0.15__cycle-00",
+        "target_id": "slice-214K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0011__spine-216K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "91d63966e80ad66356174165e114b1bdfe2a618a164c2c1dd03cb0f07d95a1db",
+        "remesh_kind": null,
+        "segment_id": "segment-0011__spine-216K__cycle-00",
+        "target_id": "spine-216K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0012__slice-216K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "a1d3f0e8312d070cd664e46c313cdd3dc839b11b0bb115f22d62050cfb228316",
+        "remesh_kind": null,
+        "segment_id": "segment-0012__slice-216K-rho--0.15__cycle-00",
+        "target_id": "slice-216K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0013__slice-216K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "9f5c38d55010293eafaec8e3e6f23f3c78eb1266b3a103ff336d12fa862a517a",
+        "remesh_kind": null,
+        "segment_id": "segment-0013__slice-216K-rho-+0.15__cycle-00",
+        "target_id": "slice-216K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0014__spine-218K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "06286a395947513b72e456d53320e136c33a2cf5c18b6de3b1aa6fb4e13394dc",
+        "remesh_kind": null,
+        "segment_id": "segment-0014__spine-218K__cycle-00",
+        "target_id": "spine-218K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0015__slice-218K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "4f1a9573aaa4a40a3d9df6ed77ead665b2b18d519d3689471c4d5c535e082fed",
+        "remesh_kind": null,
+        "segment_id": "segment-0015__slice-218K-rho--0.15__cycle-00",
+        "target_id": "slice-218K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0016__slice-218K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "2e13d4ed370eb5b154a7a9e8dc4ac220f321a583e6581e34aad7a45de6cecfe9",
+        "remesh_kind": null,
+        "segment_id": "segment-0016__slice-218K-rho-+0.15__cycle-00",
+        "target_id": "slice-218K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0017__spine-220K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "ce40df04f8e705eed4fa0a443b7afaeca73a2a43351331f47b55344396f84bfd",
+        "remesh_kind": null,
+        "segment_id": "segment-0017__spine-220K__cycle-00",
+        "target_id": "spine-220K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0018__slice-220K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "972cd7a71a325620aa5ef720766edc37b9b046c3d69522aa79c885d71742b0eb",
+        "remesh_kind": null,
+        "segment_id": "segment-0018__slice-220K-rho--0.15__cycle-00",
+        "target_id": "slice-220K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0019__slice-220K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "aa6ffff407a699dcd80952bb330095ec3be1aeef33e185f2096c79714ceeb684",
+        "remesh_kind": null,
+        "segment_id": "segment-0019__slice-220K-rho-+0.15__cycle-00",
+        "target_id": "slice-220K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0020__spine-222K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "94ef1d6d4deea2cc72c2cf89ce7a86c2e75d83a13732bf524b8aaccb145fc00e",
+        "remesh_kind": null,
+        "segment_id": "segment-0020__spine-222K__cycle-00",
+        "target_id": "spine-222K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0021__slice-222K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "737c3bc663ac21e9d6d5cebb00579aa5afc4a899eac8b0bdcc48a76d7db9ffb4",
+        "remesh_kind": null,
+        "segment_id": "segment-0021__slice-222K-rho--0.15__cycle-00",
+        "target_id": "slice-222K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0022__slice-222K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "2ca984a88f917e4ee2a3c2e68410ddf5eb0e767b4934a35d88fd35586d8c8efa",
+        "remesh_kind": null,
+        "segment_id": "segment-0022__slice-222K-rho-+0.15__cycle-00",
+        "target_id": "slice-222K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0023__spine-224K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "0a7dd12673cea4ee05125a358ccf3f21653101762c5709f68f28fd2c8b68a0d4",
+        "remesh_kind": null,
+        "segment_id": "segment-0023__spine-224K__cycle-00",
+        "target_id": "spine-224K",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0024__slice-224K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "1732a14ffefe43ce5662833c235081a769ee307b07b7dec8d953ea64ea24ed78",
+        "remesh_kind": null,
+        "segment_id": "segment-0024__slice-224K-rho--0.15__cycle-00",
+        "target_id": "slice-224K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0025__slice-224K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "0133077c091ea0f646ba82a80c1b81e7770ac6ddf2e44c8904b84944f09bd973",
+        "remesh_kind": null,
+        "segment_id": "segment-0025__slice-224K-rho-+0.15__cycle-00",
+        "target_id": "slice-224K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0026__spine-225K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "7e4e41e33a69c779c4649bf02654f525992a124a2a320cdfc2e841aa60fc7401",
+        "remesh_kind": null,
+        "segment_id": "segment-0026__spine-225K__cycle-00",
+        "target_id": "spine-225K",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0027__slice-225K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "5146c7103e892e1d25598adc3ec3939056f97f7d47ad0123c300471d636c3dd4",
+        "remesh_kind": null,
+        "segment_id": "segment-0027__slice-225K-rho--0.15__cycle-00",
+        "target_id": "slice-225K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0028__slice-225K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "645f7c72203d3dce5ce4a9e9ee534227a55affec729c75a002ea73776743ade0",
+        "remesh_kind": null,
+        "segment_id": "segment-0028__slice-225K-rho-+0.15__cycle-00",
+        "target_id": "slice-225K-rho-+0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0029__spine-226K__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "92b02f42a2c9450956cf4a1712e52ee59b8fbfbf054b77aa64183ba77b688fd9",
+        "remesh_kind": null,
+        "segment_id": "segment-0029__spine-226K__cycle-00",
+        "target_id": "spine-226K",
+        "terminal_status": "accepted"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0030__slice-226K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "2890c1c5f21f7584f6ce9147854aa495b9407853cb1f5c9c188cfb02758b318d",
+        "remesh_kind": null,
+        "segment_id": "segment-0030__slice-226K-rho--0.15__cycle-00",
+        "target_id": "slice-226K-rho--0.15",
+        "terminal_status": "failed"
+      },
+      {
+        "checkpoint_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/checkpoints/segment-0031__slice-226K-rho--0.15__cycle-00/checkpoint.json",
+        "checkpoint_sha256": "130be85265bc2e050d49702de1c7ed653b9a5ced01a299f76927067a76f39a25",
+        "remesh_kind": null,
+        "segment_id": "segment-0031__slice-226K-rho-+0.15__cycle-00",
+        "target_id": "slice-226K-rho-+0.15",
+        "terminal_status": "failed"
+      }
+    ],
+    "event_partition_rollup": {
+      "accepted_point_count": 40,
+      "accepted_segment_count": 7,
+      "failed_or_unresolved_outcome_count": 25,
+      "restart_count": 1
+    },
+    "lifecycle_states": [
+      "pending",
+      "running_fixed_mesh",
+      "remesh_pending",
+      "restart_pending",
+      "accepted",
+      "unresolved",
+      "tripwire_stop",
+      "near_hopf_stop",
+      "failed"
+    ],
+    "resume": {
+      "complete_checkpoint_count": 32,
+      "latest_complete_segment_id": "segment-0031__slice-226K-rho-+0.15__cycle-00"
+    },
+    "run_id": "task06803-provisional-spine-slices",
+    "segment_count": 32,
+    "status": "complete"
+  },
+  "source_provenance": {
+    "episode_readme": {
+      "name": "episode008_readme",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+      "role": "episode documentation",
+      "sha256": "bb25a0ca620d38a55192487a36d404d1c56812d0c84a6caa2425a2f0f45163ce"
+    },
+    "final_reconciliation_doc": {
+      "name": "task068_final_evidence_reconciliation_doc",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task068-final-evidence-reconciliation.md",
+      "role": "reviewer-facing evidence summary",
+      "sha256": "f1d180f7cd9ac09642305a275067067c2d98ddd5c8d7777dc4442c2f9261e60d"
+    },
+    "generator": {
+      "name": "native_adaptive_final_reconciliation_generator",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py",
+      "role": "final reconciliation generator",
+      "sha256": "66742e3abf3ee0de17dba61510928e47e769f557e73c28cb6f3e8234a3c07927"
+    }
+  },
+  "target_reconciliation": {
+    "accepted_target_ids": [
+      "move-225K-to-spine-rho0",
+      "spine-210K",
+      "slice-210K-rho--0.15",
+      "slice-210K-rho-+0.15",
+      "spine-225K",
+      "spine-226K"
+    ],
+    "all_failed_targets_preserve_reasons": true,
+    "all_targets_have_completed_or_failed_driver_segments": true,
+    "allowed_statuses_match_TASK_068_contract": true,
+    "allowed_terminal_statuses": [
+      "accepted",
+      "failed",
+      "near_hopf_stop",
+      "resolution_unresolved",
+      "tripwire_stop"
+    ],
+    "completed_segment_count_for_targets": 31,
+    "exactly_one_terminal_status_per_target": true,
+    "failed_target_count": 25,
+    "failed_target_ids": [
+      "spine-212K",
+      "slice-212K-rho--0.15",
+      "slice-212K-rho-+0.15",
+      "spine-214K",
+      "slice-214K-rho--0.15",
+      "slice-214K-rho-+0.15",
+      "spine-216K",
+      "slice-216K-rho--0.15",
+      "slice-216K-rho-+0.15",
+      "spine-218K",
+      "slice-218K-rho--0.15",
+      "slice-218K-rho-+0.15",
+      "spine-220K",
+      "slice-220K-rho--0.15",
+      "slice-220K-rho-+0.15",
+      "spine-222K",
+      "slice-222K-rho--0.15",
+      "slice-222K-rho-+0.15",
+      "spine-224K",
+      "slice-224K-rho--0.15",
+      "slice-224K-rho-+0.15",
+      "slice-225K-rho--0.15",
+      "slice-225K-rho-+0.15",
+      "slice-226K-rho--0.15",
+      "slice-226K-rho-+0.15"
+    ],
+    "source": "outputs/native_adaptive_spine_slices_run.json plus driver manifest checkpoints",
+    "target_count": 31,
+    "terminal_status_counts": {
+      "accepted": 6,
+      "failed": 25,
+      "near_hopf_stop": 0,
+      "resolution_unresolved": 0,
+      "tripwire_stop": 0
+    }
+  },
+  "truthfulness_policy": {
+    "broader_ivp_based_evidence": "not_evaluated_through_TASK_068",
+    "failed_targets_remain_failed": true,
+    "floquet_dependent_evidence": "not_evaluated_through_TASK_068",
+    "production_cpp_adaptive_backend_executed": false,
+    "provisional_driver_run_executed": true,
+    "python_or_fixed_mesh_evidence_not_rebranded_as_full_native_adaptive_completion": true,
+    "python_validation_is_not_native_adaptive_execution": true
+  },
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_cpp_adaptive_nonuniform_fixtures.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_restart_smoke.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py --check"
+    ],
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_one_branch_segment.py tests/test_episode8_native_adaptive_driver.py tests/test_episode8_native_adaptive_loca_manifest.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_final_reconciliation.py -q"
+    ],
+    "full_tests": [
+      "uv run pytest -q"
+    ]
+  }
+}

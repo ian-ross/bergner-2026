@@ -65,15 +65,15 @@
     },
     "preparatory_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
-      "sha256": "295ac40af7116b9d3b17c6d9d3797d0eb3073e8b001ebce3d1954f0d7cf1d6e8"
+      "sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce"
     },
     "run_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
-      "sha256": "93c5e7f9024958686b36c25d55e6c2ec6606f8d10c52919735b72de2389b7e4f"
+      "sha256": "1a3b149a217e2301ca6e8a9e267d81e5a9e2523d4b2aa21ce29ecdc3df6c8a1f"
     },
     "run_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
-      "sha256": "ee8517f32dc95af027d5eca350b516d95ffa5b34925b287a55953b7b34dd68a3"
+      "sha256": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e"
     }
   },
   "regeneration_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py [--check]",

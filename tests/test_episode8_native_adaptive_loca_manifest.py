@@ -175,6 +175,8 @@ def test_failure_policy_coverage_records_tripwires_reasons_and_deferred_evidence
     assert radau["floquet_dependent"]["not_evaluated_through_TASK_068"] is True
     assert channels["single_valued_tripwire"]["version"] == "single-valued-tripwire-v1"
     assert channels["rejection_reasons"]["failed_targets_have_reasons"] is True
+    assert channels["phase_refresh_triggers"]
+    assert all({"case_id", "cycle_index", "triggers"}.issubset(record) for record in channels["phase_refresh_triggers"])
 
     near_hopf = coverage["near_hopf_policy"]
     assert near_hopf["fixture_status"] == "fixture_missing"

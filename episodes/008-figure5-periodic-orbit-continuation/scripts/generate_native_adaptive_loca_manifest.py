@@ -268,7 +268,7 @@ def build_failure_policy_coverage(adaptive: dict[str, Any], planned: dict[str, A
     for result in adaptive["results"]:
         aliasing_events.extend({"case_id": result["case_id"], **event} for event in result["aliasing_events"])
         for cycle in result["cycles"]:
-            phase_refresh_triggers.extend({
+            phase_refresh_triggers.append({
                 "case_id": result["case_id"],
                 "cycle_index": cycle["cycle_index"],
                 "triggers": cycle["phase_refresh_triggers"],
@@ -378,9 +378,10 @@ def parity_summary(native: dict[str, Any], cpp: dict[str, Any], adaptive: dict[s
             "source": "checked by tests/test_episode8_native_adaptive_one_branch_segment.py as the first integrated one-branch adaptive segment; not the full adaptive spine-and-slices run",
         },
         "evidence_boundary": (
-            "Native parity here is fixed-mesh three-stage LOCA and fixed-parameter C++ correction. "
-            "Adaptive remesh transfer/restart intermediates are from TASK-067 Python fixtures until "
-            "the native adaptive run is executed."
+            "Native parity here includes fixed-mesh three-stage LOCA, fixed-parameter C++ correction, "
+            "Adaptive remesh nonuniform controller/transfer/restart seams, and one integrated native accepted "
+            "remesh/restart segment. The full provisional spine-and-slices driver run is summarized in "
+            "native_adaptive_spine_slices_run.json, while final production fitting remains TASK-069 scope."
         ),
     }
 
@@ -583,8 +584,9 @@ def build_manifest() -> tuple[bytes, bytes]:
         "schema_version": SCHEMA_VERSION,
         "artifact_kind": ARTIFACT_KIND,
         "scope": (
-            "TASK-068 start artifact: native fixed-mesh LOCA plus Python adaptive fixtures reconciled "
-            "into a resumable adaptive-run manifest; not final Figure 5 production data."
+            "TASK-068 structural manifest: native fixed-mesh LOCA, adaptive parity fixtures, restart "
+            "smoke evidence, one integrated remesh/restart segment, and provisional target terminal "
+            "statuses reconciled for final review; not final Figure 5 production data."
         ),
         "truthfulness_policy": {
             "native_adaptive_remesh_executed": False,
