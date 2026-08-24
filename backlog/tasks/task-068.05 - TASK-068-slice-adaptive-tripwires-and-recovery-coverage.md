@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 12:18'
+updated_date: '2026-08-24 12:20'
 labels:
   - episode-008
   - cpp
@@ -43,3 +43,9 @@ Complete the remaining failure-policy and edge-case coverage for native adaptive
 6. Compare native diagnostics against TASK-067 Python fixture intermediates where fixtures exist; otherwise record not_evaluated or fixture_missing explicitly.
 7. Regenerate/check affected artifacts and update documentation with failure-policy coverage and remaining deferred evidence.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Reviewed TASK-068.05 scope against current Episode 008 adaptive artifacts and tests. Existing coverage already handles core h/r transfer/restart smoke, one-branch remesh, provisional scripted spine/slices resumability, and TASK-067 adaptive Radau/aliasing records; remaining gap is explicit native-driver failure-policy diagnostic normalization plus synthetic edge-case coverage for failed restarts/tripwires/cap/reason preservation.
+<!-- SECTION:NOTES:END -->
