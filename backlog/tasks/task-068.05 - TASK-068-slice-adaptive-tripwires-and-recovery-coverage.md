@@ -26,10 +26,10 @@ Complete the remaining failure-policy and edge-case coverage for native adaptive
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Synthetic or branch-smoke tests cover failed transfer/correction, pure-r restart, h+r retry escalation, tangent-only deterministic rebootstrap, phase refresh triggers, process interruption/resume, and stale checkpoint rejection
-- [ ] #2 Native adaptive diagnostics record cap escalations, aliasing, defect/convergence/ringing/nonphysical-value Radau triggers, single-valued tripwires, and rejection reasons without suppressing failed or unresolved points
-- [ ] #3 Near-Hopf diagnostics and single-valued tripwires match the documented Python/reference policy where fixtures exist, and otherwise record not_evaluated or explicit reasons
-- [ ] #4 Broader IVP-based and all Floquet-dependent evidence remain explicitly not_evaluated through TASK-068
+- [x] #1 Synthetic or branch-smoke tests cover failed transfer/correction, pure-r restart, h+r retry escalation, tangent-only deterministic rebootstrap, phase refresh triggers, process interruption/resume, and stale checkpoint rejection
+- [x] #2 Native adaptive diagnostics record cap escalations, aliasing, defect/convergence/ringing/nonphysical-value Radau triggers, single-valued tripwires, and rejection reasons without suppressing failed or unresolved points
+- [x] #3 Near-Hopf diagnostics and single-valued tripwires match the documented Python/reference policy where fixtures exist, and otherwise record not_evaluated or explicit reasons
+- [x] #4 Broader IVP-based and all Floquet-dependent evidence remain explicitly not_evaluated through TASK-068
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -54,3 +54,23 @@ Complete the remaining failure-policy and edge-case coverage for native adaptive
 - Extended native adaptive manifest and provisional spine/slices summary with TASK-068.05 failure-policy ledgers; regenerated affected outputs and downstream Python-validation summary after source/provenance hash changes.
 - Verification: native adaptive manifest/spine-slices/Python-validation --check; uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_driver.py tests/test_episode8_native_adaptive_loca_manifest.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_adaptive_collocation.py -q; uv run pytest -q (314 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed TASK-068.05 adaptive tripwire and recovery coverage.
+
+Changes:
+- Added native adaptive driver diagnostic normalization for cap escalations, aliasing events, Radau trigger channels, single-valued tripwires, rejection reasons, failed/unresolved evidence preservation, and TASK-068 IVP/Floquet not_evaluated boundaries.
+- Implemented/exported the documented single-valued tripwire policy for tangent-sign changes, normalized-coordinate reversals, and incompatible duplicate coordinates.
+- Added focused synthetic tests for failed h+r restart/correction, pure-r retry order, cap/alias/Radau/tripwire diagnostics, phase refresh trigger preservation, and no-remesh regression, complementing existing tangent-only rebootstrap, interruption/resume, stale checkpoint, restart-smoke, and one-branch coverage.
+- Extended the native adaptive manifest and provisional spine/slices summary with TASK-068.05 failure-policy ledgers and regenerated downstream validation/provenance artifacts.
+- Updated Episode 008 README coverage notes.
+
+Tests:
+- uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check
+- uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check
+- uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_python_validation.py --check
+- uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_driver.py tests/test_episode8_native_adaptive_loca_manifest.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_adaptive_collocation.py -q
+- uv run pytest -q (314 passed, 1 skipped, 3 warnings)
+<!-- SECTION:FINAL_SUMMARY:END -->
