@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-23 19:38'
+updated_date: '2026-08-24 10:44'
 labels:
   - episode-008
   - cpp
@@ -89,4 +89,8 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Added native adaptive restart smoke artifacts: scripts/generate_native_adaptive_restart_smoke.py produces outputs/native_adaptive_restart_smoke.json and vectors.npz from the C++ adaptive-controller/adaptive-restart seams. The smoke artifact records controller intermediates for all projected final nonuniform fixtures and representative h+r transfer/rebuild/fixed-parameter NOX/KLU2 restart corrections with vector hashes and source/build provenance, while explicitly stating it is not the full spine-and-slices adaptive run.
 - Updated the native adaptive manifest to include the restart-smoke artifact and source provenance, and added tests/test_episode8_native_adaptive_restart_smoke.py for determinism, truthful scope, restart gates, rebuild evidence, vector checksums, and source hashes. Updated Episode 008 README regeneration instructions.
 - Verification: BS2026_MIDPOINT_EXECUTABLE=.pytest_cache/task068-nonuniform-build/bs2026_midpoint_orbit uv run python scripts/generate_native_adaptive_restart_smoke.py --check; native adaptive manifest --check; uv run python -m py_compile for TASK-068 manifest/smoke generators; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_loca_manifest.py -q (25 passed); uv run pytest -q (287 passed, 1 skipped, 3 warnings).
+
+- Continued TASK-068 by enriching the native adaptive LOCA manifest with a deterministic segment/restart artifact ledger. The ledger summarizes native fixed-mesh LOCA event partitions and checkpoint vectors, TASK-067 adaptive mesh/remesh histories, native adaptive-restart smoke transfer/rebuild/gate evidence, phase-reference lineage, single terminal target statuses, runtime identity, required full-run profiling fields, and not_evaluated IVP/Floquet boundaries.
+- Updated tests/test_episode8_native_adaptive_loca_manifest.py and the Episode 008 README to cover/document the new ledger while preserving truthful native_adaptive_remesh_executed=false scope.
+- Verification: uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_loca_manifest.py -q (26 passed); uv run pytest -q (288 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
