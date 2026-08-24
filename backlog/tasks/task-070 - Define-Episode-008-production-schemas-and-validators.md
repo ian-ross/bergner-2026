@@ -1,7 +1,7 @@
 ---
 id: TASK-070
 title: Define Episode 008 production schemas and validators
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
@@ -51,3 +51,21 @@ Validation run:
 - `uv run pytest -q`: 334 passed, 1 skipped, 3 known overflow warnings
 - `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Defined the Episode 008 `episode8-figure5-production-v1` production schema and validation boundary before downstream production data generation.
+
+Changes:
+- Added `episode8_production_schema.py` with schema constants, contract generation, provenance/checksum validation, coordinate/unit checks, validity/source compatibility rules, and artifact-specific validators for continuation points/events, run metadata, curated orbit NPZ manifests, T=210 K linearized-period rows, and browser/display records.
+- Added `validate_production_artifacts.py` plus the committed machine-readable contract `schemas/episode8-figure5-production-v1.contract.json`.
+- Documented the TASK-069 schema boundary in Episode 008 docs/README, including the rule that digitized paper data remain non-authoritative external comparison evidence only.
+- Added focused pytest coverage for valid minimal artifacts and required rejection modes: missing provenance, ambiguous gap/unresolved/interpolated sources, checksum drift, schema mismatch, and incompatible coordinate/unit fields.
+- Regenerated the TASK-068 final reconciliation manifest after the Episode 008 README provenance hash changed.
+
+Validation:
+- `uv run pytest tests/test_episode8_production_schema.py tests/test_episode8_native_adaptive_final_reconciliation.py -q`: 20 passed
+- `uv run pytest -q`: 334 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
+<!-- SECTION:FINAL_SUMMARY:END -->
