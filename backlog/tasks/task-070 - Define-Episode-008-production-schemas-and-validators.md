@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 14:21'
+updated_date: '2026-08-24 14:24'
 labels:
   - episode-008
   - schemas
@@ -38,3 +38,9 @@ Define formal episode8-figure5-production-v1 schemas and validation commands for
 5. Document the production-v1 schema boundary in Episode 008 docs/README, linking it back to TASK-069 decisions and explicitly preserving digitized paper Figure 5 data as external comparison evidence only, not authoritative production input.
 6. Run the new focused tests, schema validation self-checks, relevant existing Episode 008 checks, and git diff --check; then update TASK-070 notes, acceptance criteria, final summary, and status through Backlog CLI only.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Plan approved by user; proceeding with schema/validator implementation, tests, and documentation.
+<!-- SECTION:NOTES:END -->
