@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:35'
-updated_date: '2026-08-24 13:01'
+updated_date: '2026-08-24 13:02'
 labels:
   - episode-008
   - cpp
@@ -93,4 +93,25 @@ Implement structural h/r remesh boundaries around native three-stage Gauss LOCA 
 - Continued TASK-068 by enriching the native adaptive LOCA manifest with a deterministic segment/restart artifact ledger. The ledger summarizes native fixed-mesh LOCA event partitions and checkpoint vectors, TASK-067 adaptive mesh/remesh histories, native adaptive-restart smoke transfer/rebuild/gate evidence, phase-reference lineage, single terminal target statuses, runtime identity, required full-run profiling fields, and not_evaluated IVP/Floquet boundaries.
 - Updated tests/test_episode8_native_adaptive_loca_manifest.py and the Episode 008 README to cover/document the new ledger while preserving truthful native_adaptive_remesh_executed=false scope.
 - Verification: uv run python -m py_compile episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py; uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_loca_manifest.py --check; uv run pytest tests/test_episode8_cpp_adaptive_nonuniform.py tests/test_episode8_native_adaptive_restart_smoke.py tests/test_episode8_native_adaptive_loca_manifest.py -q (26 passed); uv run pytest -q (288 passed, 1 skipped, 3 warnings).
+
+- TASK-068.06 final reconciliation completed. Added sink manifest outputs/native_adaptive_final_reconciliation.json, final evidence documentation, and focused tests. Reviewed parent ACs against completed evidence and checked all seven ACs; TASK-069 retains fit/connection, production profiling, broader IVP, and Floquet-dependent policy review.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed TASK-068 native adaptive LOCA remesh/restart evidence run and reconciliation.
+
+Scope delivered:
+- Native nonuniform parity, adaptive-controller/transfer/restart seams, restart-smoke coverage, one integrated accepted remesh/restart branch segment, generalized driver resumability, provisional 31-target spine-and-slices run ledger, independent Python same-coordinate validation, tripwire/recovery coverage, and final evidence reconciliation.
+- The final sink manifest reconciles all relevant artifact hashes, vector/checkpoint provenance, terminal statuses, resume state, remesh/restart gates, mesh/convergence summaries, runtime/resource boundaries, near-Hopf status, deferred evidence, and parent acceptance-criteria review.
+- Episode 008 documentation now summarizes coverage, mesh behavior, convergence, failures, near-Hopf absence, runtime/resource placeholders, and TASK-069 handoff.
+
+Truthfulness boundary:
+- This is reviewer-facing TASK-068 evidence, not final Figure 5 production data. Six provisional targets are accepted and twenty-five remain explicit failed terminal statuses with reasons. Near-Hopf approach points were not reached; fit/connection policy, production profiling, broader IVP checks, and Floquet-dependent evidence remain TASK-069 scope.
+
+Tests:
+- TASK-068 artifact --check commands for nonuniform fixtures, restart smoke, one-branch segment, structural manifest, spine-slices run, Python validation, and final reconciliation.
+- Focused TASK-068 native adaptive tests: 58 passed.
+- Full test suite: uv run pytest -q (320 passed, 1 skipped, 3 warnings).
+<!-- SECTION:FINAL_SUMMARY:END -->
