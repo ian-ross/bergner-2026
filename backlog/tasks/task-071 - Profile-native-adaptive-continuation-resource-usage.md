@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 14:56'
+updated_date: '2026-08-24 14:57'
 labels:
   - episode-008
   - profiling
@@ -40,3 +40,9 @@ Replace TASK-068 deterministic zero resource placeholders with measured native a
 6. Update Episode 008 documentation to link the profiling artifacts and replace the TASK-068 placeholder-cost production-policy decision with the measured-profile review outcome, while preserving failed/unresolved target truthfulness and explicit-gap policy.
 7. Run the focused profiling/schema tests, relevant existing Episode 008 artifact checks, `uv run pytest -q` as feasible, and `git diff --check`; then update TASK-071 implementation notes, acceptance criteria, final summary, and status through the Backlog CLI only.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Plan approved by user; proceeding with profiling generator, artifacts, tests, and documentation.
+<!-- SECTION:NOTES:END -->
