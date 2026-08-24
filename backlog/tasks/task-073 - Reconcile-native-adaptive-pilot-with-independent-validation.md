@@ -42,3 +42,9 @@ Review the measured 210--226 K native adaptive pilot and validate accepted backe
 6. Add focused pytest coverage for the TASK-073 artifact, documentation links, zero-accepted validation semantics, IVP non-selection semantics, terminal-status preservation, production-go/no-go decision, and stale-artifact check mode; run focused tests, relevant TASK-072/TASK-070 checks, full pytest as feasible, and `git diff --check`.
 7. If the documented review concludes a method-version revision or follow-up is required before TASK-075, create that follow-up through Backlog CLI only; then update TASK-073 notes, acceptance criteria, final summary, and status through Backlog CLI only.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-073: moved task to In Progress, assigned to @iross, reviewed TASK-069/TASK-070/TASK-072 dependency outputs and Episode 008 docs, and added an implementation plan. Pausing before code/artifact changes pending plan confirmation.
+<!-- SECTION:NOTES:END -->
