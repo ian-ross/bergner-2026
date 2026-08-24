@@ -1,7 +1,7 @@
 ---
 id: TASK-068.03
 title: 'TASK-068 slice: provisional spine-and-slices native adaptive run'
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:52'
