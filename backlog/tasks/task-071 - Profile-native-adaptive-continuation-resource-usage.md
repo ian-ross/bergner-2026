@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 14:57'
+updated_date: '2026-08-24 15:22'
 labels:
   - episode-008
   - profiling
@@ -24,9 +24,9 @@ Replace TASK-068 deterministic zero resource placeholders with measured native a
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Measured wall-clock time, CPU time, max RSS, nonlinear iterations, KLU2 symbolic/numeric factorization counts, linear solves, and source/build/runtime identities are recorded for representative fixed-mesh, remesh/restart, and pilot-style native adaptive segments
-- [ ] #2 The review determines whether serial KLU2 remains acceptable or whether the documented iterative-solver trigger thresholds are met
-- [ ] #3 Resource artifacts are reproducible or checkable and are linked from Episode 008 documentation without leaving placeholder values in production-policy decisions
+- [x] #1 Measured wall-clock time, CPU time, max RSS, nonlinear iterations, KLU2 symbolic/numeric factorization counts, linear solves, and source/build/runtime identities are recorded for representative fixed-mesh, remesh/restart, and pilot-style native adaptive segments
+- [x] #2 The review determines whether serial KLU2 remains acceptable or whether the documented iterative-solver trigger thresholds are met
+- [x] #3 Resource artifacts are reproducible or checkable and are linked from Episode 008 documentation without leaving placeholder values in production-policy decisions
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -45,4 +45,18 @@ Replace TASK-068 deterministic zero resource placeholders with measured native a
 
 <!-- SECTION:NOTES:BEGIN -->
 Plan approved by user; proceeding with profiling generator, artifacts, tests, and documentation.
+
+Implemented TASK-071 measured profiling artifacts and documentation. Added `generate_native_adaptive_resource_profile.py`, generated `outputs/native_adaptive_resource_profile.json` plus production-v1 `outputs/native_adaptive_resource_profile_run_metadata.json`, documented the profile in `docs/task071-resource-profile.md`, linked it from the Episode 008 README, and updated TASK-069 decisions so prior zero-placeholder cost policy is superseded for current pilot seams.
+
+Resource rows cover fixed-mesh, one-branch remesh/restart, and pilot-style driver seams with measured wall-clock, CPU, max RSS, NOX/KLU2 counters, source/build/runtime identity, and explicit truthfulness policy. KLU2 review keeps serial KLU2 acceptable for current pilot seams; documented evaluated triggers are not met, and backend-unexposed timing split triggers remain explicit not_evaluated.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json`
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py --check`
+- `uv run pytest tests/test_episode8_native_adaptive_resource_profile.py tests/test_episode8_production_schema.py tests/test_episode8_native_adaptive_final_reconciliation.py -q`: 24 passed
+- `uv run pytest -q`: 338 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
+
+Two read-only subagent reviews initially found stale TASK-069 wording, hard-coded trigger semantics, duplicate aggregate counters, and weak check semantics; fixes were applied. Follow-up read-only reviews reported no blockers.
 <!-- SECTION:NOTES:END -->
