@@ -1,239 +1,224 @@
 {
-  "accepted_target_records": [],
-  "artifact_id": "task072-native-adaptive-measured-pilot",
-  "artifact_kind": "task072-measured-native-adaptive-pilot",
-  "check_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py --check",
-  "created_at": "2026-08-24T16:28:50.600066Z",
-  "measured_commands": [
+  "acceptance_criteria_review": [
     {
-      "command": [
-        "uv",
-        "run",
-        "python",
-        "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_loca_higher_order_results.py",
-        "--check"
+      "evidence": [
+        "accepted_target_count is zero",
+        "post-remesh spine-210K remains resolution_unresolved with validation-unavailable blocker",
+        "future accepted targets require same-coordinate independent Python validation or blocking reasons"
       ],
-      "resources": {
-        "cpu_time_s": 20.64,
-        "exit_status": 0,
-        "max_rss_kib": 279948,
-        "system_cpu_s": 0.14,
-        "user_cpu_s": 20.5,
-        "wall_clock_s": 8.45
-      },
-      "stderr_tail": [],
-      "stdout_tail": [
-        "verified native higher-order LOCA artifacts"
-      ]
+      "review_status": "satisfied_with_zero_accepted_points_and_blocking_policy",
+      "task073_ac": 1
     },
     {
-      "command": [
-        "uv",
-        "run",
-        "python",
-        "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_one_branch_segment.py",
-        "--check"
+      "evidence": [
+        "no accepted pilot points exist for a stratified IVP subset",
+        "DOP853/Radau difficulty triggers are recorded for future accepted points"
       ],
-      "resources": {
-        "cpu_time_s": 10.040000000000001,
-        "exit_status": 0,
-        "max_rss_kib": 112584,
-        "system_cpu_s": 0.15,
-        "user_cpu_s": 9.89,
-        "wall_clock_s": 1.79
-      },
-      "stderr_tail": [],
-      "stdout_tail": [
-        "verified native adaptive one-branch segment artifacts"
-      ]
+      "review_status": "satisfied_not_justified_for_current_pilot",
+      "task073_ac": 2
+    },
+    {
+      "evidence": [
+        "full_domain_continuation_not_authorized",
+        "The retained v1 method is not falsified by TASK-072, but the measured pilot supplies no accepted production-use native adaptive points. Full-domain continuation must not proceed from an all-unresolved pilot gate."
+      ],
+      "review_status": "satisfied_full_domain_not_authorized_follow_up_required",
+      "task073_ac": 3
+    },
+    {
+      "evidence": [
+        "status counts: {'accepted': 0, 'resolution_unresolved': 31, 'near_hopf_stop': 0, 'tripwire_stop': 0, 'failed': 0}",
+        "target status table preserves TASK-072 terminal statuses",
+        "interpolation and digitized-paper evidence are not used for acceptance"
+      ],
+      "review_status": "satisfied_terminal_statuses_preserved_without_interpolation",
+      "task073_ac": 4
     }
   ],
-  "measured_resource_accounting": {
-    "cpu_time_s": 30.680619,
-    "max_rss_kib": 279948,
-    "wall_clock_s": 10.240595350986258
+  "accepted_point_validation_review": {
+    "accepted_pilot_target_count": 0,
+    "accepted_point_reviews": [],
+    "all_accepted_points_have_python_validation_or_blocking_reason": true,
+    "post_remesh_restart_review": {
+      "pilot_terminal_status": "resolution_unresolved",
+      "reason": "TASK-072 records a measured native remesh/restart seam at spine-210K, but the exact restart vector lacks backend-bound independent defect and period/orbit convergence gates and is not an accepted pilot point.",
+      "review_status": "not_accepted_validation_unavailable_blocks_production_use",
+      "target_id": "spine-210K"
+    },
+    "production_use_blockers_for_accepted_points": [],
+    "task068_python_validation_boundary": {
+      "all_selected_points_pass": true,
+      "reason": "TASK-068 Python validation covers provisional/fixed-mesh native points. It is retained as background evidence, but it is not same-coordinate validation of accepted TASK-072 native adaptive pilot points because TASK-072 has no accepted pilot targets.",
+      "selected_point_count": 32,
+      "usable_for_task073_pilot_acceptance": false
+    }
   },
-  "planned_run_manifest": {
-    "provisional_source": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
-    "provisional_spine_range_K": [
-      210,
-      226
-    ],
-    "signed_rho_slice_targets": [
-      -0.15,
-      0.15
-    ],
-    "source": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
-    "target_count": 31,
-    "temperature_skeleton_K": [
-      210,
-      212,
-      214,
-      216,
-      218,
-      220,
-      222,
-      224,
-      225,
-      226
+  "artifact_kind": "task073-native-adaptive-pilot-reconciliation",
+  "input_artifacts": [
+    {
+      "artifact_kind": "task072-measured-native-adaptive-pilot",
+      "name": "task072_measured_pilot_summary",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
+      "role": "measured native adaptive pilot terminal ledger",
+      "schema_version": "episode008-native-adaptive-measured-pilot-v1",
+      "sha256": "cd82a3e07c57fd6d29c8375c18f1a8a2f6c584277386c38b47d04abdcdc576da"
+    },
+    {
+      "artifact_kind": "continuation-events",
+      "name": "task072_measured_pilot_events",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
+      "role": "production-v1 continuation events",
+      "schema_version": "episode8-figure5-production-v1",
+      "sha256": "6ab5563fd1b496241be6d8fff35bed12cb16e2a2d9cebd6dd09d286d15956e73"
+    },
+    {
+      "artifact_kind": "run-metadata",
+      "name": "task072_measured_pilot_run_metadata",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
+      "role": "production-v1 run metadata",
+      "schema_version": "episode8-figure5-production-v1",
+      "sha256": "9c48405be24594a6b0d1c1374d0c30f0afff05e42c3480cd5ef1a394e1184497"
+    },
+    {
+      "artifact_kind": "native-adaptive-driver-run-manifest",
+      "name": "task072_measured_pilot_run_manifest",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
+      "role": "resumable pilot run manifest",
+      "schema_version": "episode008-native-adaptive-driver-v1",
+      "sha256": "916dc688c0a83f0f364abb794a9798bdcbeabe0d1776b1f915027e877f3f246c"
+    },
+    {
+      "artifact_kind": "task06804-independent-python-validation-of-native-adaptive-points",
+      "name": "task068_python_validation",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation.json",
+      "role": "background independent Python validation boundary",
+      "schema_version": "episode008-native-adaptive-python-validation-v1",
+      "sha256": "2ce350c4de17f10fc1562600fd525241b61fce6bb848f9f2502e3d549927b141"
+    },
+    {
+      "name": "task068_python_validation_vectors",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation_vectors.npz",
+      "role": "background Python-validation vector fingerprints",
+      "sha256": "611cd47ac0ef98e8ee2f96b781ca061c2772f1fecbeb28637c5667c10f1aa574"
+    }
+  ],
+  "ivp_validation_review": {
+    "blocks_full_domain_production": true,
+    "difficulty_triggers": {
+      "dop853_default": [
+        "accepted regular native adaptive pilot point selected by stratified coverage",
+        "headline/canonical accepted point without stiffness or convergence-warning trigger"
+      ],
+      "radau_required": [
+        "DOP853 fails, is excessively costly, or produces event-location ambiguity",
+        "near-Hopf or long-period approach point",
+        "persistent ringing/nonphysical-value diagnostic despite collocation gates",
+        "mesh-cap stagnation or defect-passing/Gauss-failing difficulty trigger"
+      ]
+    },
+    "method_assignment": {
+      "DOP853": [],
+      "Radau": []
+    },
+    "reason": "TASK-069 justifies selected IVP checks only after accepted native adaptive pilot points exist; TASK-072 accepted none.",
+    "selected_subset": [],
+    "selection_status": "not_justified_no_accepted_native_adaptive_pilot_points",
+    "stratification_policy_when_available": [
+      "include accepted spine anchors and signed rho slices across the covered temperature range",
+      "include post-remesh accepted targets",
+      "include difficult/headline/near-Hopf or tripwire-adjacent accepted points if present"
     ]
   },
-  "production_schema_artifact_sha256": {
-    "continuation_events": "6ab5563fd1b496241be6d8fff35bed12cb16e2a2d9cebd6dd09d286d15956e73",
-    "run_metadata": "9c48405be24594a6b0d1c1374d0c30f0afff05e42c3480cd5ef1a394e1184497"
+  "manifest_identity": {
+    "deterministic_serialization": "canonical sorted-key JSON with trailing newline",
+    "generator_path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_reconciliation.py",
+    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_reconciliation.json",
+    "self_hash_policy": "no in-payload sha256; tests compute file hash externally"
   },
-  "production_schema_artifacts": {
-    "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
-    "run_metadata": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json"
+  "near_hopf_and_tripwire_review": {
+    "fit_policy": "no quadratic/quartic near-Hopf fit is supported by this pilot; preserve explicit gaps until sufficient approach points exist",
+    "near_hopf_count": 0,
+    "near_hopf_target_ids": [],
+    "tripwire_count": 0,
+    "tripwire_target_ids": []
   },
-  "provenance": {
-    "adaptive_qualification": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json",
-      "role": "defect and period/orbit gate source",
-      "sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b"
-    },
-    "driver_source": {
-      "path": "src/bergner_spichtinger_2026/native_adaptive_driver.py",
-      "role": "resumable native adaptive driver",
-      "sha256": "3dd596655fa76f2b3ac40cf7dfb95d7b9ebfdc0c6af5effe6983685cf16036c4"
+  "production_gate_decision": {
+    "blockers": [
+      "TASK-072 produced zero accepted native adaptive pilot targets over the 210--226 K skeleton",
+      "TASK-069 justifies selected IVP checks only after accepted native adaptive pilot points exist; TASK-072 accepted none."
+    ],
+    "decision": "full_domain_continuation_not_authorized",
+    "follow_up_required_before_TASK075": true,
+    "follow_up_scope": "complete backend-bound exact restart-vector defect and period/orbit convergence gates, rerun or revise the native adaptive pilot until accepted targets either pass independent Python/IVP validation or remain explicit gaps",
+    "follow_up_task": "TASK-081",
+    "full_domain_continuation_authorized": false,
+    "method_version_revision_required_now": false,
+    "pilot_method_version": "episode008-native-adaptive-measured-pilot-v1",
+    "rationale": "The retained v1 method is not falsified by TASK-072, but the measured pilot supplies no accepted production-use native adaptive points. Full-domain continuation must not proceed from an all-unresolved pilot gate.",
+    "retained_method_version": "external-gauss3-hr-adaptive-v1"
+  },
+  "schema_version": "episode008-native-adaptive-pilot-reconciliation-v1",
+  "scope": "TASK-073 gate review of the measured 210--226 K native adaptive pilot. The artifact records independent-validation coverage and full-domain production authorization without changing TASK-072 terminal statuses.",
+  "source_provenance": {
+    "episode_readme": {
+      "name": "episode008_readme",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+      "role": "Episode 008 documentation index",
+      "sha256": "b5a026c4f7533e99cff978f65be18f7f0706c5794e06aae02bc4c38f00206c64"
     },
     "generator": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py",
-      "role": "TASK-072 pilot generator",
-      "sha256": "69a10bed080dd432c76e86d9fb85158d4bd742468e4952089cd2cb1ddcd76aca"
-    },
-    "native_higher_order": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json",
-      "role": "measured native branch source",
-      "sha256": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd"
-    },
-    "one_branch": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
-      "role": "measured native remesh/restart source",
-      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
-    },
-    "preparatory_manifest": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
-      "role": "TASK-068 provisional skeleton source",
-      "sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce"
-    },
-    "provisional_summary": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
-      "role": "TASK-068 provisional status source",
-      "sha256": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e"
-    },
-    "resource_metadata": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
-      "role": "TASK-071 production run metadata source",
-      "sha256": "2c74becf5f4d653668b90f2921388e612b5941213f97d32d74038c60e8d1b021"
-    },
-    "resource_profile": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
-      "role": "TASK-071 resource identity source",
-      "sha256": "52bccf48f2b9b908c5155015b1433716b2b845424569e6f8f3240f00a8b9bf2c"
+      "name": "task073_reconciliation_generator",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_reconciliation.py",
+      "role": "TASK-073 reconciliation generator",
+      "sha256": "8dff2d9f614996766209bd83a9766c01f3c0540c5a73bda82f6f0ea9bc7aae64"
     },
     "task069_review": {
+      "name": "task069_evidence_review",
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
-      "role": "pilot requirement and explicit-gap policy",
+      "role": "TASK-069 retained-v1 and IVP/Radau trigger decisions",
       "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
     },
     "task070_schema_doc": {
+      "name": "task070_schema_doc",
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
-      "role": "production-v1 schema boundary",
+      "role": "production schema boundary",
       "sha256": "5f9fb930799e89c8872e7cdc4909e5087f07022c31673f7e8bb30aedb4c23584"
     },
-    "task071_resource_doc": {
-      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task071-resource-profile.md",
-      "role": "measured resource-field requirement",
-      "sha256": "13f3020d8af5a3918b74389d1aa4b574bbc83f0734e7c52bfa4e38a8709314b9"
+    "task072_doc": {
+      "name": "task072_doc",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task072-measured-native-adaptive-pilot.md",
+      "role": "measured pilot documentation",
+      "sha256": "a82adf6594cf60b5348d12e3a9a54c40ec0460d0807ef7b1c1232c7d1ff27c64"
     },
-    "uv_lock": {
-      "path": "uv.lock",
-      "role": "Python environment lockfile",
-      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    "task073_doc": {
+      "name": "task073_doc",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task073-native-adaptive-pilot-reconciliation.md",
+      "role": "pilot reconciliation documentation",
+      "sha256": "c40f4fbd9a2217df9eb7c1b39e850a0dc2c1e6859282e3dc6cf8b9dec97097a0"
     }
   },
-  "regeneration_command": "BS2026_MIDPOINT_EXECUTABLE=<build>/bs2026_midpoint_orbit uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py",
-  "run_directory": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot",
-  "run_manifest": {
-    "checkpoint_count": 31,
-    "fingerprints_sha256": "729a286eaec16c8adf18dcd105ea8a5700c3b8562afb220e0e3216f7242e94b0",
-    "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
-    "resume": {
-      "complete_checkpoint_count": 31,
-      "latest_complete_segment_id": "segment-0030__slice-226K-rho-+0.15__cycle-00"
-    },
-    "segment_count": 31,
-    "sha256": "916dc688c0a83f0f364abb794a9798bdcbeabe0d1776b1f915027e877f3f246c",
-    "status": "complete"
-  },
-  "schema_version": "episode008-native-adaptive-measured-pilot-v1",
-  "scope": "Measured native adaptive pilot over the TASK-068 210--226 K skeleton; all targets remain explicit unresolved gaps because no target has the complete exact native restart-vector gate bundle required for TASK-072 acceptance.",
-  "source_build_checkpoint_identity": {
-    "build_identity": {
-      "compiled_source_fingerprint_sha256": [
-        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
-        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
-        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
-        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
-        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
-        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
-      ],
-      "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
-      "python": "3.11.15",
-      "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
-    },
-    "checkpoint_identity": {
-      "checkpoint_sha256_by_segment": {
-        "segment-0000__move-225K-to-spine-rho0__cycle-00": "7339c67634c7a067c2db39629d86d23903fa8ebf7d6a476beff358f974d75283",
-        "segment-0001__spine-210K__cycle-00": "24c6ce56e4fc6172340559573d95174122392f18a94e17cc0ba5346da632d8ed",
-        "segment-0002__slice-210K-rho--0.15__cycle-00": "3834700e6dc5f7fbb3590c93c33d19f2a5e0e48a076047022c302950c2f40c58",
-        "segment-0003__slice-210K-rho-+0.15__cycle-00": "091df939dcd45380d46722164b3ca81cce1c8c6b2cc1ff343cf4159d9012c3f4",
-        "segment-0004__spine-212K__cycle-00": "9f46eb3395f404d77456f8597eb86bbcaa49ab01ae9e84eacdba0e8f69b94f54",
-        "segment-0005__slice-212K-rho--0.15__cycle-00": "90feb5ed47abe778993bdc373280ca29374c6a5d944e6729703d89825ccf552a",
-        "segment-0006__slice-212K-rho-+0.15__cycle-00": "df2645b2e35ffe60fe65163f2a0a6bad39698edb84e7aad7a272abb346058bf8",
-        "segment-0007__spine-214K__cycle-00": "ba4edafc5a65959d33866be1cb45e956335825872f9bc1861a2ec6cbe507f923",
-        "segment-0008__slice-214K-rho--0.15__cycle-00": "b66db6d9610d844ab7b456b0c201b4d04ae5dc5e79346d4e54ada6ac3e7a1dce",
-        "segment-0009__slice-214K-rho-+0.15__cycle-00": "d4c8ae74ef135206131f7a98aa933557c19ed7670670121145b5278c16badab3",
-        "segment-0010__spine-216K__cycle-00": "fb2bfae3c72cc958ca00f60d388a7a2b14c351527b72cc1391569dfe9a53cc47",
-        "segment-0011__slice-216K-rho--0.15__cycle-00": "df33fca6e984a17db74a3aed82ae2ebad8407d8080c54fdd80520cdcf2f02aaa",
-        "segment-0012__slice-216K-rho-+0.15__cycle-00": "bf1a158289f011cf280f2b0933cec8aa6f9f246ec9535e08e0c4315cb412ce11",
-        "segment-0013__spine-218K__cycle-00": "ace27d1d5d5a94ae475e530a34d7bf797b585495e80be1dfe05ea14e91b42948",
-        "segment-0014__slice-218K-rho--0.15__cycle-00": "b9db5911ec3be81bd255c186fd7c621606ef1f21b4e5fa25d03169757dfe92af",
-        "segment-0015__slice-218K-rho-+0.15__cycle-00": "c305cd8d0f2ada88b80f43421c9f302c40b0681cdfb2d796df273dcbb1f82ce9",
-        "segment-0016__spine-220K__cycle-00": "a54e2adec145dc34f7581dfed8094c56d727a7e4aa2472e9211464bd8e78bddf",
-        "segment-0017__slice-220K-rho--0.15__cycle-00": "837f7ea95a033752e49ee5acec04f07f3a3cddc62ed8ca1e117ab20f1328de16",
-        "segment-0018__slice-220K-rho-+0.15__cycle-00": "8120464b8627117dab6cc022451332bcdd69108222f5af2407e7df9051025a00",
-        "segment-0019__spine-222K__cycle-00": "1093fc18c1178081b704df8694529466a26546696d0b3efd8e5c4f28ddf39153",
-        "segment-0020__slice-222K-rho--0.15__cycle-00": "199f7cadba166f4811e2d758a0654b51c2b5e1b540b42473593fa9e7ab763737",
-        "segment-0021__slice-222K-rho-+0.15__cycle-00": "f05ddae908f2e863c7cf33b15e7322369a59c3fc8b9867762af13f3d695bedfd",
-        "segment-0022__spine-224K__cycle-00": "aa5da0c13c3ac32bcc7ad8cb0959af35a5dcbd05e2a68a78f3a4c87800e7e80c",
-        "segment-0023__slice-224K-rho--0.15__cycle-00": "2573c00642a579d24461caf0f74c15bd4eabbdff3d4c3179e15a15ace7612c6a",
-        "segment-0024__slice-224K-rho-+0.15__cycle-00": "047437dc4087830d5cce327924f09f68330f0e82c04726d5b0593f88c53b812b",
-        "segment-0025__spine-225K__cycle-00": "8a003048d9d5ee05eb95307d8d887447f15c8a168fd94876ea853581b6122bc4",
-        "segment-0026__slice-225K-rho--0.15__cycle-00": "49178fcde2d5ddd3fb6e010045dde73a0ee81f5d57e38c9fb37be021ae572ce3",
-        "segment-0027__slice-225K-rho-+0.15__cycle-00": "5947df6d999ce39d40d871243dcff5785926105419094e0f0e72094ef49ce588",
-        "segment-0028__spine-226K__cycle-00": "b08be3753b9c11b687c19c890353d903af2f17ae2ce0ce65031883d47e314299",
-        "segment-0029__slice-226K-rho--0.15__cycle-00": "37f521248dd5084ac2ae8d4f472b06ad2dc24c79dbec3387bcd39c18c0ce0ab3",
-        "segment-0030__slice-226K-rho-+0.15__cycle-00": "bd3307adf806c9291fafbe8acb356ac16a36c83a99972eb2006df9ccab813720"
-      },
-      "fingerprints_sha256": "729a286eaec16c8adf18dcd105ea8a5700c3b8562afb220e0e3216f7242e94b0",
-      "run_manifest_sha256": "916dc688c0a83f0f364abb794a9798bdcbeabe0d1776b1f915027e877f3f246c"
-    },
-    "executable_identity": {
-      "exists_at_generation": true,
-      "path": "loca-build/bs2026_midpoint_orbit",
-      "sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
-    },
-    "stale_checkpoint_policy": "NativeAdaptiveDriver validates schema, source, executable, vector, configuration, target-manifest, and checkpoint segment hashes before completed checkpoint reuse."
-  },
-  "terminal_target_ledger": {
+  "terminal_status_review": {
+    "accepted_target_ids": [],
+    "all_statuses_preserved_across_pilot_events_and_manifest": true,
+    "all_unaccepted_targets_are_explicit_gap_records": true,
+    "all_unaccepted_targets_have_blocking_reasons": true,
+    "allowed_statuses_match_task073_contract": true,
+    "allowed_terminal_statuses": [
+      "accepted",
+      "resolution_unresolved",
+      "near_hopf_stop",
+      "tripwire_stop",
+      "failed"
+    ],
     "exactly_one_terminal_status_per_target": true,
+    "failed_target_ids": [],
+    "near_hopf_target_ids": [],
+    "source": "TASK-072 measured pilot summary, events artifact, and run manifest",
+    "status_mismatches": [],
     "target_count": 31,
-    "targets": [
+    "target_status_table": [
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
@@ -245,7 +230,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0001__spine-210K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
@@ -257,7 +241,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0002__slice-210K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
@@ -269,7 +252,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0003__slice-210K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
@@ -281,7 +263,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0004__spine-212K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -293,7 +274,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0005__slice-212K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -305,7 +285,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0006__slice-212K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -317,7 +296,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0007__spine-214K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -329,7 +307,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0008__slice-214K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -341,7 +318,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0009__slice-214K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -353,7 +329,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0010__spine-216K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -365,7 +340,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0011__slice-216K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -377,7 +351,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0012__slice-216K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -389,7 +362,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0013__spine-218K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -401,7 +373,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0014__slice-218K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -413,7 +384,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0015__slice-218K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -425,7 +395,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0016__spine-220K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -437,7 +406,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0017__slice-220K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -449,7 +417,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0018__slice-220K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -461,7 +428,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0019__spine-222K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -473,7 +439,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0020__slice-222K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -485,7 +450,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0021__slice-222K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -497,7 +461,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0022__spine-224K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -509,7 +472,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0023__slice-224K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -521,7 +483,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0024__slice-224K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -533,7 +494,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0025__spine-225K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
@@ -545,7 +505,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0026__slice-225K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -557,7 +516,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0027__slice-225K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -569,7 +527,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0028__spine-226K__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "accepted",
         "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
@@ -581,7 +538,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0029__slice-226K-rho--0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -593,7 +549,6 @@
       },
       {
         "backend_emitted_terminal_status": true,
-        "completed_segment_id": "segment-0030__slice-226K-rho-+0.15__cycle-00",
         "explicit_gap_record": true,
         "provisional_terminal_status": "failed",
         "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
@@ -604,51 +559,66 @@
         "terminal_status": "resolution_unresolved"
       }
     ],
-    "terminal_status_allowed_values": [
-      "accepted",
-      "resolution_unresolved",
-      "near_hopf_stop",
-      "tripwire_stop",
-      "failed"
-    ],
     "terminal_status_counts": {
       "accepted": 0,
       "failed": 0,
       "near_hopf_stop": 0,
       "resolution_unresolved": 31,
       "tripwire_stop": 0
-    }
+    },
+    "tripwire_target_ids": [],
+    "unresolved_target_ids": [
+      "move-225K-to-spine-rho0",
+      "spine-210K",
+      "slice-210K-rho--0.15",
+      "slice-210K-rho-+0.15",
+      "spine-212K",
+      "slice-212K-rho--0.15",
+      "slice-212K-rho-+0.15",
+      "spine-214K",
+      "slice-214K-rho--0.15",
+      "slice-214K-rho-+0.15",
+      "spine-216K",
+      "slice-216K-rho--0.15",
+      "slice-216K-rho-+0.15",
+      "spine-218K",
+      "slice-218K-rho--0.15",
+      "slice-218K-rho-+0.15",
+      "spine-220K",
+      "slice-220K-rho--0.15",
+      "slice-220K-rho-+0.15",
+      "spine-222K",
+      "slice-222K-rho--0.15",
+      "slice-222K-rho-+0.15",
+      "spine-224K",
+      "slice-224K-rho--0.15",
+      "slice-224K-rho-+0.15",
+      "spine-225K",
+      "slice-225K-rho--0.15",
+      "slice-225K-rho-+0.15",
+      "spine-226K",
+      "slice-226K-rho--0.15",
+      "slice-226K-rho-+0.15"
+    ]
   },
   "truthfulness_policy": {
-    "accepted_target_requires_complete_exact_native_gate_bundle": true,
-    "fixed_mesh_or_python_evidence_not_relabelled_as_task072_acceptance": true,
-    "interpolation_used_to_fill_targets": false,
-    "native_backend_emitted_every_terminal_status": true,
-    "unaccepted_targets_are_explicit_unresolved_gap_records": true
+    "digitized_paper_evidence_used_for_acceptance": false,
+    "fixed_mesh_or_python_evidence_promoted_to_task072_acceptance": false,
+    "interpolation_used_to_change_terminal_statuses": false,
+    "terminal_statuses_preserved_from_TASK072": true,
+    "unaccepted_targets_remain_non_authoritative_gap_evidence": true
   },
-  "validation_gates": {
-    "accepted_point_count": 0,
-    "accepted_points": [],
-    "accepted_target_count": 0,
-    "adaptive_defect_gate": {
-      "case_id": "guard-rho-0-g3-n32",
-      "defect_tolerance": 0.0001,
-      "final_defect_maximum": 6.525956307952771e-05,
-      "period_orbit_convergence_tolerance": 0.001
-    },
-    "all_accepted_points_pass_required_gates": true,
-    "all_remesh_restarts_pass_required_gates": true,
-    "native_restart_solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
-    "required_gate_names": [
-      "residual",
-      "phase",
-      "positivity",
-      "finite_change",
-      "tangent",
-      "linear_solve",
-      "defect",
-      "period_orbit_convergence"
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_reconciliation.py --check"
     ],
-    "restart_count": 0
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_native_adaptive_pilot_reconciliation.py tests/test_episode8_native_adaptive_measured_pilot.py tests/test_episode8_production_schema.py -q"
+    ],
+    "full_tests": [
+      "uv run pytest -q"
+    ]
   }
 }

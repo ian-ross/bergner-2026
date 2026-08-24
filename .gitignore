@@ -13,6 +13,7 @@ auto/bin/
 
 # CMake/LSP generated files
 compile_commands.json
+loca-build/
 
 # OS/editor
 .DS_Store

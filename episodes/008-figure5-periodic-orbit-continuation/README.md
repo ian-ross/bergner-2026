@@ -12,6 +12,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/production-schemas.md`](docs/production-schemas.md) defines the TASK-070 `episode8-figure5-production-v1` schema and validation boundary for downstream production, orbit-vector, T=210 K linearized-period, and browser/display artifacts.
 - [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
 - [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
+- [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
 
 ## Production schema boundary
 
@@ -59,6 +60,20 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The pilot records all 31 targets as backend-emitted `resolution_unresolved` explicit gaps with reasons. The measured `spine-210K` remesh/restart seam passes residual, phase, positivity, finite-change, tangent, and KLU2 linear-solve gates, but its exact native restart vector does not yet have backend-bound independent defect and period/orbit convergence gates, so it is not accepted. No interpolation, Python substitution, fixed-mesh relabeling, or digitized-paper evidence fills those gaps.
+
+## Native adaptive pilot reconciliation
+
+TASK-073 reviews the measured pilot before any full-domain production continuation. The reconciliation artifact is:
+
+- [`outputs/native_adaptive_pilot_reconciliation.json`](outputs/native_adaptive_pilot_reconciliation.json)
+
+Check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_reconciliation.py --check
+```
+
+The review preserves the TASK-072 terminal ledger exactly: `accepted=0`, `resolution_unresolved=31`, `failed=0`, `near_hopf_stop=0`, and `tripwire_stop=0`. No IVP subset is justified because no accepted native adaptive pilot point exists. Full-domain continuation is **not authorized** from this pilot gate; the retained v1 method is not falsified, but TASK-081 follow-up gate work is required before TASK-075 can be treated as production-authorized.
 
 ## Frozen Episode 007 bootstrap seed
 

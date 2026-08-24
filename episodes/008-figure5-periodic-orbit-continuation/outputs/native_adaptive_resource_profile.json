@@ -1,19 +1,19 @@
 {
   "aggregate_resource_accounting": {
     "counter_aggregation_policy": "NOX/KLU2 totals include only independent measured correction rows; pilot-style lower-bound duplicate counters are reported per-row but not added again.",
-    "cpu_time_s": 17.54,
+    "cpu_time_s": 15.879999999999999,
     "klu2_numeric_factorizations": 2,
     "klu2_symbolic_factorizations": 2,
     "linear_solves": 2,
-    "max_rss_kib": 112256,
+    "max_rss_kib": 111952,
     "nonlinear_iterations": 5,
     "unique_counter_row_count": 2,
-    "wall_clock_s": 2.88
+    "wall_clock_s": 2.77
   },
   "artifact_id": "task071-native-adaptive-resource-profile",
   "artifact_kind": "task071-native-adaptive-resource-profile",
   "check_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check",
-  "created_at": "2026-08-24T15:59:32.148163Z",
+  "created_at": "2026-08-24T16:28:39.363159Z",
   "klu2_iterative_solver_review": {
     "all_measured_klu2_solves_complete": true,
     "cost_is_scientific_acceptance": false,
@@ -27,15 +27,15 @@
     },
     "iterative_solver_thresholds_met": false,
     "measured_bounds": {
-      "max_rss_gib": 0.1070556640625,
-      "max_rss_kib": 112256,
-      "max_segment_cpu_time_s": 11.34,
-      "max_segment_wall_clock_s": 1.88,
+      "max_rss_gib": 0.1067657470703125,
+      "max_rss_kib": 111952,
+      "max_segment_cpu_time_s": 10.459999999999999,
+      "max_segment_wall_clock_s": 1.84,
       "total_klu2_numeric_factorizations": 2,
       "total_klu2_symbolic_factorizations": 2,
       "total_linear_solves": 2,
       "total_nonlinear_iterations": 5,
-      "total_wall_clock_s": 2.88
+      "total_wall_clock_s": 2.77
     },
     "policy_version": "task062-klu2-iterative-trigger-policy-v1",
     "rationale": "All measured representative seams completed with reported KLU2 activity. The max-RSS trigger is evaluated directly from measurements and the run-budget trigger is false for this checkable pilot profile. The backend does not expose factorization/solve timing splits, so those trigger channels remain explicit not-evaluated rather than inferred. Belos/Ifpack2 work is not justified unless an evaluated trigger is true; retain KLU2 as the serial oracle/reference pending larger production profiling."
@@ -91,12 +91,12 @@
       "nox_residual_norm": 5.70554764769716e-14,
       "nox_status": "converged",
       "resources": {
-        "cpu_time_s": 0.82,
+        "cpu_time_s": 0.32,
         "exit_status": 0,
-        "max_rss_kib": 50608,
-        "system_cpu_s": 0.0,
-        "user_cpu_s": 0.82,
-        "wall_clock_s": 0.24
+        "max_rss_kib": 50840,
+        "system_cpu_s": 0.01,
+        "user_cpu_s": 0.31,
+        "wall_clock_s": 0.22
       },
       "segment_id": "fixed-mesh-gauss3-n32-correction",
       "segment_type": "fixed_mesh",
@@ -154,12 +154,12 @@
       "nox_residual_norm": 1.6543434215594583e-14,
       "nox_status": "converged",
       "resources": {
-        "cpu_time_s": 11.34,
+        "cpu_time_s": 10.459999999999999,
         "exit_status": 0,
-        "max_rss_kib": 112256,
-        "system_cpu_s": 0.14,
-        "user_cpu_s": 11.2,
-        "wall_clock_s": 1.88
+        "max_rss_kib": 111952,
+        "system_cpu_s": 0.1,
+        "user_cpu_s": 10.36,
+        "wall_clock_s": 1.84
       },
       "restart_gates_passed": true,
       "segment_id": "one-branch-remesh-restart",
@@ -199,12 +199,12 @@
       "nonlinear_iterations": 5,
       "nox_status": "aggregate_measured_representative_seams",
       "resources": {
-        "cpu_time_s": 5.38,
+        "cpu_time_s": 5.1,
         "exit_status": 0,
-        "max_rss_kib": 111356,
-        "system_cpu_s": 0.06,
-        "user_cpu_s": 5.32,
-        "wall_clock_s": 0.76
+        "max_rss_kib": 111212,
+        "system_cpu_s": 0.04,
+        "user_cpu_s": 5.06,
+        "wall_clock_s": 0.71
       },
       "restart_count": 1,
       "run_manifest_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
@@ -260,7 +260,7 @@
     "collocation_decisions": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/collocation-phase-decisions.md",
       "role": "documented iterative-solver trigger thresholds",
-      "sha256": "04e78cef1475fb27f00c224ae5735dfab7af5ff7931f9e88b2467a1b6628c5ff"
+      "sha256": "73649b689045a6063f09388b507749942bb20a7325d3e4b1928aea8bd591a9a1"
     },
     "cpp_collocation_coefficients": {
       "path": "loca/include/bergner_spichtinger_2026_loca/collocation_coefficients.hpp",
@@ -295,7 +295,7 @@
     "episode_readme": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation",
-      "sha256": "9c536471c146307643d7c40cc79b4a003227f1a80959584c1179c798a0bea162"
+      "sha256": "b5a026c4f7533e99cff978f65be18f7f0706c5794e06aae02bc4c38f00206c64"
     },
     "fixed_mesh_fixture": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/canonical-g3-n32.txt",
