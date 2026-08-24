@@ -50,3 +50,20 @@ Reconcile all TASK-068 native adaptive evidence into reviewer-facing documentati
 - Added docs/task068-final-evidence-reconciliation.md plus README coverage/handoff notes for native adaptive coverage, mesh behavior, convergence, failures, near-Hopf status, runtime/resource boundaries, and TASK-069 scope.
 - Verification: TASK-068 generator checks passed for C++ adaptive nonuniform fixtures, native adaptive restart smoke, one-branch segment, structural manifest, spine-slices run, Python validation, and final reconciliation. Focused TASK-068 tests passed (58 passed). Full test suite passed: uv run pytest -q (320 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed final TASK-068 evidence reconciliation and closure preparation.
+
+Changes:
+- Added a sink-only final reconciliation manifest generator and curated artifact: episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_final_reconciliation.py and outputs/native_adaptive_final_reconciliation.json. The manifest reconciles upstream TASK-068 artifact hashes, vector artifacts, source fingerprints, run checkpoints, terminal targets, resume state, remesh/restart gates, mesh/convergence validation, runtime/resource boundaries, deferred evidence, and parent AC review without creating circular provenance.
+- Added reviewer-facing documentation in docs/task068-final-evidence-reconciliation.md and linked/summarized it from the Episode 008 README.
+- Corrected the structural native adaptive manifest phase-refresh trigger ledger from flattened dictionary keys to per-cycle records, then regenerated affected downstream artifacts.
+- Reviewed TASK-068 parent acceptance criteria and marked all seven complete based on the reconciled evidence; TASK-069 retains near-Hopf fit/connection policy, production profiling, broader IVP, and Floquet-dependent review scope.
+
+Tests:
+- TASK-068 artifact --check commands for nonuniform fixtures, restart smoke, one-branch segment, structural manifest, spine-slices run, Python validation, and final reconciliation.
+- uv run pytest focused TASK-068 native adaptive tests -q (58 passed).
+- uv run pytest -q (320 passed, 1 skipped, 3 warnings).
+<!-- SECTION:FINAL_SUMMARY:END -->
