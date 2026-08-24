@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 14:24'
+updated_date: '2026-08-24 14:37'
 labels:
   - episode-008
   - schemas
@@ -23,9 +23,9 @@ Define formal episode8-figure5-production-v1 schemas and validation commands for
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Schemas cover continuation points, continuation events, run metadata, curated orbit NPZ manifests, T=210 K linearized-period rows, and browser/display dataset records with units, coordinate conventions, validity/source flags, and method/schema versions
-- [ ] #2 Validation tooling rejects missing provenance, unresolved/gap/interpolated-source ambiguity, checksum drift, schema-version mismatch, and incompatible coordinate or unit fields
-- [ ] #3 Documentation links schemas to TASK-069 decisions and preserves digitized paper data as external comparison evidence only
+- [x] #1 Schemas cover continuation points, continuation events, run metadata, curated orbit NPZ manifests, T=210 K linearized-period rows, and browser/display dataset records with units, coordinate conventions, validity/source flags, and method/schema versions
+- [x] #2 Validation tooling rejects missing provenance, unresolved/gap/interpolated-source ambiguity, checksum drift, schema-version mismatch, and incompatible coordinate or unit fields
+- [x] #3 Documentation links schemas to TASK-069 decisions and preserves digitized paper data as external comparison evidence only
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -43,4 +43,11 @@ Define formal episode8-figure5-production-v1 schemas and validation commands for
 
 <!-- SECTION:NOTES:BEGIN -->
 Plan approved by user; proceeding with schema/validator implementation, tests, and documentation.
+
+Implemented `episode8-figure5-production-v1` schema/validator boundary in `src/bergner_spichtinger_2026/episode8_production_schema.py`, exposed `scripts/validate_production_artifacts.py`, wrote the machine-readable contract under `episodes/008-figure5-periodic-orbit-continuation/schemas/`, documented the TASK-069 linkage, and added focused tests.
+
+Validation run:
+- `uv run pytest tests/test_episode8_production_schema.py tests/test_episode8_native_adaptive_final_reconciliation.py -q`: 20 passed
+- `uv run pytest -q`: 334 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
