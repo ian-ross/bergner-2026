@@ -11,6 +11,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) records the TASK-069 post-run review, TASK-062 hypothesis dispositions, unsupported near-Hopf fit status, and approved downstream production task boundary.
 - [`docs/production-schemas.md`](docs/production-schemas.md) defines the TASK-070 `episode8-figure5-production-v1` schema and validation boundary for downstream production, orbit-vector, T=210 K linearized-period, and browser/display artifacts.
 - [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
+- [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
 
 ## Production schema boundary
 
@@ -39,6 +40,25 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The measured profile is cost evidence only, not scientific acceptance of continuation points. It preserves the TASK-068 failed/pending target boundary. Its KLU2 review concludes that serial KLU2 remains acceptable for the current native adaptive pilot seams; the documented iterative-solver trigger thresholds are not met by available measured evidence.
+
+## Measured native adaptive pilot
+
+TASK-072 runs the measured native adaptive pilot over all 31 provisional `210--226 K` skeleton targets. The artifacts are:
+
+- [`outputs/native_adaptive_measured_pilot.json`](outputs/native_adaptive_measured_pilot.json)
+- [`outputs/native_adaptive_measured_pilot_events.json`](outputs/native_adaptive_measured_pilot_events.json)
+- [`outputs/native_adaptive_measured_pilot_run_metadata.json`](outputs/native_adaptive_measured_pilot_run_metadata.json)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json
+```
+
+The pilot records all 31 targets as backend-emitted `resolution_unresolved` explicit gaps with reasons. The measured `spine-210K` remesh/restart seam passes residual, phase, positivity, finite-change, tangent, and KLU2 linear-solve gates, but its exact native restart vector does not yet have backend-bound independent defect and period/orbit convergence gates, so it is not accepted. No interpolation, Python substitution, fixed-mesh relabeling, or digitized-paper evidence fills those gaps.
 
 ## Frozen Episode 007 bootstrap seed
 

@@ -1,0 +1,610 @@
+{
+  "created_at": "2026-08-24T15:59:43.885486Z",
+  "fingerprints": {
+    "checkpoint_schema_version": "episode008-native-adaptive-checkpoint-v1",
+    "configuration_sha256": "f08b6f9c5e13566358f213de24f8549d977caaa94c4a55159df169d844c9ce3e",
+    "executable": {
+      "exists": true,
+      "path": "/home/iross/research/ongoing/ai-class/code/bergner-2026/loca-build/bs2026_midpoint_orbit",
+      "sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
+    },
+    "executable_identity": {
+      "build_type": "Release",
+      "compiled_source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "path": "loca-build/bs2026_midpoint_orbit",
+      "sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
+    },
+    "schema_version": "episode008-native-adaptive-driver-v1",
+    "source_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py": "69a10bed080dd432c76e86d9fb85158d4bd742468e4952089cd2cb1ddcd76aca",
+      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "3dd596655fa76f2b3ac40cf7dfb95d7b9ebfdc0c6af5effe6983685cf16036c4"
+    },
+    "target_manifest_sha256": "58a7a795d0a3ca142a3041567cb52937eec997287aae08b0b5a8933df989381b",
+    "vector_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json": "57c700f0ffd5efc0c0e5b8a56b94ac45324eb42ab299788997155bd4683ff2c4",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json": "8ed7cfb277d0c7215e5bfbed7781c4c638d2dec216b834eb8dc96eb9cd5707ff",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    }
+  },
+  "fingerprints_sha256": "4cdecea5c762ebe5431645a3f3ae2828e47e5e07e829c057e9eb74bf47b8a611",
+  "run_id": "task072-measured-native-adaptive-pilot",
+  "schema_version": "episode008-native-adaptive-checkpoint-v1",
+  "segment": {
+    "adaptive_decision": {
+      "action": "stop_unresolved",
+      "reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
+      "terminal_status": "resolution_unresolved"
+    },
+    "cycle_index": 0,
+    "diagnostics": {
+      "aliasing_events": [],
+      "backend_emitted_terminal_status": "resolution_unresolved",
+      "cap_escalations": [],
+      "convergence": {
+        "linear_backend": "KLU2",
+        "nox_status": "converged",
+        "source": "native LOCA fixed-mesh segment before unresolved remesh/restart gate boundary"
+      },
+      "defects": {
+        "maximum": 0.0007300552443293067,
+        "source": "native adaptive controller decision at measured remesh boundary",
+        "status": "native_remesh_restart_measured_but_exact_restart_vector_defect_gate_unresolved"
+      },
+      "failed_or_unresolved_points_preserved": [
+        {
+          "reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
+          "source": "adaptive_decision",
+          "terminal_status": "resolution_unresolved"
+        }
+      ],
+      "measured_remesh_restart_available": true,
+      "mesh_history": [],
+      "not_evaluated_evidence": {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "floquet_dependent": "not_evaluated_through_TASK_068"
+      },
+      "phase_lineage": [],
+      "radau_triggers": {
+        "broader_ivp_based": "not_evaluated_through_TASK_068",
+        "defect_below_1e-4_but_convergence_failed": "not_evaluated",
+        "floquet_dependent": "not_evaluated_through_TASK_068",
+        "nonphysical_value": "not_evaluated",
+        "period_or_defect_stagnation_before_mesh_cap": "not_evaluated",
+        "polynomial_ringing": "not_evaluated"
+      },
+      "rejection_reasons": [
+        {
+          "reasons": [
+            "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap"
+          ],
+          "source": "adaptive_decision"
+        }
+      ],
+      "restart_gates_passed": true,
+      "restart_solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+      "single_valued_tripwire": {
+        "status": "single_valued_observed",
+        "trigger_count": 0,
+        "triggers": [],
+        "version": "single-valued-tripwire-v1"
+      },
+      "terminal_unresolved_reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
+      "transfer_correction_details": []
+    },
+    "event_partition": {
+      "accepted_callback_count": 9,
+      "callback_count": 9,
+      "callback_indices_contiguous": true,
+      "final_save_count": 1,
+      "initial_save_count": 1,
+      "regular_save_count": 7,
+      "rejected_callback_count": 0,
+      "rejected_remesh_boundary_count": 0,
+      "remesh_boundary_candidate_count": 1,
+      "saved_points_equal_accepted_callbacks": false
+    },
+    "events": [
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.4,
+        "attempted_coordinate": 0.4,
+        "attempted_coordinate_delta": 0.0,
+        "callback_index": 0,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "initial",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.3800480322733723,
+        "attempted_coordinate": 0.3800480322733723,
+        "attempted_coordinate_delta": -0.019951967726627717,
+        "callback_index": 1,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.32929864044644624,
+        "attempted_coordinate": 0.32929864044644624,
+        "attempted_coordinate_delta": -0.05074939182692606,
+        "callback_index": 2,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.2625763237176263,
+        "attempted_coordinate": 0.2625763237176263,
+        "attempted_coordinate_delta": -0.06672231672881995,
+        "callback_index": 3,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.17480109767561064,
+        "attempted_coordinate": 0.17480109767561064,
+        "attempted_coordinate_delta": -0.08777522604201565,
+        "callback_index": 4,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": 0.05947517215475801,
+        "attempted_coordinate": 0.05947517215475801,
+        "attempted_coordinate_delta": -0.11532592552085263,
+        "callback_index": 5,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": -0.08600777048608861,
+        "attempted_coordinate": -0.08600777048608861,
+        "attempted_coordinate_delta": -0.14548294264084663,
+        "callback_index": 6,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": -0.19728746786382276,
+        "attempted_coordinate": -0.19728746786382276,
+        "attempted_coordinate_delta": -0.11127969737773415,
+        "callback_index": 7,
+        "remesh_boundary_candidate": false,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "regular",
+        "status": "accepted"
+      },
+      {
+        "accepted": true,
+        "accepted_coordinate": -0.2,
+        "attempted_coordinate": -0.2,
+        "attempted_coordinate_delta": -0.0027125321361772536,
+        "callback_index": 8,
+        "remesh_boundary_candidate": true,
+        "retry_coordinate_delta": 0.0,
+        "save_role": "final",
+        "status": "accepted"
+      }
+    ],
+    "fixed_mesh_segment": {
+      "active_coordinate_name": "temperature_hat",
+      "backend": "measured-native-adaptive-pilot-backend",
+      "bootstrap_attempts": [
+        {
+          "accepted": true,
+          "attempt": 0,
+          "requested_coordinate_step": -0.01,
+          "trial_coordinate": 0.39,
+          "weighted_step_norm": 0.04022742764470183
+        }
+      ],
+      "branch_id": "spine-negative-T-hat-to-210",
+      "build_identity": [
+        "16.2.0",
+        "Trilinos_17.2.0-dev"
+      ],
+      "continuation_contract": {
+        "base_dimension": 385,
+        "base_has_arclength": false,
+        "extended_dimension": 386,
+        "fixed_mesh_segment_owner": "LOCA::Stepper",
+        "version": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1"
+      },
+      "convergence": {
+        "linear_backend": "KLU2",
+        "nox_status": "converged",
+        "source": "native LOCA fixed-mesh segment before unresolved remesh/restart gate boundary"
+      },
+      "decision": {
+        "action": "stop_unresolved",
+        "reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
+        "terminal_status": "resolution_unresolved"
+      },
+      "defects": {
+        "maximum": 0.0007300552443293067,
+        "source": "native adaptive controller decision at measured remesh boundary",
+        "status": "native_remesh_restart_measured_but_exact_restart_vector_defect_gate_unresolved"
+      },
+      "diagnostics": {
+        "backend_emitted_terminal_status": "resolution_unresolved",
+        "measured_remesh_restart_available": true,
+        "restart_gates_passed": true,
+        "restart_solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "terminal_unresolved_reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap"
+      },
+      "event_partition": {
+        "accepted_point_count": 9,
+        "final_save_count": 1,
+        "initial_save_count": 1,
+        "regular_accepted_count": 7,
+        "regular_attempt_count": 7,
+        "regular_rejected_count": 0
+      },
+      "events": [
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.4,
+          "attempted_coordinate": 0.4,
+          "attempted_coordinate_delta": 0.0,
+          "callback_index": 0,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "initial",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.3800480322733723,
+          "attempted_coordinate": 0.3800480322733723,
+          "attempted_coordinate_delta": -0.019951967726627717,
+          "callback_index": 1,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.32929864044644624,
+          "attempted_coordinate": 0.32929864044644624,
+          "attempted_coordinate_delta": -0.05074939182692606,
+          "callback_index": 2,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.2625763237176263,
+          "attempted_coordinate": 0.2625763237176263,
+          "attempted_coordinate_delta": -0.06672231672881995,
+          "callback_index": 3,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.17480109767561064,
+          "attempted_coordinate": 0.17480109767561064,
+          "attempted_coordinate_delta": -0.08777522604201565,
+          "callback_index": 4,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": 0.05947517215475801,
+          "attempted_coordinate": 0.05947517215475801,
+          "attempted_coordinate_delta": -0.11532592552085263,
+          "callback_index": 5,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": -0.08600777048608861,
+          "attempted_coordinate": -0.08600777048608861,
+          "attempted_coordinate_delta": -0.14548294264084663,
+          "callback_index": 6,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": -0.19728746786382276,
+          "attempted_coordinate": -0.19728746786382276,
+          "attempted_coordinate_delta": -0.11127969737773415,
+          "callback_index": 7,
+          "remesh_boundary_candidate": false,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "regular",
+          "status": "accepted"
+        },
+        {
+          "accepted": true,
+          "accepted_coordinate": -0.2,
+          "attempted_coordinate": -0.2,
+          "attempted_coordinate_delta": -0.0027125321361772536,
+          "callback_index": 8,
+          "remesh_boundary_candidate": true,
+          "retry_coordinate_delta": 0.0,
+          "save_role": "final",
+          "status": "accepted"
+        }
+      ],
+      "fixed_mesh_fixture": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/canonical-g3-n32.txt",
+      "fixture_sha256": "fa3aeb79d0c48129f01170955f23c9d533bd0e4ff856e0bef67439c09e791e7b",
+      "origin_coordinate": 0.4,
+      "phase_reference_id": "phase-ref-spine-225",
+      "points": [
+        {
+          "active_coordinate": 0.4,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 4.796802847175732e-13,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.1228750187943195e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.6552956333001504e-13,
+            "stage_residual_rms": 2.146010427106176e-14,
+            "update_residual_max": 2.699195811606215e-13,
+            "update_residual_rms": 3.312841277293722e-14
+          },
+          "period_s": 2204.0847125696864,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 0,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_000",
+          "vector_sha256": "49e62d18506c431776f8adfe1ba0a1b3f73cf73d4cadf7059bdc1d80a85d1753"
+        },
+        {
+          "active_coordinate": 0.3800480322733723,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 2.423830344072014e-13,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 7.446500221171123e-19,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 6.855079357913665e-13,
+            "stage_residual_rms": 4.6634978416936944e-14,
+            "update_residual_max": 7.429772601193056e-13,
+            "update_residual_rms": 7.717522077878547e-14
+          },
+          "period_s": 2268.9952979350487,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 1,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_001",
+          "vector_sha256": "833d79013e2160177f946c32bec47fe8288e6d2650d41ec7715ca0407c660776"
+        },
+        {
+          "active_coordinate": 0.32929864044644624,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 2.4832093320224174e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 4.893667864228837e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 4.7392237944047025e-15,
+            "stage_residual_rms": 6.933349848332399e-16,
+            "update_residual_max": 4.157213854740967e-15,
+            "update_residual_rms": 8.411874292105442e-16
+          },
+          "period_s": 2444.764847823334,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 2,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_002",
+          "vector_sha256": "3555f144bcf3aa6bc3639199f1d587af8d09a7d086007698093cd2db1ceddd4b"
+        },
+        {
+          "active_coordinate": 0.2625763237176263,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 3.063041692427772e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.7268429577815298e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 5.6671139267828864e-14,
+            "stage_residual_rms": 3.8979214009376974e-15,
+            "update_residual_max": 5.986387950826992e-14,
+            "update_residual_rms": 6.300469779672032e-15
+          },
+          "period_s": 2701.3085816911307,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 3,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_003",
+          "vector_sha256": "9f7fbab8b75a16948c39d68dfc318ad37e954ad7e526681fc2ff549567e6580c"
+        },
+        {
+          "active_coordinate": 0.17480109767561064,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.665401289416553e-13,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 3.768044424006543e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.0526659129168997e-13,
+            "stage_residual_rms": 1.3814316653281695e-14,
+            "update_residual_max": 2.1910179900026792e-13,
+            "update_residual_rms": 2.2414708951068416e-14
+          },
+          "period_s": 3089.132018698544,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 4,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_004",
+          "vector_sha256": "33004091390e32ff7315800fc55506c1867c2c3db277dbe1d6174a6ca91f289c"
+        },
+        {
+          "active_coordinate": 0.05947517215475801,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.4518635444121419e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.5646964133586493e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 1.1573683371598852e-14,
+            "stage_residual_rms": 9.482853931193425e-16,
+            "update_residual_max": 1.1706714214950563e-14,
+            "update_residual_rms": 1.305879836666968e-15
+          },
+          "period_s": 3702.674193244362,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 5,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_005",
+          "vector_sha256": "10b54d94421000f6d3a9449d272f1b059d47b852b401c9b4bc4990fdd71e1b48"
+        },
+        {
+          "active_coordinate": -0.08600777048608861,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 3.137533269479724e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.4461910614172006e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.4477675176714813e-14,
+            "stage_residual_rms": 1.7679372726873065e-15,
+            "update_residual_max": 2.687223035704561e-14,
+            "update_residual_rms": 2.811959150987225e-15
+          },
+          "period_s": 4690.189003607672,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 6,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_006",
+          "vector_sha256": "a6e60b02bc2a5a62f6d3426ccc8d8ef598913e16b5e4f7892ff0af01904bcbdc"
+        },
+        {
+          "active_coordinate": -0.19728746786382276,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.5332687992943134e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.0559039741848844e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 1.2238837588357407e-14,
+            "stage_residual_rms": 9.371799652074138e-16,
+            "update_residual_max": 1.0376405781433454e-14,
+            "update_residual_rms": 1.2227281901522018e-15
+          },
+          "period_s": 5653.40587600284,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 7,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_007",
+          "vector_sha256": "ea74aa9ca264e63d70c6c429d01970c3bc1111b4336a6ae2f350e4f441e0988e"
+        },
+        {
+          "active_coordinate": -0.2,
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.1034608498394915e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.7094574420775447e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 5.986387950826992e-15,
+            "stage_residual_rms": 6.450360047048872e-16,
+            "update_residual_max": 4.789110360661594e-15,
+            "update_residual_rms": 7.130198829388841e-16
+          },
+          "period_s": 5679.57323053456,
+          "phase_reference_id": "phase-ref-spine-225",
+          "point_index": 8,
+          "vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_008",
+          "vector_sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d"
+        }
+      ],
+      "remesh_boundary": {
+        "active_coordinate": -0.2,
+        "checkpoint_vector_key": "native_fixed_mesh__spine-negative-T-hat-to-210__point_008",
+        "checkpoint_vector_sha256": "b9151f886ee07c77d5d82bd8ba3563effee5a7557ecce20be8ae5b64940ec40d",
+        "event_callback_index": 8,
+        "period_s": 5679.57323053456,
+        "point_index": 8,
+        "policy": "stop only after an accepted native LOCA callback; rejected/native in-flight attempts are not remesh boundaries"
+      },
+      "restart_orientation": {
+        "injected_orientation_canonicalized": true,
+        "injected_parameter_component": 0.248586613300815,
+        "injected_weighted_norm": 0.9999999999999998,
+        "signed_bootstrap_parameter_component": -0.248586613300815,
+        "signed_bootstrap_weighted_norm": 0.9999999999999998,
+        "signed_initial_step": -0.01
+      },
+      "restart_state_seen": false,
+      "source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "target_coordinate": -0.2
+    },
+    "lifecycle_state": "unresolved",
+    "mesh_history": [],
+    "remesh_kind": null,
+    "resources": {
+      "segment_cpu_s": 0.00010499999999957765,
+      "segment_max_rss_kib": 268000,
+      "segment_wall_clock_s": 0.00010289200145052746
+    },
+    "restart": null,
+    "segment_id": "segment-0001__spine-210K__cycle-00",
+    "state_sequence": [
+      "pending",
+      "running_fixed_mesh",
+      "unresolved"
+    ],
+    "target_id": "spine-210K",
+    "terminal_status": "resolution_unresolved",
+    "transfer_correction_details": []
+  },
+  "segment_id": "segment-0001__spine-210K__cycle-00",
+  "segment_sha256": "b76cc3be6279fa0e7974a1fd35cdd6a7dab881ce74d7e45723c8a2e2d59f55bb"
+}
