@@ -1,9 +1,11 @@
 ---
 id: TASK-073
 title: Reconcile native adaptive pilot with independent validation
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:18'
+updated_date: '2026-08-24 16:10'
 labels:
   - episode-008
   - validation
