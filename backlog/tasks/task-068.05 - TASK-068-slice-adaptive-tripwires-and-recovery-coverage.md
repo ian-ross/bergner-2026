@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 12:20'
+updated_date: '2026-08-24 12:40'
 labels:
   - episode-008
   - cpp
@@ -48,4 +48,9 @@ Complete the remaining failure-policy and edge-case coverage for native adaptive
 
 <!-- SECTION:NOTES:BEGIN -->
 - Reviewed TASK-068.05 scope against current Episode 008 adaptive artifacts and tests. Existing coverage already handles core h/r transfer/restart smoke, one-branch remesh, provisional scripted spine/slices resumability, and TASK-067 adaptive Radau/aliasing records; remaining gap is explicit native-driver failure-policy diagnostic normalization plus synthetic edge-case coverage for failed restarts/tripwires/cap/reason preservation.
+
+- Implemented TASK-068.05 native-driver diagnostic normalization: cap_escalations, aliasing_events, Radau trigger channels, single-valued tripwire status, rejection reasons, failed/unresolved evidence preservation, and TASK-068 not_evaluated IVP/Floquet boundaries now appear on every driver segment/checkpoint.
+- Added synthetic edge-case tests for failed h+r restart/correction reasons, pure-r retry order, cap escalation, phase refresh triggers, single-valued tripwire triggers/observed/not_evaluated paths, plus existing tangent-only rebootstrap, interruption/resume, stale checkpoint, restart-smoke, one-branch, and fixed-mesh regression coverage.
+- Extended native adaptive manifest and provisional spine/slices summary with TASK-068.05 failure-policy ledgers; regenerated affected outputs and downstream Python-validation summary after source/provenance hash changes.
+- Verification: native adaptive manifest/spine-slices/Python-validation --check; uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_driver.py tests/test_episode8_native_adaptive_loca_manifest.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_adaptive_collocation.py -q; uv run pytest -q (314 passed, 1 skipped, 3 warnings).
 <!-- SECTION:NOTES:END -->
