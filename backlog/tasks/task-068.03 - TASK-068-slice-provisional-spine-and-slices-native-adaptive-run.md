@@ -1,10 +1,11 @@
 ---
 id: TASK-068.03
 title: 'TASK-068 slice: provisional spine-and-slices native adaptive run'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 10:53'
+updated_date: '2026-08-24 11:36'
 labels:
   - episode-008
   - cpp
