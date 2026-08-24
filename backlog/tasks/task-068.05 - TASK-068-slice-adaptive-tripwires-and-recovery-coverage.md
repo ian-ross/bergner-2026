@@ -1,10 +1,11 @@
 ---
 id: TASK-068.05
 title: 'TASK-068 slice: adaptive tripwires and recovery coverage'
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 10:53'
+updated_date: '2026-08-24 12:18'
 labels:
   - episode-008
   - cpp
