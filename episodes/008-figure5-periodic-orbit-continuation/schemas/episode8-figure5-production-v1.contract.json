@@ -1,0 +1,119 @@
+{
+  "artifact_kinds": [
+    "browser-display-dataset",
+    "continuation-events",
+    "continuation-points",
+    "curated-orbit-npz-manifest",
+    "linearized-period-curve",
+    "run-metadata"
+  ],
+  "artifact_payload_keys": {
+    "browser-display-dataset": "browser_records",
+    "continuation-events": "continuation_events",
+    "continuation-points": "continuation_points",
+    "curated-orbit-npz-manifest": "orbit_vector_manifest",
+    "linearized-period-curve": "linearized_period_rows",
+    "run-metadata": "run_metadata"
+  },
+  "browser_record_roles": [
+    "explicit_gap",
+    "external_comparison_overlay",
+    "hopf_boundary_limit",
+    "period_map_cell",
+    "temperature_slice_point"
+  ],
+  "contract_kind": "episode8-production-schema-contract",
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "event_types": [
+    "accepted_step",
+    "branch_bootstrap",
+    "gap_record",
+    "interpolation_created",
+    "near_hopf_stop",
+    "phase_reference_refresh",
+    "rejected_step",
+    "remesh_restart",
+    "resolution_unresolved",
+    "tripwire_stop"
+  ],
+  "provenance_policy": {
+    "checksum_convention": "sha256-canonical-json-or-file-bytes-v1",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "recorded_sha256_required": true,
+    "schema_version_must_match": "episode8-figure5-production-v1",
+    "source_artifacts_required": true
+  },
+  "schema_version": "episode8-figure5-production-v1",
+  "source_flags": [
+    "computed_linearized_equilibrium",
+    "computed_native_adaptive",
+    "explicit_gap",
+    "external_digitized_paper_comparison",
+    "interpolated_holdout_validated",
+    "invalid_outside_hopf_domain",
+    "not_evaluated",
+    "unresolved_native_adaptive"
+  ],
+  "status_source_compatibility": {
+    "accepted": [
+      "computed_linearized_equilibrium",
+      "computed_native_adaptive"
+    ],
+    "external_comparison": [
+      "external_digitized_paper_comparison"
+    ],
+    "failed": [
+      "computed_native_adaptive"
+    ],
+    "gap": [
+      "explicit_gap"
+    ],
+    "interpolated": [
+      "interpolated_holdout_validated"
+    ],
+    "invalid": [
+      "invalid_outside_hopf_domain"
+    ],
+    "near_hopf_stop": [
+      "computed_native_adaptive"
+    ],
+    "not_evaluated": [
+      "not_evaluated"
+    ],
+    "resolution_unresolved": [
+      "unresolved_native_adaptive"
+    ],
+    "tripwire_stop": [
+      "computed_native_adaptive"
+    ]
+  },
+  "unit_conventions": {
+    "cpu_time": "s",
+    "eigenvalue_imaginary_part": "rad s^-1",
+    "log_vertical_velocity": "ln(m s^-1)",
+    "memory": "KiB",
+    "period": "s",
+    "rho": "dimensionless",
+    "temperature": "K",
+    "temperature_hat": "dimensionless",
+    "vertical_velocity": "m s^-1",
+    "wall_clock": "s"
+  },
+  "validity_statuses": [
+    "accepted",
+    "external_comparison",
+    "failed",
+    "gap",
+    "interpolated",
+    "invalid",
+    "near_hopf_stop",
+    "not_evaluated",
+    "resolution_unresolved",
+    "tripwire_stop"
+  ]
+}

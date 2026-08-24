@@ -831,3 +831,9 @@ Key dispositions:
 - near-Hopf quadratic/quartic fits are not performed because TASK-068 reached zero approach points, so the current policy is an explicit unresolved gap until later evidence supplies sufficient approach points or justified stop reasons.
 
 The TASK-068 provisional ledger's twenty-five pending/failed targets must remain explicit terminal statuses. They are not permission to interpolate across unresolved regions and they are not evidence for speculative exceptional machinery.
+
+## TASK-070 production schema boundary
+
+TASK-070 implements the first approved downstream item from TASK-069: a formal `episode8-figure5-production-v1` schema and validator boundary before new production data are generated. The contract and command are documented in [`production-schemas.md`](production-schemas.md), with the machine-readable schema contract at [`../schemas/episode8-figure5-production-v1.contract.json`](../schemas/episode8-figure5-production-v1.contract.json).
+
+The schema requires provenance and checksum records, exact temperature/`log_w`/`rho` coordinate conventions, transformed orbit-state and normalized-phase conventions, period and resource units, method/schema versions, unambiguous validity/source flags, curated NPZ vector manifests, T=210 K linearized-period rows, and browser/display records that distinguish solved, unresolved, explicit-gap, invalid, validated-interpolated, and external-comparison evidence. Digitized paper data remain non-authoritative external comparison overlays only.

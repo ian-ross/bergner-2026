@@ -141,6 +141,15 @@ from .periodic_seed import (
     sha256_file,
     verify_upstream_checksums,
 )
+from .episode8_production_schema import (
+    EPISODE8_PRODUCTION_SCHEMA_VERSION,
+    ARTIFACT_KINDS as EPISODE8_PRODUCTION_ARTIFACT_KINDS,
+    PARAMETER_COORDINATE_CONVENTION as EPISODE8_PARAMETER_COORDINATE_CONVENTION,
+    ProductionSchemaValidationError,
+    production_schema_contract,
+    validate_production_artifact,
+    validation_errors,
+)
 from .native_adaptive_driver import (
     NATIVE_ADAPTIVE_CHECKPOINT_SCHEMA_VERSION,
     NATIVE_ADAPTIVE_DRIVER_SCHEMA_VERSION,
@@ -304,6 +313,13 @@ __all__ = [
     "SeedValidationError",
     "sha256_file",
     "verify_upstream_checksums",
+    "EPISODE8_PRODUCTION_SCHEMA_VERSION",
+    "EPISODE8_PRODUCTION_ARTIFACT_KINDS",
+    "EPISODE8_PARAMETER_COORDINATE_CONVENTION",
+    "ProductionSchemaValidationError",
+    "production_schema_contract",
+    "validate_production_artifact",
+    "validation_errors",
     "NATIVE_ADAPTIVE_CHECKPOINT_SCHEMA_VERSION",
     "NATIVE_ADAPTIVE_DRIVER_SCHEMA_VERSION",
     "NOT_EVALUATED_THROUGH_TASK_068",

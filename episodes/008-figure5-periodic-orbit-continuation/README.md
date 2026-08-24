@@ -9,6 +9,18 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) records the binding initial-run decisions and the production questions explicitly deferred until the post-run evidence review.
 - [`docs/task068-final-evidence-reconciliation.md`](docs/task068-final-evidence-reconciliation.md) summarizes the completed TASK-068 native adaptive evidence, failures, resource-cost boundaries, and TASK-069 handoff.
 - [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) records the TASK-069 post-run review, TASK-062 hypothesis dispositions, unsupported near-Hopf fit status, and approved downstream production task boundary.
+- [`docs/production-schemas.md`](docs/production-schemas.md) defines the TASK-070 `episode8-figure5-production-v1` schema and validation boundary for downstream production, orbit-vector, T=210 K linearized-period, and browser/display artifacts.
+
+## Production schema boundary
+
+TASK-070 freezes the `episode8-figure5-production-v1` contract before new authoritative Figure 5 production data are generated. The machine-readable contract is [`schemas/episode8-figure5-production-v1.contract.json`](schemas/episode8-figure5-production-v1.contract.json), and the validation command is:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py <artifact.json>
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py --print-contract
+```
+
+The validator requires explicit provenance, SHA-256 checksums, schema/method versions, coordinate conventions, units, validity/source flags, and unambiguous gap/unresolved/interpolated-source policy. Digitized paper Figure 5 data remain non-authoritative external comparison evidence only.
 
 ## Frozen Episode 007 bootstrap seed
 
