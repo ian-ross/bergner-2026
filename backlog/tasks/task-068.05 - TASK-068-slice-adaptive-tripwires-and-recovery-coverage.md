@@ -1,7 +1,7 @@
 ---
 id: TASK-068.05
 title: 'TASK-068 slice: adaptive tripwires and recovery coverage'
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
