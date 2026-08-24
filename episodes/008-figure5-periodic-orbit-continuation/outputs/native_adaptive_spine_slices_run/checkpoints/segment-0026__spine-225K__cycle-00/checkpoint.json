@@ -1,0 +1,528 @@
+{
+  "created_at": "2026-08-24T00:00:00Z",
+  "fingerprints": {
+    "checkpoint_schema_version": "episode008-native-adaptive-checkpoint-v1",
+    "configuration_sha256": "ecc16324a5cd2269dfe27ca09eb5701a78b8e7a8c92a251b721bc60b415c4807",
+    "executable": {
+      "exists": false,
+      "path": null,
+      "sha256": null
+    },
+    "executable_identity": {
+      "backend": "ScriptedNativeAdaptiveBackend",
+      "native_fixed_mesh_and_restart_artifacts_replayed": true,
+      "production_cpp_adaptive_backend_executed": false
+    },
+    "schema_version": "episode008-native-adaptive-driver-v1",
+    "source_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py": "eb6fdbaf92c94d8ca445443c7d7c4e08a0c315c2218dae1c642ed99bab6e87af",
+      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "91cea7c5faeb568ca3beb48b2d433c2e797cb344640539c4d70ddc635036c4ba"
+    },
+    "target_manifest_sha256": "6b1a86b2609148ead5795a0be8e434df5a893161daefd95bb9261babeec55940",
+    "vector_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "db691e668a325fbe483ed3ec07021a23f18ed2a2723693994fc47528186cd873",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke.json": "59aedaa2ab754a657d79e6724f981c277ab9eed88d375fc01d486d0eb00d3c0e",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke_vectors.npz": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    }
+  },
+  "fingerprints_sha256": "846767b197dbc3f34e9581ab66e3504bc291447d9897dcbf2f03d56f6bbaab4c",
+  "run_id": "task06803-provisional-spine-slices",
+  "schema_version": "episode008-native-adaptive-checkpoint-v1",
+  "segment": {
+    "adaptive_decision": {
+      "action": "stop_converged",
+      "terminal_status": "converged"
+    },
+    "cycle_index": 0,
+    "diagnostics": {
+      "accepted_point_count": 8,
+      "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+      "convergence": {
+        "linear_backend": "KLU2",
+        "maximum_phase_residual_abs": 1.031468198375305e-17,
+        "nox_status": "converged"
+      },
+      "defects": {
+        "maximum": 1.8890379755942955e-14,
+        "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
+      },
+      "maximum_native_residual": 1.8890379755942955e-14,
+      "maximum_phase_residual_abs": 1.031468198375305e-17,
+      "mesh_history": [
+        {
+          "interval_count": 32,
+          "rule": "gauss3",
+          "source": "native_fixed_mesh_higher_order_checkpoint"
+        }
+      ],
+      "phase_lineage": [
+        "phase-ref-episode007-seed"
+      ],
+      "transfer_correction_details": []
+    },
+    "event_partition": {
+      "accepted_callback_count": 8,
+      "callback_count": 8,
+      "callback_indices_contiguous": true,
+      "final_save_count": 1,
+      "initial_save_count": 1,
+      "regular_save_count": 6,
+      "rejected_callback_count": 0,
+      "rejected_remesh_boundary_count": 0,
+      "remesh_boundary_candidate_count": 0,
+      "saved_points_equal_accepted_callbacks": true
+    },
+    "events": [
+      {
+        "accepted": true,
+        "active_coordinate": -0.2639524255342412,
+        "callback_index": 0,
+        "period_s": 2450.318211640912,
+        "point_index": 0,
+        "remesh_boundary_candidate": false,
+        "save_role": "initial",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__000"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.24403660325118365,
+        "callback_index": 1,
+        "period_s": 2441.6322580217247,
+        "point_index": 1,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__001"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.20682899498983628,
+        "callback_index": 2,
+        "period_s": 2420.242570227164,
+        "point_index": 2,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__002"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.15790843025357754,
+        "callback_index": 3,
+        "period_s": 2382.6767735104695,
+        "point_index": 3,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__003"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.09940235270199871,
+        "callback_index": 4,
+        "period_s": 2325.3887135252444,
+        "point_index": 4,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__004"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.04053655533288008,
+        "callback_index": 5,
+        "period_s": 2256.5619338799415,
+        "point_index": 5,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__005"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": -0.00014784774883164401,
+        "callback_index": 6,
+        "period_s": 2204.2822736846383,
+        "point_index": 6,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__006"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": 0.0,
+        "callback_index": 7,
+        "period_s": 2204.084712569101,
+        "point_index": 7,
+        "remesh_boundary_candidate": false,
+        "save_role": "final",
+        "status": "accepted",
+        "vector_key": "native_g3__fixed225-to-spine__007"
+      }
+    ],
+    "fixed_mesh_segment": {
+      "backend": "scripted-native-adaptive-backend",
+      "convergence": {
+        "linear_backend": "KLU2",
+        "maximum_phase_residual_abs": 1.031468198375305e-17,
+        "nox_status": "converged"
+      },
+      "defects": {
+        "maximum": 1.8890379755942955e-14,
+        "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
+      },
+      "diagnostics": {
+        "accepted_point_count": 8,
+        "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "maximum_native_residual": 1.8890379755942955e-14,
+        "maximum_phase_residual_abs": 1.031468198375305e-17
+      },
+      "events": [
+        {
+          "accepted": true,
+          "active_coordinate": -0.2639524255342412,
+          "callback_index": 0,
+          "period_s": 2450.318211640912,
+          "point_index": 0,
+          "remesh_boundary_candidate": false,
+          "save_role": "initial",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__000"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.24403660325118365,
+          "callback_index": 1,
+          "period_s": 2441.6322580217247,
+          "point_index": 1,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__001"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.20682899498983628,
+          "callback_index": 2,
+          "period_s": 2420.242570227164,
+          "point_index": 2,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__002"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.15790843025357754,
+          "callback_index": 3,
+          "period_s": 2382.6767735104695,
+          "point_index": 3,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__003"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.09940235270199871,
+          "callback_index": 4,
+          "period_s": 2325.3887135252444,
+          "point_index": 4,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__004"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.04053655533288008,
+          "callback_index": 5,
+          "period_s": 2256.5619338799415,
+          "point_index": 5,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__005"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": -0.00014784774883164401,
+          "callback_index": 6,
+          "period_s": 2204.2822736846383,
+          "point_index": 6,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__006"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": 0.0,
+          "callback_index": 7,
+          "period_s": 2204.084712569101,
+          "point_index": 7,
+          "remesh_boundary_candidate": false,
+          "save_role": "final",
+          "status": "accepted",
+          "vector_key": "native_g3__fixed225-to-spine__007"
+        }
+      ],
+      "mesh_history": [
+        {
+          "interval_count": 32,
+          "rule": "gauss3",
+          "source": "native_fixed_mesh_higher_order_checkpoint"
+        }
+      ],
+      "phase_lineage": [
+        "phase-ref-episode007-seed"
+      ],
+      "points": [
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.2639524255342412,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 4.8067048320517826e-14,
+            "weighted_orbit_error": 8.456419912326587e-14
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 4.893414319274524e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 6.310853907534655e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 1.8890379755942955e-14,
+            "stage_residual_rms": 1.4731811809448258e-15,
+            "update_residual_max": 1.8624318069239533e-14,
+            "update_residual_rms": 2.019287765013341e-15
+          },
+          "period_s": 2450.318211640912,
+          "point_id": "native-g3-fixed225-to-spine-000",
+          "point_index": 0,
+          "vector_key": "native_g3__fixed225-to-spine__000"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.24403660325118365,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 1.6762254612798322e-15,
+            "weighted_orbit_error": 2.416630781981782e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.1333513035483549e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 7.601172946980975e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 9.578220721323188e-15,
+            "stage_residual_rms": 8.550968843734698e-16,
+            "update_residual_max": 1.0243374938081743e-14,
+            "update_residual_rms": 1.2412491359726272e-15
+          },
+          "period_s": 2441.6322580217247,
+          "point_id": "native-g3-fixed225-to-spine-001",
+          "point_index": 1,
+          "vector_key": "native_g3__fixed225-to-spine__001"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.20682899498983628,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 6.439103214941975e-13,
+            "weighted_orbit_error": 1.1272947665919093e-12
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.0104098837570607e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 6.867593245196403e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 9.578220721323188e-15,
+            "stage_residual_rms": 8.154341272605093e-16,
+            "update_residual_max": 1.1706714214950563e-14,
+            "update_residual_rms": 1.3189310604622012e-15
+          },
+          "period_s": 2420.242570227164,
+          "point_id": "native-g3-fixed225-to-spine-002",
+          "point_index": 2,
+          "vector_key": "native_g3__fixed225-to-spine__002"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.15790843025357754,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 1.7062496105733042e-13,
+            "weighted_orbit_error": 3.041832806568044e-13
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 8.689559228072981e-16,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 7.078660645971237e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 3.0597093970893516e-15,
+            "stage_residual_rms": 5.568351664433949e-16,
+            "update_residual_max": 2.660616867034219e-15,
+            "update_residual_rms": 5.937010682489521e-16
+          },
+          "period_s": 2382.6767735104695,
+          "point_id": "native-g3-fixed225-to-spine-003",
+          "point_index": 3,
+          "vector_key": "native_g3__fixed225-to-spine__003"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.09940235270199871,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 9.777878172399734e-16,
+            "weighted_orbit_error": 1.4490721552354098e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 8.335254291155385e-16,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 8.043673446665804e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 5.986387950826992e-15,
+            "stage_residual_rms": 6.539754414701861e-16,
+            "update_residual_max": 6.252449637530414e-15,
+            "update_residual_rms": 8.991046278236804e-16
+          },
+          "period_s": 2325.3887135252444,
+          "point_id": "native-g3-fixed225-to-spine-004",
+          "point_index": 4,
+          "vector_key": "native_g3__fixed225-to-spine__004"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.04053655533288008,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 2.6197887471049473e-15,
+            "weighted_orbit_error": 4.588839806988012e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 1.686663901757618e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.0082316104775794e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 1.6495824575612157e-14,
+            "stage_residual_rms": 1.2761121718003253e-15,
+            "update_residual_max": 1.2371868431709118e-14,
+            "update_residual_rms": 1.3542038942787668e-15
+          },
+          "period_s": 2256.5619338799415,
+          "point_id": "native-g3-fixed225-to-spine-005",
+          "point_index": 5,
+          "vector_key": "native_g3__fixed225-to-spine__005"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": -0.00014784774883164401,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 0.0,
+            "weighted_orbit_error": 4.47103206048361e-16
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 4.828290571876723e-16,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 7.917437210896715e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.510957168263544e-15,
+            "stage_residual_rms": 5.479682537620217e-16,
+            "update_residual_max": 2.876791987480749e-15,
+            "update_residual_rms": 6.373020017783552e-16
+          },
+          "period_s": 2204.2822736846383,
+          "point_id": "native-g3-fixed225-to-spine-006",
+          "point_index": 6,
+          "vector_key": "native_g3__fixed225-to-spine__006"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": 0.0,
+          "active_coordinate_name": "rho",
+          "branch_id": "fixed225-to-spine",
+          "independent_python_validation": {
+            "period_relative_error": 8.252810761640951e-16,
+            "weighted_orbit_error": 1.9721041110260764e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 3.0700224967539952e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 1.031468198375305e-17,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 6.784573010937258e-15,
+            "stage_residual_rms": 6.791672139043743e-16,
+            "update_residual_max": 1.8125452406670615e-15,
+            "update_residual_rms": 5.062451774579851e-16
+          },
+          "period_s": 2204.084712569101,
+          "point_id": "native-g3-fixed225-to-spine-007",
+          "point_index": 7,
+          "vector_key": "native_g3__fixed225-to-spine__007"
+        }
+      ],
+      "restart_state_seen": false,
+      "transfer_correction_details": []
+    },
+    "lifecycle_state": "accepted",
+    "mesh_history": [
+      {
+        "interval_count": 32,
+        "rule": "gauss3",
+        "source": "native_fixed_mesh_higher_order_checkpoint"
+      }
+    ],
+    "remesh_kind": null,
+    "resources": {
+      "segment_cpu_s": 0.0,
+      "segment_max_rss_kib": 0,
+      "segment_wall_clock_s": 0.0
+    },
+    "restart": null,
+    "segment_id": "segment-0026__spine-225K__cycle-00",
+    "state_sequence": [
+      "pending",
+      "running_fixed_mesh",
+      "accepted"
+    ],
+    "target_id": "spine-225K",
+    "terminal_status": "accepted",
+    "transfer_correction_details": []
+  },
+  "segment_id": "segment-0026__spine-225K__cycle-00",
+  "segment_sha256": "a253f5bd423f8cb5552e77fbbb34e6a4c4bab7ecb7039200a11b6ba9cb4a33c2"
+}

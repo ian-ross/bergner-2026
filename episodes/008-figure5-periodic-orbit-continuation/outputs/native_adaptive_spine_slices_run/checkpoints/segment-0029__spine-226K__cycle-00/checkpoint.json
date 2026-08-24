@@ -1,0 +1,336 @@
+{
+  "created_at": "2026-08-24T00:00:00Z",
+  "fingerprints": {
+    "checkpoint_schema_version": "episode008-native-adaptive-checkpoint-v1",
+    "configuration_sha256": "ecc16324a5cd2269dfe27ca09eb5701a78b8e7a8c92a251b721bc60b415c4807",
+    "executable": {
+      "exists": false,
+      "path": null,
+      "sha256": null
+    },
+    "executable_identity": {
+      "backend": "ScriptedNativeAdaptiveBackend",
+      "native_fixed_mesh_and_restart_artifacts_replayed": true,
+      "production_cpp_adaptive_backend_executed": false
+    },
+    "schema_version": "episode008-native-adaptive-driver-v1",
+    "source_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py": "eb6fdbaf92c94d8ca445443c7d7c4e08a0c315c2218dae1c642ed99bab6e87af",
+      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "91cea7c5faeb568ca3beb48b2d433c2e797cb344640539c4d70ddc635036c4ba"
+    },
+    "target_manifest_sha256": "6b1a86b2609148ead5795a0be8e434df5a893161daefd95bb9261babeec55940",
+    "vector_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "db691e668a325fbe483ed3ec07021a23f18ed2a2723693994fc47528186cd873",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke.json": "59aedaa2ab754a657d79e6724f981c277ab9eed88d375fc01d486d0eb00d3c0e",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke_vectors.npz": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    }
+  },
+  "fingerprints_sha256": "846767b197dbc3f34e9581ab66e3504bc291447d9897dcbf2f03d56f6bbaab4c",
+  "run_id": "task06803-provisional-spine-slices",
+  "schema_version": "episode008-native-adaptive-checkpoint-v1",
+  "segment": {
+    "adaptive_decision": {
+      "action": "stop_converged",
+      "terminal_status": "converged"
+    },
+    "cycle_index": 0,
+    "diagnostics": {
+      "accepted_point_count": 4,
+      "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+      "convergence": {
+        "linear_backend": "KLU2",
+        "maximum_phase_residual_abs": 9.74653298751975e-18,
+        "nox_status": "converged"
+      },
+      "defects": {
+        "maximum": 3.1291514973189448e-12,
+        "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
+      },
+      "maximum_native_residual": 3.1291514973189448e-12,
+      "maximum_phase_residual_abs": 9.74653298751975e-18,
+      "mesh_history": [
+        {
+          "interval_count": 32,
+          "rule": "gauss3",
+          "source": "native_fixed_mesh_higher_order_checkpoint"
+        }
+      ],
+      "phase_lineage": [
+        "phase-ref-spine-225"
+      ],
+      "transfer_correction_details": []
+    },
+    "event_partition": {
+      "accepted_callback_count": 4,
+      "callback_count": 4,
+      "callback_indices_contiguous": true,
+      "final_save_count": 1,
+      "initial_save_count": 1,
+      "regular_save_count": 2,
+      "rejected_callback_count": 0,
+      "rejected_remesh_boundary_count": 0,
+      "remesh_boundary_candidate_count": 0,
+      "saved_points_equal_accepted_callbacks": true
+    },
+    "events": [
+      {
+        "accepted": true,
+        "active_coordinate": 0.4,
+        "callback_index": 0,
+        "period_s": 2204.084712571836,
+        "point_index": 0,
+        "remesh_boundary_candidate": false,
+        "save_role": "initial",
+        "status": "accepted",
+        "vector_key": "native_g3__spine-positive-T-hat__000"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": 0.41000000000000003,
+        "callback_index": 1,
+        "period_s": 2172.396810318951,
+        "point_index": 1,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__spine-positive-T-hat__001"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": 0.4400971152140719,
+        "callback_index": 2,
+        "period_s": 2080.3059454290924,
+        "point_index": 2,
+        "remesh_boundary_candidate": false,
+        "save_role": "regular",
+        "status": "accepted",
+        "vector_key": "native_g3__spine-positive-T-hat__002"
+      },
+      {
+        "accepted": true,
+        "active_coordinate": 0.44,
+        "callback_index": 3,
+        "period_s": 2080.5953709268306,
+        "point_index": 3,
+        "remesh_boundary_candidate": false,
+        "save_role": "final",
+        "status": "accepted",
+        "vector_key": "native_g3__spine-positive-T-hat__003"
+      }
+    ],
+    "fixed_mesh_segment": {
+      "backend": "scripted-native-adaptive-backend",
+      "convergence": {
+        "linear_backend": "KLU2",
+        "maximum_phase_residual_abs": 9.74653298751975e-18,
+        "nox_status": "converged"
+      },
+      "defects": {
+        "maximum": 3.1291514973189448e-12,
+        "source": "native residual gate summary; independent adaptive defects remain restart/controller evidence"
+      },
+      "diagnostics": {
+        "accepted_point_count": 4,
+        "all_accepted_points_pass_residual_phase_positivity_linear_gates": true,
+        "maximum_native_residual": 3.1291514973189448e-12,
+        "maximum_phase_residual_abs": 9.74653298751975e-18
+      },
+      "events": [
+        {
+          "accepted": true,
+          "active_coordinate": 0.4,
+          "callback_index": 0,
+          "period_s": 2204.084712571836,
+          "point_index": 0,
+          "remesh_boundary_candidate": false,
+          "save_role": "initial",
+          "status": "accepted",
+          "vector_key": "native_g3__spine-positive-T-hat__000"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": 0.41000000000000003,
+          "callback_index": 1,
+          "period_s": 2172.396810318951,
+          "point_index": 1,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__spine-positive-T-hat__001"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": 0.4400971152140719,
+          "callback_index": 2,
+          "period_s": 2080.3059454290924,
+          "point_index": 2,
+          "remesh_boundary_candidate": false,
+          "save_role": "regular",
+          "status": "accepted",
+          "vector_key": "native_g3__spine-positive-T-hat__002"
+        },
+        {
+          "accepted": true,
+          "active_coordinate": 0.44,
+          "callback_index": 3,
+          "period_s": 2080.5953709268306,
+          "point_index": 3,
+          "remesh_boundary_candidate": false,
+          "save_role": "final",
+          "status": "accepted",
+          "vector_key": "native_g3__spine-positive-T-hat__003"
+        }
+      ],
+      "mesh_history": [
+        {
+          "interval_count": 32,
+          "rule": "gauss3",
+          "source": "native_fixed_mesh_higher_order_checkpoint"
+        }
+      ],
+      "phase_lineage": [
+        "phase-ref-spine-225"
+      ],
+      "points": [
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": 0.4,
+          "active_coordinate_name": "temperature_hat",
+          "branch_id": "spine-positive-T-hat",
+          "independent_python_validation": {
+            "period_relative_error": 1.241635379088881e-12,
+            "weighted_orbit_error": 2.2299500336224227e-12
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 2.229993910751185e-12,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 4.7479262007700974e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.7035858294368213e-12,
+            "stage_residual_rms": 1.8684951314791517e-13,
+            "update_residual_max": 2.82943300724754e-12,
+            "update_residual_rms": 2.929358333252487e-13
+          },
+          "period_s": 2204.084712571836,
+          "point_id": "native-g3-spine-positive-T-hat-000",
+          "point_index": 0,
+          "vector_key": "native_g3__spine-positive-T-hat__000"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": 0.41000000000000003,
+          "active_coordinate_name": "temperature_hat",
+          "branch_id": "spine-positive-T-hat",
+          "independent_python_validation": {
+            "period_relative_error": 1.5783465568548391e-12,
+            "weighted_orbit_error": 2.8330217299948895e-12
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 2.7299813732021456e-12,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 4.785562776146022e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.9926618520400893e-12,
+            "stage_residual_rms": 2.088267743549181e-13,
+            "update_residual_max": 3.1291514973189448e-12,
+            "update_residual_rms": 3.2624328714863137e-13
+          },
+          "period_s": 2172.396810318951,
+          "point_id": "native-g3-spine-positive-T-hat-001",
+          "point_index": 1,
+          "vector_key": "native_g3__spine-positive-T-hat__001"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": 0.4400971152140719,
+          "active_coordinate_name": "temperature_hat",
+          "branch_id": "spine-positive-T-hat",
+          "independent_python_validation": {
+            "period_relative_error": 5.246313142187383e-15,
+            "weighted_orbit_error": 9.218569489232968e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 3.0418033381865863e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 5.332740837365193e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 2.7005261200397322e-14,
+            "stage_residual_rms": 1.86883168061399e-15,
+            "update_residual_max": 2.687223035704561e-14,
+            "update_residual_rms": 2.85772485825048e-15
+          },
+          "period_s": 2080.3059454290924,
+          "point_id": "native-g3-spine-positive-T-hat-002",
+          "point_index": 2,
+          "vector_key": "native_g3__spine-positive-T-hat__002"
+        },
+        {
+          "accepted_gates_passed": true,
+          "active_coordinate": 0.44,
+          "active_coordinate_name": "temperature_hat",
+          "branch_id": "spine-positive-T-hat",
+          "independent_python_validation": {
+            "period_relative_error": 8.742638905014787e-16,
+            "weighted_orbit_error": 1.439046143809204e-15
+          },
+          "native_validation": {
+            "fixed_parameter_weighted_distance_from_native": 2.5939308796381244e-15,
+            "linear_backend": "KLU2",
+            "linear_solve_complete": true,
+            "period_positive_finite": true,
+            "phase_residual_abs": 9.74653298751975e-18,
+            "physical_states_positive_finite": true,
+            "stage_residual_max": 1.6495824575612157e-14,
+            "stage_residual_rms": 1.1446545600317467e-15,
+            "update_residual_max": 1.82252255391844e-14,
+            "update_residual_rms": 1.9383612019890074e-15
+          },
+          "period_s": 2080.5953709268306,
+          "point_id": "native-g3-spine-positive-T-hat-003",
+          "point_index": 3,
+          "vector_key": "native_g3__spine-positive-T-hat__003"
+        }
+      ],
+      "restart_state_seen": false,
+      "transfer_correction_details": []
+    },
+    "lifecycle_state": "accepted",
+    "mesh_history": [
+      {
+        "interval_count": 32,
+        "rule": "gauss3",
+        "source": "native_fixed_mesh_higher_order_checkpoint"
+      }
+    ],
+    "remesh_kind": null,
+    "resources": {
+      "segment_cpu_s": 0.0,
+      "segment_max_rss_kib": 0,
+      "segment_wall_clock_s": 0.0
+    },
+    "restart": null,
+    "segment_id": "segment-0029__spine-226K__cycle-00",
+    "state_sequence": [
+      "pending",
+      "running_fixed_mesh",
+      "accepted"
+    ],
+    "target_id": "spine-226K",
+    "terminal_status": "accepted",
+    "transfer_correction_details": []
+  },
+  "segment_id": "segment-0029__spine-226K__cycle-00",
+  "segment_sha256": "5d425ec5df1a51a320274e5d886ae41e9284d60d4c255e82a8eca09a35f43e5a"
+}

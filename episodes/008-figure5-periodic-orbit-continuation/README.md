@@ -274,6 +274,21 @@ This manifest is intentionally truthful preparatory evidence, not a claim that n
 
 Run directories contain an atomic `manifest.json` plus per-segment `checkpoints/<segment>/checkpoint.json` files. Resume validates schema, source hashes, executable identity, vector fingerprints, configuration fingerprints, and target-manifest fingerprints before any completed segment can be reused; incompatible or stale state raises `StaleCheckpointError` instead of silently mixing artifacts. Focused tests use the included scripted backend to verify interruption/resume, stale rejection, event accounting, remesh rebuild identity, deterministic retry ordering, and fixed-mesh no-remesh behavior.
 
+## Provisional adaptive spine-and-slices run
+
+[`scripts/generate_native_adaptive_spine_slices_run.py`](scripts/generate_native_adaptive_spine_slices_run.py) executes the complete TASK-068.03 provisional target manifest through the generalized driver using curated native fixed-mesh and one-branch remesh/restart evidence. The output run directory is [`outputs/native_adaptive_spine_slices_run/`](outputs/native_adaptive_spine_slices_run/) with a resumable driver `manifest.json` and one checkpoint per completed segment; [`outputs/native_adaptive_spine_slices_run.json`](outputs/native_adaptive_spine_slices_run.json) is the deterministic summary.
+
+Regenerate or verify with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py --check
+```
+
+The provisional manifest covers the exact `T=225 K` move to the spine, both temperature directions over the `210--226 K` skeleton, exact `T=210 K` and `T=225 K` anchors, and signed `rho = +/-0.15` slices for every skeleton temperature. It records six accepted targets from existing native fixed-mesh/restart evidence and twenty-five explicit failed terminal targets with reasons. Accepted native points pass residual, phase, positivity, period, linear, and independent Python same-coordinate gates; the selected `T=210 K` remesh restart also passes residual, phase, finite-change, KLU2/linear, and tangent gates. Near-Hopf approach points are not reached in this provisional run, so amplitude/period/coordinate evidence remains empty with the five-reliable-point target and fit/connection policy deferred to TASK-069.
+
+This artifact is intentionally not a production C++ adaptive-backend run and does not relabel Python or fixed-mesh evidence as full native adaptive completion.
+
 ## TASK-062 higher-order/adaptive design
 
 TASK-062 reviewed the completed midpoint evidence before selecting the next numerical stage. TASK-056 showed that tiny discrete residuals do not imply period accuracy: the canonical `N=64` midpoint period is more than 12% above the Episode 007 reference, while refinement reduces the discrepancy substantially. TASK-057 through TASK-061 then established transparent Python continuation, sparse Tpetra/NOX correction, and genuine native LOCA ownership with close Python/C++ parity. The remaining problem is therefore orbit resolution, not continuation ownership.

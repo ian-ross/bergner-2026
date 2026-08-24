@@ -1,0 +1,145 @@
+{
+  "created_at": "2026-08-24T00:00:00Z",
+  "fingerprints": {
+    "checkpoint_schema_version": "episode008-native-adaptive-checkpoint-v1",
+    "configuration_sha256": "ecc16324a5cd2269dfe27ca09eb5701a78b8e7a8c92a251b721bc60b415c4807",
+    "executable": {
+      "exists": false,
+      "path": null,
+      "sha256": null
+    },
+    "executable_identity": {
+      "backend": "ScriptedNativeAdaptiveBackend",
+      "native_fixed_mesh_and_restart_artifacts_replayed": true,
+      "production_cpp_adaptive_backend_executed": false
+    },
+    "schema_version": "episode008-native-adaptive-driver-v1",
+    "source_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_spine_slices_run.py": "eb6fdbaf92c94d8ca445443c7d7c4e08a0c315c2218dae1c642ed99bab6e87af",
+      "src/bergner_spichtinger_2026/native_adaptive_driver.py": "91cea7c5faeb568ca3beb48b2d433c2e797cb344640539c4d70ddc635036c4ba"
+    },
+    "target_manifest_sha256": "6b1a86b2609148ead5795a0be8e434df5a893161daefd95bb9261babeec55940",
+    "vector_fingerprints": {
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/manifest.json": "f0325eaafd74a1a524b7e9b92bf76ff4cf0e56589426767b6c7dee21148905ab",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "db691e668a325fbe483ed3ec07021a23f18ed2a2723693994fc47528186cd873",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest_vectors.npz": "ccef83a8be0554ac0786407c382500a8829e5ddc7ac8b5a20c3210806d2f1a69",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke.json": "59aedaa2ab754a657d79e6724f981c277ab9eed88d375fc01d486d0eb00d3c0e",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_restart_smoke_vectors.npz": "7eaca57659ba3f2b2901ce06961f97ad675d1eb49b5cf37526f0595c54250bee",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
+    }
+  },
+  "fingerprints_sha256": "846767b197dbc3f34e9581ab66e3504bc291447d9897dcbf2f03d56f6bbaab4c",
+  "run_id": "task06803-provisional-spine-slices",
+  "schema_version": "episode008-native-adaptive-checkpoint-v1",
+  "segment": {
+    "adaptive_decision": {
+      "action": "stop_failed",
+      "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+      "terminal_status": "failed"
+    },
+    "cycle_index": 0,
+    "diagnostics": {
+      "convergence": {
+        "nox_status": "not_started",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+      },
+      "defects": {
+        "maximum": null,
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "status": "not_evaluated"
+      },
+      "mesh_history": [
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "status": "not_started"
+        }
+      ],
+      "phase_lineage": [],
+      "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+      "transfer_correction_details": []
+    },
+    "event_partition": {
+      "accepted_callback_count": 0,
+      "callback_count": 1,
+      "callback_indices_contiguous": true,
+      "final_save_count": 1,
+      "initial_save_count": 0,
+      "regular_save_count": 0,
+      "rejected_callback_count": 1,
+      "rejected_remesh_boundary_count": 0,
+      "remesh_boundary_candidate_count": 0,
+      "saved_points_equal_accepted_callbacks": true
+    },
+    "events": [
+      {
+        "accepted": false,
+        "callback_index": 0,
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "save_role": "final",
+        "status": "rejected"
+      }
+    ],
+    "fixed_mesh_segment": {
+      "backend": "scripted-native-adaptive-backend",
+      "convergence": {
+        "nox_status": "not_started",
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+      },
+      "defects": {
+        "maximum": null,
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "status": "not_evaluated"
+      },
+      "diagnostics": {
+        "terminal_failure_reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled"
+      },
+      "events": [
+        {
+          "accepted": false,
+          "callback_index": 0,
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "save_role": "final",
+          "status": "rejected"
+        }
+      ],
+      "mesh_history": [
+        {
+          "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+          "status": "not_started"
+        }
+      ],
+      "phase_lineage": [],
+      "points": [],
+      "restart_state_seen": false,
+      "transfer_correction_details": []
+    },
+    "lifecycle_state": "failed",
+    "mesh_history": [
+      {
+        "reason": "native_adaptive_remesh_run_pending; fixed-mesh/native or Python-adaptive evidence is not relabeled",
+        "status": "not_started"
+      }
+    ],
+    "remesh_kind": null,
+    "resources": {
+      "segment_cpu_s": 0.0,
+      "segment_max_rss_kib": 0,
+      "segment_wall_clock_s": 0.0
+    },
+    "restart": null,
+    "segment_id": "segment-0007__slice-212K-rho-+0.15__cycle-00",
+    "state_sequence": [
+      "pending",
+      "running_fixed_mesh",
+      "failed"
+    ],
+    "target_id": "slice-212K-rho-+0.15",
+    "terminal_status": "failed",
+    "transfer_correction_details": []
+  },
+  "segment_id": "segment-0007__slice-212K-rho-+0.15__cycle-00",
+  "segment_sha256": "d2564380c91a101f690a87b9fc82b803e37a1b9e422ef297bf7ec9fd40a96760"
+}
