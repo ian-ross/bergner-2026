@@ -39,3 +39,9 @@ Compute the lower-panel equilibrium-linearized period curve independently from p
 5. Add stratified validation: compare selected native rows against independent Python physical-Jacobian/eigenvalue calculations and check exact T=210 K Hopf-anchor frequencies against Episode 006 native LOCA anchors at relative tolerance 1e-8.
 6. Document the artifact and command in Episode 008 docs/README, add focused pytest coverage for schema validity, continuity/refinement/no-clipping, Hopf-frequency parity, and Python parity, then run the generator --check, production validator, focused tests, relevant C++ build/tests, full pytest as feasible, and git diff --check before closing TASK-074.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-074: moved task to In Progress, assigned to @iross, reviewed dependencies TASK-069/TASK-070 and Episode 008 schema/decision docs, confirmed uv/cmake/ninja and existing C++ model executable are available, and drafted the implementation plan. Pausing before coding pending plan approval.
+<!-- SECTION:NOTES:END -->
