@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-13 15:36'
-updated_date: '2026-08-24 13:25'
+updated_date: '2026-08-24 13:26'
 labels:
   - episode-008
   - design
@@ -29,13 +29,13 @@ Perform the mandatory post-run scientific and implementation review of the highe
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 The review summarizes fixed-order and adaptive period/orbit convergence, independent defects, mesh concentration and aliasing, transfer/restart behavior, continuation coverage, near-Hopf behavior, rejection/unresolved modes, runtime, memory, and Python/native parity with links to reproducible artifacts
-- [ ] #2 Every TASK-062 v1 hypothesis is dispositioned as retain, revise with evidence and method-version change, not_evaluated, or defer; the review explicitly decides whether Radau, Floquet postprocessing, coarsening, landmark alignment, local hp, iterative solvers, or multibranch confirmation is warranted
-- [ ] #3 The review determines whether the continuation approach can support the remaining Figure 5 work and records any scientific or numerical blockers without filling unresolved regions through undocumented interpolation
-- [ ] #4 TASK-063 digitized paper evidence, if available, is compared as image-derived external evidence only; discrepancies use documented uncertainty and do not override convergence or independent IVP evidence
-- [ ] #5 The next-stage design decides the justified scope for production schemas, Floquet postprocessing, T=210 K linearized periods, scientific sampling/interpolation, IVP validation, full-domain continuation, and final paper/browser artifacts
-- [ ] #6 Only after the review decisions are documented are atomic verifiable downstream backlog tasks created in dependency order; every such task depends on TASK-069 and no implementation plans are added during task creation
-- [ ] #7 The checkpoint performs or reviews the documented near-Hopf quadratic/quartic fits from TASK-068 approach evidence and decides the justified downstream connection or explicit-gap policy
+- [x] #1 The review summarizes fixed-order and adaptive period/orbit convergence, independent defects, mesh concentration and aliasing, transfer/restart behavior, continuation coverage, near-Hopf behavior, rejection/unresolved modes, runtime, memory, and Python/native parity with links to reproducible artifacts
+- [x] #2 Every TASK-062 v1 hypothesis is dispositioned as retain, revise with evidence and method-version change, not_evaluated, or defer; the review explicitly decides whether Radau, Floquet postprocessing, coarsening, landmark alignment, local hp, iterative solvers, or multibranch confirmation is warranted
+- [x] #3 The review determines whether the continuation approach can support the remaining Figure 5 work and records any scientific or numerical blockers without filling unresolved regions through undocumented interpolation
+- [x] #4 TASK-063 digitized paper evidence, if available, is compared as image-derived external evidence only; discrepancies use documented uncertainty and do not override convergence or independent IVP evidence
+- [x] #5 The next-stage design decides the justified scope for production schemas, Floquet postprocessing, T=210 K linearized periods, scientific sampling/interpolation, IVP validation, full-domain continuation, and final paper/browser artifacts
+- [x] #6 Only after the review decisions are documented are atomic verifiable downstream backlog tasks created in dependency order; every such task depends on TASK-069 and no implementation plans are added during task creation
+- [x] #7 The checkpoint performs or reviews the documented near-Hopf quadratic/quartic fits from TASK-068 approach evidence and decides the justified downstream connection or explicit-gap policy
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -62,3 +62,27 @@ Documented TASK-069 evidence review in episodes/008-figure5-periodic-orbit-conti
 
 Validation run: TASK-064/adaptive/TASK-068 artifact --check commands through final reconciliation, focused final-reconciliation pytest, git diff --check, and full uv run pytest -q (320 passed, 1 skipped, 3 warnings). Independent read-only numerical/scientific and task-decomposition reviews found no blockers and agreed with the production-not-sufficient, explicit-gap, and downstream-scope decisions.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed the TASK-069 post-run evidence review and next-stage design checkpoint.
+
+Changes:
+- Added `docs/task069-evidence-review-and-next-stage-design.md` with the frozen input-artifact set, evidence synthesis, TASK-062 disposition matrix, near-Hopf fit decision, continuation sufficiency assessment, and downstream task graph.
+- Updated the Episode 008 README and collocation decision record with the checkpoint outcome: fixed-uniform meshes are diagnostic only; three-stage Gauss h/r adaptation and native remesh/restart seams remain promising; final Figure 5 production is blocked by pending native adaptive targets, placeholder runtime/resource fields, absent near-Hopf evidence, absent Floquet/IVP/T=210-linearized/schemas, and unavailable TASK-063 digitization.
+- Regenerated `outputs/native_adaptive_final_reconciliation.json` after the README provenance hash changed.
+- Created downstream TASK-070 through TASK-080 through the Backlog CLI only. Each task depends on TASK-069 and contains no creation-time implementation plan.
+
+Key decisions:
+- Do not interpolate across the 25 pending/failed TASK-068 provisional targets.
+- Do not perform Hopf quadratic/quartic fits until sufficient approach points exist; preserve explicit gaps meanwhile.
+- Do not add Radau collocation, coarsening, landmark alignment, local hp, iterative solvers, or multibranch confirmation without their documented triggers.
+- Proceed with schemas, profiling, measured native adaptive pilot/full-domain continuation, T=210 K linearized periods, Floquet postprocessing, stratified IVP validation, interpolation/holdout artifacts, and final paper/browser outputs as downstream work.
+
+Validation:
+- Artifact checks through TASK-068 final reconciliation passed.
+- `uv run pytest -q`: 320 passed, 1 skipped, 3 known unrelated overflow warnings.
+- `git diff --check` passed.
+- Independent read-only numerical/scientific and task-decomposition reviews reported no blockers.
+<!-- SECTION:FINAL_SUMMARY:END -->
