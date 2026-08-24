@@ -1,7 +1,7 @@
 ---
 id: TASK-072
 title: Run measured native adaptive pilot on 210-226 K skeleton
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
@@ -67,3 +67,29 @@ Validation run:
 
 Read-only review initially flagged an overclaim that `spine-210K` was accepted using TASK-067/Python adaptive gates for a different mesh; fixed by downgrading all targets to explicit `resolution_unresolved`. Follow-up read-only review reported no blockers.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-072 measured native adaptive pilot over the 210--226 K skeleton with a conservative explicit-gap outcome.
+
+Changes:
+- Added `scripts/generate_native_adaptive_measured_pilot.py` to measure current native seams, run the resumable native adaptive driver, record source/build/checkpoint identities, and emit TASK-072 pilot artifacts with check-mode validation.
+- Added curated outputs: `native_adaptive_measured_pilot.json`, the checkpointed `native_adaptive_measured_pilot/` run directory, production-v1 `native_adaptive_measured_pilot_events.json`, and production-v1 `native_adaptive_measured_pilot_run_metadata.json`.
+- Added focused tests for terminal-status coverage, unresolved-gap truthfulness, resource/checkpoint identity, production schema validity, and docs links.
+- Documented the pilot in `docs/task072-measured-native-adaptive-pilot.md` and linked it from the Episode 008 README.
+- Regenerated TASK-071 resource-profile artifacts and the TASK-068 final reconciliation manifest after README/source-provenance changes.
+
+Outcome:
+- All 31 skeleton targets now have exactly one backend-emitted terminal status with reasons.
+- No target is accepted: every target is `resolution_unresolved` because the exact native restart-vector defect and period/orbit gate bundle is not complete for TASK-072.
+- The measured `spine-210K` remesh/restart seam remains recorded as evidence but is not relabeled as accepted; fixed-mesh-only and Python-only evidence are not promoted, and no interpolation fills gaps.
+
+Validation:
+- TASK-071/TASK-072/final-reconciliation check commands passed.
+- TASK-072 production-v1 events and run metadata validate.
+- Focused tests: 30 passed.
+- Full suite: `uv run pytest -q` -> 344 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+- Follow-up read-only review reported no blockers.
+<!-- SECTION:FINAL_SUMMARY:END -->
