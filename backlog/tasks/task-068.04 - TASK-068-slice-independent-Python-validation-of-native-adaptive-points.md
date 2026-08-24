@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@pi'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 12:16'
+updated_date: '2026-08-24 12:17'
 labels:
   - episode-008
   - python
@@ -51,3 +51,19 @@ Validate a stratified set of accepted native adaptive continuation points agains
 - Added focused validation tests covering --check regeneration, stratification, tolerance failure reporting, identical-coordinate guard behavior, vector/source checksums, and no relabeling of Python/restart evidence as native adaptive execution.
 - Verification: `uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_loca_manifest.py` (17 passed).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented TASK-068.04 independent Python validation artifacts for accepted provisional native adaptive points.
+
+Changes:
+- Added `generate_native_adaptive_python_validation.py` to deterministically stratify accepted native points across native branches, spine/slice/anchor contexts, and the accepted pre-remesh boundary, with explicit near-Hopf absence.
+- Generated versioned JSON/NPZ validation artifacts recording identical-coordinate Python correction contracts, native-vector fingerprint-only policy, seed provenance, tolerances, period/weighted-orbit diagnostics, residual/phase/positivity/linear gates, mesh comparisons, and source/vector fingerprints.
+- Recorded the post-remesh restart point separately as native restart evidence, without relabeling it as independent Python validation or native adaptive completion.
+- Documented the workflow and results in the Episode 008 README.
+- Added focused tests for regeneration/check behavior, stratification determinism, tolerance failures, identical-coordinate guard behavior, checksum/source validation, and truthfulness boundaries.
+
+Validation:
+- `uv run pytest tests/test_episode8_native_adaptive_python_validation.py tests/test_episode8_native_adaptive_spine_slices_run.py tests/test_episode8_native_adaptive_loca_manifest.py` (17 passed).
+<!-- SECTION:FINAL_SUMMARY:END -->
