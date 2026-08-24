@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 10:52'
-updated_date: '2026-08-24 11:14'
+updated_date: '2026-08-24 11:20'
 labels:
   - episode-008
   - cpp
@@ -25,10 +25,10 @@ Generalize the one-branch slice into a reusable native adaptive continuation dri
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Driver supports repeated native fixed-mesh LOCA segment execution, accepted-point remesh boundaries, h+r and pure-r restart paths, tangent renormalization/rebootstrap policy, and deterministic retry ordering
-- [ ] #2 Run manifests and checkpoint directories are resumable and reject stale or incompatible checkpoints using schema, source, executable, vector, and configuration fingerprints
-- [ ] #3 Every segment records accepted/rejected LOCA callbacks, mesh history, transfer/correction details, defects, convergence diagnostics, phase lineage, runtime, and memory/resource fields
-- [ ] #4 Focused tests cover resume after interruption, stale checkpoint rejection, event partitioning, remesh rebuild identity, and fixed-mesh regression behavior
+- [x] #1 Driver supports repeated native fixed-mesh LOCA segment execution, accepted-point remesh boundaries, h+r and pure-r restart paths, tangent renormalization/rebootstrap policy, and deterministic retry ordering
+- [x] #2 Run manifests and checkpoint directories are resumable and reject stale or incompatible checkpoints using schema, source, executable, vector, and configuration fingerprints
+- [x] #3 Every segment records accepted/rejected LOCA callbacks, mesh history, transfer/correction details, defects, convergence diagnostics, phase lineage, runtime, and memory/resource fields
+- [x] #4 Focused tests cover resume after interruption, stale checkpoint rejection, event partitioning, remesh rebuild identity, and fixed-mesh regression behavior
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -42,3 +42,11 @@ Generalize the one-branch slice into a reusable native adaptive continuation dri
 6. Add focused tests for process interruption/resume, stale checkpoint rejection, repeated remesh cycles, event partitioning, remesh rebuild identity, and fixed-mesh behavior when no remesh is requested.
 7. Regenerate/check driver smoke artifacts and update documentation with driver contracts, resume commands, and known scope boundaries.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- Added reusable `native_adaptive_driver.py` orchestration module with pluggable backend, lifecycle states, deterministic h+r/pure-r retry policies, atomic manifests/checkpoints, resume validation, event partitioning, and resource accounting.
+- Added focused Episode 008 tests for interruption/resume, stale source/config rejection, event partitioning, remesh rebuild/retry identity, and fixed-mesh no-remesh regression.
+- Updated Episode 008 README with the generalized driver/resumability contract.
+<!-- SECTION:NOTES:END -->
