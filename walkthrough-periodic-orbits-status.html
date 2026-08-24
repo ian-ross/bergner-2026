@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" style="color-scheme: light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Periodic Orbits Status Slides</title>
+  <style>
+    :root {
+      --bg: #ffffff; --surface: #fafafa; --raised: #f3f4f6; --border: #d4d4d8;
+      --fg: #18181b; --muted: #52525b; --accent: #7c3aed; --file: #6d28d9;
+      --event: #fef3c7; --event-stroke: #f59e0b; --utility: #e0e7ff; --utility-stroke: #4f46e5;
+      --component: #f3e8ff; --component-stroke: #9333ea; --data: #e0f2fe; --data-stroke: #0284c7;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow: hidden; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 5; padding: 14px 24px 34px; background: linear-gradient(#fff 70%, rgba(255,255,255,0)); pointer-events: none; }
+    h1 { margin: 0; font-size: 16px; font-weight: 750; }
+    header p { margin: 3px 0 0; color: var(--muted); font-size: 14px; }
+    .summary { position: fixed; top: 70px; left: 420px; right: 24px; z-index: 6; background: rgba(250,250,250,.92); border: 1px solid var(--border); border-radius: 12px; padding: 13px 16px; box-shadow: 0 10px 30px rgba(24,24,27,.08); color: var(--muted); font-size: 14px; line-height: 1.5; cursor: pointer; }
+    .summary.collapsed { right: auto; border-radius: 999px; padding: 8px 12px; font-size: 12px; }
+    .summary.collapsed span.long { display: none; }
+    .slides { position: fixed; left: 20px; top: 92px; bottom: 86px; width: 370px; z-index: 7; background: rgba(250,250,250,.97); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 18px 45px rgba(24,24,27,.13); display: flex; flex-direction: column; overflow: hidden; }
+    .slide-head { padding: 20px; border-bottom: 1px solid var(--border); }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; font-weight: 800; margin-bottom: 8px; }
+    .slide-title { font-size: 21px; font-weight: 800; line-height: 1.18; margin: 0; }
+    .slide-body { padding: 18px 20px; flex: 1; overflow: auto; }
+    .slide-body ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; }
+    .slide-body li { display: flex; gap: 11px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .dot { width: 8px; height: 8px; border-radius: 99px; background: var(--accent); margin-top: 7px; flex: none; }
+    .open-node { width: 100%; margin-top: 18px; border: 0; border-radius: 10px; background: var(--accent); color: white; padding: 10px 12px; font-weight: 750; cursor: pointer; }
+    .slide-nav { padding: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .slide-nav button, .zoom button { border: 1px solid var(--border); background: white; color: var(--muted); border-radius: 8px; padding: 7px 10px; cursor: pointer; }
+    .slide-nav span { color: var(--muted); font-size: 12px; }
+    .viewport { width: 100vw; height: 100vh; overflow: hidden; cursor: grab; }
+    .viewport:active { cursor: grabbing; }
+    .canvas { transform-origin: 0 0; display: inline-block; padding: 155px 80px 120px 440px; will-change: transform; }
+    svg { overflow: visible; }
+    .cluster rect { fill: rgba(250,250,250,.9); stroke: var(--accent); stroke-width: 1.4; rx: 16; }
+    .cluster text { fill: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: .03em; }
+    .node { cursor: pointer; transition: opacity .15s, transform .15s; }
+    .node rect { stroke-width: 2; rx: 12; filter: drop-shadow(0 8px 14px rgba(24,24,27,.08)); }
+    .node:hover { transform: translateY(-1px); }
+    .node text { fill: var(--fg); font-size: 13px; font-weight: 760; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    .event rect { fill: var(--event); stroke: var(--event-stroke); }
+    .utility rect { fill: var(--utility); stroke: var(--utility-stroke); }
+    .component rect { fill: var(--component); stroke: var(--component-stroke); }
+    .data rect { fill: var(--data); stroke: var(--data-stroke); }
+    .edge { stroke: #71717a; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+    .edge.dashed { stroke-dasharray: 6 5; }
+    .edge-label { fill: var(--muted); font-size: 11px; paint-order: stroke; stroke: white; stroke-width: 5px; stroke-linejoin: round; }
+    .detail { position: fixed; top: 16px; right: 16px; bottom: 16px; width: 560px; z-index: 20; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 25px 70px rgba(24,24,27,.22); display: none; flex-direction: column; overflow: hidden; }
+    .detail.open { display: flex; }
+    .detail .close { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 8px; background: var(--raised); color: var(--muted); font-size: 20px; cursor: pointer; }
+    .detail-content { padding: 22px; overflow: auto; }
+    .detail h2 { margin: 0 38px 12px 0; font-size: 20px; }
+    .detail p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+    pre { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; overflow: auto; color: #18181b; font-size: 12.5px; line-height: 1.55; }
+    code, pre { font-family: "SF Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace; }
+    .files { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .files .label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 800; margin-bottom: 8px; }
+    .files code { color: var(--file); font-size: 13px; line-height: 1.65; }
+    .zoom { position: fixed; left: 20px; bottom: 20px; z-index: 8; display: flex; gap: 6px; align-items: center; padding: 8px; border: 1px solid var(--border); background: var(--surface); border-radius: 12px; box-shadow: 0 10px 25px rgba(24,24,27,.12); }
+    .zoom span { width: 52px; text-align: center; color: var(--muted); font-size: 12px; }
+    .legend { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 8; display: flex; gap: 16px; padding: 10px 14px; border: 1px solid var(--border); background: var(--surface); border-radius: 12px; box-shadow: 0 10px 25px rgba(24,24,27,.12); color: var(--muted); font-size: 12px; }
+    .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 99px; margin-right: 6px; }
+    .hint { position: fixed; right: 20px; bottom: 20px; z-index: 8; color: var(--muted); opacity: .62; font-size: 12px; }
+    kbd { border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px; padding: 1px 5px; background: var(--surface); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Periodic Orbits Work: Current Status</h1>
+    <p>Standalone HTML slide deck and clickable status map for Episode 008 / Figure 5 readiness</p>
+  </header>
+
+  <div id="summary" class="summary"><span class="short">ℹ︎ Summary </span><span class="long">Periodic-orbit work now has validated Python reference machinery and a native sparse Trilinos path for fixed-mesh Gauss/midpoint correction and LOCA continuation. The remaining gap is production-grade adaptive full-domain continuation plus downstream Floquet, IVP, interpolation, and final Figure 5 artifacts.</span></div>
+
+  <aside class="slides">
+    <div class="slide-head"><div class="eyebrow">HTML slides</div><h2 id="slideTitle" class="slide-title"></h2></div>
+    <div class="slide-body"><ul id="slideBullets"></ul><button id="openNode" class="open-node">Open related node</button></div>
+    <div class="slide-nav"><button id="prev">← Prev</button><span id="slideCount"></span><button id="next">Next →</button></div>
+  </aside>
+
+  <main id="viewport" class="viewport">
+    <div id="canvas" class="canvas">
+      <svg width="1120" height="650" viewBox="0 0 1120 650" aria-label="Periodic orbits status map">
+        <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#71717a"/></marker></defs>
+        <g class="cluster"><rect x="20" y="70" width="190" height="140"/><text x="115" y="98">Figure Goal</text></g>
+        <g class="cluster"><rect x="260" y="25" width="245" height="430"/><text x="382" y="53">Python Reference</text></g>
+        <g class="cluster"><rect x="555" y="25" width="245" height="430"/><text x="678" y="53">Native Backend</text></g>
+        <g class="cluster"><rect x="850" y="80" width="245" height="520"/><text x="972" y="108">Evidence And Next Work</text></g>
+
+        <path class="edge" d="M 180 140 C 225 140, 245 140, 290 140"/><text class="edge-label" x="232" y="130">sets target</text>
+        <path class="edge" d="M 383 175 C 383 210, 383 225, 383 260"/><text class="edge-label" x="397" y="220">feeds</text>
+        <path class="edge" d="M 383 295 C 383 330, 383 345, 383 380"/><text class="edge-label" x="397" y="340">shows need</text>
+        <path class="edge" d="M 475 140 C 520 140, 540 140, 585 140"/><text class="edge-label" x="528" y="130">defines parity</text>
+        <path class="edge" d="M 677 175 C 677 210, 677 225, 677 260"/><text class="edge-label" x="691" y="220">wraps into</text>
+        <path class="edge" d="M 677 295 C 677 330, 677 345, 677 380"/><text class="edge-label" x="691" y="340">supports</text>
+        <path class="edge" d="M 770 415 C 815 440, 825 440, 880 440"/><text class="edge-label" x="822" y="424">records</text>
+        <path class="edge" d="M 475 415 C 620 510, 730 510, 880 440"/><text class="edge-label" x="678" y="525">informs</text>
+        <path class="edge" d="M 972 475 C 972 500, 972 510, 972 535"/><text class="edge-label" x="986" y="506">exposes</text>
+        <path class="edge" d="M 972 570 C 972 585, 972 590, 972 600"/><text class="edge-label" x="986" y="588">gates</text>
+        <path class="edge dashed" d="M 880 620 C 500 665, 130 610, 115 175"/><text class="edge-label" x="510" y="640">completes</text>
+
+        <g class="node event" data-node="figureTarget" transform="translate(50 105)"><rect width="130" height="70"/><text x="65" y="27"><tspan x="65">Figure 5</tspan><tspan x="65" dy="18">Target</tspan></text></g>
+        <g class="node utility" data-node="pythonReference" transform="translate(290 105)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Python Reference</tspan><tspan x="92.5" dy="18">Solver</tspan></text></g>
+        <g class="node data" data-node="fixedMeshQualification" transform="translate(290 225)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Fixed-Mesh</tspan><tspan x="92.5" dy="18">Qualification</tspan></text></g>
+        <g class="node utility" data-node="adaptivePython" transform="translate(290 345)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Adaptive Python</tspan><tspan x="92.5" dy="18">Refinement</tspan></text></g>
+        <g class="node utility" data-node="sparseAssembler" transform="translate(585 105)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Sparse Orbit</tspan><tspan x="92.5" dy="18">Assembler</tspan></text></g>
+        <g class="node utility" data-node="noxCorrector" transform="translate(585 225)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Fixed-Parameter</tspan><tspan x="92.5" dy="18">NOX Corrector</tspan></text></g>
+        <g class="node component" data-node="locaContinuation" transform="translate(585 345)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Native LOCA</tspan><tspan x="92.5" dy="18">Continuation</tspan></text></g>
+        <g class="node data" data-node="adaptiveLedger" transform="translate(880 405)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Native Adaptive</tspan><tspan x="92.5" dy="18">Evidence Ledger</tspan></text></g>
+        <g class="node data" data-node="validationStatus" transform="translate(880 525)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Validation</tspan><tspan x="92.5" dy="18">Status</tspan></text></g>
+        <g class="node event" data-node="remainingWork" transform="translate(880 600)"><rect width="185" height="70"/><text x="92.5" y="27"><tspan x="92.5">Production And</tspan><tspan x="92.5" dy="18">Floquet Work</tspan></text></g>
+      </svg>
+    </div>
+  </main>
+
+  <section id="detail" class="detail" aria-live="polite"><button id="close" class="close" aria-label="Close details">×</button><div class="detail-content"><h2 id="detailTitle"></h2><p id="detailDesc"></p><pre><code id="detailCode"></code></pre><div class="files"><div class="label">Files / sources</div><code id="detailFiles"></code></div></div></section>
+
+  <div class="zoom"><button id="zoomOut">−</button><span id="zoomPct">100%</span><button id="zoomIn">+</button><button id="fit">Fit</button></div>
+  <div class="legend"><span><i style="background:var(--event)"></i>Goal / next work</span><span><i style="background:var(--utility)"></i>Reference logic</span><span><i style="background:var(--component)"></i>Native backend</span><span><i style="background:var(--data)"></i>Evidence / status</span></div>
+  <div class="hint"><kbd>←/→</kbd> slides · <kbd>Scroll</kbd> zoom · <kbd>Drag</kbd> pan · Click nodes</div>
+
+  <script>
+    const NODES = {
+      figureTarget: { title: "Figure 5 Target", desc: "Episode 008 is the periodic-orbit continuation effort for both Figure 5 panels: a period map inside the Hopf loci and a T=210 K nonlinear-vs-linearized period slice. It inherits validated model semantics and prior Python/LOCA lineage from earlier episodes.", files: ["episodes/008-figure5-periodic-orbit-continuation/README.md", "episodes/002-figure1-python-continuation/README.md", "episodes/004-figure1-loca-continuation/README.md"], code: "Reproduce both panels of Bergner & Spichtinger (2026) Figure 5:\n\n1. the period map over the temperature-vertical-velocity parameter plane inside the two Hopf loci; and\n2. the fixed-temperature slice at T = 210 K, comparing the nonlinear periodic-orbit period with the equilibrium linearized period 2*pi/Im(lambda)." },
+      pythonReference: { title: "Python Reference Solver", desc: "The Python path is the transparent reference implementation: it packs a frozen periodic seed, assembles fixed-parameter Gauss collocation residuals, and provides the pseudo-arclength continuation model. It is the parity oracle for native migration, not yet final production output.", files: ["src/bergner_spichtinger_2026/periodic_seed.py", "src/bergner_spichtinger_2026/periodic_orbits.py", "src/bergner_spichtinger_2026/periodic_continuation.py"], code: "class GaussCollocationAssembler:\n    \"\"\"Assemble a fixed-parameter explicit-stage Gauss collocation system.\"\"\"\n\n    def __init__(" },
+      fixedMeshQualification: { title: "Fixed-Mesh Qualification", desc: "Fixed-uniform meshes are useful diagnostics, but qualification showed they are not sufficient for production accuracy. This is why the work pivots to external h/r adaptive remeshing rather than treating fixed meshes as final Figure 5 evidence.", files: ["episodes/008-figure5-periodic-orbit-continuation/outputs/higher_order_fixed_mesh_qualification.json", "tests/test_episode8_higher_order_collocation.py", "tests/test_episode8_adaptive_qualification.py"], code: "\"summary\": {\n  \"fixed_uniform_mesh_qualified\": false,\n  \"nonlinear_accepted_case_count\": 20,\n  \"nonlinear_rejected_case_count\": 1,\n  \"qualified_case_count\": 0" },
+      adaptivePython: { title: "Adaptive Python Refinement", desc: "The deterministic Python adaptation layer uses independent defects and composite monitor densities to decide mesh splits, r-movement, transfers, and restart gates. It proves the adaptive strategy before the native production path owns the full-domain run.", files: ["src/bergner_spichtinger_2026/adaptive_orbits.py", "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_adaptive_qualification_results.py"], code: "ADAPTIVE_METHOD_VERSION = \"external-gauss3-hr-adaptive-v1\"\nMONITOR_VERSION = \"composite-r-monitor-v1\"\nH_MARKING_VERSION = \"defect-bulk-halfmax-marking-v1\"\nR_MOVEMENT_VERSION = \"global-beta-r-movement-v1\"" },
+      sparseAssembler: { title: "Sparse Orbit Assembler", desc: "The native C++ core now builds the serial Tpetra layout, residual, sparse graph, analytic Jacobian, diagnostics, and parameter columns for one-, two-, and three-stage Gauss rules. Midpoint remains the one-stage compatibility case.", files: ["loca/include/bergner_spichtinger_2026_loca/midpoint_orbit.hpp", "tests/test_episode8_tpetra_midpoint.py", "tests/test_episode8_cpp_higher_order.py"], code: "inline constexpr char formulation_version[] = \"explicit-stage-midpoint-v1\";\ninline constexpr char gauss_formulation_version[] = \"explicit-stage-gauss-fixed-mesh-v1\";\ninline constexpr double formulation_parity_tolerance = 1.0e-11;\ninline constexpr double formulation_parity_absolute_floor = 1.0e-13;\ninline constexpr double directional_relative_tolerance = 1.0e-6;" },
+      noxCorrector: { title: "Fixed-Parameter NOX Corrector", desc: "The sparse base system is exposed through Thyra/NOX and solved with Newton/backtracking plus Amesos2 KLU2 at fixed parameters. Repository acceptance checks and diagnostics decide whether corrected orbits are retained.", files: ["loca/include/bergner_spichtinger_2026_loca/midpoint_nox.hpp", "loca/src/midpoint_orbit_cli.cpp", "tests/test_episode8_tpetra_midpoint.py"], code: "auto solver = NOX::Solver::buildSolver(group, status, parameters);\nresult.residual = Teuchos::rcp(new vector_type(assembler->layout().range_map()));\nresult.residual->putScalar(0.0);\nresult.diagnostics.phase_energy = assembler->phase_energy();" },
+      locaContinuation: { title: "Native LOCA Continuation", desc: "The native periodic-orbit continuation backend now gives LOCA ownership of pseudo-arclength stepping for one continuation parameter. It supplies Df/Dp columns, state metrics, restart tangents, branch events, provenance hashes, and parity checks against Python artifacts.", files: ["loca/include/bergner_spichtinger_2026_loca/midpoint_loca.hpp", "loca/src/midpoint_orbit_cli.cpp", "tests/test_episode8_native_loca_midpoint.py"], code: "LOCA::ParameterVector parameters; parameters.addParameter(path->name(), initial_coordinate);\nauto top = Teuchos::rcp(new Teuchos::ParameterList);\ntop->sublist(\"LOCA\").sublist(\"Stepper\").set(\"Continuation Method\", \"Arc Length\");\nauto& stepper = top->sublist(\"LOCA\").sublist(\"Stepper\");\nstepper.set(\"Continuation Parameter\", std::string(path->name()));" },
+      adaptiveLedger: { title: "Native Adaptive Evidence Ledger", desc: "TASK-068 reconciles native fixed-mesh LOCA, one remesh/restart boundary, Python validation, checkpoints, and target statuses. The current provisional ledger has 6 accepted and 25 failed/pending targets, so it is explicitly not final production data.", files: ["episodes/008-figure5-periodic-orbit-continuation/docs/task068-final-evidence-reconciliation.md", "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_final_reconciliation.json"], code: "\"terminal_status_counts\": {\n  \"accepted\": 6,\n  \"failed\": 25,\n  \"near_hopf_stop\": 0,\n  \"resolution_unresolved\": 0,\n  \"tripwire_stop\": 0" },
+      validationStatus: { title: "Validation Status", desc: "Validation is mixed: higher-order fixed-mesh qualification is done and shows adaptive remeshing is required, while independent production IVP validation and paper comparison remain open. Accepted native points have parity evidence, but the final Figure 5 data set is not assembled yet.", files: ["backlog task 064", "backlog task 073", "backlog task 074", "backlog task 078", "backlog task 080"], code: "No prescribed fixed-uniform case meets all refinement and defect qualification gates, so adaptive remeshing remains required.\nStatus: ○ To Do\nValidate selected accepted native production periodic orbits with independent IVP integrations after full-domain continuation exposes the actual worst cases.\nCompute the lower-panel equilibrium-linearized period curve independently from periodic-orbit continuation for T=210 K over the saved Figure 5 vertical-velocity domain." },
+      remainingWork: { title: "Production And Floquet Work", desc: "Open work includes production schemas, measured pilot/full-domain adaptive continuation, near-Hopf policy, Floquet diagnostics, interpolation/browser artifacts, IVP validation, and digitized paper comparison. Floquet is planned as postprocessing of accepted native collocation orbits, not part of the nonlinear unknowns.", files: ["backlog task 070", "backlog task 072", "backlog task 075", "backlog task 076", "backlog task 077", "backlog task 079", "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md"], code: "Status: ○ To Do\nCompute Floquet multiplier diagnostics from saved native collocation orbits as postprocessing, not as nonlinear unknowns or TASK-068 acceptance evidence.\nDependencies: TASK-069, TASK-070, TASK-075\nExecute full-domain native adaptive continuation over the Figure 5 temperature/rho domain and refine canonical scientific sampling from observed errors and terminal statuses." }
+    };
+    const SLIDES = [
+      { title: "1. Headline status", bullets: ["Python reference and native sparse fixed-mesh machinery are in place.", "Native LOCA periodic-orbit continuation exists for fixed meshes.", "Full-domain adaptive production and downstream Figure 5 products remain open."], focus: "figureTarget" },
+      { title: "2. What is already validated", bullets: ["Frozen seed, packed orbit layout, Gauss collocation, and pseudo-arclength references are tested.", "C++ sparse assembly and higher-order Gauss parity match the Python fixtures.", "Fixed-parameter NOX/KLU2 solves and native LOCA stepping have contract tests."], focus: "pythonReference" },
+      { title: "3. Why adaptive is mandatory", bullets: ["Fixed-uniform higher-order meshes did not meet all refinement and defect gates.", "Python h/r adaptation converges selected cases and defines the policy boundary.", "Native adaptive work must turn that policy into measured production runs."], focus: "fixedMeshQualification" },
+      { title: "4. Native evidence so far", bullets: ["TASK-068 preserved native LOCA, remesh/restart, parity, and checkpoint evidence.", "The terminal ledger is provisional: 6 accepted, 25 failed/pending due to unexecuted native adaptive remesh.", "Near-Hopf approach points were not reached."], focus: "adaptiveLedger" },
+      { title: "5. Remaining production path", bullets: ["Define final schemas and measured pilot runs, then execute full-domain native adaptive continuation.", "Add IVP/Radau validation, Floquet postprocessing, and T=210 K linearized-period curve.", "Build interpolation/browser artifacts only where accepted statuses make them scientifically valid."], focus: "remainingWork" },
+      { title: "6. Current risk posture", bullets: ["Numerical direction is promising, but acceptance data is not yet dense enough for Figure 5.", "Production code must distinguish failures, gaps, near-Hopf stops, and multivalued regions instead of smoothing across them.", "Floquet results depend on accepted production orbits and should not relabel missing continuation evidence."], focus: "validationStatus" }
+    ];
+    let slideIndex = 0; let active = null;
+    const slideTitle = document.getElementById('slideTitle'), slideBullets = document.getElementById('slideBullets'), slideCount = document.getElementById('slideCount');
+    function showSlide(i) { slideIndex = (i + SLIDES.length) % SLIDES.length; const s = SLIDES[slideIndex]; slideTitle.textContent = s.title; slideBullets.innerHTML = ''; s.bullets.forEach(b => { const li = document.createElement('li'); li.innerHTML = '<span class="dot"></span><span></span>'; li.lastChild.textContent = b; slideBullets.appendChild(li); }); slideCount.textContent = (slideIndex + 1) + ' / ' + SLIDES.length; }
+    function openNode(id) { const n = NODES[id]; if (!n) return; active = id; document.getElementById('detailTitle').textContent = n.title; document.getElementById('detailDesc').textContent = n.desc; document.getElementById('detailCode').textContent = n.code; document.getElementById('detailFiles').innerHTML = n.files.map(f => f.replace(/&/g,'&amp;').replace(/</g,'&lt;')).join('<br>'); document.getElementById('detail').classList.add('open'); document.querySelectorAll('.node').forEach(el => el.style.opacity = el.dataset.node === id ? '1' : '.35'); }
+    function closeNode() { active = null; document.getElementById('detail').classList.remove('open'); document.querySelectorAll('.node').forEach(el => el.style.opacity = '1'); }
+    document.querySelectorAll('.node').forEach(el => el.addEventListener('click', ev => { ev.stopPropagation(); openNode(el.dataset.node); }));
+    document.getElementById('close').onclick = closeNode;
+    document.getElementById('prev').onclick = () => showSlide(slideIndex - 1);
+    document.getElementById('next').onclick = () => showSlide(slideIndex + 1);
+    document.getElementById('openNode').onclick = () => openNode(SLIDES[slideIndex].focus);
+    document.getElementById('summary').onclick = () => document.getElementById('summary').classList.toggle('collapsed');
+    document.addEventListener('keydown', ev => { if (ev.key === 'Escape') closeNode(); if (ev.key === 'ArrowLeft') showSlide(slideIndex - 1); if (ev.key === 'ArrowRight') showSlide(slideIndex + 1); });
+    let zoom = 1, panX = 0, panY = 0; const viewport = document.getElementById('viewport'), canvas = document.getElementById('canvas'), pct = document.getElementById('zoomPct');
+    function apply() { canvas.style.transform = `translate(${panX}px,${panY}px) scale(${zoom})`; pct.textContent = Math.round(zoom * 100) + '%'; }
+    function fit() { const vw = viewport.clientWidth - 420, vh = viewport.clientHeight; zoom = Math.max(.2, Math.min(1.4, Math.min((vw - 80) / 1120, (vh - 140) / 650))); panX = 0; panY = 0; apply(); }
+    document.getElementById('zoomIn').onclick = () => { zoom = Math.min(4, zoom * 1.25); apply(); };
+    document.getElementById('zoomOut').onclick = () => { zoom = Math.max(.2, zoom / 1.25); apply(); };
+    document.getElementById('fit').onclick = fit;
+    viewport.addEventListener('wheel', ev => { ev.preventDefault(); const r = viewport.getBoundingClientRect(); const mx = ev.clientX - r.left, my = ev.clientY - r.top; const nz = Math.min(4, Math.max(.2, zoom * (ev.deltaY < 0 ? 1.12 : 1/1.12))); const sc = nz / zoom; panX = mx - sc * (mx - panX); panY = my - sc * (my - panY); zoom = nz; apply(); }, { passive: false });
+    let dragging = false, lx = 0, ly = 0; viewport.addEventListener('pointerdown', ev => { if (ev.target.closest('.node') || ev.target.closest('button')) return; dragging = true; lx = ev.clientX; ly = ev.clientY; viewport.setPointerCapture(ev.pointerId); }); viewport.addEventListener('pointermove', ev => { if (!dragging) return; panX += ev.clientX - lx; panY += ev.clientY - ly; lx = ev.clientX; ly = ev.clientY; apply(); }); viewport.addEventListener('pointerup', () => dragging = false); viewport.addEventListener('pointercancel', () => dragging = false);
+    showSlide(0); fit(); window.addEventListener('resize', fit);
+  </script>
+</body>
+</html>

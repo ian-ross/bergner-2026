@@ -8,6 +8,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 
 - [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) records the binding initial-run decisions and the production questions explicitly deferred until the post-run evidence review.
 - [`docs/task068-final-evidence-reconciliation.md`](docs/task068-final-evidence-reconciliation.md) summarizes the completed TASK-068 native adaptive evidence, failures, resource-cost boundaries, and TASK-069 handoff.
+- [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) records the TASK-069 post-run review, TASK-062 hypothesis dispositions, unsupported near-Hopf fit status, and approved downstream production task boundary.
 
 ## Frozen Episode 007 bootstrap seed
 
@@ -335,6 +336,12 @@ TASK-063 paper digitization is independent external comparison evidence. It does
 
 See [`docs/collocation-phase-decisions.md`](docs/collocation-phase-decisions.md) for the full v1 contract, thresholds, and deferred decisions.
 
+## TASK-069 evidence-review outcome
+
+The post-run review concludes that Episode 008 has strong formulation, fixed-mesh native LOCA, Python adaptive, nonuniform parity, and remesh/restart-seam evidence, but it is not yet final Figure 5 production data. Fixed-uniform meshes remain diagnostic only; Python h/r adaptive qualification converges at the four required points; one native remesh/restart boundary and 32 native fixed-mesh points pass the recorded gates/parity checks. The provisional native adaptive target ledger still contains six accepted targets and twenty-five explicit failed/pending targets, runtime/resource fields are placeholders, TASK-063 digitization is unavailable, and no near-Hopf approach points were reached. The documented quadratic/quartic Hopf fits are therefore not supported yet; unresolved regions must remain explicit gaps rather than interpolated values.
+
+See [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) for the disposition matrix and downstream task graph.
+
 ## Scope boundary
 
-The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work. Exact production schemas and full-surface tasks will be frozen only after the adaptive-continuation evidence review.
+The episode will produce a schema-versioned browser-consumable Figure 5 dataset, but integrating that dataset into the Episode 007 web widget is deferred to follow-up work. TASK-069 now freezes the next-stage boundary: production schemas, profiling, measured native adaptive pilot/full-domain runs, T=210 K linearized periods, Floquet/IVP validation, interpolation, and final paper/browser artifacts must proceed through downstream tasks that depend on TASK-069.

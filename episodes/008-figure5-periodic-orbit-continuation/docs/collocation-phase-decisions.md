@@ -816,3 +816,18 @@ The operational constants above are v1 hypotheses for an informative run. The ch
 - define exceptional-gap and final scientific-completion policies based on observed rather than hypothetical failures.
 
 Until then, do not interpret a v1 unresolved point as permission to interpolate over it or as proof that elaborate exceptional handling is needed.
+
+## TASK-069 post-run checkpoint decisions
+
+The mandatory checkpoint is now recorded in [`task069-evidence-review-and-next-stage-design.md`](task069-evidence-review-and-next-stage-design.md). It reviews TASK-064 through TASK-068 evidence and concludes that the method is structurally promising but not production-sufficient for final Figure 5 artifacts.
+
+Key dispositions:
+
+- fixed-uniform higher-order meshes are rejected as production data and retained only as diagnostics/parity fixtures;
+- three-stage Gauss with external `h/r` adaptation, the two-grid defect gate, the composite r monitor, restart gates, phase refresh policy, fixed scaling, KLU2 oracle role, and single-valued tripwire channels are retained as v1 production-candidate hypotheses;
+- Radau collocation, coarsening, landmark alignment, local `hp`, iterative solvers, and multibranch confirmation are not warranted by current evidence and remain trigger-only;
+- Floquet postprocessing, broader selected IVP validation, the T=210 K linearized-period curve, production schemas, measured runtime/resource profiling, full-domain native adaptive continuation, interpolation/holdout artifacts, and final paper/browser outputs are approved as downstream work depending on TASK-069;
+- TASK-063 digitization is unavailable and remains external image-derived evidence only when completed; and
+- near-Hopf quadratic/quartic fits are not performed because TASK-068 reached zero approach points, so the current policy is an explicit unresolved gap until later evidence supplies sufficient approach points or justified stop reasons.
+
+The TASK-068 provisional ledger's twenty-five pending/failed targets must remain explicit terminal statuses. They are not permission to interpolate across unresolved regions and they are not evidence for speculative exceptional machinery.
