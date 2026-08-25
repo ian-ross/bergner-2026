@@ -13,6 +13,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
 - [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
 - [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
+- [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
 
@@ -74,6 +75,22 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_
 ```
 
 The review preserves the TASK-072 terminal ledger exactly: `accepted=0`, `resolution_unresolved=31`, `failed=0`, `near_hopf_stop=0`, and `tripwire_stop=0`. No IVP subset is justified because no accepted native adaptive pilot point exists. Full-domain continuation is **not authorized** from this pilot gate; the retained v1 method is not falsified, but TASK-081 follow-up gate work is required before TASK-075 can be treated as production-authorized.
+
+## T=210 K equilibrium-linearized period curve
+
+TASK-074 generates the lower-panel red equilibrium-linearized curve independently from periodic-orbit continuation. The production-v1 artifact is:
+
+- [`outputs/t210_linearized_period_curve.json`](outputs/t210_linearized_period_curve.json)
+
+Check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_t210_linearized_period_curve.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/t210_linearized_period_curve.json
+```
+
+The generator uses native C++ `bs2026_loca_model nox-loca-continue` equilibrium continuation over `w=5e-4..2 m s^-1` at `T=210 K`, inserts the exact Episode 006 native-LOCA Hopf anchors, tracks the physical-Jacobian complex pair continuously, and computes `P_lin = 2*pi/abs(Im(lambda))` only when the pair is genuinely complex above the `1e-8 s^-1` frequency floor. The current 403-row artifact has no gaps, passes the documented shape-preserving log-period holdout rule without extra refinement, and passes stratified independent Python physical-Jacobian parity plus exact Hopf-anchor frequency checks at relative `1e-8`. Periods are never clipped or invented for display.
 
 ## Frozen Episode 007 bootstrap seed
 

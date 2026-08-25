@@ -34,7 +34,7 @@ The approved artifact kinds are:
 | `continuation-events` | `continuation_events` | Accepted/rejected step, bootstrap, phase-refresh, remesh/restart, near-Hopf, tripwire, gap, and interpolation events with coordinates and unambiguous status/source flags. |
 | `run-metadata` | `run_metadata` | Native adaptive run identity, coordinate domain, terminal-status counts, executable/build identity, and measured resource accounting with `s` and `KiB` units. |
 | `curated-orbit-npz-manifest` | `orbit_vector_manifest` | Manifest for retained periodic-orbit vector NPZ files, including NPZ SHA-256, float64 little-endian array schemas, shapes, roles, units, and coordinate conventions. |
-| `linearized-period-curve` | `linearized_period_rows` | T = 210 K equilibrium-linearized rows for the lower Figure 5 panel, including `2*pi/Im(lambda)` period in seconds and eigenvalue imaginary part in `rad s^-1`. |
+| `linearized-period-curve` | `linearized_period_rows` | T = 210 K equilibrium-linearized rows for the lower Figure 5 panel, including `2*pi/Im(lambda)` period in seconds, eigenvalue imaginary part in `rad s^-1`, and explicit null-period gap/invalid rows when no genuine complex pair is available. |
 | `browser-display-dataset` | `browser_records` | Browser/display records derived from authoritative solved points, validated interpolation, explicit gaps, invalid-domain records, Hopf-limit display records, or non-authoritative external comparison overlays. |
 
 ## Coordinate, state, unit, and version conventions
@@ -71,6 +71,7 @@ Key compatibility rules include:
 - `gap` records must use `explicit_gap`, be non-authoritative, and include a reason.
 - `interpolated` browser records must use `interpolated_holdout_validated` and include interpolation provenance plus passed holdout validation.
 - `external_comparison` records must use `external_digitized_paper_comparison`, be non-authoritative, and be display overlays only.
+- `linearized-period-curve` rows may carry null period/frequency only with non-accepted gap/invalid/unresolved validity and an explicit reason; accepted linearized-equilibrium rows require positive finite period and positive finite imaginary frequency.
 
 The validator rejects schema-version mismatches, missing provenance, checksum drift, incompatible coordinate/unit fields, ambiguous source lists, status/source mismatches, and interpolated records without holdout/source-point provenance.
 

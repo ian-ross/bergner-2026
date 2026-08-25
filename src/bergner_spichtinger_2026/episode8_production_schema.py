@@ -408,12 +408,16 @@ class _Validator:
                     temperature = _quantity_value(coordinates.get("temperature"))
                     if temperature is not None and not math.isclose(temperature, 210.0, rel_tol=0.0, abs_tol=1e-12):
                         self.error(f"{record_path}.coordinates.temperature.value", "linearized-period rows are restricted to T=210 K")
-                self.validate_period(record.get("period"), f"{record_path}.period", quantity="linearized_period", allow_null=False)
+                validity = record.get("validity")
+                status = validity.get("status") if isinstance(validity, Mapping) else None
+                allow_null = status in {"gap", "invalid", "failed", "not_evaluated", "resolution_unresolved"}
+                self.validate_period(record.get("period"), f"{record_path}.period", quantity="linearized_period", allow_null=allow_null)
                 self.validate_quantity(
                     record.get("eigenvalue_imaginary_part"),
                     f"{record_path}.eigenvalue_imaginary_part",
                     "rad s^-1",
-                    positive=True,
+                    positive=not allow_null,
+                    allow_null=allow_null,
                 )
 
     def validate_browser_records(self, value: Any, path: str) -> None:

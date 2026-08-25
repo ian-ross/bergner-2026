@@ -23,12 +23,12 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
         "role": "TASK-072 measured pilot run manifest",
-        "sha256": "916dc688c0a83f0f364abb794a9798bdcbeabe0d1776b1f915027e877f3f246c"
+        "sha256": "b84ccf2c1c9d8ac8fb3444f547bc66f1e3d038422f04ae53c3584e30b6d67a6e"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
         "role": "TASK-071 measured resource source",
-        "sha256": "52bccf48f2b9b908c5155015b1433716b2b845424569e6f8f3240f00a8b9bf2c"
+        "sha256": "b41e18be99259477b3a87fa172bc27c9babf7d04cd0f76dd927728e88cac825b"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py",
@@ -55,40 +55,40 @@
     },
     "checkpoint_identity": {
       "checkpoint_sha256_by_segment": {
-        "segment-0000__move-225K-to-spine-rho0__cycle-00": "7339c67634c7a067c2db39629d86d23903fa8ebf7d6a476beff358f974d75283",
-        "segment-0001__spine-210K__cycle-00": "24c6ce56e4fc6172340559573d95174122392f18a94e17cc0ba5346da632d8ed",
-        "segment-0002__slice-210K-rho--0.15__cycle-00": "3834700e6dc5f7fbb3590c93c33d19f2a5e0e48a076047022c302950c2f40c58",
-        "segment-0003__slice-210K-rho-+0.15__cycle-00": "091df939dcd45380d46722164b3ca81cce1c8c6b2cc1ff343cf4159d9012c3f4",
-        "segment-0004__spine-212K__cycle-00": "9f46eb3395f404d77456f8597eb86bbcaa49ab01ae9e84eacdba0e8f69b94f54",
-        "segment-0005__slice-212K-rho--0.15__cycle-00": "90feb5ed47abe778993bdc373280ca29374c6a5d944e6729703d89825ccf552a",
-        "segment-0006__slice-212K-rho-+0.15__cycle-00": "df2645b2e35ffe60fe65163f2a0a6bad39698edb84e7aad7a272abb346058bf8",
-        "segment-0007__spine-214K__cycle-00": "ba4edafc5a65959d33866be1cb45e956335825872f9bc1861a2ec6cbe507f923",
-        "segment-0008__slice-214K-rho--0.15__cycle-00": "b66db6d9610d844ab7b456b0c201b4d04ae5dc5e79346d4e54ada6ac3e7a1dce",
-        "segment-0009__slice-214K-rho-+0.15__cycle-00": "d4c8ae74ef135206131f7a98aa933557c19ed7670670121145b5278c16badab3",
-        "segment-0010__spine-216K__cycle-00": "fb2bfae3c72cc958ca00f60d388a7a2b14c351527b72cc1391569dfe9a53cc47",
-        "segment-0011__slice-216K-rho--0.15__cycle-00": "df33fca6e984a17db74a3aed82ae2ebad8407d8080c54fdd80520cdcf2f02aaa",
-        "segment-0012__slice-216K-rho-+0.15__cycle-00": "bf1a158289f011cf280f2b0933cec8aa6f9f246ec9535e08e0c4315cb412ce11",
-        "segment-0013__spine-218K__cycle-00": "ace27d1d5d5a94ae475e530a34d7bf797b585495e80be1dfe05ea14e91b42948",
-        "segment-0014__slice-218K-rho--0.15__cycle-00": "b9db5911ec3be81bd255c186fd7c621606ef1f21b4e5fa25d03169757dfe92af",
-        "segment-0015__slice-218K-rho-+0.15__cycle-00": "c305cd8d0f2ada88b80f43421c9f302c40b0681cdfb2d796df273dcbb1f82ce9",
-        "segment-0016__spine-220K__cycle-00": "a54e2adec145dc34f7581dfed8094c56d727a7e4aa2472e9211464bd8e78bddf",
-        "segment-0017__slice-220K-rho--0.15__cycle-00": "837f7ea95a033752e49ee5acec04f07f3a3cddc62ed8ca1e117ab20f1328de16",
-        "segment-0018__slice-220K-rho-+0.15__cycle-00": "8120464b8627117dab6cc022451332bcdd69108222f5af2407e7df9051025a00",
-        "segment-0019__spine-222K__cycle-00": "1093fc18c1178081b704df8694529466a26546696d0b3efd8e5c4f28ddf39153",
-        "segment-0020__slice-222K-rho--0.15__cycle-00": "199f7cadba166f4811e2d758a0654b51c2b5e1b540b42473593fa9e7ab763737",
-        "segment-0021__slice-222K-rho-+0.15__cycle-00": "f05ddae908f2e863c7cf33b15e7322369a59c3fc8b9867762af13f3d695bedfd",
-        "segment-0022__spine-224K__cycle-00": "aa5da0c13c3ac32bcc7ad8cb0959af35a5dcbd05e2a68a78f3a4c87800e7e80c",
-        "segment-0023__slice-224K-rho--0.15__cycle-00": "2573c00642a579d24461caf0f74c15bd4eabbdff3d4c3179e15a15ace7612c6a",
-        "segment-0024__slice-224K-rho-+0.15__cycle-00": "047437dc4087830d5cce327924f09f68330f0e82c04726d5b0593f88c53b812b",
-        "segment-0025__spine-225K__cycle-00": "8a003048d9d5ee05eb95307d8d887447f15c8a168fd94876ea853581b6122bc4",
-        "segment-0026__slice-225K-rho--0.15__cycle-00": "49178fcde2d5ddd3fb6e010045dde73a0ee81f5d57e38c9fb37be021ae572ce3",
-        "segment-0027__slice-225K-rho-+0.15__cycle-00": "5947df6d999ce39d40d871243dcff5785926105419094e0f0e72094ef49ce588",
-        "segment-0028__spine-226K__cycle-00": "b08be3753b9c11b687c19c890353d903af2f17ae2ce0ce65031883d47e314299",
-        "segment-0029__slice-226K-rho--0.15__cycle-00": "37f521248dd5084ac2ae8d4f472b06ad2dc24c79dbec3387bcd39c18c0ce0ab3",
-        "segment-0030__slice-226K-rho-+0.15__cycle-00": "bd3307adf806c9291fafbe8acb356ac16a36c83a99972eb2006df9ccab813720"
+        "segment-0000__move-225K-to-spine-rho0__cycle-00": "40e286b9758b9899447fce21678fa566f61b3174ef3368bbf500861ed271c684",
+        "segment-0001__spine-210K__cycle-00": "e9a493d7ed4f9008a15d0bf9101de081b16868c8fc9d44393ba71c4622e1e5d1",
+        "segment-0002__slice-210K-rho--0.15__cycle-00": "97039347e2919d1c98ec309f66cc15384b8fece836811a604bb6249359215c95",
+        "segment-0003__slice-210K-rho-+0.15__cycle-00": "4c1716471c7063d87a68b89cf6b40af04354dc970663734af984f1b2f90541d2",
+        "segment-0004__spine-212K__cycle-00": "f54b20d0e03e13331b6daffcb92377c76beafdda972d1997e6f30e7a47f5a76e",
+        "segment-0005__slice-212K-rho--0.15__cycle-00": "775976de8b4f1b6801c35385cbe409325bf54041e6da9ed512b1c7798b91d94b",
+        "segment-0006__slice-212K-rho-+0.15__cycle-00": "60dcc245f1b46f86fa2f12a7cf84c45fb771a04030152bdd826d8155458a70e4",
+        "segment-0007__spine-214K__cycle-00": "dd90aeb54bae5127b404aa4c635c3729c704f7065954256671aac7a99071a0e7",
+        "segment-0008__slice-214K-rho--0.15__cycle-00": "f60896ee1979aa8782c1f09e4430ab03bb4a209734922aba6f5312f5048ce2d7",
+        "segment-0009__slice-214K-rho-+0.15__cycle-00": "e77bd569ce342476acea42f8ad2c6f304f8440f2318741ada92d6f02a06a04b9",
+        "segment-0010__spine-216K__cycle-00": "94857468a06a63b5028a7a8dd5ab176303101574d909a29f8cc19ca7d16c946e",
+        "segment-0011__slice-216K-rho--0.15__cycle-00": "7673715b6a779daed954327a9657d3e9ea9af4d342c3d43b5226f1374dc03623",
+        "segment-0012__slice-216K-rho-+0.15__cycle-00": "756a03e32a44a1d5ebd4e7d9de74f4965ee87d1c7f72451bdf1582f4c323fff1",
+        "segment-0013__spine-218K__cycle-00": "e47d727797970ae1b90b45189b7796b9e7dee4c2603e61c4e686ed110d24cab7",
+        "segment-0014__slice-218K-rho--0.15__cycle-00": "6e6dc91ed862efe24772a01dfff73f6ee8a93aaa5a478ab4fa1626cbd3272a53",
+        "segment-0015__slice-218K-rho-+0.15__cycle-00": "d2c9d9842bccb799c4c4140834be527f21e35a1a744d2cccd6893f14275eb7a5",
+        "segment-0016__spine-220K__cycle-00": "608097a2098aac9c844f5976f24517aed63d7f0c97d50a264c85e7aad0c776fe",
+        "segment-0017__slice-220K-rho--0.15__cycle-00": "5021d364e49c78cca1832276dd941476763cdf9ce53abb4f2d2696c64564e63e",
+        "segment-0018__slice-220K-rho-+0.15__cycle-00": "47a0ceb8097e2471f97935ce955cd7a5085b8fdbf27da209596a26c2dc65fd06",
+        "segment-0019__spine-222K__cycle-00": "3807901a2d413eaff74359453e4427e356ac9c2c2366f890368a7e9f8413caf8",
+        "segment-0020__slice-222K-rho--0.15__cycle-00": "99fd7e5729b60bd7f2f9192d630ba23ece78d2f155f1db7f3cfdd9fff2c246ad",
+        "segment-0021__slice-222K-rho-+0.15__cycle-00": "27b01b3de156ed9b15b36a40d530d66b44f2c2d8c4f88091f56f63533c8bee8a",
+        "segment-0022__spine-224K__cycle-00": "a5258fcd7fe3a3392e93a4352ed7c1c4fe2ebc11e3bbcf37e3e000e8a7636462",
+        "segment-0023__slice-224K-rho--0.15__cycle-00": "108f369834591ef58f685f5a01cf90253d28ce1b99dac5b715a485be7fdb0514",
+        "segment-0024__slice-224K-rho-+0.15__cycle-00": "c7deb2c4dc3bed8c6161d737bcd2a5a2367db0cb11242f1183cc2d3916995aeb",
+        "segment-0025__spine-225K__cycle-00": "d3f251b5ab4faa37e336743d673e5daae3067e27237bd394a62f6c1eabc24437",
+        "segment-0026__slice-225K-rho--0.15__cycle-00": "5ce7b3edbd627b8e147730858564b64485c5955130942fa2d4921379c28c7a9e",
+        "segment-0027__slice-225K-rho-+0.15__cycle-00": "7405223efc4b2246fbd80d6ddc0765748cfc2394e05d474a8d4a4a5514475dcf",
+        "segment-0028__spine-226K__cycle-00": "399b8e21cdd9cbf6e143cb4b81323795271e3cbd29d54605b89b52b707c704fc",
+        "segment-0029__slice-226K-rho--0.15__cycle-00": "774bbcc7247ec0a10bbfae41261ae2c1d4e727bc058da40a8870e719c1a72e6d",
+        "segment-0030__slice-226K-rho-+0.15__cycle-00": "bc58928b7b1f7e3d58570fdb5cc940604ec3be0cd10dc87d8aea349c5b69411d"
       },
-      "fingerprints_sha256": "729a286eaec16c8adf18dcd105ea8a5700c3b8562afb220e0e3216f7242e94b0",
-      "run_manifest_sha256": "916dc688c0a83f0f364abb794a9798bdcbeabe0d1776b1f915027e877f3f246c"
+      "fingerprints_sha256": "058c53de799a2d713a35f698ae93f05463bc4975d928815a32b0428d9c690336",
+      "run_manifest_sha256": "b84ccf2c1c9d8ac8fb3444f547bc66f1e3d038422f04ae53c3584e30b6d67a6e"
     },
     "coordinate_domain": {
       "convention": "temperature-log_w-rho-spine-slices-v1",
@@ -116,15 +116,15 @@
     "resource_accounting": {
       "cpu_time": {
         "unit": "s",
-        "value": 30.680619
+        "value": 33.56065400000001
       },
       "max_rss": {
         "unit": "KiB",
-        "value": 279948
+        "value": 279092
       },
       "wall_clock": {
         "unit": "s",
-        "value": 10.240595350986258
+        "value": 10.630627176001218
       }
     },
     "run_id": "task072-measured-native-adaptive-pilot",
