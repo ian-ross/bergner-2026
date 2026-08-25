@@ -1,11 +1,11 @@
 ---
 id: TASK-077
 title: Implement Floquet postprocessing for native production orbits
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 12:32'
+updated_date: '2026-08-25 12:33'
 labels:
   - episode-008
   - floquet
@@ -55,3 +55,27 @@ Validation run:
 - Full suite `uv run pytest -q`: 382 passed, 1 skipped, 3 known overflow warnings
 - `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented TASK-077 Floquet multiplier postprocessing for accepted native production orbits.
+
+Changes:
+- Added `generate_native_adaptive_floquet_diagnostics.py` to validate upstream TASK-075 production artifacts, load accepted native collocation orbit vectors, evaluate the saved piecewise Gauss polynomial, and integrate the transformed variational equation over one normalized period.
+- Added `native_adaptive_floquet_diagnostics.json` with DOP853 tolerance-ladder monodromy/multiplier diagnostics, trivial/nontrivial multiplier separation, tolerance-refinement comparisons, stability classification, implicit Radau comparison, provenance, and explicit non-orbit policy.
+- Added TASK-077 documentation and Episode 008 README links.
+- Added focused tests for accepted-only processing, continuation/orbit manifest linkage, DOP853/Radau diagnostic fields, unit-circle/unstable classification policy, non-relabeling of unresolved/Hopf-limit records, and provenance/docs.
+- Regenerated source-hash-dependent Episode 008 artifacts after the README/doc update.
+
+Current scientific result:
+- The only schema-valid accepted native production orbit is `spine-210K`; it has one autonomous trivial multiplier near +1 and two nontrivial multipliers inside the unit circle, so the recorded classification is orbitally stable under the documented tolerance.
+- The 297 unresolved TASK-075 targets and TASK-076 Hopf-limit gap records are not processed or relabeled as regular orbits.
+
+Validation:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py --check` passed.
+- Production validators for TASK-075 upstream artifacts passed.
+- Focused Episode 008 regression set passed: 54 passed.
+- Full suite: `uv run pytest -q` -> 382 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+<!-- SECTION:FINAL_SUMMARY:END -->
