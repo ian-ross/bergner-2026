@@ -1,7 +1,7 @@
 ---
 id: TASK-074
 title: Generate T=210 K linearized-period curve
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
