@@ -1,0 +1,854 @@
+{
+  "accepted_point_validation": {
+    "all_accepted_points_have_python_and_ivp_validation": true,
+    "ivp": {
+      "assigned_method": "DOP853",
+      "difficulty_triggers": [],
+      "gates": {
+        "scaled_return_max": true,
+        "scaled_return_norm": true,
+        "solver_success": true
+      },
+      "message": "The solver successfully reached the end of the integration interval.",
+      "nfev": 566,
+      "period_s": 5718.140409482163,
+      "radau_required": false,
+      "scaled_return_max": 6.82478381825848e-08,
+      "scaled_return_norm": 7.605456975542845e-08,
+      "selection_status": "selected_only_accepted_post_remesh_pilot_target",
+      "solver_success": true,
+      "target_id": "spine-210K",
+      "tolerance": 0.001,
+      "validation_status": "passed",
+      "wall_clock_s": 0.005839378000018769
+    },
+    "same_coordinate_python": {
+      "backend": "independent Python three-stage fixed-parameter correction on exact native restart mesh",
+      "function_evaluations": 5,
+      "gates": {
+        "native_vector_not_used_as_python_seed": true,
+        "period_relative_error": true,
+        "python_correction_accepted": true,
+        "python_phase_residual": true,
+        "python_stage_residual": true,
+        "python_update_residual": true,
+        "weighted_orbit_distance": true
+      },
+      "jacobian_evaluations": 5,
+      "packed_step_norm": 5.0302773435809e-05,
+      "period_relative_error": 6.376486057182823e-13,
+      "period_s_native": 5718.140409482163,
+      "period_s_python": 5718.140409478517,
+      "rejection_reasons": [],
+      "seed_contract": {
+        "forbidden_seed_sources": [
+          "exact native corrected restart vector"
+        ],
+        "native_restart_vector_seeded": false,
+        "python_seed_source": "TASK-081 transferred non-solution seed on exact restart mesh"
+      },
+      "target_id": "spine-210K",
+      "tolerance": 2e-07,
+      "validation_status": "passed",
+      "weighted_orbit_distance": 1.1135260529558347e-12
+    }
+  },
+  "artifact_id": "task081-native-adaptive-pilot-gate-followup",
+  "artifact_kind": "task081-native-adaptive-pilot-gate-followup",
+  "exact_restart_gate_bundle": {
+    "all_required_gates_pass": true,
+    "exact_native_restart_vector": {
+      "interval_count": 84,
+      "period_s": 5718.140409482163,
+      "sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+      "unknown_size": 1009,
+      "vector_key": "restart__adaptive-guard-rho-0-g3-n32__corrected_solution"
+    },
+    "gate_pass": {
+      "defect": true,
+      "finite_change": true,
+      "linear_solve": true,
+      "period_orbit_convergence": true,
+      "phase": true,
+      "positivity": true,
+      "residual": true,
+      "tangent": true
+    },
+    "independent_python_recomputed_defect_crosscheck": {
+      "argmax_bin": 2,
+      "argmax_phase": 0.018741799361341415,
+      "maximum": 6.477583646189113e-05,
+      "status": "passed"
+    },
+    "native_backend_defect_command": {
+      "argmax_bin": 2,
+      "argmax_phase": 0.018741799361341415,
+      "command": [
+        "loca-build/bs2026_midpoint_orbit",
+        "adaptive-controller",
+        "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt"
+      ],
+      "defect_maximum": 6.477583647234454e-05,
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt",
+      "fixture_sha256": "6546f886296557516688ee91d9e5175d833f3b7ea3ce1f6485bc9a67ba3499bb",
+      "material_probe_count": 0,
+      "source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ]
+    },
+    "native_backend_restart_command": {
+      "command": [
+        "loca-build/bs2026_midpoint_orbit",
+        "adaptive-restart",
+        "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/adaptive-guard-rho-0-g3-n32.txt"
+      ],
+      "correction_norm": 5.030277371165648e-05,
+      "correction_status": "accepted",
+      "emitted_solution_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+      "fixture_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/adaptive-guard-rho-0-g3-n32.txt",
+      "fixture_sha256": "549b828788147728c85d61c8863ec7fc6e622b70a1101699ca37fa783a180e71",
+      "gates": {
+        "finite_change": true,
+        "linear": true,
+        "phase": true,
+        "positivity": true,
+        "residual": true,
+        "tangent": true
+      },
+      "iterations": 2,
+      "matches_exact_restart_vector": true,
+      "nox_residual_norm": 1.6543434215594583e-14,
+      "nox_status": "converged",
+      "period_s": 5718.140409482163,
+      "source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ]
+    },
+    "native_restart_residual_diagnostics": {
+      "phase_abs": 2.1627398342178087e-18,
+      "stage_max": 1.78767702708825e-15,
+      "stage_rms": 5.151413201075087e-16,
+      "update_max": 1.7229647365149198e-15,
+      "update_rms": 5.391675597652727e-16
+    },
+    "period_orbit_convergence": {
+      "backend_binding": "period and correction norm are emitted by the native adaptive-restart command; transferred seed and exact restart vector are C++ vector artifacts with checksums",
+      "native_restart_correction_norm": 5.030277371165648e-05,
+      "native_restart_period_s": 5718.140409482163,
+      "native_transferred_seed_period_s": 5718.14089726987,
+      "period_relative_change_from_native_transferred_seed": 8.530530422691893e-08,
+      "period_relative_change_vs_source_adaptive_final": 5.110579410396198e-10,
+      "source_adaptive_final_period_s": 5718.140412404464,
+      "status": "passed",
+      "tolerance": 0.001,
+      "weighted_orbit_change_from_transferred_seed": 5.751700008516013e-06
+    },
+    "status": "passed",
+    "target_id": "spine-210K"
+  },
+  "input_gate_context": {
+    "task072_terminal_status_counts": {
+      "accepted": 0,
+      "failed": 0,
+      "near_hopf_stop": 0,
+      "resolution_unresolved": 31,
+      "tripwire_stop": 0
+    },
+    "task073_previous_decision": {
+      "blockers": [
+        "TASK-072 produced zero accepted native adaptive pilot targets over the 210--226 K skeleton",
+        "TASK-069 justifies selected IVP checks only after accepted native adaptive pilot points exist; TASK-072 accepted none."
+      ],
+      "decision": "full_domain_continuation_not_authorized",
+      "follow_up_required_before_TASK075": true,
+      "follow_up_scope": "complete backend-bound exact restart-vector defect and period/orbit convergence gates, rerun or revise the native adaptive pilot until accepted targets either pass independent Python/IVP validation or remain explicit gaps",
+      "follow_up_task": "TASK-081",
+      "full_domain_continuation_authorized": false,
+      "method_version_revision_required_now": false,
+      "pilot_method_version": "episode008-native-adaptive-measured-pilot-v1",
+      "rationale": "The retained v1 method is not falsified by TASK-072, but the measured pilot supplies no accepted production-use native adaptive points. Full-domain continuation must not proceed from an all-unresolved pilot gate.",
+      "retained_method_version": "external-gauss3-hr-adaptive-v1"
+    }
+  },
+  "measured_resource_accounting": {
+    "cpu_time_s": 0.17072499999999913,
+    "max_rss_kib": 117780,
+    "wall_clock_s": 0.6430354140002237
+  },
+  "production_gate_decision": {
+    "decision": "task075_authorized_under_retained_v1_method",
+    "full_domain_continuation_authorized": true,
+    "method_version_revision_required_now": false,
+    "rationale": "TASK-081 binds the exact spine-210K post-remesh native restart vector to residual/phase/positivity/linear/tangent/defect/period-orbit gates, same-coordinate Python validation, and DOP853 one-period IVP validation. Unsupported skeleton targets remain explicit unresolved gaps, so the retained v1 method can proceed to TASK-075 without interpolation.",
+    "remaining_boundaries_for_TASK075": [
+      "TASK-075 must still preserve unresolved gaps outside accepted evidence",
+      "full-domain targets must each receive one backend-emitted terminal status",
+      "near-Hopf/tripwire/instability boundaries remain stop conditions, not interpolation regions"
+    ],
+    "retained_method_version": "external-gauss3-hr-adaptive-v1",
+    "task075_may_proceed": true
+  },
+  "production_schema_artifact_sha256": {
+    "continuation_events": "4716dcbde3cfb9e5d2137c021a219e672e4a4c3f603cfc2f0f247e5971de876e",
+    "run_metadata": "4d4422001a7892743c34c7aba514a7cf0788b0f4c03770e7755e2aea54b10f23"
+  },
+  "production_schema_artifacts": {
+    "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json",
+    "run_metadata": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json"
+  },
+  "provenance": {
+    "adaptive_fixture": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_adaptive_nonuniform_fixtures/adaptive-guard-rho-0-g3-n32.txt",
+      "role": "native adaptive-restart command fixture",
+      "sha256": "549b828788147728c85d61c8863ec7fc6e622b70a1101699ca37fa783a180e71"
+    },
+    "adaptive_qualification": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/adaptive_qualification_results.json",
+      "role": "period/orbit convergence reference",
+      "sha256": "5c1c9dbf01560cef66046413647851a2ccf0606930297605dc039f51f339441b"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py",
+      "role": "TASK-081 follow-up generator",
+      "sha256": "b32f7f68e379d49f617e652849a34d0fb363249eb7ba77d3aaab15d90cbc912f"
+    },
+    "one_branch": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
+      "role": "exact native remesh/restart source artifact",
+      "sha256": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d"
+    },
+    "one_branch_vectors": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz",
+      "role": "exact native restart vector source",
+      "sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+    },
+    "python_validation": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_python_validation.json",
+      "role": "TASK-068 Python validation boundary input",
+      "sha256": "2ce350c4de17f10fc1562600fd525241b61fce6bb848f9f2502e3d549927b141"
+    },
+    "resource_metadata": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
+      "role": "TASK-071 run metadata input",
+      "sha256": "5102ee67ae4a7286ab7b6e479d794a9a21e864cdf55532bb048e6c0048074035"
+    },
+    "resource_profile": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
+      "role": "TASK-071 resource profile input",
+      "sha256": "66f120646656f7920eb3d3434e52bcdc2efa0c8ab2a55a4b0da17e5b546406f6"
+    },
+    "task072_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task072-measured-native-adaptive-pilot.md",
+      "role": "TASK-072 documentation input",
+      "sha256": "a82adf6594cf60b5348d12e3a9a54c40ec0460d0807ef7b1c1232c7d1ff27c64"
+    },
+    "task072_events": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
+      "role": "TASK-072 production-v1 event input",
+      "sha256": "679f83334d920431fb9b30b3b215787ca5b2f014a7cab4ead96b671ebda19552"
+    },
+    "task072_run_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
+      "role": "TASK-072 resumable run manifest input",
+      "sha256": "f2eff414e4c469911aad2ac3649d98b12ef27975ed135e77907ed34107db12fa"
+    },
+    "task072_run_metadata": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
+      "role": "TASK-072 measured run metadata input",
+      "sha256": "df6e2108f512898d4333580e590f2c7e460f17ce599d055b6c848cfd37042690"
+    },
+    "task072_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
+      "role": "TASK-072 measured pilot input ledger",
+      "sha256": "9d56d8d54d5514cd464950cf1b05ef436644a71d95e8b83c495c724f45ad6ba9"
+    },
+    "task073_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task073-native-adaptive-pilot-reconciliation.md",
+      "role": "TASK-073 documentation input",
+      "sha256": "c40f4fbd9a2217df9eb7c1b39e850a0dc2c1e6859282e3dc6cf8b9dec97097a0"
+    },
+    "task073_reconciliation": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_reconciliation.json",
+      "role": "TASK-073 blocking gate decision input",
+      "sha256": "b24043826206a82af9b24c1fe1482b192e7ea10a361bb3c53ec0aedb4dc76c50"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "role": "Python environment lockfile",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  },
+  "revised_measured_pilot": {
+    "scope": "Revised TASK-081 terminal ledger for the unchanged 210--226 K skeleton; TASK-072 remains historical input evidence.",
+    "terminal_target_ledger": {
+      "accepted_target_ids": [
+        "spine-210K"
+      ],
+      "exactly_one_terminal_status_per_target": true,
+      "target_count": 31,
+      "targets": [
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0000__move-225K-to-spine-rho0__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "accepted",
+          "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "move-225K-to-spine-rho0",
+          "target_type": "fixed_temperature_spine_move",
+          "temperature_K": 225.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": true,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0001__spine-210K__cycle-00",
+          "explicit_gap_record": false,
+          "provisional_terminal_status": "accepted",
+          "reason": "TASK-081 gate backend emitted acceptance after exact native restart-vector gate bundle, independent Python validation, and DOP853 one-period IVP validation passed",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-210K",
+          "target_type": "spine_temperature",
+          "temperature_K": 210.0,
+          "terminal_status": "accepted"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0002__slice-210K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "accepted",
+          "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-210K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 210.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0003__slice-210K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "accepted",
+          "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-210K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 210.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0004__spine-212K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-212K",
+          "target_type": "spine_temperature",
+          "temperature_K": 212.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0005__slice-212K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-212K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 212.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0006__slice-212K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-212K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 212.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0007__spine-214K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-214K",
+          "target_type": "spine_temperature",
+          "temperature_K": 214.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0008__slice-214K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-214K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 214.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0009__slice-214K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-214K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 214.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0010__spine-216K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-216K",
+          "target_type": "spine_temperature",
+          "temperature_K": 216.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0011__slice-216K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-216K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 216.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0012__slice-216K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-216K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 216.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0013__spine-218K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-218K",
+          "target_type": "spine_temperature",
+          "temperature_K": 218.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0014__slice-218K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-218K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 218.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0015__slice-218K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-218K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 218.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0016__spine-220K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-220K",
+          "target_type": "spine_temperature",
+          "temperature_K": 220.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0017__slice-220K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-220K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 220.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0018__slice-220K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-220K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 220.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0019__spine-222K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-222K",
+          "target_type": "spine_temperature",
+          "temperature_K": 222.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0020__slice-222K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-222K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 222.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0021__slice-222K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-222K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 222.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0022__spine-224K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-224K",
+          "target_type": "spine_temperature",
+          "temperature_K": 224.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0023__slice-224K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-224K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 224.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0024__slice-224K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-224K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 224.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0025__spine-225K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "accepted",
+          "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-225K",
+          "target_type": "spine_temperature",
+          "temperature_K": 225.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0026__slice-225K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-225K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 225.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0027__slice-225K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-225K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 225.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0028__spine-226K__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "accepted",
+          "reason": "backend_route_lacks_complete_TASK072_adaptive_defect_and_period_orbit_gate_bundle; native fixed-mesh checkpoint is not relabeled as measured adaptive pilot acceptance",
+          "rho": 0.0,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "spine-226K",
+          "target_type": "spine_temperature",
+          "temperature_K": 226.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0029__slice-226K-rho--0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": -0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-226K-rho--0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 226.0,
+          "terminal_status": "resolution_unresolved"
+        },
+        {
+          "authoritative_for_task075_gate": false,
+          "backend_emitted_terminal_status": true,
+          "completed_segment_id": "segment-0030__slice-226K-rho-+0.15__cycle-00",
+          "explicit_gap_record": true,
+          "provisional_terminal_status": "failed",
+          "reason": "no measured native adaptive backend route reached this skeleton target within TASK072 pilot scope; explicit unresolved gap preserved without interpolation",
+          "rho": 0.15,
+          "status_source": "task081-native-exact-restart-gate-backend",
+          "supersedes_task072_terminal_status": "resolution_unresolved",
+          "target_id": "slice-226K-rho-+0.15",
+          "target_type": "fixed_temperature_rho_slice",
+          "temperature_K": 226.0,
+          "terminal_status": "resolution_unresolved"
+        }
+      ],
+      "terminal_status_allowed_values": [
+        "accepted",
+        "resolution_unresolved",
+        "near_hopf_stop",
+        "tripwire_stop",
+        "failed"
+      ],
+      "terminal_status_counts": {
+        "accepted": 1,
+        "failed": 0,
+        "near_hopf_stop": 0,
+        "resolution_unresolved": 30,
+        "tripwire_stop": 0
+      },
+      "unresolved_target_ids": [
+        "move-225K-to-spine-rho0",
+        "slice-210K-rho--0.15",
+        "slice-210K-rho-+0.15",
+        "spine-212K",
+        "slice-212K-rho--0.15",
+        "slice-212K-rho-+0.15",
+        "spine-214K",
+        "slice-214K-rho--0.15",
+        "slice-214K-rho-+0.15",
+        "spine-216K",
+        "slice-216K-rho--0.15",
+        "slice-216K-rho-+0.15",
+        "spine-218K",
+        "slice-218K-rho--0.15",
+        "slice-218K-rho-+0.15",
+        "spine-220K",
+        "slice-220K-rho--0.15",
+        "slice-220K-rho-+0.15",
+        "spine-222K",
+        "slice-222K-rho--0.15",
+        "slice-222K-rho-+0.15",
+        "spine-224K",
+        "slice-224K-rho--0.15",
+        "slice-224K-rho-+0.15",
+        "spine-225K",
+        "slice-225K-rho--0.15",
+        "slice-225K-rho-+0.15",
+        "spine-226K",
+        "slice-226K-rho--0.15",
+        "slice-226K-rho-+0.15"
+      ]
+    }
+  },
+  "schema_version": "episode008-native-adaptive-pilot-gate-followup-v1",
+  "scope": "TASK-081 follow-up gate for the TASK-072/TASK-073 measured native adaptive pilot over the 210--226 K skeleton.",
+  "source_build_identity": {
+    "build_identity": {
+      "compiled_source_fingerprint_sha256": [
+        "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
+        "65b43794a91b1d62b9176b07dd7ec75af3f080cebebc8ced57dcc2d2d4c0cd29",
+        "8bed41cb30c70ef55d0df560f8430ae5d4fd1f8b423f568533c905a0e785db38",
+        "32662304762e56241d30aa971c5d2d4dc6d84cbbe2076530fa5e0d0fcd15b9e1",
+        "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
+        "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
+      ],
+      "numpy": "2.4.6",
+      "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
+      "python": "3.11.15",
+      "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    },
+    "executable_identity": {
+      "exists_at_generation": true,
+      "path": "loca-build/bs2026_midpoint_orbit",
+      "sha256": "08a98f90673c39d45440c819c11be841693c120ee2339efa3e3294aef2a8b7e4"
+    }
+  },
+  "truthfulness_policy": {
+    "accepted_target_requires_exact_native_restart_gate_bundle": true,
+    "digitized_paper_evidence_used_for_acceptance": false,
+    "fixed_mesh_or_python_evidence_relabelled_as_native_adaptive_acceptance": false,
+    "interpolation_used_to_fill_targets": false,
+    "native_backend_emitted_every_terminal_status": true,
+    "unaccepted_targets_are_explicit_unresolved_gap_records": true
+  },
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json"
+    ],
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_native_adaptive_pilot_gate_followup.py -q"
+    ]
+  }
+}

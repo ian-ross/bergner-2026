@@ -13,6 +13,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
 - [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
 - [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
+- [`docs/task081-native-adaptive-pilot-gate-followup.md`](docs/task081-native-adaptive-pilot-gate-followup.md) records the TASK-081 follow-up gate that accepts the exact `spine-210K` post-remesh restart point and authorizes TASK-075 under the retained v1 method.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
@@ -75,6 +76,26 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_
 ```
 
 The review preserves the TASK-072 terminal ledger exactly: `accepted=0`, `resolution_unresolved=31`, `failed=0`, `near_hopf_stop=0`, and `tripwire_stop=0`. No IVP subset is justified because no accepted native adaptive pilot point exists. Full-domain continuation is **not authorized** from this pilot gate; the retained v1 method is not falsified, but TASK-081 follow-up gate work is required before TASK-075 can be treated as production-authorized.
+
+## Native adaptive pilot gate follow-up
+
+TASK-081 resolves the TASK-073 blocker without rewriting TASK-072/TASK-073 history. The follow-up artifacts are:
+
+- [`outputs/native_adaptive_pilot_gate_followup.json`](outputs/native_adaptive_pilot_gate_followup.json)
+- [`outputs/native_adaptive_pilot_gate_followup_events.json`](outputs/native_adaptive_pilot_gate_followup_events.json)
+- [`outputs/native_adaptive_pilot_gate_followup_run_metadata.json`](outputs/native_adaptive_pilot_gate_followup_run_metadata.json)
+- [`outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt`](outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json
+```
+
+The revised pilot gate records `accepted=1` (`spine-210K`) and `resolution_unresolved=30`. The accepted point is the exact native post-remesh restart vector, with backend-bound defect and period/orbit convergence gates plus same-coordinate Python and DOP853 one-period IVP validation. TASK-075 may proceed under the retained `external-gauss3-hr-adaptive-v1` method. The remaining pilot targets stay explicit unresolved gaps; no interpolation, fixed-mesh relabeling, Python-only substitution, or digitized-paper evidence fills them.
 
 ## T=210 K equilibrium-linearized period curve
 

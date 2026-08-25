@@ -1,5 +1,5 @@
 {
-  "artifact_id": "task072-native-adaptive-measured-pilot-events",
+  "artifact_id": "task081-native-adaptive-pilot-gate-followup-events",
   "artifact_kind": "continuation-events",
   "continuation_events": [
     {
@@ -26,14 +26,17 @@
           "value": 0.1445622536840862
         }
       },
-      "event_id": "task072-terminal-move-225K-to-spine-rho0",
+      "event_id": "task081-terminal-move-225K-to-spine-rho0",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -68,22 +71,30 @@
           "value": 0.0532671872264416
         }
       },
-      "event_id": "task072-terminal-spine-210K",
-      "event_type": "resolution_unresolved",
+      "event_id": "task081-terminal-spine-210K",
+      "event_type": "accepted_step",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
+      "period": {
+        "log_value": 8.651398928278946,
+        "quantity": "nonlinear_period",
+        "unit": "s",
+        "value": 5718.140409482163
+      },
       "validity": {
-        "authoritative": false,
-        "reason": "measured native remesh/restart seam reached this target, but exact native restart-vector independent defect and period/orbit convergence gates are not backend-bound in TASK072; target remains an explicit unresolved gap",
-        "source": "unresolved_native_adaptive",
-        "status": "resolution_unresolved"
+        "authoritative": true,
+        "source": "computed_native_adaptive",
+        "status": "accepted"
       }
     },
     {
@@ -110,14 +121,17 @@
           "value": 0.04303432084376704
         }
       },
-      "event_id": "task072-terminal-slice-210K-rho--0.15",
+      "event_id": "task081-terminal-slice-210K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -152,14 +166,17 @@
           "value": 0.06593326394804119
         }
       },
-      "event_id": "task072-terminal-slice-210K-rho-+0.15",
+      "event_id": "task081-terminal-slice-210K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -194,14 +211,17 @@
           "value": 0.06150998916743996
         }
       },
-      "event_id": "task072-terminal-spine-212K",
+      "event_id": "task081-terminal-spine-212K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -236,14 +256,17 @@
           "value": 0.04970775492878116
         }
       },
-      "event_id": "task072-terminal-slice-212K-rho--0.15",
+      "event_id": "task081-terminal-slice-212K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -278,14 +301,17 @@
           "value": 0.07611445684479945
         }
       },
-      "event_id": "task072-terminal-slice-212K-rho-+0.15",
+      "event_id": "task081-terminal-slice-212K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -320,14 +346,17 @@
           "value": 0.07079487033947571
         }
       },
-      "event_id": "task072-terminal-spine-214K",
+      "event_id": "task081-terminal-spine-214K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -362,14 +391,17 @@
           "value": 0.05723138229333138
         }
       },
-      "event_id": "task072-terminal-slice-214K-rho--0.15",
+      "event_id": "task081-terminal-slice-214K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -404,14 +436,17 @@
           "value": 0.08757282220959332
         }
       },
-      "event_id": "task072-terminal-slice-214K-rho-+0.15",
+      "event_id": "task081-terminal-slice-214K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -446,14 +481,17 @@
           "value": 0.08121407290087748
         }
       },
-      "event_id": "task072-terminal-spine-216K",
+      "event_id": "task081-terminal-spine-216K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -488,14 +526,17 @@
           "value": 0.06568233396963155
         }
       },
-      "event_id": "task072-terminal-slice-216K-rho--0.15",
+      "event_id": "task081-terminal-slice-216K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -530,14 +571,17 @@
           "value": 0.10041856369170132
         }
       },
-      "event_id": "task072-terminal-slice-216K-rho-+0.15",
+      "event_id": "task081-terminal-slice-216K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -572,14 +616,17 @@
           "value": 0.0928604858403701
         }
       },
-      "event_id": "task072-terminal-spine-218K",
+      "event_id": "task081-terminal-spine-218K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -614,14 +661,17 @@
           "value": 0.07513881326627994
         }
       },
-      "event_id": "task072-terminal-slice-218K-rho--0.15",
+      "event_id": "task081-terminal-slice-218K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -656,14 +706,17 @@
           "value": 0.11476185816178379
         }
       },
-      "event_id": "task072-terminal-slice-218K-rho-+0.15",
+      "event_id": "task081-terminal-slice-218K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -698,14 +751,17 @@
           "value": 0.10582558658796057
         }
       },
-      "event_id": "task072-terminal-spine-220K",
+      "event_id": "task081-terminal-spine-220K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -740,14 +796,17 @@
           "value": 0.08567850304652012
         }
       },
-      "event_id": "task072-terminal-slice-220K-rho--0.15",
+      "event_id": "task081-terminal-slice-220K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -782,14 +841,17 @@
           "value": 0.1307102059265121
         }
       },
-      "event_id": "task072-terminal-slice-220K-rho-+0.15",
+      "event_id": "task081-terminal-slice-220K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -824,14 +886,17 @@
           "value": 0.12019680032105554
         }
       },
-      "event_id": "task072-terminal-spine-222K",
+      "event_id": "task081-terminal-spine-222K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -866,14 +931,17 @@
           "value": 0.09737650071794299
         }
       },
-      "event_id": "task072-terminal-slice-222K-rho--0.15",
+      "event_id": "task081-terminal-slice-222K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -908,14 +976,17 @@
           "value": 0.14836506447553613
         }
       },
-      "event_id": "task072-terminal-slice-222K-rho-+0.15",
+      "event_id": "task081-terminal-slice-222K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -950,14 +1021,17 @@
           "value": 0.13605419572896485
         }
       },
-      "event_id": "task072-terminal-spine-224K",
+      "event_id": "task081-terminal-spine-224K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -992,14 +1066,17 @@
           "value": 0.11030271076503782
         }
       },
-      "event_id": "task072-terminal-slice-224K-rho--0.15",
+      "event_id": "task081-terminal-slice-224K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1034,14 +1111,17 @@
           "value": 0.16781767235880798
         }
       },
-      "event_id": "task072-terminal-slice-224K-rho-+0.15",
+      "event_id": "task081-terminal-slice-224K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1076,14 +1156,17 @@
           "value": 0.1445622536840862
         }
       },
-      "event_id": "task072-terminal-spine-225K",
+      "event_id": "task081-terminal-spine-225K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1118,14 +1201,17 @@
           "value": 0.11724605242758615
         }
       },
-      "event_id": "task072-terminal-slice-225K-rho--0.15",
+      "event_id": "task081-terminal-slice-225K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1160,14 +1246,17 @@
           "value": 0.17824263382453184
         }
       },
-      "event_id": "task072-terminal-slice-225K-rho-+0.15",
+      "event_id": "task081-terminal-slice-225K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1202,14 +1291,17 @@
           "value": 0.15346647387512663
         }
       },
-      "event_id": "task072-terminal-spine-226K",
+      "event_id": "task081-terminal-spine-226K",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1244,14 +1336,17 @@
           "value": 0.12451865628671792
         }
       },
-      "event_id": "task072-terminal-slice-226K-rho--0.15",
+      "event_id": "task081-terminal-slice-226K-rho--0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1286,14 +1381,17 @@
           "value": 0.18914401508986695
         }
       },
-      "event_id": "task072-terminal-slice-226K-rho-+0.15",
+      "event_id": "task081-terminal-slice-226K-rho-+0.15",
       "event_type": "resolution_unresolved",
       "method_versions": {
         "adaptive": "external-gauss3-hr-adaptive-v1",
         "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
         "driver": "episode008-native-adaptive-driver-v1",
+        "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "ivp_validation": "dop853-one-period-return-v1",
         "linear_solver": "thyra-nox-amesos2-klu2-v1",
-        "pilot": "episode008-native-adaptive-measured-pilot-v1",
+        "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
         "restart": "fixed-parameter-remesh-restart-v1",
         "schema": "episode8-figure5-production-v1"
       },
@@ -1314,33 +1412,36 @@
   "method_versions": {
     "adaptive": "external-gauss3-hr-adaptive-v1",
     "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "defect": "two-grid-relative-defect-v1",
     "driver": "episode008-native-adaptive-driver-v1",
+    "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+    "ivp_validation": "dop853-one-period-return-v1",
     "linear_solver": "thyra-nox-amesos2-klu2-v1",
-    "pilot": "episode008-native-adaptive-measured-pilot-v1",
+    "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
     "restart": "fixed-parameter-remesh-restart-v1",
     "schema": "episode8-figure5-production-v1"
   },
   "provenance": {
-    "created_by": "generate_native_adaptive_measured_pilot.py",
+    "created_by": "generate_native_adaptive_pilot_gate_followup.py",
     "digitized_paper_data_policy": "external-comparison-only",
     "source_artifacts": [
       {
-        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
-        "role": "TASK-072 measured pilot run manifest",
-        "sha256": "f2eff414e4c469911aad2ac3649d98b12ef27975ed135e77907ed34107db12fa"
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py",
+        "role": "TASK-081 pilot gate follow-up generator",
+        "sha256": "b32f7f68e379d49f617e652849a34d0fb363249eb7ba77d3aaab15d90cbc912f"
       },
       {
-        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",
-        "role": "TASK-068 provisional skeleton source",
-        "sha256": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce"
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt",
+        "role": "exact native restart-vector C++ defect fixture",
+        "sha256": "6546f886296557516688ee91d9e5175d833f3b7ea3ce1f6485bc9a67ba3499bb"
       },
       {
-        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py",
-        "role": "TASK-072 pilot generator",
-        "sha256": "69a10bed080dd432c76e86d9fb85158d4bd742468e4952089cd2cb1ddcd76aca"
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
+        "role": "TASK-072 original measured pilot ledger",
+        "sha256": "9d56d8d54d5514cd464950cf1b05ef436644a71d95e8b83c495c724f45ad6ba9"
       }
     ],
-    "task": "TASK-072"
+    "task": "TASK-081"
   },
   "schema_version": "episode8-figure5-production-v1"
 }
