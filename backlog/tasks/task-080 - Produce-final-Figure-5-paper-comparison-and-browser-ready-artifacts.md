@@ -1,11 +1,11 @@
 ---
 id: TASK-080
 title: Produce final Figure 5 paper comparison and browser-ready artifacts
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 14:00'
+updated_date: '2026-08-25 14:13'
 labels:
   - episode-008
   - figures
@@ -28,9 +28,9 @@ Assemble final Episode 008 Figure 5 reproduction outputs after production contin
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Final plots and machine-readable artifacts reproduce the Figure 5 upper period map and lower T=210 K nonlinear/linearized slice with solved/interpolated/invalid/gap provenance and links to production records
-- [ ] #2 TASK-063 digitized paper evidence is compared as image-derived external evidence with documented uncertainty; discrepancies follow the TASK-062/TASK-069 rule and do not override numerical convergence or IVP validation
-- [ ] #3 Browser-ready artifacts are schema-valid, compact, documented, and clearly separated from Episode 007 widget integration code
+- [x] #1 Final plots and machine-readable artifacts reproduce the Figure 5 upper period map and lower T=210 K nonlinear/linearized slice with solved/interpolated/invalid/gap provenance and links to production records
+- [x] #2 TASK-063 digitized paper evidence is compared as image-derived external evidence with documented uncertainty; discrepancies follow the TASK-062/TASK-069 rule and do not override numerical convergence or IVP validation
+- [x] #3 Browser-ready artifacts are schema-valid, compact, documented, and clearly separated from Episode 007 widget integration code
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -49,4 +49,39 @@ Assemble final Episode 008 Figure 5 reproduction outputs after production contin
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-080: moved task to In Progress, assigned to @iross, reviewed the task and dependency summaries for TASK-063/069/070/074/075/076/077/078/079 plus the Episode 008 README/artifact inventory. No implementation changes have been made yet; pausing for plan confirmation.
+
+Plan approved by user; implemented TASK-080 final artifacts. Added `generate_figure5_final_artifacts.py`, final production-v1 browser dataset, paper-comparison report, reproduction PNG, TASK-080 documentation, README linkage, and focused tests. Regenerated source-hash-dependent Episode 008 artifacts after README/documentation changes so --check tests remain current.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_figure5_final_artifacts.py --check`: current
+- production validator for `figure5_final_browser_dataset.json`: valid
+- TASK-079 browser dataset and final reconciliation checks: current
+- focused TASK-080/TASK-079/TASK-063/schema tests: 31 passed
+- full `uv run pytest -q`: 405 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented final Episode 008 Figure 5 paper-comparison and browser-ready artifacts.
+
+Changes:
+- Added `generate_figure5_final_artifacts.py` with write/check modes for final Figure 5 outputs.
+- Added `figure5_final_reproduction.png`, `figure5_final_browser_dataset.json`, and `figure5_final_paper_comparison.json`.
+- The final browser dataset is production-v1 schema-valid, removes TASK-079 pending paper placeholders, preserves solved/unresolved/Hopf-gap/invalid/linearized production provenance, and adds TASK-063 upper/lower paper samples as non-authoritative `external_digitized_paper_comparison` overlays with uncertainty.
+- Added TASK-080 documentation, Episode 008 README linkage, and focused regression tests.
+- Regenerated source-hash-dependent Episode 008 artifacts after README/documentation provenance changed.
+
+Scientific outcome:
+- Current nonlinear production evidence remains one accepted native point (`spine-210K`), zero nonlinear interpolated values, and 297 explicit unresolved gaps.
+- The lower panel keeps TASK-075 nonlinear continuation separate from the independent TASK-074 linearized-period curve; no heatmap resampling is used.
+- TASK-063 image-derived paper discrepancies are documented under the TASK-062/TASK-069 rule and cannot override convergence, IVP, Floquet, or explicit-gap evidence.
+
+Validation:
+- Final generator `--check` passed.
+- Production validator for `figure5_final_browser_dataset.json` passed.
+- Focused TASK-080/TASK-079/TASK-063/schema tests passed: 31 passed.
+- Full suite: `uv run pytest -q` -> 405 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+<!-- SECTION:FINAL_SUMMARY:END -->
