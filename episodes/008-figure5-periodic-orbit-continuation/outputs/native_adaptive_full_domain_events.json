@@ -14683,7 +14683,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
         "role": "TASK-081 authorization and accepted-point gate",
-        "sha256": "cd2d3f2d97271733d4433d88d13476af48197f4f9cdbb2bb95bbcf7f7d0d6c0e"
+        "sha256": "dc8c37003fda5ae45fd86fef819a14110e5ac4bad627dbaa0d0764024198d677"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/docs/collocation-phase-decisions.md",

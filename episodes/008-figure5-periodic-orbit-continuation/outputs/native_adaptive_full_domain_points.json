@@ -110,12 +110,12 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
         "role": "TASK-081 accepted-point gate evidence",
-        "sha256": "cd2d3f2d97271733d4433d88d13476af48197f4f9cdbb2bb95bbcf7f7d0d6c0e"
+        "sha256": "dc8c37003fda5ae45fd86fef819a14110e5ac4bad627dbaa0d0764024198d677"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
         "role": "TASK-075 curated orbit-vector manifest",
-        "sha256": "9edde70489610914d0992cc411a7d6161a1c9e2d967abc619b86c81202c90794"
+        "sha256": "c1509628f710962acc19dee3360878e242e0154fef905e7bc946758d6381adfd"
       }
     ],
     "task": "TASK-075"

@@ -1,0 +1,199 @@
+{
+  "artifact_id": "task080-figure5-paper-comparison-report",
+  "artifact_kind": "task080-paper-comparison-report",
+  "discrepancy_rule": {
+    "agreement_can_override_numerical_convergence_or_ivp_validation": false,
+    "discrepancy_action": "investigate and document; do not replace authoritative production status or period values",
+    "paper_evidence_role": "image-derived external comparison only",
+    "rule": "abs(delta_log_period_natural) <= max(3*sigma_digitized_log_period_natural, 0.02)"
+  },
+  "linearized_curve_summary": {
+    "authoritative_source": "episodes/008-figure5-periodic-orbit-continuation/outputs/t210_linearized_period_curve.json",
+    "max_abs_delta_log_period_natural": 0.3780179653381106,
+    "median_abs_delta_log_period_natural": 0.0523779918383287,
+    "paper_curve_id": "equilibrium_linearized_period_red_curve",
+    "paper_row_count_compared_to_nearest_authoritative_row": 365,
+    "status_counts": {
+      "discrepancy_requires_investigation": 255,
+      "within_digitization_uncertainty": 110
+    }
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "comparison_discrepancy_rule": "task062-task069-image-derived-evidence-subordinate-v1",
+    "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "final_artifact_assembly": "final-paper-comparison-browser-assembly-v1",
+    "final_browser_dataset": "episode008-figure5-final-browser-dataset-v1",
+    "linearized_period": "cpp-nox-loca-equilibrium-physical-jacobian-linearized-period-v1",
+    "paper_comparison_report": "episode008-figure5-paper-comparison-report-v1",
+    "paper_digitization": "manual-calibration-threshold-component-colorbar-v1",
+    "schema": "episode8-figure5-production-v1",
+    "upstream_browser_dataset": "episode008-figure5-browser-interpolation-dataset-v1"
+  },
+  "pairwise_comparisons": [
+    {
+      "comparison_id": "upper-period-map-nearest-task079-upper-map-solved-task075-point-spine-210K",
+      "comparison_layer": "upper_period_map",
+      "computed_period_s": 5718.140409482163,
+      "computed_record_id": "task079-upper-map-solved-task075-point-spine-210K",
+      "delta_log_period_natural": -0.17707549218648921,
+      "override_numerical_validation": false,
+      "paper_evidence_role": "image-derived external comparison only",
+      "paper_period_s": 4790.18080525539,
+      "paper_record_id": "upper-color-x208-f50",
+      "sigma_digitized_log_period_natural": 0.010128673429592578,
+      "status": "discrepancy_requires_investigation",
+      "tolerance_log_period_natural": 0.030386020288777734
+    },
+    {
+      "comparison_id": "lower-nonlinear-nearest-task079-lower-nonlinear-solved-task075-point-spine-210K",
+      "comparison_layer": "lower_T210K_nonlinear_slice",
+      "computed_period_s": 5718.140409482163,
+      "computed_record_id": "task079-lower-nonlinear-solved-task075-point-spine-210K",
+      "delta_log_period_natural": 0.0191282830579933,
+      "override_numerical_validation": false,
+      "paper_evidence_role": "image-derived external comparison only",
+      "paper_period_s": 5828.571428571428,
+      "paper_record_id": "nonlinear_limitcycle_period_black_curve@pixel_x=269",
+      "sigma_digitized_log_period_natural": 0.004901960784313726,
+      "status": "within_digitization_uncertainty",
+      "tolerance_log_period_natural": 0.02
+    }
+  ],
+  "provenance": {
+    "created_by": "generate_figure5_final_artifacts.py",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "source_artifacts": [
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_figure5_final_artifacts.py",
+        "role": "TASK-080 final artifact generator",
+        "sha256": "57d58f590c5033d9f748ab7aad529e741e0c590238870beff75376846a73048c"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/figure5_browser_interpolation_dataset.json",
+        "role": "TASK-079 authoritative browser/interpolation dataset input",
+        "sha256": "98aac41d046e3e7c3be59d79ad135cf991fd7fe42664c9e18c63d3a37a6e87dc"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization.json",
+        "role": "TASK-063 paper digitization summary",
+        "sha256": "ee06b3802a982483e9d46a6126859be891eb61db21c42fab0d6197d097129e76"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_period_samples.csv",
+        "role": "TASK-063 upper period-map paper samples",
+        "sha256": "93d1c6f228dde82b221723679e787a3965079e44588d7bf3dd99c7f58c48c7bf"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_hopf_boundaries.csv",
+        "role": "TASK-063 upper Hopf-boundary paper samples",
+        "sha256": "9446328bb2fec6526519d2caff6eab4430f3eaee1ee6fe2c89a6b606febe7496"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_lower_curves.csv",
+        "role": "TASK-063 lower T=210 K paper curves",
+        "sha256": "7ab042cee40cff11197649c97327122afc8870fb7555815c838aef61f07725af"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+        "role": "TASK-075 accepted nonlinear production records",
+        "sha256": "be741cf948499319e790c05a1e9988ce098dbf64b74ba20177997dc31a1f7b8c"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+        "role": "TASK-075 unresolved/gap production events",
+        "sha256": "b6a8bde6703f6ab1e06d63e935c8ec56c9675602e9f0ff8eb9dee4be1f9ea1e2"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/t210_linearized_period_curve.json",
+        "role": "TASK-074 independent T=210 K linearized-period curve",
+        "sha256": "ecec1856b1eaf8011103113148dac2b181d4941b8722b4ce4d8f77cd8bac4ccc"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_floquet_diagnostics.json",
+        "role": "TASK-077 Floquet diagnostics",
+        "sha256": "cecfeaf681bd8d505e27e41d3c73fb20a59c301d43b7cce3a5817180235e45a6"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_ivp_validation.json",
+        "role": "TASK-078 independent IVP validation",
+        "sha256": "c187f940120187be1c1940abbc6a75b863ed4e511b36ac069223d5cc47f02015"
+      },
+      {
+        "path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv",
+        "role": "Episode 006 Hopf-locus coordinate reference",
+        "sha256": "60f3bbf474151cb26197f89e59021d64fbb6479e372bc8e01a7387ad96685c01"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task063-paper-figure5-digitization.md",
+        "role": "TASK-063 digitized-paper comparison policy",
+        "sha256": "887455334df8227bfec80249c0aff3d5ded7e355c37b067e72fe097b2f05b91f"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+        "role": "TASK-069 subordinate image-evidence and explicit-gap policy",
+        "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+        "role": "TASK-070 production schema documentation",
+        "sha256": "a11a93b80dca5407c04d52941dd830c294a74ab876df478c0edd671d6ec29482"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task074-t210-linearized-period-curve.md",
+        "role": "TASK-074 lower-panel linearized-period documentation",
+        "sha256": "1c6b37361d455fb75e658cc4040ea0c328959c9aed00864e3a91c4944eadc60e"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",
+        "role": "TASK-075 full-domain continuation documentation",
+        "sha256": "c189c0fe45d7338a4e1e245ee763117856d5e327cc7f177c78502375fe7c5b7c"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task076-near-hopf-approach-policy.md",
+        "role": "TASK-076 Hopf-gap policy documentation",
+        "sha256": "cb6f8ae33b30dfe59c26a6ff1b85eb82ff6aa31c6d79f2c48b1304a0f9be2b62"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task077-floquet-postprocessing.md",
+        "role": "TASK-077 Floquet documentation",
+        "sha256": "6ec080aef3be51e20e0c750505ba6324e547d934b0870540bfac3f4231fc9432"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task078-stratified-ivp-validation.md",
+        "role": "TASK-078 IVP validation documentation",
+        "sha256": "674b85d4a7121d3a438afdaa426c3c880b7eb462ea87afcdd98613932384f3d3"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task079-browser-interpolation-dataset.md",
+        "role": "TASK-079 browser/interpolation documentation",
+        "sha256": "2bd2bc03a6c7b85a7496f8baef48b7832495d8bb2916c9549bf2895e6e08fd48"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task080-final-figure5-artifacts.md",
+        "role": "TASK-080 final-artifact documentation",
+        "sha256": "939d067321050820ce12b32cd8f095f901c4dc14e967482b630744efee5c93ab"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+        "role": "Episode 008 documentation index",
+        "sha256": "985895256f78600995ea318935ccc9a978e735b5b9235b2a37dd59aa3d24b99c"
+      }
+    ],
+    "task": "TASK-080"
+  },
+  "schema_version": "episode008-figure5-paper-comparison-report-v1",
+  "scientific_outcome": {
+    "accepted_native_nonlinear_points": 1,
+    "floquet_ambiguous_or_unstable_targets": [],
+    "interpolated_nonlinear_points": 0,
+    "ivp_failures": [],
+    "unresolved_native_targets": 297
+  },
+  "source_counts": {
+    "authoritative_browser_records_from_task079": 760,
+    "paper_lower_curve_rows": 492,
+    "paper_upper_hopf_boundary_rows": 366,
+    "paper_upper_period_samples": 690
+  }
+}

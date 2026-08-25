@@ -50484,42 +50484,42 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
         "role": "TASK-075 full-domain terminal ledger and sampling-refinement policy",
-        "sha256": "f437ba50a56e876b6ae807c626e336aeafb51c91c8dfd5d662858e4759f50cb0"
+        "sha256": "1dd6871d0cdbe3296fb44873b5555a1835423e397f994e46ec03e4e556c541d4"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
         "role": "TASK-075 accepted native nonlinear continuation points",
-        "sha256": "f0e6481061a22ed59ac6a253a6d88d7252512f577630276bd26a15c4e5fc750c"
+        "sha256": "be741cf948499319e790c05a1e9988ce098dbf64b74ba20177997dc31a1f7b8c"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
         "role": "TASK-075 terminal events for unresolved/gap regions",
-        "sha256": "cdb4588bdbc79144f461c2b5a9e6e87d5d5a076170e9c354fa73ae4f8aa492d1"
+        "sha256": "b6a8bde6703f6ab1e06d63e935c8ec56c9675602e9f0ff8eb9dee4be1f9ea1e2"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run_metadata.json",
         "role": "TASK-075 run metadata",
-        "sha256": "7325bfa144662c289186876c9a86765cb33901fab625b7dfd371f143d404fa22"
+        "sha256": "009d7e698cb8914e644e40a09d7ce673fb2e3e6d0a5ef0c6db0c1b00c37148c3"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
         "role": "TASK-075 accepted orbit manifest",
-        "sha256": "9edde70489610914d0992cc411a7d6161a1c9e2d967abc619b86c81202c90794"
+        "sha256": "c1509628f710962acc19dee3360878e242e0154fef905e7bc946758d6381adfd"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json",
         "role": "TASK-076 Hopf-limit explicit-gap policy records",
-        "sha256": "04db33d2ce205b37f5f7c6732e5c6d6f7fa848165def1376512776cc91dd49c1"
+        "sha256": "394b4bc842203410775702b350516f90d882329e8224a346c3c8f5dd6d0896b3"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_floquet_diagnostics.json",
         "role": "TASK-077 Floquet instability/ambiguity diagnostics",
-        "sha256": "6f14fe0f64d8468c4a462e2a8fa04d0dfdd33a4aa10f0655097a845576506622"
+        "sha256": "cecfeaf681bd8d505e27e41d3c73fb20a59c301d43b7cce3a5817180235e45a6"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_ivp_validation.json",
         "role": "TASK-078 independent IVP validation diagnostics",
-        "sha256": "f450c9ce05034ee71bdbda39b81e2794437d6ba2a987030d4d4fd9c9b72e6464"
+        "sha256": "c187f940120187be1c1940abbc6a75b863ed4e511b36ac069223d5cc47f02015"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/t210_linearized_period_curve.json",
@@ -50574,7 +50574,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
         "role": "Episode 008 documentation index",
-        "sha256": "a63228d63521d908340711b82a4e3a83ba6de6feb4bcc7aa512fe6a0e0cab5a1"
+        "sha256": "985895256f78600995ea318935ccc9a978e735b5b9235b2a37dd59aa3d24b99c"
       }
     ],
     "task": "TASK-079"

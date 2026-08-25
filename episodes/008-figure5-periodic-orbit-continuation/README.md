@@ -21,6 +21,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task078-stratified-ivp-validation.md`](docs/task078-stratified-ivp-validation.md) documents the TASK-078 stratified independent IVP validation for accepted native production orbits.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 - [`docs/task079-browser-interpolation-dataset.md`](docs/task079-browser-interpolation-dataset.md) documents the TASK-079 shape-preserving interpolation gate review and schema-valid browser/display dataset.
+- [`docs/task080-final-figure5-artifacts.md`](docs/task080-final-figure5-artifacts.md) documents the final Figure 5 reproduction plot, paper-comparison report, and browser-ready dataset assembled from production and TASK-063 evidence.
 
 ## Production schema boundary
 
@@ -206,6 +207,24 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 Current nonlinear interpolation is withheld: only `spine-210K` is an accepted native nonlinear production point, while the other full-domain targets remain explicit unresolved gaps. The dataset therefore records zero interpolated nonlinear values, preserves Hopf-limit explicit gaps, marks outside-Hopf-domain invalid display cells, and retains the pre-TASK-063 image-derived comparison placeholders rather than fabricating authoritative values. The lower-panel records keep the accepted nonlinear continuation point separate from the independent TASK-074 T=210 K linearized-period curve; no lower-panel value is produced by heatmap resampling.
+
+## Final Figure 5 paper comparison and browser artifacts
+
+TASK-080 assembles the final paper-facing and browser-ready Figure 5 artifacts after TASK-063 digitization and production validation evidence are available. The artifacts are:
+
+- [`outputs/figure5_final_reproduction.png`](outputs/figure5_final_reproduction.png)
+- [`outputs/figure5_final_browser_dataset.json`](outputs/figure5_final_browser_dataset.json)
+- [`outputs/figure5_final_paper_comparison.json`](outputs/figure5_final_paper_comparison.json)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_figure5_final_artifacts.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/figure5_final_browser_dataset.json
+```
+
+The final browser dataset removes TASK-079's pending paper-comparison placeholders and adds TASK-063 image-derived upper period-map and lower T=210 K curve samples as non-authoritative `external_digitized_paper_comparison` overlays with uncertainty. Discrepancies follow the TASK-062/TASK-069 rule: they trigger investigation and documentation, but never override native continuation convergence, independent IVP validation, Floquet diagnostics, linearized-period validation, or explicit unresolved/Hopf/invalid gap records. The payload is data-only and compact; it does not include Episode 007 widget integration code.
 
 ## T=210 K equilibrium-linearized period curve
 
