@@ -1,9 +1,11 @@
 ---
 id: TASK-078
 title: Run stratified independent IVP validation for production points
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-25 12:43'
 labels:
   - episode-008
   - ivp
