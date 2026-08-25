@@ -3,7 +3,7 @@
   "artifact_id": "task072-native-adaptive-measured-pilot",
   "artifact_kind": "task072-measured-native-adaptive-pilot",
   "check_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_measured_pilot.py --check",
-  "created_at": "2026-08-25T13:01:26.599352Z",
+  "created_at": "2026-08-25T13:28:36.503317Z",
   "measured_commands": [
     {
       "command": [
@@ -14,12 +14,12 @@
         "--check"
       ],
       "resources": {
-        "cpu_time_s": 22.93,
+        "cpu_time_s": 23.66,
         "exit_status": 0,
-        "max_rss_kib": 280984,
-        "system_cpu_s": 0.13,
-        "user_cpu_s": 22.8,
-        "wall_clock_s": 8.82
+        "max_rss_kib": 280340,
+        "system_cpu_s": 0.11,
+        "user_cpu_s": 23.55,
+        "wall_clock_s": 8.85
       },
       "stderr_tail": [],
       "stdout_tail": [
@@ -35,12 +35,12 @@
         "--check"
       ],
       "resources": {
-        "cpu_time_s": 10.590000000000002,
+        "cpu_time_s": 10.629999999999999,
         "exit_status": 0,
-        "max_rss_kib": 112504,
-        "system_cpu_s": 0.13,
-        "user_cpu_s": 10.46,
-        "wall_clock_s": 1.79
+        "max_rss_kib": 111696,
+        "system_cpu_s": 0.09,
+        "user_cpu_s": 10.54,
+        "wall_clock_s": 1.86
       },
       "stderr_tail": [],
       "stdout_tail": [
@@ -49,9 +49,9 @@
     }
   ],
   "measured_resource_accounting": {
-    "cpu_time_s": 33.520590000000006,
-    "max_rss_kib": 280984,
-    "wall_clock_s": 10.610571448999835
+    "cpu_time_s": 34.29076,
+    "max_rss_kib": 280340,
+    "wall_clock_s": 10.710719197998477
   },
   "planned_run_manifest": {
     "provisional_source": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json",
@@ -79,8 +79,8 @@
     ]
   },
   "production_schema_artifact_sha256": {
-    "continuation_events": "ea94b5be763c0bc96d3d0ae79a639242315d7c1ef0904ca9290f2da0d9d9cd9c",
-    "run_metadata": "fdde4fdde84c529238da377ffb045a95d3406ff9ecabf90955c66b1120bfa678"
+    "continuation_events": "c03ba1612980e8775bf748006d609609b726a6386b269a7303522f157371ddf2",
+    "run_metadata": "dc4dbc6a84df0115c7e2d6931b0271b87515a0653a97caa0ecdbff513de8999a"
   },
   "production_schema_artifacts": {
     "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
@@ -125,12 +125,12 @@
     "resource_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
       "role": "TASK-071 production run metadata source",
-      "sha256": "2a9208fb2906100a1c1c6d9303ab956050770285ffeb80bf39506aa021e03556"
+      "sha256": "1310bc4ecac40fadaf8a806c99ea645c446ba60a185c629eefb09adfff55f63b"
     },
     "resource_profile": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
       "role": "TASK-071 resource identity source",
-      "sha256": "fe49f581414531bfdd71b30a82120b4af15072f2ed9869eed1a8326e6f83821a"
+      "sha256": "0bd18c92fb8732296fb3781da54a95a77b3a0654a4130afe051c4d86c134db59"
     },
     "task069_review": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
@@ -157,14 +157,14 @@
   "run_directory": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot",
   "run_manifest": {
     "checkpoint_count": 31,
-    "fingerprints_sha256": "aa8ababca205e7ed865f8827daa66a6ba7b7681fe737ceb2e023c1f4e798845d",
+    "fingerprints_sha256": "aaca464de6afa60bbf603e92a5696b6805a4d6b6234e69c6a73cd6d7c7ffc6fb",
     "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
     "resume": {
       "complete_checkpoint_count": 31,
       "latest_complete_segment_id": "segment-0030__slice-226K-rho-+0.15__cycle-00"
     },
     "segment_count": 31,
-    "sha256": "9277e6a438271aa87fbcf573aafbd620434367559d9677efcbaf548055e3b267",
+    "sha256": "95b9042457cbd263c6c7a38846e3ea662af04dafc47f4b0923e602275b1fcad0",
     "status": "complete"
   },
   "schema_version": "episode008-native-adaptive-measured-pilot-v1",
@@ -185,40 +185,40 @@
     },
     "checkpoint_identity": {
       "checkpoint_sha256_by_segment": {
-        "segment-0000__move-225K-to-spine-rho0__cycle-00": "9406a53884d3751b31f049dec08e4badff6c5651b2a517f390e3f0e8cf786b92",
-        "segment-0001__spine-210K__cycle-00": "3b55d95ec7c722d2331701d3b36f8c04f434decb3c44ce9ab2299be4c8cbf9b1",
-        "segment-0002__slice-210K-rho--0.15__cycle-00": "6a56d2daedc8cf3f65e8d2b45049a95d3ce2b57300ce4dd3213b7c4c3bb214a7",
-        "segment-0003__slice-210K-rho-+0.15__cycle-00": "8bce309338ef3b1ea86779e0ffc0ab4c9a8171dd1d6bb62a4feef7f5d0c15b2b",
-        "segment-0004__spine-212K__cycle-00": "83e3c385fe9e1df8ce11636d42f50049f240086a9e5a455c4a97e87c1ee8aad7",
-        "segment-0005__slice-212K-rho--0.15__cycle-00": "a54874d3a653e9273719d64b729f083690ebeeee66dc5da21752394f6c2aeb0a",
-        "segment-0006__slice-212K-rho-+0.15__cycle-00": "fc86116789a8a12eb9d48e6c801985b3ee9ab8b09421dc26b777e0e1706153a3",
-        "segment-0007__spine-214K__cycle-00": "5e1cabe513dae3da283293dd333c5d075d2e068953d4aca78056a4003ad36ff7",
-        "segment-0008__slice-214K-rho--0.15__cycle-00": "47673237c552900c4b5ba0e44cc3d28f2f3ae4ca259f681dfb109844b20de458",
-        "segment-0009__slice-214K-rho-+0.15__cycle-00": "38aabfad06f4999da1cf6cc9da6a24b371b24947e5d12e4f4c41a9d6e533f029",
-        "segment-0010__spine-216K__cycle-00": "b7b7203e0a60e193a09f7c2a920df9ef4f1130cf3ab9331898186445bb1c00cb",
-        "segment-0011__slice-216K-rho--0.15__cycle-00": "9a092c83618e9df197eea957142b4ad50090190935f6be2759f9ed011d4751c3",
-        "segment-0012__slice-216K-rho-+0.15__cycle-00": "9eed45b37127786fc9e92e2509283a2c929c1bfea852b6e5340b0b86b93d74f1",
-        "segment-0013__spine-218K__cycle-00": "e57d5e15d31847555d0aef2c2651e032fa5443bea02ef91b1d57168ee0d7cca0",
-        "segment-0014__slice-218K-rho--0.15__cycle-00": "7f9a700dcfbdef2fd5234b6a7a264b8f317bac8c723d8f2278c758df3b80ac30",
-        "segment-0015__slice-218K-rho-+0.15__cycle-00": "1da5e2b17796cb1982c39c63eeb5d7c5b63634994811b16af09a5131ca575400",
-        "segment-0016__spine-220K__cycle-00": "17e73517315c1a0070628fa9c0d73ae0045bf13f6d227d0ccc194ae107ffbb7e",
-        "segment-0017__slice-220K-rho--0.15__cycle-00": "27a30a11c8f1fbb3506ac214409ec892515ed2c1758eccea6d25cc74d132ad7e",
-        "segment-0018__slice-220K-rho-+0.15__cycle-00": "c86e83c06a0ca64aee1cb8d9210889f7ced83060232fa60550340ae50719b922",
-        "segment-0019__spine-222K__cycle-00": "82b6c138b45bbc997ffc17da6d755991f844f7967bd38c24e37ba20db7da3cee",
-        "segment-0020__slice-222K-rho--0.15__cycle-00": "1d337bd4c273e28f774f03f92070bfcbc8cfec8aa507e1d690e2a4b76ed8124f",
-        "segment-0021__slice-222K-rho-+0.15__cycle-00": "ec3680999a0a1bc9a181118c53c82dc8a9c3cc08a81cc907e8ff4bb6c14b7bf6",
-        "segment-0022__spine-224K__cycle-00": "51cd459aaf7369f5e956912df5c003a8c3c848938d3feaf35f0187b482397a24",
-        "segment-0023__slice-224K-rho--0.15__cycle-00": "9be6e48986edd18f52c0253979fe5be3fc9cb0be3364cf60627abf17676c4e33",
-        "segment-0024__slice-224K-rho-+0.15__cycle-00": "15a610c94fbca455b50b7794f779e81b3e3d12591883321fe4bb3f24b3412fce",
-        "segment-0025__spine-225K__cycle-00": "c712e03b22a12c4d80600a84b0c4e8351f9034262e42e8de9cfdb73a1637c7ae",
-        "segment-0026__slice-225K-rho--0.15__cycle-00": "e9fd26e001b30935c9be53c3ec37ae229d9f508114bd32f7996d52eae7c6e5c5",
-        "segment-0027__slice-225K-rho-+0.15__cycle-00": "faeded1613fff968ba7ff55de7c585f5f921c0b2320112ff7cecc293bb4737d2",
-        "segment-0028__spine-226K__cycle-00": "9251dda1e1d995a523ea838bfbbcafb1ec7bc2e6abbba2f3224bcf807b87b9f7",
-        "segment-0029__slice-226K-rho--0.15__cycle-00": "a66d44e1fe905a9ef2ea17f136890f4ddb36bacf1c5c64c7565cef4b0f44429e",
-        "segment-0030__slice-226K-rho-+0.15__cycle-00": "f990a0d661709673ee61aab25a4185b8bf8547ff3164e7d2656e4be3dff44738"
+        "segment-0000__move-225K-to-spine-rho0__cycle-00": "0c2ac5202a0f086e4d2020dc8c8655bd7cb3690b68274bcdc0ffd2d80f30274b",
+        "segment-0001__spine-210K__cycle-00": "6956121a8ab3fdf462889656c433bb5ec93c0afe6f07da645b70ac57116a15d3",
+        "segment-0002__slice-210K-rho--0.15__cycle-00": "426a34a4c8d9699a3a984303fa2e72da6a055f2b12ac37288f2b024433fc9677",
+        "segment-0003__slice-210K-rho-+0.15__cycle-00": "154a167a4fb1ad9082eb034d5b2ddbef5bc5d3d703341e908023b9ff070c6c41",
+        "segment-0004__spine-212K__cycle-00": "10177cf51e4642ff11ac820261f3df87f9249e1260be159b8b4da648e0813c2f",
+        "segment-0005__slice-212K-rho--0.15__cycle-00": "bd8c3ef6b29a6f9de665ad1db58171caa3d8f1ca1d3c2b897442aae9889de47a",
+        "segment-0006__slice-212K-rho-+0.15__cycle-00": "614558ca456a68dc87ddcc4ed23269a031602b61f7419e15b21156567b7366cb",
+        "segment-0007__spine-214K__cycle-00": "4993ca80212b541df23414ca2df3f2525dceaf28ac925476c1929e890886ad52",
+        "segment-0008__slice-214K-rho--0.15__cycle-00": "f35dd2a63c24e1f85c62a887265fe043273cf62a06226d354bd628d610a492f6",
+        "segment-0009__slice-214K-rho-+0.15__cycle-00": "d3f87e28fe67e4ed3504baa44455f7b9ced784e034a6eca6019e5668f0b84ea3",
+        "segment-0010__spine-216K__cycle-00": "d6a220f2fb6472165cef156156696e5f7ac176b6cac1fb4b8af6faeb97bfa5b7",
+        "segment-0011__slice-216K-rho--0.15__cycle-00": "9846c8b42bd43e96d1a1d0946ca75c5a971a53ffcd83b24564d0b139a330717c",
+        "segment-0012__slice-216K-rho-+0.15__cycle-00": "bfc683b2fc5ced93087b8f096e0317032a0ea6d0e183615a96e6c1471633f766",
+        "segment-0013__spine-218K__cycle-00": "327898108a6191b5a4ffadd69500244d14bba7f05b959848ad32880783485c45",
+        "segment-0014__slice-218K-rho--0.15__cycle-00": "6305ba2b6036c490c47f43986f4473f7033446e2505ff86c44fa7ea7cce1e2e6",
+        "segment-0015__slice-218K-rho-+0.15__cycle-00": "a0506f124f8e8455ea546b5f9599a085f2f277ca794d10f6a207c69d3fe4aabe",
+        "segment-0016__spine-220K__cycle-00": "e36ca7e0add2936802ac74eec171a3cd517c39b698be23657a1e919e96f66830",
+        "segment-0017__slice-220K-rho--0.15__cycle-00": "d915da25cf43cdc546683cef4193a4a738b425ba7fadbc3595d7892444174a37",
+        "segment-0018__slice-220K-rho-+0.15__cycle-00": "ecb832e9aa35b40307af79172e1b71d4ce2040c3ad442a5701e6033d77468cdf",
+        "segment-0019__spine-222K__cycle-00": "c0bf74ba86c865af3af9323c87a15dc1414a1c16e9a7a6eafcf5aa18d4a05864",
+        "segment-0020__slice-222K-rho--0.15__cycle-00": "c2c725ba934610248426e0578273f0443f1c183f421ec7fe885b449419061bf8",
+        "segment-0021__slice-222K-rho-+0.15__cycle-00": "6b699b308e2447b9fc10d63500a6bf962dac313243e818a81797e5457121cc24",
+        "segment-0022__spine-224K__cycle-00": "0dd2e2e7fababa76d490333fde12756170b968f3cb797daee31a15f1b77d2e36",
+        "segment-0023__slice-224K-rho--0.15__cycle-00": "6acef901d70e066e34b76ccb499140d814fb7bf14ba0f86a108fd2cdc4f32fa1",
+        "segment-0024__slice-224K-rho-+0.15__cycle-00": "90b8933a41c4540304c40ff9cebf0034eabbc1479b6526a1d2557a980936e88e",
+        "segment-0025__spine-225K__cycle-00": "3bdca3299293ea1515975d7a56148fb6b6dd2a5c0403e412cd3c4fe458292996",
+        "segment-0026__slice-225K-rho--0.15__cycle-00": "d0227f7ed59b4849824c2d7dedfeae2e7af287feb4218a35030521504dfbbe8a",
+        "segment-0027__slice-225K-rho-+0.15__cycle-00": "506450f12cd700f4f57ea71b8528323d93ef974c6108d6ca63aeae0548ff6926",
+        "segment-0028__spine-226K__cycle-00": "f398e10bdc0917a028233faa0debcd20adefc8a617c22b2ed4175d0d895128e8",
+        "segment-0029__slice-226K-rho--0.15__cycle-00": "07fe923736f9aafbc288ecc5aaab1605ea82d4d0a95d3dad72c4ac6d5d123c2e",
+        "segment-0030__slice-226K-rho-+0.15__cycle-00": "41c15cc10b0cbd68ee83d8b81285547f39c56e4a910c4c302bfd65bcc3bed9b0"
       },
-      "fingerprints_sha256": "aa8ababca205e7ed865f8827daa66a6ba7b7681fe737ceb2e023c1f4e798845d",
-      "run_manifest_sha256": "9277e6a438271aa87fbcf573aafbd620434367559d9677efcbaf548055e3b267"
+      "fingerprints_sha256": "aaca464de6afa60bbf603e92a5696b6805a4d6b6234e69c6a73cd6d7c7ffc6fb",
+      "run_manifest_sha256": "95b9042457cbd263c6c7a38846e3ea662af04dafc47f4b0923e602275b1fcad0"
     },
     "executable_identity": {
       "exists_at_generation": true,

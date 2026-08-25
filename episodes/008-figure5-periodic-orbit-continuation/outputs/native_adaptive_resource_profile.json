@@ -1,19 +1,19 @@
 {
   "aggregate_resource_accounting": {
     "counter_aggregation_policy": "NOX/KLU2 totals include only independent measured correction rows; pilot-style lower-bound duplicate counters are reported per-row but not added again.",
-    "cpu_time_s": 16.369999999999997,
+    "cpu_time_s": 16.28,
     "klu2_numeric_factorizations": 2,
     "klu2_symbolic_factorizations": 2,
     "linear_solves": 2,
-    "max_rss_kib": 112188,
+    "max_rss_kib": 112444,
     "nonlinear_iterations": 5,
     "unique_counter_row_count": 2,
-    "wall_clock_s": 2.7800000000000002
+    "wall_clock_s": 2.75
   },
   "artifact_id": "task071-native-adaptive-resource-profile",
   "artifact_kind": "task071-native-adaptive-resource-profile",
   "check_command": "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_resource_profile.py --check",
-  "created_at": "2026-08-25T13:01:15.014905Z",
+  "created_at": "2026-08-25T13:28:24.775519Z",
   "klu2_iterative_solver_review": {
     "all_measured_klu2_solves_complete": true,
     "cost_is_scientific_acceptance": false,
@@ -27,15 +27,15 @@
     },
     "iterative_solver_thresholds_met": false,
     "measured_bounds": {
-      "max_rss_gib": 0.10699081420898438,
-      "max_rss_kib": 112188,
-      "max_segment_cpu_time_s": 10.299999999999999,
+      "max_rss_gib": 0.10723495483398438,
+      "max_rss_kib": 112444,
+      "max_segment_cpu_time_s": 10.81,
       "max_segment_wall_clock_s": 1.83,
       "total_klu2_numeric_factorizations": 2,
       "total_klu2_symbolic_factorizations": 2,
       "total_linear_solves": 2,
       "total_nonlinear_iterations": 5,
-      "total_wall_clock_s": 2.7800000000000002
+      "total_wall_clock_s": 2.75
     },
     "policy_version": "task062-klu2-iterative-trigger-policy-v1",
     "rationale": "All measured representative seams completed with reported KLU2 activity. The max-RSS trigger is evaluated directly from measurements and the run-budget trigger is false for this checkable pilot profile. The backend does not expose factorization/solve timing splits, so those trigger channels remain explicit not-evaluated rather than inferred. Belos/Ifpack2 work is not justified unless an evaluated trigger is true; retain KLU2 as the serial oracle/reference pending larger production profiling."
@@ -91,11 +91,11 @@
       "nox_residual_norm": 5.70554764769716e-14,
       "nox_status": "converged",
       "resources": {
-        "cpu_time_s": 0.35,
+        "cpu_time_s": 0.32,
         "exit_status": 0,
-        "max_rss_kib": 46388,
-        "system_cpu_s": 0.0,
-        "user_cpu_s": 0.35,
+        "max_rss_kib": 46720,
+        "system_cpu_s": 0.01,
+        "user_cpu_s": 0.31,
         "wall_clock_s": 0.22
       },
       "segment_id": "fixed-mesh-gauss3-n32-correction",
@@ -154,11 +154,11 @@
       "nox_residual_norm": 1.6543434215594583e-14,
       "nox_status": "converged",
       "resources": {
-        "cpu_time_s": 10.299999999999999,
+        "cpu_time_s": 10.81,
         "exit_status": 0,
-        "max_rss_kib": 112016,
-        "system_cpu_s": 0.12,
-        "user_cpu_s": 10.18,
+        "max_rss_kib": 112444,
+        "system_cpu_s": 0.09,
+        "user_cpu_s": 10.72,
         "wall_clock_s": 1.83
       },
       "restart_gates_passed": true,
@@ -199,12 +199,12 @@
       "nonlinear_iterations": 5,
       "nox_status": "aggregate_measured_representative_seams",
       "resources": {
-        "cpu_time_s": 5.72,
+        "cpu_time_s": 5.1499999999999995,
         "exit_status": 0,
-        "max_rss_kib": 112188,
+        "max_rss_kib": 111104,
         "system_cpu_s": 0.05,
-        "user_cpu_s": 5.67,
-        "wall_clock_s": 0.73
+        "user_cpu_s": 5.1,
+        "wall_clock_s": 0.7
       },
       "restart_count": 1,
       "run_manifest_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run/manifest.json",
@@ -295,7 +295,7 @@
     "episode_readme": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation",
-      "sha256": "e968f0a147c2b4409b31f5cf8dc95ba8cc840dfecd794829fa5500c0c01dcc5d"
+      "sha256": "ffc455683be8e953632b43a0d4c6bee105a24d17259a07018db899e50cccac25"
     },
     "fixed_mesh_fixture": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/cpp_higher_order_fixtures/canonical-g3-n32.txt",

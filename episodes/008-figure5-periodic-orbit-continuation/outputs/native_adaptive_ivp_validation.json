@@ -69,7 +69,7 @@
         },
         "success": true,
         "validation_status": "passed",
-        "wall_clock_s": 0.010177877000387525
+        "wall_clock_s": 0.010159970001041074
       },
       "native_period_is_read_only_validation_target": true,
       "period": {
@@ -136,7 +136,7 @@
       "solver_success": true,
       "target_id": "spine-210K",
       "trial_id": "scaled-plus-logn",
-      "wall_clock_s": 0.013787969000986777
+      "wall_clock_s": 0.014578241998606245
     },
     {
       "attractor_gate_pass": false,
@@ -154,7 +154,7 @@
       "solver_success": true,
       "target_id": "spine-210K",
       "trial_id": "scaled-minus-logn",
-      "wall_clock_s": 0.013069229000393534
+      "wall_clock_s": 0.01323604100070952
     },
     {
       "attractor_gate_pass": false,
@@ -172,7 +172,7 @@
       "solver_success": true,
       "target_id": "spine-210K",
       "trial_id": "scaled-plus-s",
-      "wall_clock_s": 0.021080268999867258
+      "wall_clock_s": 0.021400814001026447
     },
     {
       "attractor_gate_pass": false,
@@ -190,7 +190,7 @@
       "solver_success": true,
       "target_id": "spine-210K",
       "trial_id": "scaled-mixed-logn-s",
-      "wall_clock_s": 0.012159444000644726
+      "wall_clock_s": 0.012634077000257093
     }
   ],
   "perturbed_equilibrium_attractor_summary": {
@@ -244,7 +244,7 @@
           "rtol": 1e-09
         },
         "success": true,
-        "wall_clock_s": 0.0560661319996143
+        "wall_clock_s": 0.05766856400077813
       },
       "selection_reasons": [
         "canonical_headline",
@@ -273,17 +273,17 @@
     "continuation_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
       "role": "TASK-075 terminal event records",
-      "sha256": "eedfed5455d17edbe353dd2c71fbfd3aa623247a62f06ff7b18e1eb091d4d181"
+      "sha256": "cdb4588bdbc79144f461c2b5a9e6e87d5d5a076170e9c354fa73ae4f8aa492d1"
     },
     "continuation_points": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
       "role": "TASK-075 accepted production point records",
-      "sha256": "d1ffa5f749b8de4f4376c2a2c4ec620793c135bd4d24455e8cea934983c703ed"
+      "sha256": "f0e6481061a22ed59ac6a253a6d88d7252512f577630276bd26a15c4e5fc750c"
     },
     "curated_orbit_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
       "role": "TASK-075 curated orbit manifest",
-      "sha256": "89c81821f40015df442ac1ed33e3b2454218de7a8ee75771f75eff49579112cb"
+      "sha256": "9edde70489610914d0992cc411a7d6161a1c9e2d967abc619b86c81202c90794"
     },
     "curated_orbit_npz": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
@@ -298,12 +298,12 @@
     "floquet_diagnostics": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_floquet_diagnostics.json",
       "role": "TASK-077 Floquet diagnostics",
-      "sha256": "531f7981507439fd8e3dba2fea3241b0cee110dc9ddd875174cd1b5c764db749"
+      "sha256": "6f14fe0f64d8468c4a462e2a8fa04d0dfdd33a4aa10f0655097a845576506622"
     },
     "full_domain_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
       "role": "TASK-075 target ledger and holdout status",
-      "sha256": "d8a1f3d847fc97ad0b0e56cd46846d9ad07566271665e508afb09f71be57e3e0"
+      "sha256": "f437ba50a56e876b6ae807c626e336aeafb51c91c8dfd5d662858e4759f50cb0"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_ivp_validation.py",
@@ -318,12 +318,12 @@
     "near_hopf_review": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_review.json",
       "role": "TASK-076 near-Hopf availability review",
-      "sha256": "ef254bd7b7ee405ba4145c43ddb4c5f2b3492847bc9e4bc23d2c97aa7a4b2f54"
+      "sha256": "7af544b765e7478516bc7f0c0c874dea15b562cdde71e412e7beac98558cba2b"
     },
     "readme": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation index",
-      "sha256": "e968f0a147c2b4409b31f5cf8dc95ba8cc840dfecd794829fa5500c0c01dcc5d"
+      "sha256": "ffc455683be8e953632b43a0d4c6bee105a24d17259a07018db899e50cccac25"
     },
     "task075_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",

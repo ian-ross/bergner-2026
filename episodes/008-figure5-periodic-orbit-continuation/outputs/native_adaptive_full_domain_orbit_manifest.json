@@ -86,7 +86,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
         "role": "TASK-081 accepted gate evidence",
-        "sha256": "42a6c97df439bb9876bbf639b4ec607fa46441f74ea91764de2316eb6630b7e0"
+        "sha256": "cd2d3f2d97271733d4433d88d13476af48197f4f9cdbb2bb95bbcf7f7d0d6c0e"
       }
     ],
     "task": "TASK-075"

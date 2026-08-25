@@ -20,7 +20,7 @@
       "target_id": "spine-210K",
       "tolerance": 0.001,
       "validation_status": "passed",
-      "wall_clock_s": 0.005903137000132119
+      "wall_clock_s": 0.005727910998757579
     },
     "same_coordinate_python": {
       "backend": "independent Python three-stage fixed-parameter correction on exact native restart mesh",
@@ -181,9 +181,9 @@
     }
   },
   "measured_resource_accounting": {
-    "cpu_time_s": 0.1668719999999997,
-    "max_rss_kib": 118912,
-    "wall_clock_s": 0.6523711889985861
+    "cpu_time_s": 0.16467899999999958,
+    "max_rss_kib": 119524,
+    "wall_clock_s": 0.6586480879996088
   },
   "production_gate_decision": {
     "decision": "task075_authorized_under_retained_v1_method",
@@ -199,8 +199,8 @@
     "task075_may_proceed": true
   },
   "production_schema_artifact_sha256": {
-    "continuation_events": "6b9c2175af3461b2af566c4d94ae9a84283eb8d0d6cbba9ea59325bd65632fa5",
-    "run_metadata": "b223631ad7fcbdeaf5ea44513773121a7278b1288e9c3a2bd4bc479c7e98139d"
+    "continuation_events": "e81ace4d7515e544d6bbc4584b30989b8533e74f5da708f9e2731f38314b4839",
+    "run_metadata": "d406fdb538eef4f683e2444a7808c88e29a8546074da4ad9e1757db6d52595e1"
   },
   "production_schema_artifacts": {
     "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json",
@@ -240,12 +240,12 @@
     "resource_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
       "role": "TASK-071 run metadata input",
-      "sha256": "2a9208fb2906100a1c1c6d9303ab956050770285ffeb80bf39506aa021e03556"
+      "sha256": "1310bc4ecac40fadaf8a806c99ea645c446ba60a185c629eefb09adfff55f63b"
     },
     "resource_profile": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
       "role": "TASK-071 resource profile input",
-      "sha256": "fe49f581414531bfdd71b30a82120b4af15072f2ed9869eed1a8326e6f83821a"
+      "sha256": "0bd18c92fb8732296fb3781da54a95a77b3a0654a4130afe051c4d86c134db59"
     },
     "task072_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task072-measured-native-adaptive-pilot.md",
@@ -255,22 +255,22 @@
     "task072_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
       "role": "TASK-072 production-v1 event input",
-      "sha256": "ea94b5be763c0bc96d3d0ae79a639242315d7c1ef0904ca9290f2da0d9d9cd9c"
+      "sha256": "c03ba1612980e8775bf748006d609609b726a6386b269a7303522f157371ddf2"
     },
     "task072_run_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
       "role": "TASK-072 resumable run manifest input",
-      "sha256": "9277e6a438271aa87fbcf573aafbd620434367559d9677efcbaf548055e3b267"
+      "sha256": "95b9042457cbd263c6c7a38846e3ea662af04dafc47f4b0923e602275b1fcad0"
     },
     "task072_run_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
       "role": "TASK-072 measured run metadata input",
-      "sha256": "fdde4fdde84c529238da377ffb045a95d3406ff9ecabf90955c66b1120bfa678"
+      "sha256": "dc4dbc6a84df0115c7e2d6931b0271b87515a0653a97caa0ecdbff513de8999a"
     },
     "task072_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
       "role": "TASK-072 measured pilot input ledger",
-      "sha256": "62096ce94e93a77d9d858ac04cbfb900ab699ccddc641d9385709b6160ffd262"
+      "sha256": "88f91a21b24a8c5777aadfc90d194dc538ed616d9f7c56653d88353d08682355"
     },
     "task073_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task073-native-adaptive-pilot-reconciliation.md",
@@ -280,7 +280,7 @@
     "task073_reconciliation": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_reconciliation.json",
       "role": "TASK-073 blocking gate decision input",
-      "sha256": "3b0a7f0637be8bb54b016bf2aa9fa04c6bcdbd38d3655e7312aca90e3911bb92"
+      "sha256": "df36bf49d647f4d640044a962d83585d97648e198aecb2ea53ac5c51144d98b7"
     },
     "uv_lock": {
       "path": "uv.lock",

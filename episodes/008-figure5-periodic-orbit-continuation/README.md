@@ -19,6 +19,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task077-floquet-postprocessing.md`](docs/task077-floquet-postprocessing.md) documents the TASK-077 Floquet multiplier postprocessing diagnostics for accepted native production orbits.
 - [`docs/task078-stratified-ivp-validation.md`](docs/task078-stratified-ivp-validation.md) documents the TASK-078 stratified independent IVP validation for accepted native production orbits.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
+- [`docs/task079-browser-interpolation-dataset.md`](docs/task079-browser-interpolation-dataset.md) documents the TASK-079 shape-preserving interpolation gate review and schema-valid browser/display dataset.
 
 ## Production schema boundary
 
@@ -169,6 +170,22 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_
 ```
 
 The current TASK-075 ledger has one accepted native production orbit, `spine-210K`, so category deduplication selects that point for DOP853 one-period return and phase-aligned trajectory validation. The DOP853 gates pass. Radau agreement is run for the available headline point; near-Hopf, low/high-temperature interior, worst-holdout, and additional headline/attractor strata are recorded as unavailable or insufficient production evidence rather than filled from unresolved, interpolated, qualification-only, Hopf-limit, or digitized-paper records. TASK-078 does not tune or overwrite native continuation periods.
+
+## Figure 5 browser interpolation dataset
+
+TASK-079 assembles the schema-valid browser/display layer from authoritative production records. The artifact is:
+
+- [`outputs/figure5_browser_interpolation_dataset.json`](outputs/figure5_browser_interpolation_dataset.json)
+
+Check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_figure5_browser_interpolation_dataset.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/figure5_browser_interpolation_dataset.json
+```
+
+Current nonlinear interpolation is withheld: only `spine-210K` is an accepted native nonlinear production point, while the other full-domain targets remain explicit unresolved gaps. The dataset therefore records zero interpolated nonlinear values, preserves Hopf-limit explicit gaps, marks outside-Hopf-domain invalid display cells, and exposes the TASK-063 image-derived comparison channel as pending rather than fabricating digitized values. The lower-panel records keep the accepted nonlinear continuation point separate from the independent TASK-074 T=210 K linearized-period curve; no lower-panel value is produced by heatmap resampling.
 
 ## T=210 K equilibrium-linearized period curve
 

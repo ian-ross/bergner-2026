@@ -31,12 +31,12 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
         "role": "TASK-071 measured resource profile",
-        "sha256": "fe49f581414531bfdd71b30a82120b4af15072f2ed9869eed1a8326e6f83821a"
+        "sha256": "0bd18c92fb8732296fb3781da54a95a77b3a0654a4130afe051c4d86c134db59"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
         "role": "TASK-072 measured pilot metadata baseline",
-        "sha256": "fdde4fdde84c529238da377ffb045a95d3406ff9ecabf90955c66b1120bfa678"
+        "sha256": "dc4dbc6a84df0115c7e2d6931b0271b87515a0653a97caa0ecdbff513de8999a"
       }
     ],
     "task": "TASK-081"
@@ -82,15 +82,15 @@
     "resource_accounting": {
       "cpu_time": {
         "unit": "s",
-        "value": 0.1668719999999997
+        "value": 0.16467899999999958
       },
       "max_rss": {
         "unit": "KiB",
-        "value": 118912
+        "value": 119524
       },
       "wall_clock": {
         "unit": "s",
-        "value": 0.6523711889985861
+        "value": 0.6586480879996088
       }
     },
     "run_id": "task081-native-adaptive-pilot-gate-followup",
