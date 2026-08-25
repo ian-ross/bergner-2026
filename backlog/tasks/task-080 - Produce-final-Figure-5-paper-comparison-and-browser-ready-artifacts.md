@@ -44,3 +44,9 @@ Assemble final Episode 008 Figure 5 reproduction outputs after production contin
 6. Add focused pytest coverage for final artifact reproducibility/check mode, production-v1 schema validity, source/provenance distinctions, lower-panel source separation, paper comparison uncertainty/discrepancy policy, compact browser payload boundaries, and absence of Episode 007 integration coupling.
 7. Run the final generator --check, production validators, upstream dependency checks affected by README/source hashes, focused tests, full pytest as feasible, and git diff --check; then update TASK-080 acceptance criteria, implementation notes, final summary, and status through the Backlog CLI only.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Started TASK-080: moved task to In Progress, assigned to @iross, reviewed the task and dependency summaries for TASK-063/069/070/074/075/076/077/078/079 plus the Episode 008 README/artifact inventory. No implementation changes have been made yet; pausing for plan confirmation.
+<!-- SECTION:NOTES:END -->
