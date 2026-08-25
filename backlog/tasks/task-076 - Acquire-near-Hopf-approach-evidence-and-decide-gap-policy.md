@@ -1,9 +1,11 @@
 ---
 id: TASK-076
 title: Acquire near-Hopf approach evidence and decide gap policy
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-25 12:02'
 labels:
   - episode-008
   - hopf
