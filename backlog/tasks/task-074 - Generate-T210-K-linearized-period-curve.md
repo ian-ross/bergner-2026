@@ -24,9 +24,9 @@ Compute the lower-panel equilibrium-linearized period curve independently from p
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Native C++ equilibrium continuation over w=5e-4..2 m/s records complex-pair eigenvalues, P_lin=2*pi/abs(Im(lambda)), invalid/gap reasons, and exact Episode 006 Hopf anchors
-- [ ] #2 The artifact follows the production schema, tracks eigenpair continuity, refines samples by the documented log-period holdout rule, and never clips or invents finite periods
-- [ ] #3 Stratified Python physical-Jacobian parity and exact Hopf-frequency checks meet the documented tolerances
+- [x] #1 Native C++ equilibrium continuation over w=5e-4..2 m/s records complex-pair eigenvalues, P_lin=2*pi/abs(Im(lambda)), invalid/gap reasons, and exact Episode 006 Hopf anchors
+- [x] #2 The artifact follows the production schema, tracks eigenpair continuity, refines samples by the documented log-period holdout rule, and never clips or invents finite periods
+- [x] #3 Stratified Python physical-Jacobian parity and exact Hopf-frequency checks meet the documented tolerances
 <!-- AC:END -->
 
 ## Implementation Plan
