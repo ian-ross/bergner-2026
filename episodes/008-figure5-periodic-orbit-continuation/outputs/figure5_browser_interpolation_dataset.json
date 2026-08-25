@@ -50534,7 +50534,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task079-browser-interpolation-dataset.md",
         "role": "TASK-079 browser/interpolation documentation",
-        "sha256": "9f8754e0e21e586ba7842211113e7ea3710b2969f645801993e8a46cec4a21ea"
+        "sha256": "2bd2bc03a6c7b85a7496f8baef48b7832495d8bb2916c9549bf2895e6e08fd48"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
@@ -50574,7 +50574,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
         "role": "Episode 008 documentation index",
-        "sha256": "ffc455683be8e953632b43a0d4c6bee105a24d17259a07018db899e50cccac25"
+        "sha256": "a63228d63521d908340711b82a4e3a83ba6de6feb4bcc7aa512fe6a0e0cab5a1"
       }
     ],
     "task": "TASK-079"

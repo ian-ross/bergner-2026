@@ -10,6 +10,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task068-final-evidence-reconciliation.md`](docs/task068-final-evidence-reconciliation.md) summarizes the completed TASK-068 native adaptive evidence, failures, resource-cost boundaries, and TASK-069 handoff.
 - [`docs/task069-evidence-review-and-next-stage-design.md`](docs/task069-evidence-review-and-next-stage-design.md) records the TASK-069 post-run review, TASK-062 hypothesis dispositions, unsupported near-Hopf fit status, and approved downstream production task boundary.
 - [`docs/production-schemas.md`](docs/production-schemas.md) defines the TASK-070 `episode8-figure5-production-v1` schema and validation boundary for downstream production, orbit-vector, T=210 K linearized-period, and browser/display artifacts.
+- [`docs/task063-paper-figure5-digitization.md`](docs/task063-paper-figure5-digitization.md) documents the reproducible image-derived Figure 5 digitization dataset and its non-authoritative comparison policy.
 - [`docs/task071-resource-profile.md`](docs/task071-resource-profile.md) records the TASK-071 measured native adaptive resource profile and KLU2/iterative-solver review.
 - [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
 - [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
@@ -31,6 +32,25 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The validator requires explicit provenance, SHA-256 checksums, schema/method versions, coordinate conventions, units, validity/source flags, and unambiguous gap/unresolved/interpolated-source policy. Digitized paper Figure 5 data remain non-authoritative external comparison evidence only.
+
+## Paper Figure 5 digitization
+
+TASK-063 digitizes the saved publisher Figure 5 raster as external paper-reference evidence. The artifacts are:
+
+- [`outputs/paper_figure5_digitization.json`](outputs/paper_figure5_digitization.json)
+- [`outputs/paper_figure5_digitization_upper_hopf_boundaries.csv`](outputs/paper_figure5_digitization_upper_hopf_boundaries.csv)
+- [`outputs/paper_figure5_digitization_upper_period_samples.csv`](outputs/paper_figure5_digitization_upper_period_samples.csv)
+- [`outputs/paper_figure5_digitization_lower_curves.csv`](outputs/paper_figure5_digitization_lower_curves.csv)
+- [`outputs/paper_figure5_digitization_overlay.png`](outputs/paper_figure5_digitization_overlay.png)
+- [`outputs/paper_figure5_digitization_residuals.png`](outputs/paper_figure5_digitization_residuals.png)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_paper_figure5_digitization.py --check
+```
+
+The generator records source-image and PDF SHA-256 provenance, calibrates both panels in physical coordinates, extracts the upper-panel Hopf-band boundaries and colorbar-derived period samples, extracts the lower-panel red linearized and black nonlinear curves, and emits overlay/residual diagnostics. These data are lossy JPEG-derived comparison samples, not author numerical data or backend-computed results; discrepancies should trigger investigation, while convergence, defect, native/Python parity, IVP, and Floquet evidence remain authoritative.
 
 ## Native adaptive resource profile
 
@@ -185,7 +205,7 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
   episodes/008-figure5-periodic-orbit-continuation/outputs/figure5_browser_interpolation_dataset.json
 ```
 
-Current nonlinear interpolation is withheld: only `spine-210K` is an accepted native nonlinear production point, while the other full-domain targets remain explicit unresolved gaps. The dataset therefore records zero interpolated nonlinear values, preserves Hopf-limit explicit gaps, marks outside-Hopf-domain invalid display cells, and exposes the TASK-063 image-derived comparison channel as pending rather than fabricating digitized values. The lower-panel records keep the accepted nonlinear continuation point separate from the independent TASK-074 T=210 K linearized-period curve; no lower-panel value is produced by heatmap resampling.
+Current nonlinear interpolation is withheld: only `spine-210K` is an accepted native nonlinear production point, while the other full-domain targets remain explicit unresolved gaps. The dataset therefore records zero interpolated nonlinear values, preserves Hopf-limit explicit gaps, marks outside-Hopf-domain invalid display cells, and retains the pre-TASK-063 image-derived comparison placeholders rather than fabricating authoritative values. The lower-panel records keep the accepted nonlinear continuation point separate from the independent TASK-074 T=210 K linearized-period curve; no lower-panel value is produced by heatmap resampling.
 
 ## T=210 K equilibrium-linearized period curve
 

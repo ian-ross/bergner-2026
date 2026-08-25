@@ -1,0 +1,458 @@
+{
+  "artifact_kind": "task063-paper-figure5-digitization",
+  "calibration": {
+    "colorbar": {
+      "half_pixel_uncertainty_log10_period": 0.004398826979472141,
+      "log10_period_range": {
+        "bottom": 2.0,
+        "top": 5.0,
+        "unit": "log10(s)"
+      },
+      "pixel_bounds": {
+        "x_max": 467,
+        "x_min": 450,
+        "y_bottom": 348,
+        "y_top": 7
+      }
+    },
+    "lower_panel": {
+      "axis_scales": {
+        "x": "log10",
+        "y": "linear"
+      },
+      "name": "lower_T210K_slice",
+      "physical_bounds": {
+        "period": {
+          "max": 18000.0,
+          "min": 0.0,
+          "unit": "s"
+        },
+        "vertical_velocity": {
+          "max": 2.0000000000000004,
+          "min": 0.0004999999999999999,
+          "unit": "m s^-1"
+        }
+      },
+      "pixel_bounds": {
+        "x_max": 429,
+        "x_min": 64,
+        "y_bottom": 722,
+        "y_top": 407
+      },
+      "pixel_resolution_limits": {
+        "x_half_pixel_uncertainty": 0.004934328755243784,
+        "x_uncertainty_coordinate": "log10(m s^-1)",
+        "y_half_pixel_uncertainty": 28.571428571428573,
+        "y_uncertainty_coordinate": "s"
+      }
+    },
+    "upper_panel": {
+      "axis_scales": {
+        "x": "linear",
+        "y": "log10"
+      },
+      "name": "upper_period_map",
+      "physical_bounds": {
+        "temperature": {
+          "max": 240.0,
+          "min": 190.0,
+          "unit": "K"
+        },
+        "vertical_velocity": {
+          "max": 2.0000000000000004,
+          "min": 0.0004999999999999999,
+          "unit": "m s^-1"
+        }
+      },
+      "pixel_bounds": {
+        "x_max": 428,
+        "x_min": 60,
+        "y_bottom": 348,
+        "y_top": 7
+      },
+      "pixel_resolution_limits": {
+        "x_half_pixel_uncertainty": 0.06793478260869565,
+        "x_uncertainty_coordinate": "K",
+        "y_half_pixel_uncertainty": 0.005281612890510209,
+        "y_uncertainty_coordinate": "log10(m s^-1)"
+      }
+    }
+  },
+  "checksum_convention": "sha256-canonical-json-or-file-bytes-v1",
+  "data_role": "external_digitized_paper_comparison_only",
+  "dataset_summary": {
+    "lower_curve_counts": {
+      "equilibrium_linearized_period_red_curve": 365,
+      "nonlinear_limitcycle_period_black_curve": 127
+    },
+    "lower_curve_rows": 492,
+    "machine_readable_outputs": [
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_hopf_boundaries.csv",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_period_samples.csv",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_lower_curves.csv"
+    ],
+    "upper_boundary_rows": 366,
+    "upper_period_color_samples": 690,
+    "validation_outputs": [
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_overlay.png",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_residuals.png"
+    ]
+  },
+  "method_version": "manual-calibration-threshold-component-colorbar-v1",
+  "not_authoritative_for_continuation_convergence": true,
+  "provenance": {
+    "extraction_steps": [
+      "manual pixel-axis calibration from saved Figure 5 raster",
+      "upper-panel high-saturation domain-edge extraction for Hopf boundaries",
+      "empirical colorbar lookup from saved raster for upper-panel period colors",
+      "lower-panel red and black connected-component curve extraction",
+      "deterministic overlay and residual diagnostic rendering"
+    ],
+    "generator": {
+      "bytes": 33290,
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_paper_figure5_digitization.py",
+      "role": "digitization_generator",
+      "sha256": "1349d367f95555bdb471c6144dbd3c283205e7281ba7b8410910cda0f9dfb3e5"
+    },
+    "source_artifacts": [
+      {
+        "bytes": 48820,
+        "path": "sources/original/bergner-spichtinger-2026_files/m_043115_1_5.0297531.figures.online.f5.jpeg",
+        "role": "primary_saved_publisher_figure5_image",
+        "sha256": "de8db7502ded9541745eb317a5cc5e6ecb8882ffc6e3d1c87aa43c81d30f22bb"
+      },
+      {
+        "bytes": 3815602,
+        "path": "sources/original/bergner-spichtinger-2026.pdf",
+        "role": "saved_source_pdf_checksum_reference",
+        "sha256": "fae7689eb7e46b3505fc1cb0f388d1d119e8db14b3642af64892b9cddab07bfd"
+      }
+    ]
+  },
+  "schema_version": "episode008-paper-figure5-digitization-v1",
+  "schemas": {
+    "lower_curves_csv": {
+      "coordinate_convention": "T=210 K lower panel, log10-w x-axis, linear-period y-axis",
+      "curve_identity": {
+        "equilibrium_linearized_period_red_curve": "paper red curve labelled tau=2*pi/Im(lambda)",
+        "nonlinear_limitcycle_period_black_curve": "paper black curve labelled tau_limitcycle"
+      },
+      "gap_policy": "visible pixels only; no extrapolation through gaps or to Hopf endpoints",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_lower_curves.csv",
+      "primary_key": [
+        "curve_id",
+        "pixel_x"
+      ],
+      "units": {
+        "period_s": "s",
+        "temperature_K": "K",
+        "w_m_s": "m s^-1"
+      }
+    },
+    "upper_hopf_boundaries_csv": {
+      "coordinate_convention": "temperature-linear/log10-w-axis-from-paper-raster",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_hopf_boundaries.csv",
+      "primary_key": [
+        "panel",
+        "pixel_x"
+      ],
+      "source_type": "direct edge samples; no boundary interpolation rows added",
+      "units": {
+        "lower_boundary_log_w_ln_m_s": "ln(m s^-1)",
+        "lower_boundary_w_m_s": "m s^-1",
+        "temperature_K": "K",
+        "upper_boundary_log_w_ln_m_s": "ln(m s^-1)",
+        "upper_boundary_w_m_s": "m s^-1"
+      }
+    },
+    "upper_period_samples_csv": {
+      "coordinate_convention": "calibrated pixel centers inside directly digitized Hopf-band",
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/paper_figure5_digitization_upper_period_samples.csv",
+      "primary_key": [
+        "sample_id"
+      ],
+      "source_type": "direct color samples matched to the paper colorbar; no backend computation",
+      "units": {
+        "log_w_ln_m_s": "ln(m s^-1)",
+        "period_s": "s",
+        "temperature_K": "K"
+      }
+    }
+  },
+  "source_figure": {
+    "paper": "Bergner & Spichtinger (2026), Figure 5",
+    "primary_extraction_source": "sources/original/bergner-spichtinger-2026_files/m_043115_1_5.0297531.figures.online.f5.jpeg",
+    "secondary_source_checksum_recorded": "sources/original/bergner-spichtinger-2026.pdf",
+    "source_originals_modified": false
+  },
+  "uncertainty_and_resolution_limits": {
+    "direct_vs_derived_policy": "CSV rows labeled direct_digitization or direct_digitized_color_sample are direct image samples; no derived interpolation rows are emitted in TASK-063 artifacts",
+    "jpeg_antialiasing": "source is a lossy raster; curve/color values are paper-image evidence, not original numerical arrays",
+    "lower_curve_period": "lower y-axis period resolution is approximately +/-28.6 s from half a pixel before antialiasing/line-thickness effects",
+    "pixel_centering": "all physical coordinates inherit at least +/-0.5 pixel uncertainty on each calibrated axis",
+    "upper_color_period": "period estimates additionally inherit empirical colorbar matching residual and colorbar half-pixel log10-period resolution"
+  },
+  "validation": {
+    "calibration_cross_checks": [
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 60,
+        "panel": "upper_period_map",
+        "predicted_pixel": 60.0,
+        "residual_px": 0.0,
+        "tick_value": 190.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 97,
+        "panel": "upper_period_map",
+        "predicted_pixel": 96.80000000000001,
+        "residual_px": 0.19999999999998863,
+        "tick_value": 195.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 134,
+        "panel": "upper_period_map",
+        "predicted_pixel": 133.60000000000002,
+        "residual_px": 0.39999999999997726,
+        "tick_value": 200.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 170,
+        "panel": "upper_period_map",
+        "predicted_pixel": 170.39999999999998,
+        "residual_px": -0.39999999999997726,
+        "tick_value": 205.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 207,
+        "panel": "upper_period_map",
+        "predicted_pixel": 207.20000000000002,
+        "residual_px": -0.20000000000001705,
+        "tick_value": 210.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 244,
+        "panel": "upper_period_map",
+        "predicted_pixel": 244.0,
+        "residual_px": 0.0,
+        "tick_value": 215.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 281,
+        "panel": "upper_period_map",
+        "predicted_pixel": 280.79999999999995,
+        "residual_px": 0.20000000000004547,
+        "tick_value": 220.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 318,
+        "panel": "upper_period_map",
+        "predicted_pixel": 317.59999999999997,
+        "residual_px": 0.4000000000000341,
+        "tick_value": 225.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 354,
+        "panel": "upper_period_map",
+        "predicted_pixel": 354.40000000000003,
+        "residual_px": -0.4000000000000341,
+        "tick_value": 230.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 391,
+        "panel": "upper_period_map",
+        "predicted_pixel": 391.2,
+        "residual_px": -0.19999999999998863,
+        "tick_value": 235.0
+      },
+      {
+        "axis": "temperature_K",
+        "observed_pixel_integer": 428,
+        "panel": "upper_period_map",
+        "predicted_pixel": 428.0,
+        "residual_px": 0.0,
+        "tick_value": 240.0
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 35,
+        "panel": "upper_period_map",
+        "predicted_pixel": 35.4979230686198,
+        "residual_px": -0.49792306861979796,
+        "tick_value": 1.0
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 130,
+        "panel": "upper_period_map",
+        "predicted_pixel": 130.16597435620662,
+        "residual_px": -0.16597435620661827,
+        "tick_value": 0.1
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 225,
+        "panel": "upper_period_map",
+        "predicted_pixel": 224.8340256437934,
+        "residual_px": 0.16597435620658985,
+        "tick_value": 0.01
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 320,
+        "panel": "upper_period_map",
+        "predicted_pixel": 319.5020769313802,
+        "residual_px": 0.49792306861979796,
+        "tick_value": 0.001
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 95,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 94.50364199427047,
+        "residual_px": 0.49635800572953315,
+        "tick_value": 0.001
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 196,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 195.8345473314235,
+        "residual_px": 0.1654526685765063,
+        "tick_value": 0.01
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 297,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 297.1654526685765,
+        "residual_px": -0.1654526685765063,
+        "tick_value": 0.1
+      },
+      {
+        "axis": "vertical_velocity_m_s",
+        "observed_pixel_integer": 398,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 398.4963580057295,
+        "residual_px": -0.49635800572951894,
+        "tick_value": 1.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 722,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 722.0,
+        "residual_px": 0.0,
+        "tick_value": 0.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 687,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 687.0,
+        "residual_px": 0.0,
+        "tick_value": 2000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 652,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 652.0,
+        "residual_px": 0.0,
+        "tick_value": 4000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 617,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 617.0,
+        "residual_px": 0.0,
+        "tick_value": 6000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 582,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 582.0,
+        "residual_px": 0.0,
+        "tick_value": 8000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 547,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 547.0,
+        "residual_px": 0.0,
+        "tick_value": 10000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 512,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 512.0,
+        "residual_px": 0.0,
+        "tick_value": 12000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 477,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 477.0,
+        "residual_px": 0.0,
+        "tick_value": 14000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 442,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 442.0,
+        "residual_px": 0.0,
+        "tick_value": 16000.0
+      },
+      {
+        "axis": "period_s",
+        "observed_pixel_integer": 407,
+        "panel": "lower_T210K_slice",
+        "predicted_pixel": 407.0,
+        "residual_px": 0.0,
+        "tick_value": 18000.0
+      }
+    ],
+    "calibration_residual_px_max_abs": 0.49792306861979796,
+    "calibration_residual_px_rms": 0.25585835582681954,
+    "lower_curve_column_counts": {
+      "equilibrium_linearized_period_red_curve": 365,
+      "nonlinear_limitcycle_period_black_curve": 127
+    },
+    "lower_curve_endpoints": {
+      "equilibrium_linearized_period_red_curve": {
+        "endpoint_policy": "visible red pixels reach both horizontal plot limits; no extrapolated endpoints added",
+        "first_w_m_s": 0.0004999999999999999,
+        "last_w_m_s": 1.9550656176480803
+      },
+      "nonlinear_limitcycle_period_black_curve": {
+        "endpoint_policy": "curve exists only over visible paper limit-cycle segment; no Hopf endpoint extrapolation added",
+        "first_w_m_s": 0.01259851538962092,
+        "last_w_m_s": 0.22068367986993437
+      }
+    },
+    "upper_boundary_color_run_pixels_max": 118,
+    "upper_boundary_color_run_pixels_min": 110,
+    "upper_boundary_column_count": 366,
+    "upper_color_sample_count": 690,
+    "upper_color_validity_counts": {
+      "valid": 690
+    },
+    "upper_colorbar_rgb_distance_median": 2.9413393548872784,
+    "upper_colorbar_rgb_distance_p95": 15.007990991087134
+  }
+}
