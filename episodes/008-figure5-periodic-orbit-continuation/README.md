@@ -15,6 +15,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
 - [`docs/task081-native-adaptive-pilot-gate-followup.md`](docs/task081-native-adaptive-pilot-gate-followup.md) records the TASK-081 follow-up gate that accepts the exact `spine-210K` post-remesh restart point and authorizes TASK-075 under the retained v1 method.
 - [`docs/task075-full-domain-native-adaptive-continuation.md`](docs/task075-full-domain-native-adaptive-continuation.md) documents the TASK-075 full-domain native adaptive target ledger, accepted production point, explicit gaps, sampling-refinement status, and production-v1 artifacts.
+- [`docs/task076-near-hopf-approach-policy.md`](docs/task076-near-hopf-approach-policy.md) documents the TASK-076 near-Hopf evidence review, skipped fit prerequisites, and explicit-gap policy records.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
@@ -121,6 +122,23 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The full-domain ledger covers `T = 190--240 K`, exact `T = 225 K` anchor lineage, spine points, `rho = 0, +/-0.25, +/-0.50, +/-0.75, +/-0.90, +/-0.97` anchors, and accepted-evidence refinement-neighborhood targets. Current production gates accept only `spine-210K` from TASK-081 native-backend evidence; all other requested targets are explicit `resolution_unresolved` policy gaps rather than claimed native C++ solves. Holdout-driven sampling refinement records along-slice and between-slice log-period errors as `not_evaluated` because interpolation requires more accepted points and must not cross unresolved gaps.
+
+## Near-Hopf approach review
+
+TASK-076 reviews the lower and upper T=210 K Hopf-side approaches from production native adaptive records only. The artifacts are:
+
+- [`outputs/native_adaptive_near_hopf_review.json`](outputs/native_adaptive_near_hopf_review.json)
+- [`outputs/native_adaptive_near_hopf_policy_records.json`](outputs/native_adaptive_near_hopf_policy_records.json)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_near_hopf_review.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json
+```
+
+Current production evidence has zero reliable near-Hopf approach points on either side. The requested T=210 K targets at `rho=+/-0.25`, `+/-0.50`, `+/-0.75`, `+/-0.90`, and `+/-0.97` are all `resolution_unresolved`; therefore quadratic/quartic `P(A)` fits, leave-one-out intercept checks, residual checks, and Episode 006 Hopf-period comparisons are not performed. The production-v1 policy records encode both Hopf-limit connections as explicit gaps with null display periods and no invented regular-orbit amplitude or period at the Hopf boundaries.
 
 ## T=210 K equilibrium-linearized period curve
 

@@ -20,7 +20,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
         "role": "TASK-071 measured profile artifact",
-        "sha256": "d3d0a6ce41c9b2166b31b6ad366d51e2a9267e080e3a32c43fa0bfc0c301cb8c"
+        "sha256": "969c878e1d8ba7993163765a131d42fd0827e7674ff1561bd3f7810a4c0dfe45"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
@@ -79,15 +79,15 @@
     "resource_accounting": {
       "cpu_time": {
         "unit": "s",
-        "value": 15.91
+        "value": 16.880000000000003
       },
       "max_rss": {
         "unit": "KiB",
-        "value": 112108
+        "value": 112632
       },
       "wall_clock": {
         "unit": "s",
-        "value": 2.75
+        "value": 2.81
       }
     },
     "run_id": "task071-native-adaptive-resource-profile",

@@ -1,0 +1,193 @@
+{
+  "artifact_id": "task076-near-hopf-gap-policy-records",
+  "artifact_kind": "browser-display-dataset",
+  "browser_records": [
+    {
+      "connection_policy": {
+        "decision": "explicit_gap",
+        "invented_regular_orbit_values_at_hopf_boundary": false,
+        "policy": "fit_connection_if_prerequisites_met_else_explicit_gap",
+        "production_record_id": "task076-policy-lower_hopf_T210K",
+        "regular_orbit_boundary_amplitude": null,
+        "regular_orbit_boundary_period_s": null
+      },
+      "coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -4.354585167232
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": -1.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.012847768154095444
+        }
+      },
+      "display_period": {
+        "log_value": null,
+        "quantity": "display_period",
+        "unit": "s",
+        "value": null
+      },
+      "episode006_linearized_hopf_period_reference_s": 3199.733265040628,
+      "hopf_side": "lower_hopf_T210K",
+      "method_versions": {
+        "adaptive": "external-gauss3-hr-adaptive-v1",
+        "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
+        "fit_policy": "quadratic-quartic-P-of-amplitude-gated-v1",
+        "hopf_reference": "episode6-native-loca-moore-spence-hopf-v1",
+        "near_hopf_review": "episode008-native-adaptive-near-hopf-review-v1",
+        "production_run": "episode008-native-adaptive-full-domain-run-v1",
+        "schema": "episode8-figure5-production-v1"
+      },
+      "record_id": "task076-policy-lower_hopf_T210K",
+      "record_role": "hopf_boundary_limit",
+      "validity": {
+        "authoritative": false,
+        "reason": "Only 0 reliable near-Hopf approach points are available; the nearest requested lower_hopf target (slice-210K-rho--0.97) has terminal status resolution_unresolved from task075-explicit-gap-policy-after-no-authorized-native-route. Production evidence therefore supports an explicit gap, not a nonlinear period connection.",
+        "source": "explicit_gap",
+        "status": "gap"
+      }
+    },
+    {
+      "connection_policy": {
+        "decision": "explicit_gap",
+        "invented_regular_orbit_values_at_hopf_boundary": false,
+        "policy": "fit_connection_if_prerequisites_met_else_explicit_gap",
+        "production_record_id": "task076-policy-upper_hopf_T210K",
+        "regular_orbit_boundary_amplitude": null,
+        "regular_orbit_boundary_period_s": null
+      },
+      "coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -1.510284356076311
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": 1.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.22084716979519248
+        }
+      },
+      "display_period": {
+        "log_value": null,
+        "quantity": "display_period",
+        "unit": "s",
+        "value": null
+      },
+      "episode006_linearized_hopf_period_reference_s": 863.1294499579636,
+      "hopf_side": "upper_hopf_T210K",
+      "method_versions": {
+        "adaptive": "external-gauss3-hr-adaptive-v1",
+        "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
+        "fit_policy": "quadratic-quartic-P-of-amplitude-gated-v1",
+        "hopf_reference": "episode6-native-loca-moore-spence-hopf-v1",
+        "near_hopf_review": "episode008-native-adaptive-near-hopf-review-v1",
+        "production_run": "episode008-native-adaptive-full-domain-run-v1",
+        "schema": "episode8-figure5-production-v1"
+      },
+      "record_id": "task076-policy-upper_hopf_T210K",
+      "record_role": "hopf_boundary_limit",
+      "validity": {
+        "authoritative": false,
+        "reason": "Only 0 reliable near-Hopf approach points are available; the nearest requested upper_hopf target (slice-210K-rho-+0.97) has terminal status resolution_unresolved from task075-explicit-gap-policy-after-no-authorized-native-route. Production evidence therefore supports an explicit gap, not a nonlinear period connection.",
+        "source": "explicit_gap",
+        "status": "gap"
+      }
+    }
+  ],
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "defect": "two-grid-relative-defect-v1",
+    "fit_policy": "quadratic-quartic-P-of-amplitude-gated-v1",
+    "hopf_reference": "episode6-native-loca-moore-spence-hopf-v1",
+    "near_hopf_review": "episode008-native-adaptive-near-hopf-review-v1",
+    "production_run": "episode008-native-adaptive-full-domain-run-v1",
+    "schema": "episode8-figure5-production-v1"
+  },
+  "provenance": {
+    "created_by": "generate_native_adaptive_near_hopf_review.py",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "source_artifacts": [
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_near_hopf_review.py",
+        "role": "TASK-076 near-Hopf review generator",
+        "sha256": "4edd1a809ac30b3365e6da9421007c7162c91acb0b96a6d544eceebee94b8cbd"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+        "role": "TASK-075 full-domain terminal ledger",
+        "sha256": "fe7ddb11016b17567e38afbd06b0bbf974502c1a4e03c0b55ab25eb213b6dafc"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+        "role": "TASK-075 accepted continuation point records",
+        "sha256": "d92051b49a806e113c0ac27033861ddae97daa5d7556148641a0c77b5f18657e"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+        "role": "TASK-075 terminal event records",
+        "sha256": "893b7229f96ddc21fb3898712ffa2566fe8db7c41a452726890ad093ccdf8878"
+      },
+      {
+        "path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv",
+        "role": "Episode 006 native LOCA Hopf loci and frequencies",
+        "sha256": "60f3bbf474151cb26197f89e59021d64fbb6479e372bc8e01a7387ad96685c01"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+        "role": "TASK-069 near-Hopf evidence prerequisite decision",
+        "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+        "role": "TASK-070 production schema boundary",
+        "sha256": "a11a93b80dca5407c04d52941dd830c294a74ab876df478c0edd671d6ec29482"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",
+        "role": "TASK-075 full-domain explicit-gap evidence",
+        "sha256": "c189c0fe45d7338a4e1e245ee763117856d5e327cc7f177c78502375fe7c5b7c"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task076-near-hopf-approach-policy.md",
+        "role": "TASK-076 documentation",
+        "sha256": "cb6f8ae33b30dfe59c26a6ff1b85eb82ff6aa31c6d79f2c48b1304a0f9be2b62"
+      }
+    ],
+    "task": "TASK-076"
+  },
+  "schema_version": "episode8-figure5-production-v1"
+}

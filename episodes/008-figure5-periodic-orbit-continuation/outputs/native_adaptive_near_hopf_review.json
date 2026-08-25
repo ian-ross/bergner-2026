@@ -1,0 +1,710 @@
+{
+  "artifact_id": "task076-native-adaptive-near-hopf-review",
+  "artifact_kind": "task076-native-adaptive-near-hopf-review",
+  "connection_gap_policy": {
+    "fits_performed": false,
+    "policy_record_artifact": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json",
+    "policy_record_artifact_sha256": "a437fc27dfca42a4cb34550e2166cbe4e7800492f0e1a53609309445bca4a66e",
+    "reviewed_side_count": 2,
+    "sides_with_connection_supported_by_fit": [],
+    "sides_with_explicit_gap": [
+      "lower_hopf_T210K",
+      "upper_hopf_T210K"
+    ]
+  },
+  "evidence_policy": {
+    "digitized_paper_evidence_used_for_acceptance": false,
+    "episode006_hopf_periods_used_only_for_fit_intercept_comparison": true,
+    "fits_require_amplitude_period_coordinates_diagnostics_terminal_statuses": true,
+    "minimum_reliable_monotone_approach_points_per_side": 5,
+    "production_native_adaptive_records_only": true,
+    "quadratic_and_quartic_fits_only_if_prerequisites_met": true,
+    "regular_orbit_values_invented_at_hopf_boundaries": false
+  },
+  "schema_version": "episode008-native-adaptive-near-hopf-review-v1",
+  "scope": "TASK-076 review of lower and upper T=210 K Hopf-side approach evidence from TASK-075 production native adaptive records only.",
+  "side_reviews": [
+    {
+      "amplitude_definition": "finite production amplitude attached to each accepted approach point; absent for current TASK-075 unresolved targets and therefore not inferred from Hopf-boundary data",
+      "approach_direction": "decreasing rho from the accepted spine toward the lower Hopf locus",
+      "boundary_coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -4.354585167232
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": -1.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.012847768154095444
+        }
+      },
+      "boundary_rho": -1.0,
+      "connection_policy": {
+        "decision": "explicit_gap",
+        "invented_regular_orbit_values_at_hopf_boundary": false,
+        "policy": "fit_connection_if_prerequisites_met_else_explicit_gap",
+        "production_record_id": "task076-policy-lower_hopf_T210K",
+        "regular_orbit_boundary_amplitude": null,
+        "regular_orbit_boundary_period_s": null
+      },
+      "episode006_hopf_reference": {
+        "branch_id": "lower_hopf",
+        "eigenvalue_imag_rad_s": 0.0019636590886583814,
+        "hopf_frequency_rad_s": 0.0019636590886583814,
+        "linearized_hopf_period_s": 3199.733265040628,
+        "log_w": -4.354585167232,
+        "source_backend": "loca",
+        "source_row_schema": "episode6-hopf-locus-schema-v1",
+        "temperature_K": 210.0,
+        "w_m_s": 0.012847768154095444
+      },
+      "evidence_prerequisites_met": false,
+      "explicit_gap_reason": "Only 0 reliable near-Hopf approach points are available; the nearest requested lower_hopf target (slice-210K-rho--0.97) has terminal status resolution_unresolved from task075-explicit-gap-policy-after-no-authorized-native-route. Production evidence therefore supports an explicit gap, not a nonlinear period connection.",
+      "fit_review": {
+        "episode006_hopf_period_comparison": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "fits_performed": false,
+        "leave_one_out_intercept_checks": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "quadratic_P_of_A": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "quartic_P_of_A": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "residual_checks": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "skip_reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status"
+      },
+      "hopf_branch": "lower_hopf",
+      "minimum_reliable_approach_points_required": 5,
+      "near_hopf_rho_distance_threshold": 0.25,
+      "reliable_monotone_approach_point_count": 0,
+      "reliable_monotone_approach_points": [],
+      "side_id": "lower_hopf_T210K",
+      "temperature_K": 210.0,
+      "terminal_status_counts_under_review": {
+        "accepted": 1,
+        "failed": 0,
+        "near_hopf_stop": 0,
+        "resolution_unresolved": 5,
+        "tripwire_stop": 0
+      },
+      "terminal_statuses_under_review": [
+        {
+          "amplitude": null,
+          "authoritative_production_point": true,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -2.9324347616541555
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.0
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.0532671872264416
+            }
+          },
+          "diagnostics": {
+            "independent_defect": true,
+            "linear_klu2": true,
+            "period_orbit_convergence": true,
+            "phase": true,
+            "positivity": true,
+            "production_residual": true,
+            "provenance": true,
+            "remesh_restart": true,
+            "restartability": true
+          },
+          "native_backend_emitted_terminal_status": true,
+          "period_s": 5718.140409482163,
+          "rho_distance_to_hopf_boundary": 1.0,
+          "target_id": "spine-210K",
+          "terminal_status": "accepted",
+          "terminal_status_source": "task081-native-exact-restart-gate-backend"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -3.287972363048617
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": -0.25
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.03732946331071035
+            }
+          },
+          "diagnostics": {
+            "reason": "refinement-neighborhood target requested near accepted/unresolved interface, but no authorized complete native adaptive route exists without crossing explicit gaps"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.75,
+          "target_id": "slice-210K-rho--0.25",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -3.6435099644430777
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": -0.5
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.026160360695260225
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.5,
+          "target_id": "slice-210K-rho--0.50",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -3.9990475658375386
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": -0.75
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.01833309163889753
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.25,
+          "target_id": "slice-210K-rho--0.75",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -4.212370126674216
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": -0.9
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.014811222231288876
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.09999999999999998,
+          "target_id": "slice-210K-rho--0.90",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -4.3119206550646645
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": -0.97
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.013407773140942422
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.030000000000000027,
+          "target_id": "slice-210K-rho--0.97",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        }
+      ]
+    },
+    {
+      "amplitude_definition": "finite production amplitude attached to each accepted approach point; absent for current TASK-075 unresolved targets and therefore not inferred from Hopf-boundary data",
+      "approach_direction": "increasing rho from the accepted spine toward the upper Hopf locus",
+      "boundary_coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -1.510284356076311
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": 1.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.22084716979519248
+        }
+      },
+      "boundary_rho": 1.0,
+      "connection_policy": {
+        "decision": "explicit_gap",
+        "invented_regular_orbit_values_at_hopf_boundary": false,
+        "policy": "fit_connection_if_prerequisites_met_else_explicit_gap",
+        "production_record_id": "task076-policy-upper_hopf_T210K",
+        "regular_orbit_boundary_amplitude": null,
+        "regular_orbit_boundary_period_s": null
+      },
+      "episode006_hopf_reference": {
+        "branch_id": "upper_hopf",
+        "eigenvalue_imag_rad_s": 0.007279539943267597,
+        "hopf_frequency_rad_s": 0.007279539943267597,
+        "linearized_hopf_period_s": 863.1294499579636,
+        "log_w": -1.5102843560763108,
+        "source_backend": "loca",
+        "source_row_schema": "episode6-hopf-locus-schema-v1",
+        "temperature_K": 210.0,
+        "w_m_s": 0.22084716979519253
+      },
+      "evidence_prerequisites_met": false,
+      "explicit_gap_reason": "Only 0 reliable near-Hopf approach points are available; the nearest requested upper_hopf target (slice-210K-rho-+0.97) has terminal status resolution_unresolved from task075-explicit-gap-policy-after-no-authorized-native-route. Production evidence therefore supports an explicit gap, not a nonlinear period connection.",
+      "fit_review": {
+        "episode006_hopf_period_comparison": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "fits_performed": false,
+        "leave_one_out_intercept_checks": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "quadratic_P_of_A": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "quartic_P_of_A": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "residual_checks": {
+          "reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status",
+          "status": "not_evaluated"
+        },
+        "skip_reason": "fewer_than_five_reliable_monotone_approach_points_with_finite_amplitude_period_coordinates_diagnostics_and_terminal_status"
+      },
+      "hopf_branch": "upper_hopf",
+      "minimum_reliable_approach_points_required": 5,
+      "near_hopf_rho_distance_threshold": 0.25,
+      "reliable_monotone_approach_point_count": 0,
+      "reliable_monotone_approach_points": [],
+      "side_id": "upper_hopf_T210K",
+      "temperature_K": 210.0,
+      "terminal_status_counts_under_review": {
+        "accepted": 1,
+        "failed": 0,
+        "near_hopf_stop": 0,
+        "resolution_unresolved": 5,
+        "tripwire_stop": 0
+      },
+      "terminal_statuses_under_review": [
+        {
+          "amplitude": null,
+          "authoritative_production_point": true,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -2.9324347616541555
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.0
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.0532671872264416
+            }
+          },
+          "diagnostics": {
+            "independent_defect": true,
+            "linear_klu2": true,
+            "period_orbit_convergence": true,
+            "phase": true,
+            "positivity": true,
+            "production_residual": true,
+            "provenance": true,
+            "remesh_restart": true,
+            "restartability": true
+          },
+          "native_backend_emitted_terminal_status": true,
+          "period_s": 5718.140409482163,
+          "rho_distance_to_hopf_boundary": 1.0,
+          "target_id": "spine-210K",
+          "terminal_status": "accepted",
+          "terminal_status_source": "task081-native-exact-restart-gate-backend"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -2.576897160259694
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.25
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.07600948375281612
+            }
+          },
+          "diagnostics": {
+            "reason": "refinement-neighborhood target requested near accepted/unresolved interface, but no authorized complete native adaptive route exists without crossing explicit gaps"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.75,
+          "target_id": "slice-210K-rho-+0.25",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -2.2213595588652333
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.5
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.10846154867929121
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.5,
+          "target_id": "slice-210K-rho-+0.50",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -1.8658219574707722
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.75
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.15476894409869493
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.25,
+          "target_id": "slice-210K-rho-+0.75",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -1.6524993966340955
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.9
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.19157049909242171
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.09999999999999998,
+          "target_id": "slice-210K-rho-+0.90",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        },
+        {
+          "amplitude": null,
+          "authoritative_production_point": false,
+          "coordinates": {
+            "convention": "temperature-log_w-rho-spine-slices-v1",
+            "log_w": {
+              "unit": "ln(m s^-1)",
+              "value": -1.5529488682436465
+            },
+            "rho": {
+              "unit": "dimensionless",
+              "value": 0.97
+            },
+            "temperature": {
+              "unit": "K",
+              "value": 210.0
+            },
+            "temperature_hat": {
+              "unit": "dimensionless",
+              "value": -0.2
+            },
+            "w": {
+              "unit": "m s^-1",
+              "value": 0.21162300444601234
+            }
+          },
+          "diagnostics": {
+            "reason": "no complete native adaptive full-domain gate bundle is available from the retained v1 route; target remains an explicit gap without interpolation or evidence relabeling"
+          },
+          "native_backend_emitted_terminal_status": false,
+          "period_s": null,
+          "rho_distance_to_hopf_boundary": 0.030000000000000027,
+          "target_id": "slice-210K-rho-+0.97",
+          "terminal_status": "resolution_unresolved",
+          "terminal_status_source": "task075-explicit-gap-policy-after-no-authorized-native-route"
+        }
+      ]
+    }
+  ],
+  "source_provenance": {
+    "doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task076-near-hopf-approach-policy.md",
+      "role": "TASK-076 documentation",
+      "sha256": "cb6f8ae33b30dfe59c26a6ff1b85eb82ff6aa31c6d79f2c48b1304a0f9be2b62"
+    },
+    "full_domain_events": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+      "role": "TASK-075 terminal event records",
+      "sha256": "893b7229f96ddc21fb3898712ffa2566fe8db7c41a452726890ad093ccdf8878"
+    },
+    "full_domain_points": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+      "role": "TASK-075 accepted continuation point records",
+      "sha256": "d92051b49a806e113c0ac27033861ddae97daa5d7556148641a0c77b5f18657e"
+    },
+    "full_domain_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+      "role": "TASK-075 full-domain terminal ledger",
+      "sha256": "fe7ddb11016b17567e38afbd06b0bbf974502c1a4e03c0b55ab25eb213b6dafc"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_near_hopf_review.py",
+      "role": "TASK-076 near-Hopf review generator",
+      "sha256": "4edd1a809ac30b3365e6da9421007c7162c91acb0b96a6d544eceebee94b8cbd"
+    },
+    "hopf_loci": {
+      "path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv",
+      "role": "Episode 006 native LOCA Hopf loci and frequencies",
+      "sha256": "60f3bbf474151cb26197f89e59021d64fbb6479e372bc8e01a7387ad96685c01"
+    },
+    "task069_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+      "role": "TASK-069 near-Hopf evidence prerequisite decision",
+      "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+    },
+    "task070_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+      "role": "TASK-070 production schema boundary",
+      "sha256": "a11a93b80dca5407c04d52941dd830c294a74ab876df478c0edd671d6ec29482"
+    },
+    "task075_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",
+      "role": "TASK-075 full-domain explicit-gap evidence",
+      "sha256": "c189c0fe45d7338a4e1e245ee763117856d5e327cc7f177c78502375fe7c5b7c"
+    }
+  },
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_near_hopf_review.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json"
+    ],
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_native_adaptive_near_hopf_review.py -q"
+    ]
+  }
+}

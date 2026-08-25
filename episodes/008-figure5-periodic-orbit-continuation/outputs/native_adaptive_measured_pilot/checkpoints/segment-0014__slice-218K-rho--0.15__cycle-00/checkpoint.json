@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-08-25T11:51:29.434927Z",
+  "created_at": "2026-08-25T12:09:12.740539Z",
   "fingerprints": {
     "checkpoint_schema_version": "episode008-native-adaptive-checkpoint-v1",
     "configuration_sha256": "f08b6f9c5e13566358f213de24f8549d977caaa94c4a55159df169d844c9ce3e",
@@ -32,14 +32,14 @@
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json": "8844e8212db439ea423698a48048aac7e0e34b59949310b3f5e714b3d1b586ce",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json": "0c3d60b713917f7b17008819c53021f78a33663ed1d4eefd71ebbcbbd36f4c5d",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f",
-      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json": "d3d0a6ce41c9b2166b31b6ad366d51e2a9267e080e3a32c43fa0bfc0c301cb8c",
-      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json": "45061f8fb0ad372f5ada3fcfde407ce6fe40a838cfe3569179c3dcc4b24faf12",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json": "969c878e1d8ba7993163765a131d42fd0827e7674ff1561bd3f7810a4c0dfe45",
+      "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json": "36eae19a91df6485f6faf0d9d114649444c715241e6973f9ac71ead2a737f62f",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_spine_slices_run.json": "b8e2130d834e23f03ab48238998aa6506a90f05a119966f44acc0f49b9a1cc1e",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_results.json": "1d98f8bc287214b7c0aba1b10e2d5406e07da6bb57a48ebfded0cb944c077ecd",
       "episodes/008-figure5-periodic-orbit-continuation/outputs/native_loca_higher_order_vectors.npz": "fd658fc77037fcbde163631acfe2a75006268889961d6e2851b7a8c6b83c8cca"
     }
   },
-  "fingerprints_sha256": "eeb99c13c956cadd13a35dd95b7be22c9f4a9ad6210d018927fbe06fe39aaf84",
+  "fingerprints_sha256": "83d28694c4b0f959edf6721b2ba2ed5b3c41e7c9c92b5501328c556c7b8275c3",
   "run_id": "task072-measured-native-adaptive-pilot",
   "schema_version": "episode008-native-adaptive-checkpoint-v1",
   "segment": {
@@ -181,9 +181,9 @@
     ],
     "remesh_kind": null,
     "resources": {
-      "segment_cpu_s": 1.699999999971169e-05,
-      "segment_max_rss_kib": 269328,
-      "segment_wall_clock_s": 1.727700055198511e-05
+      "segment_cpu_s": 2.0000000000131024e-05,
+      "segment_max_rss_kib": 270004,
+      "segment_wall_clock_s": 1.966600029845722e-05
     },
     "restart": null,
     "segment_id": "segment-0014__slice-218K-rho--0.15__cycle-00",
@@ -197,5 +197,5 @@
     "transfer_correction_details": []
   },
   "segment_id": "segment-0014__slice-218K-rho--0.15__cycle-00",
-  "segment_sha256": "6b2628a49443d04ae16756576b9b206348df8db0a907535aaaf0a4935b4ca9fb"
+  "segment_sha256": "2913687aa910e7d0cbd5b65136a82753f577387001dac5c1284820d992e388f4"
 }
