@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 11:35'
+updated_date: '2026-08-25 11:57'
 labels:
   - episode-008
   - loca
@@ -56,4 +56,6 @@ Paused TASK-075 before implementation because TASK-081 gate work must be complet
 Resumed TASK-075 after TASK-081 reached Done. Dependency gate is now satisfied: TASK-069/070/071/073/081 are Done, and TASK-081 explicitly authorizes TASK-075 under retained external-gauss3-hr-adaptive-v1 with explicit-gap/tripwire/Hopf-boundary discipline. Pausing before production continuation/artifact changes pending plan confirmation.
 
 Implemented TASK-075 full-domain native adaptive artifacts. Added generator, production-v1 continuation points/events/run metadata/orbit manifest, curated accepted-orbit NPZ, TASK-075 documentation, README links, and focused tests. The full-domain ledger requests 298 targets over T=190--240 K with exact 225 K anchor lineage, spine/rho anchors, and refinement-neighborhood targets; current production gates accept only spine-210K and leave 297 targets as explicit resolution_unresolved gaps. Regenerated README/source-hash-dependent TASK-071, TASK-073, TASK-081, TASK-075, and final reconciliation artifacts after documentation changes.
+
+Read-only scientific audit found an initial overclaim that all unresolved full-domain statuses were native-backend emitted. Fixed by updating TASK-075 truthfulness fields and TASK-081 authorization wording/docs: only accepted statuses claim native backend emission, while unresolved full-domain targets are recorded as explicit policy gaps when no authorized route exists without crossing unresolved regions. Regenerated TASK-071/TASK-072/TASK-073/TASK-081/TASK-075/TASK-074/final source-hash-dependent artifacts. Validation now passes: focused TASK-075 checks, production validators, focused Episode 008 regression set, full uv run pytest -q (370 passed, 1 skipped, 3 known warnings), and git diff --check.
 <!-- SECTION:NOTES:END -->
