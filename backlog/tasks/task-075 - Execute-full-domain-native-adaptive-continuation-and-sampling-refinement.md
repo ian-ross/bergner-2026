@@ -1,11 +1,11 @@
 ---
 id: TASK-075
 title: Execute full-domain native adaptive continuation and sampling refinement
-status: In Progress
+status: To Do
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 10:49'
+updated_date: '2026-08-25 10:51'
 labels:
   - episode-008
   - loca
@@ -50,4 +50,6 @@ After the measured pilot gate passes, run authoritative native adaptive continua
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-075 by assigning it to @iross and reviewing dependencies plus Episode 008 gate documentation. TASK-081 is still To Do, and TASK-073 explicitly states full-domain continuation is not authorized until TASK-081 resolves the pilot acceptance blockers. No full-domain continuation or production artifact generation has been started.
+
+Paused TASK-075 before implementation because TASK-081 gate work must be completed first per TASK-073. User approved switching to TASK-081.
 <!-- SECTION:NOTES:END -->
