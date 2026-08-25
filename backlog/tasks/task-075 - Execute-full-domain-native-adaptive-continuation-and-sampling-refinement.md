@@ -1,10 +1,11 @@
 ---
 id: TASK-075
 title: Execute full-domain native adaptive continuation and sampling refinement
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-24 16:28'
+updated_date: '2026-08-25 10:49'
 labels:
   - episode-008
   - loca
