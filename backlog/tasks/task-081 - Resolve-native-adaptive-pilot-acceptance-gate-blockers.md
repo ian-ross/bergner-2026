@@ -1,11 +1,11 @@
 ---
 id: TASK-081
 title: Resolve native adaptive pilot acceptance gate blockers
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 16:16'
-updated_date: '2026-08-25 10:53'
+updated_date: '2026-08-25 11:25'
 labels:
   - episode-008
   - loca
@@ -27,10 +27,10 @@ Follow-up required by TASK-073 before full-domain Figure 5 continuation can be p
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Exact native restart-vector independent defect and period/orbit convergence gates are backend-bound for post-remesh and accepted pilot targets
-- [ ] #2 A revised measured pilot over the 210--226 K skeleton records exactly one backend-emitted terminal status per target without interpolation or evidence relabeling
-- [ ] #3 Any accepted pilot target has same-coordinate independent Python validation and justified IVP validation, or is downgraded to an explicit unresolved/gap record with a blocking reason
-- [ ] #4 The follow-up review explicitly states whether TASK-075 may proceed under the retained v1 method or requires a method-version revision
+- [x] #1 Exact native restart-vector independent defect and period/orbit convergence gates are backend-bound for post-remesh and accepted pilot targets
+- [x] #2 A revised measured pilot over the 210--226 K skeleton records exactly one backend-emitted terminal status per target without interpolation or evidence relabeling
+- [x] #3 Any accepted pilot target has same-coordinate independent Python validation and justified IVP validation, or is downgraded to an explicit unresolved/gap record with a blocking reason
+- [x] #4 The follow-up review explicitly states whether TASK-075 may proceed under the retained v1 method or requires a method-version revision
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -51,4 +51,29 @@ Follow-up required by TASK-073 before full-domain Figure 5 continuation can be p
 Started TASK-081: assigned to @iross, verified required tools/native executable are present, and baseline TASK-072/TASK-073 check commands pass. Prepared implementation plan; pausing before code/artifact changes pending plan confirmation.
 
 Plan approved by user; proceeding with TASK-081 generator/artifact/tests/docs implementation.
+
+Implemented TASK-081 follow-up gate artifacts and documentation. Added `generate_native_adaptive_pilot_gate_followup.py`, production-v1 events/run metadata, exact native restart fixture, docs, and focused tests. The exact `spine-210K` restart vector is now bound to native `adaptive-restart` and exact-fixture `adaptive-controller` evidence; same-coordinate Python correction and DOP853 one-period IVP validation pass. Revised pilot ledger: accepted=1 (`spine-210K`), resolution_unresolved=30, failed=0, near_hopf_stop=0, tripwire_stop=0. TASK-075 is authorized under retained `external-gauss3-hr-adaptive-v1` while remaining pilot targets stay explicit gaps.
+
+Regenerated source-hash-dependent TASK-071, TASK-072, TASK-073, TASK-074, and final reconciliation artifacts after documentation/provenance changes. Validation: focused TASK-081 checks and production validators passed; focused Episode 008 regression set passed (49 passed); full `uv run pytest -q` passed (363 passed, 1 skipped, 3 known overflow warnings); `git diff --check` passed. Two read-only subagent reviews initially found backend-binding wording/status-source concerns; after adding live native `adaptive-restart` binding and explicit TASK-081 gate-backend status source, follow-up reviews reported no blockers.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Completed the TASK-081 native adaptive pilot acceptance-gate follow-up.
+
+Changes:
+- Added `scripts/generate_native_adaptive_pilot_gate_followup.py` and curated TASK-081 artifacts: follow-up summary, production-v1 continuation events/run metadata, and an exact C++ fixture for the post-remesh `spine-210K` native restart vector.
+- Bound the exact restart vector to native backend evidence: `adaptive-restart` emits the matching corrected vector and restart gates; `adaptive-controller` on the exact restart fixture emits the independent defect diagnostic. Period/orbit convergence is recorded from native restart correction/transfer evidence.
+- Added same-coordinate Python correction and DOP853 one-period IVP validation for the accepted `spine-210K` point.
+- Revised the 210--226 K pilot gate ledger to `accepted=1`, `resolution_unresolved=30`, `failed=0`, `near_hopf_stop=0`, `tripwire_stop=0`; remaining targets stay explicit gaps without interpolation or evidence relabeling.
+- Documented that TASK-075 may proceed under retained `external-gauss3-hr-adaptive-v1` with the same gap/tripwire/Hopf boundary discipline.
+- Added focused tests and updated Episode 008 README/decision docs. Regenerated source-hash-dependent Episode 008 artifacts after documentation changes.
+
+Validation:
+- TASK-081 check and production-v1 validation passed.
+- Focused Episode 008 regression set: 49 passed.
+- Full suite: `uv run pytest -q` -> 363 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+- Follow-up read-only implementation and numerical/scientific reviews reported no blockers.
+<!-- SECTION:FINAL_SUMMARY:END -->
