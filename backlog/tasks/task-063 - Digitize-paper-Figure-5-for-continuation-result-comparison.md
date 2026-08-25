@@ -1,9 +1,11 @@
 ---
 id: TASK-063
 title: Digitize paper Figure 5 for continuation-result comparison
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@pi'
 created_date: '2026-08-13 04:20'
+updated_date: '2026-08-25 13:46'
 labels:
   - episode-008
   - digitization
