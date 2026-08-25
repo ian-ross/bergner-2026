@@ -55,3 +55,24 @@ Validation run:
 - `uv run pytest -q`: 357 passed, 1 skipped, 3 known overflow warnings
 - `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Generated the independent T=210 K equilibrium-linearized period curve for the Figure 5 lower panel.
+
+Changes:
+- Added `generate_t210_linearized_period_curve.py`, which uses native C++ `bs2026_loca_model nox-loca-continue` equilibrium continuation over `w=5e-4..2 m s^-1`, inserts exact Episode 006 native-LOCA Hopf anchors, tracks the physical-Jacobian complex pair, and writes `P_lin = 2*pi/abs(Im(lambda))` under the production-v1 schema.
+- Added `outputs/t210_linearized_period_curve.json` with 403 accepted rows, explicit no-clipping policy, holdout-refinement diagnostics, eigenpair-continuity diagnostics, exact Hopf-frequency checks, and stratified Python physical-Jacobian parity.
+- Added TASK-074 documentation and README linkage; clarified schema validation for future explicit linearized-period gap rows with null period/frequency.
+- Added focused tests for schema validity, exact Hopf anchors, period formula/no-clipping, eigenpair continuity, holdout checks, Python parity, and gap-row schema behavior.
+- Regenerated dependent Episode 008 provenance/check artifacts after documentation source hashes changed.
+
+Validation:
+- TASK-074 generator `--check`: current
+- Production artifact validator for `t210_linearized_period_curve.json`: valid
+- TASK-071/TASK-072/TASK-073/TASK-068 reconciliation checks: current
+- `uv run pytest tests/test_episode8_t210_linearized_period_curve.py tests/test_episode8_production_schema.py -q`: 20 passed
+- `uv run pytest -q`: 357 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
+<!-- SECTION:FINAL_SUMMARY:END -->
