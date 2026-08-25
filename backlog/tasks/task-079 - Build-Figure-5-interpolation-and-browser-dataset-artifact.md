@@ -1,7 +1,7 @@
 ---
 id: TASK-079
 title: Build Figure 5 interpolation and browser dataset artifact
-status: In Progress
+status: Done
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
@@ -68,3 +68,27 @@ Validation run:
 - full `uv run pytest -q`: 394 passed, 1 skipped, 3 known overflow warnings
 - `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented the TASK-079 Figure 5 interpolation and browser/display dataset artifact.
+
+Changes:
+- Added `generate_figure5_browser_interpolation_dataset.py` with write/check modes and production-v1 validation.
+- Added `outputs/figure5_browser_interpolation_dataset.json`, a schema-valid browser-display dataset with solved native nonlinear records, zero validated interpolated nonlinear records under the current evidence, unresolved gap records, Hopf-limit explicit-gap records, invalid outside-Hopf-domain mask records, independent T=210 K linearized-period records, and TASK-063 pending image-derived comparison placeholders.
+- Added `docs/task079-browser-interpolation-dataset.md`, README linkage, and focused regression tests.
+- Regenerated source-hash-dependent Episode 008 artifacts after README/documentation provenance changed.
+
+Scientific outcome:
+- No nonlinear interpolation is emitted: only `spine-210K` is an accepted native nonlinear production point, while 297 full-domain targets remain unresolved gaps. Along-slice and withheld-slice holdout gates are recorded as `not_evaluated`, and interpolation crosses no Hopf boundaries, unresolved targets, instability checkpoints, tripwire/near-Hopf stops, or multivalued tripwires.
+- The lower panel keeps sources separate: nonlinear values come from TASK-075 accepted native continuation, and the red curve comes from the independent TASK-074 T=210 K equilibrium-linearized period artifact, not heatmap resampling.
+- TASK-063 digitized paper values are not fabricated; the external comparison channel is present only as pending placeholders for TASK-080.
+
+Validation:
+- TASK-079 generator `--check` passed and the browser dataset validates against production-v1 schema.
+- Focused TASK-079 tests passed: 6 passed.
+- Focused source-hash-dependent Episode 008 regression set passed: 80 passed.
+- Full suite: `uv run pytest -q` -> 394 passed, 1 skipped, 3 known overflow warnings.
+- `git diff --check` passed.
+<!-- SECTION:FINAL_SUMMARY:END -->
