@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 12:44'
+updated_date: '2026-08-25 12:46'
 labels:
   - episode-008
   - ivp
@@ -43,3 +43,9 @@ Validate selected accepted native production periodic orbits with independent IV
 6. Add focused pytest coverage and documentation for category selection/deduplication, unavailable-stratum truthfulness, DOP853 and phase-aligned trajectory gates, Radau/attractor availability policy, independence/non-overwrite guarantees, source checksums, and README links.
 7. Run the TASK-078 generator in write and --check modes, upstream production validators/checks, focused Episode 008 regression tests, full pytest as feasible, and git diff --check; then update TASK-078 notes, acceptance criteria, final summary, and status through Backlog CLI only.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Plan approved by user; proceeding with TASK-078 generator, documentation, tests, and validation.
+<!-- SECTION:NOTES:END -->
