@@ -14,6 +14,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task072-measured-native-adaptive-pilot.md`](docs/task072-measured-native-adaptive-pilot.md) records the TASK-072 measured native adaptive pilot over the 210--226 K skeleton and its explicit unresolved-gap ledger.
 - [`docs/task073-native-adaptive-pilot-reconciliation.md`](docs/task073-native-adaptive-pilot-reconciliation.md) records the TASK-073 validation review and production go/no-go decision for the measured pilot.
 - [`docs/task081-native-adaptive-pilot-gate-followup.md`](docs/task081-native-adaptive-pilot-gate-followup.md) records the TASK-081 follow-up gate that accepts the exact `spine-210K` post-remesh restart point and authorizes TASK-075 under the retained v1 method.
+- [`docs/task075-full-domain-native-adaptive-continuation.md`](docs/task075-full-domain-native-adaptive-continuation.md) documents the TASK-075 full-domain native adaptive target ledger, accepted production point, explicit gaps, sampling-refinement status, and production-v1 artifacts.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
@@ -96,6 +97,30 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 The revised pilot gate records `accepted=1` (`spine-210K`) and `resolution_unresolved=30`. The accepted point is the exact native post-remesh restart vector, with backend-bound defect and period/orbit convergence gates plus same-coordinate Python and DOP853 one-period IVP validation. TASK-075 may proceed under the retained `external-gauss3-hr-adaptive-v1` method. The remaining pilot targets stay explicit unresolved gaps; no interpolation, fixed-mesh relabeling, Python-only substitution, or digitized-paper evidence fills them.
+
+## Full-domain native adaptive continuation
+
+TASK-075 applies the TASK-081 authorization to the full Figure 5 native adaptive target skeleton. The artifacts are:
+
+- [`outputs/native_adaptive_full_domain_run.json`](outputs/native_adaptive_full_domain_run.json)
+- [`outputs/native_adaptive_full_domain_points.json`](outputs/native_adaptive_full_domain_points.json)
+- [`outputs/native_adaptive_full_domain_events.json`](outputs/native_adaptive_full_domain_events.json)
+- [`outputs/native_adaptive_full_domain_run_metadata.json`](outputs/native_adaptive_full_domain_run_metadata.json)
+- [`outputs/native_adaptive_full_domain_orbit_manifest.json`](outputs/native_adaptive_full_domain_orbit_manifest.json)
+- [`outputs/native_adaptive_full_domain_orbits.npz`](outputs/native_adaptive_full_domain_orbits.npz)
+
+Check them with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_full_domain_run.py --check
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run_metadata.json \
+  episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json
+```
+
+The full-domain ledger covers `T = 190--240 K`, exact `T = 225 K` anchor lineage, spine points, `rho = 0, +/-0.25, +/-0.50, +/-0.75, +/-0.90, +/-0.97` anchors, and accepted-evidence refinement-neighborhood targets. Current production gates accept only `spine-210K` from TASK-081 native-backend evidence; all other requested targets are explicit `resolution_unresolved` policy gaps rather than claimed native C++ solves. Holdout-driven sampling refinement records along-slice and between-slice log-period errors as `not_evaluated` because interpolation requires more accepted points and must not cross unresolved gaps.
 
 ## T=210 K equilibrium-linearized period curve
 

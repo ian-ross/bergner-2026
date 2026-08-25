@@ -609,7 +609,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         "rationale": "TASK-081 binds the exact spine-210K post-remesh native restart vector to residual/phase/positivity/linear/tangent/defect/period-orbit gates, same-coordinate Python validation, and DOP853 one-period IVP validation. Unsupported skeleton targets remain explicit unresolved gaps, so the retained v1 method can proceed to TASK-075 without interpolation.",
         "remaining_boundaries_for_TASK075": [
             "TASK-075 must still preserve unresolved gaps outside accepted evidence",
-            "full-domain targets must each receive one backend-emitted terminal status",
+            "full-domain targets must each receive one recorded terminal status: native-backend-emitted for attempted/accepted solves and explicit policy-gap status when no authorized route exists without crossing unresolved regions",
             "near-Hopf/tripwire/instability boundaries remain stop conditions, not interpolation regions",
         ],
     }

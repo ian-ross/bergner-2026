@@ -1,5 +1,5 @@
 {
-  "artifact_id": "task081-native-adaptive-pilot-gate-followup-run-metadata",
+  "artifact_id": "task075-native-adaptive-full-domain-run-metadata",
   "artifact_kind": "run-metadata",
   "coordinate_conventions": {
     "orbit_state": "transformed-state-log_n-log_q-s-v1",
@@ -12,37 +12,37 @@
     "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
     "defect": "two-grid-relative-defect-v1",
     "driver": "episode008-native-adaptive-driver-v1",
-    "followup": "episode008-native-adaptive-pilot-gate-followup-v1",
-    "ivp_validation": "dop853-one-period-return-v1",
+    "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
     "linear_solver": "thyra-nox-amesos2-klu2-v1",
-    "pilot": "episode008-native-adaptive-measured-pilot-v1+task081-gate-followup",
+    "pilot_gate_followup": "episode008-native-adaptive-pilot-gate-followup-v1",
     "restart": "fixed-parameter-remesh-restart-v1",
+    "sampling_refinement": "shape-preserving-log-period-holdout-v1-explicit-gap-safe",
     "schema": "episode8-figure5-production-v1"
   },
   "provenance": {
-    "created_by": "generate_native_adaptive_pilot_gate_followup.py",
+    "created_by": "generate_native_adaptive_full_domain_run.py",
     "digitized_paper_data_policy": "external-comparison-only",
     "source_artifacts": [
       {
-        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py",
-        "role": "TASK-081 pilot gate follow-up generator",
-        "sha256": "f64767529636582975f7bf2be9e1d09002a01a51759f3130a9b2b4c01fad9c54"
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_full_domain_run.py",
+        "role": "TASK-075 full-domain generator",
+        "sha256": "511649cb472dcd024b9a01e201878b76e44f62b5c7721b9ee6e66376c7fcd2e0"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
-        "role": "TASK-071 measured resource profile",
+        "role": "TASK-071 measured resource profile baseline",
         "sha256": "d3d0a6ce41c9b2166b31b6ad366d51e2a9267e080e3a32c43fa0bfc0c301cb8c"
       },
       {
-        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
-        "role": "TASK-072 measured pilot metadata baseline",
-        "sha256": "6ac4aacefec4da2d4113e202600507de5f5e75b159b264dac33d30e8bcfc0005"
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json",
+        "role": "TASK-081 accepted gate run metadata",
+        "sha256": "3de67298f56e847a8d3fcc1294f7606637871c6aa2ab533dd6a59f845901d59e"
       }
     ],
-    "task": "TASK-081"
+    "task": "TASK-075"
   },
   "run_metadata": {
-    "backend": "native-cpp-exact-restart-gate-plus-python-validation",
+    "backend": "task075-artifact-generator-with-task081-native-accepted-point-and-explicit-gap-ledger",
     "build_identity": {
       "compiled_source_fingerprint_sha256": [
         "3e8d6483b02901a5df0c33249013bc509e41d79f6a6ea5e09247963a2bdc4879",
@@ -52,25 +52,31 @@
         "185426ad8278e8caa7bc3e69b13d49b7b0ba37c7ae92a46e296597b510aeffca",
         "c533823fb00861ac9e856a0c6e036ad4c3bedf77fe9979fd1cca1cbe6c145a94"
       ],
+      "numpy": "2.4.6",
       "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
       "python": "3.11.15",
       "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
     },
+    "checkpoint_restart_policy": {
+      "curated_orbit_manifest": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+      "restartable_accepted_orbits": true,
+      "unresolved_targets_have_no_orbit_vectors": true
+    },
     "coordinate_domain": {
       "convention": "temperature-log_w-rho-spine-slices-v1",
       "log_w": {
-        "max": -0.45,
-        "min": -4.5,
+        "max": 0.16021631400305614,
+        "min": -5.934387664879567,
         "unit": "ln(m s^-1)"
       },
       "rho": {
-        "max": 0.15,
-        "min": -0.15,
+        "max": 0.97,
+        "min": -0.97,
         "unit": "dimensionless"
       },
       "temperature": {
-        "max": 226.0,
-        "min": 210.0,
+        "max": 240.0,
+        "min": 190.0,
         "unit": "K"
       }
     },
@@ -82,23 +88,25 @@
     "resource_accounting": {
       "cpu_time": {
         "unit": "s",
-        "value": 0.1647540000000003
+        "value": 0.009529000000000565
       },
       "max_rss": {
         "unit": "KiB",
-        "value": 118884
+        "value": 110380
       },
+      "measurement_scope": "artifact_generation_and_curation; unresolved policy gaps do not claim native C++ per-target solve time",
       "wall_clock": {
         "unit": "s",
-        "value": 0.634293076999711
+        "value": 0.009540102999380906
       }
     },
-    "run_id": "task081-native-adaptive-pilot-gate-followup",
+    "run_id": "task075-native-adaptive-full-domain",
+    "target_count": 298,
     "terminal_status_counts": {
       "accepted": 1,
       "failed": 0,
       "near_hopf_stop": 0,
-      "resolution_unresolved": 30,
+      "resolution_unresolved": 297,
       "tripwire_stop": 0
     }
   },

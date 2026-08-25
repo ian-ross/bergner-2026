@@ -1428,7 +1428,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py",
         "role": "TASK-081 pilot gate follow-up generator",
-        "sha256": "b32f7f68e379d49f617e652849a34d0fb363249eb7ba77d3aaab15d90cbc912f"
+        "sha256": "f64767529636582975f7bf2be9e1d09002a01a51759f3130a9b2b4c01fad9c54"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_exact_restart_fixture.txt",
@@ -1438,7 +1438,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
         "role": "TASK-072 original measured pilot ledger",
-        "sha256": "9d56d8d54d5514cd464950cf1b05ef436644a71d95e8b83c495c724f45ad6ba9"
+        "sha256": "e85f204f78d4a9ce29f7b4598a6707a5028271a4ab5bd57d3ee91f2cd848c5c0"
       }
     ],
     "task": "TASK-081"

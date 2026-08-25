@@ -1,0 +1,95 @@
+{
+  "artifact_id": "task075-native-adaptive-full-domain-orbit-manifest",
+  "artifact_kind": "curated-orbit-npz-manifest",
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "defect": "two-grid-relative-defect-v1",
+    "driver": "episode008-native-adaptive-driver-v1",
+    "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
+    "linear_solver": "thyra-nox-amesos2-klu2-v1",
+    "pilot_gate_followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+    "restart": "fixed-parameter-remesh-restart-v1",
+    "sampling_refinement": "shape-preserving-log-period-holdout-v1-explicit-gap-safe",
+    "schema": "episode8-figure5-production-v1"
+  },
+  "orbit_vector_manifest": {
+    "accepted_point_ids": [
+      "spine-210K"
+    ],
+    "arrays": {
+      "spine_210K_boundaries": {
+        "byte_order": "little-endian",
+        "dtype": "float64",
+        "role": "normalized mesh interval boundaries for accepted spine-210K orbit",
+        "sha256": "23c6bbb4351db62fda594f9b6d37fded63f97266db927f49ae13a05e8905902e",
+        "shape": [
+          85
+        ],
+        "unit": "dimensionless"
+      },
+      "spine_210K_phase_derivatives": {
+        "byte_order": "little-endian",
+        "dtype": "float64",
+        "role": "transferred phase-reference derivative samples",
+        "sha256": "7c6cc38ac1a2e105ef0132e5c55c53b998e63ba503ea7f35be0e94b25e15681b",
+        "shape": [
+          756
+        ],
+        "unit": "dimensionless"
+      },
+      "spine_210K_phase_values": {
+        "byte_order": "little-endian",
+        "dtype": "float64",
+        "role": "transferred phase-reference state samples",
+        "sha256": "29d7daf2e833529cdc2dc027806ee54567b28091a7b8007da7f50fdc4242515b",
+        "shape": [
+          756
+        ],
+        "unit": "dimensionless"
+      },
+      "spine_210K_unknowns": {
+        "byte_order": "little-endian",
+        "dtype": "float64",
+        "role": "packed native restart unknown vector including log period",
+        "sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "shape": [
+          1009
+        ],
+        "unit": "mixed"
+      }
+    },
+    "npz_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+    "npz_sha256": "21920beec23de4973d67a58c1e530d4517e9a23ba1fe98441d94bc94b627b978",
+    "restartable": true
+  },
+  "provenance": {
+    "created_by": "generate_native_adaptive_full_domain_run.py",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "source_artifacts": [
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_full_domain_run.py",
+        "role": "TASK-075 full-domain generator",
+        "sha256": "511649cb472dcd024b9a01e201878b76e44f62b5c7721b9ee6e66376c7fcd2e0"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment_vectors.npz",
+        "role": "TASK-068/TASK-081 exact native restart vector source",
+        "sha256": "ef608043bad3d00a7880ee23cf3be9e660d00f4658b60880b4ca8c361597f50f"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
+        "role": "TASK-081 accepted gate evidence",
+        "sha256": "fb0d8c98c34f9dbdcace419dbe117d5223013f36c7e73cffda1962003990a156"
+      }
+    ],
+    "task": "TASK-075"
+  },
+  "schema_version": "episode8-figure5-production-v1"
+}

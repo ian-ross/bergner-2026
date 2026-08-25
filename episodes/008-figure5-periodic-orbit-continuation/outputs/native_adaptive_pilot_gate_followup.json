@@ -20,7 +20,7 @@
       "target_id": "spine-210K",
       "tolerance": 0.001,
       "validation_status": "passed",
-      "wall_clock_s": 0.005839378000018769
+      "wall_clock_s": 0.005815771999550634
     },
     "same_coordinate_python": {
       "backend": "independent Python three-stage fixed-parameter correction on exact native restart mesh",
@@ -181,9 +181,9 @@
     }
   },
   "measured_resource_accounting": {
-    "cpu_time_s": 0.17072499999999913,
-    "max_rss_kib": 117780,
-    "wall_clock_s": 0.6430354140002237
+    "cpu_time_s": 0.1647540000000003,
+    "max_rss_kib": 118884,
+    "wall_clock_s": 0.634293076999711
   },
   "production_gate_decision": {
     "decision": "task075_authorized_under_retained_v1_method",
@@ -192,15 +192,15 @@
     "rationale": "TASK-081 binds the exact spine-210K post-remesh native restart vector to residual/phase/positivity/linear/tangent/defect/period-orbit gates, same-coordinate Python validation, and DOP853 one-period IVP validation. Unsupported skeleton targets remain explicit unresolved gaps, so the retained v1 method can proceed to TASK-075 without interpolation.",
     "remaining_boundaries_for_TASK075": [
       "TASK-075 must still preserve unresolved gaps outside accepted evidence",
-      "full-domain targets must each receive one backend-emitted terminal status",
+      "full-domain targets must each receive one recorded terminal status: native-backend-emitted for attempted/accepted solves and explicit policy-gap status when no authorized route exists without crossing unresolved regions",
       "near-Hopf/tripwire/instability boundaries remain stop conditions, not interpolation regions"
     ],
     "retained_method_version": "external-gauss3-hr-adaptive-v1",
     "task075_may_proceed": true
   },
   "production_schema_artifact_sha256": {
-    "continuation_events": "4716dcbde3cfb9e5d2137c021a219e672e4a4c3f603cfc2f0f247e5971de876e",
-    "run_metadata": "4d4422001a7892743c34c7aba514a7cf0788b0f4c03770e7755e2aea54b10f23"
+    "continuation_events": "51959c6b3589f237eb4fdb847145b2c8470bbb4bdf8de1977c4b917e65d40d2f",
+    "run_metadata": "3de67298f56e847a8d3fcc1294f7606637871c6aa2ab533dd6a59f845901d59e"
   },
   "production_schema_artifacts": {
     "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json",
@@ -220,7 +220,7 @@
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_pilot_gate_followup.py",
       "role": "TASK-081 follow-up generator",
-      "sha256": "b32f7f68e379d49f617e652849a34d0fb363249eb7ba77d3aaab15d90cbc912f"
+      "sha256": "f64767529636582975f7bf2be9e1d09002a01a51759f3130a9b2b4c01fad9c54"
     },
     "one_branch": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_one_branch_segment.json",
@@ -240,12 +240,12 @@
     "resource_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile_run_metadata.json",
       "role": "TASK-071 run metadata input",
-      "sha256": "5102ee67ae4a7286ab7b6e479d794a9a21e864cdf55532bb048e6c0048074035"
+      "sha256": "45061f8fb0ad372f5ada3fcfde407ce6fe40a838cfe3569179c3dcc4b24faf12"
     },
     "resource_profile": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
       "role": "TASK-071 resource profile input",
-      "sha256": "66f120646656f7920eb3d3434e52bcdc2efa0c8ab2a55a4b0da17e5b546406f6"
+      "sha256": "d3d0a6ce41c9b2166b31b6ad366d51e2a9267e080e3a32c43fa0bfc0c301cb8c"
     },
     "task072_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task072-measured-native-adaptive-pilot.md",
@@ -255,22 +255,22 @@
     "task072_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
       "role": "TASK-072 production-v1 event input",
-      "sha256": "679f83334d920431fb9b30b3b215787ca5b2f014a7cab4ead96b671ebda19552"
+      "sha256": "80b3b37f2a775cf90d89f5e459eaaef734f9a1642db67999e19599338f917a98"
     },
     "task072_run_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
       "role": "TASK-072 resumable run manifest input",
-      "sha256": "f2eff414e4c469911aad2ac3649d98b12ef27975ed135e77907ed34107db12fa"
+      "sha256": "2df766b204a761b6cd1c58b95cad8663e0586a6bc2dec9e52cfade8e289adca4"
     },
     "task072_run_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
       "role": "TASK-072 measured run metadata input",
-      "sha256": "df6e2108f512898d4333580e590f2c7e460f17ce599d055b6c848cfd37042690"
+      "sha256": "6ac4aacefec4da2d4113e202600507de5f5e75b159b264dac33d30e8bcfc0005"
     },
     "task072_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
       "role": "TASK-072 measured pilot input ledger",
-      "sha256": "9d56d8d54d5514cd464950cf1b05ef436644a71d95e8b83c495c724f45ad6ba9"
+      "sha256": "e85f204f78d4a9ce29f7b4598a6707a5028271a4ab5bd57d3ee91f2cd848c5c0"
     },
     "task073_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task073-native-adaptive-pilot-reconciliation.md",
@@ -280,7 +280,7 @@
     "task073_reconciliation": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_reconciliation.json",
       "role": "TASK-073 blocking gate decision input",
-      "sha256": "b24043826206a82af9b24c1fe1482b192e7ea10a361bb3c53ec0aedb4dc76c50"
+      "sha256": "a3862d3e428feb2a30f24671c6c02e4d57ff3f8e09d5c9b2d395f1e623e90f4a"
     },
     "uv_lock": {
       "path": "uv.lock",

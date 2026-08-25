@@ -1,0 +1,124 @@
+{
+  "artifact_id": "task075-native-adaptive-full-domain-points",
+  "artifact_kind": "continuation-points",
+  "continuation_points": [
+    {
+      "acceptance_gates": {
+        "independent_defect": true,
+        "linear_klu2": true,
+        "period_orbit_convergence": true,
+        "phase": true,
+        "positivity": true,
+        "production_residual": true,
+        "provenance": true,
+        "remesh_restart": true,
+        "restartability": true
+      },
+      "coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -2.9324347616541555
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": 0.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.0532671872264416
+        }
+      },
+      "method_versions": {
+        "adaptive": "external-gauss3-hr-adaptive-v1",
+        "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+        "defect": "two-grid-relative-defect-v1",
+        "driver": "episode008-native-adaptive-driver-v1",
+        "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
+        "linear_solver": "thyra-nox-amesos2-klu2-v1",
+        "pilot_gate_followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+        "restart": "fixed-parameter-remesh-restart-v1",
+        "sampling_refinement": "shape-preserving-log-period-holdout-v1-explicit-gap-safe",
+        "schema": "episode8-figure5-production-v1"
+      },
+      "orbit_vector_ref": {
+        "array_keys": [
+          "spine_210K_boundaries",
+          "spine_210K_unknowns",
+          "spine_210K_phase_values",
+          "spine_210K_phase_derivatives"
+        ],
+        "manifest_artifact_id": "task075-native-adaptive-full-domain-orbit-manifest",
+        "npz_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+        "restart_vector_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9"
+      },
+      "period": {
+        "log_value": 8.651398928278946,
+        "quantity": "nonlinear_period",
+        "unit": "s",
+        "value": 5718.140409482163
+      },
+      "record_id": "task075-point-spine-210K",
+      "validation_refs": {
+        "ivp": "passed",
+        "same_coordinate_python": "passed",
+        "task081_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json",
+        "task081_summary": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json"
+      },
+      "validity": {
+        "authoritative": true,
+        "source": "computed_native_adaptive",
+        "status": "accepted"
+      }
+    }
+  ],
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "defect": "two-grid-relative-defect-v1",
+    "driver": "episode008-native-adaptive-driver-v1",
+    "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
+    "linear_solver": "thyra-nox-amesos2-klu2-v1",
+    "pilot_gate_followup": "episode008-native-adaptive-pilot-gate-followup-v1",
+    "restart": "fixed-parameter-remesh-restart-v1",
+    "sampling_refinement": "shape-preserving-log-period-holdout-v1-explicit-gap-safe",
+    "schema": "episode8-figure5-production-v1"
+  },
+  "provenance": {
+    "created_by": "generate_native_adaptive_full_domain_run.py",
+    "digitized_paper_data_policy": "external-comparison-only",
+    "source_artifacts": [
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_full_domain_run.py",
+        "role": "TASK-075 full-domain generator",
+        "sha256": "511649cb472dcd024b9a01e201878b76e44f62b5c7721b9ee6e66376c7fcd2e0"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
+        "role": "TASK-081 accepted-point gate evidence",
+        "sha256": "fb0d8c98c34f9dbdcace419dbe117d5223013f36c7e73cffda1962003990a156"
+      },
+      {
+        "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+        "role": "TASK-075 curated orbit-vector manifest",
+        "sha256": "4465d5e10e84947c368da613fe2e8ae576bc98115d14ef7e1c2bead35fcd4544"
+      }
+    ],
+    "task": "TASK-075"
+  },
+  "schema_version": "episode8-figure5-production-v1"
+}
