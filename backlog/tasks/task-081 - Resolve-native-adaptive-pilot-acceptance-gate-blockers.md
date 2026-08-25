@@ -1,9 +1,11 @@
 ---
 id: TASK-081
 title: Resolve native adaptive pilot acceptance gate blockers
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 16:16'
+updated_date: '2026-08-25 10:51'
 labels:
   - episode-008
   - loca
