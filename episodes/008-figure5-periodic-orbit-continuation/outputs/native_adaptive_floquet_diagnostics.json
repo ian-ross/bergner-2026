@@ -528,17 +528,17 @@
     "continuation_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
       "role": "TASK-075 terminal continuation events",
-      "sha256": "bf89eda322adc392475e430d3e538fa3059eddd36f8e484c472cfc00b2756858"
+      "sha256": "eedfed5455d17edbe353dd2c71fbfd3aa623247a62f06ff7b18e1eb091d4d181"
     },
     "continuation_points": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
       "role": "TASK-075 schema-valid accepted continuation point records",
-      "sha256": "3fdb803753e60b6fb238cb75f7d9e145bab3f6643e73f34cda581e61e8d5c824"
+      "sha256": "d1ffa5f749b8de4f4376c2a2c4ec620793c135bd4d24455e8cea934983c703ed"
     },
     "curated_orbit_manifest": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
       "role": "TASK-075 curated orbit manifest",
-      "sha256": "66d26569a938f88a6d05da3dcd28de2f720cc768041327cc5aab1daa4d15f9cd"
+      "sha256": "89c81821f40015df442ac1ed33e3b2454218de7a8ee75771f75eff49579112cb"
     },
     "curated_orbit_npz": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
@@ -553,7 +553,7 @@
     "full_domain_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
       "role": "TASK-075 terminal target ledger",
-      "sha256": "b867a8479f6d1512784b7333dd6ebc31b91263044986511f52a855d2dbe9a1de"
+      "sha256": "d8a1f3d847fc97ad0b0e56cd46846d9ad07566271665e508afb09f71be57e3e0"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py",
@@ -563,12 +563,12 @@
     "near_hopf_policy": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json",
       "role": "TASK-076 Hopf-limit explicit-gap records",
-      "sha256": "97c6d8c126270a6ae29f7d224cbe95b929cd0c319a02576b5677c4294b2d3ff2"
+      "sha256": "82522b0e33c83bc9b6225055900b88bd8717343e69ad53c4e3b014f79b5f9b46"
     },
     "readme": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation index",
-      "sha256": "24da25331e1ea032e8565275a137d5ea6d7b162ae690571c43183e97ed3334e5"
+      "sha256": "e968f0a147c2b4409b31f5cf8dc95ba8cc840dfecd794829fa5500c0c01dcc5d"
     },
     "task069_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",

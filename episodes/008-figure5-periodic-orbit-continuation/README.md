@@ -17,6 +17,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task075-full-domain-native-adaptive-continuation.md`](docs/task075-full-domain-native-adaptive-continuation.md) documents the TASK-075 full-domain native adaptive target ledger, accepted production point, explicit gaps, sampling-refinement status, and production-v1 artifacts.
 - [`docs/task076-near-hopf-approach-policy.md`](docs/task076-near-hopf-approach-policy.md) documents the TASK-076 near-Hopf evidence review, skipped fit prerequisites, and explicit-gap policy records.
 - [`docs/task077-floquet-postprocessing.md`](docs/task077-floquet-postprocessing.md) documents the TASK-077 Floquet multiplier postprocessing diagnostics for accepted native production orbits.
+- [`docs/task078-stratified-ivp-validation.md`](docs/task078-stratified-ivp-validation.md) documents the TASK-078 stratified independent IVP validation for accepted native production orbits.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
@@ -154,6 +155,20 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_
 ```
 
 The current diagnostic set contains only the accepted `spine-210K` TASK-075 orbit. DOP853 variational integrations over the native piecewise collocation polynomial record the autonomous trivial multiplier, nontrivial multipliers, tolerance-refinement comparisons, and stability classification. Implicit Radau is run as a comparison for the canonical accepted point; near-Hopf/long-period and suspected nontrivial unit-circle crossing strata are explicitly recorded as unavailable until schema-valid accepted production points exist. Unresolved targets, failed targets, Hopf-limit policy records, interpolation, and digitized-paper evidence are not relabeled as regular orbits.
+
+## Stratified independent IVP validation
+
+TASK-078 validates the deduplicated accepted native production orbit set selected from twelve documented categories. The artifact is:
+
+- [`outputs/native_adaptive_ivp_validation.json`](outputs/native_adaptive_ivp_validation.json)
+
+Check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_ivp_validation.py --check
+```
+
+The current TASK-075 ledger has one accepted native production orbit, `spine-210K`, so category deduplication selects that point for DOP853 one-period return and phase-aligned trajectory validation. The DOP853 gates pass. Radau agreement is run for the available headline point; near-Hopf, low/high-temperature interior, worst-holdout, and additional headline/attractor strata are recorded as unavailable or insufficient production evidence rather than filled from unresolved, interpolated, qualification-only, Hopf-limit, or digitized-paper records. TASK-078 does not tune or overwrite native continuation periods.
 
 ## T=210 K equilibrium-linearized period curve
 

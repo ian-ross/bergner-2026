@@ -1327,7 +1327,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
         "role": "TASK-072 measured pilot run manifest",
-        "sha256": "3121f082257aa37739c1116a5bc07b58f946c341fe4cb1c1501fa5f668ec7545"
+        "sha256": "9277e6a438271aa87fbcf573aafbd620434367559d9677efcbaf548055e3b267"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_loca_manifest.json",

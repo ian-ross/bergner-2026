@@ -1,0 +1,543 @@
+{
+  "artifact_id": "task078-stratified-independent-ivp-validation",
+  "artifact_kind": "task078-stratified-independent-ivp-validation",
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "dop853_validation_summary": {
+    "all_selected_points_have_explicit_pass_or_failure_reasons": true,
+    "failed_count": 0,
+    "passed_count": 1,
+    "selected_point_count": 1
+  },
+  "dop853_validations": [
+    {
+      "continuation_point_record_id": "task075-point-spine-210K",
+      "coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -2.9324347616541555
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": 0.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.0532671872264416
+        }
+      },
+      "dop853_one_period_return_and_trajectory": {
+        "closest_return_period_s": 5718.140472335819,
+        "closest_return_scaled_norm": 1.0357769195301319e-07,
+        "failure_reasons": [],
+        "gates": {
+          "period_relative_error": true,
+          "phase_aligned_weighted_orbit_max": true,
+          "phase_aligned_weighted_orbit_rms": true,
+          "scaled_return_max": true,
+          "scaled_return_norm": true,
+          "solver_success": true
+        },
+        "message": "The solver successfully reached the end of the integration interval.",
+        "native_period_s": 5718.140409482163,
+        "nfev": 938,
+        "njev": 0,
+        "nlu": 0,
+        "period_relative_error": 1.0991974985638444e-08,
+        "phase_aligned_weighted_orbit_max": 9.148674689577855e-07,
+        "phase_aligned_weighted_orbit_rms": 1.301726489741433e-07,
+        "phase_sample_count": 257,
+        "scaled_return_max_at_native_period": 8.095497041358554e-08,
+        "scaled_return_norm_at_native_period": 9.12762653396225e-08,
+        "solver": {
+          "atol": 1e-12,
+          "method": "DOP853",
+          "rtol": 1e-10
+        },
+        "success": true,
+        "validation_status": "passed",
+        "wall_clock_s": 0.010177877000387525
+      },
+      "native_period_is_read_only_validation_target": true,
+      "period": {
+        "log_value": 8.651398928278946,
+        "quantity": "nonlinear_period",
+        "unit": "s",
+        "value": 5718.140409482163
+      },
+      "selection_status": "selected_after_category_deduplication",
+      "target_id": "spine-210K"
+    }
+  ],
+  "headline_selection": {
+    "available_hardest_or_headline_target_ids": [
+      "spine-210K"
+    ],
+    "production_evidence_insufficient_for_six_unique_points": true,
+    "requested_hardest_or_headline_count": 6,
+    "selection_rule": "accepted deduplicated production points ordered by current category coverage; unavailable headline strata recorded rather than invented"
+  },
+  "independence_policy": {
+    "native_continuation_periods_overwritten": false,
+    "native_continuation_periods_tuned_by_ivp": false,
+    "native_orbit_vectors_recorrected_by_ivp": false,
+    "native_period_is_read_only_validation_target": true,
+    "unresolved_failed_hopf_interpolated_digitized_or_qualification_only_records_promoted": false,
+    "validation_can_only_record_pass_fail_or_unavailable": true
+  },
+  "input_validation": {
+    "accepted_only_processing": true,
+    "accepted_production_target_count": 1,
+    "continuation_events_schema_valid": true,
+    "continuation_points_schema_valid": true,
+    "orbit_manifest_schema_valid": true,
+    "production_schema_version": "episode8-figure5-production-v1",
+    "schema_valid_accepted_target_ids": [
+      "spine-210K"
+    ]
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "attractor_screen": "perturbed-equilibrium-attractor-screen-v1",
+    "floquet": "episode008-native-adaptive-floquet-diagnostics-v1",
+    "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
+    "ivp_method": "dop853-radau-phase-aligned-return-v1",
+    "ivp_validation": "episode008-native-adaptive-ivp-validation-v1",
+    "schema": "episode8-figure5-production-v1",
+    "stratification": "task078-production-ivp-stratification-v1"
+  },
+  "perturbed_equilibrium_attractor_checks": [
+    {
+      "attractor_gate_pass": false,
+      "attractor_gate_tolerance": 0.05,
+      "closest_orbit_phase": 0.05078125,
+      "closest_orbit_scaled_distance": 0.3773449294794403,
+      "equilibrium_status": "computed",
+      "failure_reasons": [
+        "closest_orbit_scaled_distance_or_solver_success"
+      ],
+      "integration_horizon_periods": 20.0,
+      "message": "The solver successfully reached the end of the integration interval.",
+      "nfev": 1382,
+      "perturbation_amplitude_scaled": 1e-08,
+      "solver_success": true,
+      "target_id": "spine-210K",
+      "trial_id": "scaled-plus-logn",
+      "wall_clock_s": 0.013787969000986777
+    },
+    {
+      "attractor_gate_pass": false,
+      "attractor_gate_tolerance": 0.05,
+      "closest_orbit_phase": 0.05078125,
+      "closest_orbit_scaled_distance": 0.3774044075875292,
+      "equilibrium_status": "computed",
+      "failure_reasons": [
+        "closest_orbit_scaled_distance_or_solver_success"
+      ],
+      "integration_horizon_periods": 20.0,
+      "message": "The solver successfully reached the end of the integration interval.",
+      "nfev": 1322,
+      "perturbation_amplitude_scaled": 1e-08,
+      "solver_success": true,
+      "target_id": "spine-210K",
+      "trial_id": "scaled-minus-logn",
+      "wall_clock_s": 0.013069229000393534
+    },
+    {
+      "attractor_gate_pass": false,
+      "attractor_gate_tolerance": 0.05,
+      "closest_orbit_phase": 0.05078125,
+      "closest_orbit_scaled_distance": 0.3697979881981471,
+      "equilibrium_status": "computed",
+      "failure_reasons": [
+        "closest_orbit_scaled_distance_or_solver_success"
+      ],
+      "integration_horizon_periods": 20.0,
+      "message": "The solver successfully reached the end of the integration interval.",
+      "nfev": 2138,
+      "perturbation_amplitude_scaled": 1e-08,
+      "solver_success": true,
+      "target_id": "spine-210K",
+      "trial_id": "scaled-plus-s",
+      "wall_clock_s": 0.021080268999867258
+    },
+    {
+      "attractor_gate_pass": false,
+      "attractor_gate_tolerance": 0.05,
+      "closest_orbit_phase": 0.05078125,
+      "closest_orbit_scaled_distance": 0.37739423204305006,
+      "equilibrium_status": "computed",
+      "failure_reasons": [
+        "closest_orbit_scaled_distance_or_solver_success"
+      ],
+      "integration_horizon_periods": 20.0,
+      "message": "The solver successfully reached the end of the integration interval.",
+      "nfev": 1238,
+      "perturbation_amplitude_scaled": 1e-08,
+      "solver_success": true,
+      "target_id": "spine-210K",
+      "trial_id": "scaled-mixed-logn-s",
+      "wall_clock_s": 0.012159444000644726
+    }
+  ],
+  "perturbed_equilibrium_attractor_summary": {
+    "available_unique_headline_points": 1,
+    "documented_minimum_unique_points": 4,
+    "failed_trial_count": 4,
+    "failures_are_recorded_not_suppressed": true,
+    "passed_trial_count": 0,
+    "production_evidence_insufficient_for_four_unique_points": true,
+    "trial_count": 4,
+    "unique_target_ids_receiving_trials": [
+      "spine-210K"
+    ]
+  },
+  "production_record_links": {
+    "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+    "continuation_points": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+    "curated_orbit_npz": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+    "curated_orbit_npz_manifest": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+    "floquet_diagnostics": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_floquet_diagnostics.json",
+    "full_domain_summary": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+    "near_hopf_review": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_review.json"
+  },
+  "radau_agreement_checks": [
+    {
+      "agreement_gate_pass": true,
+      "agreement_tolerance": 2e-06,
+      "agreement_vs_dop853": {
+        "scaled_return_max_delta": 4.661701400749928e-09,
+        "scaled_return_norm_delta": 5.49303297278983e-09,
+        "weighted_orbit_rms_delta": 8.727764275739123e-11
+      },
+      "failure_reasons": [],
+      "radau_result": {
+        "closest_return_period_s": 5718.140409482163,
+        "closest_return_scaled_norm": 9.676929831241233e-08,
+        "message": "The solver successfully reached the end of the integration interval.",
+        "native_period_s": 5718.140409482163,
+        "nfev": 2502,
+        "njev": 12,
+        "nlu": 108,
+        "period_relative_error": 0.0,
+        "phase_aligned_weighted_orbit_max": 9.155903083496796e-07,
+        "phase_aligned_weighted_orbit_rms": 1.3025992661690069e-07,
+        "phase_sample_count": 257,
+        "scaled_return_max_at_native_period": 8.561667181433547e-08,
+        "scaled_return_norm_at_native_period": 9.676929831241233e-08,
+        "solver": {
+          "atol": 1e-11,
+          "method": "Radau",
+          "rtol": 1e-09
+        },
+        "success": true,
+        "wall_clock_s": 0.0560661319996143
+      },
+      "selection_reasons": [
+        "canonical_headline",
+        "available_accepted_production_point"
+      ],
+      "selection_status": "run",
+      "target_id": "spine-210K"
+    }
+  ],
+  "radau_agreement_summary": {
+    "passed_count": 1,
+    "production_evidence_insufficient_for_six_unique_points": true,
+    "requested_headline_count": 6,
+    "run_count": 1
+  },
+  "schema_version": "episode008-native-adaptive-ivp-validation-v1",
+  "scope": "Independent IVP evidence for deduplicated schema-valid accepted native production periodic orbits only.",
+  "source_build_identity": {
+    "numpy": "2.4.6",
+    "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
+    "python": "3.11.15",
+    "scipy_integrator": "scipy.integrate.solve_ivp DOP853 and Radau",
+    "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+  },
+  "source_provenance": {
+    "continuation_events": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+      "role": "TASK-075 terminal event records",
+      "sha256": "eedfed5455d17edbe353dd2c71fbfd3aa623247a62f06ff7b18e1eb091d4d181"
+    },
+    "continuation_points": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+      "role": "TASK-075 accepted production point records",
+      "sha256": "d1ffa5f749b8de4f4376c2a2c4ec620793c135bd4d24455e8cea934983c703ed"
+    },
+    "curated_orbit_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+      "role": "TASK-075 curated orbit manifest",
+      "sha256": "89c81821f40015df442ac1ed33e3b2454218de7a8ee75771f75eff49579112cb"
+    },
+    "curated_orbit_npz": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+      "role": "TASK-075 accepted native orbit vectors",
+      "sha256": "21920beec23de4973d67a58c1e530d4517e9a23ba1fe98441d94bc94b627b978"
+    },
+    "doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task078-stratified-ivp-validation.md",
+      "role": "TASK-078 documentation",
+      "sha256": "674b85d4a7121d3a438afdaa426c3c880b7eb462ea87afcdd98613932384f3d3"
+    },
+    "floquet_diagnostics": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_floquet_diagnostics.json",
+      "role": "TASK-077 Floquet diagnostics",
+      "sha256": "531f7981507439fd8e3dba2fea3241b0cee110dc9ddd875174cd1b5c764db749"
+    },
+    "full_domain_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+      "role": "TASK-075 target ledger and holdout status",
+      "sha256": "d8a1f3d847fc97ad0b0e56cd46846d9ad07566271665e508afb09f71be57e3e0"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_ivp_validation.py",
+      "role": "TASK-078 IVP validation generator",
+      "sha256": "fa1a3642a378e9ca31d2913fe2e8497ae9b0942ac42b4a1a20fbc7e7da42bb7f"
+    },
+    "midpoint_results": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/fixed_mesh_midpoint_results.json",
+      "role": "state scaling for weighted IVP distances",
+      "sha256": "c8d9364262b93f2b4694e1f473c131eb3dec165f3a3e9d72d0f0b47738852f49"
+    },
+    "near_hopf_review": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_review.json",
+      "role": "TASK-076 near-Hopf availability review",
+      "sha256": "ef254bd7b7ee405ba4145c43ddb4c5f2b3492847bc9e4bc23d2c97aa7a4b2f54"
+    },
+    "readme": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+      "role": "Episode 008 documentation index",
+      "sha256": "e968f0a147c2b4409b31f5cf8dc95ba8cc840dfecd794829fa5500c0c01dcc5d"
+    },
+    "task075_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",
+      "role": "TASK-075 accepted production point and explicit gaps",
+      "sha256": "c189c0fe45d7338a4e1e245ee763117856d5e327cc7f177c78502375fe7c5b7c"
+    },
+    "task077_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task077-floquet-postprocessing.md",
+      "role": "TASK-077 Floquet worst-trivial-multiplier input",
+      "sha256": "6ec080aef3be51e20e0c750505ba6324e547d934b0870540bfac3f4231fc9432"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "role": "Python environment lockfile",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  },
+  "stratification_policy": {
+    "available_category_count": 7,
+    "category_selection": [
+      {
+        "category_id": "qualification_point_lineage",
+        "deduplicated_into_validation_set": true,
+        "label": "Qualification points",
+        "reason": "accepted spine-210K orbit inherits the adaptive-guard-rho-0 qualification/restart lineage",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "canonical_spine_anchor",
+        "deduplicated_into_validation_set": false,
+        "label": "Canonical rho=0 spine anchor",
+        "reason": "only accepted rho=0 canonical spine production orbit",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "restart_remesh_boundary",
+        "deduplicated_into_validation_set": false,
+        "label": "Native remesh/restart boundary accepted point",
+        "reason": "TASK-081 exact post-remesh restart vector accepted by TASK-075",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "t210_lower_hopf_side",
+        "deduplicated_into_validation_set": false,
+        "label": "T=210 K lower Hopf side where available",
+        "reason": "T=210 K negative-rho Hopf-side production targets are explicit TASK-075 gaps",
+        "selected_point_record_id": null,
+        "selected_target_id": null,
+        "status": "unavailable_explicit_gap"
+      },
+      {
+        "category_id": "t210_upper_hopf_side",
+        "deduplicated_into_validation_set": false,
+        "label": "T=210 K upper Hopf side where available",
+        "reason": "T=210 K positive-rho Hopf-side production targets are explicit TASK-075 gaps",
+        "selected_point_record_id": null,
+        "selected_target_id": null,
+        "status": "unavailable_explicit_gap"
+      },
+      {
+        "category_id": "low_temperature_interior",
+        "deduplicated_into_validation_set": false,
+        "label": "Low-temperature interior accepted point",
+        "reason": "low-temperature interior production targets are explicit TASK-075 gaps",
+        "selected_point_record_id": null,
+        "selected_target_id": null,
+        "status": "unavailable_explicit_gap"
+      },
+      {
+        "category_id": "high_temperature_interior",
+        "deduplicated_into_validation_set": false,
+        "label": "High-temperature interior accepted point",
+        "reason": "high-temperature interior production targets are explicit TASK-075 gaps",
+        "selected_point_record_id": null,
+        "selected_target_id": null,
+        "status": "unavailable_explicit_gap"
+      },
+      {
+        "category_id": "worst_interpolation_holdout",
+        "deduplicated_into_validation_set": false,
+        "label": "Worst interpolation holdout",
+        "reason": "TASK-075 holdout errors are not_evaluated because fewer than three accepted points exist",
+        "selected_point_record_id": null,
+        "selected_target_id": null,
+        "status": "unavailable_explicit_gap"
+      },
+      {
+        "category_id": "largest_period",
+        "deduplicated_into_validation_set": false,
+        "label": "Largest accepted nonlinear period",
+        "reason": "maximum period among accepted production points after explicit gaps are excluded",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "shortest_period",
+        "deduplicated_into_validation_set": false,
+        "label": "Shortest accepted nonlinear period",
+        "reason": "minimum period among accepted production points after explicit gaps are excluded",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "worst_accepted_defect",
+        "deduplicated_into_validation_set": false,
+        "label": "Worst accepted independent defect",
+        "reason": "largest independent defect among accepted production points",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      },
+      {
+        "category_id": "worst_floquet_trivial_multiplier",
+        "deduplicated_into_validation_set": false,
+        "label": "Worst Floquet trivial multiplier",
+        "reason": "largest distance of the autonomous trivial Floquet multiplier from +1 among accepted production points",
+        "selected_point_record_id": "task075-point-spine-210K",
+        "selected_target_id": "spine-210K",
+        "status": "available"
+      }
+    ],
+    "deduplicated_selected_point_count": 1,
+    "deduplicated_selected_target_ids": [
+      "spine-210K"
+    ],
+    "deduplication_rule": "one IVP validation per unique accepted native production target after category selection",
+    "documented_categories": [
+      {
+        "category_id": "qualification_point_lineage",
+        "label": "Qualification points",
+        "required_by_task": true
+      },
+      {
+        "category_id": "t210_lower_hopf_side",
+        "label": "T=210 K lower Hopf side where available",
+        "required_by_task": true
+      },
+      {
+        "category_id": "t210_upper_hopf_side",
+        "label": "T=210 K upper Hopf side where available",
+        "required_by_task": true
+      },
+      {
+        "category_id": "low_temperature_interior",
+        "label": "Low-temperature interior accepted point",
+        "required_by_task": true
+      },
+      {
+        "category_id": "high_temperature_interior",
+        "label": "High-temperature interior accepted point",
+        "required_by_task": true
+      },
+      {
+        "category_id": "largest_period",
+        "label": "Largest accepted nonlinear period",
+        "required_by_task": true
+      },
+      {
+        "category_id": "shortest_period",
+        "label": "Shortest accepted nonlinear period",
+        "required_by_task": true
+      },
+      {
+        "category_id": "worst_accepted_defect",
+        "label": "Worst accepted independent defect",
+        "required_by_task": true
+      },
+      {
+        "category_id": "worst_floquet_trivial_multiplier",
+        "label": "Worst Floquet trivial multiplier",
+        "required_by_task": true
+      },
+      {
+        "category_id": "worst_interpolation_holdout",
+        "label": "Worst interpolation holdout",
+        "required_by_task": true
+      },
+      {
+        "category_id": "canonical_spine_anchor",
+        "label": "Canonical rho=0 spine anchor",
+        "required_by_task": true
+      },
+      {
+        "category_id": "restart_remesh_boundary",
+        "label": "Native remesh/restart boundary accepted point",
+        "required_by_task": true
+      }
+    ],
+    "documented_category_count": 12,
+    "unavailable_category_count": 5,
+    "unavailable_strata_remain_explicit_gaps": true,
+    "version": "task078-production-ivp-stratification-v1"
+  },
+  "validation_tolerances": {
+    "period_relative": 1e-05,
+    "phase_aligned_weighted_orbit": 1e-05,
+    "radau_agreement": 2e-06,
+    "scaled_return_norm_or_max": 1e-05
+  },
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_ivp_validation.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json"
+    ],
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_native_adaptive_ivp_validation.py -q"
+    ]
+  }
+}

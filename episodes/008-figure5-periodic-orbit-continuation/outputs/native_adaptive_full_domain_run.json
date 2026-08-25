@@ -37,7 +37,7 @@
         "target_id": "spine-210K",
         "tolerance": 0.001,
         "validation_status": "passed",
-        "wall_clock_s": 0.005809477999719093
+        "wall_clock_s": 0.005903137000132119
       },
       "same_coordinate_python": {
         "backend": "independent Python three-stage fixed-parameter correction on exact native restart mesh",
@@ -175,9 +175,9 @@
   "artifact_id": "task075-native-adaptive-full-domain-run",
   "artifact_kind": "task075-native-adaptive-full-domain-run",
   "measured_resource_accounting": {
-    "cpu_time_s": 0.009324000000000332,
-    "max_rss_kib": 110180,
-    "wall_clock_s": 0.009336234999864246
+    "cpu_time_s": 0.009076999999999558,
+    "max_rss_kib": 109716,
+    "wall_clock_s": 0.00908939900000405
   },
   "production_authorization": {
     "authorized_by": "TASK-081",
@@ -186,11 +186,11 @@
     "task081_decision": "task075_authorized_under_retained_v1_method"
   },
   "production_schema_artifact_sha256": {
-    "continuation_events": "bf89eda322adc392475e430d3e538fa3059eddd36f8e484c472cfc00b2756858",
-    "continuation_points": "3fdb803753e60b6fb238cb75f7d9e145bab3f6643e73f34cda581e61e8d5c824",
+    "continuation_events": "eedfed5455d17edbe353dd2c71fbfd3aa623247a62f06ff7b18e1eb091d4d181",
+    "continuation_points": "d1ffa5f749b8de4f4376c2a2c4ec620793c135bd4d24455e8cea934983c703ed",
     "curated_orbit_npz": "21920beec23de4973d67a58c1e530d4517e9a23ba1fe98441d94bc94b627b978",
-    "curated_orbit_npz_manifest": "66d26569a938f88a6d05da3dcd28de2f720cc768041327cc5aab1daa4d15f9cd",
-    "run_metadata": "04460387c07d68d2f4696a35bf321faac35a1d97a339cf22da840dd0860877cb"
+    "curated_orbit_npz_manifest": "89c81821f40015df442ac1ed33e3b2454218de7a8ee75771f75eff49579112cb",
+    "run_metadata": "43503b97637cef8ea150ef44fda12bd51138832fd31b54863124730aceb64b54"
   },
   "production_schema_artifacts": {
     "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
@@ -561,7 +561,7 @@
     "readme": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation index",
-      "sha256": "24da25331e1ea032e8565275a137d5ea6d7b162ae690571c43183e97ed3334e5"
+      "sha256": "e968f0a147c2b4409b31f5cf8dc95ba8cc840dfecd794829fa5500c0c01dcc5d"
     },
     "task069_doc": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
@@ -576,27 +576,27 @@
     "task071_profile": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
       "role": "TASK-071 measured native adaptive resource profile",
-      "sha256": "8a4cb57e4e847ede84b9d677c180ec1da15ff2179a4290686dd9e0b2e225edad"
+      "sha256": "fe49f581414531bfdd71b30a82120b4af15072f2ed9869eed1a8326e6f83821a"
     },
     "task073_reconciliation": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_reconciliation.json",
       "role": "TASK-073 pilot gate decision input",
-      "sha256": "d5c9a366e43ca924d1aeb38e7b0c0d8b6721e6f98f352ae6bccfcb3eff7c24e4"
+      "sha256": "3b0a7f0637be8bb54b016bf2aa9fa04c6bcdbd38d3655e7312aca90e3911bb92"
     },
     "task081_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_events.json",
       "role": "TASK-081 production-v1 event source",
-      "sha256": "5fb59190cccee6211ac68fa36bec16e06b12cedfbe7074241071d06658740279"
+      "sha256": "6b9c2175af3461b2af566c4d94ae9a84283eb8d0d6cbba9ea59325bd65632fa5"
     },
     "task081_followup": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup.json",
       "role": "TASK-081 full-domain authorization and accepted point",
-      "sha256": "26d731fa55becadbba36a999c2a3e84a1fece719c6d813a837bc2017393429c5"
+      "sha256": "42a6c97df439bb9876bbf639b4ec607fa46441f74ea91764de2316eb6630b7e0"
     },
     "task081_run_metadata": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json",
       "role": "TASK-081 run metadata source",
-      "sha256": "dc7982417c5497292f0c8f8a8db16ca8e2d1de90b537268c7e1966b61c4bc876"
+      "sha256": "b223631ad7fcbdeaf5ea44513773121a7278b1288e9c3a2bd4bc479c7e98139d"
     },
     "uv_lock": {
       "path": "uv.lock",

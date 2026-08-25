@@ -1438,7 +1438,7 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
         "role": "TASK-072 original measured pilot ledger",
-        "sha256": "e679d8135ae353b7b41e94ec245d6cff0fe462796fc52c5b70739ccdbd2496b6"
+        "sha256": "62096ce94e93a77d9d858ac04cbfb900ab699ccddc641d9385709b6160ffd262"
       }
     ],
     "task": "TASK-081"

@@ -31,12 +31,12 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_resource_profile.json",
         "role": "TASK-071 measured resource profile baseline",
-        "sha256": "8a4cb57e4e847ede84b9d677c180ec1da15ff2179a4290686dd9e0b2e225edad"
+        "sha256": "fe49f581414531bfdd71b30a82120b4af15072f2ed9869eed1a8326e6f83821a"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_pilot_gate_followup_run_metadata.json",
         "role": "TASK-081 accepted gate run metadata",
-        "sha256": "dc7982417c5497292f0c8f8a8db16ca8e2d1de90b537268c7e1966b61c4bc876"
+        "sha256": "b223631ad7fcbdeaf5ea44513773121a7278b1288e9c3a2bd4bc479c7e98139d"
       }
     ],
     "task": "TASK-075"
@@ -88,16 +88,16 @@
     "resource_accounting": {
       "cpu_time": {
         "unit": "s",
-        "value": 0.009324000000000332
+        "value": 0.009076999999999558
       },
       "max_rss": {
         "unit": "KiB",
-        "value": 110180
+        "value": 109716
       },
       "measurement_scope": "artifact_generation_and_curation; unresolved policy gaps do not claim native C++ per-target solve time",
       "wall_clock": {
         "unit": "s",
-        "value": 0.009336234999864246
+        "value": 0.00908939900000405
       }
     },
     "run_id": "task075-native-adaptive-full-domain",
