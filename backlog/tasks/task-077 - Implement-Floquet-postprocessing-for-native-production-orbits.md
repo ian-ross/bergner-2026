@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 12:20'
+updated_date: '2026-08-25 12:32'
 labels:
   - episode-008
   - floquet
@@ -25,9 +25,9 @@ Compute Floquet multiplier diagnostics from saved native collocation orbits as p
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 DOP853 variational integration over native piecewise collocation polynomials records trivial and nontrivial multipliers, tolerance-refinement comparisons, stability classifications, and provenance for schema-valid accepted production points
-- [ ] #2 Implicit Radau comparisons are run at stratified difficult points and suspected unit-circle crossings, with ambiguous or unstable classifications recorded rather than suppressed
-- [ ] #3 Floquet diagnostics link to continuation records and do not relabel failed/unresolved targets or Hopf-limit equilibrium records as regular orbits
+- [x] #1 DOP853 variational integration over native piecewise collocation polynomials records trivial and nontrivial multipliers, tolerance-refinement comparisons, stability classifications, and provenance for schema-valid accepted production points
+- [x] #2 Implicit Radau comparisons are run at stratified difficult points and suspected unit-circle crossings, with ambiguous or unstable classifications recorded rather than suppressed
+- [x] #3 Floquet diagnostics link to continuation records and do not relabel failed/unresolved targets or Hopf-limit equilibrium records as regular orbits
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -45,4 +45,13 @@ Compute Floquet multiplier diagnostics from saved native collocation orbits as p
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-077: moved task to In Progress, assigned to @iross, reviewed dependencies TASK-069/TASK-070/TASK-075 and Episode 008 documentation/artifacts. No implementation changes have been made yet; pausing for plan confirmation.
+
+Plan approved and implementation completed. Added TASK-077 Floquet postprocessing generator, artifact, docs, and focused tests. Regenerated README/source-hash-dependent Episode 008 artifacts after adding the task documentation link.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py --check`: passed
+- Production validators for TASK-075 continuation points/events/run metadata/orbit manifest: passed
+- Focused Episode 008 TASK-071/072/073/081/075/076/074/077/final reconciliation tests: 54 passed
+- Full suite `uv run pytest -q`: 382 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
