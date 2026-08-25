@@ -1,9 +1,11 @@
 ---
 id: TASK-079
 title: Build Figure 5 interpolation and browser dataset artifact
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-25 13:21'
 labels:
   - episode-008
   - interpolation
