@@ -1,9 +1,11 @@
 ---
 id: TASK-080
 title: Produce final Figure 5 paper comparison and browser-ready artifacts
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-25 13:59'
 labels:
   - episode-008
   - figures
