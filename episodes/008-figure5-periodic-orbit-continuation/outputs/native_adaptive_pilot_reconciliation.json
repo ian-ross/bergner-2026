@@ -61,7 +61,7 @@
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot.json",
       "role": "measured native adaptive pilot terminal ledger",
       "schema_version": "episode008-native-adaptive-measured-pilot-v1",
-      "sha256": "03184a7eb94fdeb5376f60ebafaaf5a641a148d402d0c35884791afd0b82941e"
+      "sha256": "e679d8135ae353b7b41e94ec245d6cff0fe462796fc52c5b70739ccdbd2496b6"
     },
     {
       "artifact_kind": "continuation-events",
@@ -69,7 +69,7 @@
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_events.json",
       "role": "production-v1 continuation events",
       "schema_version": "episode8-figure5-production-v1",
-      "sha256": "4ae78114b7408bd2fab4f0a3d1dd234e6d1745b81b8907a20f1bd33e8382307b"
+      "sha256": "232ea26242c1aee7e645b5f0efa723f17c1c07ccc336fcf2fefd2800f5821ec7"
     },
     {
       "artifact_kind": "run-metadata",
@@ -77,7 +77,7 @@
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot_run_metadata.json",
       "role": "production-v1 run metadata",
       "schema_version": "episode8-figure5-production-v1",
-      "sha256": "c546ab981be3dba8c4f3982fcb486397db297a3caad23d91b2723ea9ce32a0be"
+      "sha256": "0762d4f5bf95dbdc257f40824c56d2eda4fa9a99726d49277baed4aed70f62ed"
     },
     {
       "artifact_kind": "native-adaptive-driver-run-manifest",
@@ -85,7 +85,7 @@
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_measured_pilot/manifest.json",
       "role": "resumable pilot run manifest",
       "schema_version": "episode008-native-adaptive-driver-v1",
-      "sha256": "5f9eae7e8b63b2576c5b6fb08747cadc620649dfc28becf550a3dcc64e65da88"
+      "sha256": "3121f082257aa37739c1116a5bc07b58f946c341fe4cb1c1501fa5f668ec7545"
     },
     {
       "artifact_kind": "task06804-independent-python-validation-of-native-adaptive-points",
@@ -164,7 +164,7 @@
       "name": "episode008_readme",
       "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
       "role": "Episode 008 documentation index",
-      "sha256": "9631416ad4d0fab12e2a924641eb04c5e8dd4b5e31d852236addba0d83e85550"
+      "sha256": "24da25331e1ea032e8565275a137d5ea6d7b162ae690571c43183e97ed3334e5"
     },
     "generator": {
       "name": "task073_reconciliation_generator",

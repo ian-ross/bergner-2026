@@ -1,0 +1,608 @@
+{
+  "artifact_id": "task077-native-adaptive-floquet-diagnostics",
+  "artifact_kind": "task077-native-adaptive-floquet-diagnostics",
+  "coordinate_conventions": {
+    "orbit_state": "transformed-state-log_n-log_q-s-v1",
+    "parameter_coordinates": "temperature-log_w-rho-spine-slices-v1",
+    "period": "physical-period-seconds-logP-internal-v1",
+    "phase": "normalized-phase-theta-in-[0,1]-periodic-v1"
+  },
+  "diagnostic_parameters": {
+    "dop853_refinement_tolerance": 0.0001,
+    "dop853_tolerance_ladder": [
+      {
+        "atol": 1e-09,
+        "method": "DOP853",
+        "name": "dop853_coarse",
+        "rtol": 1e-07
+      },
+      {
+        "atol": 1e-11,
+        "method": "DOP853",
+        "name": "dop853_production",
+        "rtol": 1e-09
+      },
+      {
+        "atol": 3e-13,
+        "method": "DOP853",
+        "name": "dop853_refined",
+        "rtol": 3e-11
+      }
+    ],
+    "nontrivial_unit_circle_tolerance": 0.0001,
+    "radau_comparison_tolerance": 0.0005,
+    "radau_tolerance": {
+      "atol": 1e-11,
+      "method": "Radau",
+      "name": "radau_comparison",
+      "rtol": 1e-09
+    },
+    "trivial_multiplier_tolerance": 0.0001
+  },
+  "floquet_diagnostics": [
+    {
+      "continuation_point_record_id": "task075-point-spine-210K",
+      "coordinates": {
+        "convention": "temperature-log_w-rho-spine-slices-v1",
+        "log_w": {
+          "unit": "ln(m s^-1)",
+          "value": -2.9324347616541555
+        },
+        "rho": {
+          "unit": "dimensionless",
+          "value": 0.0
+        },
+        "temperature": {
+          "unit": "K",
+          "value": 210.0
+        },
+        "temperature_hat": {
+          "unit": "dimensionless",
+          "value": -0.2
+        },
+        "w": {
+          "unit": "m s^-1",
+          "value": 0.0532671872264416
+        }
+      },
+      "diagnostic_acceptance": {
+        "dop853_refinement_gate": true,
+        "floquet_diagnostics_recorded": true,
+        "radau_comparison_gate": true,
+        "solver_success": true,
+        "trivial_multiplier_gate": true
+      },
+      "dop853_tolerance_refinement": {
+        "all_comparisons_pass": true,
+        "comparisons": [
+          {
+            "comparison_gate_pass": true,
+            "from": "dop853_coarse",
+            "max_abs_multiplier_delta": 1.332243736640315e-05,
+            "to": "dop853_production",
+            "tolerance": 0.0001
+          },
+          {
+            "comparison_gate_pass": true,
+            "from": "dop853_production",
+            "max_abs_multiplier_delta": 6.068118072022344e-06,
+            "to": "dop853_refined",
+            "tolerance": 0.0001
+          }
+        ]
+      },
+      "dop853_variational_integrations": [
+        {
+          "message": "The solver successfully reached the end of the integration interval.",
+          "monodromy_condition_number": 34508326410.926674,
+          "monodromy_determinant": 2.11743518405858e-05,
+          "monodromy_matrix": [
+            [
+              -10.790651677557019,
+              9.813322728376727,
+              -3630.948311278044
+            ],
+            [
+              -5.362745651377671,
+              4.818816181923545,
+              -1800.9103207554474
+            ],
+            [
+              0.022687757379382997,
+              -0.020451635588711183,
+              7.623030061708155
+            ]
+          ],
+          "multipliers": [
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.9999932401873559,
+              "real": 0.9999932401873559
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.6511688082133943,
+              "real": 0.6511688082133943
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 3.2517673926391086e-05,
+              "real": 3.2517673926391086e-05
+            }
+          ],
+          "multipliers_ordering": "first value is closest to autonomous trivial multiplier +1; remaining values sorted by this deterministic rule",
+          "name": "dop853_coarse",
+          "nfev": 554,
+          "njev": 0,
+          "nlu": 0,
+          "solver": {
+            "atol": 1e-09,
+            "method": "DOP853",
+            "rtol": 1e-07
+          },
+          "success": true
+        },
+        {
+          "message": "The solver successfully reached the end of the integration interval.",
+          "monodromy_condition_number": 34508367642.6418,
+          "monodromy_determinant": 2.1174335672382906e-05,
+          "monodromy_matrix": [
+            [
+              -10.790648030410448,
+              9.813328733879915,
+              -3630.949121959917
+            ],
+            [
+              -5.362743045935727,
+              4.818818434626254,
+              -1800.9104543990752
+            ],
+            [
+              0.0226877406219056,
+              -0.0204516399788407,
+              7.623028704010457
+            ]
+          ],
+          "multipliers": [
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 1.0000065626247223,
+              "real": 1.0000065626247223
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.6511600279471982,
+              "real": 0.6511600279471982
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 3.2517654347303495e-05,
+              "real": 3.2517654347303495e-05
+            }
+          ],
+          "multipliers_ordering": "first value is closest to autonomous trivial multiplier +1; remaining values sorted by this deterministic rule",
+          "name": "dop853_production",
+          "nfev": 902,
+          "njev": 0,
+          "nlu": 0,
+          "solver": {
+            "atol": 1e-11,
+            "method": "DOP853",
+            "rtol": 1e-09
+          },
+          "success": true
+        },
+        {
+          "message": "The solver successfully reached the end of the integration interval.",
+          "monodromy_condition_number": 34508368530.55267,
+          "monodromy_determinant": 2.1174338510758023e-05,
+          "monodromy_matrix": [
+            [
+              -10.79064952045241,
+              9.813328562698706,
+              -3630.949242622567
+            ],
+            [
+              -5.362743695016817,
+              4.8188182626924165,
+              -1800.9104838275596
+            ],
+            [
+              0.022687742090795417,
+              -0.02045163809228694,
+              7.6230283983964355
+            ]
+          ],
+          "multipliers": [
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 1.0000004945066503,
+              "real": 1.0000004945066503
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.6511641284785378,
+              "real": 0.6511641284785378
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 3.251765125406522e-05,
+              "real": 3.251765125406522e-05
+            }
+          ],
+          "multipliers_ordering": "first value is closest to autonomous trivial multiplier +1; remaining values sorted by this deterministic rule",
+          "name": "dop853_refined",
+          "nfev": 1730,
+          "njev": 0,
+          "nlu": 0,
+          "solver": {
+            "atol": 3e-13,
+            "method": "DOP853",
+            "rtol": 3e-11
+          },
+          "success": true
+        }
+      ],
+      "orbit_source": {
+        "array_keys": [
+          "spine_210K_boundaries",
+          "spine_210K_unknowns",
+          "spine_210K_phase_values",
+          "spine_210K_phase_derivatives"
+        ],
+        "interval_count": 84,
+        "manifest_artifact_id": "task075-native-adaptive-full-domain-orbit-manifest",
+        "npz_path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+        "restart_vector_sha256": "795cd6ea64e3de0e5c47803ac98f0d3f38ab0b9fc15eab467c1e6e0ac12a85c9",
+        "stage_count": 3,
+        "unknown_size": 1009
+      },
+      "period": {
+        "log_value": 8.651398928278946,
+        "quantity": "nonlinear_period",
+        "unit": "s",
+        "value": 5718.140409482163
+      },
+      "postprocessing_boundary": {
+        "base_orbit_source": "saved native collocation polynomial from TASK-075 accepted production point",
+        "not_a_continuation_acceptance_gate": true,
+        "not_a_nonlinear_unknown": true,
+        "not_task068_acceptance_evidence": true
+      },
+      "production_multiplier_classification": {
+        "ambiguous": false,
+        "max_nontrivial_modulus": 0.6511600279471982,
+        "nontrivial_multipliers": [
+          {
+            "argument_rad": 0.0,
+            "imag": 0.0,
+            "modulus": 0.6511600279471982,
+            "real": 0.6511600279471982
+          },
+          {
+            "argument_rad": 0.0,
+            "imag": 0.0,
+            "modulus": 3.2517654347303495e-05,
+            "real": 3.2517654347303495e-05
+          }
+        ],
+        "nontrivial_unit_circle_tolerance": 0.0001,
+        "stability_classification": "orbitally_stable_autonomous_trivial_multiplier",
+        "stable": true,
+        "suspected_nontrivial_unit_circle_indices": [],
+        "trivial_distance_from_one": 6.5626247223171674e-06,
+        "trivial_gate_pass": true,
+        "trivial_gate_tolerance": 0.0001,
+        "trivial_multiplier": {
+          "argument_rad": 0.0,
+          "imag": 0.0,
+          "modulus": 1.0000065626247223,
+          "real": 1.0000065626247223
+        },
+        "trivial_multiplier_index": 0,
+        "unstable": false
+      },
+      "radau_comparison": {
+        "ambiguous_or_unstable_classification_recorded": false,
+        "classification": {
+          "ambiguous": false,
+          "max_nontrivial_modulus": 0.6511638094580688,
+          "nontrivial_multipliers": [
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.6511638094580688,
+              "real": 0.6511638094580688
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 3.251765206608977e-05,
+              "real": 3.251765206608977e-05
+            }
+          ],
+          "nontrivial_unit_circle_tolerance": 0.0001,
+          "stability_classification": "orbitally_stable_autonomous_trivial_multiplier",
+          "stable": true,
+          "suspected_nontrivial_unit_circle_indices": [],
+          "trivial_distance_from_one": 9.835876646491215e-07,
+          "trivial_gate_pass": true,
+          "trivial_gate_tolerance": 0.0001,
+          "trivial_multiplier": {
+            "argument_rad": 0.0,
+            "imag": 0.0,
+            "modulus": 1.0000009835876646,
+            "real": 1.0000009835876646
+          },
+          "trivial_multiplier_index": 0,
+          "unstable": false
+        },
+        "comparison_gate_pass": true,
+        "comparison_tolerance": 0.0005,
+        "max_abs_multiplier_delta_vs_dop853_production": 5.579037057668046e-06,
+        "result": {
+          "message": "The solver successfully reached the end of the integration interval.",
+          "monodromy_condition_number": 34508367175.228836,
+          "monodromy_determinant": 2.117433902177605e-05,
+          "monodromy_matrix": [
+            [
+              -10.790649607749097,
+              9.813328390464605,
+              -3630.949192990993
+            ],
+            [
+              -5.362743841176532,
+              4.818818270411779,
+              -1800.9104938369385
+            ],
+            [
+              0.02268774332603165,
+              -0.020451638683191976,
+              7.623028648035119
+            ]
+          ],
+          "multipliers": [
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 1.0000009835876646,
+              "real": 1.0000009835876646
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 0.6511638094580688,
+              "real": 0.6511638094580688
+            },
+            {
+              "argument_rad": 0.0,
+              "imag": 0.0,
+              "modulus": 3.251765206608977e-05,
+              "real": 3.251765206608977e-05
+            }
+          ],
+          "multipliers_ordering": "first value is closest to autonomous trivial multiplier +1; remaining values sorted by this deterministic rule",
+          "name": "radau_comparison",
+          "nfev": 7629,
+          "njev": 10,
+          "nlu": 168,
+          "solver": {
+            "atol": 1e-11,
+            "method": "Radau",
+            "rtol": 1e-09
+          },
+          "success": true
+        },
+        "selection_reasons": [
+          "canonical_accepted_production_point",
+          "autonomous_trivial_multiplier_unit_circle_consistency"
+        ],
+        "selection_status": "run",
+        "stratified_difficult_point": "canonical_headline_regular_accepted_point; near_hopf_or_mesh_stagnation_strata_unavailable_in_current_accepted_set",
+        "suspected_unit_circle_crossing": false
+      },
+      "target_id": "spine-210K",
+      "terminal_event_id": "task075-terminal-spine-210K",
+      "validity": {
+        "authoritative": true,
+        "source": "computed_native_adaptive",
+        "status": "accepted"
+      },
+      "variational_problem": {
+        "equation": "dPhi/dtheta = P * Dg(x_collocation(theta)) * Phi, Phi(0)=I",
+        "independent_variable": "normalized phase theta in [0, 1]",
+        "polynomial_source": "native piecewise three-stage Gauss collocation polynomial",
+        "rhs_version": "transformed-state-autonomous-variational-v1",
+        "state_convention": "transformed-state-log_n-log_q-s-v1"
+      }
+    }
+  ],
+  "floquet_policy": {
+    "failed_unresolved_and_hopf_limit_records_never_promoted_to_regular_orbits": true,
+    "not_nonlinear_unknowns": true,
+    "not_task068_acceptance_evidence": true,
+    "not_task075_continuation_acceptance_gate": true,
+    "postprocessing_only": true
+  },
+  "input_validation": {
+    "accepted_only_processing": true,
+    "continuation_events_schema_valid": true,
+    "continuation_points_schema_valid": true,
+    "orbit_manifest_schema_valid": true,
+    "production_schema_version": "episode8-figure5-production-v1",
+    "schema_valid_accepted_point_ids": [
+      "task075-point-spine-210K"
+    ]
+  },
+  "method_versions": {
+    "adaptive": "external-gauss3-hr-adaptive-v1",
+    "continuation": "native-loca-gauss-fixed-mesh-pseudo-arclength-v1",
+    "diagnostics": "episode008-native-adaptive-floquet-diagnostics-v1",
+    "floquet": "collocation-polynomial-variational-postprocess-v1",
+    "full_domain_run": "episode008-native-adaptive-full-domain-run-v1",
+    "orbit_source": "task075-curated-orbit-npz-manifest",
+    "schema": "episode8-figure5-production-v1",
+    "variational_rhs": "transformed-state-autonomous-variational-v1"
+  },
+  "non_orbit_policy": {
+    "accepted_regular_orbit_count": 1,
+    "failed_targets_not_relabelled": 0,
+    "hopf_limit_equilibrium_records_not_regular_orbits": true,
+    "interpolation_or_digitized_paper_used_for_floquet": false,
+    "near_hopf_policy_record_count": 2,
+    "near_hopf_stops_not_relabelled": 0,
+    "nonaccepted_target_ids_sample": [
+      "move-225K-to-spine-rho0",
+      "slice-190K-rho--0.97",
+      "slice-190K-rho--0.90",
+      "slice-190K-rho--0.75",
+      "slice-190K-rho--0.50",
+      "slice-190K-rho--0.25",
+      "spine-190K",
+      "slice-190K-rho-+0.25",
+      "slice-190K-rho-+0.50",
+      "slice-190K-rho-+0.75",
+      "slice-190K-rho-+0.90",
+      "slice-190K-rho-+0.97"
+    ],
+    "regular_orbit_source": "TASK-075 continuation_points with validity.status == accepted and computed_native_adaptive source",
+    "tripwire_stops_not_relabelled": 0,
+    "unresolved_targets_not_relabelled": 297
+  },
+  "production_record_links": {
+    "continuation_events": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+    "continuation_points": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+    "curated_orbit_npz": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+    "curated_orbit_npz_manifest": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+    "full_domain_summary": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+    "near_hopf_policy_records": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json"
+  },
+  "radau_comparison_summary": {
+    "accepted_point_count": 1,
+    "ambiguous_or_unstable_classifications_recorded_not_suppressed": true,
+    "canonical_headline_regular_ids": [
+      "task075-point-spine-210K"
+    ],
+    "radau_run_target_ids": [
+      "spine-210K"
+    ],
+    "stratified_difficult_points": [
+      {
+        "status": "run",
+        "stratum": "canonical accepted regular production point",
+        "target_ids": [
+          "spine-210K"
+        ]
+      },
+      {
+        "status": "not_available_no_schema_valid_accepted_near_hopf_points",
+        "stratum": "near-Hopf or long-period accepted approach point",
+        "target_ids": []
+      },
+      {
+        "status": "not_available_no_nontrivial_crossing_candidate_detected",
+        "stratum": "suspected nontrivial unit-circle crossing",
+        "target_ids": []
+      }
+    ]
+  },
+  "schema_version": "episode008-native-adaptive-floquet-diagnostics-v1",
+  "scope": "Floquet multiplier postprocessing for saved native adaptive production collocation orbits; diagnostics only, not nonlinear unknowns or acceptance evidence.",
+  "source_build_identity": {
+    "numpy": "2.4.6",
+    "platform": "Linux-7.1.8-1-default-x86_64-with-glibc2.43",
+    "python": "3.11.15",
+    "scipy_integrator": "scipy.integrate.solve_ivp DOP853 and Radau",
+    "uv_lock_sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+  },
+  "source_provenance": {
+    "continuation_events": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
+      "role": "TASK-075 terminal continuation events",
+      "sha256": "bf89eda322adc392475e430d3e538fa3059eddd36f8e484c472cfc00b2756858"
+    },
+    "continuation_points": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
+      "role": "TASK-075 schema-valid accepted continuation point records",
+      "sha256": "3fdb803753e60b6fb238cb75f7d9e145bab3f6643e73f34cda581e61e8d5c824"
+    },
+    "curated_orbit_manifest": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json",
+      "role": "TASK-075 curated orbit manifest",
+      "sha256": "66d26569a938f88a6d05da3dcd28de2f720cc768041327cc5aab1daa4d15f9cd"
+    },
+    "curated_orbit_npz": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbits.npz",
+      "role": "TASK-075 accepted native orbit vectors",
+      "sha256": "21920beec23de4973d67a58c1e530d4517e9a23ba1fe98441d94bc94b627b978"
+    },
+    "doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task077-floquet-postprocessing.md",
+      "role": "TASK-077 documentation",
+      "sha256": "6ec080aef3be51e20e0c750505ba6324e547d934b0870540bfac3f4231fc9432"
+    },
+    "full_domain_summary": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
+      "role": "TASK-075 terminal target ledger",
+      "sha256": "b867a8479f6d1512784b7333dd6ebc31b91263044986511f52a855d2dbe9a1de"
+    },
+    "generator": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py",
+      "role": "TASK-077 Floquet diagnostics generator",
+      "sha256": "b81659156ba03f957e210cf0eb09e584f23cc80a795b50fd2de75d67668f3223"
+    },
+    "near_hopf_policy": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json",
+      "role": "TASK-076 Hopf-limit explicit-gap records",
+      "sha256": "97c6d8c126270a6ae29f7d224cbe95b929cd0c319a02576b5677c4294b2d3ff2"
+    },
+    "readme": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/README.md",
+      "role": "Episode 008 documentation index",
+      "sha256": "24da25331e1ea032e8565275a137d5ea6d7b162ae690571c43183e97ed3334e5"
+    },
+    "task069_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task069-evidence-review-and-next-stage-design.md",
+      "role": "TASK-069 approved downstream Floquet postprocessing",
+      "sha256": "a49239e4a92993a402c8a142df33f3bac5680aa824d87d03144ac7699dfbbaf0"
+    },
+    "task070_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/production-schemas.md",
+      "role": "TASK-070 production schema boundary",
+      "sha256": "a11a93b80dca5407c04d52941dd830c294a74ab876df478c0edd671d6ec29482"
+    },
+    "task075_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task075-full-domain-native-adaptive-continuation.md",
+      "role": "TASK-075 accepted production orbit and explicit gaps",
+      "sha256": "c189c0fe45d7338a4e1e245ee763117856d5e327cc7f177c78502375fe7c5b7c"
+    },
+    "task076_doc": {
+      "path": "episodes/008-figure5-periodic-orbit-continuation/docs/task076-near-hopf-approach-policy.md",
+      "role": "TASK-076 Hopf-limit explicit-gap policy",
+      "sha256": "cb6f8ae33b30dfe59c26a6ff1b85eb82ff6aa31c6d79f2c48b1304a0f9be2b62"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "role": "Python environment lockfile",
+      "sha256": "2255094352d9ee2e9ebae857fd0b3af914f2239f8fa8b478543efb6e5bfcebf3"
+    }
+  },
+  "verification_commands": {
+    "artifact_checks": [
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py --check",
+      "uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_orbit_manifest.json"
+    ],
+    "focused_tests": [
+      "uv run pytest tests/test_episode8_native_adaptive_floquet_diagnostics.py -q"
+    ]
+  }
+}

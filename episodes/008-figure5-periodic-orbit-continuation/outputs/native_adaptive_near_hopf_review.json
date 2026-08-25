@@ -4,7 +4,7 @@
   "connection_gap_policy": {
     "fits_performed": false,
     "policy_record_artifact": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_near_hopf_policy_records.json",
-    "policy_record_artifact_sha256": "a437fc27dfca42a4cb34550e2166cbe4e7800492f0e1a53609309445bca4a66e",
+    "policy_record_artifact_sha256": "97c6d8c126270a6ae29f7d224cbe95b929cd0c319a02576b5677c4294b2d3ff2",
     "reviewed_side_count": 2,
     "sides_with_connection_supported_by_fit": [],
     "sides_with_explicit_gap": [
@@ -660,17 +660,17 @@
     "full_domain_events": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
       "role": "TASK-075 terminal event records",
-      "sha256": "893b7229f96ddc21fb3898712ffa2566fe8db7c41a452726890ad093ccdf8878"
+      "sha256": "bf89eda322adc392475e430d3e538fa3059eddd36f8e484c472cfc00b2756858"
     },
     "full_domain_points": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
       "role": "TASK-075 accepted continuation point records",
-      "sha256": "d92051b49a806e113c0ac27033861ddae97daa5d7556148641a0c77b5f18657e"
+      "sha256": "3fdb803753e60b6fb238cb75f7d9e145bab3f6643e73f34cda581e61e8d5c824"
     },
     "full_domain_summary": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
       "role": "TASK-075 full-domain terminal ledger",
-      "sha256": "fe7ddb11016b17567e38afbd06b0bbf974502c1a4e03c0b55ab25eb213b6dafc"
+      "sha256": "b867a8479f6d1512784b7333dd6ebc31b91263044986511f52a855d2dbe9a1de"
     },
     "generator": {
       "path": "episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_near_hopf_review.py",

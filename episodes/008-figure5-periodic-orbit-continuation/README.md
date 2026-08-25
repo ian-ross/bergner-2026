@@ -16,6 +16,7 @@ This episode follows the conservative prototype-to-Trilinos path documented in t
 - [`docs/task081-native-adaptive-pilot-gate-followup.md`](docs/task081-native-adaptive-pilot-gate-followup.md) records the TASK-081 follow-up gate that accepts the exact `spine-210K` post-remesh restart point and authorizes TASK-075 under the retained v1 method.
 - [`docs/task075-full-domain-native-adaptive-continuation.md`](docs/task075-full-domain-native-adaptive-continuation.md) documents the TASK-075 full-domain native adaptive target ledger, accepted production point, explicit gaps, sampling-refinement status, and production-v1 artifacts.
 - [`docs/task076-near-hopf-approach-policy.md`](docs/task076-near-hopf-approach-policy.md) documents the TASK-076 near-Hopf evidence review, skipped fit prerequisites, and explicit-gap policy records.
+- [`docs/task077-floquet-postprocessing.md`](docs/task077-floquet-postprocessing.md) documents the TASK-077 Floquet multiplier postprocessing diagnostics for accepted native production orbits.
 - [`docs/task074-t210-linearized-period-curve.md`](docs/task074-t210-linearized-period-curve.md) documents the native C++ T=210 K equilibrium-linearized period curve for the lower Figure 5 panel.
 
 ## Production schema boundary
@@ -139,6 +140,20 @@ uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_
 ```
 
 Current production evidence has zero reliable near-Hopf approach points on either side. The requested T=210 K targets at `rho=+/-0.25`, `+/-0.50`, `+/-0.75`, `+/-0.90`, and `+/-0.97` are all `resolution_unresolved`; therefore quadratic/quartic `P(A)` fits, leave-one-out intercept checks, residual checks, and Episode 006 Hopf-period comparisons are not performed. The production-v1 policy records encode both Hopf-limit connections as explicit gaps with null display periods and no invented regular-orbit amplitude or period at the Hopf boundaries.
+
+## Floquet postprocessing diagnostics
+
+TASK-077 computes Floquet multipliers as postprocessing for schema-valid accepted native production orbits. The artifact is:
+
+- [`outputs/native_adaptive_floquet_diagnostics.json`](outputs/native_adaptive_floquet_diagnostics.json)
+
+Check it with:
+
+```bash
+uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_native_adaptive_floquet_diagnostics.py --check
+```
+
+The current diagnostic set contains only the accepted `spine-210K` TASK-075 orbit. DOP853 variational integrations over the native piecewise collocation polynomial record the autonomous trivial multiplier, nontrivial multipliers, tolerance-refinement comparisons, and stability classification. Implicit Radau is run as a comparison for the canonical accepted point; near-Hopf/long-period and suspected nontrivial unit-circle crossing strata are explicitly recorded as unavailable until schema-valid accepted production points exist. Unresolved targets, failed targets, Hopf-limit policy records, interpolation, and digitized-paper evidence are not relabeled as regular orbits.
 
 ## T=210 K equilibrium-linearized period curve
 

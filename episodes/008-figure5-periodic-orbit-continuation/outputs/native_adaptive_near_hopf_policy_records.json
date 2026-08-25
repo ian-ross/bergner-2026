@@ -149,17 +149,17 @@
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_run.json",
         "role": "TASK-075 full-domain terminal ledger",
-        "sha256": "fe7ddb11016b17567e38afbd06b0bbf974502c1a4e03c0b55ab25eb213b6dafc"
+        "sha256": "b867a8479f6d1512784b7333dd6ebc31b91263044986511f52a855d2dbe9a1de"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_points.json",
         "role": "TASK-075 accepted continuation point records",
-        "sha256": "d92051b49a806e113c0ac27033861ddae97daa5d7556148641a0c77b5f18657e"
+        "sha256": "3fdb803753e60b6fb238cb75f7d9e145bab3f6643e73f34cda581e61e8d5c824"
       },
       {
         "path": "episodes/008-figure5-periodic-orbit-continuation/outputs/native_adaptive_full_domain_events.json",
         "role": "TASK-075 terminal event records",
-        "sha256": "893b7229f96ddc21fb3898712ffa2566fe8db7c41a452726890ad093ccdf8878"
+        "sha256": "bf89eda322adc392475e430d3e538fa3059eddd36f8e484c472cfc00b2756858"
       },
       {
         "path": "episodes/006-figure3-hopf-bifurcation/outputs/figure3_loca_hopf_loci/loca_figure3_hopf_loci.csv",
