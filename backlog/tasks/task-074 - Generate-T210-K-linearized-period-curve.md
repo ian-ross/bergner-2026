@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:18'
-updated_date: '2026-08-24 19:04'
+updated_date: '2026-08-25 10:46'
 labels:
   - episode-008
   - linearized-period
@@ -44,4 +44,14 @@ Compute the lower-panel equilibrium-linearized period curve independently from p
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-074: moved task to In Progress, assigned to @iross, reviewed dependencies TASK-069/TASK-070 and Episode 008 schema/decision docs, confirmed uv/cmake/ninja and existing C++ model executable are available, and drafted the implementation plan. Pausing before coding pending plan approval.
+
+Implemented TASK-074 linearized-period production artifact and validation path. Added `generate_t210_linearized_period_curve.py`, `outputs/t210_linearized_period_curve.json`, `docs/task074-t210-linearized-period-curve.md`, focused tests, and a small schema-validator allowance for explicit linearized-period gap rows with null period/frequency. Updated Episode 008 docs and regenerated dependent provenance/check artifacts after documentation hashes changed.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_t210_linearized_period_curve.py --check`: current
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/validate_production_artifacts.py episodes/008-figure5-periodic-orbit-continuation/outputs/t210_linearized_period_curve.json`: valid
+- TASK-071/TASK-072/TASK-073/TASK-068 reconciliation generators `--check`: current after provenance regeneration
+- `uv run pytest tests/test_episode8_t210_linearized_period_curve.py tests/test_episode8_production_schema.py -q`: 20 passed
+- `uv run pytest -q`: 357 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
