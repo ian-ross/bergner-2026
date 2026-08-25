@@ -3,7 +3,7 @@ id: TASK-076
 title: Acquire near-Hopf approach evidence and decide gap policy
 status: In Progress
 assignee:
-  - '@pi'
+  - '@iross'
 created_date: '2026-08-24 13:19'
 updated_date: '2026-08-25 12:03'
 labels:
@@ -46,4 +46,6 @@ Use production native adaptive continuation results to collect reliable near-Hop
 
 <!-- SECTION:NOTES:BEGIN -->
 Started TASK-076: moved task to In Progress, assigned to @pi, reviewed dependencies TASK-069/TASK-070/TASK-075 and Episode 008 production documentation. Current TASK-075 evidence accepts only spine-210K and leaves the rest of the full-domain ledger as explicit resolution_unresolved policy gaps, so the implementation will gate near-Hopf fits strictly on production native adaptive evidence.
+
+Assignee normalized to @iross to match repository Backlog convention and local working identity.
 <!-- SECTION:NOTES:END -->
