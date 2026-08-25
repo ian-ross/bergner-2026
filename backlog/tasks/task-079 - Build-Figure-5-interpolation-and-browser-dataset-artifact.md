@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - '@iross'
 created_date: '2026-08-24 13:19'
-updated_date: '2026-08-25 13:23'
+updated_date: '2026-08-25 13:45'
 labels:
   - episode-008
   - interpolation
@@ -29,9 +29,9 @@ Construct the schema-valid display/interpolation layer from authoritative produc
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Shape-preserving interpolation of log(P) passes documented along-slice and withheld-slice holdout gates or records invalid/gap regions; no interpolation crosses Hopf boundaries, unresolved targets, instability checkpoints, or multivalued tripwires
-- [ ] #2 The browser dataset distinguishes solved, interpolated, Hopf-limit, image-derived comparison, invalid, and gap values with links to authoritative records and units/coordinate provenance
-- [ ] #3 The lower-panel data use authoritative T=210 K nonlinear continuation records and the independent linearized-period curve, not heatmap resampling
+- [x] #1 Shape-preserving interpolation of log(P) passes documented along-slice and withheld-slice holdout gates or records invalid/gap regions; no interpolation crosses Hopf boundaries, unresolved targets, instability checkpoints, or multivalued tripwires
+- [x] #2 The browser dataset distinguishes solved, interpolated, Hopf-limit, image-derived comparison, invalid, and gap values with links to authoritative records and units/coordinate provenance
+- [x] #3 The lower-panel data use authoritative T=210 K nonlinear continuation records and the independent linearized-period curve, not heatmap resampling
 <!-- AC:END -->
 
 ## Implementation Plan
@@ -52,4 +52,19 @@ Construct the schema-valid display/interpolation layer from authoritative produc
 Started TASK-079: moved task to In Progress, assigned to @iross, reviewed task dependencies and Episode 008 production docs/artifacts. Confirmed upstream check commands pass for TASK-075 full-domain, TASK-076 near-Hopf policy, TASK-077 Floquet diagnostics, TASK-078 IVP validation, and TASK-074 T=210 K linearized period curve. No implementation changes have been made yet; pausing for plan confirmation.
 
 Plan approved by user; proceeding with TASK-079 browser/interpolation generator, documentation, tests, and validation.
+
+Implemented TASK-079 browser/interpolation artifact. Added `generate_figure5_browser_interpolation_dataset.py`, `outputs/figure5_browser_interpolation_dataset.json`, documentation, README linkage, and focused tests. Current authoritative nonlinear evidence has one accepted native point (`spine-210K`) and 297 unresolved targets, so the generator records no nonlinear interpolation, not_evaluated along-slice/withheld-slice holdout gates, explicit unresolved gaps, Hopf-limit explicit gaps, invalid outside-Hopf-domain mask records, and pending TASK-063 image-derived comparison placeholders rather than fabricated digitized values.
+
+A read-only scientific/code audit found an initial stability/IVP summary parsing bug in the TASK-079 artifact (`null` IVP failure ID). Fixed `stability_review()` to read the current TASK-077/TASK-078 nested schemas and regenerated the artifact; it now records no ambiguous/unstable Floquet targets and no IVP failures.
+
+Updated Episode 008 README/docs and regenerated README/source-hash-dependent upstream artifacts (TASK-071/TASK-072/TASK-073/TASK-081/TASK-075/TASK-076/TASK-077/TASK-078/final reconciliation) so existing check commands remain current.
+
+Validation run:
+- `uv run python episodes/008-figure5-periodic-orbit-continuation/scripts/generate_figure5_browser_interpolation_dataset.py --check`: current
+- production validator for `figure5_browser_interpolation_dataset.json`: valid
+- focused TASK-079 tests: 6 passed
+- focused source-hash-dependent Episode 008 regression set: 80 passed
+- final reconciliation `--check`: passed
+- full `uv run pytest -q`: 394 passed, 1 skipped, 3 known overflow warnings
+- `git diff --check`: passed
 <!-- SECTION:NOTES:END -->
