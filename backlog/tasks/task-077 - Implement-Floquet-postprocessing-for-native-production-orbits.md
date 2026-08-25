@@ -1,9 +1,11 @@
 ---
 id: TASK-077
 title: Implement Floquet postprocessing for native production orbits
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - '@iross'
 created_date: '2026-08-24 13:19'
+updated_date: '2026-08-25 12:19'
 labels:
   - episode-008
   - floquet
