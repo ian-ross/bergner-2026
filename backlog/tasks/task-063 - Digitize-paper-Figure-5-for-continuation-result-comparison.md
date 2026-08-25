@@ -1,7 +1,7 @@
 ---
 id: TASK-063
 title: Digitize paper Figure 5 for continuation-result comparison
-status: In Progress
+status: Done
 assignee:
   - '@pi'
 created_date: '2026-08-13 04:20'
@@ -62,3 +62,20 @@ Extract and digitize both panels of Bergner & Spichtinger (2026) Figure 5 as a r
 - Added focused tests in `tests/test_episode8_paper_figure5_digitization.py` and adjusted TASK-079 documentation test for the completed digitization state.
 - Verification: `uv run pytest tests/test_episode8_paper_figure5_digitization.py tests/test_episode8_figure5_browser_interpolation_dataset.py` (11 passed).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented reproducible Episode 008 paper Figure 5 digitization as non-authoritative external comparison evidence.
+
+Changes:
+- Added `generate_paper_figure5_digitization.py` with deterministic `--check`, source JPEG/PDF SHA-256 provenance, calibrated upper/lower panel axes, empirical colorbar lookup, and connected-component curve extraction.
+- Committed machine-readable digitization outputs for upper Hopf boundaries, upper color-derived period samples, and lower T=210 K red/black curves, plus JSON schema/provenance/validation metadata.
+- Added overlay and residual diagnostic PNGs to verify extraction alignment and calibration/colorbar residuals.
+- Documented calibration, uncertainty limits, comparison policy, and non-authoritative status in `docs/task063-paper-figure5-digitization.md` and the Episode 008 README.
+- Refreshed TASK-079 documentation/hash-bound browser artifact to describe the pre-TASK-063 placeholder state accurately.
+- Added focused tests covering reproducibility, source hashes, schemas, digitized sample counts, curve identities/endpoints, validation outputs, and docs.
+
+Tests:
+- `uv run pytest tests/test_episode8_paper_figure5_digitization.py tests/test_episode8_figure5_browser_interpolation_dataset.py`
+<!-- SECTION:FINAL_SUMMARY:END -->
