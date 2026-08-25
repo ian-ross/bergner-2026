@@ -52,4 +52,6 @@ After the measured pilot gate passes, run authoritative native adaptive continua
 Started TASK-075 by assigning it to @iross and reviewing dependencies plus Episode 008 gate documentation. TASK-081 is still To Do, and TASK-073 explicitly states full-domain continuation is not authorized until TASK-081 resolves the pilot acceptance blockers. No full-domain continuation or production artifact generation has been started.
 
 Paused TASK-075 before implementation because TASK-081 gate work must be completed first per TASK-073. User approved switching to TASK-081.
+
+Resumed TASK-075 after TASK-081 reached Done. Dependency gate is now satisfied: TASK-069/070/071/073/081 are Done, and TASK-081 explicitly authorizes TASK-075 under retained external-gauss3-hr-adaptive-v1 with explicit-gap/tripwire/Hopf-boundary discipline. Pausing before production continuation/artifact changes pending plan confirmation.
 <!-- SECTION:NOTES:END -->
